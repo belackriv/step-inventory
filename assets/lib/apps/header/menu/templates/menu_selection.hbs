@@ -1,0 +1,14 @@
+<div class="stepthrough-menu-input-container">
+	<span class="stepthrough-menu-selection-pull-left">Office:</span>
+	<span id="office-selection-container" class="stepthrough-menu-selection-pull-right">
+		<select id="menu-office-select">
+			{{#each items}}
+				<option value="{{item.id}}">{{item.name}}</option>
+			{{/each}}
+		</select>
+	</span>
+</div>
+<div class="stepthrough-menu-input-container">
+	<span class="stepthrough-menu-selection-pull-left">Department:</span>
+	<span id="department-selection-container" class="stepthrough-menu-selection-pull-right"></span>
+</div>

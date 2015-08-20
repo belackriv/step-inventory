@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block favicon %}{% endblock %}
+{% block requirejs %}{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-default">
+    <div class="navbar-header stepthrough-menu-selection-container" id="menu-selection-container"></div>
+    <div class="collapse navbar-collapse">
+        <div id="nav-menu"></div>
+        <div class="stepthrough-menu-user-container" id="menu-user-container">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>    
+<div class="vertical-center">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h1 class="text-center">Please Log In</h1></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class=".col-sm-4"></div>
+                    <div class=".col-sm-4">
+                        {% if error %}
+                            <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData) }}</div>
+                        {% endif %}   
+                        <form action="{{ path('login_check') }}" method="post" class="form-horizontal">
+                          <div class="form-group">
+                            <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-10">
+                              <input {% if last_username is not defined or last_username is null  %}autofocus {% endif %}type="text" class="form-control" id="inputUsername" placeholder="Username"  name="_username" value="{{ last_username }}" />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                              <input {% if last_username %}autofocus {% endif %}type="password" class="form-control" id="inputPassword" placeholder="Password"  name="_password"  />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <button type="submit" class="btn btn-default">Log in</button>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    <div class=".col-sm-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

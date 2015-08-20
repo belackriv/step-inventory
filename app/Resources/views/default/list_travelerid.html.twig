@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Showing TIDS</h1>
+	<ul>
+    {% for travelerid in list %}
+        <li>#{{ travelerid.id|e }} "{{ travelerid.travelerid|e }}"</li>
+    {% endfor %}
+	</ul>
+   
+{% endblock %}
