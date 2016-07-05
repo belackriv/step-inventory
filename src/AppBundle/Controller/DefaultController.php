@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class DefaultController extends Controller
 {
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/", name="homepage")
      * @Template(":default:index.html.twig")
      */

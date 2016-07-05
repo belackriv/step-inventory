@@ -25,19 +25,26 @@ security:
             security: false
         login_firewall:
             pattern:   ^/login$
-            anonymous: ~    
+            anonymous: ~
         site:
             pattern:    ^/
             form_login:
                 login_path: /login
                 check_path: /login_check
+                remember_me: true
             provider: stepthrough_users
             logout:
                 target: /login
+            remember_me:
+                secret: '%secret%'
+                name: user_account
+                lifetime: 604800
+                httponly: true
+                always_remember_me: true
 
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/login, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/, roles: [IS_AUTHENTICATED_REMEMBERED ] } #IS_AUTHENTICATED_REMEMBERED

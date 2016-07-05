@@ -1,0 +1,21 @@
+<h2>{{message}}</h2>
+<ul>
+	{{#each exception}}
+		<li>
+			<pre>{{this.message}}</pre>
+			<ul>
+				{{#each this.trace}}
+					<li>
+						<div><label class="secondary radius label">Class:</label>{{this.class}}</div>
+						<div><label class="secondary radius label">File:</label>{{this.file}}</div>
+						<div><label class="secondary radius label">Function:</label>{{this.function}}</div>
+						<div><label class="secondary radius label">Line:</label>{{this.line}}</div>
+						<div><label class="secondary radius label">Namespace:</label>{{this.namespace}}</div>
+						<div><label class="secondary radius label">Short Class:</label>{{this.short_class}}</div>
+						<div><label class="secondary radius label">Type:</label>{{this.type}}</div>
+					</li>
+				{{/each}}
+			</ul>
+		</li>
+	{{/each}}
+</ul>

@@ -13,10 +13,8 @@ services:
 
     appBundle.role_repository:
         class: Doctrine\ORM\EntityRepository
-        factory_service: doctrine.orm.default_entity_manager
-        factory_method: getRepository
-        arguments:
-            - AppBundle\Entity\Role
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [AppBundle\Entity\Role, ]
 
     security.role_hierarchy:
         class: AppBundle\Security\Role\DynamicRoleHierarchy

@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation As JMS;
 /**
  * AppBundle\Entity\User
  *
- * @ORM\Table(name="StepthroughUser")
+ * @ORM\Table(name="stepthrough_user")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
 class User implements AdvancedUserInterface, \Serializable
@@ -31,7 +31,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @JMS\Type("string")
+     * @JMS\Exclude
      */
     protected $password;
 
@@ -168,7 +168,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -217,7 +217,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -240,7 +240,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -263,7 +263,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -286,7 +286,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -309,7 +309,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get defaultDepartment
      *
-     * @return \AppBundle\Entity\Department 
+     * @return \AppBundle\Entity\Department
      */
     public function getDefaultDepartment()
     {

@@ -1,0 +1,13 @@
+<a class="entity-link" href="{{entityUrl}}">
+	#{{id}} -
+	{{#if label}}
+		{{label}}
+	{{else}}
+		{{#if name}}
+			{{name}}
+		{{else}}
+			[No Name]
+		{{/if}}
+	{{/if}}
+</a>
+<span class="not-synced-alert fa fa-exclamation-triangle" title="This asset is not synced with the server."></span>

@@ -2,17 +2,21 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Library\Utilities;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\Annotations AS Rest;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
 class DefaultRestController extends FOSRestController
 {
-   
+
     /**
      * @Rest\Get("/tid")
      * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true)
@@ -21,8 +25,8 @@ class DefaultRestController extends FOSRestController
     {
     	 $items = $this->getDoctrine()
         ->getRepository('AppBundle:TravelerId')
-        ->findAll();	
-   	
+        ->findAll();
+
         return array('list'=>$items);
     }
 
@@ -84,7 +88,7 @@ class DefaultRestController extends FOSRestController
     {
         $items = $this->getDoctrine()
         ->getRepository('AppBundle:Department')
-        ->findAll();	
+        ->findAll();
 
         $itemlist = array();
         $authorizationChecker = $this->get('security.authorization_checker');
@@ -144,13 +148,13 @@ class DefaultRestController extends FOSRestController
                         $granted = $authorizationChecker->isGranted('VIEW', $child->getMenuLink());
                         if (false === $granted) {
                             $item->removeChild($child);
-                        }   
+                        }
                     }
                 }
             }
         }
-   	
-        return array('list'=>$offices);
+
+        return ['total_count'=> count($offices), 'total_items' => count($offices), 'list'=>$offices];
     }
 
     /**
@@ -192,7 +196,7 @@ class DefaultRestController extends FOSRestController
                 $itemlist[] = $item;
             }
         }
-   	
+
         return array('list'=>$itemlist);
     }
 
@@ -222,22 +226,28 @@ class DefaultRestController extends FOSRestController
      * @Rest\Get("/user")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
      */
-    public function listUserAction()
+    public function listUserAction(Request $request)
     {
-        $filter = $this->getRequest()->query->all();
-        $items = $this->getDoctrine()
-            ->getRepository('AppBundle:User')
-            ->searchUsers($filter);
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(u.id)')
+            ->from('AppBundle:User', 'u');
 
-        $itemlist = array();
-        $authorizationChecker = $this->get('security.authorization_checker');
-        foreach($items as $item){
-            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
-                $itemlist[] = $item;
-            }
-        }
-    
-        return array('list'=>$items);
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('u')
+            ->orderBy('u.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
     }
 
     /**

@@ -1,66 +1,55 @@
 'use strict';
 
 import Backbone from 'backbone';
+import Radio from 'backbone.radio';
 import Marionette from 'marionette';
-import 'lib/shims/marionette.radio.shim';
-import appModuleList from 'lib/app_module_list';
-import appLayoutTpl from 'lib/app_layout.hbs!';
+import AppLayoutView from './appLayoutView.js';
+import AppMainRouter from './appMainRouter.js';
+import AppDataService from './appDataService.js';
 
+export default Marionette.Application.extend({
+  initialize(){
+    this.router = new AppMainRouter();
+    this.dataService = new AppDataService();
+    this.listenTo(Radio.channel('app'), 'navigate', this.navigate);
+    this.listenTo(Radio.channel('app'), 'request:started', this.requestStarted);
+    this.listenTo(Radio.channel('app'), 'request:finished', this.requestFinished);
+  },
+  baseUrl: '/~belac/stepthrough/app_dev.php',
+  wsAddress: '192.168.1.7:8080',
+  currentRequests: 0,
+  navigate(route,  options){
+    options = options ||  {
+      trigger: true
+    };
+    route = route.replace(this.baseUrl, '');
+    Backbone.history.navigate(route, options);
+  },
+  getCurrentRoute(){
+    return Backbone.history.fragment;
+  },
+  region: '#content',
+  onStart(){
+    this.showView( new AppLayoutView() );
 
-var StepThrough = new Marionette.Application();
-StepThrough.baseURL = '/~belac/stepthrough/app_dev.php';
-StepThrough.wsAddress = '192.168.1.7:8080';
-
-StepThrough.navigate = function(route,  options){
-  options = options ||  {};
-  Backbone.history.navigate(route, options);
-};
-
-StepThrough.getCurrentRoute = function(){
-  return Backbone.history.fragment;
-};
-
-StepThrough.startSubApp = function(appName, args, callback){
-  var currentApp = appName ? StepThrough.module(appName) : null;
-  if (StepThrough.currentApp === currentApp){ return; }
-
-  if (StepThrough.currentApp){
-    StepThrough.currentApp.stop();
-  }
-
-  StepThrough.currentApp = currentApp;
-  if(currentApp){
-    currentApp.start(args);
-  }
-};
-
-StepThrough.AppLayout = Marionette.LayoutView.extend({
-  template: appLayoutTpl,
-  el: "#content",
-  regions: {
-    navbar: "nav",
-    header: "header",
-    main: "#main-section",
-    footer: 'footer'
-  }
-});
-
-StepThrough.on("start", function(){
-  StepThrough.appLayout = new StepThrough.AppLayout();
-  StepThrough.appLayout.render();
-
-  if(Backbone.history){
-    require(appModuleList, function () {
-     
-
-      var routeFound = Backbone.history.start({
+    if(Backbone.history){
+     var routeFound = Backbone.history.start({
         pushState: true,
-        root: StepThrough.baseURL
+        root: this.baseUrl
       });
-      console.log('starting route "'+StepThrough.getCurrentRoute()+'" found: '+routeFound);
-    });
-  }
-  
+      console.log('starting route "'+this.getCurrentRoute()+'" found: '+routeFound);
+    }
+  },
+  requestStarted(){
+    this.currentRequests++;
+    Radio.channel('app').trigger('loading:show');
+  },
+  requestFinished(){
+    this.currentRequests--;
+    if(this.currentRequests < 1){
+      Radio.channel('app').trigger('loading:hide');
+    }
+  },
 });
 
-export default StepThrough;
+
