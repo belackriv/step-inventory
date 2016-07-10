@@ -1,15 +1,15 @@
-{{#if menuLink.url}}
-	<a href="{{baseUrl menuLink.url}}" class="{{#if isActive}}is-active{{/if}}">{{menuLink.name}}</a>
+{{#if menuLink.attributes.url}}
+	<a href="{{baseUrl menuLink.attributes.url}}" class="{{#if isActive}}is-active{{/if}}">{{menuLink.attributes.name}}</a>
 {{else}}
-	{{menuLink.name}}
+	{{menuLink.attributes.name}}
 {{/if}}
 <ul>
 	{{#each children.models}}
 		<li>
-			{{#if this.attributes.menuLink.url}}
-				<a href="{{baseUrl this.attributes.menuLink.url}}" class="{{#if isActive}}is-active{{/if}}">{{this.attributes.menuLink.name}}</a>
+			{{#if this.attributes.menuLink.attributes.url}}
+				<a href="{{baseUrl this.attributes.menuLink.attributes.url}}" class="{{#if isActive}}is-active{{/if}}">{{this.attributes.menuLink.attributes.name}}</a>
 			{{else}}
-				{{this.attributes.menuLink.name}}
+				{{this.attributes.menuLink.attributes.name}}
 			{{/if}}
 		</li>
 	{{/each}}

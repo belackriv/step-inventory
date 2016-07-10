@@ -1,0 +1,35 @@
+<form>
+	<label class="label">Position</label>
+	<p class="control">
+		<input class="input" name="position" type="number" placeholder="Enter Position">
+	</p>
+	<p class="control">
+	  	<label class="checkbox">
+	    	<input name="isActive" type="checkbox">
+	    	Is Active?
+	  	</label>
+	</p>
+	<label class="label">Menu Link</label>
+	<p class="control">
+		<span class="select">
+	  		<select name="menuLink"></select>
+  		</span>
+	</p>
+	<label class="label">Child Menu Items</label>
+	<p class="control has-addons">
+		<span class="select">
+	  		<select name="menuItems"></select>
+  		</span>
+  		<button type="button" class="button is-success" name="addChild">Add</button>
+	</p>
+	<label class="label">Children</label>
+	<div class="control">
+		<div class="box" data-ui-name="children"></div>
+	</div>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

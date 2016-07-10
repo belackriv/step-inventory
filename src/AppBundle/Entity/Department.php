@@ -102,7 +102,7 @@ Class Department
      *
      * @param \AppBundle\Entity\MenuItem $menuItem
      */
-    public function removeMenuItem(\AppBundle\Entity\MenuItem $menuItem)
+    public function removeMenuItem(MenuItem $menuItem)
     {
         $this->menuItems->removeElement($menuItem);
         $menuItem->setDepartment(null);

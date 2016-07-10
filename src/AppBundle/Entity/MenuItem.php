@@ -131,7 +131,7 @@ Class MenuItem
     public function setChildren(ArrayCollection $children)
     {
     	$this->children = $children;
-    	
+
     	return $this;
     }
 
@@ -141,7 +141,7 @@ Class MenuItem
      * @param \AppBundle\Entity\MenuItem $menuItem
      * @return Department
      */
-    public function addChild(\AppBundle\Entity\MenuItem $child)
+    public function addChild(MenuItem $child)
     {
         $this->children[] = $child;
         $child->setParent($this);
@@ -153,7 +153,7 @@ Class MenuItem
      *
      * @param \AppBundle\Entity\MenuItem $menuItem
      */
-    public function removeChild(\AppBundle\Entity\MenuItem $child)
+    public function removeChild(MenuItem $child)
     {
         $this->children->removeElement($child);
         $child->setParent(null);

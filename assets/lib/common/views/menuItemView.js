@@ -18,8 +18,8 @@ export default Marionette.View.extend({
   navigate: function(e){
     e.preventDefault();
     var menuLink = this.model.get('menuLink');
-    if(menuLink.url){
-      Radio.channel('app').trigger('navigate', menuLink.url);
+    if(menuLink && menuLink.get('url')){
+      Radio.channel('app').trigger('navigate', menuLink.get('url'));
     }
   },
 });

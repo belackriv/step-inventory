@@ -40,7 +40,7 @@ class UserRole
      * @param \AppBundle\Entity\User $user
      * @return UserRole
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
 
@@ -63,7 +63,7 @@ class UserRole
      * @param \AppBundle\Entity\Role $role
      * @return UserRole
      */
-    public function setRole(\AppBundle\Entity\Role $role)
+    public function setRole(Role $role)
     {
         $this->role = $role;
 

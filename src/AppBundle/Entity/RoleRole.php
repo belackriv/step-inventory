@@ -39,7 +39,7 @@ class RoleRole
      * @param \AppBundle\Entity\Role $roleSource
      * @return Role
      */
-    public function setRoleSource(\AppBundle\Entity\Role $roleSource)
+    public function setRoleSource(Role $roleSource)
     {
         $this->roleSource = $roleSource;
 
@@ -62,7 +62,7 @@ class RoleRole
      * @param \AppBundle\Entity\Role $roleTarget
      * @return Role
      */
-    public function setRoleTarget(\AppBundle\Entity\Role $roleTarget)
+    public function setRoleTarget(Role $roleTarget)
     {
         $this->roleTarget = $roleTarget;
 

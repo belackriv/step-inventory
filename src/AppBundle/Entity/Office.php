@@ -66,7 +66,7 @@ Class Office
      *
      * @param \AppBundle\Entity\Department $departments
      */
-    public function removeDepartment(\AppBundle\Entity\Department $departments)
+    public function removeDepartment(Department $departments)
     {
         $this->departments->removeElement($departments);
     }

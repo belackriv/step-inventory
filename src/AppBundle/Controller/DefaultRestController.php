@@ -183,21 +183,36 @@ class DefaultRestController extends FOSRestController
      * @Rest\Get("/menu_item")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function listMenuItemAction()
+    public function listMenuItemAction(Request $request)
     {
-        $items = $this->getDoctrine()
-        ->getRepository('AppBundle:MenuItem')
-        ->findAll();
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(mi.id)')
+            ->from('AppBundle:MenuItem', 'mi');
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('mi')
+            ->orderBy('mi.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
 
         $itemlist = array();
-        $authorizationChecker = $this->get('security.authorization_checker');
-        foreach($items as $item){
-            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
-                $itemlist[] = $item;
+        /*$authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $menuItem->getMenuLink()){
+            if (true === $authorizationChecker->isGranted('VIEW', $menuItem->getMenuLink())) {
+                $itemlist[] = $menuItem->getMenuLink();
             }
         }
-
-        return array('list'=>$itemlist);
+        */
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -221,6 +236,64 @@ class DefaultRestController extends FOSRestController
 	    $em->flush();
         return $menuItem;
     }
+
+    /**
+     * @Rest\Put("/menu_item/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("menuItem", converter="fos_rest.request_body")
+     */
+    public function updateMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->merge($menuItem);
+        $em->flush();
+        return $menuItem;
+    }
+
+    /**
+     * @Rest\Delete("/menu_item/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($menuItem);
+        $em->flush();
+        return $role;
+    }
+
+    /**
+     * @Rest\Get("/menu_link")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listMenuLinkAction(Request $request)
+    {
+        $items = $this->getDoctrine()
+        ->getRepository('AppBundle:MenuLink')
+        ->findAll();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> count($itemlist), 'total_itemlist' => count($itemlist), 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/menu_link/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getMenuLinkAction(\AppBundle\Entity\MenuLink $menuLink)
+    {
+        return $menuLink;
+    }
+
+
+
 
     /**
      * @Rest\Get("/myself")

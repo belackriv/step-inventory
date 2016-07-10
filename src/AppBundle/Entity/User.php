@@ -315,7 +315,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param \AppBundle\Entity\Department $defaultDepartment
      * @return User
      */
-    public function setDefaultDepartment(\AppBundle\Entity\Department $defaultDepartment = null)
+    public function setDefaultDepartment(Department $defaultDepartment = null)
     {
         $this->defaultDepartment = $defaultDepartment;
 
@@ -338,7 +338,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param \AppBundle\Entity\Role $roles
      * @return User
      */
-    public function addUserRole(\AppBundle\Entity\UserRole $userRole)
+    public function addUserRole(UserRole $userRole)
     {
         $this->userRoles[] = $userRole;
 
@@ -350,7 +350,7 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @param \AppBundle\Entity\Role $roles
      */
-    public function removeUserRole(\AppBundle\Entity\UserRole $userRole)
+    public function removeUserRole(UserRole $userRole)
     {
         $this->userRoles->removeElement($userRole);
     }

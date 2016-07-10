@@ -8,12 +8,16 @@ import Marionette from 'marionette';
 import EntityIndexView from 'lib/common/views/entity/indexView.js';
 
 import AdminIndexView from './views/adminIndexView.js';
-import AdminUsersLayoutView from './views/adminUsersLayoutView.js';
 
 import UserCollection from 'lib/common/models/userCollection.js';
 import AdminUsersEditView from './views/adminUsersEditView.js';
 import adminUsersListTableLayoutTpl from './views/adminUsersListTableLayoutTpl.hbs!';
 import adminUsersRowTpl from './views/adminUsersRowTpl.hbs!';
+
+import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
+import AdminMenuItemsEditView from './views/adminMenuItemsEditView.js';
+import adminMenuItemsListTableLayoutTpl from './views/adminMenuItemsListTableLayoutTpl.hbs!';
+import adminMenuItemsRowTpl from './views/adminMenuItemsRowTpl.hbs!';
 
 export default Marionette.Object.extend({
   initialize(options){
@@ -33,7 +37,9 @@ export default Marionette.Object.extend({
     'user': 'users',
     'user/:id': 'users',
     'admin/user/:id': 'users',
-    'admin/menu_item/:id': 'menuLinks',
+    'menu_item': 'menuItems',
+    'menu_item/:id': 'menuItems',
+    'admin/menu_item/:id': 'menuItems',
   },
   index(){
     this.users();
@@ -41,9 +47,7 @@ export default Marionette.Object.extend({
   users(id){
     let adminIndexView =  new AdminIndexView();
     let userCollection = Radio.channel('data').request('collection', UserCollection);
-    let adminUsersLayoutView = new AdminUsersLayoutView();
-
-     var entityViewOptions = {
+    let entityViewOptions = {
       isCreatable: true,
       listLength: 20,
       entityId: id,
@@ -57,7 +61,7 @@ export default Marionette.Object.extend({
       colspan: 6
     };
 
-    var entityView = new EntityIndexView(entityViewOptions);
+    let entityView = new EntityIndexView(entityViewOptions);
 
     this.buildViewStack([
       {
@@ -70,8 +74,35 @@ export default Marionette.Object.extend({
 
     userCollection.fetch();
   },
-  menuLinks(){
+  menuItems(id){
+    let adminIndexView =  new AdminIndexView();
+    let menuItemCollection = Radio.channel('data').request('collection', MenuItemCollection);
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: menuItemCollection,
+      searchPath: ['id', 'menuLink.name'],
+      EditView: AdminMenuItemsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminMenuItemsListTableLayoutTpl,
+      entityRowTpl: adminMenuItemsRowTpl,
+      colspan: 6
+    };
 
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
+
+    menuItemCollection.fetch();
   },
   buildViewStack(stack){
     for(let viewObj of stack){

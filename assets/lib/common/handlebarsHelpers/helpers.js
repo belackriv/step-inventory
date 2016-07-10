@@ -21,6 +21,15 @@ Handlebars.registerHelper('log', function(data, options) {
   return '';
 });
 
+Handlebars.registerHelper('ifIsRouteActive', function(route, options) {
+  route = (route[0]=='/')?route.slice(1):route;
+  let currentRoute = Radio.channel('app').request('currentRoute');
+  if(currentRoute == route){
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 
 Handlebars.registerHelper('upperCase', function(str, options) {
    return (str+'').toUpperCase();

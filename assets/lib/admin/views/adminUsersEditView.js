@@ -8,7 +8,8 @@ import viewTpl from  "./adminUsersEditView.hbs!";
 import OfficeCollection from 'lib/common/models/officeCollection.js';
 import RoleCollection from 'lib/common/models/roleCollection.js';
 import UserRoleModel from 'lib/common/models/userRoleModel.js';
-import UserRoleListView from './userRoleListView.js';
+import FormChildListView from 'lib/common/views/formChildListView.js';
+import userRoleItemViewTpl from './userRoleItemView.hbs!'
 
 
 export default Marionette.View.extend({
@@ -88,8 +89,9 @@ export default Marionette.View.extend({
     },
   },
   onRender(){
-    this.showChildView('roles', new UserRoleListView({
-      collection: this.model.get('userRoles')
+    this.showChildView('roles', new FormChildListView({
+      collection: this.model.get('userRoles'),
+      childTemplate: userRoleItemViewTpl
     }));
   }
 });

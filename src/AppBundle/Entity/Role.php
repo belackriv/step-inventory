@@ -123,7 +123,7 @@ class Role implements RoleInterface
         return $this->isAllowedToSwitch;
     }
 
-    public function hasRoleInHierarchy(\AppBundle\Entity\Role $role)
+    public function hasRoleInHierarchy(Role $role)
     {
         foreach($this->roleHierarchy as $roleRole){
             if($roleRole->getTargetRole() === $role){
@@ -139,7 +139,7 @@ class Role implements RoleInterface
      * @param \AppBundle\Entity\Role $roleHierarchy
      * @return Role
      */
-    public function addRoleToHierarchy(\AppBundle\Entity\Role $role)
+    public function addRoleToHierarchy(Role $role)
     {
         if(!$this->hasRoleInHierarchy($role)){
             $roleRole = new RoleRole();
@@ -156,7 +156,7 @@ class Role implements RoleInterface
      *
      * @param \AppBundle\Entity\Role $roleHierarchy
      */
-    public function removeRoleFromHierarchy(\AppBundle\Entity\Role $role)
+    public function removeRoleFromHierarchy(Role $role)
     {
         foreach($this->roleHierarchy as $roleRole){
             if($roleRole->getTargetRole() === $role){
@@ -183,7 +183,7 @@ class Role implements RoleInterface
      * @param \AppBundle\Entity\Role $roleHierarchy
      * @return Role
      */
-    public function addRoleHierarchy(\AppBundle\Entity\Role $roleHierarchy)
+    public function addRoleHierarchy(Role $roleHierarchy)
     {
         $this->roleHierarchy[] = $roleHierarchy;
 
@@ -195,7 +195,7 @@ class Role implements RoleInterface
      *
      * @param \AppBundle\Entity\Role $roleHierarchy
      */
-    public function removeRoleHierarchy(\AppBundle\Entity\Role $roleHierarchy)
+    public function removeRoleHierarchy(Role $roleHierarchy)
     {
         $this->roleHierarchy->removeElement($roleHierarchy);
     }
