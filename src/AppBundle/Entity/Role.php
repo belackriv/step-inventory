@@ -39,8 +39,8 @@ class Role implements RoleInterface
     protected $isAllowedToSwitch = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Role")
-     * @JMS\Type("ArrayCollection<AppBundle\Entity\Role>")
+     * @ORM\OneToMany(targetEntity="RoleRole",  mappedBy="roleSource", cascade={"all"}, orphanRemoval=true)
+     * @JMS\Exclude
      */
     protected $roleHierarchy;
 
@@ -123,6 +123,16 @@ class Role implements RoleInterface
         return $this->isAllowedToSwitch;
     }
 
+    public function hasRoleInHierarchy(\AppBundle\Entity\Role $role)
+    {
+        foreach($this->roleHierarchy as $roleRole){
+            if($roleRole->getTargetRole() === $role){
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Add roleHierarchy
      *
@@ -131,7 +141,12 @@ class Role implements RoleInterface
      */
     public function addRoleToHierarchy(\AppBundle\Entity\Role $role)
     {
-        $this->roleHierarchy[] = $role;
+        if(!$this->hasRoleInHierarchy($role)){
+            $roleRole = new RoleRole();
+            $roleRole->setRoleSource($this);
+            $roleRole->setRoleTarget($role);
+            $this->roleHierarchy[] = $roleRole;
+        }
 
         return $this;
     }
@@ -143,7 +158,13 @@ class Role implements RoleInterface
      */
     public function removeRoleFromHierarchy(\AppBundle\Entity\Role $role)
     {
-        $this->roleHierarchy->removeElement($role);
+        foreach($this->roleHierarchy as $roleRole){
+            if($roleRole->getTargetRole() === $role){
+                $roleRole->setRoleSource(null);
+                $roleRole->setRoleTarget(null);
+                $this->roleHierarchy->removeElement($roleRole);
+            }
+        }
     }
 
     /**

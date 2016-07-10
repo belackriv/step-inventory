@@ -15,6 +15,11 @@ let Model = BaseUrlBaseModel.extend({
     key: 'defaultDepartment',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id']
+  },{
+    type: Backbone.HasOne,
+    key: 'currentDepartment',
+    relatedModel: 'DepartmentModel',
+    includeInJSON: ['id']
   }],
   defaults:{
     username: null,
@@ -23,7 +28,11 @@ let Model = BaseUrlBaseModel.extend({
     lastName: null,
     isActive: null,
     defaultDepartment: null,
-    roles: null,
+    currentDepartment: null,
+    userRoles: null,
+  },
+  hasUserRole(userRole){
+    return this.get('userRoles').get(userRole)?true:false;
   }
 });
 

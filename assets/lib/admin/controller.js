@@ -30,16 +30,17 @@ export default Marionette.Object.extend({
   },
   routes:  {
     'admin(/)': 'index',
-    'user(/(:id))': 'users',
-    'admin/user(/(:id))': 'users',
-    'admin/menu_item(/(:id))': 'menuLinks',
+    'user': 'users',
+    'user/:id': 'users',
+    'admin/user/:id': 'users',
+    'admin/menu_item/:id': 'menuLinks',
   },
   index(){
     this.users();
   },
   users(id){
     let adminIndexView =  new AdminIndexView();
-    let userCollection = new UserCollection();
+    let userCollection = Radio.channel('data').request('collection', UserCollection);
     let adminUsersLayoutView = new AdminUsersLayoutView();
 
      var entityViewOptions = {

@@ -66,10 +66,22 @@ class User implements AdvancedUserInterface, \Serializable
     protected $defaultDepartment;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Role")
-     * @JMS\Type("ArrayCollection<AppBundle\Entity\Role>")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="user", cascade={"persist"})
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\UserRole>")
      */
-    protected $roles;
+    protected $userRoles;
+
+    /**
+     * Populated from session
+     * @JMS\Type("AppBundle\Entity\Department")
+     */
+    public $currentDepartment;
+
+    /**
+     * Populated from session
+     * @JMS\Type("string")
+     */
+    public $appMessage;
 
     /**
      * @inheritDoc
@@ -101,7 +113,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        return $this->roles->toArray();
+        $map = function(UserRole $userRole) {
+            return $userRole->getRole()->getRole();
+        };
+        $roles = $this->userRoles->map($map)->toArray();
+        return $roles;
     }
 
     /**
@@ -322,9 +338,9 @@ class User implements AdvancedUserInterface, \Serializable
      * @param \AppBundle\Entity\Role $roles
      * @return User
      */
-    public function addRole(\AppBundle\Entity\Role $roles)
+    public function addUserRole(\AppBundle\Entity\UserRole $userRole)
     {
-        $this->roles[] = $roles;
+        $this->userRoles[] = $userRole;
 
         return $this;
     }
@@ -334,14 +350,18 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @param \AppBundle\Entity\Role $roles
      */
-    public function removeRole(\AppBundle\Entity\Role $roles)
+    public function removeUserRole(\AppBundle\Entity\UserRole $userRole)
     {
-        $this->roles->removeElement($roles);
+        $this->userRoles->removeElement($userRole);
+    }
+
+    public function getUserRoles(){
+        return $this->userRoles;
     }
 
     public function __construct()
     {
         $this->isActive = true;
-        $this->roles = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
 }

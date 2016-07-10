@@ -9,7 +9,7 @@ import NavLayoutView from 'lib/common/views/navLayoutView.js'
 import MenuLayoutView from 'lib/common/views/menuLayoutView.js';
 import DefaultView from 'lib/common/views/defaultView.js';
 
-import UserModel from 'lib/common/models/userModel.js';
+import MyselfModel from 'lib/common/models/myselfModel.js';
 
 export default Marionette.View.extend({
   initialize(){
@@ -30,12 +30,12 @@ export default Marionette.View.extend({
     footer: '.footer'
   },
   onRender(){
-    let myself = new UserModel();
+    let myself = Radio.channel('data').request('myself');
     this.showChildView('nav', new NavLayoutView({
       model: myself
     }));
     this.showChildView('main', new DefaultView());
-    //myself.fetch();
+    myself.fetch();
   },
   _showView(view){
     this.showChildView('main', view);

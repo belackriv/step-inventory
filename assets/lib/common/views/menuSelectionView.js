@@ -8,13 +8,14 @@ import Marionette from 'marionette';
 import menuSelectionTpl from './menuSelectionView.hbs!';
 
 import OfficeCollection from 'lib/common/models/officeCollection.js';
-import DeptartmentCollection from 'lib/common/models/departmentCollection.js';
+import DepartmentCollection from 'lib/common/models/departmentCollection.js';
 import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
 
 export default Marionette.View.extend({
 	initialize(options){
 		this.officeCollection = Radio.channel('data').request('collection', OfficeCollection);
-		this.departmentCollection = Radio.channel('data').request('collection', DeptartmentCollection, {doFetch:false});
+		this.departmentCollection = new DepartmentCollection();
+    this.setupDefaultDepartMent();
 	},
 	behaviors:{
 		Stickit: {}
@@ -31,8 +32,9 @@ export default Marionette.View.extend({
   bindings: {
     '@ui.officeSelect': {
       observe: 'office',
+      useBackboneModels: true,
       selectOptions:{
-        labelPath: 'name',
+        labelPath: 'attributes.name',
         collection: 'this.officeCollection',
         defaultOption: {
           label: 'Choose one...',
@@ -42,8 +44,9 @@ export default Marionette.View.extend({
     },
     '@ui.departmentSelect': {
       observe: 'department',
+      useBackboneModels: true,
       selectOptions:{
-        labelPath: 'name',
+        labelPath: 'attributes.name',
         collection: 'this.departmentCollection',
         defaultOption: {
           label: 'Choose one...',
@@ -54,13 +57,45 @@ export default Marionette.View.extend({
   },
   onOfficeChange(){
   	if(this.model.get('office')){
-  		this.departmentCollection.reset(this.model.get('office').departments);
+      /*let departments = this.model.get('office').get('departments').map((department)=>{
+        return department.attributes;
+      });*/
+  		this.departmentCollection.reset( this.model.get('office').get('departments').models);
   	}
   },
   onDepartmentChange(){
   	if(this.model.get('department')){
-	  	let menuItemsCollection = new MenuItemCollection(this.model.get('department').menuItems);
+      /*let menuItems = this.model.get('department').get('menuItems').map((menuItem)=>{
+        return menuItem.attributes;
+      });*/
+	  	let menuItemsCollection = new MenuItemCollection(this.model.get('department').get('menuItems').models);
 	    Radio.channel('app').trigger('change:menuItems', menuItemsCollection);
+      let myself = Radio.channel('data').request('myself');
+      myself.set('currentDepartment', this.model.get('department'));
+      myself.save();
 	  }
   },
+  setupDefaultDepartMent(){
+    let myself = Radio.channel('data').request('myself');
+    if(myself.get('currentDepartment')){
+      this.setupOfficeCollectionListener(myself)
+    }else{
+      this.listenToOnce(myself, 'change:currentDepartment', ()=>{
+        this.setupOfficeCollectionListener(myself)
+      });
+    }
+  },
+  setupOfficeCollectionListener(myself){
+    if(this.officeCollection.length > 0){
+      this.setOfficeAndDepartmentFromMyself(myself);
+    }else{
+      this.listenToOnce(this.officeCollection, 'update', ()=>{
+        this.setOfficeAndDepartmentFromMyself(myself);
+      });
+    }
+  },
+  setOfficeAndDepartmentFromMyself(myself){
+    this.model.set('office', myself.get('currentDepartment').get('office'));
+    this.model.set('department', myself.get('currentDepartment'));
+  }
 });

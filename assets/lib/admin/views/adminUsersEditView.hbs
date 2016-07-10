@@ -3,6 +3,11 @@
 	<p class="control">
 		<input class="input" name="username" type="text" placeholder="Enter User Name">
 	</p>
+	<label class="label">Password</label>
+	<p class="control  is-grouped">
+		<input class="input" name="password" type="password" {{#if id}}disabled{{/if}}>
+		<button type="button" class="button is-warning" name="resetPassword">Reset</button>
+	</p>
 	<p class="control">
 	  	<label class="checkbox">
 	    	<input name="isActive" type="checkbox">
@@ -27,10 +32,21 @@
 	  		<select name="defaultDepartment"></select>
   		</span>
 	</p>
+	<label class="label">Roles</label>
+	<p class="control has-addons">
+		<span class="select">
+	  		<select name="role"></select>
+  		</span>
+  		<button type="button" class="button is-success" name="addRole">Add</button>
+	</p>
+	<label class="label">Assigned Roles</label>
+	<div class="control">
+		<div class="box" data-ui-name="roles"></div>
+	</div>
 	<p class="control">
-		<button type="submit" class="button is-primary">Submit</button>
-		<button type="button" class="button is-info is-outlined cancel-button">Cancel</button>
-		<button type="button" class="button is-danger delete-button">Delete</button>
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
 		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
 	</p>
 </form>

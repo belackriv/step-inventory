@@ -24,6 +24,7 @@ export default Marionette.Application.extend({
     };
     route = route.replace(this.baseUrl, '');
     Backbone.history.navigate(route, options);
+    Radio.channel('app').trigger('route:changed', route);
   },
   getCurrentRoute(){
     return Backbone.history.fragment;

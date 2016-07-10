@@ -45,6 +45,7 @@ Class Office
 	 /**
      * @ORM\OneToMany(targetEntity="Department", mappedBy="office")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\Department>")
+     * @JMS\Groups({"ListOffices"})
      */
     protected $departments;
 

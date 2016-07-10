@@ -24,7 +24,7 @@ class LoadRoleData extends AbstractFixture
         $leadRole->setRole('ROLE_LEAD');
         $leadRole->setIsAllowedToSwitch(false);
         $leadRole->addRoleToHierarchy($userRole);
-        
+
         $manager->persist($leadRole);
 
         $adminRole = new Role();
@@ -32,18 +32,18 @@ class LoadRoleData extends AbstractFixture
         $adminRole->setRole('ROLE_ADMIN');
         $adminRole->setIsAllowedToSwitch(false);
         $adminRole->addRoleToHierarchy($leadRole);
-        
+
         $manager->persist($adminRole);
-     
+
         $devRole = new Role();
-        $devRole->setName('Admin');
+        $devRole->setName('Dev');
         $devRole->setRole('ROLE_DEV');
         $devRole->setIsAllowedToSwitch(true);
         $devRole->addRoleToHierarchy($adminRole);
-        
+
         $manager->persist($devRole);
 
-        
+
 
         $manager->flush();
 

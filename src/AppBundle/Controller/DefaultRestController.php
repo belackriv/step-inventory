@@ -19,7 +19,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/tid")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listTravelerIdAction()
     {
@@ -32,16 +32,16 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/tid/{id}")
-     * @Rest\View(template=":default:show_travelerid.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function showTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
+    public function getTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
     {
         return $travelerId;
     }
 
     /**
      * @Rest\Post("/tid")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("travelerId", converter="fos_rest.request_body")
      */
     public function createTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
@@ -54,7 +54,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Put("/tid/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("travelerId", converter="fos_rest.request_body")
      */
     public function updateTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
@@ -67,7 +67,7 @@ class DefaultRestController extends FOSRestController
 
      /**
      * @Rest\Patch("/tid/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("travelerId", converter="fos_rest.request_body")
      */
     public function patchTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId, $id)
@@ -82,7 +82,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/department")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listDepartmentAction()
     {
@@ -103,16 +103,16 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/department/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function showDepartmentAction(\AppBundle\Entity\Department $department)
+    public function getDepartmentAction(\AppBundle\Entity\Department $department)
     {
         return $department;
     }
 
     /**
      * @Rest\Post("/department")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("department", converter="fos_rest.request_body")
      */
     public function createDepartmentAction(\AppBundle\Entity\Department $department)
@@ -125,7 +125,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/office")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "ListOffices"})
      */
     public function listOfficeAction()
     {
@@ -159,16 +159,16 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/office/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function showOfficeAction(\AppBundle\Entity\Office $office)
+    public function getOfficeAction(\AppBundle\Entity\Office $office)
     {
         return $office;
     }
 
     /**
      * @Rest\Post("/office")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("office", converter="fos_rest.request_body")
      */
     public function createOfficeAction(\AppBundle\Entity\Office $office)
@@ -181,7 +181,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/menu_item")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listMenuItemAction()
     {
@@ -202,16 +202,16 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/menu_item/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function showMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
+    public function getMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
     {
         return $menuItem;
     }
 
     /**
      * @Rest\Post("/menu_item")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("menuItem", converter="fos_rest.request_body")
      */
     public function createMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
@@ -222,9 +222,41 @@ class DefaultRestController extends FOSRestController
         return $menuItem;
     }
 
-     /**
+    /**
+     * @Rest\Get("/myself")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "GetMyself"})
+     */
+    public function getMyself(Request $request)
+    {
+        $session = $request->getSession();
+        $myself = $this->getUser();
+        if($session->get('currentDepartmentId')){
+            $department = $this->getDoctrine() ->getRepository('AppBundle:DepartMent')
+                ->find($session->get('currentDepartmentId'));
+            $myself->currentDepartment = $department;
+        }else{
+            $myself->currentDepartment = $myself->getDefaultDepartment();
+        }
+        $myself->appMessage = 'Test Message';
+        return $myself;
+    }
+
+    /**
+     * @Rest\Put("/myself/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "GetMyself"})
+     * @ParamConverter("myself", converter="fos_rest.request_body")
+     */
+    public function updateMyself(\AppBundle\Entity\User $myself, Request $request)
+    {
+        $session = $request->getSession();
+        $session->set('currentDepartmentId', $myself->currentDepartment->getId());
+        return $myself;
+    }
+
+
+    /**
      * @Rest\Get("/user")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listUserAction(Request $request)
     {
@@ -252,42 +284,60 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/user/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function showUserAction(\AppBundle\Entity\User $user)
+    public function getUserAction(\AppBundle\Entity\User $user)
     {
         return $user;
     }
 
     /**
      * @Rest\Post("/user")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("user", converter="fos_rest.request_body")
      */
     public function createUserAction(\AppBundle\Entity\User $user)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $encoder = $this->container->get('security.password_encoder');
+        $encoded = $encoder->encodePassword($user, $user->getPassword());
+        $user->setPassword($encoded);
+
         $em->persist($user);
+        foreach($user->getUserRoles() as $userRole){
+            $userRole->setUser($user);
+            $em->persist($userRole);
+        }
         $em->flush();
         return $user;
     }
 
     /**
      * @Rest\Put("/user/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("user", converter="fos_rest.request_body")
      */
     public function updateUserAction(\AppBundle\Entity\User $user)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $encoder = $this->container->get('security.password_encoder');
+        $encoded = $encoder->encodePassword($user, $user->getPassword());
+        $user->setPassword($encoded);
+
         $em->merge($user);
+        foreach($user->getUserRoles() as $userRole){
+            $userRole->setUser($user);
+            $em->persist($userRole);
+        }
         $em->flush();
         return $user;
     }
 
      /**
      * @Rest\Patch("/user/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true)
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("user", converter="fos_rest.request_body")
      */
     public function patchUserAction(\AppBundle\Entity\User $user, $id)
@@ -295,9 +345,66 @@ class DefaultRestController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $liveUser = $em->getRepository('AppBundle:User')->findOneById($id);
         $this->patchEntity($liveUser, $user);
+
+        $encoder = $this->container->get('security.password_encoder');
+        $encoded = $encoder->encodePassword($liveUser, $liveUser->getPassword());
+        $liveUser->setPassword($encoded);
+
         $em->flush();
         $this->pushUpdate($liveUser);
         return $user;
+    }
+
+    /**
+     * @Rest\Delete("/user_role/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteUserRoleAction(\AppBundle\Entity\UserRole $userRole)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($userRole);
+        $em->flush();
+        return $role;
+    }
+
+
+
+
+    /**
+     * @Rest\Get("/role")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listRoleAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(r.id)')
+            ->from('AppBundle:Role', 'r');
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('r')
+            ->orderBy('r.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+    }
+
+    /**
+     * @Rest\Get("/role/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getRoleAction(\AppBundle\Entity\Role $role)
+    {
+        return $role;
     }
 
 

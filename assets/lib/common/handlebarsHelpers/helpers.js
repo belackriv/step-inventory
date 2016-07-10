@@ -16,12 +16,14 @@ Handlebars.registerHelper('titleCase', function(str, options) {
    return newstr;
 });
 
-Handlebars.registerHelper('upperCase', function(str, options) {
-   return (str+'').toUpperCase();
+Handlebars.registerHelper('log', function(data, options) {
+  console.log(data);
+  return '';
 });
 
-Handlebars.registerHelper('sanitizePhoneNum', function(str, options) {
-   return (str+'').replace( /[^\d]/g, '' );
+
+Handlebars.registerHelper('upperCase', function(str, options) {
+   return (str+'').toUpperCase();
 });
 
 Handlebars.registerHelper('moment', function(data, options) {

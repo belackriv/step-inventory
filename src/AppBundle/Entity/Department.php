@@ -26,7 +26,7 @@ Class Department
 	{
 		return $this->id;
 	}
-	
+
 	/**
 	 * @ORM\Column(type="string", length=32)
      * @JMS\Type("string")
@@ -48,6 +48,7 @@ Class Department
 	/**
 	 * @ORM\ManyToOne(targetEntity="Office", inversedBy="departments")
 	 * @JMS\Type("AppBundle\Entity\Office")
+     * @JMS\Groups({"GetMyself"})
 	 */
 
 	protected $office = null;
@@ -67,6 +68,7 @@ Class Department
      * @ORM\OneToMany(targetEntity="MenuItem", mappedBy="department")
      * @ORM\OrderBy({"position" = "ASC"})
      * @JMS\Type("ArrayCollection<AppBundle\Entity\MenuItem>")
+     * @JMS\Groups({"ListOffices"})
      */
     protected $menuItems;
 
@@ -78,7 +80,7 @@ Class Department
     public function setMenuItems(ArrayCollection $menuItems)
     {
     	$this->menuItems = $menuItems;
-    	
+
     	return $this;
     }
 

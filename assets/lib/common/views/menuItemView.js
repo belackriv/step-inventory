@@ -12,9 +12,14 @@ export default Marionette.View.extend({
   events: {
     "click a": "navigate"
   },
+  modelEvents:{
+    'change': 'render'
+  },
   navigate: function(e){
     e.preventDefault();
     var menuLink = this.model.get('menuLink');
-    Radio.channel('app').trigger('navigate', menuLink.url);
+    if(menuLink.url){
+      Radio.channel('app').trigger('navigate', menuLink.url);
+    }
   },
 });

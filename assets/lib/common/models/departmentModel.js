@@ -2,7 +2,7 @@
 
 import globalNamespace from 'lib/globalNamespace';
 import Backbone from 'backbone';
-import Radio from 'backbone.radio';
+
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 let Model = BaseUrlBaseModel.extend({
@@ -10,10 +10,14 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/department';
   },
   relations: [{
-    type: Backbone.HasMany,
-    key: 'menuItems',
-    relatedModel: 'MenuItemModel',
-    includeInJSON: ['id']
+    type: Backbone.HasOne,
+    key: 'office',
+    relatedModel: 'OfficeModel',
+    includeInJSON: ['id'],
+    reverseRelation:{
+      key: 'departments',
+      includeInJSON: ['id'],
+    }
   }],
   defaults: {
     name: null,

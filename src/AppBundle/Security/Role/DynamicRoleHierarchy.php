@@ -28,16 +28,19 @@ class DynamicRoleHierarchy implements RoleHierarchyInterface
     protected function fetchRoleHierarchy()
     {
         $hierarchy = array();
-        
-        foreach($this->roleRepository->fetchRoleHierarchy() as $row){
-            if( ! isset($hierarchy[$row['role']]) ){
-                $hierarchy[$row['role']] = array($row['role']);
-            }
-            if($row['child_role']){
-                $hierarchy[$row['role']][] = $row['child_role'];
+        $roleHierarchy = $this->roleRepository->fetchRoleHierarchy();
+        foreach($roleHierarchy as $roleRole){
+            $roleSourceName = $roleRole->getRoleSource()->getRole();
+            $roleTargetName = $roleRole->getRoleTarget()->getRole();
+            if( !isset($hierarchy[$roleSourceName]) ){
+                $hierarchy[$roleSourceName] = [$roleTargetName];
+            }else{
+                if(!in_array($roleTargetName, $hierarchy[$roleSourceName])){
+                    $hierarchy[$roleSourceName][] = $roleTargetName;
+                }
             }
         }
-
         return $hierarchy;
     }
+
 }

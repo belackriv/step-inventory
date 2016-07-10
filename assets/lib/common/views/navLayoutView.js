@@ -7,32 +7,26 @@ import Marionette from 'marionette';
 
 import viewTpl from './navLayoutView.hbs!';
 import MenuSelectionView from './menuSelectionView.js';
-import LoadingView from 'lib/common/views/loadingView.js';
-import OfficeCollection from 'lib/common/models/officeCollection.js';
+import UserInfoView from './userInfoView.js';
+
 
 export default Marionette.View.extend({
-  initialize(){
-    this.listenTo(Radio.channel('app'), 'loading:show', this._showLoading);
-    this.listenTo(Radio.channel('app'), 'loading:hide', this._hideLoading);
-  },
   template: viewTpl,
   tagName: 'nav',
   className: 'nav has-shadow stepthrough-nav',
   regions: {
     menuSelection: "#menu-selection-container",
     menu: "#nav-menu",
-    loading: "#loading-icon-container",
+    userInfo: "#user-info-container",
   },
   onRender(){
     let menuSelectionView = new MenuSelectionView({
       model: new Backbone.Model()
     });
     this.showChildView('menuSelection', menuSelectionView);
+    let userInfoView = new UserInfoView({
+      model: this.model
+    });
+    this.showChildView('userInfo', userInfoView);
   },
-  _showLoading(){
-    this.showChildView('loading', new LoadingView());
-  },
-  _hideLoading(){
-    this.getRegion('loading').empty();
-  }
 });

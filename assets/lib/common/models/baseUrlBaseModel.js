@@ -9,13 +9,13 @@ export default Backbone.RelationalModel.extend({
   baseUrl: '/~belac/stepthrough/app_dev.php',
   fetch(options){
     Radio.channel('app').trigger('request:started');
-    proto.fetch.call(this, options).always(()=>{
+    return proto.fetch.call(this, options).always(()=>{
       Radio.channel('app').trigger('request:finished');
     });
   },
   save(options){
     Radio.channel('app').trigger('request:started');
-    proto.save.call(this, options).always(()=>{
+    return proto.save.call(this, options).always(()=>{
       Radio.channel('app').trigger('request:finished');
     });
   },

@@ -1,14 +1,16 @@
 {{#if menuLink.url}}
-	<a href="{{baseUrl menuLink.url}}">{{menuLink.name}}</a>
+	<a href="{{baseUrl menuLink.url}}" class="{{#if isActive}}is-active{{/if}}">{{menuLink.name}}</a>
 {{else}}
 	{{menuLink.name}}
 {{/if}}
 <ul>
-	{{#each children}}
-		{{#if this.menuLink.url}}
-			<a href="{{baseUrl this.menuLink.url}}">{{this.menuLink.name}}</a>
-		{{else}}
-			{{this.menuLink.name}}
-		{{/if}}
+	{{#each children.models}}
+		<li>
+			{{#if this.attributes.menuLink.url}}
+				<a href="{{baseUrl this.attributes.menuLink.url}}" class="{{#if isActive}}is-active{{/if}}">{{this.attributes.menuLink.name}}</a>
+			{{else}}
+				{{this.attributes.menuLink.name}}
+			{{/if}}
+		</li>
 	{{/each}}
 </ul>

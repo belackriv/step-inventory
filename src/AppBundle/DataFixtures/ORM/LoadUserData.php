@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\User;
+use AppBundle\Entity\UserRole;
 
 class LoadUserData extends AbstractFixture implements DependentFixtureInterface, ContainerAwareInterface
 {
@@ -37,7 +38,10 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $belacUser->setLastName('Kriv');
         $belacUser->setIsActive(true);
         $belacUser->setDefaultDepartment($this->getReference('dfwCheckin'));
-        $belacUser->addRole($this->getReference('ROLE_DEV'));
+        $belacUserRole = new UserRole();
+        $belacUserRole->setUser($belacUser);
+        $belacUserRole->setRole($this->getReference('ROLE_DEV'));
+        $belacUser->addRole($belacUserRole);
 
         //$belacPassword = 'sup3rg0su';
         $belacPassword = 'password';
@@ -55,8 +59,11 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $plainUser->setLastName('Test');
         $plainUser->setIsActive(true);
         $plainUser->setDefaultDepartment($this->getReference('dfwCheckin'));
-        $plainUser->addRole($this->getReference('ROLE_USER'));
-        
+        $plainUserRole = new UserRole();
+        $plainUserRole->setUser($plainUser);
+        $plainUserRole->setRole($this->getReference('ROLE_USER'));
+        $plainUser->addRole($plainUserRole);
+
         $plainPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
         $encoded = $encoder->encodePassword($plainUser, $plainPassword);
@@ -72,8 +79,11 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $leadUser->setLastName('Test');
         $leadUser->setIsActive(true);
         $leadUser->setDefaultDepartment($this->getReference('dfwCheckin'));
-        $leadUser->addRole($this->getReference('ROLE_LEAD'));
-        
+        $leadUserRole = new UserRole();
+        $leadUserRole->setUser($leadUser);
+        $leadUserRole->setRole($this->getReference('ROLE_LEAD'));
+        $leadUser->addRole($leadUserRole);
+
         //$leadPassword = 'tsetdael';
         $leadPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
@@ -90,8 +100,11 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $adminUser->setLastName('Test');
         $adminUser->setIsActive(true);
         $adminUser->setDefaultDepartment($this->getReference('dfwCheckin'));
-        $adminUser->addRole($this->getReference('ROLE_ADMIN'));
-        
+        $adminUserRole = new UserRole();
+        $adminUserRole->setUser($adminUser);
+        $adminUserRole->setRole($this->getReference('ROLE_ADMIN'));
+        $adminUser->addRole($adminUserRole);
+
         //$adminPassword = 'tsetnimda';
         $adminPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
