@@ -63,23 +63,4 @@ Class MenuLink
 		return $this;
 	}
 
-
-	/**
-	 * @ORM\Column(type="string", length=45, nullable=true)
-     * @JMS\Type("string")
-     */
-
-	protected $appTrigger = null;
-
-	public function getAppTrigger()
-	{
-		return $this->appTrigger;
-	}
-
-	public function setAppTrigger($appTrigger)
-	{
-		$this->appTrigger = $appTrigger;
-		return $this;
-	}
-
 }

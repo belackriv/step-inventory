@@ -4,11 +4,14 @@ import _ from 'underscore';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
-import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
+
 import MenuLinkCollection from 'lib/common/models/menuLinkCollection.js';
+import OfficeCollection from 'lib/common/models/officeCollection.js';
+import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
 import viewTpl from  "./adminMenuItemsEditView.hbs!";
 import FormChildListView from 'lib/common/views/formChildListView.js';
 import menuItemItemViewTpl from './menuItemItemView.hbs!'
+
 
 export default Marionette.View.extend({
   template: viewTpl,
@@ -19,26 +22,14 @@ export default Marionette.View.extend({
     'SaveCancelDelete': {},
   },
   regions:{
-    'roles': '[data-ui-name="roles"]'
+    'children': '[data-ui-name="children"]'
   },
   ui: {
     'positionInput': 'input[name="position"]',
     'isActiveInput': 'input[name="isActive"]',
-    'menuLinkSelect': 'select[name="defaultDepartment"]',
-    'childMenuItemSelect': 'select[name="menuItems"]',
-    'addChildButton': 'button[name="addChild"]',
-  },
-  events: {
-    'click @ui.addChildButton': 'onAddChildButtonClicked'
-  },
-  onAddChildButtonClicked(event){
-    event.preventDefault();
-    if( this.model.get('selectedMenuItem') && !this.model.hasChild(this.model.get('selectedMenuItem')) ){
-      let userRole = new UserRoleModel({
-        user: this.model,
-        role: this.model.get('selectedRole')
-      });
-    }
+    'menuLinkSelect': 'select[name="menuLink"]',
+    'departmentSelect': 'select[name="department"]',
+    'parentSelect': 'select[name="parent"]'
   },
   bindings: {
     '@ui.positionInput': 'position',
@@ -48,26 +39,60 @@ export default Marionette.View.extend({
       useBackboneModels: true,
       selectOptions:{
         labelPath: 'attributes.name',
-        collection() {
-          return Radio.channel('data').request('collection', MenuLinkCollection, {fetchAll: true});
+        collection(){
+          let collection = Radio.channel('data').request('collection', MenuLinkCollection, {fetchAll: true});
+          return collection;
         },
       }
     },
-    '@ui.childMenuItemSelect': {
-      observe: 'selectedMenuItem',
+    '@ui.departmentSelect': {
+      observe: 'department',
       useBackboneModels: true,
       selectOptions:{
-        labelPath: 'attributes.id',
+        labelPath: 'attributes.name',
         collection() {
-          return Radio.channel('data').request('collection', MenuItemCollection, {fetchAll: true});
+          let departments = [];
+          let collection = Radio.channel('data').request('collection', OfficeCollection);
+          collection.each((office)=>{
+            office.get('departments').each((department)=>{
+                departments.push(department);
+            });
+          });
+          return departments;
         },
+      }
+    },
+    '@ui.parentSelect': {
+      observe: 'parent',
+      useBackboneModels: true,
+      selectOptions:{
+        labelPath(item){
+          let label = '#'+item.id;
+          if(item.get('menuLink')){
+            label += ' - '+item.get('menuLink').get('name');
+          }
+          if(item.get('department')){
+            label += ' ('+item.get('department').get('name')+')';
+          }
+          return label;
+        },
+        collection(){
+          let collection = new MenuItemCollection(Radio.channel('data').request('collection', MenuItemCollection, {fetchAll: true}).models);
+          collection.remove(this.model);
+          return collection;
+        },
+        defaultOption: {
+          label: 'Choose one...',
+          value: null
+        }
       }
     },
   },
   onRender(){
-   this.showChildView('roles', new FormChildListView({
-      collection: this.model.get('userRoles'),
-      childTemplate: menuItemItemViewTpl
+   this.showChildView('children', new FormChildListView({
+      collection: this.model.get('children'),
+      childTemplate: menuItemItemViewTpl,
+      noDelete: true
     }));
   }
 });

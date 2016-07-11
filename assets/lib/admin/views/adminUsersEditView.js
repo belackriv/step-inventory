@@ -85,6 +85,10 @@ export default Marionette.View.extend({
           let roles = Radio.channel('data').request('collection', RoleCollection);
           return roles;
         },
+        defaultOption: {
+          label: 'Choose one...',
+          value: null
+        }
       }
     },
   },

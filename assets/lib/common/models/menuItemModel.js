@@ -43,6 +43,9 @@ let Model = BaseUrlBaseModel.extend({
     children: null,
     parent: null,
   },
+  hasChild(child){
+    return this.get('children').contains(child);
+  },
   setIsActiveFromRoute(route){
     route = (route[0]=='/')?route.slice(1):route;
     let isActive = false;

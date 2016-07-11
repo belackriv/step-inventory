@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'underscore';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
 
@@ -15,7 +16,9 @@ export default Marionette.View.extend({
     'click @ui.deleteButton': 'delete'
   },
   delete(event){
-    event.stopPropagation();
-    this.model.destroy();
+    if(!this.options.noDelete){
+      event.stopPropagation();
+      this.model.destroy();
+    }
   }
 });

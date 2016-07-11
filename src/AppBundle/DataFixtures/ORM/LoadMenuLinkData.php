@@ -21,25 +21,21 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $mainLink = new MenuLink();
         $mainLink->setName('Main');
         $mainLink->setUrl(null);
-        $mainLink->setAppTrigger(null);
         $manager->persist($mainLink);
 
         $adminLink = new MenuLink();
         $adminLink->setName('Admin Options');
         $adminLink->setUrl('/admin');
-        $adminLink->setAppTrigger('admin:home');
         $manager->persist($adminLink);
 
         $leadLink = new MenuLink();
         $leadLink->setName('For ROLE_LEAD');
         $leadLink->setUrl('/role_lead');
-        $leadLink->setAppTrigger(null);
         $manager->persist($leadLink);
 
         $userLink = new MenuLink();
         $userLink->setName('For ROLE_USER');
         $userLink->setUrl('/role_user');
-        $userLink->setAppTrigger(null);
         $manager->persist($userLink);
 
         $manager->flush();

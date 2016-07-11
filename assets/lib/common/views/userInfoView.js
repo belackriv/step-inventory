@@ -12,7 +12,7 @@ export default Marionette.View.extend({
   initialize(){
     this.listenTo(Radio.channel('app'), 'loading:show', this._showLoading);
     this.listenTo(Radio.channel('app'), 'loading:hide', this._hideLoading);
-    this.currentTimeUpdateInterval = setInterval(this.model.updateCurrentTime.bind(this.model), 60000);
+    this.currentTimeUpdateInterval = setInterval(this.model.updateCurrentTime.bind(this.model), 1000);
   },
   template: viewTpl,
   className: 'card is-fullwidth',

@@ -205,13 +205,13 @@ class DefaultRestController extends FOSRestController
         $items = $qb->getQuery()->getResult();
 
         $itemlist = array();
-        /*$authorizationChecker = $this->get('security.authorization_checker');
-        foreach($items as $menuItem->getMenuLink()){
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $menuItem){
             if (true === $authorizationChecker->isGranted('VIEW', $menuItem->getMenuLink())) {
-                $itemlist[] = $menuItem->getMenuLink();
+                $itemlist[] = $menuItem;
             }
         }
-        */
+
         return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 

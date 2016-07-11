@@ -10,8 +10,15 @@ export default Marionette.CollectionView.extend({
   emptyView: NoChildrenRowView,
   tagName: 'ul',
   childViewOptions(model, index){
-    return {
-      template: this.options.childTemplate
+    if(this.collection.length > 0){
+      return {
+        template: this.options.childTemplate,
+        noDelete: this.options.noDelete
+      };
+    }else{
+      return {
+        noDelete: this.options.noDelete
+      };
     }
   }
 });

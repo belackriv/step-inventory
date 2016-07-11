@@ -3,5 +3,7 @@
 	{{#if menuLink}}
 		- {{menuLink.attributes.name}}
 	{{/if}}
-	<button type="button" name="delete" class="delete"></button>
+	{{#if department}}
+		[{{department.attributes.name}}]
+	{{/if}}
 </span>
