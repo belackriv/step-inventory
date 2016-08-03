@@ -25,8 +25,10 @@ Class InventoryAudit
 		return $this->id;
 	}
 
+
 	/**
 	 * @ORM\ManyToOne(targetEntity="User")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\User")
 	 */
 
@@ -45,6 +47,7 @@ Class InventoryAudit
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Bin")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
 
@@ -62,55 +65,178 @@ Class InventoryAudit
 	}
 
 	/**
-	 * @ORM\Column(type="smallint")
-     * @JMS\Type("integer")
-     */
-	protected $userCount = null;
-
-	public function getUserCount()
-	{
-		return $this->userCount;
-	}
-
-	public function setUserCount($userCount)
-	{
-		$this->userCount = $userCount;
-		return $this;
-	}
-
-	/**
-	 * @ORM\Column(type="smallint")
-     * @JMS\Type("integer")
-     */
-	protected $systemCount = null;
-
-	public function getSystemCount()
-	{
-		return $this->systemCount;
-	}
-
-	public function setSystemCount($systemCount)
-	{
-		$this->systemCount = $systemCount;
-		return $this;
-	}
-
-	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="datetime", nullable=false)
 	 * @JMS\Type("DateTime")
 	 */
 
-	protected $performedAt = null;
+	protected $startedAt = null;
 
-	public function getPerformedAt()
+	public function getStartedAt()
 	{
-		return $this->performedAt;
+		return $this->startedAt;
 	}
 
-	public function setPerformedAt(\DateTime $performedAt)
+	public function setStartedAt(\DateTime $startedAt)
 	{
-		$this->performedAt = $performedAt;
+		$this->startedAt = $startedAt;
 		return $this;
 	}
+
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 * @JMS\Type("DateTime")
+	 */
+
+	protected $endedAt = null;
+
+	public function getEndedAt()
+	{
+		return $this->endedAt;
+	}
+
+	public function setEndedAt(\DateTime $endedAt)
+	{
+		$this->endedAt = $endedAt;
+		return $this;
+	}
+
+	public function end()
+	{
+		$totalDeviations = 0;
+		$serialCountDeviations = 0;
+		$serialMatchDeviations = 0;
+		$partCountDeviations = 0;
+
+		foreach($this->inventoryPartAudits as $partAudit){
+			$totalDeviations += abs($partAudit->getUserCount() - $partAudit->getSystemCount());
+			$partCountDeviations += abs($partAudit->getUserCount() - $partAudit->getSystemCount());
+		}
+
+		$this->setPartCountDeviations($partCountDeviations);
+		$this->setTotalDeviations($totalDeviations);
+	}
+
+	/**
+	 * @ORM\Column(type="smallint", nullable=true)
+	 * @JMS\Type("integer")
+	 */
+
+	protected $totalDeviations = null;
+
+	public function getTotalDeviations()
+	{
+		return $this->totalDeviations;
+	}
+
+	public function setTotalDeviations($totalDeviations)
+	{
+		$this->totalDeviations = $totalDeviations;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="smallint", nullable=true)
+	 * @JMS\Type("integer")
+	 */
+
+	protected $serialCountDeviations = null;
+
+	public function getSerialCountDeviations()
+	{
+		return $this->serialCountDeviations;
+	}
+
+	public function setSerialCountDeviations($serialCountDeviations)
+	{
+		$this->serialCountDeviations = $serialCountDeviations;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="smallint", nullable=true)
+	 * @JMS\Type("integer")
+	 */
+
+	protected $serialMatchDeviations = null;
+
+	public function getSerialMatchDeviations()
+	{
+		return $this->serialMatchDeviations;
+	}
+
+	public function setSerialMatchDeviations($serialMatchDeviations)
+	{
+		$this->serialMatchDeviations = $serialMatchDeviations;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="smallint", nullable=true)
+	 * @JMS\Type("integer")
+	 */
+
+	protected $partCountDeviations = null;
+
+	public function getPartCountDeviations()
+	{
+		return $this->partCountDeviations;
+	}
+
+	public function setPartCountDeviations($partCountDeviations)
+	{
+		$this->partCountDeviations = $partCountDeviations;
+		return $this;
+	}
+
+
+	/**
+     * @ORM\OneToMany(targetEntity="InventoryPartAudit", mappedBy="inventoryAudit")
+     * @ORM\OrderBy({"id" = "ASC"})
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventoryPartAudit>")
+     */
+    protected $inventoryPartAudits;
+
+    public function getInventoryPartAudits()
+    {
+    	return $this->inventoryPartAudits;
+    }
+
+    /**
+     * Add inventoryPartAudit
+     *
+     * @param \AppBundle\Entity\InventoryPartAudit $inventoryPartAudit
+     * @return InventoryAudit
+     */
+    public function addInventoryPartAudit(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
+    {
+        if (!$this->inventoryPartAudits->contains($inventoryPartAudit)) {
+            $this->inventoryPartAudits->add($inventoryPartAudit);
+        }
+        if($inventoryPartAudit->getInventoryAudit() != $this){
+            $inventoryPartAudit->setInventoryAudit($this);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove inventoryPartAudit
+     *
+     * @param \AppBundle\Entity\InventoryPartAudit $inventoryPartAudit
+     * @return InventoryAudit
+     */
+    public function removeInventoryPartAudit(InventoryPartAudit $inventoryPartAudit)
+    {
+         if ($this->inventoryPartAudits->contains($inventoryPartAudit)) {
+            $this->inventoryPartAudits->removeElement($inventoryPartAudit);
+        }
+        if($inventoryPartAudit->getInventoryAudit() !== null){
+        	$inventoryPartAudit->setInventoryAudit(null);
+        }
+        return $this;
+    }
+
+    public function __construct() {
+        $this->inventoryPartAudits = new ArrayCollection();
+    }
 
 }

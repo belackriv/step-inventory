@@ -11,12 +11,18 @@ export default Backbone.RelationalModel.extend({
     Radio.channel('app').trigger('request:started');
     return proto.fetch.call(this, options).always(()=>{
       Radio.channel('app').trigger('request:finished');
+      if(this.has('isSynced')){
+        this.set('isSynced', true);
+      }
     });
   },
   save(options){
     Radio.channel('app').trigger('request:started');
     return proto.save.call(this, options).always(()=>{
       Radio.channel('app').trigger('request:finished');
+      if(this.has('isSynced')){
+        this.set('isSynced', true);
+      }
     });
   },
   getValueFromPath(path){

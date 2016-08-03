@@ -12,21 +12,21 @@ import DepartmentCollection from 'lib/common/models/departmentCollection.js';
 import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
 
 export default Marionette.View.extend({
-	initialize(options){
-		this.officeCollection = Radio.channel('data').request('collection', OfficeCollection);
-		this.departmentCollection = new DepartmentCollection();
+  initialize(options){
+    this.officeCollection = Radio.channel('data').request('collection', OfficeCollection);
+    this.departmentCollection = new DepartmentCollection();
     this.setupDefaultDepartMent();
-	},
-	behaviors:{
-		Stickit: {}
-	},
+  },
+  behaviors:{
+    Stickit: {}
+  },
   template: menuSelectionTpl,
   ui: {
     officeSelect: "#menu-office-select",
     departmentSelect: "#menu-department-select"
   },
   modelEvents: {
-  	"change:office": "onOfficeChange",
+    "change:office": "onOfficeChange",
     "change:department": "onDepartmentChange"
   },
   bindings: {
@@ -56,24 +56,18 @@ export default Marionette.View.extend({
     }
   },
   onOfficeChange(){
-  	if(this.model.get('office')){
-      /*let departments = this.model.get('office').get('departments').map((department)=>{
-        return department.attributes;
-      });*/
-  		this.departmentCollection.reset( this.model.get('office').get('departments').models);
-  	}
+    if(this.model.get('office')){
+      this.departmentCollection.reset( this.model.get('office').get('departments').models);
+    }
   },
   onDepartmentChange(){
-  	if(this.model.get('department')){
-      /*let menuItems = this.model.get('department').get('menuItems').map((menuItem)=>{
-        return menuItem.attributes;
-      });*/
-	  	let menuItemsCollection = new MenuItemCollection(this.model.get('department').get('menuItems').models);
-	    Radio.channel('app').trigger('change:menuItems', menuItemsCollection);
+    if(this.model.get('department')){
+      let menuItemsCollection = new MenuItemCollection(this.model.get('department').get('menuItems').models);
+      Radio.channel('app').trigger('change:menuItems', menuItemsCollection);
       let myself = Radio.channel('data').request('myself');
       myself.set('currentDepartment', this.model.get('department'));
       myself.save();
-	  }
+    }
   },
   setupDefaultDepartMent(){
     let myself = Radio.channel('data').request('myself');

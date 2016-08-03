@@ -7,6 +7,14 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
+    jms_serializer.array_collection_handler.class: AppBundle\Serializer\Handler\ArrayCollectionHandler
+
+services:
+    jms_serializer.object_constructor:
+        alias: jms_serializer.doctrine_object_constructor
+        public: false
+
 
 framework:
     #esi:             ~
@@ -96,6 +104,12 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/, priorities: ['json','html'], fallback_format: ~, prefer_extension: false }
+
+jms_serializer:
+    handlers:
+        datetime:
+            default_format: "Y-m-d\\TH:i:s.uP" # ISO8601
+            default_timezone: "UTC" # defaults to whatever timezone set in php.ini or via date_default_timezone_set
 
 #voryx_thruway:
 #    realm: 'stepthrough'

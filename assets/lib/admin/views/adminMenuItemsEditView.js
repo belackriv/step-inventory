@@ -60,6 +60,10 @@ export default Marionette.View.extend({
           });
           return departments;
         },
+        defaultOption: {
+          label: 'Choose one or none...',
+          value: null
+        }
       }
     },
     '@ui.parentSelect': {
@@ -77,12 +81,14 @@ export default Marionette.View.extend({
           return label;
         },
         collection(){
-          let collection = new MenuItemCollection(Radio.channel('data').request('collection', MenuItemCollection, {fetchAll: true}).models);
-          collection.remove(this.model);
+          let collection = Radio.channel('data').request('collection', MenuItemCollection, {doFetch: false});
+          collection.fetch({data:{disable_pagination: true}}).done(()=>{
+            collection.remove(this.model);
+          });
           return collection;
         },
         defaultOption: {
-          label: 'Choose one...',
+          label: 'Choose one or none...',
           value: null
         }
       }

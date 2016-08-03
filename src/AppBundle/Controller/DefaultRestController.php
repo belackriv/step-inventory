@@ -16,6 +16,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class DefaultRestController extends FOSRestController
 {
+    use Mixin\RestPatchMixin;
+    use Mixin\WampUpdatePusher;
 
     /**
      * @Rest\Get("/tid")
@@ -181,7 +183,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/menu_item")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuItem"})
      */
     public function listMenuItemAction(Request $request)
     {
@@ -217,7 +219,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/menu_item/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuItem"})
      */
     public function getMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
     {
@@ -226,7 +228,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Post("/menu_item")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuItem"})
      * @ParamConverter("menuItem", converter="fos_rest.request_body")
      */
     public function createMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
@@ -239,7 +241,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Put("/menu_item/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuItem"})
      * @ParamConverter("menuItem", converter="fos_rest.request_body")
      */
     public function updateMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
@@ -252,14 +254,14 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Delete("/menu_item/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuItem"})
      */
     public function deleteMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($menuItem);
         $em->flush();
-        return $role;
+        return $menuItem;
     }
 
     /**
@@ -311,6 +313,7 @@ class DefaultRestController extends FOSRestController
             $myself->currentDepartment = $myself->getDefaultDepartment();
         }
         $myself->appMessage = 'Test Message';
+        $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
         return $myself;
     }
 
@@ -394,10 +397,11 @@ class DefaultRestController extends FOSRestController
     public function updateUserAction(\AppBundle\Entity\User $user)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $encoder = $this->container->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($user, $user->getPassword());
-        $user->setPassword($encoded);
+        if($user->newPassword){
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $user->newPassword);
+            $user->setPassword($encoded);
+        }
 
         $em->merge($user);
         foreach($user->getUserRoles() as $userRole){
@@ -418,10 +422,6 @@ class DefaultRestController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $liveUser = $em->getRepository('AppBundle:User')->findOneById($id);
         $this->patchEntity($liveUser, $user);
-
-        $encoder = $this->container->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($liveUser, $liveUser->getPassword());
-        $liveUser->setPassword($encoded);
 
         $em->flush();
         $this->pushUpdate($liveUser);
@@ -480,33 +480,6 @@ class DefaultRestController extends FOSRestController
         return $role;
     }
 
-
-    private function patchEntity($entity, $patch)
-    {
-
-        $reflectedObject = new \ReflectionObject($patch);
-        $reflectedProperties = $reflectedObject->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED);
-        foreach($reflectedProperties as $property){
-            $property->setAccessible(true);
-            $propertyValue = $property->getValue($patch);
-            if( $propertyValue !== null){
-                $setMethodName = 'set'.$property->getName();
-                $entity->$setMethodName($propertyValue);
-            }
-        }
-    }
-
-    private function pushUpdate($entity)
-    {
-        $client = $this->container->get('thruway.client');
-        $serializer = $this->get('jms_serializer');
-
-        $entityReflectiion = new \ReflectionClass(get_class($entity));
-        $classShortName = strtolower($entityReflectiion->getShortName());
-        $json = $serializer->serialize($entity, 'json');
-
-        $client->publish("com.stepthrough."+$classShortName, [$json]);
-    }
 }
 //nohup php app/console thruway:process start &
 //curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"DFW"}' http://localhost/~belac/stepthrough/app_dev.php/office

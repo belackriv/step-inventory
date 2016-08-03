@@ -1,12 +1,25 @@
 Showing <span data-ui-name="shownItemCount">{{shownItemCount}}</span> of <span data-ui-name="matchedItemCount">{{matchedItemCount}}</span> matched items.
 <span data-ui-name="totalItemCount">{{totalItemCount}}</span> total items.
-<p class="control has-addons">
-	<button type="button" class="button small" data-ui-name="paginationFirst"{{#unless hasPreviousPage}} disabled{{/unless}}>First</button>
-	<button type="button" class="button small" data-ui-name="paginationPrev"{{#unless hasPreviousPage}} disabled{{/unless}}>Prev</button>
-	{{#each pageButtons}}
-		<button type="button" class="button small" data-ui-name="paginationPage" page="{{this.page}}"{{#if this.active}} disabled{{/if}}>{{this.label}}</button>
+<nav class="pagination">
+  <button type="button" class="button small" data-ui-name="paginationPrev"{{#unless hasPreviousPage}} disabled{{/unless}}>Prev</button>
+  <ul>
+    <li>
+        <button type="button" class="button small" data-ui-name="paginationFirst"{{#unless hasPreviousPage}} disabled{{/unless}}>First</button>
+    </li>
+    <li>
+      <span>...</span>
+    </li>
+   	{{#each pageButtons}}
+   		<li>
+			<button type="button" class="button small" data-ui-name="paginationPage" page="{{this.page}}"{{#if this.active}} disabled{{/if}}>{{this.label}}</button>
+		</li>
 	{{/each}}
-	<button type="button" class="button small" data-ui-name="paginationNext"{{#unless hasNextPage}} disabled{{/unless}}>Next</button>
-	<button type="button" class="button small" data-ui-name="paginationLast"{{#unless hasNextPage}} disabled{{/unless}}>Last</button>
-</p>
-
+    <li>
+      <span>...</span>
+    </li>
+    <li>
+        <button type="button" class="button small" data-ui-name="paginationLast"{{#unless hasNextPage}} disabled{{/unless}}>Last</button>
+    </li>
+  </ul>
+  <button type="button" class="button small" data-ui-name="paginationNext"{{#unless hasNextPage}} disabled{{/unless}}>Next</button>
+</nav>

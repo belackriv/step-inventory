@@ -5,28 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation As JMS;
 
-/**
- * @ORM\Entity
- * @ORM\Table()
- */
+/** @ORM\MappedSuperclass */
 Class InventoryAdjustment
 {
 
 	/**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @JMS\Type("integer")
-     */
-	protected $id = null;
-
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
 	 * @ORM\ManyToOne(targetEntity="User")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\User")
 	 */
 
@@ -45,6 +30,7 @@ Class InventoryAdjustment
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Bin")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
 
@@ -62,41 +48,7 @@ Class InventoryAdjustment
 	}
 
 	/**
-	 * @ORM\Column(type="smallint")
-     * @JMS\Type("integer")
-     */
-	protected $oldCount = null;
-
-	public function getOldCount()
-	{
-		return $this->oldCount;
-	}
-
-	public function setOldCount($oldCount)
-	{
-		$this->oldCount = $oldCount;
-		return $this;
-	}
-
-	/**
-	 * @ORM\Column(type="smallint")
-     * @JMS\Type("integer")
-     */
-	protected $newCount = null;
-
-	public function getNewCount()
-	{
-		return $this->newCount;
-	}
-
-	public function setNewCount($newCount)
-	{
-		$this->newCount = $newCount;
-		return $this;
-	}
-
-	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="datetime", nullable=false)
 	 * @JMS\Type("DateTime")
 	 */
 

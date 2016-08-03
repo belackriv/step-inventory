@@ -25,7 +25,7 @@ export default Marionette.View.extend({
   },
   ui: {
     'usernameInput': 'input[name="username"]',
-    'passwordInput': 'input[name="password"]',
+    'newPasswordInput': 'input[name="newPassword"]',
     'resetPasswordButton': 'button[name="resetPassword"]',
     'isActiveInput': 'input[name="isActive"]',
     'firstNameInput': 'input[name="firstName"]',
@@ -41,7 +41,7 @@ export default Marionette.View.extend({
   },
   onResetPasswordButtonClicked(event){
     event.preventDefault();
-    this.ui.passwordInput.prop('disabled', false);
+    this.ui.newPasswordInput.prop('disabled', false);
   },
   onAddRoleButtonClicked(event){
     event.preventDefault();
@@ -54,7 +54,7 @@ export default Marionette.View.extend({
   },
   bindings: {
     '@ui.usernameInput': 'username',
-    '@ui.passwordInput': 'password',
+    '@ui.newPasswordInput': 'newPassword',
     '@ui.isActiveInput': 'isActive',
     '@ui.firstNameInput': 'firstName',
     '@ui.lastNameInput': 'lastName',
@@ -93,6 +93,7 @@ export default Marionette.View.extend({
     },
   },
   onRender(){
+    this.model.set('newPassword', null);
     this.showChildView('roles', new FormChildListView({
       collection: this.model.get('userRoles'),
       childTemplate: userRoleItemViewTpl

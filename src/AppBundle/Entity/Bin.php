@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation As JMS;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -11,6 +12,10 @@ use JMS\Serializer\Annotation As JMS;
  */
 Class Bin
 {
+	public function __construct()
+    {
+        $this->partCounts = new ArrayCollection();
+    }
 
 	/**
      * @ORM\Column(type="integer")
@@ -78,7 +83,8 @@ Class Bin
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="BinType")
+	 * @ORM\ManyToOne(targetEntity="BinType", )
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\BinType")
 	 */
 
@@ -96,7 +102,51 @@ Class Bin
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Bin")
+     * @ORM\OneToMany(targetEntity="Bin", mappedBy="parent")
+     * @JMS\ReadOnly
+     */
+    protected $children;
+
+    public function getChildren()
+    {
+    	return $this->children;
+    }
+
+    public function setChildren(ArrayCollection $children)
+    {
+    	$this->children = $children;
+
+    	return $this;
+    }
+
+    /**
+     * Add child
+     *
+     * @param \AppBundle\Entity\Bin $child
+     * @return Bin
+     */
+    public function addChild(Bin $child)
+    {
+        $this->children[] = $child;
+        $child->setParent($this);
+        return $this;
+    }
+
+    /**
+     * Remove child
+     *
+     * @param \AppBundle\Entity\Bin $child
+     */
+    public function removeChild(Bin $child)
+    {
+        $this->children->removeElement($child);
+        $child->setParent(null);
+        $this->children = new ArrayCollection(array_values($this->children->toArray()));
+    }
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="children", cascade={"all"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
 
@@ -112,5 +162,35 @@ Class Bin
 		$this->parent = $bin;
 		return $this;
 	}
+
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isActive = null;
+
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
+
+	public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
+		return $this;
+	}
+
+	/**
+     * @ORM\OneToMany(targetEntity="BinPartCount", mappedBy="bin")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\BinPartCount>")
+     * @JMS\Groups({"BinPartCount"})
+     * @JMS\ReadOnly
+     */
+    protected $partCounts;
+
+    public function getPartCounts()
+    {
+    	return $this->partCounts;
+    }
 
 }

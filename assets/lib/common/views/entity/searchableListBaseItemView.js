@@ -38,7 +38,11 @@ export default Marionette.View.extend({
     return data;
   },
   ui:{
-  	'entityLink': 'a.entity-link'
+  	'entityLink': 'a.entity-link',
+    'button': 'button'
+  },
+  events: {
+    'click @ui.button': 'triggerButtonClick'
   },
   triggers: {
     "click @ui.entityLink": "select:model"
@@ -52,5 +56,12 @@ export default Marionette.View.extend({
     }else{
       this.$el.removeClass('disabled');
     }
+  },
+  triggerButtonClick(event){
+    event.preventDefault();
+    this.triggerMethod('button:click', this, {
+      model: this.model,
+      button: event.target
+    });
   }
 });

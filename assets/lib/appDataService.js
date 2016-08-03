@@ -16,14 +16,28 @@ export default Marionette.Object.extend({
   getCollection(Constructor, options){
     options = _.extend({}, options);
     let collection = _.find(this.collections, (collection)=>{
-     return (collection instanceof Constructor);
+      return (collection instanceof Constructor);
     });
+    let doFetch = false;
+    let fetchOptions = {};
+    fetchOptions.data = {};
+    if(options.fetchAll){
+      doFetch = true;
+      fetchOptions.data.disable_pagination = true;
+    }
     if(!collection){
-      collection = new Constructor();
+      let collectionOptions = _.extend({}, options.collectionOptions);
+      collection = new Constructor(null, collectionOptions);
       this.collections.push(collection);
-      if(options.doFetch != false){
-        collection.fetch();
+      if(options.doFetch !== false){
+        doFetch = true;
       }
+    }
+    if(doFetch && !collection._fetchPending){
+      collection._fetchPending = true;
+      collection.fetch(fetchOptions).always(()=>{
+        collection._fetchPending = false;
+      });
     }
     return collection;
   },

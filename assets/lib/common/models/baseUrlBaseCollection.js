@@ -10,7 +10,7 @@ export default Backbone.PageableCollection.extend({
   baseUrl: '/~belac/stepthrough/app_dev.php',
   fetch(options){
     Radio.channel('app').trigger('request:started');
-    proto.fetch.call(this, options).always(()=>{
+    return proto.fetch.call(this, options).always(()=>{
       Radio.channel('app').trigger('request:finished');
     });
   },

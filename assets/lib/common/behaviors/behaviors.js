@@ -9,6 +9,7 @@ import Searchable from './searchable.js'
 import ShowNotSynced from './showNotSynced.js';
 import SetNotSynced from './setNotSynced.js';
 import SaveCancelDelete from './saveCancelDelete.js';
+import RemoteSearchSelect2 from './remoteSearchSelect2.js';
 
 export default {
   'DestroyWarn': DestroyWarn,
@@ -17,7 +18,8 @@ export default {
   'Searchable': Searchable,
   'ShowNotSynced': ShowNotSynced,
   'SetNotSynced': SetNotSynced,
-  'SaveCancelDelete': SaveCancelDelete
+  'SaveCancelDelete': SaveCancelDelete,
+  'RemoteSearchSelect2': RemoteSearchSelect2
 };
 
 

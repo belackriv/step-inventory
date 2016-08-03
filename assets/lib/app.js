@@ -39,6 +39,7 @@ export default Marionette.Application.extend({
         pushState: true,
         root: this.baseUrl
       });
+      Radio.channel('app').trigger('route:changed', this.getCurrentRoute());
       console.log('starting route "'+this.getCurrentRoute()+'" found: '+routeFound);
     }
   },

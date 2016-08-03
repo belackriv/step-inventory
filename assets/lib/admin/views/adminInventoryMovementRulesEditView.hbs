@@ -1,0 +1,46 @@
+<h3 class="title is-3">InventoryMomentRule #{{id}}</h3>
+<form>
+	<label class="label">Name</label>
+	<p class="control">
+		<input class="input" name="name" type="text" placeholder="Enter Name">
+	</p>
+	<label class="label">Description</label>
+	<p class="control">
+		<textarea class="textarea" name="description" placeholder="Enter Description"></textarea>
+	</p>
+	<p class="control">
+	  	<label class="checkbox">
+	    	<input name="isActive" type="checkbox">
+	    	Is Active?
+	  	</label>
+	</p>
+	<label class="label">Roles</label>
+	<p class="control has-addons">
+		<span class="select">
+	  		<select name="role"></select>
+  		</span>
+	</p>
+	<label class="label">Bin Type</label>
+	<p class="control">
+		<span class="select">
+	  		<select name="binType"></select>
+  		</span>
+	</p>
+	<label class="label">Restrictions</label>
+	<p class="control has-addons">
+		<span class="select">
+	  		<select name="restriction"></select>
+  		</span>
+  		<button type="button" class="button is-success" name="addRestriction">Add</button>
+	</p>
+	<label class="label">Current Restrictions</label>
+	<div class="control">
+		<div class="box" data-ui-name="restrictions"></div>
+	</div>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

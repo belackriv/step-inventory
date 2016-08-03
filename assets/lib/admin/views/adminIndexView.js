@@ -20,7 +20,7 @@ export default Marionette.View.extend({
   },
   navigate: function(e){
     e.preventDefault();
-    Radio.channel('app').trigger('navigate', $(e.target).attr('href'));
+    Radio.channel('app').trigger('navigate', e.target.getAttribute('href'));
   },
   onRender(){
     this.showChildView('tabs', new NavTabsView({

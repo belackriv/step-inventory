@@ -49,11 +49,7 @@ class CreateMenuLinkCommand extends ContainerAwareCommand
             ->addOption('label', 'l',  InputOption::VALUE_REQUIRED, "Name/Label for the link")
             ->addOption('url', 'u',  InputOption::VALUE_REQUIRED, "URL for the link")
             ->addOption('role', 'r',  InputOption::VALUE_REQUIRED, "Which Role can view this link");
-            /*
-            ->addArgument('name', InputArgument::REQUIRED, "Name for the link")
-            ->addArgument('url', InputArgument::REQUIRED, "URL for the link")
-            ->addArgument('role', InputArgument::REQUIRED, "Which Role can view this link");
-            */
+
         return true;
     }
     public function getCommandName()

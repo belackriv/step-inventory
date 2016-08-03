@@ -1,0 +1,10 @@
+<ul>
+{{#each elements}}
+	<li>
+		<span class="tag is-dark">
+			{{translate this ../dictionary}}
+			<button data-restriction="{{this}}" type="button" name="delete" class="delete"></button>
+		</span>
+	</li>
+{{/each}}
+</ul>

@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation As JMS;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  */
 Class InventoryMovementRule
@@ -26,7 +27,7 @@ Class InventoryMovementRule
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64, nullable=true)
+	 * @ORM\Column(type="string", length=64, nullable=false)
      * @JMS\Type("string")
      */
 	protected $name = null;
@@ -96,8 +97,8 @@ Class InventoryMovementRule
 	}
 
 	/**
-	 * @ORM\Column(type="simple_array")
-	 * @JMS\Type("Array")
+	 * @ORM\Column(type="simple_array", nullable=true)
+	 * @JMS\Type("array")
 	 */
 
 	protected $restrictions = null;
@@ -112,5 +113,33 @@ Class InventoryMovementRule
 		$this->restrictions = $restrictions;
 		return $this;
 	}
+
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isActive = null;
+
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
+
+	public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
+		return $this;
+	}
+
+	/**
+     * @ORM\PrePersist
+     */
+    public function onCreate()
+    {
+    	if(!$this->isActive){
+    		$this->isActive = false;
+    	}
+    }
+
 
 }

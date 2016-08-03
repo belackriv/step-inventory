@@ -16,6 +16,17 @@ Handlebars.registerHelper('titleCase', function(str, options) {
    return newstr;
 });
 
+Handlebars.registerHelper('upperCase', function(str, options) {
+   return (str+'').toUpperCase();
+});
+
+
+Handlebars.registerHelper('moment', function(data, options) {
+  var format = options.hash.format?options.hash.format:'h:mm A, ddd MMM D YYYY';
+  return Moment(data).format(format);
+});
+
+
 Handlebars.registerHelper('log', function(data, options) {
   console.log(data);
   return '';
@@ -23,21 +34,23 @@ Handlebars.registerHelper('log', function(data, options) {
 
 Handlebars.registerHelper('ifIsRouteActive', function(route, options) {
   route = (route[0]=='/')?route.slice(1):route;
+  let routeRegExp = new RegExp('^'+route+'(/\\d+)?$');
   let currentRoute = Radio.channel('app').request('currentRoute');
-  if(currentRoute == route){
+  if(routeRegExp.test(currentRoute)){
     return options.fn(this);
   } else {
     return options.inverse(this);
   }
 });
 
-Handlebars.registerHelper('upperCase', function(str, options) {
-   return (str+'').toUpperCase();
+Handlebars.registerHelper('isGrantedRole', function (role, options) {
+  let myself =  Radio.channel('data').request('myself');
+  return (myself.isGrantedRole(role, myself) )?options.fn(this):options.inverse(this);
 });
 
-Handlebars.registerHelper('moment', function(data, options) {
-  var format = options.hash.format?options.hash.format:'h:mm A, ddd MMM D YYYY';
-  return Moment(data).format(format);
+Handlebars.registerHelper('isMyself', function (user, options) {
+  let myself =  Radio.channel('data').request('myself');
+  return (myself.id === user.id)?options.fn(this):options.inverse(this);
 });
 
 Handlebars.registerHelper('concat', function(options) {
@@ -48,6 +61,20 @@ Handlebars.registerHelper('concat', function(options) {
     }
   });
   return str;
+});
+
+Handlebars.registerHelper('truncate', function(data, options) {
+  let maxLength = options.hash.maxLength?parseInt(options.hash.maxLength):30;
+  let str = ''+data;
+  if(str.length > maxLength && maxLength > 3){
+    return str.substr(0, maxLength - 3)+'...';
+  }else{
+    return str.substr(0, maxLength);
+  }
+});
+
+Handlebars.registerHelper('translate', function(term, dict, options) {
+  return dict[term];
 });
 
 Handlebars.registerHelper('baseUrl', function (options) {

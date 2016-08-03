@@ -1,0 +1,24 @@
+<h2 class="title is-2">Inventory Audit</h2>
+<div class="message">
+	<div class="message-header">
+		For Bin #{{forBin.id}} - {{forBin.attributes.name}}
+	</div>
+	<div class="message-body">
+		<p>Started by {{byUser.attributes.firstName}} {{byUser.attributes.lastName}} at {{moment startedAt}}.</p>
+		<button class="button" name="end">End</button>
+	</div>
+</div>
+<div class="box">
+	<h3 class="title is-3">Part Counts</h3>
+	<button class="button" name="addPartAudit">Add Part Count</button>
+	<table data-ui="partListTable" class="table is-striped">
+		<thead>
+			<tr>
+				<th>Part</th>
+				<th>Count</th>
+				<th colspan="2"></th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</div>

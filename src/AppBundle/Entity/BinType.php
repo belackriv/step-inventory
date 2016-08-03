@@ -58,4 +58,54 @@ Class BinType
 		$this->description = $description;
 		return $this;
 	}
+
+	/**
+	 * @ORM\Column(type="simple_array", nullable=true)
+	 * @JMS\Type("array")
+	 */
+
+	protected $behavoirs = null;
+
+	public function getBehavoirs()
+	{
+		return $this->behavoirs;
+	}
+
+	public function setBehavoirs(array $behavoirs)
+	{
+		$this->behavoirs = $behavoirs;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isActive = null;
+
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
+
+	public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
+		return $this;
+	}
+
+	 /**
+     * @var array
+     * @JMS\ReadOnly
+     */
+    public static $behavoirList = [
+        'cannotHaveParent' => 'Can not have parent',
+
+    ];
+
+
+    public function canHaveParent()
+    {
+    	return (in_array($this->restrictions, 'cannotHaveParent'))?false:true;
+    }
 }

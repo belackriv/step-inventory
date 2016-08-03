@@ -41,4 +41,21 @@ Class PartCategory
 		$this->name = $name;
 		return $this;
 	}
+
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isActive = null;
+
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
+
+	public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
+		return $this;
+	}
 }

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  */
 Class MenuItem
@@ -18,6 +19,7 @@ Class MenuItem
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","MenuItem"})
      */
 
 	protected $id = null;
@@ -30,6 +32,7 @@ Class MenuItem
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
+     * @JMS\Groups({"Default","MenuItem"})
      */
 
 	protected $isActive = null;
@@ -65,6 +68,7 @@ Class MenuItem
 	/**
      * @ORM\Column(type="integer")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","MenuItem"})
      */
 
 	protected $position = null;
@@ -83,6 +87,7 @@ Class MenuItem
 	/**
 	 * @ORM\ManyToOne(targetEntity="MenuLink")
 	 * @JMS\Type("AppBundle\Entity\MenuLink")
+	 * @JMS\Groups({"Default","MenuItem"})
 	 */
 
 	protected $menuLink = null;
@@ -101,6 +106,7 @@ Class MenuItem
 	/**
 	 * @ORM\ManyToOne(targetEntity="Department", inversedBy="menuItems")
 	 * @JMS\Type("AppBundle\Entity\Department")
+	 * @JMS\Groups({"Default","MenuItem"})
 	 */
 
 	protected $department = null;
@@ -112,6 +118,9 @@ Class MenuItem
 
 	public function setDepartment($department)
 	{
+		if($this->parent !== null){
+			throw new \Exception("Cannot have a parent and department.");
+		}
 		$this->department = $department;
 		return $this;
 	}
@@ -120,6 +129,7 @@ Class MenuItem
 	/**
      * @ORM\OneToMany(targetEntity="MenuItem", mappedBy="parent")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\MenuItem>")
+     * @JMS\Groups({"Default"})
      */
     protected $children;
 
@@ -164,6 +174,7 @@ Class MenuItem
      * @ORM\ManyToOne(targetEntity="MenuItem", inversedBy="children", cascade={"all"})
      * @ORM\JoinColumn(onDelete="SET NULL")
      * @JMS\Type("AppBundle\Entity\MenuItem")
+     * @JMS\Groups({"Default","MenuItem"})
      */
     protected $parent;
 
@@ -174,11 +185,24 @@ Class MenuItem
 
 	public function setParent($parent)
 	{
+		if($this->department !== null){
+			throw new \Exception("Cannot have a parent and department.");
+		}
 		$this->parent = $parent;
 		return $this;
 	}
 
 	public function __construct() {
         $this->children = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function onUpdate()
+    {
+        if($this->department !== null and $this->parent !== null){
+			throw new \Exception("Cannot have a parent and department.");
+		}
     }
 }

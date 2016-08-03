@@ -1,5 +1,6 @@
 'use strict';
 
+import $ from 'jquery';
 import _ from 'underscore';
 import Marionette from 'marionette';
 import viewTpl from './paginationWidgetView.hbs!';

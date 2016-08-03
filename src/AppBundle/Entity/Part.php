@@ -77,7 +77,7 @@ Class Part
 	}
 
 	/**
-	 * @ORM\Column(type="text")
+	 * @ORM\Column(type="text", nullable=true)
      * @JMS\Type("string")
      */
 	protected $description = null;
@@ -126,6 +126,23 @@ Class Part
 	public function setPartGroup(PartGroup $partGroup)
 	{
 		$this->partGroup = $partGroup;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isActive = null;
+
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
+
+	public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
 		return $this;
 	}
 

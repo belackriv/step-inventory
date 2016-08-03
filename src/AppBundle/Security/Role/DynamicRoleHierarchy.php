@@ -25,7 +25,7 @@ class DynamicRoleHierarchy implements RoleHierarchyInterface
         return $this->roleHierarchy->getReachableRoles($roles);
     }
 
-    protected function fetchRoleHierarchy()
+    public function fetchRoleHierarchy()
     {
         $hierarchy = array();
         $roleHierarchy = $this->roleRepository->fetchRoleHierarchy();

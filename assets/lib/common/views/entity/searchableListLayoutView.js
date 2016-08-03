@@ -3,9 +3,9 @@
 import _ from 'underscore';
 import Backbone from 'backbone';
 import Marionette from 'marionette';
-import ListView from './searchableListView';
-import ListTableView from './searchableListTableLayoutView';
-import PaginationWidgetView from './paginationWidgetView';
+import ListView from './searchableListView.js';
+import ListTableView from './searchableListTableLayoutView.js';
+import PaginationWidgetView from './paginationWidgetView.js';
 import viewTpl from './searchableListLayoutView.hbs!';
 import Radio from 'backbone.radio';
 
@@ -55,6 +55,12 @@ export default Marionette.View.extend({
   onChildviewSelectModel(childView, args){
     this.triggerMethod('select:model', childView, {
       model: childView.model
+    });
+  },
+  onChildviewButtonClick(childView, args){
+    this.triggerMethod('button:click', childView, {
+      model: childView.model,
+      button: args.button
     });
   },
   onDestroy(){

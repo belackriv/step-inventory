@@ -18,6 +18,7 @@ Class Department
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","MenuItem"})
      */
 
 	protected $id = null;
@@ -30,6 +31,7 @@ Class Department
 	/**
 	 * @ORM\Column(type="string", length=32)
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","MenuItem"})
      */
 
 	protected $name = null;

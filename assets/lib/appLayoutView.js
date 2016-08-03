@@ -1,9 +1,11 @@
 "use strict";
 
+import _ from 'underscore';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
 
 import appLayoutTpl from './appLayoutView.hbs!';
+import DialogRegion from 'lib/common/regions/dialogRegion.js';
 
 import NavLayoutView from 'lib/common/views/navLayoutView.js'
 import MenuLayoutView from 'lib/common/views/menuLayoutView.js';
@@ -15,8 +17,13 @@ export default Marionette.View.extend({
   initialize(){
     this.listenTo(Radio.channel('app'), 'change:menuItems', this._showMenuItem);
     this.listenTo(Radio.channel('app'), 'show:view', this._showView);
+    this.listenTo(Radio.channel('dialog'), 'open', this._openDialog);
+    this.listenTo(  Radio.channel('dialog'), 'close', this._closeDialog);
   },
   template: appLayoutTpl,
+  ui: {
+    dialog: '#dialog'
+  },
   regions: {
     nav: {
       el: '.nav',
@@ -27,6 +34,7 @@ export default Marionette.View.extend({
       replaceElement: true
     },
     main: "#main-section",
+    dialogContent: DialogRegion,
     footer: '.footer'
   },
   onRender(){
@@ -36,6 +44,16 @@ export default Marionette.View.extend({
     }));
     this.showChildView('main', new DefaultView());
     myself.fetch();
+    this.ui.dialog.dialog({
+      autoOpen: false,
+      modal: true,
+      close: function( event, ui ) {
+        Radio.channel('dialog').trigger('closed');
+      },
+      open: function( event, ui ) {
+        Radio.channel('dialog').trigger('opened');
+      }
+    });
   },
   _showView(view){
     this.showChildView('main', view);
@@ -45,5 +63,15 @@ export default Marionette.View.extend({
       collection: menuItemcollection,
     });
     this.showChildView('menu', menuLayoutView);
+  },
+  _openDialog(view, options){
+    options = _.extend({modal:true}, options);
+    this.showChildView('dialogContent', view);
+    this.ui.dialog.dialog('option', options);
+    this.ui.dialog.dialog('open');
+  },
+  _closeDialog(){
+    this.ui.dialog.dialog('close');
+    this.getRegion('dialogContent').reset();
   },
 });

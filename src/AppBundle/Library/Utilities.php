@@ -16,6 +16,7 @@ class Utilities
         if($search){
             $searchArray = explode(',', $search);
         }
+        $expr = $qb->expr()->orX();
         if(!empty($terms)){
             foreach($searchArray as $searchablePropertyPath){
                 if(!empty($searchablePropertyPath)){
@@ -43,12 +44,15 @@ class Utilities
                         $searchableProperty = $baseEntityName.'.'.$searchablePropertyPath;
                     }
                     foreach($termsArray as $term){
-                        $parameterName = $searchablePropertyName.'_'.$term;
-                        $qb->orWhere('LOWER('.$searchableProperty.') LIKE :'.$parameterName)
-                        ->setParameter($parameterName, '%'.strtolower($term).'%');
+                        $parameterName = preg_replace('/[^a-zA-Z0-9]+/', '_', $searchablePropertyName.'_'.$term);
+                        $expr->add('LOWER('.$searchableProperty.') LIKE :'.$parameterName);
+                        $qb->setParameter($parameterName, '%'.strtolower($term).'%');
                     }
                 }
             }
+        }
+        if($expr->count() > 0 ){
+            $qb->andWhere($expr);
         }
     }
     public static function doesJoinAExistOnQueryBuilder(\Doctrine\ORM\QueryBuilder $qb, $join)

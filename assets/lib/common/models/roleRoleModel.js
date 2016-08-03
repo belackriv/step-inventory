@@ -1,10 +1,12 @@
 'use strict';
 
 
-import globalNamespace from 'lib/globalNamespace';
+import globalNamespace from 'lib/globalNamespace.js';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
+
+import './roleModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){

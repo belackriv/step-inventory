@@ -83,6 +83,18 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public $appMessage;
 
+     /**
+     * Populated from session
+     * @JMS\Type("array")
+     */
+    public $roleHierarchy;
+
+     /**
+     * Populated when password changed
+     * @JMS\Type("string")
+     */
+    public $newPassword;
+
     /**
      * @inheritDoc
      */

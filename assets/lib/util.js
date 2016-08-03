@@ -1,9 +1,15 @@
 'use strict';
 
+import $ from 'jquery';
+import 'jquery-ui';
+import 'select2';
+import 'select2/css/select2.min.css!';
 import Backbone from 'backbone';
+import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 import Syphon from 'backbone.syphon';
 import AppBehaviors from 'lib/common/behaviors/behaviors.js';
+import ErrorMessageView from 'lib/common/views/errorMessageView.js';
 
 if (window.__agent) {
   window.__agent.start(Backbone, Marionette);

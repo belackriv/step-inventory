@@ -1,0 +1,17 @@
+<td>{{byUser.attributes.firstName}} {{byUser.attributes.lastName}}</td>
+<td>{{forBin.attributes.name}}</td>
+<td>{{moment startedAt}}</td>
+<td>
+	{{#if endedAt}}
+		{{moment endedAt}}
+	{{else}}
+		In Progress...
+	{{/if}}
+</td>
+<td>
+	{{#unless endedAt }}
+		{{#isMyself byUser}}
+			<button class="button" name="resume">Resume</button>
+		{{/isMyself}}
+	{{/unless}}
+</td>

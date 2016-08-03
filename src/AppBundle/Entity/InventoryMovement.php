@@ -5,28 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation As JMS;
 
-/**
- * @ORM\Entity
- * @ORM\Table()
- */
+/** @ORM\MappedSuperclass */
 Class InventoryMovement
 {
 
 	/**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @JMS\Type("integer")
-     */
-	protected $id = null;
-
-	public function getId()
-	{
-		return $this->id;
-	}
-
-	/**
 	 * @ORM\ManyToOne(targetEntity="User")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\User")
 	 */
 
@@ -43,8 +28,10 @@ Class InventoryMovement
 		return $this;
 	}
 
+
 	/**
 	 * @ORM\ManyToOne(targetEntity="Bin")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
 
@@ -63,6 +50,7 @@ Class InventoryMovement
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Bin")
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
 
@@ -80,7 +68,7 @@ Class InventoryMovement
 	}
 
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="datetime", nullable=false)
 	 * @JMS\Type("DateTime")
 	 */
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import globalNamespace from 'lib/globalNamespace';
+import globalNamespace from 'lib/globalNamespace.js';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 let Model = BaseUrlBaseModel.extend({
