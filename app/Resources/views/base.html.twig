@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}StepThrough{% endblock %}</title>
+        <title>{% block title %}Step Inventory{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
-            <link rel="stylesheet" href="{{ asset('assets/lib/css/stepthrough.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('assets/lib/css/step-inventory.css') }}"/>
         {% endblock %}
         {% block favicon %}<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />{% endblock %}
     </head>
@@ -15,6 +15,8 @@
             <script src="{{ asset('assets/jspm_packages/system.js') }}"></script>
             <script src="{{ asset('assets/jspm.browser.js') }}"></script>
             <script src="{{ asset('assets/jspm.config.js') }}"></script>
+            <script src="{{ asset('assets/deps.js') }}"></script>
+            <script src="{{ asset('assets/main-bundle.js') }}"></script>
             <script>
                 System.import('lib/main.js');
             </script>

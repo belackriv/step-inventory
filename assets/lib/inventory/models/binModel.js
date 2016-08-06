@@ -7,7 +7,6 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import './partCategoryModel.js';
 import './binTypeModel.js';
-import './binModel.js';
 import './binPartCountModel.js';
 
 let Model = BaseUrlBaseModel.extend({

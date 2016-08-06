@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'underscore';
-import Handlebars from 'handlebars/handlebars.runtime';
+import Handlebars from 'handlebars/handlebars.runtime.js';
 import Moment from 'moment';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';

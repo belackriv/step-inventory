@@ -6,7 +6,8 @@ import Radio from 'backbone.radio';
 const proto = Backbone.RelationalModel.prototype;
 
 export default Backbone.RelationalModel.extend({
-  baseUrl: '/~belac/stepthrough/app_dev.php',
+  //baseUrl: '/~belac/stepthrough/app_dev.php',
+  baseUrl: '',
   fetch(options){
     Radio.channel('app').trigger('request:started');
     return proto.fetch.call(this, options).always(()=>{

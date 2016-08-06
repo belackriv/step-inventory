@@ -5,6 +5,8 @@ import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
+//for jspm for now
+import './controller.js';
 
 export default Marionette.Object.extend({
   initialize(options){

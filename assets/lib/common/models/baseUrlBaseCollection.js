@@ -7,7 +7,8 @@ import 'backbone.paginator';
 const proto = Backbone.PageableCollection.prototype;
 
 export default Backbone.PageableCollection.extend({
-  baseUrl: '/~belac/stepthrough/app_dev.php',
+  //baseUrl: '/~belac/stepthrough/app_dev.php',
+  baseUrl: '',
   fetch(options){
     Radio.channel('app').trigger('request:started');
     return proto.fetch.call(this, options).always(()=>{

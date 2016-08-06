@@ -16,7 +16,8 @@ export default Marionette.Application.extend({
     this.listenTo(Radio.channel('app'), 'request:finished', this.requestFinished);
     Radio.channel('app').reply('currentRoute', this.getCurrentRoute);
   },
-  baseUrl: '/~belac/stepthrough/app_dev.php',
+  //baseUrl: '/~belac/stepthrough/app_dev.php',
+  baseUrl: '',
   wsAddress: '192.168.1.7:8080',
   currentRequests: 0,
   navigate(route,  options){

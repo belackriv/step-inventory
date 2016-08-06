@@ -2,8 +2,12 @@
 
 'use strict';
 
-import * as _ from 'underscore';
-import * as Marionette from 'marionette';
+//import * as _ from 'underscore';
+//import * as Marionette from 'marionette';
+
+import _ from 'underscore';
+import Marionette from 'marionette';
+
 
 // Save original Backbone.Stickit calls.
 var stickit = Marionette.View.prototype.stickit;
