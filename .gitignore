@@ -47,5 +47,15 @@ Temporary Items
 node_modules
 assets/jspm_packages
 
+#project stuff
+.vagrant
+vendor
+var
+*.log
+app/bootstrap.php.cache
+web/assets
+web/jspm_packages
+web/bundles
+
 *.sublime-project
 *.sublime-workspace
