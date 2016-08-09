@@ -45,7 +45,8 @@ Temporary Items
 
 #js stuff
 node_modules
-assets/jspm_packages
+assets/jspm_packages/npm
+assets/jspm_packages/github
 
 #project stuff
 .vagrant
