@@ -23,6 +23,17 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $mainLink->setUrl(null);
         $manager->persist($mainLink);
 
+        $inventoryLink = new MenuLink();
+        $inventoryLink->setName('Inventory');
+        $inventoryLink->setUrl('/inventory');
+        $inventoryLink->setRouteMatches(['bin_part_count','inventory_part_adjustment','inventory_part_movement']);
+        $manager->persist($inventoryLink);
+
+        $inventoryAuditLink = new MenuLink();
+        $inventoryAuditLink->setName('Inventory Audit');
+        $inventoryAuditLink->setUrl('/inventory_audit');
+        $manager->persist($inventoryAuditLink);
+
         $adminLink = new MenuLink();
         $adminLink->setName('Admin Options');
         $adminLink->setUrl('/admin');
@@ -34,17 +45,6 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $adminInventoryLink->setUrl('/admin_inventory');
         $adminInventoryLink->setRouteMatches(['part','part_category','part_group','bin','bin_type','inventory_movement_rule']);
         $manager->persist($adminInventoryLink);
-
-        $inventoryAuditLink = new MenuLink();
-        $inventoryAuditLink->setName('Inventory Audit');
-        $inventoryAuditLink->setUrl('/inventory_audit');
-        $manager->persist($inventoryAuditLink);
-
-        $inventoryLink = new MenuLink();
-        $inventoryLink->setName('Inventory');
-        $inventoryLink->setUrl('/inventory');
-        $inventoryLink->setRouteMatches(['bin_part_count','inventory_part_adjustment','inventory_part_movement']);
-        $manager->persist($inventoryLink);
 
         $manager->flush();
 
@@ -61,6 +61,18 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
+        $objectIdentity = ObjectIdentity::fromDomainObject($inventoryLink);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($inventoryAuditLink);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($leadRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
         $objectIdentity = ObjectIdentity::fromDomainObject($adminLink);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
@@ -73,23 +85,14 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($inventoryAuditLink);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($leadRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($inventoryLink);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
 
         $this->addReference('mainLink', $mainLink);
+        $this->addReference('inventoryLink', $inventoryLink);
+        $this->addReference('inventoryAuditLink', $inventoryAuditLink);
         $this->addReference('adminLink', $adminLink);
         $this->addReference('adminInventoryLink', $adminInventoryLink);
-        $this->addReference('inventoryAuditLink', $inventoryAuditLink);
-        $this->addReference('inventoryLink', $inventoryLink);
+
     }
 
     /**

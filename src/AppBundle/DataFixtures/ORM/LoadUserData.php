@@ -128,7 +128,19 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
+        $objectIdentity = ObjectIdentity::fromDomainObject($belacUserRole);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
         $objectIdentity = ObjectIdentity::fromDomainObject($plainUser);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($plainUserRole);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
@@ -140,11 +152,25 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
+        $objectIdentity = ObjectIdentity::fromDomainObject($leadUserRole);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
         $objectIdentity = ObjectIdentity::fromDomainObject($adminUser);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($adminUserRole);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+
     }
 
     /**

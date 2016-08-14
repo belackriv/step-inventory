@@ -35,6 +35,16 @@ class UserRole
     protected $role;
 
     /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * Set user
      *
      * @param \AppBundle\Entity\User $user
