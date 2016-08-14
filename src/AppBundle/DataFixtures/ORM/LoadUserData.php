@@ -6,6 +6,9 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use AppBundle\Entity\User;
 use AppBundle\Entity\UserRole;
 
@@ -41,9 +44,8 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $belacUserRole = new UserRole();
         $belacUserRole->setUser($belacUser);
         $belacUserRole->setRole($this->getReference('ROLE_DEV'));
-        $belacUser->addRole($belacUserRole);
+        $belacUser->addUserRole($belacUserRole);
 
-        //$belacPassword = 'sup3rg0su';
         $belacPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
         $encoded = $encoder->encodePassword($belacUser, $belacPassword);
@@ -62,7 +64,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $plainUserRole = new UserRole();
         $plainUserRole->setUser($plainUser);
         $plainUserRole->setRole($this->getReference('ROLE_USER'));
-        $plainUser->addRole($plainUserRole);
+        $plainUser->addUserRole($plainUserRole);
 
         $plainPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
@@ -82,9 +84,8 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $leadUserRole = new UserRole();
         $leadUserRole->setUser($leadUser);
         $leadUserRole->setRole($this->getReference('ROLE_LEAD'));
-        $leadUser->addRole($leadUserRole);
+        $leadUser->addUserRole($leadUserRole);
 
-        //$leadPassword = 'tsetdael';
         $leadPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
         $encoded = $encoder->encodePassword($leadUser, $leadPassword);
@@ -103,9 +104,8 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $adminUserRole = new UserRole();
         $adminUserRole->setUser($adminUser);
         $adminUserRole->setRole($this->getReference('ROLE_ADMIN'));
-        $adminUser->addRole($adminUserRole);
+        $adminUser->addUserRole($adminUserRole);
 
-        //$adminPassword = 'tsetnimda';
         $adminPassword = 'password';
         $encoder = $this->container->get('security.password_encoder');
         $encoded = $encoder->encodePassword($adminUser, $adminPassword);
@@ -115,6 +115,36 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $manager->persist($adminUser);
 
         $manager->flush();
+
+        $aclProvider = $this->container->get('security.acl.provider');
+        $devRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_DEV');
+        $adminRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_ADMIN');
+        $leadRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_LEAD');
+        $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($belacUser);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($plainUser);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($leadUser);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($adminUser);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
     }
 
     /**

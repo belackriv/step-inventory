@@ -23,6 +23,8 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
         $deptRefNames = array();
         $linkRefNames = array();
 
+
+
         foreach($refs as $ref){
             $refNames = $this->referenceRepository->getReferenceNames($ref);
             if(is_a($ref, 'AppBundle\Entity\Department')){
@@ -35,14 +37,17 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
         $items = array();
         foreach($deptRefNames as $deptRefName){
             $i=1;
-            foreach($linkRefNames as $linkRefName){ 
+            foreach($linkRefNames as $linkRefName){
                 $item = new MenuItem();
                 $item->isActive(true);
                 $item->setPosition($i);
-                $item->setDepartment($this->getReference($deptRefName));
                 $item->setMenuLink($this->getReference($linkRefName));
-                if(in_array($linkRefName, array('leadLink','userLink'))){
+                if(in_array($linkRefName, array('inventoryAuditLink','inventoryLink'))){
                     $item->setParent($items[$deptRefName]['mainLink']);
+                }else if(in_array($linkRefName, array('adminInventoryLink'))){
+                    $item->setParent($items[$deptRefName]['adminLink']);
+                }else{
+                    $item->setDepartment($this->getReference($deptRefName));
                 }
                 $manager->persist($item);
                 $items[$deptRefName][$linkRefName] = $item;
@@ -51,6 +56,22 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
         }
 
         $manager->flush();
+
+        $aclProvider = $this->container->get('security.acl.provider');
+        $devRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_DEV');
+        $adminRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_ADMIN');
+        $leadRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_LEAD');
+        $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
+
+        foreach($items as $deptItems){
+            foreach($deptItems as $item){
+                $objectIdentity = ObjectIdentity::fromDomainObject($item);
+                $acl = $aclProvider->createAcl($objectIdentity);
+                $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+                $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+                $aclProvider->updateAcl($acl);
+            }
+        }
 
     }
 

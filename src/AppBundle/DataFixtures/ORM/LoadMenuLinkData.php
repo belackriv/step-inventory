@@ -26,17 +26,25 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $adminLink = new MenuLink();
         $adminLink->setName('Admin Options');
         $adminLink->setUrl('/admin');
+        $adminLink->setRouteMatches(['user','menu_item']);
         $manager->persist($adminLink);
 
-        $leadLink = new MenuLink();
-        $leadLink->setName('For ROLE_LEAD');
-        $leadLink->setUrl('/role_lead');
-        $manager->persist($leadLink);
+        $adminInventoryLink = new MenuLink();
+        $adminInventoryLink->setName('Admin Inventory');
+        $adminInventoryLink->setUrl('/admin_inventory');
+        $adminInventoryLink->setRouteMatches(['part','part_category','part_group','bin','bin_type','inventory_movement_rule']);
+        $manager->persist($adminInventoryLink);
 
-        $userLink = new MenuLink();
-        $userLink->setName('For ROLE_USER');
-        $userLink->setUrl('/role_user');
-        $manager->persist($userLink);
+        $inventoryAuditLink = new MenuLink();
+        $inventoryAuditLink->setName('Inventory Audit');
+        $inventoryAuditLink->setUrl('/inventory_audit');
+        $manager->persist($inventoryAuditLink);
+
+        $inventoryLink = new MenuLink();
+        $inventoryLink->setName('Inventory');
+        $inventoryLink->setUrl('/inventory');
+        $inventoryLink->setRouteMatches(['bin_part_count','inventory_part_adjustment','inventory_part_movement']);
+        $manager->persist($inventoryLink);
 
         $manager->flush();
 
@@ -59,13 +67,19 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($leadLink);
+        $objectIdentity = ObjectIdentity::fromDomainObject($adminInventoryLink);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
+        $objectIdentity = ObjectIdentity::fromDomainObject($inventoryAuditLink);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($leadRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($userLink);
+        $objectIdentity = ObjectIdentity::fromDomainObject($inventoryLink);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
@@ -73,9 +87,9 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
 
         $this->addReference('mainLink', $mainLink);
         $this->addReference('adminLink', $adminLink);
-        $this->addReference('leadLink', $leadLink);
-        $this->addReference('userLink', $userLink);
-
+        $this->addReference('adminInventoryLink', $adminInventoryLink);
+        $this->addReference('inventoryAuditLink', $inventoryAuditLink);
+        $this->addReference('inventoryLink', $inventoryLink);
     }
 
     /**
