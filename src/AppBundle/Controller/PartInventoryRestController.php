@@ -47,7 +47,15 @@ class PartInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -56,7 +64,11 @@ class PartInventoryRestController extends FOSRestController
      */
     public function getBinPartCountAction(\AppBundle\Entity\BinPartCount $binPartCount)
     {
-        return $binPartCount;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $binPartCount)){
+            return $binPartCount;
+        }else{
+            throw $this->createNotFoundException('BinPartCount #'.$binPartCount->getId().' Not Found');
+        }
     }
 
     /**
@@ -84,7 +96,15 @@ class PartInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -93,7 +113,11 @@ class PartInventoryRestController extends FOSRestController
      */
     public function getInventoryPartAdjustmentAction(\AppBundle\Entity\InventoryPartAdjustment $inventoryPartAdjustment)
     {
-        return $inventoryPartAdjustment;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryPartAdjustment)){
+            return $inventoryPartAdjustment;
+        }else{
+            throw $this->createNotFoundException('InventoryPartAdjustment #'.$inventoryPartAdjustment->getId().' Not Found');
+        }
     }
 
     /**
@@ -103,34 +127,38 @@ class PartInventoryRestController extends FOSRestController
      */
     public function createInventoryPartAdjustmentAction(\AppBundle\Entity\InventoryPartAdjustment $inventoryPartAdjustment)
     {
-        $em = $this->getDoctrine()->getManager();
-        $inventoryPartAdjustment->setByUser($this->getUser());
-        $inventoryPartAdjustment->setPerformedAt(new \DateTime());
-        $em->persist($inventoryPartAdjustment);
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAdjustment)){
+            $em = $this->getDoctrine()->getManager();
+            $inventoryPartAdjustment->setByUser($this->getUser());
+            $inventoryPartAdjustment->setPerformedAt(new \DateTime());
+            $em->persist($inventoryPartAdjustment);
 
-        $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
-            ->findOneBy([
-                'bin' => $inventoryPartAdjustment->getForBin(),
-                'part' => $inventoryPartAdjustment->getPart()
-            ]);
-        if(!$binPartCount){
-            $binPartCount = new \AppBundle\Entity\BinPartCount();
-            $binPartCount->setBin($inventoryPartAdjustment->getForBin());
-            $binPartCount->setPart($inventoryPartAdjustment->getPart());
-            $em->persist($binPartCount);
-        }else{
-            if($inventoryPartAdjustment->getOldCount() === null){
-                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Bin Count Found for Bin "'.$inventoryPartAdjustment->getForBin()->getName()
-                    .'" and Part "'.$inventoryPartAdjustment->getPart()->getName()
-                    .'".  Please "Adjust" Inventory instead of "Adding". ');
+            $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                ->findOneBy([
+                    'bin' => $inventoryPartAdjustment->getForBin(),
+                    'part' => $inventoryPartAdjustment->getPart()
+                ]);
+            if(!$binPartCount){
+                $binPartCount = new \AppBundle\Entity\BinPartCount();
+                $binPartCount->setBin($inventoryPartAdjustment->getForBin());
+                $binPartCount->setPart($inventoryPartAdjustment->getPart());
+                $em->persist($binPartCount);
+            }else{
+                if($inventoryPartAdjustment->getOldCount() === null){
+                    throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Bin Count Found for Bin "'.$inventoryPartAdjustment->getForBin()->getName()
+                        .'" and Part "'.$inventoryPartAdjustment->getPart()->getName()
+                        .'".  Please "Adjust" Inventory instead of "Adding". ');
+                }
+                $inventoryPartAdjustment->setOldCount($binPartCount->getCount());
             }
-            $inventoryPartAdjustment->setOldCount($binPartCount->getCount());
+
+            $binPartCount->setCount($inventoryPartAdjustment->getNewCount());
+
+            $em->flush();
+            return $inventoryPartAdjustment;
+        }else{
+            throw $this->createAccessDeniedException();
         }
-
-        $binPartCount->setCount($inventoryPartAdjustment->getNewCount());
-
-        $em->flush();
-        return $inventoryPartAdjustment;
     }
 
     /**
@@ -158,7 +186,15 @@ class PartInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -167,7 +203,11 @@ class PartInventoryRestController extends FOSRestController
      */
     public function getInventoryPartMovementAction(\AppBundle\Entity\InventoryPartMovement $inventoryPartMovement)
     {
-        return $inventoryPartMovement;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryPartMovement)){
+            return $inventoryPartMovement;
+        }else{
+            throw $this->createNotFoundException('InventoryPartMovement #'.$inventoryPartMovement->getId().' Not Found');
+        }
     }
 
     /**
@@ -177,45 +217,49 @@ class PartInventoryRestController extends FOSRestController
      */
     public function createInventoryPartMovementAction(\AppBundle\Entity\InventoryPartMovement $inventoryPartMovement)
     {
-        if($inventoryPartMovement->getCount() === null){
-            throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Count Must Be Set To Move Parts.');
-        }
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAdjustment)){
+            if($inventoryPartMovement->getCount() === null){
+                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Count Must Be Set To Move Parts.');
+            }
 
-        $em = $this->getDoctrine()->getManager();
-        $inventoryPartMovement->setByUser($this->getUser());
-        $inventoryPartMovement->setMovedAt(new \DateTime());
-        $em->persist($inventoryPartMovement);
+            $em = $this->getDoctrine()->getManager();
+            $inventoryPartMovement->setByUser($this->getUser());
+            $inventoryPartMovement->setMovedAt(new \DateTime());
+            $em->persist($inventoryPartMovement);
 
-        $fromBinPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
-            ->findOneBy([
-                'bin' => $inventoryPartMovement->getFromBin(),
-                'part' => $inventoryPartMovement->getPart()
-            ]);
-        if(!$fromBinPartCount){
-            throw new HttpException(Response::HTTP_NOT_FOUND, 'Bin Count Not Found for Bin "'.$inventoryPartMovement->getFromBin()->getName()
-                    .'" and Part "'.$inventoryPartMovement->getPart()->getName().'".');
+            $fromBinPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                ->findOneBy([
+                    'bin' => $inventoryPartMovement->getFromBin(),
+                    'part' => $inventoryPartMovement->getPart()
+                ]);
+            if(!$fromBinPartCount){
+                throw new HttpException(Response::HTTP_NOT_FOUND, 'Bin Count Not Found for Bin "'.$inventoryPartMovement->getFromBin()->getName()
+                        .'" and Part "'.$inventoryPartMovement->getPart()->getName().'".');
+            }else{
+                $fromBinPartCount->setCount( $fromBinPartCount->getCount() - $inventoryPartMovement->getCount());
+            }
+
+
+             $toBinPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                ->findOneBy([
+                    'bin' => $inventoryPartMovement->getToBin(),
+                    'part' => $inventoryPartMovement->getPart()
+                ]);
+            if(!$toBinPartCount){
+                $binPartCount = new \AppBundle\Entity\BinPartCount();
+                $binPartCount->setBin($inventoryPartMovement->getToBin());
+                $binPartCount->setPart($inventoryPartMovement->getPart());
+                $binPartCount->setCount($inventoryPartMovement->getCount());
+                $em->persist($binPartCount);
+            }else{
+                $toBinPartCount->setCount( $toBinPartCount->getCount() + $inventoryPartMovement->getCount());
+            }
+
+            $em->flush();
+            return $inventoryPartMovement;
         }else{
-            $fromBinPartCount->setCount( $fromBinPartCount->getCount() - $inventoryPartMovement->getCount());
+            throw $this->createAccessDeniedException();
         }
-
-
-         $toBinPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
-            ->findOneBy([
-                'bin' => $inventoryPartMovement->getToBin(),
-                'part' => $inventoryPartMovement->getPart()
-            ]);
-        if(!$toBinPartCount){
-            $binPartCount = new \AppBundle\Entity\BinPartCount();
-            $binPartCount->setBin($inventoryPartMovement->getToBin());
-            $binPartCount->setPart($inventoryPartMovement->getPart());
-            $binPartCount->setCount($inventoryPartMovement->getCount());
-            $em->persist($binPartCount);
-        }else{
-            $toBinPartCount->setCount( $toBinPartCount->getCount() + $inventoryPartMovement->getCount());
-        }
-
-        $em->flush();
-        return $inventoryPartMovement;
     }
 
 }

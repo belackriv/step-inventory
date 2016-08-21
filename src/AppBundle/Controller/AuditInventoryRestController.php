@@ -46,7 +46,15 @@ class AuditInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -55,7 +63,11 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function getInventoryAuditAction(\AppBundle\Entity\InventoryAudit $inventoryAudit)
     {
-        return $inventoryAudit;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryAudit)){
+            return $inventoryAudit;
+        }else{
+            throw $this->createNotFoundException('InventoryAudit #'.$inventoryAudit->getId().' Not Found');
+        }
     }
 
     /**
@@ -65,13 +77,17 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function createInventoryAuditAction(\AppBundle\Entity\InventoryAudit $inventoryAudit)
     {
-        $em = $this->getDoctrine()->getManager();
-        $inventoryAudit->setByUser($this->getUser());
-        $inventoryAudit->setStartedAt(new \DateTime());
-        $em->persist($inventoryAudit);
-
-        $em->flush();
-        return $inventoryAudit;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryAudit)){
+            $em = $this->getDoctrine()->getManager();
+            $inventoryAudit->setByUser($this->getUser());
+            $inventoryAudit->setStartedAt(new \DateTime());
+            $em->persist($inventoryAudit);
+            $em->flush();
+            $this->updateAclByRoles($inventoryAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventoryAudit;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
      /**
@@ -81,13 +97,19 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function updateInventoryAuditAction(\AppBundle\Entity\InventoryAudit $inventoryAudit)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($inventoryAudit);
-        if($inventoryAudit->getEndedAt()){
-            $inventoryAudit->end();
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryAudit)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($inventoryAudit);
+            if($inventoryAudit->getEndedAt()){
+                $inventoryAudit->end();
+            }
+            $em->flush();
+            return $inventoryAudit;
+        }else{
+            throw $this->createAccessDeniedException();
         }
-        $em->flush();
-        return $inventoryAudit;
+
+
     }
 
     /**
@@ -97,27 +119,32 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function createInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
     {
-        try{
-            $inventoryPartAudit->isValid($this->getUser());
-        }catch(\Exception $e){
-            throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
-        }
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAudit)){
+            try{
+                $inventoryPartAudit->isValid($this->getUser());
+            }catch(\Exception $e){
+                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
+            }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($inventoryPartAudit);
-        $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
-            ->findOneBy([
-                'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
-                'part' => $inventoryPartAudit->getPart()
-            ]);
-        if(!$binPartCount){
-            $inventoryPartAudit->setSystemCount(0);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inventoryPartAudit);
+            $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                ->findOneBy([
+                    'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
+                    'part' => $inventoryPartAudit->getPart()
+                ]);
+            if(!$binPartCount){
+                $inventoryPartAudit->setSystemCount(0);
+            }else{
+                $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+            }
+
+            $em->flush();
+            $this->updateAclByRoles($inventoryPartAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventoryPartAudit;
         }else{
-            $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+            throw $this->createAccessDeniedException();
         }
-
-        $em->flush();
-        return $inventoryPartAudit;
     }
 
      /**
@@ -127,27 +154,31 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function updateInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
     {
-        try{
-            $inventoryPartAudit->isValid($this->getUser());
-        }catch(\Exception $e){
-            throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
-        }
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryPartAudit)){
+            try{
+                $inventoryPartAudit->isValid($this->getUser());
+            }catch(\Exception $e){
+                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
+            }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($inventoryPartAudit);
-        $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
-            ->findOneBy([
-                'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
-                'part' => $inventoryPartAudit->getPart()
-            ]);
-        if(!$binPartCount){
-            $inventoryPartAudit->setSystemCount(0);
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($inventoryPartAudit);
+            $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                ->findOneBy([
+                    'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
+                    'part' => $inventoryPartAudit->getPart()
+                ]);
+            if(!$binPartCount){
+                $inventoryPartAudit->setSystemCount(0);
+            }else{
+                $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+            }
+
+            $em->flush();
+            return $inventoryPartAudit;
         }else{
-            $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+            throw $this->createAccessDeniedException();
         }
-
-        $em->flush();
-        return $inventoryPartAudit;
     }
 
     /**
@@ -156,10 +187,14 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function deleteInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($inventoryPartAudit);
-        $em->flush();
-        return $inventoryPartAudit;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $inventoryPartAudit)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($inventoryPartAudit);
+            $em->flush();
+            return $inventoryPartAudit;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
 }

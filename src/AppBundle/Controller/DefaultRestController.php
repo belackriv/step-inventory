@@ -331,7 +331,7 @@ class DefaultRestController extends FOSRestController
         if($this->get('security.authorization_checker')->isGranted('VIEW', $menuLink)){
             return $menuLink;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$menuLink->getId().' Not Found');
+            throw $this->createNotFoundException('MenuLink #'.$menuLink->getId().' Not Found');
         }
     }
 
@@ -591,7 +591,7 @@ class DefaultRestController extends FOSRestController
         if($this->get('security.authorization_checker')->isGranted('VIEW', $onSitePrinter)){
             return $onSitePrinter;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$onSitePrinter->getId().' Not Found');
+            throw $this->createNotFoundException('OnSitePrinter #'.$onSitePrinter->getId().' Not Found');
         }
     }
 
@@ -691,7 +691,7 @@ class DefaultRestController extends FOSRestController
         if($this->get('security.authorization_checker')->isGranted('VIEW', $label)){
             return $label;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$label->getId().' Not Found');
+            throw $this->createNotFoundException('Label #'.$label->getId().' Not Found');
         }
     }
 
@@ -709,7 +709,7 @@ class DefaultRestController extends FOSRestController
             $this->updateAclByRoles($label, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
             return $label;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$label->getId().' Not Found');
+            throw $this->createAccessDeniedException();
         }
     }
 
@@ -726,7 +726,7 @@ class DefaultRestController extends FOSRestController
             $em->flush();
             return $label;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$label->getId().' Not Found');
+            throw $this->createAccessDeniedException();
         }
     }
 
@@ -742,7 +742,7 @@ class DefaultRestController extends FOSRestController
             $em->flush();
             return $label;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$label->getId().' Not Found');
+            throw $this->createAccessDeniedException();
         }
     }
 
@@ -791,7 +791,7 @@ class DefaultRestController extends FOSRestController
         if($this->get('security.authorization_checker')->isGranted('VIEW', $labelOnSitePrinter)){
             return $labelOnSitePrinter;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$labelOnSitePrinter->getId().' Not Found');
+            throw $this->createNotFoundException('LabelOnSitePrinter #'.$labelOnSitePrinter->getId().' Not Found');
         }
     }
 
@@ -809,9 +809,8 @@ class DefaultRestController extends FOSRestController
             $this->updateAclByRoles($labelOnSitePrinter, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
             return $labelOnSitePrinter;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$labelOnSitePrinter->getId().' Not Found');
+            throw $this->createAccessDeniedException();
         }
-
     }
 
     /**
@@ -826,7 +825,7 @@ class DefaultRestController extends FOSRestController
             $em->flush();
             return $labelOnSitePrinter;
         }else{
-            throw $this->createNotFoundException('MenuItem #'.$labelOnSitePrinter->getId().' Not Found');
+            throw $this->createAccessDeniedException();
         }
     }
 

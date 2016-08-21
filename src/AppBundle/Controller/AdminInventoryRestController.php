@@ -48,7 +48,15 @@ class AdminInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -57,7 +65,11 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function getPartAction(\AppBundle\Entity\Part $part)
     {
-        return $part;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $part)){
+            return $part;
+        }else{
+            throw $this->createNotFoundException('Part #'.$part->getId().' Not Found');
+        }
     }
 
     /**
@@ -67,10 +79,15 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function createPartAction(\AppBundle\Entity\Part $part)
     {
-    	$em = $this->getDoctrine()->getManager();
-	    $em->persist($part);
-	    $em->flush();
-        return $part;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $part)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($part);
+            $em->flush();
+            $this->updateAclByRoles($part, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $part;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -80,10 +97,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function updatePartAction(\AppBundle\Entity\Part $part)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($part);
-        $em->flush();
-        return $part;
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $part)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($part);
+            $em->flush();
+            return $part;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -92,10 +113,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function deletePartAction(\AppBundle\Entity\Part $part)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($part);
-        $em->flush();
-        return $part;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $part)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($part);
+            $em->flush();
+            return $part;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
 
@@ -124,7 +149,15 @@ class AdminInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -133,7 +166,11 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function getPartCategoryAction(\AppBundle\Entity\PartCategory $partCategory)
     {
-        return $partCategory;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $partCategory)){
+            return $partCategory;
+        }else{
+            throw $this->createNotFoundException('PartCategory #'.$partCategory->getId().' Not Found');
+        }
     }
 
     /**
@@ -143,10 +180,15 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function createPartCategoryAction(\AppBundle\Entity\PartCategory $partCategory)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($partCategory);
-        $em->flush();
-        return $partCategory;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $partCategory)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($partCategory);
+            $em->flush();
+            $this->updateAclByRoles($partCategory, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $partCategory;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -156,10 +198,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function updatePartCategoryAction(\AppBundle\Entity\PartCategory $partCategory)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($partCategory);
-        $em->flush();
-        return $partCategory;
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $partCategory)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($partCategory);
+            $em->flush();
+            return $partCategory;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -168,10 +214,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function deletePartCategoryAction(\AppBundle\Entity\PartCategory $partCategory)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($partCategory);
-        $em->flush();
-        return $partCategory;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $partCategory)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($partCategory);
+            $em->flush();
+            return $partCategory;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
 
@@ -200,6 +250,14 @@ class AdminInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
         return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
     }
 
@@ -209,7 +267,11 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function getPartGroupAction(\AppBundle\Entity\PartGroup $partGroup)
     {
-        return $partGroup;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $partGroup)){
+            return $partGroup;
+        }else{
+            throw $this->createNotFoundException('PartGroup #'.$partGroup->getId().' Not Found');
+        }
     }
 
     /**
@@ -219,10 +281,15 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function createPartGroupAction(\AppBundle\Entity\PartGroup $partGroup)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($partGroup);
-        $em->flush();
-        return $partGroup;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $partGroup)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($partGroup);
+            $em->flush();
+            $this->updateAclByRoles($partGroup, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $partGroup;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -232,10 +299,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function updatePartGroupAction(\AppBundle\Entity\PartGroup $partGroup)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($partGroup);
-        $em->flush();
-        return $partGroup;
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $partGroup)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($partGroup);
+            $em->flush();
+            return $partGroup;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -244,10 +315,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function deletePartGroupAction(\AppBundle\Entity\PartGroup $partGroup)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($partGroup);
-        $em->flush();
-        return $partGroup;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $partGroup)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($partGroup);
+            $em->flush();
+            return $partGroup;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -275,7 +350,15 @@ class AdminInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -284,7 +367,11 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function getBinTypeAction(\AppBundle\Entity\BinType $binType)
     {
-        return $binType;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $binType)){
+            return $binType;
+        }else{
+            throw $this->createNotFoundException('BinType #'.$binType->getId().' Not Found');
+        }
     }
 
     /**
@@ -294,10 +381,15 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function createBinTypeAction(\AppBundle\Entity\BinType $binType)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($binType);
-        $em->flush();
-        return $binType;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $binType)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($binType);
+            $em->flush();
+            $this->updateAclByRoles($binType, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $binType;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -307,10 +399,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function updateBinTypeAction(\AppBundle\Entity\BinType $binType)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($binType);
-        $em->flush();
-        return $binType;
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $binType)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($binType);
+            $em->flush();
+            return $binType;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -319,10 +415,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function deleteBinTypeAction(\AppBundle\Entity\BinType $binType)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($binType);
-        $em->flush();
-        return $binType;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $binType)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($binType);
+            $em->flush();
+            return $binType;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -350,7 +450,15 @@ class AdminInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -359,7 +467,11 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function getBinAction(\AppBundle\Entity\Bin $bin)
     {
-        return $bin;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $bin)){
+            return $bin;
+        }else{
+            throw $this->createNotFoundException('Bin #'.$bin->getId().' Not Found');
+        }
     }
 
     /**
@@ -369,10 +481,15 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function createBinAction(\AppBundle\Entity\Bin $bin)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($bin);
-        $em->flush();
-        return $bin;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $bin)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bin);
+            $em->flush();
+            $this->updateAclByRoles($bin, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $bin;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -382,10 +499,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function updateBinAction(\AppBundle\Entity\Bin $bin)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($bin);
-        $em->flush();
-        return $bin;
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $bin)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($bin);
+            $em->flush();
+            return $bin;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -394,10 +515,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function deleteBinAction(\AppBundle\Entity\Bin $bin)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($bin);
-        $em->flush();
-        return $bin;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $bin)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($bin);
+            $em->flush();
+            return $bin;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -425,7 +550,15 @@ class AdminInventoryRestController extends FOSRestController
 
         $items = $qb->getQuery()->getResult();
 
-        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$items];
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
     /**
@@ -434,7 +567,11 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function getInventoryMovementRuleAction(\AppBundle\Entity\InventoryMovementRule $inventoryMovementRule)
     {
-        return $inventoryMovementRule;
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryMovementRule)){
+            return $inventoryMovementRule;
+        }else{
+            throw $this->createNotFoundException('InventoryMovementRule #'.$inventoryMovementRule->getId().' Not Found');
+        }
     }
 
     /**
@@ -444,10 +581,15 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function createInventoryMovementRuleAction(\AppBundle\Entity\InventoryMovementRule $inventoryMovementRule)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($inventoryMovementRule);
-        $em->flush();
-        return $inventoryMovementRule;
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryMovementRule)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inventoryMovementRule);
+            $em->flush();
+            $this->updateAclByRoles($inventoryMovementRule, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventoryMovementRule;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -457,10 +599,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function updateInventoryMovementRuleAction(\AppBundle\Entity\InventoryMovementRule $inventoryMovementRule)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($inventoryMovementRule);
-        $em->flush();
-        return $inventoryMovementRule;
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryMovementRule)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($inventoryMovementRule);
+            $em->flush();
+            return $inventoryMovementRule;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
 
     /**
@@ -469,14 +615,14 @@ class AdminInventoryRestController extends FOSRestController
      */
     public function deleteInventoryMovementRuleAction(\AppBundle\Entity\InventoryMovementRule $inventoryMovementRule)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($inventoryMovementRule);
-        $em->flush();
-        return $inventoryMovementRule;
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $inventoryMovementRule)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($inventoryMovementRule);
+            $em->flush();
+            return $inventoryMovementRule;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
     }
-
-
-
-
 
 }
