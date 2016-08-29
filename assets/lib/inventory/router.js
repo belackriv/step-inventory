@@ -22,6 +22,8 @@ export default Marionette.Object.extend({
     this.appRouter.processAppRoutes(this, this.routes);
   },
   routes:  {
+    'tid': 'travelerIds',
+    'tid/:id': 'travelerIds',
     'bin_part_count': 'binPartCounts',
     'bin_part_count/:id': 'binPartCounts',
     'inventory_part_adjustment': 'inventoryPartAdjustments',
@@ -31,7 +33,15 @@ export default Marionette.Object.extend({
     'inventory': 'inventory'
   },
   inventory(){
-    this.binPartCounts();
+    this.travelerIds();
+  },
+  travelerIds(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.travelerIds(id);
+    });
   },
   binPartCounts(id){
     Radio.channel('app').trigger('request:started');

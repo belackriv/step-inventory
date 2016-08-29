@@ -20,6 +20,9 @@ Handlebars.registerHelper('upperCase', function(str, options) {
    return (str+'').toUpperCase();
 });
 
+Handlebars.registerHelper('boolean', function(boolean, options) {
+   return (boolean)?'Yes':'No';
+});
 
 Handlebars.registerHelper('moment', function(data, options) {
   var format = options.hash.format?options.hash.format:'h:mm A, ddd MMM D YYYY';
@@ -76,6 +79,13 @@ Handlebars.registerHelper('truncate', function(data, options) {
 Handlebars.registerHelper('translate', function(term, dict, options) {
   return dict[term];
 });
+
+Handlebars.registerHelper('return', function(fn, context) {
+  let args = Array.from(arguments);
+  args = args.slice(2);
+  return (typeof fn === 'function')?fn.apply(context, args):null;
+});
+
 
 Handlebars.registerHelper('baseUrl', function (options) {
    let str = BaseUrlBaseModel.prototype.baseUrl+'';

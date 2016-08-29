@@ -5,7 +5,6 @@ import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
-import './userModel.js';
 import './roleModel.js';
 
 let Model = BaseUrlBaseModel.extend({
@@ -14,18 +13,9 @@ let Model = BaseUrlBaseModel.extend({
   },
   relations: [{
     type: Backbone.HasOne,
-    key: 'user',
-    relatedModel: 'UserModel',
-    includeInJSON: ['id'],
-    reverseRelation:{
-      key: 'userRoles',
-      includeInJSON: true
-    }
-  },{
-    type: Backbone.HasOne,
     key: 'role',
     relatedModel: 'RoleModel',
-    includeInJSON: ['id']
+    includeInJSON: ['id'],
   }],
   defaults:{
     user: null,

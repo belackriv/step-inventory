@@ -7,6 +7,7 @@ import Radio from 'backbone.radio';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 import './departmentModel.js';
+import './menuLinkModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   initialize(){
@@ -28,6 +29,7 @@ let Model = BaseUrlBaseModel.extend({
   },{
     type: Backbone.HasOne,
     key: 'menuLink',
+    relatedModel: 'MenuLinkModel',
     includeInJSON: ['id'],
   },{
     type: Backbone.HasMany,
@@ -49,6 +51,13 @@ let Model = BaseUrlBaseModel.extend({
   },
   hasChild(child){
     return this.get('children').contains(child);
+  },
+  getChildCount(){
+    let count = this.get('children').length;
+    this.get('children').each((menuItem)=>{
+      count += menuItem.getChildCount();
+    });
+    return count;
   },
   setUiIsActiveFromRoute(route){
     route = (route[0]=='/')?route.slice(1):route;

@@ -1,0 +1,10 @@
+<td><a class="entity-link" href="{{entityUrl}}">{{label}}</a></td>
+<td>{{serial}}</td>
+<td>{{inboundOrder.attributes.label}}</td>
+<td>{{outboundOrder.attributes.label}}</td>
+<td>
+	{{#if part}}
+		Part: {{part.attributes.name}}
+	{{/if}}
+</td>
+<td><button class="button" name="move">Move</button></td>

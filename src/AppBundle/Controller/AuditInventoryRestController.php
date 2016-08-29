@@ -19,6 +19,7 @@ class AuditInventoryRestController extends FOSRestController
 {
 
     use Mixin\RestPatchMixin;
+    use Mixin\UpdateAclMixin;
     use Mixin\WampUpdatePusher;
 
     /**

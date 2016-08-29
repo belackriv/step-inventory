@@ -9,12 +9,7 @@ parameters:
     locale: en
     jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
     jms_serializer.array_collection_handler.class: AppBundle\Serializer\Handler\ArrayCollectionHandler
-
-services:
-    jms_serializer.object_constructor:
-        alias: jms_serializer.doctrine_object_constructor
-        public: false
-
+    jms_serializer.unserialize_object_constructor.class: AppBundle\Serializer\ObjectConstructor
 
 framework:
     #esi:             ~

@@ -1,0 +1,33 @@
+<form>
+	<label class="label">Inbound Order</label>
+	<p class="control">
+  		<select name="inboundOrder">
+  			<option>Select a Inbound Order...</option>
+  		</select>
+	</p>
+	<label class="label">Bin</label>
+	<p class="control">
+  		<select name="bin">
+  			<option>Select a bin...</option>
+  		</select>
+	</p>
+	<label class="label">Part</label>
+	<p class="control">
+  		<select name="part">
+  			<option>Select a part...</option>
+  		</select>
+	</p>
+	<label class="label">Count</label>
+	<p class="control">
+		<input class="input" name="count" type="number" placeholder="Enter Count">
+	</p>
+	<label class="label">Serials(<span data-ui="serialCount"></span>)</label>
+	<small>Optional</small>
+	<p class="control">
+		<textarea name="serials"></textarea>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

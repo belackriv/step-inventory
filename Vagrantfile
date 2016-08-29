@@ -83,6 +83,7 @@ Vagrant.configure("2") do |config|
 		sudo apt-get install -y php
 		sudo apt-get install -y php-xml
 		sudo apt-get install -y php-mysql
+    sudo apt-get install- y php-bcmath
 	SHELL
 
 	#do this after

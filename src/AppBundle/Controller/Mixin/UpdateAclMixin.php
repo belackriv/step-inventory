@@ -19,10 +19,11 @@ trait UpdateAclMixin
         foreach($roleMasksMap as $role => $maskNames){
             $roleSecurityIdentity = new RoleSecurityIdentity($role);
             $maskBuilder = new MaskBuilder();
-            foreach($maskNames as $maskName){
+            $maskNamesArray = is_array($maskNames)?$maskNames:[$maskNames];
+            foreach($maskNamesArray as $maskName){
                 $maskBuilder->add($maskName);
             }
-            $acl->insertObjectAce($roleSecurityIdentity, $builder->get());
+            $acl->insertObjectAce($roleSecurityIdentity, $maskBuilder->get());
         }
 
         $aclProvider->updateAcl($acl);

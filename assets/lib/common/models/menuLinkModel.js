@@ -16,8 +16,6 @@ let Model = BaseUrlBaseModel.extend({
   },
 });
 
-
-
-globalNamespace.Models.MenuItemModel = Model;
+globalNamespace.Models.MenuLinkModel = Model;
 
 export default Model;

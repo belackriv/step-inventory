@@ -9,16 +9,32 @@ import EntityIndexView from 'lib/common/views/entity/indexView.js';
 
 import AdminIndexView from './views/adminIndexView.js';
 import AdminInventoryIndexView from './views/adminInventoryIndexView.js';
+import AdminAccountingIndexView from './views/adminAccountingIndexView.js';
 
 import UserCollection from 'lib/common/models/userCollection.js';
 import AdminUsersEditView from './views/adminUsersEditView.js';
 import adminUsersListTableLayoutTpl from './views/adminUsersListTableLayoutTpl.hbs!';
 import adminUsersRowTpl from './views/adminUsersRowTpl.hbs!';
 
+import OfficeCollection from  'lib/common/models/officeCollection.js';
+import AdminOfficesEditView from  './views/adminOfficesEditView.js';
+import adminOfficesListTableLayoutTpl from  './views/adminOfficesListTableLayoutTpl.hbs!';
+import adminOfficesRowTpl from  './views/adminOfficesRowTpl.hbs!';
+
+import DepartmentCollection from  'lib/common/models/departmentCollection.js';
+import AdminDepartmentsEditView from  './views/adminDepartmentsEditView.js';
+import adminDepartmentsListTableLayoutTpl from  './views/adminDepartmentsListTableLayoutTpl.hbs!';
+import adminDepartmentsRowTpl from  './views/adminDepartmentsRowTpl.hbs!';
+
 import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
 import AdminMenuItemsEditView from './views/adminMenuItemsEditView.js';
 import adminMenuItemsListTableLayoutTpl from './views/adminMenuItemsListTableLayoutTpl.hbs!';
 import adminMenuItemsRowTpl from './views/adminMenuItemsRowTpl.hbs!';
+
+import MenuLinkCollection from 'lib/common/models/menuLinkCollection.js';
+import AdminMenuLinksEditView from './views/adminMenuLinksEditView.js';
+import adminMenuLinksListTableLayoutTpl from './views/adminMenuLinksListTableLayoutTpl.hbs!';
+import adminMenuLinksRowTpl from './views/adminMenuLinksRowTpl.hbs!';
 
 import PartCollection from 'lib/inventory/models/partCollection.js';
 import AdminPartsEditView from './views/adminPartsEditView.js';
@@ -49,6 +65,26 @@ import InventoryMovementRuleCollection from 'lib/inventory/models/inventoryMovem
 import AdminInventoryMovementRulesEditView from './views/adminInventoryMovementRulesEditView.js';
 import adminInventoryMovementRulesListTableLayoutTpl from './views/adminInventoryMovementRulesListTableLayoutTpl.hbs!';
 import adminInventoryMovementRulesRowTpl from './views/adminInventoryMovementRulesRowTpl.hbs!';
+
+import ClientCollection from  'lib/accounting/models/clientCollection.js';
+import AdminClientsEditView from  './views/adminClientsEditView.js';
+import adminClientsListTableLayoutTpl from  './views/adminClientsListTableLayoutTpl.hbs!';
+import adminClientsRowTpl from  './views/adminClientsRowTpl.hbs!';
+
+import CustomerCollection from  'lib/accounting/models/customerCollection.js';
+import AdminCustomersEditView from  './views/adminCustomersEditView.js';
+import adminCustomersListTableLayoutTpl from  './views/adminCustomersListTableLayoutTpl.hbs!';
+import adminCustomersRowTpl from  './views/adminCustomersRowTpl.hbs!';
+
+import InboundOrderCollection from  'lib/accounting/models/inboundOrderCollection.js';
+import AdminInboundOrdersEditView from  './views/adminInboundOrdersEditView.js';
+import adminInboundOrdersListTableLayoutTpl from  './views/adminInboundOrdersListTableLayoutTpl.hbs!';
+import adminInboundOrdersRowTpl from  './views/adminInboundOrdersRowTpl.hbs!';
+
+import OutboundOrderCollection from  'lib/accounting/models/outboundOrderCollection.js';
+import AdminOutboundOrdersEditView from  './views/adminOutboundOrdersEditView.js';
+import adminOutboundOrdersListTableLayoutTpl from  './views/adminOutboundOrdersListTableLayoutTpl.hbs!';
+import adminOutboundOrdersRowTpl from  './views/adminOutboundOrdersRowTpl.hbs!';
 
 export default Marionette.Object.extend({
    index(){
@@ -82,6 +118,62 @@ export default Marionette.Object.extend({
 
     Radio.channel('app').trigger('show:view', adminIndexView);
   },
+  offices(id){
+    let adminIndexView =  new AdminIndexView();
+    let officeCollection = Radio.channel('data').request('collection', OfficeCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: officeCollection,
+      searchPath: ['id', 'name'],
+      EditView: AdminOfficesEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminOfficesListTableLayoutTpl,
+      entityRowTpl: adminOfficesRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
+  },
+  departments(id){
+    let adminIndexView =  new AdminIndexView();
+    let departmentCollection = Radio.channel('data').request('collection', DepartmentCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: departmentCollection,
+      searchPath: ['id', 'name', 'office.name'],
+      EditView: AdminDepartmentsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminDepartmentsListTableLayoutTpl,
+      entityRowTpl: adminDepartmentsRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
+  },
   menuItems(id){
     let adminIndexView =  new AdminIndexView();
     let menuItemCollection = Radio.channel('data').request('collection', MenuItemCollection, {doFetch: false});
@@ -96,6 +188,34 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminMenuItemsListTableLayoutTpl,
       entityRowTpl: adminMenuItemsRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
+  },
+  menuLinks(id){
+    let adminIndexView =  new AdminIndexView();
+    let menuLinkCollection = Radio.channel('data').request('collection', MenuLinkCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: menuLinkCollection,
+      searchPath: ['id', 'name', 'url'],
+      EditView: AdminMenuLinksEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminMenuLinksListTableLayoutTpl,
+      entityRowTpl: adminMenuLinksRowTpl,
       colspan: 6
     };
 
@@ -277,6 +397,118 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+  },
+  clients(id){
+    let adminAccountingIndexView =  new AdminAccountingIndexView();
+    let clientCollection = Radio.channel('data').request('collection', ClientCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: clientCollection,
+      searchPath: ['id', 'name'],
+      EditView: AdminClientsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminClientsListTableLayoutTpl,
+      entityRowTpl: adminClientsRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminAccountingIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+  },
+  customers(id){
+    let adminAccountingIndexView =  new AdminAccountingIndexView();
+    let customerCollection = Radio.channel('data').request('collection', CustomerCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: customerCollection,
+      searchPath: ['id', 'name'],
+      EditView: AdminCustomersEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminCustomersListTableLayoutTpl,
+      entityRowTpl: adminCustomersRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminAccountingIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+  },
+  inboundOrders(id){
+    let adminAccountingIndexView =  new AdminAccountingIndexView();
+    let inboundOrderCollection = Radio.channel('data').request('collection', InboundOrderCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: inboundOrderCollection,
+      searchPath: ['id', 'label', 'client.name'],
+      EditView: AdminInboundOrdersEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminInboundOrdersListTableLayoutTpl,
+      entityRowTpl: adminInboundOrdersRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminAccountingIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+  },
+  outboundOrders(id){
+    let adminAccountingIndexView =  new AdminAccountingIndexView();
+    let outboundOrderCollection = Radio.channel('data').request('collection', OutboundOrderCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: outboundOrderCollection,
+      searchPath: ['id', 'label', 'client.name'],
+      EditView: AdminOutboundOrdersEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminOutboundOrdersListTableLayoutTpl,
+      entityRowTpl: adminOutboundOrdersRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminAccountingIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminAccountingIndexView);
   },
   buildViewStack(stack){
     for(let viewObj of stack){

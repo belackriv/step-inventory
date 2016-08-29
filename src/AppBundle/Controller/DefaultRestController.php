@@ -22,121 +22,6 @@ class DefaultRestController extends FOSRestController
     use Mixin\WampUpdatePusher;
 
     /**
-     * @Rest\Get("/tid")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     */
-    public function listTravelerIdAction()
-    {
-    	 $items = $this->getDoctrine()
-        ->getRepository('AppBundle:TravelerId')
-        ->findAll();
-
-        return array('list'=>$items);
-    }
-
-    /**
-     * @Rest\Get("/tid/{id}")
-     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     */
-    public function getTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
-    {
-        return $travelerId;
-    }
-
-    /**
-     * @Rest\Post("/tid")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("travelerId", converter="fos_rest.request_body")
-     */
-    public function createTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
-    {
-    	$em = $this->getDoctrine()->getManager();
-	    $em->persist($travelerId);
-	    $em->flush();
-        return $travelerId;
-    }
-
-    /**
-     * @Rest\Put("/tid/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("travelerId", converter="fos_rest.request_body")
-     */
-    public function updateTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($travelerId);
-        $em->flush();
-        return $travelerId;
-    }
-
-     /**
-     * @Rest\Patch("/tid/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("travelerId", converter="fos_rest.request_body")
-     */
-    public function patchTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($id);
-        $this->patchEntity($liveTravelerId, $travelerId);
-        $em->flush();
-        $this->pushUpdate($liveTravelerId);
-        return $travelerId;
-    }
-
-    /**
-     * @Rest\Get("/department")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     */
-    public function listDepartmentAction()
-    {
-        $items = $this->getDoctrine()
-        ->getRepository('AppBundle:Department')
-        ->findAll();
-
-        $itemlist = array();
-        $authorizationChecker = $this->get('security.authorization_checker');
-        foreach($items as $item){
-            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
-                $itemlist[] = $item;
-            }
-        }
-
-        return array('list'=>$itemlist);
-    }
-
-    /**
-     * @Rest\Get("/department/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     */
-    public function getDepartmentAction(\AppBundle\Entity\Department $department)
-    {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $department)){
-            return $department;
-        }else{
-            throw $this->createNotFoundException('Department #'.$department->getId().' Not Found');
-        }
-    }
-
-    /**
-     * @Rest\Post("/department")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("department", converter="fos_rest.request_body")
-     */
-    public function createDepartmentAction(\AppBundle\Entity\Department $department)
-    {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $department)){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($department);
-            $em->flush();
-            $this->updateAclByRoles($department, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
-            return $department;
-        }else{
-             throw $this->createAccessDeniedException();
-        }
-    }
-
-    /**
      * @Rest\Get("/office")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "ListOffices"})
      */
@@ -196,6 +81,125 @@ class DefaultRestController extends FOSRestController
             $em->flush();
             return $office;
             $this->updateAclByRoles($office, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+
+    /**
+     * @Rest\Put("/office/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("office", converter="fos_rest.request_body")
+     */
+    public function updateOfficeAction(\AppBundle\Entity\Office $office)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $office)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($office);
+            $em->flush();
+            return $office;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/office/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteOfficeAction(\AppBundle\Entity\Office $office)
+    {
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $office)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($office);
+            $em->flush();
+            return $office;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Get("/department")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listDepartmentAction()
+    {
+        $items = $this->getDoctrine()
+        ->getRepository('AppBundle:Department')
+        ->findAll();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                $itemlist[] = $item;
+            }
+        }
+
+        return array('list'=>$itemlist);
+    }
+
+    /**
+     * @Rest\Get("/department/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getDepartmentAction(\AppBundle\Entity\Department $department)
+    {
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $department)){
+            return $department;
+        }else{
+            throw $this->createNotFoundException('Department #'.$department->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/department")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("department", converter="fos_rest.request_body")
+     */
+    public function createDepartmentAction(\AppBundle\Entity\Department $department)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $department)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($department);
+            $em->flush();
+            $this->updateAclByRoles($department, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $department;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/department/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("department", converter="fos_rest.request_body")
+     */
+    public function updateDepartmentAction(\AppBundle\Entity\Department $department)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $department)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($department);
+            $em->flush();
+            return $department;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/department/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteDepartmentAction(\AppBundle\Entity\Department $department)
+    {
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $department)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($department);
+            $em->flush();
+            return $department;
         }else{
              throw $this->createAccessDeniedException();
         }
@@ -303,7 +307,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/menu_link")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuLink"})
      */
     public function listMenuLinkAction(Request $request)
     {
@@ -324,7 +328,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/menu_link/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuLink"})
      */
     public function getMenuLinkAction(\AppBundle\Entity\MenuLink $menuLink)
     {
@@ -332,6 +336,57 @@ class DefaultRestController extends FOSRestController
             return $menuLink;
         }else{
             throw $this->createNotFoundException('MenuLink #'.$menuLink->getId().' Not Found');
+        }
+    }
+
+     /**
+     * @Rest\Post("/menu_link")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuLink"})
+     * @ParamConverter("menuLink", converter="fos_rest.request_body")
+     */
+    public function createMenuLinkAction(\AppBundle\Entity\MenuLink $menuLink)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $menuLink)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($menuLink);
+            $em->flush();
+            $this->updateAclByRoles($menuLink, ['ROLE_USER'=>'view', 'ROLE_DEV'=>'operator']);
+            return $menuLink;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/menu_link/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuLink"})
+     * @ParamConverter("menuLink", converter="fos_rest.request_body")
+     */
+    public function updateMenuLinkAction(\AppBundle\Entity\MenuLink $menuLink)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $menuLink)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($menuLink);
+            $em->flush();
+            return $menuLink;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/menu_link/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuLink"})
+     */
+    public function deleteMenuLinkAction(\AppBundle\Entity\MenuLink $menuLink)
+    {
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $menuLink)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($menuLink);
+            $em->flush();
+            return $menuLink;
+        }else{
+             throw $this->createAccessDeniedException();
         }
     }
 

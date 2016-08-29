@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Tests\Entity;
+namespace Tests\AppBundle\Entity;
 
 use AppBundle\Entity\Role;
 
@@ -26,7 +26,7 @@ class RoleTest extends EntityTestCase
 
 	function testRoleHierarchy(){
 		$parentRole = new \AppBundle\Entity\Role();
-		
+
 		$this->entity->addRoleToHierarchy($parentRole);
 		$this->assertEquals(count( $this->entity->getRoleHierarchy() ), 1);
 		$this->entity->removeRoleFromHierarchy($parentRole);

@@ -1,0 +1,25 @@
+<h3 class="title is-3">MenuLink #{{id}}</h3>
+<form>
+	<label class="label">Name</label>
+	<p class="control">
+		<input class="input" name="name" type="text" placeholder="Enter Name" />
+	</p>
+	<label class="label">Url</label>
+	<p class="control">
+		<input class="input" name="url" type="text" placeholder="Enter Url" />
+	</p>
+	<p class="control has-addons">
+		<input class="input" name="routeMatch" type="text" placeholder="Enter Matching Route" />
+		<button name="addRouteMatch">Add Matching Route</button>
+	</p>
+	<label class="label">Matching Routes</label>
+	<div class="control">
+		<div class="box" data-ui-name="routeMatches"></div>
+	</div>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

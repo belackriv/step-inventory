@@ -43,7 +43,7 @@ Class Part
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64)
+	 * @ORM\Column(type="string", length=64,  nullable=true)
      * @JMS\Type("string")
      */
 	protected $partId = null;
@@ -60,7 +60,7 @@ Class Part
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64)
+	 * @ORM\Column(type="string", length=64,  nullable=true)
      * @JMS\Type("string")
      */
 	protected $partAltId = null;

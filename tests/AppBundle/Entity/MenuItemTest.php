@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Tests\Entity;
+namespace Tests\AppBundle\Entity;
 
 use AppBundle\Entity\MenuItem;
 use Doctrine\Common\Collections\ArrayCollection;

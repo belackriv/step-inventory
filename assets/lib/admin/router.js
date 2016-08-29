@@ -25,9 +25,18 @@ export default Marionette.Object.extend({
     'user': 'users',
     'user/:id': 'users',
     'admin/user/:id': 'users',
+    'office': 'offices',
+    'office/:id': 'offices',
+    'admin/office/:id': 'offices',
+    'department': 'departments',
+    'department/:id': 'departments',
+    'admin/department/:id': 'departments',
     'menu_item': 'menuItems',
     'menu_item/:id': 'menuItems',
     'admin/menu_item/:id': 'menuItems',
+    'menu_link': 'menuLinks',
+    'menu_link/:id': 'menuLinks',
+    'admin/menu_link/:id': 'menuLinks',
     'admin_inventory': 'parts',
     'admin_inventory/part': 'parts',
     'admin_inventory/part/:id': 'parts',
@@ -53,6 +62,15 @@ export default Marionette.Object.extend({
     'admin_inventory/inventory_movement_rule/:id': 'inventoryMovementRules',
     'inventory_movement_rule': 'inventoryMovementRules',
     'inventory_movement_rule/:id': 'inventoryMovementRules',
+    'admin_accounting': 'clients',
+    'client': 'clients',
+    'client/:id': 'clients',
+    'customer': 'customers',
+    'customer/:id': 'customers',
+    'inbound_order': 'inboundOrders',
+    'inbound_order/:id': 'inboundOrders',
+    'outbound_order': 'outboundOrders',
+    'outbound_order/:id': 'outboundOrders',
     'admin': 'index',
   },
   index(){
@@ -71,12 +89,36 @@ export default Marionette.Object.extend({
       controller.users(id);
     });
   },
+  offices(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.offices(id);
+    });
+  },
+  departments(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.departments(id);
+    });
+  },
   menuItems(id){
     Radio.channel('app').trigger('request:started');
     System.import('lib/admin/controller.js').then((controllerModule)=>{
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.menuItems(id);
+    });
+  },
+  menuLinks(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.menuLinks(id);
     });
   },
   parts(id){
@@ -125,6 +167,38 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.inventoryMovementRules(id);
+    });
+  },
+  clients(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.clients(id);
+    });
+  },
+  customers(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.customers(id);
+    });
+  },
+  inboundOrders(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.inboundOrders(id);
+    });
+  },
+  outboundOrders(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.outboundOrders(id);
     });
   },
 });

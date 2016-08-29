@@ -42,8 +42,9 @@ export default Marionette.Behavior.extend({
           };
         },
         processResults(data){
+          let textProperty = options.textProperty?options.textProperty:'name';
           let results = _.map(data.list, (obj)=>{
-            return {id: obj.id, text :obj.name}
+            return {id: obj.id, text: obj[textProperty]}
           });
           return {
             results: results

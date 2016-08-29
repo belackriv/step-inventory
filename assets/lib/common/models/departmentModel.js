@@ -25,6 +25,13 @@ let Model = BaseUrlBaseModel.extend({
     name: null,
     office: null,
     menuItems: null,
+  },
+  getTotalMenuItemCount(){
+    let count = this.get('menuItems').length;
+    this.get('menuItems').each((menuItem)=>{
+      count += menuItem.getChildCount();
+    });
+    return count;
   }
 });
 

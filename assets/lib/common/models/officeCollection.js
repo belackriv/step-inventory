@@ -9,7 +9,4 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/office';
   },
-  parse(response){
-    return response.list;
-  }
 });

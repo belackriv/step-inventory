@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Tests\Entity;
+namespace Tests\AppBundle\Entity;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -22,7 +22,7 @@ class UserRepositoryFunctionalTest extends KernelTestCase
         $em = $container
             ->get('doctrine')
             ->getManager();
-        
+
         $loader = new \Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader($container);
         $loader->loadFromDirectory(__DIR__.'/../../DataFixtures/ORM');
         $purger = new \Doctrine\Common\DataFixtures\Purger\ORMPurger($em);
@@ -54,7 +54,7 @@ class UserRepositoryFunctionalTest extends KernelTestCase
 
         $this->assertEquals('belac', $user->getUsername());
 //    }
-    
+
  //   public function testRefreshUser()
  //   {
         $user = $this->em
@@ -72,7 +72,7 @@ class UserRepositoryFunctionalTest extends KernelTestCase
 
         $this->assertEquals('belac', $user->getUsername());
    // }
-    
+
     //public function testSearchUsers()
     //{
         $criteria = array('email'=>'belackriv@gmail.com');

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Tests\Entity;
+namespace Tests\AppBundle\Entity;
 
 use AppBundle\Entity\Office;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -26,7 +26,7 @@ class OfficeTest extends EntityTestCase
 	public function testDepartments(){
 		$department = new \AppBundle\Entity\Department();
 		$departments = new ArrayCollection(array($department));
-		
+
 		$this->entity->addDepartment($department);
 		$this->assertEquals(count( $this->entity->getDepartments() ), 1);
 		$this->entity->removeDepartment($department);

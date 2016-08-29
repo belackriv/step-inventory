@@ -55,6 +55,7 @@ class Utilities
             $qb->andWhere($expr);
         }
     }
+
     public static function doesJoinAExistOnQueryBuilder(\Doctrine\ORM\QueryBuilder $qb, $join)
     {
         $joinDqlParts = $qb->getDQLPart('join');
@@ -67,6 +68,7 @@ class Utilities
         }
         return false;
     }
+
     public static function doesJoinAliasExistOnQueryBuilder(\Doctrine\ORM\QueryBuilder $qb, $alias)
     {
         $joinDqlParts = $qb->getDQLPart('join');
@@ -79,6 +81,7 @@ class Utilities
         }
         return false;
     }
+
     public static function incrementQueryAlias($alias)
     {
         $matches = [];
@@ -88,5 +91,53 @@ class Utilities
         }else{
             return $alias . '_2';
         }
+    }
+
+
+
+    /**
+     * Converts a base 10 number to any other base.
+     *
+     * @param int $val   Decimal number
+     * @param int $pad   How far to pad string
+     * @param int $base  Base to convert to. If null, will use strlen($chars) as base.
+     * @param string $chars Characters used in base, arranged lowest to highest. Must be at least $base characters long.
+     *
+     * @return string    Number converted to specified base
+     */
+    public static function baseEncode($val, $pad=4, $base=30, $chars='0123456789BCDFGHJKLMNPQRSTVWXZ') {
+        if(!isset($base)) $base = strlen($chars);
+        $str = '';
+        do {
+            $m = bcmod($val, $base);
+            $str = $chars[$m] . $str;
+            $val = bcdiv(bcsub($val, $m), $base);
+        } while(bccomp($val,0)>0);
+
+        while(strlen($str)<$pad){
+            $str = '0'.$str;
+        }
+        return $str;
+    }
+
+    /**
+     * Convert a number from any base to base 10
+     *
+     * @param string $str   Number
+     * @param int $base  Base of number. If null, will use strlen($chars) as base.
+     * @param string $chars Characters use in base, arranged lowest to highest. Must be at least $base characters long.
+     *
+     * @return int    Number converted to base 10
+     */
+    public static function baseDecode($str, $pad=4, $base=30, $chars='0123456789BCDFGHJKLMNPQRSTVWXZ') {
+        if(!isset($base)) $base = strlen($chars);
+        $str = ltrim(trim($str), ['0']);
+        $len = strlen($str);
+        $val = 0;
+        $arr = array_flip(str_split($chars));
+        for($i = 0; $i < $len; ++$i) {
+            $val = bcadd($val, bcmul($arr[$str[$i]], bcpow($base, $len-$i-1)));
+        }
+        return $val;
     }
 }

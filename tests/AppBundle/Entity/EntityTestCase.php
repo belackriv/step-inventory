@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Tests\Entity;
+namespace Tests\AppBundle\Entity;
 
 
 abstract class EntityTestCase extends \PHPUnit_Framework_TestCase

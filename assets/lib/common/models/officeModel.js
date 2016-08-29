@@ -10,6 +10,11 @@ let Model = BaseUrlBaseModel.extend({
   defaults: {
     name: null,
     departments: null,
+  },
+  getDepartmentTotalMenuItemCount(departmentId){
+  	let department = this.get('departments').get(departmentId);
+  	let count = department.getTotalMenuItemCount();
+  	return count;
   }
 });
 

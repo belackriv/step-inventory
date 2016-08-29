@@ -15,6 +15,7 @@ Class Bin
 	public function __construct()
     {
         $this->partCounts = new ArrayCollection();
+        $this->travelerIds = new ArrayCollection();
     }
 
 	/**
@@ -81,6 +82,10 @@ Class Bin
 		$this->partCategory = $partCategory;
 		return $this;
 	}
+
+	//will add DeviceType and ComodityType
+
+
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="BinType", )
@@ -191,6 +196,19 @@ Class Bin
     public function getPartCounts()
     {
     	return $this->partCounts;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="bin")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
+     * @JMS\Groups({"TravelerId"})
+     * @JMS\ReadOnly
+     */
+    protected $travelerIds;
+
+    public function getTravelerIds()
+    {
+    	return $this->travelerIds;
     }
 
 }

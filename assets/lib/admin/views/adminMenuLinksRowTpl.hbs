@@ -1,0 +1,8 @@
+<td><a class="entity-link" href="{{entityUrl}}">{{id}}</a></td>
+<td>{{name}}</td>
+<td>{{url}}</td>
+<td>
+	{{#each routeMatches}}
+		{{this}}{{#unless @last}}, {{/unless}}
+	{{/each}}
+</td>

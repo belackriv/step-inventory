@@ -6,6 +6,7 @@ import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
 import InventoryIndexView from './views/inventoryIndexView.js';
+import TravelerIdView from './views/travelerIdView.js';
 import BinPartCountView from './views/binPartCountView.js';
 
 import SearchableListLayoutView from 'lib/common/views/entity/searchableListLayoutView.js';
@@ -24,7 +25,21 @@ import InventoryAuditModel from './models/inventoryAuditModel.js';
 
 export default Marionette.Object.extend({
   index(){
-    this.binPartCounts();
+    this.travelerIds();
+  },
+  travelerIds(id){
+    let inventoryIndexView =  new InventoryIndexView();
+    let travelerIdView = new TravelerIdView();
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', travelerIdView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+
   },
   binPartCounts(id){
     let inventoryIndexView =  new InventoryIndexView();

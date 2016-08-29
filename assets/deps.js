@@ -20982,6 +20982,40 @@ var define = System.amdDefine;
 }));
 
 })();
+System.register("lib/admin/views/adminAccountingIndexTabsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
+                    return "is-active";
+                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/client", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/client\">Client</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/customer", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/customer\">Customer</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inbound_order", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inbound_order\">Inbound Order</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/outbound_order", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/outbound_order\">Outbound Order</a></li>\r\n</ul>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminAccountingIndexView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<h2 class=\"title is-2\">Accounting Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-accounting-tabs\"></div>\r\n<div id=\"admin-accounting-content\"></div>";
+                }, "useData": true }));
+        }
+    };
+});
 System.register("lib/admin/views/adminBinTypesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
     "use strict";
 
@@ -21088,6 +21122,202 @@ System.register("lib/admin/views/adminBinsRowTpl.hbs!github:belackriv/plugin-hbs
         }
     };
 });
+System.register("lib/admin/views/adminClientsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">Client #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminClientsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminClientsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminCustomersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">Customer #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminCustomersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminCustomersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminDepartmentsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">Office #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Office</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"office\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminDepartmentsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Office</th>\r\n			<th>Count Of MenuItems</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminDepartmentsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.office : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || depth0 && depth0["return"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.office : depth0) != null ? stack1.getDepartmentTotalMenuItemCount : stack1, depth0 != null ? depth0.office : depth0, depth0 != null ? depth0.id : depth0, { "name": "return", "hash": {}, "data": data })) + "</td>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminInboundOrdersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">InboundOrder #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "[" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "]</h3>\r\n<form>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Client</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"client\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminInboundOrdersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Client</th>\r\n			<th>Label</th>\r\n			<th>Description</th>\r\n			<th>Is Void?</th>\r\n			<th>Traveler Id Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.client : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || depth0 && depth0["boolean"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "boolean", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerIds : depth0) != null ? stack1.models : stack1) != null ? stack1.length : stack1, depth0)) + "</td>";
+                }, "useData": true }));
+        }
+    };
+});
 System.register("lib/admin/views/adminIndexTabsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
     "use strict";
 
@@ -21099,10 +21329,14 @@ System.register("lib/admin/views/adminIndexTabsView.hbs!github:belackriv/plugin-
         execute: function () {
             _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
                     return "is-active";
+                }, "3": function _(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "		<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_link", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/menu_link\">Menu Link</a></li>\r\n";
                 }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
                     var stack1, helper;
 
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/user\">Users</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_item", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/menu_item\">Menu Items</a></li>\r\n</ul>";
+                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/user\">Users</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/office", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/office\">Offices</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/department", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/department\">Departments</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_item", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/menu_item\">Menu Items</a></li>\r\n" + ((stack1 = (helpers.isGrantedRole || depth0 && depth0.isGrantedRole || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "ROLE_DEV", { "name": "isGrantedRole", "hash": {}, "fn": container.program(3, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</ul>";
                 }, "useData": true }));
         }
     };
@@ -21261,6 +21495,165 @@ System.register("lib/admin/views/adminMenuItemsRowTpl.hbs!github:belackriv/plugi
         }, "useData": true }));
     }
   };
+});
+System.register("lib/admin/views/adminMenuLinksEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">MenuLink #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Url</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"url\" type=\"text\" placeholder=\"Enter Url\" />\r\n	</p>\r\n	<p class=\"control has-addons\">\r\n		<input class=\"input\" name=\"routeMatch\" type=\"text\" placeholder=\"Enter Matching Route\" />\r\n		<button name=\"addRouteMatch\">Add Matching Route</button>\r\n	</p>\r\n	<label class=\"label\">Matching Routes</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"routeMatches\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminMenuLinksListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Url</th>\r\n			<th>Route Matches</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminMenuLinksRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
+                    var stack1;
+
+                    return "		" + container.escapeExpression(container.lambda(depth0, depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, data && data.last, { "name": "unless", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\r\n";
+                }, "2": function _(container, depth0, helpers, partials, data) {
+                    return ", ";
+                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "url", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.routeMatches : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminOfficesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">Office #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminOfficesListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Departments</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminOfficesRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
+                    var stack1;
+
+                    return "		" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.name : stack1, depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, data && data.last, { "name": "unless", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\r\n";
+                }, "2": function _(container, depth0, helpers, partials, data) {
+                    return ", ";
+                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.departments : depth0) != null ? stack1.models : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminOutboundOrdersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<h3 class=\"title is-3\">InboundOrder #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "[" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "]</h3>\r\n<form>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Customer</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"customer\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminOutboundOrdersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Customer</th>\r\n			<th>Label</th>\r\n			<th>Description</th>\r\n			<th>Is Void?</th>\r\n			<th>Traveler Id Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1, helper;
+
+                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.customer : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || depth0 && depth0["boolean"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "boolean", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerIds : depth0) != null ? stack1.models : stack1) != null ? stack1.length : stack1, depth0)) + "</td>";
+                }, "useData": true }));
+        }
+    };
 });
 System.register("lib/admin/views/adminPartCategoriesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
     "use strict";
@@ -21513,6 +21906,23 @@ System.register("lib/admin/views/menuItemItemView.hbs!github:belackriv/plugin-hb
         }, "useData": true }));
     }
   };
+});
+System.register("lib/admin/views/routeMatchItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "\r\n	<button type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n</span>";
+                }, "useData": true }));
+        }
+    };
 });
 System.register("lib/admin/views/userRoleItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
     "use strict";
@@ -21979,7 +22389,7 @@ System.register("lib/inventory/views/inventoryIndexTabsView.hbs!github:belackriv
                 }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
                     var stack1, helper;
 
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_part_count", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin_part_count\">Part Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_adjustment\">Part Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_movement\">Part Movement Logs</a></li>\r\n</ul>";
+                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/tid", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/tid\">TravlerId Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_part_count", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin_part_count\">Part Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_adjustment\">Part Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_movement\">Part Movement Logs</a></li>\r\n</ul>";
                 }, "useData": true }));
         }
     };
@@ -22151,6 +22561,89 @@ System.register("lib/inventory/views/inventoryPartMovementRowTpl.hbs!github:bela
                 }, "useData": true }));
         }
     };
+});
+System.register("lib/inventory/views/inventoryPartMovementToActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1;
+
+                    return "<form>\r\n	<label class=\"label\">From Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"fromBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">To Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/inventoryTravelerIdAddActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<form>\r\n	<label class=\"label\">Inbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"inboundOrder\">\r\n  			<option>Select a Inbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<label class=\"label\">Serials(<span data-ui=\"serialCount\"></span>)</label>\r\n	<small>Optional</small>\r\n	<p class=\"control\">\r\n		<textarea name=\"serials\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/inventoryTravelerIdMoveActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Label</th>\r\n			<th>Serial</th>\r\n			<th>Inbound Order</th>\r\n			<th>Outbound Order</th>\r\n			<th>Type</th>\r\n			<th></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/travelerIdRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+  "use strict";
+
+  var hbr;
+  return {
+    setters: [function (_handlebarsHandlebarsRuntime) {
+      hbr = _handlebarsHandlebarsRuntime.default;
+    }],
+    execute: function () {
+      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
+          var stack1;
+
+          return "		Part: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
+        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+          var stack1, helper;
+
+          return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.serial || (depth0 != null ? depth0.serial : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "serial", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.inboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.outboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.part : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td><button class=\"button\" name=\"move\">Move</button></td>";
+        }, "useData": true }));
+    }
+  };
 });
 System.registerDynamic("github:belackriv/plugin-hbs@jspm-.17.json", [], false, function() {
   return {
@@ -23032,7 +23525,7 @@ var define = System.amdDefine;
 ;
 
 })();
-System.register("lib/inventory/views/inventoryPartMovementToActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+System.register("lib/inventory/views/travelerIdView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
     "use strict";
 
     var hbr;
@@ -23042,9 +23535,7 @@ System.register("lib/inventory/views/inventoryPartMovementToActionView.hbs!githu
         }],
         execute: function () {
             _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<form>\r\n	<label class=\"label\">From Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"fromBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">To Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+                    return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<div data-region=\"list\"></div>";
                 }, "useData": true }));
         }
     };

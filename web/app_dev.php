@@ -10,10 +10,20 @@ use Symfony\Component\Debug\Debug;
 
 // This check prevents access to debug front controllers that are deployed by accident to production servers.
 // Feel free to remove this, extend it, or make something more sophisticated.
-$local_ip_match = preg_match( '/^192\.168\..*/',@$_SERVER['REMOTE_ADDR']);
+$local_network_matches = [
+	'/^192\.168\..*/',
+	'/^10\.0\..*/',
+];
+$local_ip_match  = in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1', 'localhost'));
+if(!$local_ip_match){
+	foreach($local_network_matches as $matcg){
+		if(preg_match( $match,@$_SERVER['REMOTE_ADDR']) !== 0){
+			$local_ip_match = true;
+		}
+	}
+}
 if (isset($_SERVER['HTTP_CLIENT_IP'])
     || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-//  || !(in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', 'fe80::1', '::1']) || php_sapi_name() === 'cli-server')
     || !$local_ip_match
 ) {
     header('HTTP/1.0 403 Forbidden');

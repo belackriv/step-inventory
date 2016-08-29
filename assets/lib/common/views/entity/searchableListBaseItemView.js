@@ -21,7 +21,7 @@ export default Marionette.View.extend({
   serializeData: function(){
     var data = _.clone(this.model.attributes);
     data.entityUrl = this.model.url();
-    if(this.options.searchPath){
+    if(!data.label && this.options.searchPath){
       let searchPath = this.options.searchPath;
       if(typeof searchPath === 'string'){
         data.label = this.model.getValueFromPath(this.options.searchPath);
