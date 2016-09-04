@@ -72,7 +72,7 @@ Class TravelerId
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64)
+	 * @ORM\Column(type="string", length=64, unique=true)
      * @JMS\Type("string")
      */
 	protected $label = null;
@@ -182,6 +182,40 @@ Class TravelerId
 		return $this;
 	}
 
+	/**
+	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
+	 * @JMS\Type("string")
+	 */
+	protected $cost;
+
+	public function getCost()
+	{
+		return $this->cost;
+	}
+
+	public function setCost($cost)
+	{
+		$this->cost = $cost;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
+	 * @JMS\Type("string")
+	 */
+	protected $revenue;
+
+	public function getRevenue()
+	{
+		return $this->revenue;
+	}
+
+	public function setRevenue($revenue)
+	{
+		$this->revenue = $revenue;
+		return $this;
+	}
+
 	 /**
      * @ORM\PrePersist
      */
@@ -194,5 +228,4 @@ Class TravelerId
     		$this->setIsVoid(false);
     	}
     }
-
 }

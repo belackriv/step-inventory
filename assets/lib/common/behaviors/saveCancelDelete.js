@@ -6,10 +6,29 @@ import Marionette from 'marionette';
 import BaseUrlBaseCollection from 'lib/common/models/baseUrlBaseCollection.js';
 
 export default Marionette.Behavior.extend({
-  initialize(){
+  initialize(options){
     this.model = this.view.options.model;
     this.setPreviousAttributes();
+    this.setMethods(options)
     this.listenTo(this.model, 'change:id', this.setPreviousAttributes);
+  },
+  setMethods(options){
+    _.each(this.methods, (value, method)=>{
+      this.setMethod(options, method);
+    });
+  },
+  setMethod(options, method){
+    if(typeof options[method] === 'function'){
+      this.methods[method] = options[method]
+    }
+    if(typeof options[method] === 'string' && typeof this.view[method] === 'function'){
+      this.methods[method] = this.view[method];
+    }
+  },
+  methods:{
+    save: false,
+    cancel: false,
+    delete: false
   },
   ui: {
     'form': 'form',
@@ -38,35 +57,48 @@ export default Marionette.Behavior.extend({
   },
   save(event){
     event.preventDefault();
-    this.disableFormButtons();
-    this.view.model.save().always(()=>{
-      this.enableFormButtons();
-    }).done(()=>{
-      this.view.triggerMethod('add:entity', this.view);
-      this.view.triggerMethod('show:list', this.view, {
-        view: this,
-        model:this.model,
-      });
-    });
-  },
-  cancel(event){
-    event.preventDefault();
-    this.view.model.set(this.previousAttributes);
-    this.view.triggerMethod('show:list');
-  },
-  delete(){
-    if(this.ui.deleteButton.data('confirm')){
+    if(typeof this.methods.save === 'function' ){
+      this.methods.save.call(this.view, event);
+    }else{
       this.disableFormButtons();
-      this.view.model.destroy().always(()=>{
+      this.view.model.save().always(()=>{
         this.enableFormButtons();
       }).done(()=>{
+        this.view.triggerMethod('add:entity', this.view);
         this.view.triggerMethod('show:list', this.view, {
           view: this,
           model:this.model,
         });
       });
+    }
+  },
+  cancel(event){
+    event.preventDefault();
+    if(typeof this.methods.cancel === 'function' ){
+      this.methods.cancel.call(this.view, event);
     }else{
-      this.ui.deleteButton.text('Confirm?').data('confirm', true);
+      this.view.model.set(this.previousAttributes);
+      this.view.triggerMethod('show:list');
+    }
+  },
+  delete(event){
+    event.preventDefault();
+    if(typeof this.methods.delete === 'function' ){
+      this.methods.delete.call(this.view, event);
+    }else{
+      if(this.ui.deleteButton.data('confirm')){
+        this.disableFormButtons();
+        this.view.model.destroy().always(()=>{
+          this.enableFormButtons();
+        }).done(()=>{
+          this.view.triggerMethod('show:list', this.view, {
+            view: this,
+            model:this.model,
+          });
+        });
+      }else{
+        this.ui.deleteButton.text('Confirm?').data('confirm', true);
+      }
     }
   },
 });

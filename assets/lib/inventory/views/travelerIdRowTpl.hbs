@@ -2,9 +2,10 @@
 <td>{{serial}}</td>
 <td>{{inboundOrder.attributes.label}}</td>
 <td>{{outboundOrder.attributes.label}}</td>
+<td>{{bin.attributes.name}}</td>
 <td>
 	{{#if part}}
 		Part: {{part.attributes.name}}
 	{{/if}}
 </td>
-<td><button class="button" name="move">Move</button></td>
+<td><input type="checkbox" name="isSelected" /></td>

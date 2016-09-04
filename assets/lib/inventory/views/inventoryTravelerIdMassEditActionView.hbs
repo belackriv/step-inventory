@@ -1,0 +1,29 @@
+<form>
+	<label class="label">Update Attribute</label>
+	<p class="control">
+		<select name="updateAttribute">
+  			{{#each updateableAttributes}}
+  				<option value="{{@key}}">{{this.title}}</option>
+  			{{/each}}
+  		</select>
+	</p>
+	<label class="label">Update Type</label>
+	<p class="control">
+		<label class="radio">
+		    <input type="radio" name="updateType" value="single" />
+	    	Single Value
+		</label>
+		<label class="radio">
+			<input type="radio" name="updateType" value="multiple" />
+		    Multiple Values
+		</label>
+	</p>
+	<label class="label" data-ui="controlLabel"></label>
+	<p class="control" data-ui="controlContainer"></p>
+	<label class="label" data-ui="countLabel">Update {{selectedCount}} Traveler Ids</label>
+	<p data-ui="errorContainer" class="is-hidden notification is-danger"></p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

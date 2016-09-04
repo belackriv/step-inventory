@@ -46,6 +46,14 @@ export default Marionette.View.extend({
       }));
     }
   },
+  getCurrentCollection(){
+    let collection = null;
+    let currentListView = this.getRegion('list').currentView;
+    if(currentListView){
+      collection = currentListView.collection;
+    }
+    return collection;
+  },
   onRender(){
     if(this.collectionMode === 'client'){
       this.collection.on('fetch:done', this.search, this);

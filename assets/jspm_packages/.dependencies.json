@@ -15,32 +15,21 @@
     },
     "peerDeps": {}
   },
-  "npm:jquery@3.1.0": {
-    "deps": {},
-    "peerDeps": {}
-  },
   "npm:moment-timezone@0.5.4": {
     "deps": {
       "moment": "npm:moment"
     },
     "peerDeps": {}
   },
+  "npm:moment-duration-format@1.3.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
   "npm:underscore@1.8.3": {
     "deps": {},
     "peerDeps": {}
   },
-  "npm:backbone.paginator@2.0.5": {
-    "deps": {
-      "underscore": "npm:underscore@^1.8.0",
-      "backbone": "npm:backbone@^1.3.2"
-    },
-    "peerDeps": {}
-  },
-  "npm:bulma@0.1.2": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:moment-duration-format@1.3.0": {
+  "npm:jquery@3.1.0": {
     "deps": {},
     "peerDeps": {}
   },
@@ -54,43 +43,14 @@
     },
     "peerDeps": {}
   },
-  "github:VitalStorm/backbone.stickit@master": {
-    "deps": {},
+  "npm:backbone.paginator@2.0.5": {
+    "deps": {
+      "underscore": "npm:underscore@^1.8.0",
+      "backbone": "npm:backbone@^1.3.2"
+    },
     "peerDeps": {}
   },
-  "github:marionettejs/backbone.babysitter@0.1.11": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:belackriv/plugin-hbs@jspm-.17": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.marionette@3.0.0-pre.4": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:xdan/datetimepicker@2.4.5": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.radio@1.0.4": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:VitalStorm/Backbone-relational@master": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:components/handlebars.js@4.0.5": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.wreqr@1.3.6": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:systemjs/plugin-css@0.1.21": {
+  "npm:bulma@0.1.2": {
     "deps": {},
     "peerDeps": {}
   },
@@ -98,7 +58,47 @@
     "deps": {},
     "peerDeps": {}
   },
+  "github:systemjs/plugin-css@0.1.21": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:belackriv/plugin-hbs@jspm-.17": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:VitalStorm/Backbone-relational@master": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:VitalStorm/backbone.stickit@master": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:xdan/datetimepicker@2.4.5": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:marionettejs/backbone.wreqr@1.3.6": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:marionettejs/backbone.marionette@3.0.0-pre.4": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:components/handlebars.js@4.0.5": {
+    "deps": {},
+    "peerDeps": {}
+  },
   "github:jspm/nodelibs-process@0.2.0-alpha": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:marionettejs/backbone.babysitter@0.1.11": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:marionettejs/backbone.radio@1.0.4": {
     "deps": {},
     "peerDeps": {}
   }

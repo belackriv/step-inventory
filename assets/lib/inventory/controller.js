@@ -29,7 +29,7 @@ export default Marionette.Object.extend({
   },
   travelerIds(id){
     let inventoryIndexView =  new InventoryIndexView();
-    let travelerIdView = new TravelerIdView();
+    let travelerIdView = new TravelerIdView({id:id});
 
     this.buildViewStack([
       {

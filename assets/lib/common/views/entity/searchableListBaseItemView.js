@@ -16,7 +16,8 @@ export default Marionette.View.extend({
     }
   },
   behaviors: {
-    'ShowNotSynced': {}
+    'ShowNotSynced': {},
+    'Stickit': {},
   },
   serializeData: function(){
     var data = _.clone(this.model.attributes);
@@ -39,14 +40,18 @@ export default Marionette.View.extend({
   },
   ui:{
   	'entityLink': 'a.entity-link',
-    'button': 'button'
+    'button': 'button',
+    'isSelectedCheckbox': 'input[name="isSelected"]'
+  },
+  bindings: {
+    '@ui.isSelectedCheckbox': 'isSelected',
   },
   events: {
+    'click': 'toggleSelected',
+    'click @ui.entityLink': 'triggerSelectModel',
     'click @ui.button': 'triggerButtonClick'
   },
-  triggers: {
-    "click @ui.entityLink": "select:model"
-  },
+
   modelEvents: {
     'change' : 'render'
   },
@@ -57,8 +62,19 @@ export default Marionette.View.extend({
       this.$el.removeClass('disabled');
     }
   },
+  toggleSelected(){
+    this.model.set('isSelected', !this.model.get('isSelected'));
+  },
+  triggerSelectModel(event){
+    event.preventDefault();
+    event.stopPropagation();
+    this.triggerMethod('select:model', this, {
+      model: this.model,
+    });
+  },
   triggerButtonClick(event){
     event.preventDefault();
+    event.stopPropagation();
     this.triggerMethod('button:click', this, {
       model: this.model,
       button: event.target

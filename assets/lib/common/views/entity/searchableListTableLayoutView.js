@@ -24,9 +24,15 @@ export default Marionette.View.extend({
       replaceElement: true
     },
   },
+  ui:{
+    'button': 'button'
+  },
+  events: {
+    'click @ui.button': 'triggerButtonClick'
+  },
   childViewEvents: {
     'select:model': 'selectModel',
-    'button:click': 'triggerButtonClick'
+    'button:click': 'triggerChildButtonClick'
   },
   onRender(){
     this.showChildView('tbody', new SearchableListTableView({
@@ -40,7 +46,14 @@ export default Marionette.View.extend({
       model: childView.model
     });
   },
-  triggerButtonClick(childView, args){
+  triggerButtonClick(event){
+    event.preventDefault();
+    this.triggerMethod('button:click', this, {
+      model: this.model,
+      button: event.target
+    });
+  },
+  triggerChildButtonClick(childView, args){
     this.triggerMethod('button:click', childView, {
       model: childView.model,
       button: args.button

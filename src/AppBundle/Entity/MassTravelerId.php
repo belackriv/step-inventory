@@ -45,4 +45,53 @@ Class MassTravelerId
         $this->travelerIds = new ArrayCollection(array_values($this->children->toArray()));
     }
 
+    /**
+     * @JMS\Type("string")
+     */
+    public $type;
+
+    /**
+     * @JMS\Type("array")
+     */
+    public $oldAttributes;
+
+    /**
+     * @JMS\Type("array")
+     */
+    public $newAttributes;
+
+    /**
+     * @JMS\Type("AppBundle\Entity\Bin")
+     */
+    public $fromBin;
+
+    /**
+     * @JMS\Type("AppBundle\Entity\Bin")
+     */
+    public $toBin;
+
+    public function getLogEntityForTravelerId(TravelerId $travelerId, User $user)
+    {
+        switch ($this->type) {
+            case 'edit':
+                $logEntity = new InventoryTravelerIdEdit();
+                $logEntity->setOldAttributes($this->oldAttributes);
+                $logEntity->setNewAttributes($this->newAttributes);
+                $logEntity->setEditedAt(new \DateTime());
+                $logEntity->setByUser($user);
+                $logEntity->setTravelerId($travelerId);
+                return $logEntity;
+            case 'move':
+                $logEntity = new InventoryTravelerIdMovement();
+                $logEntity->fromBin($this->fromBin);
+                $logEntity->toBin($this->toBin);
+                $logEntity->setMovedAt(new \DateTime());
+                $logEntity->setByUser($user);
+                $logEntity->setTravelerId($travelerId);
+                return $logEntity;
+            default:
+                throw new \Exception("Must Supply a type('edit','move') for a Mass TravelerId Update");
+        }
+    }
+
 }

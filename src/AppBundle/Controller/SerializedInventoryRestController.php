@@ -21,10 +21,11 @@ class SerializedInventoryRestController extends FOSRestController
     use Mixin\RestPatchMixin;
     use Mixin\UpdateAclMixin;
     use Mixin\WampUpdatePusher;
+    use Mixin\TravelerIdLogMixin;
 
     /**
      * @Rest\Get("/tid")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listTravelerIdAction(Request $request)
     {
@@ -60,7 +61,7 @@ class SerializedInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Get("/tid/{id}")
-     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
     {
@@ -73,7 +74,7 @@ class SerializedInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Post("/tid")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("travelerId", converter="fos_rest.request_body")
      */
     public function createTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
@@ -95,12 +96,23 @@ class SerializedInventoryRestController extends FOSRestController
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("travelerId", converter="fos_rest.request_body")
      */
-    public function updateTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
+    public function updateTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId, $id)
     {
+
         if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
             $em = $this->getDoctrine()->getManager();
+            $em->detach($travelerId);
+            $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($id);
+            $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+            $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
             $em->merge($travelerId);
             $em->flush();
+            if($edit){
+                $this->updateAclByRoles($edit, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
+            if($move){
+                $this->updateAclByRoles($move, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
             return $travelerId;
         }else{
             throw $this->createAccessDeniedException();
@@ -116,9 +128,18 @@ class SerializedInventoryRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
             $em = $this->getDoctrine()->getManager();
+            $em->detach($travelerId);
             $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($id);
+            $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+            $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
             $this->patchEntity($liveTravelerId, $travelerId);
             $em->flush();
+            if($edit){
+                $this->updateAclByRoles($edit, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
+            if($move){
+                $this->updateAclByRoles($move, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
             return $travelerId;
         }else{
             throw $this->createAccessDeniedException();
@@ -150,7 +171,7 @@ class SerializedInventoryRestController extends FOSRestController
     public function createMassTravelerIdAction(\AppBundle\Entity\MassTravelerId $massTravelerId)
     {
         set_time_limit(300);
-        ini_set('memory_limit','2048M');
+        ini_set('memory_limit','1024M');
         $em = $this->getDoctrine()->getManager();
         foreach($massTravelerId->getTravelerIds() as $travelerId){
             if($this->get('security.authorization_checker')->isGranted('CREATE', $travelerId)){
@@ -168,23 +189,37 @@ class SerializedInventoryRestController extends FOSRestController
     }
 
     /**
-     * @Rest\Put("/mass_tid/")
+     * @Rest\Put("/mass_tid/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("massTravelerId", converter="fos_rest.request_body")
      */
     public function updateMassTravelerIdAction(\AppBundle\Entity\MassTravelerId $massTravelerId)
     {
         set_time_limit(300);
-        ini_set('memory_limit','2048M');
+        ini_set('memory_limit','1024M');
         $em = $this->getDoctrine()->getManager();
+        $travelerIdLogEntities = [];
         foreach($massTravelerId->getTravelerIds() as $travelerId){
             if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
+                $em->detach($travelerId);
+                $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($travelerId->getId());
+                $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+                $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
+                if($edit){
+                    $travelerIdLogEntities[] = $edit;
+                }
+                if($move){
+                    $travelerIdLogEntities[] = $move;
+                }
                 $em->merge($travelerId);
             }else{
                 throw $this->createAccessDeniedException();
             }
         }
         $em->flush();
+        foreach($travelerIdLogEntities as $logEntity){
+            $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+        }
         return $massTravelerId;
     }
 

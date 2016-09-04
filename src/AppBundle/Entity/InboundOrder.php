@@ -34,7 +34,7 @@ Class InboundOrder
 
 
 	/**
-	 * @ORM\Column(type="string", length=64)
+	 * @ORM\Column(type="string", length=64, unique=true)
      * @JMS\Type("string")
      */
 	protected $label = null;

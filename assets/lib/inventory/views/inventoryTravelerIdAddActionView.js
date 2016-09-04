@@ -60,7 +60,7 @@ export default Marionette.View.extend({
     this.addTravelerIds();
     this.model.save().done(()=>{
       Radio.channel('dialog').trigger('close');
-      //Radio.channel('inventory').trigger('change:bin:part:count');
+      Radio.channel('inventory').trigger('refresh:list:travelerId');
     });
   },
   serialsChanged(){
@@ -94,7 +94,6 @@ export default Marionette.View.extend({
         travelerId.set('serial', serial);
       }
       this.model.get('travelerIds').add(travelerId);
-      let test;
     }
   },
   disableButtons(){

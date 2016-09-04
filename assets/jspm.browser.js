@@ -1,5 +1,4 @@
 SystemJS.config({
-  //baseURL: "/~belac/stepthrough/assets",
   baseURL: "/assets",
   production: true,
   paths: {

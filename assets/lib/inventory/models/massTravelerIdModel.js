@@ -19,7 +19,7 @@ let Model = BaseUrlBaseModel.extend({
   }],
   defaults: {
     travelerIds: null,
-    //only for client
+    //only for client for now
     serials: null,
     serialsArray: null,
     count: null,
