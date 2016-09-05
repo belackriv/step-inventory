@@ -1,0 +1,27 @@
+<form>
+	<label class="label">Mode</label>
+	<p class="control">
+		<label class="radio">
+		    <input type="radio" name="mode" value="add" />
+	    	Add
+		</label>
+		<label class="radio">
+			<input type="radio" name="mode" value="remove" />
+		    Remove
+		</label>
+		<label class="radio">
+			<input type="radio" name="mode" value="replace" />
+		    Replace
+		</label>
+	</p>
+	<label class="label">Traveler Ids(<span data-ui="count"></span>)</label>
+	<p class="control">
+		<textarea rows="10" name="travelerIds"></textarea>
+	</p>
+	<label class="label" data-ui="countLabel">{{selectedCount}} Traveler Ids Selected</label>
+	<p data-ui="errorContainer" class="is-hidden notification is-danger"></p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

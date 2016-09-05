@@ -20,7 +20,7 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
   },{
     type: Backbone.HasOne,
-    key: 'tid',
+    key: 'travelerId',
     relatedModel: 'TravelerIdModel',
     includeInJSON: ['id'],
   }],
@@ -34,6 +34,6 @@ let Model = BaseUrlBaseModel.extend({
 
 });
 
-globalNamespace.Models.InventoryPartEditModel = Model;
+globalNamespace.Models.InventoryTravelerIdEditModel = Model;
 
 export default Model;

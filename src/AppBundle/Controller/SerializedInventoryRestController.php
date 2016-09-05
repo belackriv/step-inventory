@@ -223,4 +223,104 @@ class SerializedInventoryRestController extends FOSRestController
         return $massTravelerId;
     }
 
+    /**
+     * @Rest\Get("/inventory_tid_edit")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryTravelerIdEditAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(ite.id)')
+            ->from('AppBundle:InventoryTravelerIdEdit', 'ite');
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('ite')
+            ->orderBy('ite.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_edit/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryTravelerIdEditAction(\AppBundle\Entity\InventoryTravelerIdEdit $inventoryTravelerIdEdit)
+    {
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdEdit)){
+            return $inventoryTravelerIdEdit;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdEdit #'.$inventoryTravelerIdEdit->getId().' Not Found');
+        }
+    }
+
+
+    /**
+     * @Rest\Get("/inventory_tid_movement")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryTravelerIdMovementAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(itm.id)')
+            ->from('AppBundle:InventoryTravelerIdMovement', 'itm');
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('itm')
+            ->orderBy('itm.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_movement/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryTravelerIdMovementAction(\AppBundle\Entity\InventoryTravelerIdMovement $inventoryTravelerIdMovement)
+    {
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdMovement)){
+            return $inventoryTravelerIdMovement;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdMovement #'.$inventoryTravelerIdMovement->getId().' Not Found');
+        }
+    }
+
+
 }

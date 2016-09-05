@@ -20,7 +20,7 @@ import MassTravelerIdModel from '../models/massTravelerIdModel.js';
 
 export default Marionette.View.extend({
   initialize(){
-    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId')
+    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId');
   },
   template: viewTpl,
   ui: {
@@ -159,17 +159,20 @@ export default Marionette.View.extend({
   getValuesArray(valueStr, attribute){
     let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
     let valuesLookup = {};
-    let rawValuesArray = valueStr.split('\n');
+    let rawValuesArray = [];
     let valuesArray = [];
+    _.each(valueStr.split('\n'), (value)=>{
+      let trimmedValue = value.trim();
+      if(trimmedValue){
+        rawValuesArray.push(trimmedValue);
+        if(!valuesLookup[trimmedValue]){
+          valuesLookup[trimmedValue] = true;
+        }
+      }
+    });
     if(rawValuesArray.length !== this.selectedCollection.length){
       throw 'Selected TID Count and Suppplied Values Count do not match';
     }
-    _.each(rawValuesArray, (value)=>{
-      let trimmedValue = value.trim();
-      if(trimmedValue && !valuesLookup[trimmedValue]){
-        valuesLookup[trimmedValue] = true;
-      }
-    });
     return new Promise((resolve, reject)=>{
       this.getAjaxResult(valuesLookup, attribute, (err)=>{
         if(err){

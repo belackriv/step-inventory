@@ -11,6 +11,14 @@ import BinPartCountView from './views/binPartCountView.js';
 
 import SearchableListLayoutView from 'lib/common/views/entity/searchableListLayoutView.js';
 
+import InventoryTravelerIdEditCollection from './models/inventoryTravelerIdEditCollection.js';
+import inventoryTravelerIdEditListTableLayoutTpl from './views/inventoryTravelerIdEditListTableLayoutTpl.hbs!';
+import inventoryTravelerIdEditRowTpl from './views/inventoryTravelerIdEditRowTpl.hbs!';
+
+import InventoryTravelerIdMovementCollection from './models/inventoryTravelerIdMovementCollection.js';
+import inventoryTravelerIdMovementListTableLayoutTpl from './views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!';
+import inventoryTravelerIdMovementRowTpl from './views/inventoryTravelerIdMovementRowTpl.hbs!';
+
 import InventoryPartAdjustmentCollection from './models/inventoryPartAdjustmentCollection.js';
 import inventoryPartAdjustmentListTableLayoutTpl from './views/inventoryPartAdjustmentListTableLayoutTpl.hbs!';
 import inventoryPartAdjustmentRowTpl from './views/inventoryPartAdjustmentRowTpl.hbs!';
@@ -40,6 +48,54 @@ export default Marionette.Object.extend({
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
 
+  },
+  inventoryTravelerIdEdits(){
+    let inventoryIndexView =  new InventoryIndexView();
+
+    let inventoryTravelerIdEditCollection = Radio.channel('data').request('collection', InventoryTravelerIdEditCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventoryTravelerIdEditCollection,
+      listLength: 20,
+      searchPath: ['byUser.firstName','byUser.lastName','travelerId.label'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventoryTravelerIdEditListTableLayoutTpl,
+      entityRowTpl: inventoryTravelerIdEditRowTpl,
+      colspan: 6,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+  },
+  inventoryTravelerIdMovements(){
+    let inventoryIndexView =  new InventoryIndexView();
+
+    let inventoryTravelerIdMovementCollection = Radio.channel('data').request('collection', InventoryTravelerIdMovementCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventoryTravelerIdMovementCollection,
+      listLength: 20,
+      searchPath: ['byUser.firstName','byUser.lastName','fromBin.name','toBin.name','travelerId.label'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventoryTravelerIdMovementListTableLayoutTpl,
+      entityRowTpl: inventoryTravelerIdMovementRowTpl,
+      colspan: 6,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
   },
   binPartCounts(id){
     let inventoryIndexView =  new InventoryIndexView();

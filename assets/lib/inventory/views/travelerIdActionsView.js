@@ -13,6 +13,7 @@ import travelerIdRowTpl from './travelerIdRowTpl.hbs!';
 
 import InventoryTravelerIdAddActionView from './inventoryTravelerIdAddActionView.js';
 import InventoryTravelerIdMassEditActionView from './inventoryTravelerIdMassEditActionView.js';
+import InventoryTravelerIdMassSelectionActionView from './inventoryTravelerIdMassSelectionActionView.js';
 
 import TravelerIdCollection from '../models/travelerIdCollection.js';
 import MassTravelerIdModel from '../models/massTravelerIdModel.js';
@@ -29,10 +30,12 @@ export default Marionette.View.extend({
   ui: {
     'addButton': 'button[name="add"]',
     'massEditButton': 'button[name="massEdit"]',
+    'massSelectButton': 'button[name="massSelect"]',
   },
   events: {
     'click @ui.addButton': 'add',
     'click @ui.massEditButton': 'massEdit',
+    'click @ui.massSelectButton': 'massSelect',
   },
   childViewEvents: {
     'select:model': 'selectModel',
@@ -87,7 +90,8 @@ export default Marionette.View.extend({
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);
   },
-  massEdit(model){
+  massEdit(event){
+    event.preventDefault();
     var options = {
       title: 'Mass Edit Inventory',
       width: '400px'
@@ -95,5 +99,15 @@ export default Marionette.View.extend({
     let view = new InventoryTravelerIdMassEditActionView();
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);
-  }
+  },
+  massSelect(event){
+    event.preventDefault();
+     var options = {
+      title: 'Mass Select Inventory',
+      width: '400px'
+    };
+    let view = new InventoryTravelerIdMassSelectionActionView();
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
+  },
 });

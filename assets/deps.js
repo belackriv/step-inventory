@@ -22389,7 +22389,7 @@ System.register("lib/inventory/views/inventoryIndexTabsView.hbs!github:belackriv
                 }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
                     var stack1, helper;
 
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/tid", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/tid\">TravlerId Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_part_count", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin_part_count\">Part Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_adjustment\">Part Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_movement\">Part Movement Logs</a></li>\r\n</ul>";
+                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/tid", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/tid\">TravlerId Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_edit", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_edit\">Traveler Id Edit Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_movement\">Traveler Id Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_part_count", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin_part_count\">Part Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_adjustment\">Part Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_movement\">Part Movement Logs</a></li>\r\n</ul>";
                 }, "useData": true }));
         }
     };
@@ -22594,6 +22594,42 @@ System.register("lib/inventory/views/inventoryTravelerIdAddActionView.hbs!github
         }
     };
 });
+System.register("lib/inventory/views/inventoryTravelerIdEditListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Traveler Id</th>\r\n			<th>Old Attributes</th>\r\n			<th>New Attributes</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/inventoryTravelerIdEditRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+  "use strict";
+
+  var hbr;
+  return {
+    setters: [function (_handlebarsHandlebarsRuntime) {
+      hbr = _handlebarsHandlebarsRuntime.default;
+    }],
+    execute: function () {
+      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
+          var helper;
+
+          return "		<strong>" + container.escapeExpression((helper = (helper = helpers.key || data && data.key) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "key", "hash": {}, "data": data }) : helper)) + ":</strong> " + container.escapeExpression(container.lambda(depth0, depth0)) + "\r\n";
+        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+          var stack1;
+
+          return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.editedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerId : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.oldAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.newAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>";
+        }, "useData": true }));
+    }
+  };
+});
 System.register("lib/inventory/views/inventoryTravelerIdMassEditActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
   "use strict";
 
@@ -22615,6 +22651,55 @@ System.register("lib/inventory/views/inventoryTravelerIdMassEditActionView.hbs!g
     }
   };
 });
+System.register("lib/inventory/views/inventoryTravelerIdMassSelectionActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var helper;
+
+                    return "<form>\r\n	<label class=\"label\">Mode</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"mode\" value=\"add\" />\r\n	    	Add\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"remove\" />\r\n		    Remove\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"replace\" />\r\n		    Replace\r\n		</label>\r\n	</p>\r\n	<label class=\"label\">Traveler Ids(<span data-ui=\"count\"></span>)</label>\r\n	<p class=\"control\">\r\n		<textarea rows=\"10\" name=\"travelerIds\"></textarea>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"countLabel\">" + container.escapeExpression((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "selectedCount", "hash": {}, "data": data }) : helper)) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Traveler Id</th>\r\n			<th>From Bin</th>\r\n			<th>To Bin</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+                }, "useData": true }));
+        }
+    };
+});
+System.register("lib/inventory/views/inventoryTravelerIdMovementRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
+    "use strict";
+
+    var hbr;
+    return {
+        setters: [function (_handlebarsHandlebarsRuntime) {
+            hbr = _handlebarsHandlebarsRuntime.default;
+        }],
+        execute: function () {
+            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
+                    var stack1;
+
+                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.movedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerId : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.fromBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>";
+                }, "useData": true }));
+        }
+    };
+});
 System.register("lib/inventory/views/travelerIdActionsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
     "use strict";
 
@@ -22625,7 +22710,7 @@ System.register("lib/inventory/views/travelerIdActionsView.hbs!github:belackriv/
         }],
         execute: function () {
             _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<button name=\"massEdit\" class=\"button\">Mass Edit Inventory</button>\r\n<div data-region=\"list\"></div>";
+                    return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<button name=\"massEdit\" class=\"button\">Mass Edit Inventory</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Inventory</button>\r\n<div data-region=\"list\"></div>";
                 }, "useData": true }));
         }
     };
