@@ -49,7 +49,7 @@ export default Marionette.View.extend({
     this.listView = new SearchableListLayoutView({
       collection: travelerIdCollection,
       listLength: 20,
-      searchPath: ['label','serial', 'inboundOrder.label'],
+      searchPath: ['label','serial', 'inboundOrder.label', 'outboundOrder.label', 'bin.name', 'part.name'],
       useTableView: true,
       usePagination: 'server',
       entityListTableLayoutTpl: travelerIdListTableLayoutTpl,

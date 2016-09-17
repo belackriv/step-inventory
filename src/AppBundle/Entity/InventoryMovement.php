@@ -85,4 +85,43 @@ Class InventoryMovement
 		return $this;
 	}
 
+	/**
+	 * @ORM\Column(type="simple_array", nullable=true)
+     * @JMS\Type("array")
+     */
+	protected $tags = [];
+
+	public function getTags()
+	{
+		return $this->tags;
+	}
+
+	public function setTags(array $tags)
+	{
+		$this->tags = $tags;
+		return $this;
+	}
+
+	public function addTag($tag)
+	{
+		if(!in_array((string)$tag, $this->tags)){
+			$this->tags[] = (string)$tag;
+		}
+		return $this;
+	}
+
+	public function removeTag($tag)
+	{
+		$index = array_search((string)$tag, $this->tags, true);
+		if($index !== false){
+			array_splice($array, $index, 1);
+		}
+		return $this;
+	}
+
+	public function hasTag($tag)
+	{
+		return in_array((string)$tag, $this->tags);
+	}
+
 }

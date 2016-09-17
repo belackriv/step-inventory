@@ -356,7 +356,7 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminBinsListTableLayoutTpl,
       entityRowTpl: adminBinsRowTpl,
-      colspan: 7
+      colspan: 8
     };
 
     let entityView = new EntityIndexView(entityViewOptions);

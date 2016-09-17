@@ -5,6 +5,7 @@ import _ from 'underscore';
 import Backbone from 'backbone';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
+import 'lib/common/models/departmentModel.js';
 import './partCategoryModel.js';
 import './binTypeModel.js';
 import './binPartCountModel.js';
@@ -14,6 +15,11 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/bin';
   },
   relations: [{
+    type: Backbone.HasOne,
+    key: 'department',
+    relatedModel: 'BinModel',
+    includeInJSON: ['id'],
+  },{
     type: Backbone.HasOne,
     key: 'partCategory',
     relatedModel: 'PartCategoryModel',
@@ -45,6 +51,7 @@ let Model = BaseUrlBaseModel.extend({
   defaults: {
     name: null,
     description: null,
+    department: null,
     partCategory: null,
     binType: null,
     children: null,

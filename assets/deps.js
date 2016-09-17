@@ -20982,1793 +20982,2829 @@ var define = System.amdDefine;
 }));
 
 })();
-System.register("lib/admin/views/adminAccountingIndexTabsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "is-active";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/client", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/client\">Client</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/customer", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/customer\">Customer</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inbound_order", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inbound_order\">Inbound Order</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/outbound_order", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/outbound_order\">Outbound Order</a></li>\r\n</ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminAccountingIndexView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<h2 class=\"title is-2\">Accounting Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-accounting-tabs\"></div>\r\n<div id=\"admin-accounting-content\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminBinTypesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">BinType #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Behavoirs</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"behavoir\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addBehavoir\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Current Behavoirs</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"behavoirs\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminBinTypesListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Description</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminBinTypesRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "Yes";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "No";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isActive : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminBinsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Bin #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Part Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Bin Type</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"binType\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Parent</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"parent\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Children</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"children\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminBinsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Description</th>\r\n			<th>Part Category</th>\r\n			<th>Bin Type</th>\r\n    		<th>Is Active?</th>\r\n    		<th>Parent</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminBinsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "Yes";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "No";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.partCategory : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.binType : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isActive : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.parent : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminClientsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Client #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminClientsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminClientsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminCustomersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Customer #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminCustomersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminCustomersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminDepartmentsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Office #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Office</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"office\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminDepartmentsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Office</th>\r\n			<th>Count Of MenuItems</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminDepartmentsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.office : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || depth0 && depth0["return"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.office : depth0) != null ? stack1.getDepartmentTotalMenuItemCount : stack1, depth0 != null ? depth0.office : depth0, depth0 != null ? depth0.id : depth0, { "name": "return", "hash": {}, "data": data })) + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInboundOrdersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">InboundOrder #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "[" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "]</h3>\r\n<form>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Client</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"client\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInboundOrdersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Client</th>\r\n			<th>Label</th>\r\n			<th>Description</th>\r\n			<th>Is Void?</th>\r\n			<th>Traveler Id Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.client : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || depth0 && depth0["boolean"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "boolean", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerIds : depth0) != null ? stack1.models : stack1) != null ? stack1.length : stack1, depth0)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminIndexTabsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "is-active";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "		<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_link", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/menu_link\">Menu Link</a></li>\r\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/user\">Users</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/office", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/office\">Offices</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/department", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/department\">Departments</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_item", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/menu_item\">Menu Items</a></li>\r\n" + ((stack1 = (helpers.isGrantedRole || depth0 && depth0.isGrantedRole || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "ROLE_DEV", { "name": "isGrantedRole", "hash": {}, "fn": container.program(3, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminIndexView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<h2 class=\"title is-2\">Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-tabs\"></div>\r\n<div id=\"admin-content\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInventoryIndexTabsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "is-active";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/part", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/part\">Parts</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/part_category", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/part_category\">Part Categories</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/part_group", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/part_group\">Part Groups</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin\">Bins</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_type", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin_type\">Bin Types</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_movement_rule", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_movement_rule\">Inventory Movement Rules</a></li>\r\n</ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInventoryIndexView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<h2 class=\"title is-2\">Inventory Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-inventory-tabs\"></div>\r\n<div id=\"admin-inventory-content\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInventoryMovementRulesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">InventoryMomentRule #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Bin Type</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"binType\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Restrictions</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"restriction\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRestriction\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Current Restrictions</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"restrictions\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInventoryMovementRulesListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Description</th>\r\n    		<th>Is Active?</th>\r\n    		<th>For Role</th>\r\n    		<th>For Bin Type</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminInventoryMovementRulesRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "Yes";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "No";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isActive : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.role : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.binType : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminMenuItemsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">MenuItem #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Position</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"position\" type=\"number\" placeholder=\"Enter Position\">\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Menu Link</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"menuLink\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"department\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Parent</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"parent\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Children</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"children\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminMenuItemsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Is Active</th>\r\n			<th>Position</th>\r\n			<th>Menu Link</th>\r\n			<th>Department</th>\r\n			<th>Parent</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminMenuItemsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-  "use strict";
-
-  var hbr;
-  return {
-    setters: [function (_handlebarsHandlebarsRuntime) {
-      hbr = _handlebarsHandlebarsRuntime.default;
-    }],
-    execute: function () {
-      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-          var stack1;
-
-          return "		#" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.parent : depth0) != null ? stack1.id : stack1, depth0)) + "\r\n";
-        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-          var stack1, helper;
-
-          return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.isActive || (depth0 != null ? depth0.isActive : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "isActive", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "position", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.menuLink : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.department : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.parent : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n";
-        }, "useData": true }));
-    }
-  };
-});
-System.register("lib/admin/views/adminMenuLinksEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">MenuLink #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Url</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"url\" type=\"text\" placeholder=\"Enter Url\" />\r\n	</p>\r\n	<p class=\"control has-addons\">\r\n		<input class=\"input\" name=\"routeMatch\" type=\"text\" placeholder=\"Enter Matching Route\" />\r\n		<button name=\"addRouteMatch\">Add Matching Route</button>\r\n	</p>\r\n	<label class=\"label\">Matching Routes</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"routeMatches\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminMenuLinksListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Url</th>\r\n			<th>Route Matches</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminMenuLinksRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "		" + container.escapeExpression(container.lambda(depth0, depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, data && data.last, { "name": "unless", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\r\n";
-                }, "2": function _(container, depth0, helpers, partials, data) {
-                    return ", ";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "url", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.routeMatches : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminOfficesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Office #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminOfficesListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Departments</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminOfficesRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "		" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.name : stack1, depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, data && data.last, { "name": "unless", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\r\n";
-                }, "2": function _(container, depth0, helpers, partials, data) {
-                    return ", ";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.departments : depth0) != null ? stack1.models : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminOutboundOrdersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">InboundOrder #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "[" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "]</h3>\r\n<form>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Customer</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"customer\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminOutboundOrdersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Customer</th>\r\n			<th>Label</th>\r\n			<th>Description</th>\r\n			<th>Is Void?</th>\r\n			<th>Traveler Id Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.customer : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || depth0 && depth0["boolean"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "boolean", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerIds : depth0) != null ? stack1.models : stack1) != null ? stack1.length : stack1, depth0)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartCategoriesEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">PartCategory #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartCategoriesListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartCategoriesRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "Yes";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "No";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isActive : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartGroupsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">PartGroup #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartGroupsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartGroupsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "Yes";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "No";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isActive : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartsEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Part #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Group</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partGroup\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartsListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Part Id</th>\r\n			<th>Part Alt Id</th>\r\n			<th>Description</th>\r\n			<th>Part Category</th>\r\n			<th>Part Group</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminPartsRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "Yes";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "No";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.partId || (depth0 != null ? depth0.partId : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "partId", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.partAltId || (depth0 != null ? depth0.partAltId : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "partAltId", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || depth0 && depth0.truncate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.description : depth0, { "name": "truncate", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.partCategory : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.partGroup : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isActive : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminUsersEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "disabled";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<h3 class=\"title is-3\">User #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">User Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"username\" type=\"text\" placeholder=\"Enter User Name\">\r\n	</p>\r\n	<label class=\"label\">Password</label>\r\n	<p class=\"control  is-grouped\">\r\n		<input class=\"input\" name=\"newPassword\" type=\"password\" " + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.id : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ">\r\n		<button type=\"button\" class=\"button is-warning\" name=\"resetPassword\">Reset</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">First Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"firstName\" type=\"text\" placeholder=\"Enter First Name\">\r\n	</p>\r\n	<label class=\"label\">Last Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"lastName\" type=\"text\" placeholder=\"Enter Liast Name\">\r\n	</p>\r\n	<label class=\"label\">Email</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"email\" type=\"text\" placeholder=\"Enter Email\">\r\n	</p>\r\n	<label class=\"label\">Default Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"defaultDepartment\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRole\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Assigned Roles</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"roles\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminUsersListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Username</th>\r\n			<th>Is Active?</th>\r\n			<th>First Name</th>\r\n			<th>Last Name</th>\r\n			<th>Email</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/adminUsersRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<td>" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "username", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.isActive || (depth0 != null ? depth0.isActive : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "isActive", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.firstName || (depth0 != null ? depth0.firstName : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "firstName", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.lastName || (depth0 != null ? depth0.lastName : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "lastName", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.email || (depth0 != null ? depth0.email : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "email", "hash": {}, "data": data }) : helper)) + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/binItemViewTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "\r\n</span>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/menuItemItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-  "use strict";
-
-  var hbr;
-  return {
-    setters: [function (_handlebarsHandlebarsRuntime) {
-      hbr = _handlebarsHandlebarsRuntime.default;
-    }],
-    execute: function () {
-      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-          var stack1;
-
-          return "		- " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.menuLink : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-        }, "3": function _(container, depth0, helpers, partials, data) {
-          var stack1;
-
-          return "		[" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.department : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "]\r\n";
-        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-          var stack1, helper;
-
-          return "<span class=\"tag is-dark\">\r\n	#" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.menuLink : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.department : depth0, { "name": "if", "hash": {}, "fn": container.program(3, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</span>";
-        }, "useData": true }));
-    }
-  };
-});
-System.register("lib/admin/views/routeMatchItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "\r\n	<button type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n</span>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/admin/views/userRoleItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.role : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	<button type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n</span>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/appLayoutView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<nav class=\"nav has-shadow stepthrough-nav\"></nav>\r\n<div class=\"columns stepthrough-main\">\r\n	<menu class=\"column menu stepthrough-side-menu is-narrow\"></menu>\r\n	<div class=\"column\">\r\n		<section class=\"section\">\r\n			<div class=\"container is-fluid\" id=\"main-section\"></div>\r\n		</section>\r\n		<footer class=\"footer\"></footer>\r\n	</div>\r\n</div>\r\n<div id=\"dialog\"><div id=\"dialog-content\"></div></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/defaultView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "Welcome To StepThrough<sup>&copy;</sup>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/entity/indexView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "	<button class=\"button is-light create-entity-button\">Create</button>\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isCreatable : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "<div class=\"entity-action-pane\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/entity/paginationWidgetView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return " disabled";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "   		<li>\n			<button type=\"button\" class=\"button small\" data-ui-name=\"paginationPage\" page=\"" + container.escapeExpression(container.lambda(depth0 != null ? depth0.page : depth0, depth0)) + "\"" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.active : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ">" + container.escapeExpression(container.lambda(depth0 != null ? depth0.label : depth0, depth0)) + "</button>\n		</li>\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "Showing <span data-ui-name=\"shownItemCount\">" + container.escapeExpression((helper = (helper = helpers.shownItemCount || (depth0 != null ? depth0.shownItemCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "shownItemCount", "hash": {}, "data": data }) : helper)) + "</span> of <span data-ui-name=\"matchedItemCount\">" + container.escapeExpression((helper = (helper = helpers.matchedItemCount || (depth0 != null ? depth0.matchedItemCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "matchedItemCount", "hash": {}, "data": data }) : helper)) + "</span> matched items.\n<span data-ui-name=\"totalItemCount\">" + container.escapeExpression((helper = (helper = helpers.totalItemCount || (depth0 != null ? depth0.totalItemCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "totalItemCount", "hash": {}, "data": data }) : helper)) + "</span> total items.\n<nav class=\"pagination\">\n  <button type=\"button\" class=\"button small\" data-ui-name=\"paginationPrev\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.hasPreviousPage : depth0, { "name": "unless", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ">Prev</button>\n  <ul>\n    <li>\n        <button type=\"button\" class=\"button small\" data-ui-name=\"paginationFirst\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.hasPreviousPage : depth0, { "name": "unless", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ">First</button>\n    </li>\n    <li>\n      <span>...</span>\n    </li>\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.pageButtons : depth0, { "name": "each", "hash": {}, "fn": container.program(3, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "    <li>\n      <span>...</span>\n    </li>\n    <li>\n        <button type=\"button\" class=\"button small\" data-ui-name=\"paginationLast\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.hasNextPage : depth0, { "name": "unless", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ">Last</button>\n    </li>\n  </ul>\n  <button type=\"button\" class=\"button small\" data-ui-name=\"paginationNext\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.hasNextPage : depth0, { "name": "unless", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ">Next</button>\n</nav>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/entity/searchableListItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-  "use strict";
-
-  var hbr;
-  return {
-    setters: [function (_handlebarsHandlebarsRuntime) {
-      hbr = _handlebarsHandlebarsRuntime.default;
-    }],
-    execute: function () {
-      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-          var helper;
-
-          return "		" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "\n";
-        }, "3": function _(container, depth0, helpers, partials, data) {
-          var stack1;
-
-          return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.name : depth0, { "name": "if", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.program(6, data, 0), "data": data })) != null ? stack1 : "";
-        }, "4": function _(container, depth0, helpers, partials, data) {
-          var helper;
-
-          return "			" + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "\n";
-        }, "6": function _(container, depth0, helpers, partials, data) {
-          return "			[No Name]\n";
-        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-          var stack1, helper;
-
-          return "<a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">\n	#" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + " -\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.label : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</a>\n<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This asset is not synced with the server.\"></span>";
-        }, "useData": true }));
-    }
-  };
-});
-System.register("lib/common/views/entity/searchableListLayoutView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<form id=\"user_search_form\">\n	<label class=\"label\">Search</label>\n	<div class=\"control\">\n		<input type=\"search\" id=\"entity-search-input\" class=\"input\" placeholder=\"Seach\" />\n	</div>\n</form>\n<div class=\"entity-pagination\"></div>\n<div class=\"entity-list\"></div>\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/errorMessageView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "		<li>\n			<pre>" + container.escapeExpression(container.lambda(depth0 != null ? depth0.message : depth0, depth0)) + "</pre>\n			<ul>\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.trace : depth0, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\n		</li>\n";
-                }, "2": function _(container, depth0, helpers, partials, data) {
-                    return "					<li>\n						<div><label class=\"secondary radius label\">Class:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0["class"] : depth0, depth0)) + "</div>\n						<div><label class=\"secondary radius label\">File:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0.file : depth0, depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Function:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0["function"] : depth0, depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Line:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0.line : depth0, depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Namespace:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0.namespace : depth0, depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Short Class:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0.short_class : depth0, depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Type:</label>" + container.escapeExpression(container.lambda(depth0 != null ? depth0.type : depth0, depth0)) + "</div>\n					</li>\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<h2>" + container.escapeExpression((helper = (helper = helpers.message || (depth0 != null ? depth0.message : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "message", "hash": {}, "data": data }) : helper)) + "</h2>\n<ul>\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.exception : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/loadingView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<div><span class=\"fa fa-spinner fa-pulse\"></span></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/menuItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "	<a href=\"" + container.escapeExpression((helpers.baseUrl || depth0 && depth0.baseUrl || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = (stack1 = depth0 != null ? depth0.menuLink : depth0) != null ? stack1.attributes : stack1) != null ? stack1.url : stack1, { "name": "baseUrl", "hash": {}, "data": data })) + "\" class=\"" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.uiIsActive : depth0, { "name": "if", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.menuLink : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</a>\r\n";
-                }, "2": function _(container, depth0, helpers, partials, data) {
-                    return "is-active";
-                }, "4": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "	" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.menuLink : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = (stack1 = depth0 != null ? depth0.menuLink : depth0) != null ? stack1.attributes : stack1) != null ? stack1.url : stack1, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(4, data, 0), "data": data })) != null ? stack1 : "") + "<ul></ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/menuLayoutView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<ul class=\"menu-list\"></ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/menuSelectionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<div class=\"control is-horizontal\">\r\n  <div class=\"control-label\">\r\n    <label class=\"label\">Office:</label>\r\n  </div>\r\n  <div class=\"control\">\r\n    <div class=\"select is-fullwidth\">\r\n      <select id=\"menu-office-select\"></select>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"control is-horizontal\">\r\n  <div class=\"control-label\">\r\n    <label class=\"label\">Department:</label>\r\n  </div>\r\n  <div class=\"control\">\r\n    <div class=\"select is-fullwidth\">\r\n      <select id=\"menu-department-select\"></select>\r\n    </div>\r\n  </div>\r\n</div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/navLayoutView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "\">Step Inventory</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/noChildrenRowView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<td colspan=\"" + container.escapeExpression((helper = (helper = helpers.colspan || (depth0 != null ? depth0.colspan : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "colspan", "hash": {}, "data": data }) : helper)) + "\">No Results Found.</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/noChildrenView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "No Objects Found.";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/common/views/propertyArrayListView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data, blockParams, depths) {
-                    return "	<li>\r\n		<span class=\"tag is-dark\">\r\n			" + container.escapeExpression((helpers.translate || depth0 && depth0.translate || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, depths[1] != null ? depths[1].dictionary : depths[1], { "name": "translate", "hash": {}, "data": data })) + "\r\n			<button data-restriction=\"" + container.escapeExpression(container.lambda(depth0, depth0)) + "\" type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n		</span>\r\n	</li>\r\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data, blockParams, depths) {
-                    var stack1;
-
-                    return "<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.elements : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0, blockParams, depths), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</ul>";
-                }, "useData": true, "useDepths": true }));
-        }
-    };
-});
-System.register("lib/common/views/userInfoView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<header class=\"card-header\">\r\n	<p class=\"card-header-title\">\r\n		Hello " + container.escapeExpression((helper = (helper = helpers.firstName || (depth0 != null ? depth0.firstName : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "firstName", "hash": {}, "data": data }) : helper)) + "\r\n	</p>\r\n</header>\r\n<div class=\"card-content\">\r\n	<div class=\"content\">\r\n		<p>" + container.escapeExpression((helper = (helper = helpers.appMessage || (depth0 != null ? depth0.appMessage : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "appMessage", "hash": {}, "data": data }) : helper)) + "</p>\r\n		<small>It is " + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.currentTime : depth0, { "name": "moment", "hash": {}, "data": data })) + ".</small>\r\n	</div>\r\n</div>\r\n<footer class=\"card-footer\">\r\n	<a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/logout\">Logout</a>\r\n	<span id=\"loading-icon-container\" class=\"icon\"></span>\r\n</footer>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/binPartCountListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Bin</th>\r\n			<th>Part</th>\r\n			<th>Count</th>\r\n			<th colspan=\"3\"></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/binPartCountRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "count", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><button class=\"button\" name=\"adjust\">Adjust</button></td>\r\n<td><button class=\"button\" name=\"moveIn\">Move In</button></td>\r\n<td><button class=\"button\" name=\"moveOut\">Move Out</button></td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/binPartCountView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<div data-region=\"list\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryAuditListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Bin</th>\r\n			<th>Started At</th>\r\n			<th>Ended At</th>\r\n			<th></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryAuditListView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<h2 class=\"title is-2\">Inventory Audits</h2>\r\n<button name=\"audit\" class=\"button\">New Audit</button>\r\n<div data-region=\"list\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryAuditRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "		" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.endedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "\r\n";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "		In Progress...\r\n";
-                }, "5": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return (stack1 = (helpers.isMyself || depth0 && depth0.isMyself || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.byUser : depth0, { "name": "isMyself", "hash": {}, "fn": container.program(6, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "";
-                }, "6": function _(container, depth0, helpers, partials, data) {
-                    return "			<button class=\"button\" name=\"resume\">Resume</button>\r\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.forBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.startedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.endedAt : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.endedAt : depth0, { "name": "unless", "hash": {}, "fn": container.program(5, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryAuditSetupView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"forBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryAuditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<h2 class=\"title is-2\">Inventory Audit</h2>\r\n<div class=\"message\">\r\n	<div class=\"message-header\">\r\n		For Bin #" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.forBin : depth0) != null ? stack1.id : stack1, depth0)) + " - " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.forBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</div>\r\n	<div class=\"message-body\">\r\n		<p>Started by " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + " at " + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.startedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + ".</p>\r\n		<button class=\"button\" name=\"end\">End</button>\r\n	</div>\r\n</div>\r\n<div class=\"box\">\r\n	<h3 class=\"title is-3\">Part Counts</h3>\r\n	<button class=\"button\" name=\"addPartAudit\">Add Part Count</button>\r\n	<table data-ui=\"partListTable\" class=\"table is-striped\">\r\n		<thead>\r\n			<tr>\r\n				<th>Part</th>\r\n				<th>Count</th>\r\n				<th colspan=\"2\"></th>\r\n			</tr>\r\n		</thead>\r\n		<tbody></tbody>\r\n	</table>\r\n</div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryIndexTabsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    return "is-active";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/tid", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/tid\">TravlerId Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_edit", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_edit\">Traveler Id Edit Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_movement\">Traveler Id Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_part_count", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/bin_part_count\">Part Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_adjustment\">Part Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_part_movement\">Part Movement Logs</a></li>\r\n</ul>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryIndexView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<h2 class=\"title is-2\">Inventory Actions</h2>\r\n<div class=\"tabs\" id=\"inventory-tabs\"></div>\r\n<div id=\"inventory-content\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartAdjustmentActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.forBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Old Count</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression((helper = (helper = helpers.oldCount || (depth0 != null ? depth0.oldCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "oldCount", "hash": {}, "data": data }) : helper)) + "\r\n	</p>\r\n	<label class=\"label\">New Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"newCount\" type=\"number\" placeholder=\"Enter New Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartAdjustmentAddActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"forBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"newCount\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartAdjustmentListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>For Bin</th>\r\n			<th>Performed At</th>\r\n			<th>Part</th>\r\n			<th>Old Count</th>\r\n			<th>New Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartAdjustmentRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.forBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.performedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.oldCount || (depth0 != null ? depth0.oldCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "oldCount", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.newCount || (depth0 != null ? depth0.newCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "newCount", "hash": {}, "data": data }) : helper)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartAuditItemView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.userCount || (depth0 != null ? depth0.userCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "userCount", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><button class=\"button\" name=\"edit\">Edit</button></td>\r\n<td><button class=\"button is-danger\" name=\"delete\">Delete</button></td>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartAuditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "  				<option value=\"" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.id : stack1, depth0)) + "\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</option>\r\n";
-                }, "3": function _(container, depth0, helpers, partials, data) {
-                    return "				<option>Select a part...</option>\r\n";
-                }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<form>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.part : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"userCount\" type=\"number\" placeholder=\"Enter Count\" value=\"" + container.escapeExpression((helper = (helper = helpers.userCount || (depth0 != null ? depth0.userCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "userCount", "hash": {}, "data": data }) : helper)) + "\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartMovementFromActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<form>\r\n	<label class=\"label\">From Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.fromBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">To Bin</label>\r\n	<p class=\"control\">\r\n		<select name=\"toBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartMovementListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>From Bin</th>\r\n			<th>To Bin</th>\r\n			<th>Moved At</th>\r\n			<th>Part</th>\r\n			<th>Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartMovementRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1, helper;
-
-                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.fromBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.movedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "count", "hash": {}, "data": data }) : helper)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryPartMovementToActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<form>\r\n	<label class=\"label\">From Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"fromBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">To Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryTravelerIdAddActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<form>\r\n	<label class=\"label\">Inbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"inboundOrder\">\r\n  			<option>Select a Inbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<label class=\"label\">Serials(<span data-ui=\"serialCount\"></span>)</label>\r\n	<small>Optional</small>\r\n	<p class=\"control\">\r\n		<textarea name=\"serials\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryTravelerIdEditListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Traveler Id</th>\r\n			<th>Old Attributes</th>\r\n			<th>New Attributes</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryTravelerIdEditRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-  "use strict";
-
-  var hbr;
-  return {
-    setters: [function (_handlebarsHandlebarsRuntime) {
-      hbr = _handlebarsHandlebarsRuntime.default;
-    }],
-    execute: function () {
-      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-          var helper;
-
-          return "		<strong>" + container.escapeExpression((helper = (helper = helpers.key || data && data.key) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "key", "hash": {}, "data": data }) : helper)) + ":</strong> " + container.escapeExpression(container.lambda(depth0, depth0)) + "\r\n";
-        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-          var stack1;
-
-          return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.editedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerId : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.oldAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.newAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>";
-        }, "useData": true }));
-    }
-  };
-});
-System.register("lib/inventory/views/inventoryTravelerIdMassEditActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-  "use strict";
-
-  var hbr;
-  return {
-    setters: [function (_handlebarsHandlebarsRuntime) {
-      hbr = _handlebarsHandlebarsRuntime.default;
-    }],
-    execute: function () {
-      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-          var helper;
-
-          return "  				<option value=\"" + container.escapeExpression((helper = (helper = helpers.key || data && data.key) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "key", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression(container.lambda(depth0 != null ? depth0.title : depth0, depth0)) + "</option>\r\n";
-        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-          var stack1, helper;
-
-          return "<form>\r\n	<label class=\"label\">Update Attribute</label>\r\n	<p class=\"control\">\r\n		<select name=\"updateAttribute\">\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.updateableAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "  		</select>\r\n	</p>\r\n	<label class=\"label\">Update Type</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"updateType\" value=\"single\" />\r\n	    	Single Value\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"updateType\" value=\"multiple\" />\r\n		    Multiple Values\r\n		</label>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"controlLabel\"></label>\r\n	<p class=\"control\" data-ui=\"controlContainer\"></p>\r\n	<label class=\"label\" data-ui=\"countLabel\">Update " + container.escapeExpression((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "selectedCount", "hash": {}, "data": data }) : helper)) + " Traveler Ids</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-        }, "useData": true }));
-    }
-  };
-});
-System.register("lib/inventory/views/inventoryTravelerIdMassSelectionActionView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<form>\r\n	<label class=\"label\">Mode</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"mode\" value=\"add\" />\r\n	    	Add\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"remove\" />\r\n		    Remove\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"replace\" />\r\n		    Replace\r\n		</label>\r\n	</p>\r\n	<label class=\"label\">Traveler Ids(<span data-ui=\"count\"></span>)</label>\r\n	<p class=\"control\">\r\n		<textarea rows=\"10\" name=\"travelerIds\"></textarea>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"countLabel\">" + container.escapeExpression((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "selectedCount", "hash": {}, "data": data }) : helper)) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Traveler Id</th>\r\n			<th>From Bin</th>\r\n			<th>To Bin</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/inventoryTravelerIdMovementRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var stack1;
-
-                    return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.movedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.travelerId : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.fromBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/travelerIdActionsView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<button name=\"massEdit\" class=\"button\">Mass Edit Inventory</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Inventory</button>\r\n<div data-region=\"list\"></div>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/travelerIdEditView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    var helper;
-
-                    return "<h3 class=\"title is-3\">Traveler Id #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Inbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"inboundOrder\">\r\n			<option>Select a Inbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Outbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"outboundOrder\">\r\n  			<option>Select a Outbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Label</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"label\" type=\"text\" placeholder=\"Enter Label\" />\r\n	</p>\r\n	<label class=\"label\">Serial</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"serial\" type=\"text\" placeholder=\"Enter Serial\" />\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Cost</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"cost\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Cost\" />\r\n	</p>\r\n	<label class=\"label\">Revenue</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"revenue\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Cost\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Label</th>\r\n			<th>Serial</th>\r\n			<th>Inbound Order</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>Type</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
-                }, "useData": true }));
-        }
-    };
-});
-System.register("lib/inventory/views/travelerIdRowTpl.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-  "use strict";
-
-  var hbr;
-  return {
-    setters: [function (_handlebarsHandlebarsRuntime) {
-      hbr = _handlebarsHandlebarsRuntime.default;
-    }],
-    execute: function () {
-      _export("default", hbr.template({ "1": function _(container, depth0, helpers, partials, data) {
-          var stack1;
-
-          return "		Part: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-        }, "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-          var stack1, helper;
-
-          return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</a></td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.serial || (depth0 != null ? depth0.serial : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "serial", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.inboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.outboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.part : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td><input type=\"checkbox\" name=\"isSelected\" /></td>";
-        }, "useData": true }));
-    }
-  };
-});
-System.registerDynamic("github:belackriv/plugin-hbs@jspm-.17.json", [], false, function() {
+System.registerDynamic("lib/admin/views/adminAccountingIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "is-active";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/client", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/client\">Client</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/customer", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/customer\">Customer</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inbound_order", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/inbound_order\">Inbound Order</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/outbound_order", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/outbound_order\">Outbound Order</a></li>\r\n</ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminAccountingIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h2 class=\"title is-2\">Accounting Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-accounting-tabs\"></div>\r\n<div id=\"admin-accounting-content\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminBinTypesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">BinType #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Behavoirs</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"behavoir\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addBehavoir\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Current Behavoirs</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"behavoirs\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminBinTypesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Description</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminBinTypesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "Yes";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "No";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression((helpers.truncate || (depth0 && depth0.truncate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.description : depth0), {
+        "name": "truncate",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminBinsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Bin #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"department\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Part Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Bin Type</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"binType\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Parent</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"parent\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Children</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"children\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminBinsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Description</th>\r\n			<th>Department</th>\r\n			<th>Part Category</th>\r\n			<th>Bin Type</th>\r\n    		<th>Is Active?</th>\r\n    		<th>Parent</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminBinsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "Yes";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "No";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression((helpers.truncate || (depth0 && depth0.truncate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.description : depth0), {
+        "name": "truncate",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.department : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.partCategory : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.binType : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.parent : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminClientsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Client #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminClientsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminClientsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminCustomersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Customer #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminCustomersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminCustomersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminDepartmentsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Office #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Office</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"office\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminDepartmentsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Office</th>\r\n			<th>Count Of MenuItems</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminDepartmentsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || (depth0 && depth0["return"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.getDepartmentTotalMenuItemCount : stack1), (depth0 != null ? depth0.office : depth0), (depth0 != null ? depth0.id : depth0), {
+        "name": "return",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInboundOrdersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">InboundOrder #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "[" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "]</h3>\r\n<form>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Client</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"client\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInboundOrdersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Client</th>\r\n			<th>Label</th>\r\n			<th>Description</th>\r\n			<th>Is Void?</th>\r\n			<th>Traveler Id Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.client : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || (depth0 && depth0.truncate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.description : depth0), {
+        "name": "truncate",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || (depth0 && depth0["boolean"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isVoid : depth0), {
+        "name": "boolean",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.travelerIds : depth0)) != null ? stack1.models : stack1)) != null ? stack1.length : stack1), depth0)) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "is-active";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "		<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_link", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/menu_link\">Menu Link</a></li>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/user\">Users</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/office", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/office\">Offices</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/department", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/department\">Departments</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/menu_item", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/menu_item\">Menu Items</a></li>\r\n" + ((stack1 = (helpers.isGrantedRole || (depth0 && depth0.isGrantedRole) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "ROLE_DEV", {
+        "name": "isGrantedRole",
+        "hash": {},
+        "fn": container.program(3, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h2 class=\"title is-2\">Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-tabs\"></div>\r\n<div id=\"admin-content\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInventoryIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "is-active";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/part", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/part\">Parts</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/part_category", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/part_category\">Part Categories</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/part_group", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/part_group\">Part Groups</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/bin\">Bins</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_type", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/bin_type\">Bin Types</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_movement_rule", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/inventory_movement_rule\">Inventory Movement Rules</a></li>\r\n</ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInventoryIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h2 class=\"title is-2\">Inventory Admin Options</h2>\r\n<div class=\"tabs\" id=\"admin-inventory-tabs\"></div>\r\n<div id=\"admin-inventory-content\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInventoryMovementRulesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">InventoryMomentRule #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Bin Type</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"binType\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Restrictions</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"restriction\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRestriction\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Current Restrictions</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"restrictions\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInventoryMovementRulesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Description</th>\r\n    		<th>Is Active?</th>\r\n    		<th>For Role</th>\r\n    		<th>For Bin Type</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminInventoryMovementRulesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "Yes";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "No";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression((helpers.truncate || (depth0 && depth0.truncate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.description : depth0), {
+        "name": "truncate",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.role : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.binType : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminMenuItemsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">MenuItem #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Position</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"position\" type=\"number\" placeholder=\"Enter Position\">\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Menu Link</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"menuLink\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"department\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Parent</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"parent\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Children</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"children\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminMenuItemsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Is Active</th>\r\n			<th>Position</th>\r\n			<th>Menu Link</th>\r\n			<th>Department</th>\r\n			<th>Parent</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminMenuItemsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		#" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.parent : depth0)) != null ? stack1.id : stack1), depth0)) + "\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.isActive || (depth0 != null ? depth0.isActive : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "isActive",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "position",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.menuLink : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.department : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.parent : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminMenuLinksEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">MenuLink #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Url</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"url\" type=\"text\" placeholder=\"Enter Url\" />\r\n	</p>\r\n	<p class=\"control has-addons\">\r\n		<input class=\"input\" name=\"routeMatch\" type=\"text\" placeholder=\"Enter Matching Route\" />\r\n		<button name=\"addRouteMatch\">Add Matching Route</button>\r\n	</p>\r\n	<label class=\"label\">Matching Routes</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"routeMatches\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminMenuLinksListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Url</th>\r\n			<th>Route Matches</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminMenuLinksRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		" + container.escapeExpression(container.lambda(depth0, depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (data && data.last), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      return ", ";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "url",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.routeMatches : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOfficesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Office #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOfficesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Departments</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.name : stack1), depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (data && data.last), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      return ", ";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.departments : depth0)) != null ? stack1.models : stack1), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOutboundOrdersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">InboundOrder #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "[" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "]</h3>\r\n<form>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Customer</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"customer\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOutboundOrdersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Customer</th>\r\n			<th>Label</th>\r\n			<th>Description</th>\r\n			<th>Is Void?</th>\r\n			<th>Traveler Id Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.customer : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || (depth0 && depth0.truncate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.description : depth0), {
+        "name": "truncate",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || (depth0 && depth0["boolean"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isVoid : depth0), {
+        "name": "boolean",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.travelerIds : depth0)) != null ? stack1.models : stack1)) != null ? stack1.length : stack1), depth0)) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartCategoriesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">PartCategory #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartCategoriesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartCategoriesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "Yes";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "No";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartGroupsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">PartGroup #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartGroupsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartGroupsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "Yes";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "No";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Part #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Group</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partGroup\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Part Id</th>\r\n			<th>Part Alt Id</th>\r\n			<th>Description</th>\r\n			<th>Part Category</th>\r\n			<th>Part Group</th>\r\n    		<th>Is Active?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminPartsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "Yes";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "No";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.partId || (depth0 != null ? depth0.partId : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "partId",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.partAltId || (depth0 != null ? depth0.partAltId : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "partAltId",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression((helpers.truncate || (depth0 && depth0.truncate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.description : depth0), {
+        "name": "truncate",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.partCategory : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.partGroup : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "disabled";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<h3 class=\"title is-3\">User #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">User Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"username\" type=\"text\" placeholder=\"Enter User Name\">\r\n	</p>\r\n	<label class=\"label\">Password</label>\r\n	<p class=\"control  is-grouped\">\r\n		<input class=\"input\" name=\"newPassword\" type=\"password\" " + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.id : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ">\r\n		<button type=\"button\" class=\"button is-warning\" name=\"resetPassword\">Reset</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">First Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"firstName\" type=\"text\" placeholder=\"Enter First Name\">\r\n	</p>\r\n	<label class=\"label\">Last Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"lastName\" type=\"text\" placeholder=\"Enter Liast Name\">\r\n	</p>\r\n	<label class=\"label\">Email</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"email\" type=\"text\" placeholder=\"Enter Email\">\r\n	</p>\r\n	<label class=\"label\">Default Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"defaultDepartment\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRole\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Assigned Roles</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"roles\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminUsersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Username</th>\r\n			<th>Is Active?</th>\r\n			<th>First Name</th>\r\n			<th>Last Name</th>\r\n			<th>Email</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminUsersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "username",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.isActive || (depth0 != null ? depth0.isActive : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "isActive",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.firstName || (depth0 != null ? depth0.firstName : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "firstName",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.lastName || (depth0 != null ? depth0.lastName : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "lastName",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.email || (depth0 != null ? depth0.email : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "email",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/binItemViewTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\r\n</span>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/menuItemItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		- " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.menuLink : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		[" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.department : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "]\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<span class=\"tag is-dark\">\r\n	#" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.menuLink : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.department : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(3, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</span>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/routeMatchItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\r\n	<button type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n</span>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/userRoleItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<span class=\"tag is-dark\">\r\n	" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.role : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	<button type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n</span>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/appLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<nav class=\"nav has-shadow stepthrough-nav\"></nav>\r\n<div class=\"columns stepthrough-main\">\r\n	<menu class=\"column menu stepthrough-side-menu is-narrow\"></menu>\r\n	<div class=\"column\">\r\n		<section class=\"section\">\r\n			<div class=\"container is-fluid\" id=\"main-section\"></div>\r\n		</section>\r\n		<footer class=\"footer\"></footer>\r\n	</div>\r\n</div>\r\n<div id=\"dialog\"><div id=\"dialog-content\"></div></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/defaultView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "Welcome To StepThrough<sup>&copy;</sup>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/entity/indexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "	<button class=\"button is-light create-entity-button\">Create</button>\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.isCreatable : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "<div class=\"entity-action-pane\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/entity/paginationWidgetView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return " disabled";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "   		<li>\n			<button type=\"button\" class=\"button small\" data-ui-name=\"paginationPage\" page=\"" + container.escapeExpression(container.lambda((depth0 != null ? depth0.page : depth0), depth0)) + "\"" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.active : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ">" + container.escapeExpression(container.lambda((depth0 != null ? depth0.label : depth0), depth0)) + "</button>\n		</li>\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "Showing <span data-ui-name=\"shownItemCount\">" + container.escapeExpression(((helper = (helper = helpers.shownItemCount || (depth0 != null ? depth0.shownItemCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "shownItemCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</span> of <span data-ui-name=\"matchedItemCount\">" + container.escapeExpression(((helper = (helper = helpers.matchedItemCount || (depth0 != null ? depth0.matchedItemCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "matchedItemCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</span> matched items.\n<span data-ui-name=\"totalItemCount\">" + container.escapeExpression(((helper = (helper = helpers.totalItemCount || (depth0 != null ? depth0.totalItemCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "totalItemCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</span> total items.\n<nav class=\"pagination\">\n  <button type=\"button\" class=\"button small\" data-ui-name=\"paginationPrev\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.hasPreviousPage : depth0), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ">Prev</button>\n  <ul>\n    <li>\n        <button type=\"button\" class=\"button small\" data-ui-name=\"paginationFirst\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.hasPreviousPage : depth0), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ">First</button>\n    </li>\n    <li>\n      <span>...</span>\n    </li>\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.pageButtons : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(3, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "    <li>\n      <span>...</span>\n    </li>\n    <li>\n        <button type=\"button\" class=\"button small\" data-ui-name=\"paginationLast\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.hasNextPage : depth0), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ">Last</button>\n    </li>\n  </ul>\n  <button type=\"button\" class=\"button small\" data-ui-name=\"paginationNext\"" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.hasNextPage : depth0), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + ">Next</button>\n</nav>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/entity/searchableListItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "		" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\n";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.name : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(4, data, 0),
+        "inverse": container.program(6, data, 0),
+        "data": data
+      })) != null ? stack1 : "");
+    },
+    "4": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "			" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\n";
+    },
+    "6": function(container, depth0, helpers, partials, data) {
+      return "			[No Name]\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">\n	#" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + " -\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.label : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</a>\n<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This asset is not synced with the server.\"></span>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/entity/searchableListLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<form id=\"user_search_form\">\n	<label class=\"label\">Search</label>\n	<div class=\"control\">\n		<input type=\"search\" id=\"entity-search-input\" class=\"input\" placeholder=\"Seach\" />\n	</div>\n</form>\n<div class=\"entity-pagination\"></div>\n<div class=\"entity-list\"></div>\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/errorMessageView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		<li>\n			<pre>" + container.escapeExpression(container.lambda((depth0 != null ? depth0.message : depth0), depth0)) + "</pre>\n			<ul>\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.trace : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</ul>\n		</li>\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      return "					<li>\n						<div><label class=\"secondary radius label\">Class:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0["class"] : depth0), depth0)) + "</div>\n						<div><label class=\"secondary radius label\">File:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0.file : depth0), depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Function:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0["function"] : depth0), depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Line:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0.line : depth0), depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Namespace:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0.namespace : depth0), depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Short Class:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0.short_class : depth0), depth0)) + "</div>\n						<div><label class=\"secondary radius label\">Type:</label>" + container.escapeExpression(container.lambda((depth0 != null ? depth0.type : depth0), depth0)) + "</div>\n					</li>\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<h2>" + container.escapeExpression(((helper = (helper = helpers.message || (depth0 != null ? depth0.message : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "message",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h2>\n<ul>\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.exception : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/loadingView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<div><span class=\"fa fa-spinner fa-pulse\"></span></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/menuItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "	<a href=\"" + container.escapeExpression((helpers.baseUrl || (depth0 && depth0.baseUrl) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = ((stack1 = (depth0 != null ? depth0.menuLink : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.url : stack1), {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      })) + "\" class=\"" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.uiIsActive : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.menuLink : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a>\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      return "is-active";
+    },
+    "4": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "	" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.menuLink : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = ((stack1 = (depth0 != null ? depth0.menuLink : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.url : stack1), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(4, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "<ul></ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/menuLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<ul class=\"menu-list\"></ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/menuSelectionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<div class=\"control is-horizontal\">\r\n  <div class=\"control-label\">\r\n    <label class=\"label\">Office:</label>\r\n  </div>\r\n  <div class=\"control\">\r\n    <div class=\"select is-fullwidth\">\r\n      <select id=\"menu-office-select\"></select>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"control is-horizontal\">\r\n  <div class=\"control-label\">\r\n    <label class=\"label\">Department:</label>\r\n  </div>\r\n  <div class=\"control\">\r\n    <div class=\"select is-fullwidth\">\r\n      <select id=\"menu-department-select\"></select>\r\n    </div>\r\n  </div>\r\n</div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">Step Inventory</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/noChildrenRowView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<td colspan=\"" + container.escapeExpression(((helper = (helper = helpers.colspan || (depth0 != null ? depth0.colspan : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "colspan",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">No Results Found.</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/noChildrenView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "No Objects Found.";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/propertyArrayListView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data, blockParams, depths) {
+      return "	<li>\r\n		<span class=\"tag is-dark\">\r\n			" + container.escapeExpression((helpers.translate || (depth0 && depth0.translate) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, (depths[1] != null ? depths[1].dictionary : depths[1]), {
+        "name": "translate",
+        "hash": {},
+        "data": data
+      })) + "\r\n			<button data-restriction=\"" + container.escapeExpression(container.lambda(depth0, depth0)) + "\" type=\"button\" name=\"delete\" class=\"delete\"></button>\r\n		</span>\r\n	</li>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data, blockParams, depths) {
+      var stack1;
+      return "<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.elements : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0, blockParams, depths),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</ul>";
+    },
+    "useData": true,
+    "useDepths": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/userInfoView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<header class=\"card-header\">\r\n	<p class=\"card-header-title\">\r\n		Hello " + container.escapeExpression(((helper = (helper = helpers.firstName || (depth0 != null ? depth0.firstName : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "firstName",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\r\n	</p>\r\n</header>\r\n<div class=\"card-content\">\r\n	<div class=\"content\">\r\n		<p>" + container.escapeExpression(((helper = (helper = helpers.appMessage || (depth0 != null ? depth0.appMessage : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "appMessage",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</p>\r\n		<small>It is " + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.currentTime : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + ".</small>\r\n	</div>\r\n</div>\r\n<footer class=\"card-footer\">\r\n	<a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/logout\">Logout</a>\r\n	<span id=\"loading-icon-container\" class=\"icon\"></span>\r\n</footer>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/binPartCountListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Bin</th>\r\n			<th>Part</th>\r\n			<th>Count</th>\r\n			<th colspan=\"3\"></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/binPartCountRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.bin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "count",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><button class=\"button\" name=\"adjust\">Adjust</button></td>\r\n<td><button class=\"button\" name=\"moveIn\">Move In</button></td>\r\n<td><button class=\"button\" name=\"moveOut\">Move Out</button></td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/binPartCountView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<div data-region=\"list\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryAuditListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Bin</th>\r\n			<th>Started At</th>\r\n			<th>Ended At</th>\r\n			<th></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryAuditListView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h2 class=\"title is-2\">Inventory Audits</h2>\r\n<button name=\"audit\" class=\"button\">New Audit</button>\r\n<div data-region=\"list\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryAuditRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "		" + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.endedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + "\r\n";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "		In Progress...\r\n";
+    },
+    "5": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return ((stack1 = (helpers.isMyself || (depth0 && depth0.isMyself) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.byUser : depth0), {
+        "name": "isMyself",
+        "hash": {},
+        "fn": container.program(6, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "");
+    },
+    "6": function(container, depth0, helpers, partials, data) {
+      return "			<button class=\"button\" name=\"resume\">Resume</button>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.firstName : stack1), depth0)) + " " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.lastName : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.forBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.startedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.endedAt : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.endedAt : depth0), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(5, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryAuditSetupView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"forBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryAuditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<h2 class=\"title is-2\">Inventory Audit</h2>\r\n<div class=\"message\">\r\n	<div class=\"message-header\">\r\n		For Bin #" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.forBin : depth0)) != null ? stack1.id : stack1), depth0)) + " - " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.forBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</div>\r\n	<div class=\"message-body\">\r\n		<p>Started by " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.firstName : stack1), depth0)) + " " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.lastName : stack1), depth0)) + " at " + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.startedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + ".</p>\r\n		<button class=\"button\" name=\"end\">End</button>\r\n	</div>\r\n</div>\r\n<div class=\"box\">\r\n	<form data-ui=\"travelerIdLabelForm\" action=\"\">\r\n		<h3 class=\"title is-3\">Traveler Ids</h3>\r\n		<label class=\"label\">Traveler Id Label:</label>\r\n		<p class=\"control\">\r\n			<input type=\"text\" name=\"travelerIdLabel\" />\r\n		</p>\r\n		<button type=\"submit\" class=\"button\" name=\"addTravelerId\">Add Traveler Id</button>\r\n	</form>\r\n	<table data-ui=\"travelerIdListTable\" class=\"table is-striped\">\r\n		<thead>\r\n			<tr>\r\n				<th>Traveler Id</th>\r\n				<th></th>\r\n			</tr>\r\n		</thead>\r\n		<tbody></tbody>\r\n	</table>\r\n</div>\r\n<div class=\"box\">\r\n	<h3 class=\"title is-3\">Part Counts</h3>\r\n	<button class=\"button\" name=\"addPartAudit\">Add Part Count</button>\r\n	<table data-ui=\"partListTable\" class=\"table is-striped\">\r\n		<thead>\r\n			<tr>\r\n				<th>Part</th>\r\n				<th>Count</th>\r\n				<th colspan=\"2\"></th>\r\n			</tr>\r\n		</thead>\r\n		<tbody></tbody>\r\n	</table>\r\n</div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      return "is-active";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/tid", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/tid\">TravlerId Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_edit", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/inventory_tid_edit\">Traveler Id Edit Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_movement", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/inventory_tid_movement\">Traveler Id Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/bin_part_count", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/bin_part_count\">Part Actions</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_adjustment", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/inventory_part_adjustment\">Part Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_part_movement", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/inventory_part_movement\">Part Movement Logs</a></li>\r\n</ul>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h2 class=\"title is-2\">Inventory Actions</h2>\r\n<div class=\"tabs\" id=\"inventory-tabs\"></div>\r\n<div id=\"inventory-content\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.forBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Old Count</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(((helper = (helper = helpers.oldCount || (depth0 != null ? depth0.oldCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "oldCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\r\n	</p>\r\n	<label class=\"label\">New Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"newCount\" type=\"number\" placeholder=\"Enter New Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentAddActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<form>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"forBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"newCount\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>For Bin</th>\r\n			<th>Performed At</th>\r\n			<th>Part</th>\r\n			<th>Old Count</th>\r\n			<th>New Count</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.firstName : stack1), depth0)) + " " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.lastName : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.forBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.performedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.oldCount || (depth0 != null ? depth0.oldCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "oldCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.newCount || (depth0 != null ? depth0.newCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "newCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartAuditItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.userCount || (depth0 != null ? depth0.userCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "userCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td><button class=\"button\" name=\"edit\">Edit</button></td>\r\n<td><button class=\"button is-danger\" name=\"delete\">Delete</button></td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartAuditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "  				<option value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.id : stack1), depth0)) + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</option>\r\n";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "				<option>Select a part...</option>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<form>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.part : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"userCount\" type=\"number\" placeholder=\"Enter Count\" value=\"" + container.escapeExpression(((helper = (helper = helpers.userCount || (depth0 != null ? depth0.userCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "userCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartMovementFromActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<form>\r\n	<label class=\"label\">From Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.fromBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</p>\r\n	<label class=\"label\">To Bin</label>\r\n	<p class=\"control\">\r\n		<select name=\"toBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>From Bin</th>\r\n			<th>To Bin</th>\r\n			<th>Moved At</th>\r\n			<th>Part</th>\r\n			<th>Count</th>\r\n			<th>Tags</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartMovementRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.firstName : stack1), depth0)) + " " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.lastName : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.fromBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.toBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.movedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "count",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression((helpers.join || (depth0 && depth0.join) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.tags : depth0), {
+        "name": "join",
+        "hash": {},
+        "data": data
+      })) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryPartMovementToActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<form>\r\n	<label class=\"label\">From Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"fromBin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">To Bin</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.toBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdAddActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<form>\r\n	<label class=\"label\">Inbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"inboundOrder\">\r\n  			<option>Select a Inbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Count</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"count\" type=\"number\" placeholder=\"Enter Count\">\r\n	</p>\r\n	<label class=\"label\">Serials(<span data-ui=\"serialCount\"></span>)</label>\r\n	<small>Optional</small>\r\n	<p class=\"control\">\r\n		<textarea name=\"serials\"></textarea>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdAuditItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.travelerId : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td><button class=\"button is-danger\" name=\"remove\">Remove</button></td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Traveler Id</th>\r\n			<th>Old Attributes</th>\r\n			<th>New Attributes</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "		<strong>" + container.escapeExpression(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "key",
+        "hash": {},
+        "data": data
+      }) : helper))) + ":</strong> " + container.escapeExpression(container.lambda(depth0, depth0)) + "\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.firstName : stack1), depth0)) + " " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.lastName : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.editedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.travelerId : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.oldAttributes : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.newAttributes : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassEditActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "  				<option value=\"" + container.escapeExpression(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "key",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(container.lambda((depth0 != null ? depth0.title : depth0), depth0)) + "</option>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<form>\r\n	<label class=\"label\">Update Attribute</label>\r\n	<p class=\"control\">\r\n		<select name=\"updateAttribute\">\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.updateableAttributes : depth0), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "  		</select>\r\n	</p>\r\n	<label class=\"label\">Update Type</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"updateType\" value=\"single\" />\r\n	    	Single Value\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"updateType\" value=\"multiple\" />\r\n		    Multiple Values\r\n		</label>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"controlLabel\"></label>\r\n	<p class=\"control\" data-ui=\"controlContainer\"></p>\r\n	<label class=\"label\" data-ui=\"countLabel\">Update " + container.escapeExpression(((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "selectedCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + " Traveler Ids</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<form>\r\n	<label class=\"label\">Mode</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"mode\" value=\"add\" />\r\n	    	Add\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"remove\" />\r\n		    Remove\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"replace\" />\r\n		    Replace\r\n		</label>\r\n	</p>\r\n	<label class=\"label\">Traveler Ids(<span data-ui=\"count\"></span>)</label>\r\n	<p class=\"control\">\r\n		<textarea rows=\"10\" name=\"travelerIds\"></textarea>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"countLabel\">" + container.escapeExpression(((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "selectedCount",
+        "hash": {},
+        "data": data
+      }) : helper))) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Traveler Id</th>\r\n			<th>From Bin</th>\r\n			<th>To Bin</th>\r\n			<th>Tags</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.firstName : stack1), depth0)) + " " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.byUser : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.lastName : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || (depth0 && depth0.moment) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.movedAt : depth0), {
+        "name": "moment",
+        "hash": {},
+        "data": data
+      })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.travelerId : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.fromBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.toBin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.join || (depth0 && depth0.join) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.tags : depth0), {
+        "name": "join",
+        "hash": {},
+        "data": data
+      })) + "</td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<button name=\"add\" class=\"button\">Add Inventory</button>\r\n<button name=\"massEdit\" class=\"button\">Mass Edit Inventory</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Inventory</button>\r\n<div data-region=\"list\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/travelerIdEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var helper;
+      return "<h3 class=\"title is-3\">Traveler Id #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Inbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"inboundOrder\">\r\n			<option>Select a Inbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Outbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"outboundOrder\">\r\n  			<option>Select a Outbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Label</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"label\" type=\"text\" placeholder=\"Enter Label\" />\r\n	</p>\r\n	<label class=\"label\">Serial</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"serial\" type=\"text\" placeholder=\"Enter Serial\" />\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Part</label>\r\n	<p class=\"control\">\r\n  		<select name=\"part\">\r\n  			<option>Select a part...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Cost</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"cost\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Cost\" />\r\n	</p>\r\n	<label class=\"label\">Revenue</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"revenue\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Cost\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Label</th>\r\n			<th>Serial</th>\r\n			<th>Inbound Order</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>Type</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		Part: " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.serial || (depth0 != null ? depth0.serial : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "serial",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.inboundOrder : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.outboundOrder : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.bin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.part : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n<td><input type=\"checkbox\" name=\"isSelected\" /></td>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("github:davis/plugin-hbs@get-canonical-name.json", [], false, function() {
   return {
     "main": "hbs.js"
   };
@@ -23648,21 +24684,22 @@ var define = System.amdDefine;
 ;
 
 })();
-System.register("lib/inventory/views/travelerIdView.hbs!github:belackriv/plugin-hbs@jspm-.17/hbs.js", ["handlebars/handlebars.runtime"], function (_export, _context) {
-    "use strict";
-
-    var hbr;
-    return {
-        setters: [function (_handlebarsHandlebarsRuntime) {
-            hbr = _handlebarsHandlebarsRuntime.default;
-        }],
-        execute: function () {
-            _export("default", hbr.template({ "compiler": [7, ">= 4.0.0"], "main": function main(container, depth0, helpers, partials, data) {
-                    return "<div data-region=\"content\"></div>";
-                }, "useData": true }));
-        }
-    };
+System.registerDynamic("lib/inventory/views/travelerIdView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<div data-region=\"content\"></div>";
+    },
+    "useData": true
+  });
+  return module.exports;
 });
+
 System.registerDynamic("npm:underscore@1.8.3.json", [], false, function() {
   return {
     "main": "underscore.js",

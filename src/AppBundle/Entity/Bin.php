@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation As JMS;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\BinRepository")
  * @ORM\Table()
  */
 Class Bin
@@ -62,6 +62,25 @@ Class Bin
 	public function setDescription($description)
 	{
 		$this->description = $description;
+		return $this;
+	}
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Department")
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Type("AppBundle\Entity\Department")
+	 */
+
+	protected $department = null;
+
+	public function getDepartment()
+	{
+		return $this->department;
+	}
+
+	public function setDepartment(Department $department)
+	{
+		$this->department = $department;
 		return $this;
 	}
 

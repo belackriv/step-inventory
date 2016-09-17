@@ -80,6 +80,15 @@ Handlebars.registerHelper('translate', function(term, dict, options) {
   return dict[term];
 });
 
+Handlebars.registerHelper('join', function(array, seperator, options) {
+  if(typeof array === 'object' && array && array.join){
+    seperator = (typeof seperator==='string')?seperator:',';
+    return array.join(seperator);
+  }else{
+    return '';
+  }
+});
+
 Handlebars.registerHelper('return', function(fn, context) {
   let args = Array.from(arguments);
   args = args.slice(2);

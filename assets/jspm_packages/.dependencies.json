@@ -62,10 +62,6 @@
     "deps": {},
     "peerDeps": {}
   },
-  "github:belackriv/plugin-hbs@jspm-.17": {
-    "deps": {},
-    "peerDeps": {}
-  },
   "github:VitalStorm/Backbone-relational@master": {
     "deps": {},
     "peerDeps": {}
@@ -86,10 +82,6 @@
     "deps": {},
     "peerDeps": {}
   },
-  "github:components/handlebars.js@4.0.5": {
-    "deps": {},
-    "peerDeps": {}
-  },
   "github:jspm/nodelibs-process@0.2.0-alpha": {
     "deps": {},
     "peerDeps": {}
@@ -99,6 +91,16 @@
     "peerDeps": {}
   },
   "github:marionettejs/backbone.radio@1.0.4": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:davis/plugin-hbs@get-canonical-name": {
+    "deps": {
+      "handlebars": "github:components/handlebars.js@^4.0.5"
+    },
+    "peerDeps": {}
+  },
+  "github:components/handlebars.js@4.0.5": {
     "deps": {},
     "peerDeps": {}
   }

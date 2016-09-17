@@ -36,7 +36,7 @@ SystemJS.config({
     "bulma": "npm:bulma@0.1.2",
     "css": "github:systemjs/plugin-css@0.1.21",
     "handlebars": "github:components/handlebars.js@4.0.5",
-    "hbs": "github:belackriv/plugin-hbs@jspm-.17",
+    "hbs": "github:davis/plugin-hbs@get-canonical-name",
     "jquery": "npm:jquery@3.1.0",
     "jquery-datetimepicker": "github:xdan/datetimepicker@2.4.5",
     "jquery-ui": "github:components/jqueryui@1.12.0",
@@ -74,6 +74,11 @@ SystemJS.config({
     "npm:moment-timezone@0.5.4": {
       "map": {
         "moment": "npm:moment@2.13.0"
+      }
+    },
+    "github:davis/plugin-hbs@get-canonical-name": {
+      "map": {
+        "handlebars": "github:components/handlebars.js@4.0.5"
       }
     }
   }

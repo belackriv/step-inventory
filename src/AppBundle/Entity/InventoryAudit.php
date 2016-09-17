@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation As JMS;
 
 /**
@@ -100,12 +101,37 @@ Class InventoryAudit
 		return $this;
 	}
 
-	public function end()
+	public function end(Bin $deviationBin)
 	{
 		$totalDeviations = 0;
-		$serialCountDeviations = 0;
-		$serialMatchDeviations = 0;
+		$travelerIdCountDeviations = 0;
+		$travelerIdMatchDeviations = 0;
 		$partCountDeviations = 0;
+
+		$inventoryMovements = [];
+		$scannedTravelerIds = [];
+
+		$travelerIdCountDeviations = abs($this->inventoryTravelerIdAudits->count() - $this->getForBin()->getTravelerIds()->count());
+
+		foreach($this->inventoryTravelerIdAudits as $travelerIdAudit){
+			$travelerId = $travelerIdAudit->getTravelerId();
+			$scannedTravelerIds[] = $travelerId;
+			if($travelerId->getBin() !== $this->getForBin()){
+				$travelerIdMatchDeviations++;
+				$inventoryMovements[] = $this->createTravelerIdMovementIntoForBin($travelerId);
+				$travelerId->setBin($this->getForBin());
+			}
+		}
+
+		foreach($this->getForBin()->getTravelerIds() as $travelerId){
+			if(!in_array($travelerId, $scannedTravelerIds)){
+				$travelerIdMatchDeviations++;
+				$inventoryMovements[] = $this->createTravelerIdMovementIntoDeviation($travelerId, $deviationBin);
+				$travelerId->setBin($deviationBin);
+			}
+		}
+
+		$totalDeviations = $travelerIdCountDeviations + $travelerIdMatchDeviations;
 
 		foreach($this->inventoryPartAudits as $partAudit){
 			$totalDeviations += abs($partAudit->getUserCount() - $partAudit->getSystemCount());
@@ -114,6 +140,32 @@ Class InventoryAudit
 
 		$this->setPartCountDeviations($partCountDeviations);
 		$this->setTotalDeviations($totalDeviations);
+
+		return $inventoryMovements;
+	}
+
+	public function createTravelerIdMovementIntoForBin(TravelerId $travelerId)
+	{
+		$move = new InventoryTravelerIdMovement();
+        $move->setTravelerId($travelerId);
+        $move->setByUser($this->getByUser());
+        $move->setMovedAt(new \DateTime());
+        $move->setFromBin($travelerId->getBin());
+        $move->setToBin($this->getForBin());
+        $move->addTag('audit');
+		return $move;
+	}
+
+	public function createTravelerIdMovementIntoDeviation(TravelerId $travelerId, Bin $deviationBin)
+	{
+		$move = new InventoryTravelerIdMovement();
+        $move->setTravelerId($travelerId);
+        $move->setByUser($this->getByUser());
+        $move->setMovedAt(new \DateTime());
+        $move->setFromBin($this->getForBin());
+        $move->setToBin($deviationBin);
+        $move->addTag('audit');
+		return $move;
 	}
 
 	/**
@@ -139,16 +191,16 @@ Class InventoryAudit
 	 * @JMS\Type("integer")
 	 */
 
-	protected $serialCountDeviations = null;
+	protected $travelerIdCountDeviations = null;
 
-	public function getSerialCountDeviations()
+	public function getTravelerIdCountDeviations()
 	{
-		return $this->serialCountDeviations;
+		return $this->travelerIdCountDeviations;
 	}
 
-	public function setSerialCountDeviations($serialCountDeviations)
+	public function setTravelerIdCountDeviations($travelerIdCountDeviations)
 	{
-		$this->serialCountDeviations = $serialCountDeviations;
+		$this->travelerIdCountDeviations = $travelerIdCountDeviations;
 		return $this;
 	}
 
@@ -157,16 +209,16 @@ Class InventoryAudit
 	 * @JMS\Type("integer")
 	 */
 
-	protected $serialMatchDeviations = null;
+	protected $travelerIdMatchDeviations = null;
 
-	public function getSerialMatchDeviations()
+	public function getTravelerIdMatchDeviations()
 	{
-		return $this->serialMatchDeviations;
+		return $this->travelerIdMatchDeviations;
 	}
 
-	public function setSerialMatchDeviations($serialMatchDeviations)
+	public function setTravelerIdMatchDeviations($travelerIdMatchDeviations)
 	{
-		$this->serialMatchDeviations = $serialMatchDeviations;
+		$this->travelerIdMatchDeviations = $travelerIdMatchDeviations;
 		return $this;
 	}
 
@@ -188,6 +240,51 @@ Class InventoryAudit
 		return $this;
 	}
 
+	/**
+     * @ORM\OneToMany(targetEntity="InventoryTravelerIdAudit", mappedBy="inventoryAudit")
+     * @ORM\OrderBy({"id" = "ASC"})
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventoryTravelerIdAudit>")
+     */
+    protected $inventoryTravelerIdAudits;
+
+    public function getInventoryTravelerIdAudits()
+    {
+    	return $this->inventoryTravelerIdAudits;
+    }
+
+    /**
+     * Add inventoryTravelerIdAudit
+     *
+     * @param \AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit
+     * @return InventoryAudit
+     */
+    public function addInventoryTravelerIdAudit(\AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit)
+    {
+        if (!$this->inventoryTravelerIdAudits->contains($inventoryTravelerIdAudit)) {
+            $this->inventoryTravelerIdAudits->add($inventoryTravelerIdAudit);
+        }
+        if($inventoryTravelerIdAudit->getInventoryAudit() != $this){
+            $inventoryTravelerIdAudit->setInventoryAudit($this);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove inventoryTravelerIdAudit
+     *
+     * @param \AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit
+     * @return InventoryAudit
+     */
+    public function removeInventoryTravelerIdAudit(InventoryTravelerIdAudit $inventoryTravelerIdAudit)
+    {
+         if ($this->inventoryTravelerIdAudits->contains($inventoryTravelerIdAudit)) {
+            $this->inventoryTravelerIdAudits->removeElement($inventoryTravelerIdAudit);
+        }
+        if($inventoryTravelerIdAudit->getInventoryAudit() !== null){
+        	$inventoryTravelerIdAudit->setInventoryAudit(null);
+        }
+        return $this;
+    }
 
 	/**
      * @ORM\OneToMany(targetEntity="InventoryPartAudit", mappedBy="inventoryAudit")
@@ -236,6 +333,7 @@ Class InventoryAudit
     }
 
     public function __construct() {
+    	$this->inventoryTravelerIdAudits = new ArrayCollection();
         $this->inventoryPartAudits = new ArrayCollection();
     }
 

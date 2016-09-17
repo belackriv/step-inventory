@@ -45,6 +45,9 @@ export default Marionette.Object.extend({
     this.myself = new MyselfModel();
     this.myself.fetch();
     Radio.channel('data').reply('myself', this.getMyself.bind(this));
+    setInterval(()=>{
+      this.myself.fetch();
+    }, 60000);
   },
   getMyself(){
     return this.myself;

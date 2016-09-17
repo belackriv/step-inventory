@@ -14,7 +14,6 @@ let Model = BaseUrlBaseModel.extend({
     isAllowedToSwitch: null,
     name: null,
     role: null,
-    roleHierarchy: null,
   }
 });
 

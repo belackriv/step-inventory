@@ -6,6 +6,8 @@ import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
 import viewTpl from  "./adminBinsEditView.hbs!";
+import OfficeCollection from 'lib/common/models/officeCollection.js';
+import DepartmentCollection from 'lib/common/models/departmentCollection.js';
 import PartCategoryCollection from 'lib/inventory/models/partCategoryCollection.js';
 import BinTypeCollection from 'lib/inventory/models/binTypeCollection.js';
 import BinCollection from 'lib/inventory/models/binCollection.js';
@@ -24,6 +26,7 @@ export default Marionette.View.extend({
     'nameInput': 'input[name="name"]',
     'descriptionInput': 'textarea[name="description"]',
     'isActiveInput': 'input[name="isActive"]',
+    'departmentSelect': 'select[name="department"]',
     'partCategorySelect': 'select[name="partCategory"]',
     'binTypeSelect': 'select[name="binType"]',
     'parentSelect': 'select[name="parent"]',
@@ -37,6 +40,28 @@ export default Marionette.View.extend({
     '@ui.partAltIdInput': 'partAltId',
     '@ui.descriptionInput': 'description',
     '@ui.isActiveInput': 'isActive',
+    '@ui.departmentSelect': {
+      observe: 'department',
+      useBackboneModels: true,
+      selectOptions:{
+        labelPath: 'attributes.name',
+        collection(){
+          let collection = Radio.channel('data').request('collection', DepartmentCollection, {doFetch: false});
+          let officeCollection = Radio.channel('data').request('collection', OfficeCollection, {doFetch: false});
+          this.listenTo(officeCollection, 'add', (office)=>{
+            collection.add(office.get('departments').models);
+          });
+          officeCollection.each((office)=>{
+            collection.add(office.get('departments').models);
+          });
+          return collection;
+        },
+        defaultOption: {
+          label: 'Choose one...',
+          value: null
+        }
+      }
+    },
     '@ui.partCategorySelect': {
       observe: 'partCategory',
       useBackboneModels: true,
@@ -62,7 +87,7 @@ export default Marionette.View.extend({
           return collection;
         },
         defaultOption: {
-          label: 'Choose one or none...',
+          label: 'Choose one...',
           value: null
         }
       }
@@ -77,7 +102,7 @@ export default Marionette.View.extend({
           return collection;
         },
         defaultOption: {
-          label: 'Choose one...',
+          label: 'Choose one or none...',
           value: null
         }
       }

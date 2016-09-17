@@ -40,6 +40,7 @@ let Model = BaseUrlBaseModel.extend({
     toBin: null,
     movedAt: null,
     travelerId: null,
+    tags: null,
   },
 
 });

@@ -41,6 +41,7 @@ let Model = BaseUrlBaseModel.extend({
     movedAt: null,
     part: null,
     count: null,
+    tags: null,
   },
 
 });

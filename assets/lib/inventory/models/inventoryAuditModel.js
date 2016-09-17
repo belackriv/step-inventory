@@ -25,6 +25,15 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
   },{
     type: Backbone.HasMany,
+    key: 'inventoryTravelerIdAudits',
+    relatedModel: 'InventoryTravelerIdAuditModel',
+    includeInJSON: ['id'],
+    reverseRelation:{
+      key: 'inventoryAudit',
+      includeInJSON: ['id'],
+    }
+  },{
+    type: Backbone.HasMany,
     key: 'inventoryPartAudits',
     relatedModel: 'InventoryPartAuditModel',
     includeInJSON: ['id'],
@@ -39,9 +48,10 @@ let Model = BaseUrlBaseModel.extend({
     startedAt: null,
     endedAt: null,
     totalDeviations: null,
-    serialCountDeviations: null,
-    serialMatchDeviations: null,
+    travelerIdCountDeviations: null,
+    travelerIdMatchDeviations: null,
     partCountDeviations: null,
+    inventoryTravelerIdAudits: null,
     inventoryPartAudits: null,
   },
 

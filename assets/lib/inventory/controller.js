@@ -147,7 +147,7 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: inventoryPartMovementListTableLayoutTpl,
       entityRowTpl: inventoryPartMovementRowTpl,
-      colspan: 6,
+      colspan: 7,
     });
 
     this.buildViewStack([

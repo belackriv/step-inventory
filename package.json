@@ -27,6 +27,7 @@
       "bulma": "npm:bulma@^0.1.2",
       "css": "github:systemjs/plugin-css@^0.1.19",
       "handlebars": "github:components/handlebars.js@^4.0.3",
+      "hbs": "github:davis/plugin-hbs@get-canonical-name",
       "jquery": "npm:jquery@^3.1.0",
       "jquery-datetimepicker": "github:xdan/datetimepicker@2.4.5",
       "jquery-ui": "github:components/jqueryui@^1.12.0",
@@ -36,8 +37,7 @@
       "moment-timezone": "npm:moment-timezone@^0.5.0",
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.13",
       "select2": "github:select2/select2@^4.0.3",
-      "underscore": "npm:underscore@^1.8.3",
-      "hbs": "github:belackriv/plugin-hbs@jspm-.17"
+      "underscore": "npm:underscore@^1.8.3"
     },
     "devDependencies": {},
     "peerDependencies": {

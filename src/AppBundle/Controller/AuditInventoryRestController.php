@@ -101,10 +101,21 @@ class AuditInventoryRestController extends FOSRestController
         if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryAudit)){
             $em = $this->getDoctrine()->getManager();
             $em->merge($inventoryAudit);
+            $inventoryMovements = [];
             if($inventoryAudit->getEndedAt()){
-                $inventoryAudit->end();
+                $deviationBin = $this->getDoctrine()->getRepository('AppBundle:Bin')->findDeviationBin($inventoryAudit->getForBin());
+                if(!$deviationBin){
+                    throw new HttpException(Response::HTTP_CONFLICT, 'The Required Deviation Bin Was Not Found!' );
+                }
+                $inventoryMovements = $inventoryAudit->end($deviationBin);
+                foreach($inventoryMovements as $movement){
+                    $em->persist($movement);
+                }
             }
             $em->flush();
+            foreach($inventoryMovements as $movement){
+                $this->updateAclByRoles($movement, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
             return $inventoryAudit;
         }else{
             throw $this->createAccessDeniedException();
@@ -193,6 +204,52 @@ class AuditInventoryRestController extends FOSRestController
             $em->remove($inventoryPartAudit);
             $em->flush();
             return $inventoryPartAudit;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Post("/inventory_tid_audit")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("inventoryTravelerIdAudit", converter="fos_rest.request_body")
+     */
+    public function createInventoryTravelerIdAuditAction(\AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryTravelerIdAudit)){
+            $travelerId = $binTravelerIdCount = $this->getDoctrine()->getRepository('AppBundle:TravelerId')
+                ->findOneBy(['label' => $inventoryTravelerIdAudit->getTravelerIdLabel()]);
+
+            $inventoryTravelerIdAudit->setTravelerId($travelerId);
+
+            try{
+                $inventoryTravelerIdAudit->isValid($this->getUser());
+            }catch(\Exception $e){
+                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inventoryTravelerIdAudit);
+            $em->flush();
+
+            $this->updateAclByRoles($inventoryTravelerIdAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventoryTravelerIdAudit;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/inventory_tid_audit/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteInventoryTravelerIdAuditAction(\AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit)
+    {
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $inventoryTravelerIdAudit)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($inventoryTravelerIdAudit);
+            $em->flush();
+            return $inventoryTravelerIdAudit;
         }else{
             throw $this->createAccessDeniedException();
         }

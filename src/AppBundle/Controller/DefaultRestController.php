@@ -393,6 +393,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/myself")
+     * @Rest\Get("/myself/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "GetMyself"})
      */
     public function getMyself(Request $request)
@@ -453,6 +454,7 @@ class DefaultRestController extends FOSRestController
         $authorizationChecker = $this->get('security.authorization_checker');
         foreach($items as $item){
             if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $item->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
                 $itemlist[] = $item;
             }
         }
@@ -467,6 +469,7 @@ class DefaultRestController extends FOSRestController
     public function getUserAction(\AppBundle\Entity\User $user)
     {
         if($this->get('security.authorization_checker')->isGranted('VIEW', $user)){
+            $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
             return $user;
         }else{
             throw $this->createNotFoundException('User #'.$user->getId().' Not Found');
@@ -492,6 +495,8 @@ class DefaultRestController extends FOSRestController
                 $userRole->setUser($user);
                 $em->persist($userRole);
             }
+
+            $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
             $em->flush();
             $this->updateAclByRoles($user, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
             foreach($user->getUserRoles() as $userRole){
@@ -525,6 +530,8 @@ class DefaultRestController extends FOSRestController
                 $userRole->setUser($user);
                 $em->persist($userRole);
             }
+
+            $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
             $em->flush();
             return $user;
         }else{
