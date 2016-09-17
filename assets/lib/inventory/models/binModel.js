@@ -17,7 +17,7 @@ let Model = BaseUrlBaseModel.extend({
   relations: [{
     type: Backbone.HasOne,
     key: 'department',
-    relatedModel: 'BinModel',
+    relatedModel: 'DepartmentModel',
     includeInJSON: ['id'],
   },{
     type: Backbone.HasOne,

@@ -25,7 +25,7 @@ class AccountingRestController extends FOSRestController
     /**
      * @Rest\Get("/client")
      * @Rest\Get("/admin_accounting")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listClientAction(Request $request)
     {
@@ -143,7 +143,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/customer")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listCustomerAction(Request $request)
     {
@@ -261,7 +261,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/inbound_order")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listInboundOrderAction(Request $request)
     {
@@ -383,7 +383,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/outbound_order")
-     * @Rest\View(template=":default:list_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listOutboundOrderAction(Request $request)
     {

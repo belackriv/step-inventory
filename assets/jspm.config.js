@@ -85,6 +85,11 @@ SystemJS.config({
       "map": {
         "handlebars": "github:components/handlebars.js@4.0.5"
       }
+    },
+    "npm:jsbarcode@3.3.23": {
+      "map": {
+        "jquery": "npm:jquery@3.1.0"
+      }
     }
   }
 });

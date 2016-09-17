@@ -30,7 +30,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.name',
         collection(){
-          let collection = Radio.channel('data').request('collection', ClientCollection);
+          let collection = Radio.channel('data').request('collection', ClientCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {

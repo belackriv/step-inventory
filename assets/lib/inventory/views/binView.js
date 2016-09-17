@@ -35,10 +35,18 @@ export default Marionette.View.extend({
   },
   onRender(){
     this.ui.barcode.each((idx, elem)=>{
-      jquery(elem).JsBarcode(elem.getAttribute('jsbarcode-value'), {
+      JsBarcode(elem, elem.getAttribute('jsbarcode-value'), {
         height:20
       });
     });
+  },
+  onAttach(){
+    this.resizeTopLabels();
+  },
+  onDomRefresh(){
+    this.resizeTopLabels();
+  },
+  resizeTopLabels(){
     this.ui.topLabel.each((idx, elem)=>{
       let width = jquery(elem).siblings('svg').first().width();
       jquery(elem).width(width);

@@ -40,7 +40,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.name',
         collection(){
-          let collection = Radio.channel('data').request('collection', PartCategoryCollection);
+          let collection = Radio.channel('data').request('collection', PartCategoryCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {
@@ -55,7 +55,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.name',
         collection() {
-          let collection = Radio.channel('data').request('collection', PartGroupCollection);
+          let collection = Radio.channel('data').request('collection', PartGroupCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {

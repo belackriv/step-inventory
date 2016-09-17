@@ -26,7 +26,7 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $inventoryLink = new MenuLink();
         $inventoryLink->setName('Inventory');
         $inventoryLink->setUrl('/inventory');
-        $inventoryLink->setRouteMatches(['bin_part_count','inventory_part_adjustment','inventory_part_movement']);
+        $inventoryLink->setRouteMatches(['tid','show/bin','inventory_tid_edit','inventory_tid_movement','bin_part_count','inventory_part_adjustment','inventory_part_movement']);
         $manager->persist($inventoryLink);
 
         $inventoryAuditLink = new MenuLink();

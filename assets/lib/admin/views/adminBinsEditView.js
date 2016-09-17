@@ -68,7 +68,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.name',
         collection(){
-          let collection = Radio.channel('data').request('collection', PartCategoryCollection);
+          let collection = Radio.channel('data').request('collection', PartCategoryCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {
@@ -83,7 +83,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.name',
         collection() {
-          let collection = Radio.channel('data').request('collection', BinTypeCollection);
+          let collection = Radio.channel('data').request('collection', BinTypeCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {
@@ -98,7 +98,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.name',
         collection(){
-          let collection = Radio.channel('data').request('collection', BinCollection);
+          let collection = Radio.channel('data').request('collection', BinCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {
