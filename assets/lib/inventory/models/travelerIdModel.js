@@ -38,6 +38,10 @@ let Model = BaseUrlBaseModel.extend({
     key: 'bin',
     relatedModel: 'BinModel',
     includeInJSON: ['id'],
+    reverseRelation: {
+      key: 'travelerIds',
+      includeInJSON: ['id'],
+    }
   },{
     type: Backbone.HasOne,
     key: 'part',

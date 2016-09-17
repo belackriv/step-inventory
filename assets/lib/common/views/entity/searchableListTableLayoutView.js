@@ -25,14 +25,17 @@ export default Marionette.View.extend({
     },
   },
   ui:{
-    'button': 'button'
+    'button': 'button',
+    'link': 'a[data-ui-link]',
   },
   events: {
-    'click @ui.button': 'triggerButtonClick'
+    'click @ui.button': 'triggerButtonClick',
+    'click @ui.link': 'triggerLinkClick'
   },
   childViewEvents: {
     'select:model': 'selectModel',
-    'button:click': 'triggerChildButtonClick'
+    'button:click': 'triggerChildButtonClick',
+    'link:click': 'triggerChildLinkClick'
   },
   onRender(){
     this.showChildView('tbody', new SearchableListTableView({
@@ -48,15 +51,30 @@ export default Marionette.View.extend({
   },
   triggerButtonClick(event){
     event.preventDefault();
+    event.stopPropagation();
     this.triggerMethod('button:click', this, {
       model: this.model,
       button: event.target
+    });
+  },
+  triggerLinkClick(event){
+    event.preventDefault();
+    event.stopPropagation();
+    this.triggerMethod('link:click', this, {
+      model: this.model,
+      link: event.target
     });
   },
   triggerChildButtonClick(childView, args){
     this.triggerMethod('button:click', childView, {
       model: childView.model,
       button: args.button
+    });
+  },
+  triggerChildLinkClick(childView, args){
+    this.triggerMethod('link:click', childView, {
+      model: childView.model,
+      link: args.link
     });
   },
 });

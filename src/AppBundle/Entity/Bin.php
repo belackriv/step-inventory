@@ -220,7 +220,7 @@ Class Bin
     /**
      * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="bin")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
-     * @JMS\Groups({"TravelerId"})
+     * @JMS\Groups({"TravelerId","Bin"})
      * @JMS\ReadOnly
      */
     protected $travelerIds;

@@ -41,6 +41,7 @@ export default Marionette.View.extend({
   ui:{
   	'entityLink': 'a.entity-link',
     'button': 'button',
+    'link': 'a[data-ui-link]',
     'isSelectedCheckbox': 'input[name="isSelected"]'
   },
   bindings: {
@@ -49,9 +50,9 @@ export default Marionette.View.extend({
   events: {
     'click': 'toggleSelected',
     'click @ui.entityLink': 'triggerSelectModel',
-    'click @ui.button': 'triggerButtonClick'
+    'click @ui.button': 'triggerButtonClick',
+    'click @ui.link': 'triggerLinkClick'
   },
-
   modelEvents: {
     'change' : 'render'
   },
@@ -78,6 +79,14 @@ export default Marionette.View.extend({
     this.triggerMethod('button:click', this, {
       model: this.model,
       button: event.target
+    });
+  },
+  triggerLinkClick(event){
+    event.preventDefault();
+    event.stopPropagation();
+    this.triggerMethod('link:click', this, {
+      model: this.model,
+      link: event.target
     });
   }
 });

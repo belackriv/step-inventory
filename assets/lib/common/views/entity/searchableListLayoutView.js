@@ -71,6 +71,12 @@ export default Marionette.View.extend({
       button: args.button
     });
   },
+  onChildviewLinkClick(childView, args){
+    this.triggerMethod('link:click', childView, {
+      model: childView.model,
+      link: args.link
+    });
+  },
   onDestroy(){
     this.collection.off(null, this.search, this);
   }

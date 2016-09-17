@@ -1,5 +1,7 @@
 'use strict';
 
+import bulmaSrc from 'bulma/css/bulma.css!text';
+import _ from 'underscore';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
@@ -11,6 +13,7 @@ export default Marionette.Application.extend({
   initialize(){
     this.router = new AppMainRouter();
     this.dataService = new AppDataService();
+    this.listenTo(Radio.channel('app'), 'print', this.print);
     this.listenTo(Radio.channel('app'), 'navigate', this.navigate);
     this.listenTo(Radio.channel('app'), 'request:started', this.requestStarted);
     this.listenTo(Radio.channel('app'), 'request:finished', this.requestFinished);
@@ -54,6 +57,25 @@ export default Marionette.Application.extend({
       Radio.channel('app').trigger('loading:hide');
     }
   },
+  print(html, options){
+    options = _.extend({
+      height: screen.height,
+      width: screen.width,
+      title: 'Print'
+    },options);
+    let printWindow = window.open('', 'print', 'height='+options.height+',width='+options.width);
+    printWindow.document.write('<html><head><title>'+options.title+'</title>');
+    printWindow.document.write('<style type="text/css">'+bulmaSrc+'</style>');
+    printWindow.document.write('</head><body >');
+    printWindow.document.write(html);
+    printWindow.document.write('</body></html>');
+
+    printWindow.document.close(); // necessary for IE >= 10
+    printWindow.focus(); // necessary for IE >= 10
+
+    printWindow.print();
+    printWindow.close();
+  }
 });
 
 

@@ -20982,7 +20982,7 @@ var define = System.amdDefine;
 }));
 
 })();
-System.registerDynamic("lib/admin/views/adminAccountingIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminAccountingIndexTabsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21043,7 +21043,7 @@ System.registerDynamic("lib/admin/views/adminAccountingIndexTabsView.hbs!github:
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminAccountingIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminAccountingIndexView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21059,7 +21059,7 @@ System.registerDynamic("lib/admin/views/adminAccountingIndexView.hbs!github:davi
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminBinTypesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminBinTypesEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21080,7 +21080,7 @@ System.registerDynamic("lib/admin/views/adminBinTypesEditView.hbs!github:davis/p
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminBinTypesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminBinTypesListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21096,7 +21096,7 @@ System.registerDynamic("lib/admin/views/adminBinTypesListTableLayoutTpl.hbs!gith
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminBinTypesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminBinTypesRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21142,7 +21142,7 @@ System.registerDynamic("lib/admin/views/adminBinTypesRowTpl.hbs!github:davis/plu
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminBinsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminBinsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21163,7 +21163,7 @@ System.registerDynamic("lib/admin/views/adminBinsEditView.hbs!github:davis/plugi
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminBinsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminBinsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21179,7 +21179,7 @@ System.registerDynamic("lib/admin/views/adminBinsListTableLayoutTpl.hbs!github:d
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminBinsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminBinsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21225,7 +21225,7 @@ System.registerDynamic("lib/admin/views/adminBinsRowTpl.hbs!github:davis/plugin-
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminClientsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminClientsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21246,7 +21246,7 @@ System.registerDynamic("lib/admin/views/adminClientsEditView.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminClientsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminClientsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21262,7 +21262,7 @@ System.registerDynamic("lib/admin/views/adminClientsListTableLayoutTpl.hbs!githu
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminClientsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminClientsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21291,7 +21291,7 @@ System.registerDynamic("lib/admin/views/adminClientsRowTpl.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminCustomersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminCustomersEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21312,7 +21312,7 @@ System.registerDynamic("lib/admin/views/adminCustomersEditView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminCustomersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminCustomersListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21328,7 +21328,7 @@ System.registerDynamic("lib/admin/views/adminCustomersListTableLayoutTpl.hbs!git
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminCustomersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminCustomersRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21357,7 +21357,7 @@ System.registerDynamic("lib/admin/views/adminCustomersRowTpl.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminDepartmentsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminDepartmentsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21378,7 +21378,7 @@ System.registerDynamic("lib/admin/views/adminDepartmentsEditView.hbs!github:davi
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminDepartmentsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminDepartmentsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21394,7 +21394,7 @@ System.registerDynamic("lib/admin/views/adminDepartmentsListTableLayoutTpl.hbs!g
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminDepartmentsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminDepartmentsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21428,7 +21428,7 @@ System.registerDynamic("lib/admin/views/adminDepartmentsRowTpl.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInboundOrdersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInboundOrdersEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21453,7 +21453,7 @@ System.registerDynamic("lib/admin/views/adminInboundOrdersEditView.hbs!github:da
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInboundOrdersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInboundOrdersListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21469,7 +21469,7 @@ System.registerDynamic("lib/admin/views/adminInboundOrdersListTableLayoutTpl.hbs
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21507,7 +21507,7 @@ System.registerDynamic("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:davi
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21589,7 +21589,7 @@ System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminIndexView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21605,7 +21605,7 @@ System.registerDynamic("lib/admin/views/adminIndexView.hbs!github:davis/plugin-h
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInventoryIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInventoryIndexTabsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21686,7 +21686,7 @@ System.registerDynamic("lib/admin/views/adminInventoryIndexTabsView.hbs!github:d
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInventoryIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInventoryIndexView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21702,7 +21702,7 @@ System.registerDynamic("lib/admin/views/adminInventoryIndexView.hbs!github:davis
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInventoryMovementRulesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInventoryMovementRulesEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21723,7 +21723,7 @@ System.registerDynamic("lib/admin/views/adminInventoryMovementRulesEditView.hbs!
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInventoryMovementRulesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInventoryMovementRulesListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21739,7 +21739,7 @@ System.registerDynamic("lib/admin/views/adminInventoryMovementRulesListTableLayo
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminInventoryMovementRulesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminInventoryMovementRulesRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21785,7 +21785,7 @@ System.registerDynamic("lib/admin/views/adminInventoryMovementRulesRowTpl.hbs!gi
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminMenuItemsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminMenuItemsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21806,7 +21806,7 @@ System.registerDynamic("lib/admin/views/adminMenuItemsEditView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminMenuItemsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminMenuItemsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21822,7 +21822,7 @@ System.registerDynamic("lib/admin/views/adminMenuItemsListTableLayoutTpl.hbs!git
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminMenuItemsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminMenuItemsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21866,7 +21866,7 @@ System.registerDynamic("lib/admin/views/adminMenuItemsRowTpl.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminMenuLinksEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminMenuLinksEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21887,7 +21887,7 @@ System.registerDynamic("lib/admin/views/adminMenuLinksEditView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminMenuLinksListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminMenuLinksListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21903,7 +21903,7 @@ System.registerDynamic("lib/admin/views/adminMenuLinksListTableLayoutTpl.hbs!git
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminMenuLinksRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminMenuLinksRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21956,7 +21956,7 @@ System.registerDynamic("lib/admin/views/adminMenuLinksRowTpl.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminOfficesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminOfficesEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21977,7 +21977,7 @@ System.registerDynamic("lib/admin/views/adminOfficesEditView.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminOfficesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminOfficesListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -21993,7 +21993,7 @@ System.registerDynamic("lib/admin/views/adminOfficesListTableLayoutTpl.hbs!githu
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22042,7 +22042,7 @@ System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminOutboundOrdersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminOutboundOrdersEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22067,7 +22067,7 @@ System.registerDynamic("lib/admin/views/adminOutboundOrdersEditView.hbs!github:d
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminOutboundOrdersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminOutboundOrdersListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22083,7 +22083,7 @@ System.registerDynamic("lib/admin/views/adminOutboundOrdersListTableLayoutTpl.hb
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22121,7 +22121,7 @@ System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:dav
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartCategoriesEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartCategoriesEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22142,7 +22142,7 @@ System.registerDynamic("lib/admin/views/adminPartCategoriesEditView.hbs!github:d
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartCategoriesListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartCategoriesListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22158,7 +22158,7 @@ System.registerDynamic("lib/admin/views/adminPartCategoriesListTableLayoutTpl.hb
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartCategoriesRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartCategoriesRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22200,7 +22200,7 @@ System.registerDynamic("lib/admin/views/adminPartCategoriesRowTpl.hbs!github:dav
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartGroupsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartGroupsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22221,7 +22221,7 @@ System.registerDynamic("lib/admin/views/adminPartGroupsEditView.hbs!github:davis
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartGroupsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartGroupsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22237,7 +22237,7 @@ System.registerDynamic("lib/admin/views/adminPartGroupsListTableLayoutTpl.hbs!gi
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartGroupsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartGroupsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22279,7 +22279,7 @@ System.registerDynamic("lib/admin/views/adminPartGroupsRowTpl.hbs!github:davis/p
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22300,7 +22300,7 @@ System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartsListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22316,7 +22316,7 @@ System.registerDynamic("lib/admin/views/adminPartsListTableLayoutTpl.hbs!github:
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminPartsRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminPartsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22370,7 +22370,7 @@ System.registerDynamic("lib/admin/views/adminPartsRowTpl.hbs!github:davis/plugin
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22401,7 +22401,7 @@ System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminUsersListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminUsersListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22417,7 +22417,7 @@ System.registerDynamic("lib/admin/views/adminUsersListTableLayoutTpl.hbs!github:
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/adminUsersRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/adminUsersRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22462,7 +22462,7 @@ System.registerDynamic("lib/admin/views/adminUsersRowTpl.hbs!github:davis/plugin
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/binItemViewTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/binItemViewTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22483,7 +22483,7 @@ System.registerDynamic("lib/admin/views/binItemViewTpl.hbs!github:davis/plugin-h
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/menuItemItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/menuItemItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22525,7 +22525,7 @@ System.registerDynamic("lib/admin/views/menuItemItemView.hbs!github:davis/plugin
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/routeMatchItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/routeMatchItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22546,7 +22546,7 @@ System.registerDynamic("lib/admin/views/routeMatchItemView.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/admin/views/userRoleItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/admin/views/userRoleItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22563,7 +22563,7 @@ System.registerDynamic("lib/admin/views/userRoleItemView.hbs!github:davis/plugin
   return module.exports;
 });
 
-System.registerDynamic("lib/appLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/appLayoutView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22579,7 +22579,7 @@ System.registerDynamic("lib/appLayoutView.hbs!github:davis/plugin-hbs@get-canoni
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/defaultView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/defaultView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22595,7 +22595,7 @@ System.registerDynamic("lib/common/views/defaultView.hbs!github:davis/plugin-hbs
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/entity/indexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/entity/indexView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22621,7 +22621,7 @@ System.registerDynamic("lib/common/views/entity/indexView.hbs!github:davis/plugi
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/entity/paginationWidgetView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/entity/paginationWidgetView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22694,7 +22694,7 @@ System.registerDynamic("lib/common/views/entity/paginationWidgetView.hbs!github:
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/entity/searchableListItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/entity/searchableListItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22755,7 +22755,7 @@ System.registerDynamic("lib/common/views/entity/searchableListItemView.hbs!githu
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/entity/searchableListLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/entity/searchableListLayoutView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22771,7 +22771,7 @@ System.registerDynamic("lib/common/views/entity/searchableListLayoutView.hbs!git
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/errorMessageView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/errorMessageView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22812,7 +22812,7 @@ System.registerDynamic("lib/common/views/errorMessageView.hbs!github:davis/plugi
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/loadingView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/loadingView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22828,7 +22828,7 @@ System.registerDynamic("lib/common/views/loadingView.hbs!github:davis/plugin-hbs
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/menuItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/menuItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22872,7 +22872,7 @@ System.registerDynamic("lib/common/views/menuItemView.hbs!github:davis/plugin-hb
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/menuLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/menuLayoutView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22888,7 +22888,7 @@ System.registerDynamic("lib/common/views/menuLayoutView.hbs!github:davis/plugin-
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/menuSelectionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/menuSelectionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22904,7 +22904,7 @@ System.registerDynamic("lib/common/views/menuSelectionView.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22925,7 +22925,7 @@ System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-h
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/noChildrenRowView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/noChildrenRowView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22946,7 +22946,7 @@ System.registerDynamic("lib/common/views/noChildrenRowView.hbs!github:davis/plug
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/noChildrenView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/noChildrenView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22962,7 +22962,7 @@ System.registerDynamic("lib/common/views/noChildrenView.hbs!github:davis/plugin-
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/propertyArrayListView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/propertyArrayListView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -22993,7 +22993,7 @@ System.registerDynamic("lib/common/views/propertyArrayListView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/common/views/userInfoView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/common/views/userInfoView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23026,7 +23026,7 @@ System.registerDynamic("lib/common/views/userInfoView.hbs!github:davis/plugin-hb
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/binPartCountListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/binPartCountListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23042,7 +23042,7 @@ System.registerDynamic("lib/inventory/views/binPartCountListTableLayoutTpl.hbs!g
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/binPartCountRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/binPartCountRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23064,7 +23064,7 @@ System.registerDynamic("lib/inventory/views/binPartCountRowTpl.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/binPartCountView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/binPartCountView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23080,7 +23080,75 @@ System.registerDynamic("lib/inventory/views/binPartCountView.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryAuditListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "					</p>\r\n					<svg jsbarcode-value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.label : stack1), depth0)) + "\"></svg>\r\n				</li>\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "							Part: " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+    },
+    "4": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "					</p>\r\n					<svg  jsbarcode-value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.label : stack1), depth0)) + "\"></svg>\r\n				</li>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<h3 class=\"title is-3\">Bin #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + " : " + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + ", Has " + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.travelerIds : depth0)) != null ? stack1.length : stack1), depth0)) + " Traveler Ids.</h3>\r\n	<div class=\"box\">\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["0"] : stack1), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["1"] : stack1), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["2"] : stack1), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(4, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-clearfix\"></div>\r\n	</div>\r\n</div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/inventory/views/inventoryAuditListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23096,7 +23164,7 @@ System.registerDynamic("lib/inventory/views/inventoryAuditListTableLayoutTpl.hbs
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryAuditListView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryAuditListView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23112,7 +23180,7 @@ System.registerDynamic("lib/inventory/views/inventoryAuditListView.hbs!github:da
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryAuditRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryAuditRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23168,7 +23236,7 @@ System.registerDynamic("lib/inventory/views/inventoryAuditRowTpl.hbs!github:davi
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryAuditSetupView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryAuditSetupView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23184,7 +23252,7 @@ System.registerDynamic("lib/inventory/views/inventoryAuditSetupView.hbs!github:d
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryAuditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryAuditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23205,7 +23273,7 @@ System.registerDynamic("lib/inventory/views/inventoryAuditView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryIndexTabsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryIndexTabsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23286,7 +23354,7 @@ System.registerDynamic("lib/inventory/views/inventoryIndexTabsView.hbs!github:da
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryIndexView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryIndexView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23302,7 +23370,7 @@ System.registerDynamic("lib/inventory/views/inventoryIndexView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23324,7 +23392,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentActionView.hb
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentAddActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentAddActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23340,7 +23408,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentAddActionView
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23356,7 +23424,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentListTableLayo
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23386,7 +23454,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartAdjustmentRowTpl.hbs!gi
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartAuditItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartAuditItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23408,7 +23476,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartAuditItemView.hbs!githu
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartAuditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartAuditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23443,7 +23511,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartAuditView.hbs!github:da
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartMovementFromActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartMovementFromActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23460,7 +23528,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartMovementFromActionView.
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23476,7 +23544,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartMovementListTableLayout
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartMovementRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartMovementRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23506,7 +23574,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartMovementRowTpl.hbs!gith
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryPartMovementToActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryPartMovementToActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23523,7 +23591,7 @@ System.registerDynamic("lib/inventory/views/inventoryPartMovementToActionView.hb
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdAddActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdAddActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23539,7 +23607,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdAddActionView.hbs
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdAuditItemView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdAuditItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23556,7 +23624,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdAuditItemView.hbs
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23572,7 +23640,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditListTableLayo
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23613,7 +23681,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdEditRowTpl.hbs!gi
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassEditActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassEditActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23649,7 +23717,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassEditActionVie
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActionView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23670,7 +23738,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActi
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23686,7 +23754,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementListTable
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23711,7 +23779,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMovementRowTpl.hb
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23727,7 +23795,7 @@ System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:dav
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/travelerIdEditView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/travelerIdEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23748,7 +23816,7 @@ System.registerDynamic("lib/inventory/views/travelerIdEditView.hbs!github:davis/
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23764,7 +23832,7 @@ System.registerDynamic("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!git
   return module.exports;
 });
 
-System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -23791,7 +23859,11 @@ System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/pl
         "name": "serial",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.inboundOrder : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.outboundOrder : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.bin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.part : depth0), {
+      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.inboundOrder : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.outboundOrder : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.label : stack1), depth0)) + "</td>\r\n<td><a data-ui-link=\"bin\" href=\"" + container.escapeExpression((helpers["return"] || (depth0 && depth0["return"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.bin : depth0)) != null ? stack1.url : stack1), (depth0 != null ? depth0.bin : depth0), {
+        "name": "return",
+        "hash": {},
+        "data": data
+      })) + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.bin : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></td>\r\n<td>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.part : depth0), {
         "name": "if",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -23804,7 +23876,7 @@ System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/pl
   return module.exports;
 });
 
-System.registerDynamic("github:davis/plugin-hbs@get-canonical-name.json", [], false, function() {
+System.registerDynamic("github:davis/plugin-hbs@1.2.3.json", [], false, function() {
   return {
     "main": "hbs.js"
   };
@@ -24684,7 +24756,7 @@ var define = System.amdDefine;
 ;
 
 })();
-System.registerDynamic("lib/inventory/views/travelerIdView.hbs!github:davis/plugin-hbs@get-canonical-name/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/travelerIdView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this || self,
@@ -34141,6 +34213,14 @@ System.registerDynamic("github:systemjs/plugin-css@0.1.21.json", [], false, func
   };
 });
 
+System.register("npm:bulma@0.1.2/css/bulma.css!github:systemjs/plugin-css@0.1.21/css.js", [], function() { return { setters: [], execute: function() {} } });
+
+System.registerDynamic("github:systemjs/plugin-text@0.0.9.json", [], false, function() {
+  return {
+    "main": "text"
+  };
+});
+
 System.registerDynamic("npm:bulma@0.1.2.json", [], false, function() {
   return {
     "main": "bulma.sass",
@@ -34153,7 +34233,2480 @@ System.registerDynamic("npm:bulma@0.1.2.json", [], false, function() {
   };
 });
 
-System.register("npm:bulma@0.1.2/css/bulma.css!github:systemjs/plugin-css@0.1.21/css.js", [], function() { return { setters: [], execute: function() {} } });
+System.register("npm:bulma@0.1.2/css/bulma.css!github:systemjs/plugin-text@0.0.9/text.js",[],function(_export,_context){"use strict";var __useDefault;return{setters:[],execute:function(){_export("__useDefault",__useDefault=true);_export("__useDefault",__useDefault);_export("default","html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font-weight: normal;\n  vertical-align: baseline;\n  background: transparent;\n}\n\narticle, aside, figure, footer, header, nav, section, details, summary {\n  display: block;\n}\n\nhtml {\n  box-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\nimg,\nobject,\nembed {\n  max-width: 100%;\n}\n\nhtml {\n  overflow-y: scroll;\n}\n\nul {\n  list-style: none;\n}\n\nblockquote, q {\n  quotes: none;\n}\n\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n  content: '';\n  content: none;\n}\n\na {\n  margin: 0;\n  padding: 0;\n  font-size: 100%;\n  vertical-align: baseline;\n  background: transparent;\n}\n\ndel {\n  text-decoration: line-through;\n}\n\nabbr[title], dfn[title] {\n  border-bottom: 1px dotted #000;\n  cursor: help;\n}\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\nth {\n  font-weight: bold;\n  vertical-align: bottom;\n}\n\ntd {\n  font-weight: normal;\n  vertical-align: top;\n}\n\nhr {\n  display: block;\n  height: 1px;\n  border: 0;\n  border-top: 1px solid #ccc;\n  margin: 1em 0;\n  padding: 0;\n}\n\ninput, select {\n  vertical-align: middle;\n}\n\npre {\n  white-space: pre;\n  white-space: pre-wrap;\n  white-space: pre-line;\n  word-wrap: break-word;\n}\n\ninput[type=\"radio\"] {\n  vertical-align: text-bottom;\n}\n\ninput[type=\"checkbox\"] {\n  vertical-align: bottom;\n}\n\nselect, input, textarea {\n  font: 99% sans-serif;\n}\n\ntable {\n  font-size: inherit;\n  font: 100%;\n}\n\nsmall {\n  font-size: 85%;\n}\n\nstrong {\n  font-weight: bold;\n}\n\ntd, td img {\n  vertical-align: top;\n}\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\npre, code, kbd, samp {\n  font-family: monospace, sans-serif;\n}\n\nlabel,\ninput[type=button],\ninput[type=submit],\ninput[type=file],\nbutton {\n  cursor: pointer;\n}\n\nbutton, input, select, textarea {\n  margin: 0;\n}\n\nbutton,\ninput[type=button] {\n  width: auto;\n  overflow: visible;\n}\n\n@-webkit-keyframes spin-around {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n  to {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n  }\n}\n\n@keyframes spin-around {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n  to {\n    -webkit-transform: rotate(359deg);\n            transform: rotate(359deg);\n  }\n}\n\nhtml {\n  background-color: #f5f7fa;\n  font-size: 14px;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  min-width: 300px;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  text-rendering: optimizeLegibility;\n}\n\narticle,\naside,\nfigure,\nfooter,\nheader,\nhgroup,\nsection {\n  display: block;\n}\n\nbody,\nbutton,\ninput,\nselect,\ntextarea {\n  font-family: \"Helvetica Neue\", \"Helvetica\", \"Arial\", sans-serif;\n}\n\ncode,\npre {\n  -moz-osx-font-smoothing: auto;\n  -webkit-font-smoothing: auto;\n  font-family: \"Source Code Pro\", \"Monaco\", \"Inconsolata\", monospace;\n  line-height: 1.25;\n}\n\nbody {\n  color: #69707a;\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.428571428571429;\n}\n\na {\n  color: #1fc8db;\n  cursor: pointer;\n  text-decoration: none;\n  -webkit-transition: none 86ms ease-out;\n  transition: none 86ms ease-out;\n}\n\na:hover {\n  color: #222324;\n}\n\ncode {\n  background-color: #f5f7fa;\n  color: #ed6c63;\n  font-size: 12px;\n  font-weight: normal;\n  padding: 1px 2px 2px;\n}\n\nhr {\n  border-top-color: #d3d6db;\n  margin: 40px 0;\n}\n\nimg {\n  max-width: 100%;\n}\n\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  vertical-align: baseline;\n}\n\nsmall {\n  font-size: 11px;\n}\n\nspan {\n  font-style: inherit;\n  font-weight: inherit;\n}\n\nstrong {\n  color: #222324;\n  font-weight: 700;\n}\n\npre {\n  background-color: #f5f7fa;\n  color: #69707a;\n  white-space: pre;\n  word-wrap: normal;\n}\n\npre code {\n  background-color: #f5f7fa;\n  color: #69707a;\n  display: block;\n  overflow-x: auto;\n  padding: 16px 20px;\n}\n\ntable {\n  width: 100%;\n}\n\ntable td,\ntable th {\n  text-align: left;\n  vertical-align: top;\n}\n\ntable th {\n  color: #222324;\n}\n\n.block:not(:last-child), .box:not(:last-child), .content:not(:last-child), .notification:not(:last-child), .progress:not(:last-child), .title:not(:last-child),\n.subtitle:not(:last-child), .highlight:not(:last-child), .level:not(:last-child), .message:not(:last-child), .tabs:not(:last-child) {\n  margin-bottom: 20px;\n}\n\n.container {\n  position: relative;\n}\n\n@media screen and (min-width: 980px) {\n  .container {\n    margin: 0 auto;\n    max-width: 960px;\n  }\n  .container.is-fluid {\n    margin: 0 20px;\n    max-width: none;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .container {\n    max-width: 1200px;\n  }\n}\n\n.fa {\n  font-size: 21px;\n  text-align: center;\n  vertical-align: top;\n}\n\n.is-block {\n  display: block;\n}\n\n@media screen and (max-width: 768px) {\n  .is-block-mobile {\n    display: block !important;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .is-block-tablet {\n    display: block !important;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .is-block-tablet-only {\n    display: block !important;\n  }\n}\n\n@media screen and (max-width: 979px) {\n  .is-block-touch {\n    display: block !important;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .is-block-desktop {\n    display: block !important;\n  }\n}\n\n@media screen and (min-width: 980px) and (max-width: 1179px) {\n  .is-block-desktop-only {\n    display: block !important;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .is-block-widescreen {\n    display: block !important;\n  }\n}\n\n.is-flex {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n@media screen and (max-width: 768px) {\n  .is-flex-mobile {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .is-flex-tablet {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .is-flex-tablet-only {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n@media screen and (max-width: 979px) {\n  .is-flex-touch {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .is-flex-desktop {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n@media screen and (min-width: 980px) and (max-width: 1179px) {\n  .is-flex-desktop-only {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .is-flex-widescreen {\n    display: -webkit-box !important;\n    display: -webkit-flex !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n  }\n}\n\n.is-inline {\n  display: inline;\n}\n\n@media screen and (max-width: 768px) {\n  .is-inline-mobile {\n    display: inline !important;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .is-inline-tablet {\n    display: inline !important;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .is-inline-tablet-only {\n    display: inline !important;\n  }\n}\n\n@media screen and (max-width: 979px) {\n  .is-inline-touch {\n    display: inline !important;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .is-inline-desktop {\n    display: inline !important;\n  }\n}\n\n@media screen and (min-width: 980px) and (max-width: 1179px) {\n  .is-inline-desktop-only {\n    display: inline !important;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .is-inline-widescreen {\n    display: inline !important;\n  }\n}\n\n.is-inline-block {\n  display: inline-block;\n}\n\n@media screen and (max-width: 768px) {\n  .is-inline-block-mobile {\n    display: inline-block !important;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .is-inline-block-tablet {\n    display: inline-block !important;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .is-inline-block-tablet-only {\n    display: inline-block !important;\n  }\n}\n\n@media screen and (max-width: 979px) {\n  .is-inline-block-touch {\n    display: inline-block !important;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .is-inline-block-desktop {\n    display: inline-block !important;\n  }\n}\n\n@media screen and (min-width: 980px) and (max-width: 1179px) {\n  .is-inline-block-desktop-only {\n    display: inline-block !important;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .is-inline-block-widescreen {\n    display: inline-block !important;\n  }\n}\n\n.is-inline-flex {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n}\n\n@media screen and (max-width: 768px) {\n  .is-inline-flex-mobile {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .is-inline-flex-tablet {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .is-inline-flex-tablet-only {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n@media screen and (max-width: 979px) {\n  .is-inline-flex-touch {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .is-inline-flex-desktop {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n@media screen and (min-width: 980px) and (max-width: 1179px) {\n  .is-inline-flex-desktop-only {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .is-inline-flex-widescreen {\n    display: -webkit-inline-box !important;\n    display: -webkit-inline-flex !important;\n    display: -ms-inline-flexbox !important;\n    display: inline-flex !important;\n  }\n}\n\n.is-clearfix:after {\n  clear: both;\n  content: \" \";\n  display: table;\n}\n\n.is-pulled-left {\n  float: left;\n}\n\n.is-pulled-right {\n  float: right;\n}\n\n.is-clipped {\n  overflow: hidden !important;\n}\n\n.is-overlay {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n\n.has-text-centered {\n  text-align: center;\n}\n\n.has-text-left {\n  text-align: left;\n}\n\n.has-text-right {\n  text-align: right;\n}\n\n.is-hidden {\n  display: none !important;\n}\n\n@media screen and (max-width: 768px) {\n  .is-hidden-mobile {\n    display: none !important;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .is-hidden-tablet {\n    display: none !important;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .is-hidden-tablet-only {\n    display: none !important;\n  }\n}\n\n@media screen and (max-width: 979px) {\n  .is-hidden-touch {\n    display: none !important;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .is-hidden-desktop {\n    display: none !important;\n  }\n}\n\n@media screen and (min-width: 980px) and (max-width: 1179px) {\n  .is-hidden-desktop-only {\n    display: none !important;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .is-hidden-widescreen {\n    display: none !important;\n  }\n}\n\n.is-disabled {\n  pointer-events: none;\n}\n\n.is-marginless {\n  margin: 0 !important;\n}\n\n.box {\n  background-color: #fff;\n  border-radius: 5px;\n  box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);\n  display: block;\n  padding: 20px;\n}\n\na.box:hover, a.box:focus {\n  box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px #1fc8db;\n}\n\na.box:active {\n  box-shadow: inset 0 1px 2px rgba(17, 17, 17, 0.2), 0 0 0 1px #1fc8db;\n}\n\n.button {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: white;\n  border: 1px solid #d3d6db;\n  border-radius: 3px;\n  color: #222324;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  font-size: 14px;\n  height: 32px;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  line-height: 24px;\n  padding-left: 8px;\n  padding-right: 8px;\n  position: relative;\n  vertical-align: top;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding-left: 10px;\n  padding-right: 10px;\n  text-align: center;\n  white-space: nowrap;\n}\n\n.button:hover {\n  border-color: #aeb1b5;\n}\n\n.button:active, .button:focus, .button.is-active {\n  border-color: #1fc8db;\n  outline: none;\n}\n\n.button[disabled], .button.is-disabled {\n  background-color: #f5f7fa;\n  border-color: #d3d6db;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.button[disabled]::-moz-placeholder, .button.is-disabled::-moz-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.button[disabled]::-webkit-input-placeholder, .button.is-disabled::-webkit-input-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.button[disabled]:-moz-placeholder, .button.is-disabled:-moz-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.button[disabled]:-ms-input-placeholder, .button.is-disabled:-ms-input-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.button strong {\n  color: inherit;\n}\n\n.button small {\n  display: block;\n  font-size: 11px;\n  line-height: 1;\n  margin-top: 5px;\n}\n\n.button .icon:first-child,\n.button .tag:first-child {\n  margin-left: -2px;\n  margin-right: 4px;\n}\n\n.button .icon:last-child,\n.button .tag:last-child {\n  margin-left: 4px;\n  margin-right: -2px;\n}\n\n.button:hover, .button:focus, .button.is-active {\n  color: #222324;\n}\n\n.button:active {\n  box-shadow: inset 0 1px 2px rgba(17, 17, 17, 0.2);\n}\n\n.button.is-white {\n  background-color: #fff;\n  border-color: transparent;\n  color: #111;\n}\n\n.button.is-white:hover, .button.is-white:focus, .button.is-white.is-active {\n  background-color: #e6e6e6;\n  border-color: transparent;\n  color: #111;\n}\n\n.button.is-white:active {\n  border-color: transparent;\n}\n\n.button.is-white.is-inverted {\n  background-color: #111;\n  color: #fff;\n}\n\n.button.is-white.is-inverted:hover {\n  background-color: #040404;\n}\n\n.button.is-white.is-loading:after {\n  border-color: transparent transparent #111 #111 !important;\n}\n\n.button.is-white.is-outlined {\n  background-color: transparent;\n  border-color: #fff;\n  color: #fff;\n}\n\n.button.is-white.is-outlined:hover, .button.is-white.is-outlined:focus {\n  background-color: #fff;\n  border-color: #fff;\n  color: #111;\n}\n\n.button.is-black {\n  background-color: #111;\n  border-color: transparent;\n  color: #fff;\n}\n\n.button.is-black:hover, .button.is-black:focus, .button.is-black.is-active {\n  background-color: black;\n  border-color: transparent;\n  color: #fff;\n}\n\n.button.is-black:active {\n  border-color: transparent;\n}\n\n.button.is-black.is-inverted {\n  background-color: #fff;\n  color: #111;\n}\n\n.button.is-black.is-inverted:hover {\n  background-color: #f2f2f2;\n}\n\n.button.is-black.is-loading:after {\n  border-color: transparent transparent #fff #fff !important;\n}\n\n.button.is-black.is-outlined {\n  background-color: transparent;\n  border-color: #111;\n  color: #111;\n}\n\n.button.is-black.is-outlined:hover, .button.is-black.is-outlined:focus {\n  background-color: #111;\n  border-color: #111;\n  color: #fff;\n}\n\n.button.is-light {\n  background-color: #f5f7fa;\n  border-color: transparent;\n  color: #69707a;\n}\n\n.button.is-light:hover, .button.is-light:focus, .button.is-light.is-active {\n  background-color: #d3dce9;\n  border-color: transparent;\n  color: #69707a;\n}\n\n.button.is-light:active {\n  border-color: transparent;\n}\n\n.button.is-light.is-inverted {\n  background-color: #69707a;\n  color: #f5f7fa;\n}\n\n.button.is-light.is-inverted:hover {\n  background-color: #5d636c;\n}\n\n.button.is-light.is-loading:after {\n  border-color: transparent transparent #69707a #69707a !important;\n}\n\n.button.is-light.is-outlined {\n  background-color: transparent;\n  border-color: #f5f7fa;\n  color: #f5f7fa;\n}\n\n.button.is-light.is-outlined:hover, .button.is-light.is-outlined:focus {\n  background-color: #f5f7fa;\n  border-color: #f5f7fa;\n  color: #69707a;\n}\n\n.button.is-dark {\n  background-color: #69707a;\n  border-color: transparent;\n  color: #f5f7fa;\n}\n\n.button.is-dark:hover, .button.is-dark:focus, .button.is-dark.is-active {\n  background-color: #51575f;\n  border-color: transparent;\n  color: #f5f7fa;\n}\n\n.button.is-dark:active {\n  border-color: transparent;\n}\n\n.button.is-dark.is-inverted {\n  background-color: #f5f7fa;\n  color: #69707a;\n}\n\n.button.is-dark.is-inverted:hover {\n  background-color: #e4e9f2;\n}\n\n.button.is-dark.is-loading:after {\n  border-color: transparent transparent #f5f7fa #f5f7fa !important;\n}\n\n.button.is-dark.is-outlined {\n  background-color: transparent;\n  border-color: #69707a;\n  color: #69707a;\n}\n\n.button.is-dark.is-outlined:hover, .button.is-dark.is-outlined:focus {\n  background-color: #69707a;\n  border-color: #69707a;\n  color: #f5f7fa;\n}\n\n.button.is-primary {\n  background-color: #1fc8db;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-primary:hover, .button.is-primary:focus, .button.is-primary.is-active {\n  background-color: #199fae;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-primary:active {\n  border-color: transparent;\n}\n\n.button.is-primary.is-inverted {\n  background-color: white;\n  color: #1fc8db;\n}\n\n.button.is-primary.is-inverted:hover {\n  background-color: #f2f2f2;\n}\n\n.button.is-primary.is-loading:after {\n  border-color: transparent transparent white white !important;\n}\n\n.button.is-primary.is-outlined {\n  background-color: transparent;\n  border-color: #1fc8db;\n  color: #1fc8db;\n}\n\n.button.is-primary.is-outlined:hover, .button.is-primary.is-outlined:focus {\n  background-color: #1fc8db;\n  border-color: #1fc8db;\n  color: white;\n}\n\n.button.is-info {\n  background-color: #42afe3;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-info:hover, .button.is-info:focus, .button.is-info.is-active {\n  background-color: #1f99d3;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-info:active {\n  border-color: transparent;\n}\n\n.button.is-info.is-inverted {\n  background-color: white;\n  color: #42afe3;\n}\n\n.button.is-info.is-inverted:hover {\n  background-color: #f2f2f2;\n}\n\n.button.is-info.is-loading:after {\n  border-color: transparent transparent white white !important;\n}\n\n.button.is-info.is-outlined {\n  background-color: transparent;\n  border-color: #42afe3;\n  color: #42afe3;\n}\n\n.button.is-info.is-outlined:hover, .button.is-info.is-outlined:focus {\n  background-color: #42afe3;\n  border-color: #42afe3;\n  color: white;\n}\n\n.button.is-success {\n  background-color: #97cd76;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-success:hover, .button.is-success:focus, .button.is-success.is-active {\n  background-color: #7bbf51;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-success:active {\n  border-color: transparent;\n}\n\n.button.is-success.is-inverted {\n  background-color: white;\n  color: #97cd76;\n}\n\n.button.is-success.is-inverted:hover {\n  background-color: #f2f2f2;\n}\n\n.button.is-success.is-loading:after {\n  border-color: transparent transparent white white !important;\n}\n\n.button.is-success.is-outlined {\n  background-color: transparent;\n  border-color: #97cd76;\n  color: #97cd76;\n}\n\n.button.is-success.is-outlined:hover, .button.is-success.is-outlined:focus {\n  background-color: #97cd76;\n  border-color: #97cd76;\n  color: white;\n}\n\n.button.is-warning {\n  background-color: #fce473;\n  border-color: transparent;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.button.is-warning:hover, .button.is-warning:focus, .button.is-warning.is-active {\n  background-color: #fbda41;\n  border-color: transparent;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.button.is-warning:active {\n  border-color: transparent;\n}\n\n.button.is-warning.is-inverted {\n  background-color: rgba(17, 17, 17, 0.5);\n  color: #fce473;\n}\n\n.button.is-warning.is-inverted:hover {\n  background-color: rgba(4, 4, 4, 0.5);\n}\n\n.button.is-warning.is-loading:after {\n  border-color: transparent transparent rgba(17, 17, 17, 0.5) rgba(17, 17, 17, 0.5) !important;\n}\n\n.button.is-warning.is-outlined {\n  background-color: transparent;\n  border-color: #fce473;\n  color: #fce473;\n}\n\n.button.is-warning.is-outlined:hover, .button.is-warning.is-outlined:focus {\n  background-color: #fce473;\n  border-color: #fce473;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.button.is-danger {\n  background-color: #ed6c63;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-danger:hover, .button.is-danger:focus, .button.is-danger.is-active {\n  background-color: #e84135;\n  border-color: transparent;\n  color: white;\n}\n\n.button.is-danger:active {\n  border-color: transparent;\n}\n\n.button.is-danger.is-inverted {\n  background-color: white;\n  color: #ed6c63;\n}\n\n.button.is-danger.is-inverted:hover {\n  background-color: #f2f2f2;\n}\n\n.button.is-danger.is-loading:after {\n  border-color: transparent transparent white white !important;\n}\n\n.button.is-danger.is-outlined {\n  background-color: transparent;\n  border-color: #ed6c63;\n  color: #ed6c63;\n}\n\n.button.is-danger.is-outlined:hover, .button.is-danger.is-outlined:focus {\n  background-color: #ed6c63;\n  border-color: #ed6c63;\n  color: white;\n}\n\n.button.is-link {\n  background-color: transparent;\n  border-color: transparent;\n  color: #69707a;\n  text-decoration: underline;\n}\n\n.button.is-link:hover, .button.is-link:focus {\n  background-color: #d3d6db;\n  color: #222324;\n}\n\n.button.is-small {\n  border-radius: 2px;\n  font-size: 11px;\n  height: 24px;\n  line-height: 16px;\n  padding-left: 6px;\n  padding-right: 6px;\n}\n\n.button.is-medium {\n  font-size: 18px;\n  height: 40px;\n  padding-left: 14px;\n  padding-right: 14px;\n}\n\n.button.is-large {\n  font-size: 22px;\n  height: 48px;\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.button[disabled], .button.is-disabled {\n  opacity: 0.5;\n}\n\n.button.is-fullwidth {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n}\n\n.button.is-loading {\n  color: transparent !important;\n  pointer-events: none;\n}\n\n.button.is-loading:after {\n  left: 50%;\n  margin-left: -8px;\n  margin-top: -8px;\n  position: absolute;\n  top: 50%;\n  position: absolute !important;\n}\n\n.content a:not(.button) {\n  border-bottom: 1px solid #d3d6db;\n}\n\n.content a:not(.button):visited {\n  color: #847bb9;\n}\n\n.content a:not(.button):hover {\n  border-bottom-color: #1fc8db;\n}\n\n.content li + li {\n  margin-top: 0.25em;\n}\n\n.content blockquote:not(:last-child),\n.content p:not(:last-child),\n.content ol:not(:last-child),\n.content ul:not(:last-child) {\n  margin-bottom: 1em;\n}\n\n.content h1,\n.content h2,\n.content h3,\n.content h4,\n.content h5,\n.content h6 {\n  color: #222324;\n  font-weight: 300;\n  line-height: 1.125;\n  margin-bottom: 20px;\n}\n\n.content h1:not(:first-child),\n.content h2:not(:first-child),\n.content h3:not(:first-child) {\n  margin-top: 40px;\n}\n\n.content blockquote {\n  background-color: #f5f7fa;\n  border-left: 5px solid #d3d6db;\n  padding: 1.5em;\n}\n\n.content h1 {\n  font-size: 2em;\n}\n\n.content h2 {\n  font-size: 1.75em;\n}\n\n.content h3 {\n  font-size: 1.5em;\n}\n\n.content h4 {\n  font-size: 1.25em;\n}\n\n.content h5 {\n  font-size: 1.125em;\n}\n\n.content h6 {\n  font-size: 1em;\n}\n\n.content ol {\n  list-style: decimal outside;\n  margin-left: 2em;\n  margin-right: 2em;\n  margin-top: 1em;\n}\n\n.content ul {\n  list-style: disc outside;\n  margin-left: 2em;\n  margin-right: 2em;\n  margin-top: 1em;\n}\n\n.content ul ul {\n  list-style-type: circle;\n  margin-top: 0.5em;\n}\n\n.content ul ul ul {\n  list-style-type: square;\n}\n\n.content.is-medium {\n  font-size: 18px;\n}\n\n.content.is-medium code {\n  font-size: 14px;\n}\n\n.content.is-large {\n  font-size: 24px;\n}\n\n.content.is-large code {\n  font-size: 18px;\n}\n\n.input, .textarea {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: white;\n  border: 1px solid #d3d6db;\n  border-radius: 3px;\n  color: #222324;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  font-size: 14px;\n  height: 32px;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  line-height: 24px;\n  padding-left: 8px;\n  padding-right: 8px;\n  position: relative;\n  vertical-align: top;\n  box-shadow: inset 0 1px 2px rgba(17, 17, 17, 0.1);\n  max-width: 100%;\n  width: 100%;\n}\n\n.input:hover, .textarea:hover {\n  border-color: #aeb1b5;\n}\n\n.input:active, .textarea:active, .input:focus, .textarea:focus, .input.is-active, .is-active.textarea {\n  border-color: #1fc8db;\n  outline: none;\n}\n\n.input[disabled], [disabled].textarea, .input.is-disabled, .is-disabled.textarea {\n  background-color: #f5f7fa;\n  border-color: #d3d6db;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.input[disabled]::-moz-placeholder, [disabled].textarea::-moz-placeholder, .input.is-disabled::-moz-placeholder, .is-disabled.textarea::-moz-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.input[disabled]::-webkit-input-placeholder, [disabled].textarea::-webkit-input-placeholder, .input.is-disabled::-webkit-input-placeholder, .is-disabled.textarea::-webkit-input-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.input[disabled]:-moz-placeholder, [disabled].textarea:-moz-placeholder, .input.is-disabled:-moz-placeholder, .is-disabled.textarea:-moz-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.input[disabled]:-ms-input-placeholder, [disabled].textarea:-ms-input-placeholder, .input.is-disabled:-ms-input-placeholder, .is-disabled.textarea:-ms-input-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.input.is-white, .is-white.textarea {\n  border-color: #fff;\n}\n\n.input.is-black, .is-black.textarea {\n  border-color: #111;\n}\n\n.input.is-light, .is-light.textarea {\n  border-color: #f5f7fa;\n}\n\n.input.is-dark, .is-dark.textarea {\n  border-color: #69707a;\n}\n\n.input.is-primary, .is-primary.textarea {\n  border-color: #1fc8db;\n}\n\n.input.is-info, .is-info.textarea {\n  border-color: #42afe3;\n}\n\n.input.is-success, .is-success.textarea {\n  border-color: #97cd76;\n}\n\n.input.is-warning, .is-warning.textarea {\n  border-color: #fce473;\n}\n\n.input.is-danger, .is-danger.textarea {\n  border-color: #ed6c63;\n}\n\n.input[type=\"search\"], [type=\"search\"].textarea {\n  border-radius: 290486px;\n}\n\n.input.is-small, .is-small.textarea {\n  border-radius: 2px;\n  font-size: 11px;\n  height: 24px;\n  line-height: 16px;\n  padding-left: 6px;\n  padding-right: 6px;\n}\n\n.input.is-medium, .is-medium.textarea {\n  font-size: 18px;\n  height: 40px;\n  line-height: 32px;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.input.is-large, .is-large.textarea {\n  font-size: 24px;\n  height: 48px;\n  line-height: 40px;\n  padding-left: 12px;\n  padding-right: 12px;\n}\n\n.input.is-fullwidth, .is-fullwidth.textarea {\n  display: block;\n  width: 100%;\n}\n\n.input.is-inline, .is-inline.textarea {\n  display: inline;\n  width: auto;\n}\n\n.textarea {\n  display: block;\n  line-height: 1.2;\n  max-height: 600px;\n  max-width: 100%;\n  min-height: 120px;\n  min-width: 100%;\n  padding: 10px;\n  resize: vertical;\n}\n\n.checkbox, .radio {\n  cursor: pointer;\n  display: inline-block;\n  line-height: 16px;\n  position: relative;\n  vertical-align: top;\n}\n\n.checkbox input, .radio input {\n  cursor: pointer;\n}\n\n.checkbox:hover, .radio:hover {\n  color: #222324;\n}\n\n.is-disabled.checkbox, .is-disabled.radio {\n  color: #aeb1b5;\n  pointer-events: none;\n}\n\n.is-disabled.checkbox input, .is-disabled.radio input {\n  pointer-events: none;\n}\n\n.radio + .radio {\n  margin-left: 10px;\n}\n\n.select {\n  display: inline-block;\n  height: 32px;\n  position: relative;\n  vertical-align: top;\n}\n\n.select select {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: white;\n  border: 1px solid #d3d6db;\n  border-radius: 3px;\n  color: #222324;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  font-size: 14px;\n  height: 32px;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  line-height: 24px;\n  padding-left: 8px;\n  padding-right: 8px;\n  position: relative;\n  vertical-align: top;\n  cursor: pointer;\n  display: block;\n  outline: none;\n  padding-right: 36px;\n}\n\n.select select:hover {\n  border-color: #aeb1b5;\n}\n\n.select select:active, .select select:focus, .select select.is-active {\n  border-color: #1fc8db;\n  outline: none;\n}\n\n.select select[disabled], .select select.is-disabled {\n  background-color: #f5f7fa;\n  border-color: #d3d6db;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.select select[disabled]::-moz-placeholder, .select select.is-disabled::-moz-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.select select[disabled]::-webkit-input-placeholder, .select select.is-disabled::-webkit-input-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.select select[disabled]:-moz-placeholder, .select select.is-disabled:-moz-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.select select[disabled]:-ms-input-placeholder, .select select.is-disabled:-ms-input-placeholder {\n  color: rgba(34, 35, 36, 0.3);\n}\n\n.select select.is-white {\n  border-color: #fff;\n}\n\n.select select.is-black {\n  border-color: #111;\n}\n\n.select select.is-light {\n  border-color: #f5f7fa;\n}\n\n.select select.is-dark {\n  border-color: #69707a;\n}\n\n.select select.is-primary {\n  border-color: #1fc8db;\n}\n\n.select select.is-info {\n  border-color: #42afe3;\n}\n\n.select select.is-success {\n  border-color: #97cd76;\n}\n\n.select select.is-warning {\n  border-color: #fce473;\n}\n\n.select select.is-danger {\n  border-color: #ed6c63;\n}\n\n.select select:hover {\n  border-color: #aeb1b5;\n}\n\n.select select::ms-expand {\n  display: none;\n}\n\n.select.is-fullwidth {\n  width: 100%;\n}\n\n.select.is-fullwidth select {\n  width: 100%;\n}\n\n.select:after {\n  border: 1px solid #1fc8db;\n  border-right: 0;\n  border-top: 0;\n  content: \" \";\n  display: block;\n  height: 7px;\n  pointer-events: none;\n  position: absolute;\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n  width: 7px;\n  margin-top: -6px;\n  right: 16px;\n  top: 50%;\n}\n\n.select:hover:after {\n  border-color: #222324;\n}\n\n.select.is-small {\n  height: 24px;\n}\n\n.select.is-small select {\n  border-radius: 2px;\n  font-size: 11px;\n  height: 24px;\n  line-height: 16px;\n  padding-left: 6px;\n  padding-right: 6px;\n  padding-right: 28px;\n}\n\n.select.is-medium {\n  height: 40px;\n}\n\n.select.is-medium select {\n  font-size: 18px;\n  height: 40px;\n  line-height: 32px;\n  padding-left: 10px;\n  padding-right: 10px;\n  padding-right: 44px;\n}\n\n.select.is-large {\n  height: 48px;\n}\n\n.select.is-large select {\n  font-size: 24px;\n  height: 48px;\n  line-height: 40px;\n  padding-left: 12px;\n  padding-right: 12px;\n  padding-right: 52px;\n}\n\n.label {\n  color: #222324;\n  display: block;\n  font-weight: bold;\n}\n\n.label:not(:last-child) {\n  margin-bottom: 5px;\n}\n\n.help {\n  display: block;\n  font-size: 11px;\n  margin-top: 5px;\n}\n\n.help.is-white {\n  color: #fff;\n}\n\n.help.is-black {\n  color: #111;\n}\n\n.help.is-light {\n  color: #f5f7fa;\n}\n\n.help.is-dark {\n  color: #69707a;\n}\n\n.help.is-primary {\n  color: #1fc8db;\n}\n\n.help.is-info {\n  color: #42afe3;\n}\n\n.help.is-success {\n  color: #97cd76;\n}\n\n.help.is-warning {\n  color: #fce473;\n}\n\n.help.is-danger {\n  color: #ed6c63;\n}\n\n@media screen and (max-width: 768px) {\n  .control-label {\n    margin-bottom: 5px;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .control-label {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    margin-right: 20px;\n    padding-top: 7px;\n    text-align: right;\n  }\n}\n\n.control {\n  position: relative;\n  text-align: left;\n}\n\n.control:not(:last-child) {\n  margin-bottom: 10px;\n}\n\n.control.has-addons {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n}\n\n.control.has-addons .button,\n.control.has-addons .input,\n.control.has-addons .textarea,\n.control.has-addons .select {\n  border-radius: 0;\n  margin-right: -1px;\n  width: auto;\n}\n\n.control.has-addons .button:hover,\n.control.has-addons .input:hover,\n.control.has-addons .textarea:hover,\n.control.has-addons .select:hover {\n  z-index: 2;\n}\n\n.control.has-addons .button:active, .control.has-addons .button:focus,\n.control.has-addons .input:active,\n.control.has-addons .textarea:active,\n.control.has-addons .input:focus,\n.control.has-addons .textarea:focus,\n.control.has-addons .select:active,\n.control.has-addons .select:focus {\n  z-index: 3;\n}\n\n.control.has-addons .button:first-child,\n.control.has-addons .input:first-child,\n.control.has-addons .textarea:first-child,\n.control.has-addons .select:first-child {\n  border-radius: 3px 0 0 3px;\n}\n\n.control.has-addons .button:first-child select,\n.control.has-addons .input:first-child select,\n.control.has-addons .textarea:first-child select,\n.control.has-addons .select:first-child select {\n  border-radius: 3px 0 0 3px;\n}\n\n.control.has-addons .button:last-child,\n.control.has-addons .input:last-child,\n.control.has-addons .textarea:last-child,\n.control.has-addons .select:last-child {\n  border-radius: 0 3px 3px 0;\n}\n\n.control.has-addons .button:last-child select,\n.control.has-addons .input:last-child select,\n.control.has-addons .textarea:last-child select,\n.control.has-addons .select:last-child select {\n  border-radius: 0 3px 3px 0;\n}\n\n.control.has-addons .button.is-expanded,\n.control.has-addons .input.is-expanded,\n.control.has-addons .is-expanded.textarea,\n.control.has-addons .select.is-expanded {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n.control.has-addons.has-addons-centered {\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.control.has-addons.has-addons-right {\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n}\n\n.control.has-addons.has-addons-fullwidth .button,\n.control.has-addons.has-addons-fullwidth .input,\n.control.has-addons.has-addons-fullwidth .textarea,\n.control.has-addons.has-addons-fullwidth .select {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n.control.has-icon > .fa {\n  display: inline-block;\n  font-size: 14px;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n  vertical-align: top;\n  width: 24px;\n  color: #aeb1b5;\n  pointer-events: none;\n  position: absolute;\n  top: 4px;\n  z-index: 4;\n}\n\n.control.has-icon .input:focus + .fa, .control.has-icon .textarea:focus + .fa {\n  color: #222324;\n}\n\n.control.has-icon .input.is-small + .fa, .control.has-icon .is-small.textarea + .fa {\n  font-size: 10.5px;\n  top: 0;\n}\n\n.control.has-icon .input.is-medium + .fa, .control.has-icon .is-medium.textarea + .fa {\n  font-size: 21px;\n  top: 8px;\n}\n\n.control.has-icon .input.is-large + .fa, .control.has-icon .is-large.textarea + .fa {\n  font-size: 21px;\n  top: 12px;\n}\n\n.control.has-icon:not(.has-icon-right) > .fa {\n  left: 4px;\n}\n\n.control.has-icon:not(.has-icon-right) .input, .control.has-icon:not(.has-icon-right) .textarea {\n  padding-left: 32px;\n}\n\n.control.has-icon:not(.has-icon-right) .input.is-small, .control.has-icon:not(.has-icon-right) .is-small.textarea {\n  padding-left: 24px;\n}\n\n.control.has-icon:not(.has-icon-right) .input.is-small + .fa, .control.has-icon:not(.has-icon-right) .is-small.textarea + .fa {\n  left: 0;\n}\n\n.control.has-icon:not(.has-icon-right) .input.is-medium, .control.has-icon:not(.has-icon-right) .is-medium.textarea {\n  padding-left: 40px;\n}\n\n.control.has-icon:not(.has-icon-right) .input.is-medium + .fa, .control.has-icon:not(.has-icon-right) .is-medium.textarea + .fa {\n  left: 8px;\n}\n\n.control.has-icon:not(.has-icon-right) .input.is-large, .control.has-icon:not(.has-icon-right) .is-large.textarea {\n  padding-left: 48px;\n}\n\n.control.has-icon:not(.has-icon-right) .input.is-large + .fa, .control.has-icon:not(.has-icon-right) .is-large.textarea + .fa {\n  left: 12px;\n}\n\n.control.has-icon.has-icon-right > .fa {\n  right: 4px;\n}\n\n.control.has-icon.has-icon-right .input, .control.has-icon.has-icon-right .textarea {\n  padding-right: 32px;\n}\n\n.control.has-icon.has-icon-right .input.is-small, .control.has-icon.has-icon-right .is-small.textarea {\n  padding-right: 24px;\n}\n\n.control.has-icon.has-icon-right .input.is-small + .fa, .control.has-icon.has-icon-right .is-small.textarea + .fa {\n  right: 0;\n}\n\n.control.has-icon.has-icon-right .input.is-medium, .control.has-icon.has-icon-right .is-medium.textarea {\n  padding-right: 40px;\n}\n\n.control.has-icon.has-icon-right .input.is-medium + .fa, .control.has-icon.has-icon-right .is-medium.textarea + .fa {\n  right: 8px;\n}\n\n.control.has-icon.has-icon-right .input.is-large, .control.has-icon.has-icon-right .is-large.textarea {\n  padding-right: 48px;\n}\n\n.control.has-icon.has-icon-right .input.is-large + .fa, .control.has-icon.has-icon-right .is-large.textarea + .fa {\n  right: 12px;\n}\n\n.control.is-grouped {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n}\n\n.control.is-grouped > .control:not(:last-child) {\n  margin-bottom: 0;\n  margin-right: 10px;\n}\n\n.control.is-grouped > .control.is-expanded {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n.control.is-grouped.is-grouped-centered {\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.control.is-grouped.is-grouped-right {\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n}\n\n@media screen and (min-width: 769px) {\n  .control.is-horizontal {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n  .control.is-horizontal > .control {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-flex: 5;\n    -webkit-flex-grow: 5;\n        -ms-flex-positive: 5;\n            flex-grow: 5;\n  }\n}\n\n.control.is-loading:after {\n  position: absolute !important;\n  right: 8px;\n  top: 8px;\n}\n\n.image {\n  display: block;\n  position: relative;\n}\n\n.image img {\n  display: block;\n  height: auto;\n  width: 100%;\n}\n\n.image.is-square img, .image.is-1by1 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-16by9 img, .image.is-2by1 img {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 100%;\n  width: 100%;\n}\n\n.image.is-square, .image.is-1by1 {\n  padding-top: 100%;\n}\n\n.image.is-4by3 {\n  padding-top: 75%;\n}\n\n.image.is-3by2 {\n  padding-top: 66.6666%;\n}\n\n.image.is-16by9 {\n  padding-top: 56.25%;\n}\n\n.image.is-2by1 {\n  padding-top: 50%;\n}\n\n.image.is-16x16 {\n  height: 16px;\n  width: 16px;\n}\n\n.image.is-24x24 {\n  height: 24px;\n  width: 24px;\n}\n\n.image.is-32x32 {\n  height: 32px;\n  width: 32px;\n}\n\n.image.is-48x48 {\n  height: 48px;\n  width: 48px;\n}\n\n.image.is-64x64 {\n  height: 64px;\n  width: 64px;\n}\n\n.image.is-96x96 {\n  height: 96px;\n  width: 96px;\n}\n\n.image.is-128x128 {\n  height: 128px;\n  width: 128px;\n}\n\n.notification {\n  background-color: #f5f7fa;\n  border-radius: 3px;\n  padding: 16px 20px;\n  position: relative;\n}\n\n.notification:after {\n  clear: both;\n  content: \" \";\n  display: table;\n}\n\n.notification .delete, .notification .modal-close {\n  border-radius: 0 3px;\n  float: right;\n  margin: -16px -20px 0 20px;\n}\n\n.notification .subtitle,\n.notification .title {\n  color: inherit;\n}\n\n.notification.is-white {\n  background-color: #fff;\n  color: #111;\n}\n\n.notification.is-black {\n  background-color: #111;\n  color: #fff;\n}\n\n.notification.is-light {\n  background-color: #f5f7fa;\n  color: #69707a;\n}\n\n.notification.is-dark {\n  background-color: #69707a;\n  color: #f5f7fa;\n}\n\n.notification.is-primary {\n  background-color: #1fc8db;\n  color: white;\n}\n\n.notification.is-info {\n  background-color: #42afe3;\n  color: white;\n}\n\n.notification.is-success {\n  background-color: #97cd76;\n  color: white;\n}\n\n.notification.is-warning {\n  background-color: #fce473;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.notification.is-danger {\n  background-color: #ed6c63;\n  color: white;\n}\n\n.progress {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  border: none;\n  border-radius: 290486px;\n  display: block;\n  height: 12px;\n  overflow: hidden;\n  padding: 0;\n  width: 100%;\n}\n\n.progress::-webkit-progress-bar {\n  background-color: #d3d6db;\n}\n\n.progress::-webkit-progress-value {\n  background-color: #69707a;\n}\n\n.progress::-moz-progress-bar {\n  background-color: #69707a;\n}\n\n.progress.is-white::-webkit-progress-value {\n  background-color: #fff;\n}\n\n.progress.is-white::-moz-progress-bar {\n  background-color: #fff;\n}\n\n.progress.is-black::-webkit-progress-value {\n  background-color: #111;\n}\n\n.progress.is-black::-moz-progress-bar {\n  background-color: #111;\n}\n\n.progress.is-light::-webkit-progress-value {\n  background-color: #f5f7fa;\n}\n\n.progress.is-light::-moz-progress-bar {\n  background-color: #f5f7fa;\n}\n\n.progress.is-dark::-webkit-progress-value {\n  background-color: #69707a;\n}\n\n.progress.is-dark::-moz-progress-bar {\n  background-color: #69707a;\n}\n\n.progress.is-primary::-webkit-progress-value {\n  background-color: #1fc8db;\n}\n\n.progress.is-primary::-moz-progress-bar {\n  background-color: #1fc8db;\n}\n\n.progress.is-info::-webkit-progress-value {\n  background-color: #42afe3;\n}\n\n.progress.is-info::-moz-progress-bar {\n  background-color: #42afe3;\n}\n\n.progress.is-success::-webkit-progress-value {\n  background-color: #97cd76;\n}\n\n.progress.is-success::-moz-progress-bar {\n  background-color: #97cd76;\n}\n\n.progress.is-warning::-webkit-progress-value {\n  background-color: #fce473;\n}\n\n.progress.is-warning::-moz-progress-bar {\n  background-color: #fce473;\n}\n\n.progress.is-danger::-webkit-progress-value {\n  background-color: #ed6c63;\n}\n\n.progress.is-danger::-moz-progress-bar {\n  background-color: #ed6c63;\n}\n\n.progress.is-small {\n  height: 8px;\n}\n\n.progress.is-medium {\n  height: 16px;\n}\n\n.progress.is-large {\n  height: 20px;\n}\n\n.table {\n  background-color: #fff;\n  color: #222324;\n  margin-bottom: 20px;\n  width: 100%;\n}\n\n.table td,\n.table th {\n  border: 1px solid #d3d6db;\n  border-width: 0 0 1px;\n  padding: 8px 10px;\n  vertical-align: top;\n}\n\n.table td.is-icon,\n.table th.is-icon {\n  padding: 5px;\n  text-align: center;\n  white-space: nowrap;\n  width: 1%;\n}\n\n.table td.is-icon .fa,\n.table th.is-icon .fa {\n  display: inline-block;\n  font-size: 21px;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n  vertical-align: top;\n  width: 24px;\n}\n\n.table td.is-icon.is-link,\n.table th.is-icon.is-link {\n  padding: 0;\n}\n\n.table td.is-icon.is-link > a,\n.table th.is-icon.is-link > a {\n  padding: 5px;\n}\n\n.table td.is-link,\n.table th.is-link {\n  padding: 0;\n}\n\n.table td.is-link > a,\n.table th.is-link > a {\n  display: block;\n  padding: 8px 10px;\n}\n\n.table td.is-link > a:hover,\n.table th.is-link > a:hover {\n  background-color: #1fc8db;\n  color: white;\n}\n\n.table td.is-narrow,\n.table th.is-narrow {\n  white-space: nowrap;\n  width: 1%;\n}\n\n.table th {\n  color: #222324;\n  text-align: left;\n}\n\n.table tr:hover {\n  background-color: #f5f7fa;\n  color: #222324;\n}\n\n.table thead td,\n.table thead th {\n  border-width: 0 0 2px;\n  color: #aeb1b5;\n}\n\n.table tbody tr:last-child td,\n.table tbody tr:last-child th {\n  border-bottom-width: 0;\n}\n\n.table tfoot td,\n.table tfoot th {\n  border-width: 2px 0 0;\n  color: #aeb1b5;\n}\n\n.table.is-bordered td,\n.table.is-bordered th {\n  border-width: 1px;\n}\n\n.table.is-bordered tr:last-child td,\n.table.is-bordered tr:last-child th {\n  border-bottom-width: 1px;\n}\n\n.table.is-narrow td,\n.table.is-narrow th {\n  padding: 5px 10px;\n}\n\n.table.is-narrow td.is-icon,\n.table.is-narrow th.is-icon {\n  padding: 2px;\n}\n\n.table.is-narrow td.is-icon.is-link,\n.table.is-narrow th.is-icon.is-link {\n  padding: 0;\n}\n\n.table.is-narrow td.is-icon.is-link > a,\n.table.is-narrow th.is-icon.is-link > a {\n  padding: 2px;\n}\n\n.table.is-narrow td.is-link,\n.table.is-narrow th.is-link {\n  padding: 0;\n}\n\n.table.is-narrow td.is-link > a,\n.table.is-narrow th.is-link > a {\n  padding: 5px 10px;\n}\n\n.table.is-striped tbody tr:hover {\n  background-color: #eef2f7;\n}\n\n.table.is-striped tbody tr:nth-child(2n) {\n  background-color: #f5f7fa;\n}\n\n.table.is-striped tbody tr:nth-child(2n):hover {\n  background-color: #eef2f7;\n}\n\n.title,\n.subtitle {\n  font-weight: 300;\n  word-break: break-word;\n}\n\n.title em,\n.title span,\n.subtitle em,\n.subtitle span {\n  font-weight: 300;\n}\n\n.title a:hover,\n.subtitle a:hover {\n  border-bottom: 1px solid;\n}\n\n.title strong,\n.subtitle strong {\n  font-weight: 500;\n}\n\n.title .tag,\n.subtitle .tag {\n  vertical-align: bottom;\n}\n\n.title {\n  color: #222324;\n  font-size: 28px;\n  line-height: 1;\n}\n\n.title code {\n  display: inline-block;\n  font-size: 28px;\n}\n\n.title strong {\n  color: inherit;\n}\n\n.title + .highlight {\n  margin-top: -10px;\n}\n\n.title + .subtitle {\n  margin-top: -10px;\n}\n\n.title.is-1 {\n  font-size: 48px;\n}\n\n.title.is-1 code {\n  font-size: 40px;\n}\n\n.title.is-2 {\n  font-size: 40px;\n}\n\n.title.is-2 code {\n  font-size: 28px;\n}\n\n.title.is-3 {\n  font-size: 28px;\n}\n\n.title.is-3 code {\n  font-size: 24px;\n}\n\n.title.is-4 {\n  font-size: 24px;\n}\n\n.title.is-4 code {\n  font-size: 18px;\n}\n\n.title.is-5 {\n  font-size: 18px;\n}\n\n.title.is-5 code {\n  font-size: 14px;\n}\n\n.title.is-6 {\n  font-size: 14px;\n}\n\n.title.is-6 code {\n  font-size: 14px;\n}\n\n.title.is-normal {\n  font-weight: 400;\n}\n\n.title.is-normal strong {\n  font-weight: 700;\n}\n\n@media screen and (min-width: 769px) {\n  .title + .subtitle {\n    margin-top: -15px;\n  }\n}\n\n.subtitle {\n  color: #69707a;\n  font-size: 18px;\n  line-height: 1.125;\n}\n\n.subtitle code {\n  border-radius: 3px;\n  display: inline-block;\n  font-size: 14px;\n  padding: 2px 3px;\n  vertical-align: top;\n}\n\n.subtitle strong {\n  color: #222324;\n}\n\n.subtitle + .title {\n  margin-top: -20px;\n}\n\n.subtitle.is-1 {\n  font-size: 48px;\n}\n\n.subtitle.is-1 code {\n  font-size: 40px;\n}\n\n.subtitle.is-2 {\n  font-size: 40px;\n}\n\n.subtitle.is-2 code {\n  font-size: 28px;\n}\n\n.subtitle.is-3 {\n  font-size: 28px;\n}\n\n.subtitle.is-3 code {\n  font-size: 24px;\n}\n\n.subtitle.is-4 {\n  font-size: 24px;\n}\n\n.subtitle.is-4 code {\n  font-size: 18px;\n}\n\n.subtitle.is-5 {\n  font-size: 18px;\n}\n\n.subtitle.is-5 code {\n  font-size: 14px;\n}\n\n.subtitle.is-6 {\n  font-size: 14px;\n}\n\n.subtitle.is-6 code {\n  font-size: 14px;\n}\n\n.subtitle.is-normal {\n  font-weight: 400;\n}\n\n.subtitle.is-normal strong {\n  font-weight: 700;\n}\n\n.delete, .modal-close {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  background-color: rgba(17, 17, 17, 0.2);\n  border: none;\n  border-radius: 290486px;\n  cursor: pointer;\n  display: inline-block;\n  height: 24px;\n  position: relative;\n  vertical-align: top;\n  width: 24px;\n}\n\n.delete:before, .modal-close:before, .delete:after, .modal-close:after {\n  background-color: #fff;\n  content: \"\";\n  display: block;\n  height: 2px;\n  left: 50%;\n  margin-left: -25%;\n  margin-top: -1px;\n  position: absolute;\n  top: 50%;\n  width: 50%;\n}\n\n.delete:before, .modal-close:before {\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg);\n}\n\n.delete:after, .modal-close:after {\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n}\n\n.delete:hover, .modal-close:hover {\n  background-color: rgba(17, 17, 17, 0.5);\n}\n\n.delete.is-small, .tag:not(.is-large) .delete, .tag:not(.is-large) .modal-close, .is-small.modal-close {\n  height: 16px;\n  width: 16px;\n}\n\n.delete.is-medium, .is-medium.modal-close {\n  height: 32px;\n  width: 32px;\n}\n\n.delete.is-large, .is-large.modal-close {\n  height: 40px;\n  width: 40px;\n}\n\n.icon {\n  display: inline-block;\n  font-size: 21px;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n  vertical-align: top;\n  width: 24px;\n}\n\n.icon .fa {\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.icon.is-small {\n  display: inline-block;\n  font-size: 14px;\n  height: 16px;\n  line-height: 16px;\n  text-align: center;\n  vertical-align: top;\n  width: 16px;\n}\n\n.icon.is-medium {\n  display: inline-block;\n  font-size: 28px;\n  height: 32px;\n  line-height: 32px;\n  text-align: center;\n  vertical-align: top;\n  width: 32px;\n}\n\n.icon.is-large {\n  display: inline-block;\n  font-size: 42px;\n  height: 48px;\n  line-height: 48px;\n  text-align: center;\n  vertical-align: top;\n  width: 48px;\n}\n\n.hamburger, .nav-toggle {\n  cursor: pointer;\n  display: block;\n  height: 50px;\n  position: relative;\n  width: 50px;\n}\n\n.hamburger span, .nav-toggle span {\n  background-color: #69707a;\n  display: block;\n  height: 1px;\n  left: 50%;\n  margin-left: -7px;\n  position: absolute;\n  top: 50%;\n  -webkit-transition: none 86ms ease-out;\n  transition: none 86ms ease-out;\n  -webkit-transition-property: background, left, opacity, -webkit-transform;\n  transition-property: background, left, opacity, -webkit-transform;\n  transition-property: background, left, opacity, transform;\n  transition-property: background, left, opacity, transform, -webkit-transform;\n  width: 15px;\n}\n\n.hamburger span:nth-child(1), .nav-toggle span:nth-child(1) {\n  margin-top: -6px;\n}\n\n.hamburger span:nth-child(2), .nav-toggle span:nth-child(2) {\n  margin-top: -1px;\n}\n\n.hamburger span:nth-child(3), .nav-toggle span:nth-child(3) {\n  margin-top: 4px;\n}\n\n.hamburger:hover, .nav-toggle:hover {\n  background-color: #f5f7fa;\n}\n\n.hamburger.is-active span, .is-active.nav-toggle span {\n  background-color: #1fc8db;\n}\n\n.hamburger.is-active span:nth-child(1), .is-active.nav-toggle span:nth-child(1) {\n  margin-left: -5px;\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg);\n  -webkit-transform-origin: left top;\n          transform-origin: left top;\n}\n\n.hamburger.is-active span:nth-child(2), .is-active.nav-toggle span:nth-child(2) {\n  opacity: 0;\n}\n\n.hamburger.is-active span:nth-child(3), .is-active.nav-toggle span:nth-child(3) {\n  margin-left: -5px;\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n  -webkit-transform-origin: left bottom;\n          transform-origin: left bottom;\n}\n\n.heading {\n  display: block;\n  font-size: 11px;\n  letter-spacing: 1px;\n  margin-bottom: 5px;\n  text-transform: uppercase;\n}\n\n.highlight {\n  font-size: 12px;\n  font-weight: normal;\n  max-width: 100%;\n  overflow: hidden;\n  padding: 0;\n}\n\n.highlight pre {\n  overflow: auto;\n  max-width: 100%;\n}\n\n.loader, .button.is-loading:after, .control.is-loading:after {\n  -webkit-animation: spin-around 500ms infinite linear;\n          animation: spin-around 500ms infinite linear;\n  border: 2px solid #d3d6db;\n  border-radius: 290486px;\n  border-right-color: transparent;\n  border-top-color: transparent;\n  content: \"\";\n  display: block;\n  height: 16px;\n  position: relative;\n  width: 16px;\n}\n\n.number {\n  background-color: #f5f7fa;\n  border-radius: 290486px;\n  display: inline-block;\n  font-size: 18px;\n  vertical-align: top;\n}\n\n.tag {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #f5f7fa;\n  border-radius: 290486px;\n  color: #69707a;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  font-size: 12px;\n  height: 24px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  line-height: 16px;\n  padding-left: 10px;\n  padding-right: 10px;\n  vertical-align: top;\n  white-space: nowrap;\n}\n\n.tag .delete, .tag .modal-close {\n  margin-left: 4px;\n  margin-right: -6px;\n}\n\n.tag.is-white {\n  background-color: #fff;\n  color: #111;\n}\n\n.tag.is-black {\n  background-color: #111;\n  color: #fff;\n}\n\n.tag.is-light {\n  background-color: #f5f7fa;\n  color: #69707a;\n}\n\n.tag.is-dark {\n  background-color: #69707a;\n  color: #f5f7fa;\n}\n\n.tag.is-primary {\n  background-color: #1fc8db;\n  color: white;\n}\n\n.tag.is-info {\n  background-color: #42afe3;\n  color: white;\n}\n\n.tag.is-success {\n  background-color: #97cd76;\n  color: white;\n}\n\n.tag.is-warning {\n  background-color: #fce473;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.tag.is-danger {\n  background-color: #ed6c63;\n  color: white;\n}\n\n.tag.is-small {\n  font-size: 11px;\n  height: 20px;\n  padding-left: 8px;\n  padding-right: 8px;\n}\n\n.tag.is-medium {\n  font-size: 14px;\n  height: 32px;\n  padding-left: 14px;\n  padding-right: 14px;\n}\n\n.tag.is-large {\n  font-size: 18px;\n  height: 40px;\n  line-height: 24px;\n  padding-left: 18px;\n  padding-right: 18px;\n}\n\n.tag.is-large .delete, .tag.is-large .modal-close {\n  margin-left: 4px;\n  margin-right: -8px;\n}\n\n.unselectable, .is-unselectable, .button, .delete, .modal-close, .tabs {\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n\n.card-header {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.1);\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 40px;\n}\n\n.card-header-title {\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n  color: #222324;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  font-weight: bold;\n  padding: 10px;\n}\n\n.card-header-icon {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  cursor: pointer;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  width: 40px;\n}\n\n.card-image {\n  display: block;\n  position: relative;\n}\n\n.card-content {\n  padding: 20px;\n}\n\n.card-content .title + .subtitle {\n  margin-top: -20px;\n}\n\n.card-footer {\n  border-top: 1px solid #d3d6db;\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n.card-footer-item {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 10px;\n}\n\n.card-footer-item:not(:last-child) {\n  border-right: 1px solid #d3d6db;\n}\n\n.card {\n  background-color: #fff;\n  box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);\n  color: #69707a;\n  max-width: 100%;\n  position: relative;\n  width: 300px;\n}\n\n.card .media:not(:last-child) {\n  margin-bottom: 10px;\n}\n\n.card.is-fullwidth {\n  width: 100%;\n}\n\n.card.is-rounded {\n  border-radius: 5px;\n}\n\n.column {\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-flex-shrink: 1;\n      -ms-flex-negative: 1;\n          flex-shrink: 1;\n  padding: 10px;\n}\n\n.columns.is-mobile > .column.is-narrow {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n}\n\n.columns.is-mobile > .column.is-full {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 100%;\n}\n\n.columns.is-mobile > .column.is-three-quarters {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 75%;\n}\n\n.columns.is-mobile > .column.is-two-thirds {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 66.6666%;\n}\n\n.columns.is-mobile > .column.is-half {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 50%;\n}\n\n.columns.is-mobile > .column.is-one-third {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 33.3333%;\n}\n\n.columns.is-mobile > .column.is-one-quarter {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 25%;\n}\n\n.columns.is-mobile > .column.is-offset-three-quarters {\n  margin-left: 75%;\n}\n\n.columns.is-mobile > .column.is-offset-two-thirds {\n  margin-left: 66.6666%;\n}\n\n.columns.is-mobile > .column.is-offset-half {\n  margin-left: 50%;\n}\n\n.columns.is-mobile > .column.is-offset-one-third {\n  margin-left: 33.3333%;\n}\n\n.columns.is-mobile > .column.is-offset-one-quarter {\n  margin-left: 25%;\n}\n\n.columns.is-mobile > .column.is-1 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 8.33333%;\n}\n\n.columns.is-mobile > .column.is-offset-1 {\n  margin-left: 8.33333%;\n}\n\n.columns.is-mobile > .column.is-2 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 16.66667%;\n}\n\n.columns.is-mobile > .column.is-offset-2 {\n  margin-left: 16.66667%;\n}\n\n.columns.is-mobile > .column.is-3 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 25%;\n}\n\n.columns.is-mobile > .column.is-offset-3 {\n  margin-left: 25%;\n}\n\n.columns.is-mobile > .column.is-4 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 33.33333%;\n}\n\n.columns.is-mobile > .column.is-offset-4 {\n  margin-left: 33.33333%;\n}\n\n.columns.is-mobile > .column.is-5 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 41.66667%;\n}\n\n.columns.is-mobile > .column.is-offset-5 {\n  margin-left: 41.66667%;\n}\n\n.columns.is-mobile > .column.is-6 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 50%;\n}\n\n.columns.is-mobile > .column.is-offset-6 {\n  margin-left: 50%;\n}\n\n.columns.is-mobile > .column.is-7 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 58.33333%;\n}\n\n.columns.is-mobile > .column.is-offset-7 {\n  margin-left: 58.33333%;\n}\n\n.columns.is-mobile > .column.is-8 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 66.66667%;\n}\n\n.columns.is-mobile > .column.is-offset-8 {\n  margin-left: 66.66667%;\n}\n\n.columns.is-mobile > .column.is-9 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 75%;\n}\n\n.columns.is-mobile > .column.is-offset-9 {\n  margin-left: 75%;\n}\n\n.columns.is-mobile > .column.is-10 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 83.33333%;\n}\n\n.columns.is-mobile > .column.is-offset-10 {\n  margin-left: 83.33333%;\n}\n\n.columns.is-mobile > .column.is-11 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 91.66667%;\n}\n\n.columns.is-mobile > .column.is-offset-11 {\n  margin-left: 91.66667%;\n}\n\n.columns.is-mobile > .column.is-12 {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  width: 100%;\n}\n\n.columns.is-mobile > .column.is-offset-12 {\n  margin-left: 100%;\n}\n\n@media screen and (max-width: 768px) {\n  .column.is-narrow-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n  }\n  .column.is-full-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-three-quarters-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-two-thirds-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.6666%;\n  }\n  .column.is-half-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-one-third-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.3333%;\n  }\n  .column.is-one-quarter-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-three-quarters-mobile {\n    margin-left: 75%;\n  }\n  .column.is-offset-two-thirds-mobile {\n    margin-left: 66.6666%;\n  }\n  .column.is-offset-half-mobile {\n    margin-left: 50%;\n  }\n  .column.is-offset-one-third-mobile {\n    margin-left: 33.3333%;\n  }\n  .column.is-offset-one-quarter-mobile {\n    margin-left: 25%;\n  }\n  .column.is-1-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 8.33333%;\n  }\n  .column.is-offset-1-mobile {\n    margin-left: 8.33333%;\n  }\n  .column.is-2-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 16.66667%;\n  }\n  .column.is-offset-2-mobile {\n    margin-left: 16.66667%;\n  }\n  .column.is-3-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-3-mobile {\n    margin-left: 25%;\n  }\n  .column.is-4-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.33333%;\n  }\n  .column.is-offset-4-mobile {\n    margin-left: 33.33333%;\n  }\n  .column.is-5-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 41.66667%;\n  }\n  .column.is-offset-5-mobile {\n    margin-left: 41.66667%;\n  }\n  .column.is-6-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-offset-6-mobile {\n    margin-left: 50%;\n  }\n  .column.is-7-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 58.33333%;\n  }\n  .column.is-offset-7-mobile {\n    margin-left: 58.33333%;\n  }\n  .column.is-8-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.66667%;\n  }\n  .column.is-offset-8-mobile {\n    margin-left: 66.66667%;\n  }\n  .column.is-9-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-offset-9-mobile {\n    margin-left: 75%;\n  }\n  .column.is-10-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 83.33333%;\n  }\n  .column.is-offset-10-mobile {\n    margin-left: 83.33333%;\n  }\n  .column.is-11-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 91.66667%;\n  }\n  .column.is-offset-11-mobile {\n    margin-left: 91.66667%;\n  }\n  .column.is-12-mobile {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-offset-12-mobile {\n    margin-left: 100%;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .column.is-narrow, .column.is-narrow-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n  }\n  .column.is-full, .column.is-full-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-three-quarters, .column.is-three-quarters-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-two-thirds, .column.is-two-thirds-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.6666%;\n  }\n  .column.is-half, .column.is-half-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-one-third, .column.is-one-third-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.3333%;\n  }\n  .column.is-one-quarter, .column.is-one-quarter-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-three-quarters, .column.is-offset-three-quarters-tablet {\n    margin-left: 75%;\n  }\n  .column.is-offset-two-thirds, .column.is-offset-two-thirds-tablet {\n    margin-left: 66.6666%;\n  }\n  .column.is-offset-half, .column.is-offset-half-tablet {\n    margin-left: 50%;\n  }\n  .column.is-offset-one-third, .column.is-offset-one-third-tablet {\n    margin-left: 33.3333%;\n  }\n  .column.is-offset-one-quarter, .column.is-offset-one-quarter-tablet {\n    margin-left: 25%;\n  }\n  .column.is-1, .column.is-1-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 8.33333%;\n  }\n  .column.is-offset-1, .column.is-offset-1-tablet {\n    margin-left: 8.33333%;\n  }\n  .column.is-2, .column.is-2-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 16.66667%;\n  }\n  .column.is-offset-2, .column.is-offset-2-tablet {\n    margin-left: 16.66667%;\n  }\n  .column.is-3, .column.is-3-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-3, .column.is-offset-3-tablet {\n    margin-left: 25%;\n  }\n  .column.is-4, .column.is-4-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.33333%;\n  }\n  .column.is-offset-4, .column.is-offset-4-tablet {\n    margin-left: 33.33333%;\n  }\n  .column.is-5, .column.is-5-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 41.66667%;\n  }\n  .column.is-offset-5, .column.is-offset-5-tablet {\n    margin-left: 41.66667%;\n  }\n  .column.is-6, .column.is-6-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-offset-6, .column.is-offset-6-tablet {\n    margin-left: 50%;\n  }\n  .column.is-7, .column.is-7-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 58.33333%;\n  }\n  .column.is-offset-7, .column.is-offset-7-tablet {\n    margin-left: 58.33333%;\n  }\n  .column.is-8, .column.is-8-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.66667%;\n  }\n  .column.is-offset-8, .column.is-offset-8-tablet {\n    margin-left: 66.66667%;\n  }\n  .column.is-9, .column.is-9-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-offset-9, .column.is-offset-9-tablet {\n    margin-left: 75%;\n  }\n  .column.is-10, .column.is-10-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 83.33333%;\n  }\n  .column.is-offset-10, .column.is-offset-10-tablet {\n    margin-left: 83.33333%;\n  }\n  .column.is-11, .column.is-11-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 91.66667%;\n  }\n  .column.is-offset-11, .column.is-offset-11-tablet {\n    margin-left: 91.66667%;\n  }\n  .column.is-12, .column.is-12-tablet {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-offset-12, .column.is-offset-12-tablet {\n    margin-left: 100%;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .column.is-narrow-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n  }\n  .column.is-full-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-three-quarters-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-two-thirds-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.6666%;\n  }\n  .column.is-half-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-one-third-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.3333%;\n  }\n  .column.is-one-quarter-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-three-quarters-desktop {\n    margin-left: 75%;\n  }\n  .column.is-offset-two-thirds-desktop {\n    margin-left: 66.6666%;\n  }\n  .column.is-offset-half-desktop {\n    margin-left: 50%;\n  }\n  .column.is-offset-one-third-desktop {\n    margin-left: 33.3333%;\n  }\n  .column.is-offset-one-quarter-desktop {\n    margin-left: 25%;\n  }\n  .column.is-1-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 8.33333%;\n  }\n  .column.is-offset-1-desktop {\n    margin-left: 8.33333%;\n  }\n  .column.is-2-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 16.66667%;\n  }\n  .column.is-offset-2-desktop {\n    margin-left: 16.66667%;\n  }\n  .column.is-3-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-3-desktop {\n    margin-left: 25%;\n  }\n  .column.is-4-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.33333%;\n  }\n  .column.is-offset-4-desktop {\n    margin-left: 33.33333%;\n  }\n  .column.is-5-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 41.66667%;\n  }\n  .column.is-offset-5-desktop {\n    margin-left: 41.66667%;\n  }\n  .column.is-6-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-offset-6-desktop {\n    margin-left: 50%;\n  }\n  .column.is-7-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 58.33333%;\n  }\n  .column.is-offset-7-desktop {\n    margin-left: 58.33333%;\n  }\n  .column.is-8-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.66667%;\n  }\n  .column.is-offset-8-desktop {\n    margin-left: 66.66667%;\n  }\n  .column.is-9-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-offset-9-desktop {\n    margin-left: 75%;\n  }\n  .column.is-10-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 83.33333%;\n  }\n  .column.is-offset-10-desktop {\n    margin-left: 83.33333%;\n  }\n  .column.is-11-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 91.66667%;\n  }\n  .column.is-offset-11-desktop {\n    margin-left: 91.66667%;\n  }\n  .column.is-12-desktop {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-offset-12-desktop {\n    margin-left: 100%;\n  }\n}\n\n@media screen and (min-width: 1180px) {\n  .column.is-narrow-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n  }\n  .column.is-full-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-three-quarters-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-two-thirds-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.6666%;\n  }\n  .column.is-half-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-one-third-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.3333%;\n  }\n  .column.is-one-quarter-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-three-quarters-widescreen {\n    margin-left: 75%;\n  }\n  .column.is-offset-two-thirds-widescreen {\n    margin-left: 66.6666%;\n  }\n  .column.is-offset-half-widescreen {\n    margin-left: 50%;\n  }\n  .column.is-offset-one-third-widescreen {\n    margin-left: 33.3333%;\n  }\n  .column.is-offset-one-quarter-widescreen {\n    margin-left: 25%;\n  }\n  .column.is-1-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 8.33333%;\n  }\n  .column.is-offset-1-widescreen {\n    margin-left: 8.33333%;\n  }\n  .column.is-2-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 16.66667%;\n  }\n  .column.is-offset-2-widescreen {\n    margin-left: 16.66667%;\n  }\n  .column.is-3-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .column.is-offset-3-widescreen {\n    margin-left: 25%;\n  }\n  .column.is-4-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.33333%;\n  }\n  .column.is-offset-4-widescreen {\n    margin-left: 33.33333%;\n  }\n  .column.is-5-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 41.66667%;\n  }\n  .column.is-offset-5-widescreen {\n    margin-left: 41.66667%;\n  }\n  .column.is-6-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .column.is-offset-6-widescreen {\n    margin-left: 50%;\n  }\n  .column.is-7-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 58.33333%;\n  }\n  .column.is-offset-7-widescreen {\n    margin-left: 58.33333%;\n  }\n  .column.is-8-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.66667%;\n  }\n  .column.is-offset-8-widescreen {\n    margin-left: 66.66667%;\n  }\n  .column.is-9-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .column.is-offset-9-widescreen {\n    margin-left: 75%;\n  }\n  .column.is-10-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 83.33333%;\n  }\n  .column.is-offset-10-widescreen {\n    margin-left: 83.33333%;\n  }\n  .column.is-11-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 91.66667%;\n  }\n  .column.is-offset-11-widescreen {\n    margin-left: 91.66667%;\n  }\n  .column.is-12-widescreen {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n  .column.is-offset-12-widescreen {\n    margin-left: 100%;\n  }\n}\n\n.columns {\n  margin-left: -10px;\n  margin-right: -10px;\n  margin-top: -10px;\n}\n\n.columns:last-child {\n  margin-bottom: -10px;\n}\n\n.columns:not(:last-child) {\n  margin-bottom: 10px;\n}\n\n.columns.is-centered {\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.columns.is-gapless {\n  margin-left: 0;\n  margin-right: 0;\n  margin-top: 0;\n}\n\n.columns.is-gapless:last-child {\n  margin-bottom: 0;\n}\n\n.columns.is-gapless:not(:last-child) {\n  margin-bottom: 20px;\n}\n\n.columns.is-gapless > .column {\n  margin: 0;\n  padding: 0;\n}\n\n@media screen and (min-width: 769px) {\n  .columns.is-grid {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n  .columns.is-grid > .column {\n    max-width: 33.3333%;\n    padding: 10px;\n    width: 33.3333%;\n  }\n  .columns.is-grid > .column + .column {\n    margin-left: 0;\n  }\n}\n\n.columns.is-mobile {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n.columns.is-multiline {\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n}\n\n.columns.is-vcentered {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n              -ms-grid-row-align: center;\n          align-items: center;\n}\n\n@media screen and (min-width: 769px) {\n  .columns:not(.is-desktop) {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n}\n\n@media screen and (min-width: 980px) {\n  .columns.is-desktop {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n}\n\n.tile {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n              -ms-grid-row-align: stretch;\n          align-items: stretch;\n  -webkit-flex-basis: auto;\n      -ms-flex-preferred-size: auto;\n          flex-basis: auto;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-flex-shrink: 1;\n      -ms-flex-negative: 1;\n          flex-shrink: 1;\n  min-height: -webkit-min-content;\n  min-height: -moz-min-content;\n  min-height: min-content;\n}\n\n.tile.is-ancestor {\n  margin-left: -10px;\n  margin-right: -10px;\n  margin-top: -10px;\n}\n\n.tile.is-ancestor:last-child {\n  margin-bottom: -10px;\n}\n\n.tile.is-ancestor:not(:last-child) {\n  margin-bottom: 10px;\n}\n\n.tile.is-child {\n  margin: 0 !important;\n}\n\n.tile.is-parent {\n  padding: 10px;\n}\n\n.tile.is-vertical {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n\n.tile.is-vertical > .tile.is-child:not(:last-child) {\n  margin-bottom: 20px !important;\n}\n\n@media screen and (min-width: 769px) {\n  .tile:not(.is-child) {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n  .tile.is-1 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 8.33333%;\n  }\n  .tile.is-2 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 16.66667%;\n  }\n  .tile.is-3 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 25%;\n  }\n  .tile.is-4 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 33.33333%;\n  }\n  .tile.is-5 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 41.66667%;\n  }\n  .tile.is-6 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 50%;\n  }\n  .tile.is-7 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 58.33333%;\n  }\n  .tile.is-8 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 66.66667%;\n  }\n  .tile.is-9 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 75%;\n  }\n  .tile.is-10 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 83.33333%;\n  }\n  .tile.is-11 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 91.66667%;\n  }\n  .tile.is-12 {\n    -webkit-box-flex: 0;\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 100%;\n  }\n}\n\n.highlight {\n  background-color: #fdf6e3;\n  color: #586e75;\n}\n\n.highlight .c {\n  color: #93a1a1;\n}\n\n.highlight .err,\n.highlight .g {\n  color: #586e75;\n}\n\n.highlight .k {\n  color: #859900;\n}\n\n.highlight .l,\n.highlight .n {\n  color: #586e75;\n}\n\n.highlight .o {\n  color: #859900;\n}\n\n.highlight .x {\n  color: #cb4b16;\n}\n\n.highlight .p {\n  color: #586e75;\n}\n\n.highlight .cm {\n  color: #93a1a1;\n}\n\n.highlight .cp {\n  color: #859900;\n}\n\n.highlight .c1 {\n  color: #93a1a1;\n}\n\n.highlight .cs {\n  color: #859900;\n}\n\n.highlight .gd {\n  color: #2aa198;\n}\n\n.highlight .ge {\n  color: #586e75;\n  font-style: italic;\n}\n\n.highlight .gr {\n  color: #dc322f;\n}\n\n.highlight .gh {\n  color: #cb4b16;\n}\n\n.highlight .gi {\n  color: #859900;\n}\n\n.highlight .go,\n.highlight .gp {\n  color: #586e75;\n}\n\n.highlight .gs {\n  color: #586e75;\n  font-weight: bold;\n}\n\n.highlight .gu {\n  color: #cb4b16;\n}\n\n.highlight .gt {\n  color: #586e75;\n}\n\n.highlight .kc {\n  color: #cb4b16;\n}\n\n.highlight .kd {\n  color: #268bd2;\n}\n\n.highlight .kn,\n.highlight .kp {\n  color: #859900;\n}\n\n.highlight .kr {\n  color: #268bd2;\n}\n\n.highlight .kt {\n  color: #dc322f;\n}\n\n.highlight .ld {\n  color: #586e75;\n}\n\n.highlight .m,\n.highlight .s {\n  color: #2aa198;\n}\n\n.highlight .na {\n  color: #B58900;\n}\n\n.highlight .nb {\n  color: #586e75;\n}\n\n.highlight .nc {\n  color: #268bd2;\n}\n\n.highlight .no {\n  color: #cb4b16;\n}\n\n.highlight .nd {\n  color: #268bd2;\n}\n\n.highlight .ni,\n.highlight .ne {\n  color: #cb4b16;\n}\n\n.highlight .nf {\n  color: #268bd2;\n}\n\n.highlight .nl,\n.highlight .nn,\n.highlight .nx,\n.highlight .py {\n  color: #586e75;\n}\n\n.highlight .nt,\n.highlight .nv {\n  color: #268bd2;\n}\n\n.highlight .ow {\n  color: #859900;\n}\n\n.highlight .w {\n  color: #586e75;\n}\n\n.highlight .mf,\n.highlight .mh,\n.highlight .mi,\n.highlight .mo {\n  color: #2aa198;\n}\n\n.highlight .sb {\n  color: #93a1a1;\n}\n\n.highlight .sc {\n  color: #2aa198;\n}\n\n.highlight .sd {\n  color: #586e75;\n}\n\n.highlight .s2 {\n  color: #2aa198;\n}\n\n.highlight .se {\n  color: #cb4b16;\n}\n\n.highlight .sh {\n  color: #586e75;\n}\n\n.highlight .si,\n.highlight .sx {\n  color: #2aa198;\n}\n\n.highlight .sr {\n  color: #dc322f;\n}\n\n.highlight .s1,\n.highlight .ss {\n  color: #2aa198;\n}\n\n.highlight .bp,\n.highlight .vc,\n.highlight .vg,\n.highlight .vi {\n  color: #268bd2;\n}\n\n.highlight .il {\n  color: #2aa198;\n}\n\n.level-item .title,\n.level-item .subtitle {\n  margin-bottom: 0;\n}\n\n@media screen and (max-width: 768px) {\n  .level-item:not(:last-child) {\n    margin-bottom: 10px;\n  }\n}\n\n.level-left .level-item:not(:last-child),\n.level-right .level-item:not(:last-child) {\n  margin-right: 10px;\n}\n\n.level-left .level-item.is-flexible,\n.level-right .level-item.is-flexible {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n@media screen and (max-width: 768px) {\n  .level-left + .level-right {\n    margin-top: 20px;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .level-left {\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .level-right {\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n    -webkit-justify-content: flex-end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n  }\n}\n\n.level {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n              -ms-grid-row-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.level code {\n  border-radius: 3px;\n}\n\n.level img {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.level.is-mobile {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n.level.is-mobile > .level-item:not(:last-child) {\n  margin-bottom: 0;\n}\n\n.level.is-mobile > .level-item:not(.is-narrow) {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n@media screen and (min-width: 769px) {\n  .level {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n  .level > .level-item:not(.is-narrow) {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n  }\n}\n\n.media-number {\n  background-color: #f5f7fa;\n  border-radius: 290486px;\n  display: inline-block;\n  font-size: 18px;\n  height: 32px;\n  line-height: 24px;\n  min-width: 32px;\n  padding: 4px 8px;\n  text-align: center;\n  vertical-align: top;\n}\n\n@media screen and (max-width: 768px) {\n  .media-number {\n    margin-bottom: 10px;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .media-number {\n    margin-right: 10px;\n  }\n}\n\n.media-left {\n  margin-right: 10px;\n}\n\n.media-right {\n  margin-left: 10px;\n}\n\n.media-content {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  text-align: left;\n}\n\n.media {\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  text-align: left;\n}\n\n.media .content:not(:last-child) {\n  margin-bottom: 10px;\n}\n\n.media .media {\n  border-top: 1px solid rgba(211, 214, 219, 0.5);\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 10px;\n}\n\n.media .media .content:not(:last-child),\n.media .media .control:not(:last-child) {\n  margin-bottom: 5px;\n}\n\n.media .media .media {\n  padding-top: 5px;\n}\n\n.media .media .media + .media {\n  margin-top: 5px;\n}\n\n.media + .media {\n  border-top: 1px solid rgba(211, 214, 219, 0.5);\n  margin-top: 10px;\n  padding-top: 10px;\n}\n\n.media.is-large + .media {\n  margin-top: 20px;\n  padding-top: 20px;\n}\n\n@media screen and (min-width: 769px) {\n  .media.is-large .media-number {\n    margin-right: 20px;\n  }\n}\n\n.menu-nav a {\n  display: block;\n  padding: 5px 10px;\n}\n\n.menu-list a {\n  border-radius: 2px;\n  color: #69707a;\n  display: block;\n  padding: 5px 10px;\n}\n\n.menu-list a:hover {\n  background-color: #f5f7fa;\n  color: #1fc8db;\n}\n\n.menu-list a.is-active {\n  background-color: #1fc8db;\n  color: white;\n}\n\n.menu-list li ul {\n  border-left: 1px solid #d3d6db;\n  margin: 10px;\n  padding-left: 10px;\n}\n\n.menu-label {\n  color: #aeb1b5;\n  font-size: 11px;\n  letter-spacing: 1px;\n  margin-bottom: 5px;\n  text-transform: uppercase;\n}\n\n.menu-label:not(:first-child) {\n  margin-top: 20px;\n}\n\n.message-body {\n  border: 1px solid #d3d6db;\n  border-radius: 3px;\n  padding: 12px 15px;\n}\n\n.message-body strong {\n  color: inherit;\n}\n\n.message-header {\n  background-color: #69707a;\n  border-radius: 3px 3px 0 0;\n  color: white;\n  padding: 7px 10px;\n}\n\n.message-header strong {\n  color: inherit;\n}\n\n.message-header + .message-body {\n  border-radius: 0 0 3px 3px;\n  border-top: none;\n}\n\n.message {\n  background-color: #f5f7fa;\n  border-radius: 3px;\n}\n\n.message.is-white {\n  background-color: white;\n}\n\n.message.is-white .message-header {\n  background-color: #fff;\n  color: #111;\n}\n\n.message.is-white .message-body {\n  border-color: #fff;\n  color: #666666;\n}\n\n.message.is-black {\n  background-color: whitesmoke;\n}\n\n.message.is-black .message-header {\n  background-color: #111;\n  color: #fff;\n}\n\n.message.is-black .message-body {\n  border-color: #111;\n  color: gray;\n}\n\n.message.is-light {\n  background-color: #f5f7fa;\n}\n\n.message.is-light .message-header {\n  background-color: #f5f7fa;\n  color: #69707a;\n}\n\n.message.is-light .message-body {\n  border-color: #f5f7fa;\n  color: #666666;\n}\n\n.message.is-dark {\n  background-color: #f4f5f6;\n}\n\n.message.is-dark .message-header {\n  background-color: #69707a;\n  color: #f5f7fa;\n}\n\n.message.is-dark .message-body {\n  border-color: #69707a;\n  color: gray;\n}\n\n.message.is-primary {\n  background-color: #edfbfc;\n}\n\n.message.is-primary .message-header {\n  background-color: #1fc8db;\n  color: white;\n}\n\n.message.is-primary .message-body {\n  border-color: #1fc8db;\n  color: gray;\n}\n\n.message.is-info {\n  background-color: #edf7fc;\n}\n\n.message.is-info .message-header {\n  background-color: #42afe3;\n  color: white;\n}\n\n.message.is-info .message-body {\n  border-color: #42afe3;\n  color: gray;\n}\n\n.message.is-success {\n  background-color: #f4faf0;\n}\n\n.message.is-success .message-header {\n  background-color: #97cd76;\n  color: white;\n}\n\n.message.is-success .message-body {\n  border-color: #97cd76;\n  color: gray;\n}\n\n.message.is-warning {\n  background-color: #fffbeb;\n}\n\n.message.is-warning .message-header {\n  background-color: #fce473;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.message.is-warning .message-body {\n  border-color: #fce473;\n  color: #666666;\n}\n\n.message.is-danger {\n  background-color: #fdeeed;\n}\n\n.message.is-danger .message-header {\n  background-color: #ed6c63;\n  color: white;\n}\n\n.message.is-danger .message-body {\n  border-color: #ed6c63;\n  color: gray;\n}\n\n.modal-background {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background-color: rgba(17, 17, 17, 0.86);\n}\n\n.modal-content, .modal-card {\n  margin: 0 20px;\n  max-height: calc(100vh - 160px);\n  overflow: auto;\n  position: relative;\n  width: 100%;\n}\n\n@media screen and (min-width: 769px) {\n  .modal-content, .modal-card {\n    margin: 0 auto;\n    max-height: calc(100vh - 40px);\n    width: 640px;\n  }\n}\n\n.modal-close {\n  background: none;\n  height: 40px;\n  position: fixed;\n  right: 20px;\n  top: 20px;\n  width: 40px;\n}\n\n.modal-card {\n  background-color: #fff;\n  border-radius: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  max-height: calc(100vh - 40px);\n  overflow: hidden;\n}\n\n.modal-card-head,\n.modal-card-foot {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #f5f7fa;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-shrink: 0;\n      -ms-flex-negative: 0;\n          flex-shrink: 0;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  padding: 20px;\n  position: relative;\n}\n\n.modal-card-head {\n  border-bottom: 1px solid #d3d6db;\n}\n\n.modal-card-title {\n  color: #222324;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  font-size: 24px;\n  line-height: 1;\n}\n\n.modal-card-foot {\n  border-top: 1px solid #d3d6db;\n}\n\n.modal-card-foot .button:not(:last-child) {\n  margin-right: 10px;\n}\n\n.modal-card-body {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  padding: 20px;\n}\n\n.modal {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n              -ms-grid-row-align: center;\n          align-items: center;\n  display: none;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  overflow: hidden;\n  position: fixed;\n  z-index: 1986;\n}\n\n.modal.is-active {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n@media screen and (min-width: 769px) {\n  .nav-toggle {\n    display: none;\n  }\n}\n\n.nav-item {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 10px;\n}\n\n.nav-item a {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n.nav-item img {\n  max-height: 24px;\n}\n\n.nav-item .button + .button {\n  margin-left: 10px;\n}\n\n.nav-item .tag:first-child {\n  margin-right: 5px;\n}\n\n.nav-item .tag:last-child {\n  margin-left: 5px;\n}\n\n@media screen and (max-width: 768px) {\n  .nav-item {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n  }\n}\n\n.nav-item a,\na.nav-item {\n  color: #69707a;\n}\n\n.nav-item a:hover,\na.nav-item:hover {\n  color: #222324;\n}\n\n.nav-item a.is-active,\na.nav-item.is-active {\n  color: #222324;\n}\n\n.nav-item a.is-tab,\na.nav-item.is-tab {\n  border-bottom: 1px solid transparent;\n  border-top: 1px solid transparent;\n  padding-left: 12px;\n  padding-right: 12px;\n}\n\n.nav-item a.is-tab:hover,\na.nav-item.is-tab:hover {\n  border-bottom: 1px solid #1fc8db;\n  border-top: 1px solid transparent;\n}\n\n.nav-item a.is-tab.is-active,\na.nav-item.is-tab.is-active {\n  border-bottom: 3px solid #1fc8db;\n  border-top: 3px solid transparent;\n  color: #1fc8db;\n}\n\n@media screen and (max-width: 768px) {\n  .nav-menu {\n    background-color: #fff;\n    box-shadow: 0 4px 7px rgba(17, 17, 17, 0.1);\n    left: 0;\n    display: none;\n    right: 0;\n    top: 100%;\n    position: absolute;\n  }\n  .nav-menu .nav-item {\n    border-top: 1px solid rgba(211, 214, 219, 0.5);\n    padding: 10px;\n  }\n  .nav-menu.is-active {\n    display: block;\n  }\n}\n\n@media screen and (min-width: 769px) and (max-width: 979px) {\n  .nav-menu {\n    padding-right: 20px;\n  }\n}\n\n.nav-left {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n\n.nav-center {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n@media screen and (min-width: 769px) {\n  .nav-right {\n    -webkit-box-align: stretch;\n    -webkit-align-items: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-basis: 0;\n        -ms-flex-preferred-size: 0;\n            flex-basis: 0;\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    -webkit-box-pack: end;\n    -webkit-justify-content: flex-end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n  }\n}\n\n.nav {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  background-color: #fff;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 50px;\n  position: relative;\n  text-align: center;\n  z-index: 2;\n}\n\n.nav > .container {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 50px;\n  width: 100%;\n}\n\n.nav > .container > .nav-left > .nav-item:first-child:not(.is-tab) {\n  padding-left: 0;\n}\n\n.nav > .container > .nav-right > .nav-item:last-child:not(.is-tab) {\n  padding-right: 0;\n}\n\n.container > .nav > .nav-left > .nav-item:first-child:not(.is-tab) {\n  padding-left: 0;\n}\n\n.container > .nav > .nav-right > .nav-item:last-child:not(.is-tab) {\n  padding-right: 0;\n}\n\n.nav.has-shadow {\n  box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1);\n}\n\n@media screen and (max-width: 979px) {\n  .nav > .container > .nav-left > .nav-item.is-brand:first-child,\n  .container > .nav > .nav-left > .nav-item.is-brand:first-child {\n    padding-left: 20px;\n  }\n}\n\n.pagination {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n}\n\n.pagination a {\n  display: block;\n  min-width: 32px;\n  padding: 3px 8px;\n}\n\n.pagination span {\n  color: #aeb1b5;\n  display: block;\n  margin: 0 4px;\n}\n\n.pagination li {\n  margin: 0 2px;\n}\n\n.pagination ul {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n@media screen and (max-width: 768px) {\n  .pagination {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n  .pagination > a {\n    width: calc(50% - 5px);\n  }\n  .pagination > a:not(:first-child) {\n    margin-left: 10px;\n  }\n  .pagination li {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n  }\n  .pagination ul {\n    margin-top: 10px;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .pagination > a:not(:first-child) {\n    -webkit-box-ordinal-group: 2;\n    -webkit-order: 1;\n        -ms-flex-order: 1;\n            order: 1;\n  }\n}\n\n.panel-icon {\n  display: inline-block;\n  font-size: 14px;\n  height: 16px;\n  line-height: 16px;\n  text-align: center;\n  vertical-align: top;\n  width: 16px;\n  color: #aeb1b5;\n  float: left;\n  margin: 0 4px 0 -2px;\n}\n\n.panel-icon .fa {\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.panel-heading {\n  background-color: #f5f7fa;\n  border-bottom: 1px solid #d3d6db;\n  border-radius: 4px 4px 0 0;\n  color: #222324;\n  font-size: 18px;\n  font-weight: 300;\n  padding: 10px;\n}\n\n.panel-list a {\n  color: #69707a;\n}\n\n.panel-list a:hover {\n  color: #1fc8db;\n}\n\n.panel-tabs {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  font-size: 11px;\n  padding: 5px 10px 0;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.panel-tabs a {\n  border-bottom: 1px solid #d3d6db;\n  margin-bottom: -1px;\n  padding: 5px;\n}\n\n.panel-tabs a.is-active {\n  border-bottom-color: #222324;\n  color: #222324;\n}\n\n.panel-tabs:not(:last-child) {\n  border-bottom: 1px solid #d3d6db;\n}\n\n.panel-block {\n  color: #222324;\n  display: block;\n  line-height: 16px;\n  padding: 10px;\n}\n\n.panel-block:not(:last-child) {\n  border-bottom: 1px solid #d3d6db;\n}\n\na.panel-block:hover {\n  background-color: #f5f7fa;\n}\n\n.panel {\n  border: 1px solid #d3d6db;\n  border-radius: 5px;\n}\n\n.panel:not(:last-child) {\n  margin-bottom: 20px;\n}\n\n.tabs {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  line-height: 24px;\n  overflow: hidden;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n\n.tabs a {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #d3d6db;\n  color: #69707a;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  margin-bottom: -1px;\n  padding: 6px 12px;\n  vertical-align: top;\n}\n\n.tabs a:hover {\n  border-bottom-color: #222324;\n  color: #222324;\n}\n\n.tabs li {\n  display: block;\n}\n\n.tabs li.is-active a {\n  border-bottom-color: #1fc8db;\n  color: #1fc8db;\n}\n\n.tabs ul {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #d3d6db;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n}\n\n.tabs ul.is-left {\n  padding-right: 10px;\n}\n\n.tabs ul.is-center {\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n      -ms-flex: none;\n          flex: none;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.tabs ul.is-right {\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  padding-left: 10px;\n}\n\n.tabs .icon:first-child {\n  margin-right: 8px;\n}\n\n.tabs .icon:last-child {\n  margin-left: 8px;\n}\n\n.tabs.is-centered ul {\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.tabs.is-right ul {\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n}\n\n.tabs.is-boxed a {\n  border: 1px solid transparent;\n  border-radius: 3px 3px 0 0;\n  padding-bottom: 5px;\n  padding-top: 5px;\n}\n\n.tabs.is-boxed a:hover {\n  background-color: #f5f7fa;\n  border-bottom-color: #d3d6db;\n}\n\n.tabs.is-boxed li.is-active a {\n  background-color: #fff;\n  border-color: #d3d6db;\n  border-bottom-color: transparent !important;\n}\n\n.tabs.is-fullwidth li {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n.tabs.is-toggle a {\n  border: 1px solid #d3d6db;\n  margin-bottom: 0;\n  padding-bottom: 5px;\n  padding-top: 5px;\n  position: relative;\n}\n\n.tabs.is-toggle a:hover {\n  background-color: #f5f7fa;\n  border-color: #aeb1b5;\n  z-index: 2;\n}\n\n.tabs.is-toggle li + li {\n  margin-left: -1px;\n}\n\n.tabs.is-toggle li:first-child a {\n  border-radius: 3px 0 0 3px;\n}\n\n.tabs.is-toggle li:last-child a {\n  border-radius: 0 3px 3px 0;\n}\n\n.tabs.is-toggle li.is-active a {\n  background-color: #1fc8db;\n  border-color: #1fc8db;\n  color: white;\n  z-index: 1;\n}\n\n.tabs.is-toggle ul {\n  border-bottom: none;\n}\n\n.tabs.is-small {\n  font-size: 11px;\n}\n\n.tabs.is-small a {\n  padding: 2px 8px;\n}\n\n.tabs.is-small.is-boxed a, .tabs.is-small.is-toggle a {\n  padding-bottom: 1px;\n  padding-top: 1px;\n}\n\n.tabs.is-medium {\n  font-size: 18px;\n}\n\n.tabs.is-medium a {\n  padding: 10px 16px;\n}\n\n.tabs.is-medium.is-boxed a, .tabs.is-medium.is-toggle a {\n  padding-bottom: 9px;\n  padding-top: 9px;\n}\n\n.tabs.is-large {\n  font-size: 28px;\n}\n\n.tabs.is-large a {\n  padding: 14px 20px;\n}\n\n.tabs.is-large.is-boxed a, .tabs.is-large.is-toggle a {\n  padding-bottom: 13px;\n  padding-top: 13px;\n}\n\n.hero-video {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  overflow: hidden;\n}\n\n.hero-video video {\n  left: 50%;\n  min-height: 100%;\n  min-width: 100%;\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translate3d(-50%, -50%, 0);\n          transform: translate3d(-50%, -50%, 0);\n}\n\n.hero-video.is-transparent {\n  opacity: 0.3;\n}\n\n@media screen and (max-width: 768px) {\n  .hero-video {\n    display: none;\n  }\n}\n\n.hero-buttons {\n  margin-top: 20px;\n}\n\n@media screen and (max-width: 768px) {\n  .hero-buttons .button {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n  }\n  .hero-buttons .button:not(:last-child) {\n    margin-bottom: 10px;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .hero-buttons {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n  .hero-buttons .button:not(:last-child) {\n    margin-right: 20px;\n  }\n}\n\n.hero-head,\n.hero-foot {\n  -webkit-flex-shrink: 0;\n      -ms-flex-negative: 0;\n          flex-shrink: 0;\n}\n\n.hero-body {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 40px 20px;\n}\n\n@media screen and (min-width: 980px) {\n  .hero-body {\n    padding-left: 0;\n    padding-right: 0;\n  }\n}\n\n.hero {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  background-color: #fff;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.hero .nav {\n  background: none;\n  box-shadow: 0 1px 0 rgba(211, 214, 219, 0.3);\n}\n\n.hero .tabs ul {\n  border-bottom: none;\n}\n\n.hero.is-white {\n  background-color: #fff;\n  color: #111;\n}\n\n.hero.is-white .title {\n  color: #111;\n}\n\n.hero.is-white .title a,\n.hero.is-white .title strong {\n  color: inherit;\n}\n\n.hero.is-white .subtitle {\n  color: rgba(17, 17, 17, 0.7);\n}\n\n.hero.is-white .subtitle a,\n.hero.is-white .subtitle strong {\n  color: #111;\n}\n\n.hero.is-white .nav {\n  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-white .nav-menu {\n    background-color: #fff;\n  }\n}\n\n.hero.is-white a.nav-item,\n.hero.is-white .nav-item a:not(.button) {\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-white a.nav-item:hover, .hero.is-white a.nav-item.is-active,\n.hero.is-white .nav-item a:not(.button):hover,\n.hero.is-white .nav-item a:not(.button).is-active {\n  color: #111;\n}\n\n.hero.is-white .tabs a {\n  color: #111;\n  opacity: 0.5;\n}\n\n.hero.is-white .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-white .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-white .tabs.is-boxed a, .hero.is-white .tabs.is-toggle a {\n  color: #111;\n}\n\n.hero.is-white .tabs.is-boxed a:hover, .hero.is-white .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-white .tabs.is-boxed li.is-active a, .hero.is-white .tabs.is-boxed li.is-active a:hover, .hero.is-white .tabs.is-toggle li.is-active a, .hero.is-white .tabs.is-toggle li.is-active a:hover {\n  background-color: #111;\n  border-color: #111;\n  color: #fff;\n}\n\n.hero.is-white.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #e6e6e6 0%, #fff 71%, white 100%);\n  background-image: linear-gradient(141deg, #e6e6e6 0%, #fff 71%, white 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-white .nav-toggle span {\n    background-color: #111;\n  }\n  .hero.is-white .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-white .nav-toggle.is-active span {\n    background-color: #111;\n  }\n  .hero.is-white .nav-menu .nav-item {\n    border-top-color: rgba(17, 17, 17, 0.2);\n  }\n}\n\n.hero.is-black {\n  background-color: #111;\n  color: #fff;\n}\n\n.hero.is-black .title {\n  color: #fff;\n}\n\n.hero.is-black .title a,\n.hero.is-black .title strong {\n  color: inherit;\n}\n\n.hero.is-black .subtitle {\n  color: rgba(255, 255, 255, 0.7);\n}\n\n.hero.is-black .subtitle a,\n.hero.is-black .subtitle strong {\n  color: #fff;\n}\n\n.hero.is-black .nav {\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-black .nav-menu {\n    background-color: #111;\n  }\n}\n\n.hero.is-black a.nav-item,\n.hero.is-black .nav-item a:not(.button) {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.hero.is-black a.nav-item:hover, .hero.is-black a.nav-item.is-active,\n.hero.is-black .nav-item a:not(.button):hover,\n.hero.is-black .nav-item a:not(.button).is-active {\n  color: #fff;\n}\n\n.hero.is-black .tabs a {\n  color: #fff;\n  opacity: 0.5;\n}\n\n.hero.is-black .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-black .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-black .tabs.is-boxed a, .hero.is-black .tabs.is-toggle a {\n  color: #fff;\n}\n\n.hero.is-black .tabs.is-boxed a:hover, .hero.is-black .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-black .tabs.is-boxed li.is-active a, .hero.is-black .tabs.is-boxed li.is-active a:hover, .hero.is-black .tabs.is-toggle li.is-active a, .hero.is-black .tabs.is-toggle li.is-active a:hover {\n  background-color: #fff;\n  border-color: #fff;\n  color: #111;\n}\n\n.hero.is-black.is-bold {\n  background-image: -webkit-linear-gradient(309deg, black 0%, #111 71%, #1f1c1c 100%);\n  background-image: linear-gradient(141deg, black 0%, #111 71%, #1f1c1c 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-black .nav-toggle span {\n    background-color: #fff;\n  }\n  .hero.is-black .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-black .nav-toggle.is-active span {\n    background-color: #fff;\n  }\n  .hero.is-black .nav-menu .nav-item {\n    border-top-color: rgba(255, 255, 255, 0.2);\n  }\n}\n\n.hero.is-light {\n  background-color: #f5f7fa;\n  color: #69707a;\n}\n\n.hero.is-light .title {\n  color: #69707a;\n}\n\n.hero.is-light .title a,\n.hero.is-light .title strong {\n  color: inherit;\n}\n\n.hero.is-light .subtitle {\n  color: rgba(105, 112, 122, 0.7);\n}\n\n.hero.is-light .subtitle a,\n.hero.is-light .subtitle strong {\n  color: #69707a;\n}\n\n.hero.is-light .nav {\n  box-shadow: 0 1px 0 rgba(105, 112, 122, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-light .nav-menu {\n    background-color: #f5f7fa;\n  }\n}\n\n.hero.is-light a.nav-item,\n.hero.is-light .nav-item a:not(.button) {\n  color: rgba(105, 112, 122, 0.5);\n}\n\n.hero.is-light a.nav-item:hover, .hero.is-light a.nav-item.is-active,\n.hero.is-light .nav-item a:not(.button):hover,\n.hero.is-light .nav-item a:not(.button).is-active {\n  color: #69707a;\n}\n\n.hero.is-light .tabs a {\n  color: #69707a;\n  opacity: 0.5;\n}\n\n.hero.is-light .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-light .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-light .tabs.is-boxed a, .hero.is-light .tabs.is-toggle a {\n  color: #69707a;\n}\n\n.hero.is-light .tabs.is-boxed a:hover, .hero.is-light .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-light .tabs.is-boxed li.is-active a, .hero.is-light .tabs.is-boxed li.is-active a:hover, .hero.is-light .tabs.is-toggle li.is-active a, .hero.is-light .tabs.is-toggle li.is-active a:hover {\n  background-color: #69707a;\n  border-color: #69707a;\n  color: #f5f7fa;\n}\n\n.hero.is-light.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #d0e0ec 0%, #f5f7fa 71%, white 100%);\n  background-image: linear-gradient(141deg, #d0e0ec 0%, #f5f7fa 71%, white 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-light .nav-toggle span {\n    background-color: #69707a;\n  }\n  .hero.is-light .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-light .nav-toggle.is-active span {\n    background-color: #69707a;\n  }\n  .hero.is-light .nav-menu .nav-item {\n    border-top-color: rgba(105, 112, 122, 0.2);\n  }\n}\n\n.hero.is-dark {\n  background-color: #69707a;\n  color: #f5f7fa;\n}\n\n.hero.is-dark .title {\n  color: #f5f7fa;\n}\n\n.hero.is-dark .title a,\n.hero.is-dark .title strong {\n  color: inherit;\n}\n\n.hero.is-dark .subtitle {\n  color: rgba(245, 247, 250, 0.7);\n}\n\n.hero.is-dark .subtitle a,\n.hero.is-dark .subtitle strong {\n  color: #f5f7fa;\n}\n\n.hero.is-dark .nav {\n  box-shadow: 0 1px 0 rgba(245, 247, 250, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-dark .nav-menu {\n    background-color: #69707a;\n  }\n}\n\n.hero.is-dark a.nav-item,\n.hero.is-dark .nav-item a:not(.button) {\n  color: rgba(245, 247, 250, 0.5);\n}\n\n.hero.is-dark a.nav-item:hover, .hero.is-dark a.nav-item.is-active,\n.hero.is-dark .nav-item a:not(.button):hover,\n.hero.is-dark .nav-item a:not(.button).is-active {\n  color: #f5f7fa;\n}\n\n.hero.is-dark .tabs a {\n  color: #f5f7fa;\n  opacity: 0.5;\n}\n\n.hero.is-dark .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-dark .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-dark .tabs.is-boxed a, .hero.is-dark .tabs.is-toggle a {\n  color: #f5f7fa;\n}\n\n.hero.is-dark .tabs.is-boxed a:hover, .hero.is-dark .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-dark .tabs.is-boxed li.is-active a, .hero.is-dark .tabs.is-boxed li.is-active a:hover, .hero.is-dark .tabs.is-toggle li.is-active a, .hero.is-dark .tabs.is-toggle li.is-active a:hover {\n  background-color: #f5f7fa;\n  border-color: #f5f7fa;\n  color: #69707a;\n}\n\n.hero.is-dark.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #495a67 0%, #69707a 71%, #6e768e 100%);\n  background-image: linear-gradient(141deg, #495a67 0%, #69707a 71%, #6e768e 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-dark .nav-toggle span {\n    background-color: #f5f7fa;\n  }\n  .hero.is-dark .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-dark .nav-toggle.is-active span {\n    background-color: #f5f7fa;\n  }\n  .hero.is-dark .nav-menu .nav-item {\n    border-top-color: rgba(245, 247, 250, 0.2);\n  }\n}\n\n.hero.is-primary {\n  background-color: #1fc8db;\n  color: white;\n}\n\n.hero.is-primary .title {\n  color: white;\n}\n\n.hero.is-primary .title a,\n.hero.is-primary .title strong {\n  color: inherit;\n}\n\n.hero.is-primary .subtitle {\n  color: rgba(255, 255, 255, 0.7);\n}\n\n.hero.is-primary .subtitle a,\n.hero.is-primary .subtitle strong {\n  color: white;\n}\n\n.hero.is-primary .nav {\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-primary .nav-menu {\n    background-color: #1fc8db;\n  }\n}\n\n.hero.is-primary a.nav-item,\n.hero.is-primary .nav-item a:not(.button) {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.hero.is-primary a.nav-item:hover, .hero.is-primary a.nav-item.is-active,\n.hero.is-primary .nav-item a:not(.button):hover,\n.hero.is-primary .nav-item a:not(.button).is-active {\n  color: white;\n}\n\n.hero.is-primary .tabs a {\n  color: white;\n  opacity: 0.5;\n}\n\n.hero.is-primary .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-primary .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-primary .tabs.is-boxed a, .hero.is-primary .tabs.is-toggle a {\n  color: white;\n}\n\n.hero.is-primary .tabs.is-boxed a:hover, .hero.is-primary .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-primary .tabs.is-boxed li.is-active a, .hero.is-primary .tabs.is-boxed li.is-active a:hover, .hero.is-primary .tabs.is-toggle li.is-active a, .hero.is-primary .tabs.is-toggle li.is-active a:hover {\n  background-color: white;\n  border-color: white;\n  color: #1fc8db;\n}\n\n.hero.is-primary.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #0fb8ad 0%, #1fc8db 71%, #2cb5e8 100%);\n  background-image: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 71%, #2cb5e8 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-primary .nav-toggle span {\n    background-color: white;\n  }\n  .hero.is-primary .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-primary .nav-toggle.is-active span {\n    background-color: white;\n  }\n  .hero.is-primary .nav-menu .nav-item {\n    border-top-color: rgba(255, 255, 255, 0.2);\n  }\n}\n\n.hero.is-info {\n  background-color: #42afe3;\n  color: white;\n}\n\n.hero.is-info .title {\n  color: white;\n}\n\n.hero.is-info .title a,\n.hero.is-info .title strong {\n  color: inherit;\n}\n\n.hero.is-info .subtitle {\n  color: rgba(255, 255, 255, 0.7);\n}\n\n.hero.is-info .subtitle a,\n.hero.is-info .subtitle strong {\n  color: white;\n}\n\n.hero.is-info .nav {\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-info .nav-menu {\n    background-color: #42afe3;\n  }\n}\n\n.hero.is-info a.nav-item,\n.hero.is-info .nav-item a:not(.button) {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.hero.is-info a.nav-item:hover, .hero.is-info a.nav-item.is-active,\n.hero.is-info .nav-item a:not(.button):hover,\n.hero.is-info .nav-item a:not(.button).is-active {\n  color: white;\n}\n\n.hero.is-info .tabs a {\n  color: white;\n  opacity: 0.5;\n}\n\n.hero.is-info .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-info .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-info .tabs.is-boxed a, .hero.is-info .tabs.is-toggle a {\n  color: white;\n}\n\n.hero.is-info .tabs.is-boxed a:hover, .hero.is-info .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-info .tabs.is-boxed li.is-active a, .hero.is-info .tabs.is-boxed li.is-active a:hover, .hero.is-info .tabs.is-toggle li.is-active a, .hero.is-info .tabs.is-toggle li.is-active a:hover {\n  background-color: white;\n  border-color: white;\n  color: #42afe3;\n}\n\n.hero.is-info.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #13bfdf 0%, #42afe3 71%, #53a1eb 100%);\n  background-image: linear-gradient(141deg, #13bfdf 0%, #42afe3 71%, #53a1eb 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-info .nav-toggle span {\n    background-color: white;\n  }\n  .hero.is-info .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-info .nav-toggle.is-active span {\n    background-color: white;\n  }\n  .hero.is-info .nav-menu .nav-item {\n    border-top-color: rgba(255, 255, 255, 0.2);\n  }\n}\n\n.hero.is-success {\n  background-color: #97cd76;\n  color: white;\n}\n\n.hero.is-success .title {\n  color: white;\n}\n\n.hero.is-success .title a,\n.hero.is-success .title strong {\n  color: inherit;\n}\n\n.hero.is-success .subtitle {\n  color: rgba(255, 255, 255, 0.7);\n}\n\n.hero.is-success .subtitle a,\n.hero.is-success .subtitle strong {\n  color: white;\n}\n\n.hero.is-success .nav {\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-success .nav-menu {\n    background-color: #97cd76;\n  }\n}\n\n.hero.is-success a.nav-item,\n.hero.is-success .nav-item a:not(.button) {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.hero.is-success a.nav-item:hover, .hero.is-success a.nav-item.is-active,\n.hero.is-success .nav-item a:not(.button):hover,\n.hero.is-success .nav-item a:not(.button).is-active {\n  color: white;\n}\n\n.hero.is-success .tabs a {\n  color: white;\n  opacity: 0.5;\n}\n\n.hero.is-success .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-success .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-success .tabs.is-boxed a, .hero.is-success .tabs.is-toggle a {\n  color: white;\n}\n\n.hero.is-success .tabs.is-boxed a:hover, .hero.is-success .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-success .tabs.is-boxed li.is-active a, .hero.is-success .tabs.is-boxed li.is-active a:hover, .hero.is-success .tabs.is-toggle li.is-active a, .hero.is-success .tabs.is-toggle li.is-active a:hover {\n  background-color: white;\n  border-color: white;\n  color: #97cd76;\n}\n\n.hero.is-success.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #8ecb45 0%, #97cd76 71%, #96d885 100%);\n  background-image: linear-gradient(141deg, #8ecb45 0%, #97cd76 71%, #96d885 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-success .nav-toggle span {\n    background-color: white;\n  }\n  .hero.is-success .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-success .nav-toggle.is-active span {\n    background-color: white;\n  }\n  .hero.is-success .nav-menu .nav-item {\n    border-top-color: rgba(255, 255, 255, 0.2);\n  }\n}\n\n.hero.is-warning {\n  background-color: #fce473;\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-warning .title {\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-warning .title a,\n.hero.is-warning .title strong {\n  color: inherit;\n}\n\n.hero.is-warning .subtitle {\n  color: rgba(17, 17, 17, 0.7);\n}\n\n.hero.is-warning .subtitle a,\n.hero.is-warning .subtitle strong {\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-warning .nav {\n  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-warning .nav-menu {\n    background-color: #fce473;\n  }\n}\n\n.hero.is-warning a.nav-item,\n.hero.is-warning .nav-item a:not(.button) {\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-warning a.nav-item:hover, .hero.is-warning a.nav-item.is-active,\n.hero.is-warning .nav-item a:not(.button):hover,\n.hero.is-warning .nav-item a:not(.button).is-active {\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-warning .tabs a {\n  color: rgba(17, 17, 17, 0.5);\n  opacity: 0.5;\n}\n\n.hero.is-warning .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-warning .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-warning .tabs.is-boxed a, .hero.is-warning .tabs.is-toggle a {\n  color: rgba(17, 17, 17, 0.5);\n}\n\n.hero.is-warning .tabs.is-boxed a:hover, .hero.is-warning .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-warning .tabs.is-boxed li.is-active a, .hero.is-warning .tabs.is-boxed li.is-active a:hover, .hero.is-warning .tabs.is-toggle li.is-active a, .hero.is-warning .tabs.is-toggle li.is-active a:hover {\n  background-color: rgba(17, 17, 17, 0.5);\n  border-color: rgba(17, 17, 17, 0.5);\n  color: #fce473;\n}\n\n.hero.is-warning.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #ffbd3d 0%, #fce473 71%, #fffe8a 100%);\n  background-image: linear-gradient(141deg, #ffbd3d 0%, #fce473 71%, #fffe8a 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-warning .nav-toggle span {\n    background-color: rgba(17, 17, 17, 0.5);\n  }\n  .hero.is-warning .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-warning .nav-toggle.is-active span {\n    background-color: rgba(17, 17, 17, 0.5);\n  }\n  .hero.is-warning .nav-menu .nav-item {\n    border-top-color: rgba(17, 17, 17, 0.2);\n  }\n}\n\n.hero.is-danger {\n  background-color: #ed6c63;\n  color: white;\n}\n\n.hero.is-danger .title {\n  color: white;\n}\n\n.hero.is-danger .title a,\n.hero.is-danger .title strong {\n  color: inherit;\n}\n\n.hero.is-danger .subtitle {\n  color: rgba(255, 255, 255, 0.7);\n}\n\n.hero.is-danger .subtitle a,\n.hero.is-danger .subtitle strong {\n  color: white;\n}\n\n.hero.is-danger .nav {\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-danger .nav-menu {\n    background-color: #ed6c63;\n  }\n}\n\n.hero.is-danger a.nav-item,\n.hero.is-danger .nav-item a:not(.button) {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.hero.is-danger a.nav-item:hover, .hero.is-danger a.nav-item.is-active,\n.hero.is-danger .nav-item a:not(.button):hover,\n.hero.is-danger .nav-item a:not(.button).is-active {\n  color: white;\n}\n\n.hero.is-danger .tabs a {\n  color: white;\n  opacity: 0.5;\n}\n\n.hero.is-danger .tabs a:hover {\n  opacity: 1;\n}\n\n.hero.is-danger .tabs li.is-active a {\n  opacity: 1;\n}\n\n.hero.is-danger .tabs.is-boxed a, .hero.is-danger .tabs.is-toggle a {\n  color: white;\n}\n\n.hero.is-danger .tabs.is-boxed a:hover, .hero.is-danger .tabs.is-toggle a:hover {\n  background-color: rgba(17, 17, 17, 0.1);\n}\n\n.hero.is-danger .tabs.is-boxed li.is-active a, .hero.is-danger .tabs.is-boxed li.is-active a:hover, .hero.is-danger .tabs.is-toggle li.is-active a, .hero.is-danger .tabs.is-toggle li.is-active a:hover {\n  background-color: white;\n  border-color: white;\n  color: #ed6c63;\n}\n\n.hero.is-danger.is-bold {\n  background-image: -webkit-linear-gradient(309deg, #f32a3e 0%, #ed6c63 71%, #f39376 100%);\n  background-image: linear-gradient(141deg, #f32a3e 0%, #ed6c63 71%, #f39376 100%);\n}\n\n@media screen and (max-width: 768px) {\n  .hero.is-danger .nav-toggle span {\n    background-color: white;\n  }\n  .hero.is-danger .nav-toggle:hover {\n    background-color: rgba(17, 17, 17, 0.1);\n  }\n  .hero.is-danger .nav-toggle.is-active span {\n    background-color: white;\n  }\n  .hero.is-danger .nav-menu .nav-item {\n    border-top-color: rgba(255, 255, 255, 0.2);\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .hero.is-medium .hero-body {\n    padding-bottom: 120px;\n    padding-top: 120px;\n  }\n}\n\n@media screen and (min-width: 769px) {\n  .hero.is-large .hero-body {\n    padding-bottom: 240px;\n    padding-top: 240px;\n  }\n}\n\n.hero.is-fullheight {\n  min-height: 100vh;\n}\n\n.hero.is-fullheight .hero-body {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n.hero.is-fullheight .hero-body > .container {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n}\n\n.section {\n  background-color: #fff;\n  padding: 40px 20px;\n}\n\n@media screen and (min-width: 980px) {\n  .section.is-medium {\n    padding: 120px 20px;\n  }\n  .section.is-large {\n    padding: 240px 20px;\n  }\n}\n\n.footer {\n  background-color: #f5f7fa;\n  padding: 40px 20px 80px;\n}\n\n.footer a, .footer a:visited {\n  color: #69707a;\n}\n\n.footer a:hover, .footer a:visited:hover {\n  color: #222324;\n}\n\n.footer a:not(.icon), .footer a:visited:not(.icon) {\n  border-bottom: 1px solid #d3d6db;\n}\n\n.footer a:not(.icon):hover, .footer a:visited:not(.icon):hover {\n  border-bottom-color: #1fc8db;\n}\n/*# sourceMappingURL=bulma.css.map */");}};});
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE39/index.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var CODE39 = function() {
+    function CODE39(string, options) {
+      _classCallCheck(this, CODE39);
+      this.string = string.toUpperCase();
+      this.mod43Enabled = options.mod43 || false;
+      this.characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "-", ".", " ", "$", "/", "+", "%", "*"];
+      this.encodings = [20957, 29783, 23639, 30485, 20951, 29813, 23669, 20855, 29789, 23645, 29975, 23831, 30533, 22295, 30149, 24005, 21623, 29981, 23837, 22301, 30023, 23879, 30545, 22343, 30161, 24017, 21959, 30065, 23921, 22385, 29015, 18263, 29141, 17879, 29045, 18293, 17783, 29021, 18269, 17477, 17489, 17681, 20753, 35770];
+    }
+    CODE39.prototype.getEncoding = function getEncoding(character) {
+      return this.getBinary(this.characterValue(character));
+    };
+    CODE39.prototype.getBinary = function getBinary(characterValue) {
+      return this.encodings[characterValue].toString(2);
+    };
+    CODE39.prototype.getCharacter = function getCharacter(characterValue) {
+      return this.characters[characterValue];
+    };
+    CODE39.prototype.characterValue = function characterValue(character) {
+      return this.characters.indexOf(character);
+    };
+    CODE39.prototype.encode = function encode() {
+      var string = this.string;
+      var result = this.getEncoding("*");
+      for (var i = 0; i < this.string.length; i++) {
+        result += this.getEncoding(this.string[i]) + "0";
+      }
+      if (this.mod43Enabled) {
+        var checksum = this.mod43checksum();
+        result += this.getBinary(checksum) + "0";
+        string += this.getCharacter(checksum);
+      }
+      result += this.getEncoding("*");
+      return {
+        data: result,
+        text: string
+      };
+    };
+    CODE39.prototype.valid = function valid() {
+      return this.string.search(/^[0-9A-Z\-\.\ \$\/\+\%]+$/) !== -1;
+    };
+    CODE39.prototype.mod43checksum = function mod43checksum() {
+      var checksum = 0;
+      for (var i = 0; i < this.string.length; i++) {
+        checksum += this.characterValue(this.string[i]);
+      }
+      checksum = checksum % 43;
+      return checksum;
+    };
+    return CODE39;
+  }();
+  exports.CODE39 = CODE39;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE128/CODE128_AUTO.js", ["./CODE128.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _CODE2 = $__require('./CODE128.js');
+  var _CODE3 = _interopRequireDefault(_CODE2);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var CODE128AUTO = function(_CODE) {
+    _inherits(CODE128AUTO, _CODE);
+    function CODE128AUTO(string) {
+      _classCallCheck(this, CODE128AUTO);
+      if (string.search(/^[\x00-\x7F\xC8-\xD3]+$/) !== -1) {
+        var _this = _possibleConstructorReturn(this, _CODE.call(this, autoSelectModes(string)));
+      } else {
+        var _this = _possibleConstructorReturn(this, _CODE.call(this, string));
+      }
+      return _possibleConstructorReturn(_this);
+    }
+    return CODE128AUTO;
+  }(_CODE3.default);
+  function autoSelectModes(string) {
+    var aLength = string.match(/^[\x00-\x5F\xC8-\xCF]*/)[0].length;
+    var bLength = string.match(/^[\x20-\x7F\xC8-\xCF]*/)[0].length;
+    var cLength = string.match(/^(\xCF*[0-9]{2}\xCF*)*/)[0].length;
+    var newString;
+    if (cLength >= 2) {
+      newString = String.fromCharCode(210) + autoSelectFromC(string);
+    } else if (aLength > bLength) {
+      newString = String.fromCharCode(208) + autoSelectFromA(string);
+    } else {
+      newString = String.fromCharCode(209) + autoSelectFromB(string);
+    }
+    newString = newString.replace(/[\xCD\xCE]([^])[\xCD\xCE]/, function(match, char) {
+      return String.fromCharCode(203) + char;
+    });
+    return newString;
+  }
+  function autoSelectFromA(string) {
+    var untilC = string.match(/^([\x00-\x5F\xC8-\xCF]+?)(([0-9]{2}){2,})([^0-9]|$)/);
+    if (untilC) {
+      return untilC[1] + String.fromCharCode(204) + autoSelectFromC(string.substring(untilC[1].length));
+    }
+    var aChars = string.match(/^[\x00-\x5F\xC8-\xCF]+/);
+    if (aChars[0].length === string.length) {
+      return string;
+    }
+    return aChars[0] + String.fromCharCode(205) + autoSelectFromB(string.substring(aChars[0].length));
+  }
+  function autoSelectFromB(string) {
+    var untilC = string.match(/^([\x20-\x7F\xC8-\xCF]+?)(([0-9]{2}){2,})([^0-9]|$)/);
+    if (untilC) {
+      return untilC[1] + String.fromCharCode(204) + autoSelectFromC(string.substring(untilC[1].length));
+    }
+    var bChars = string.match(/^[\x20-\x7F\xC8-\xCF]+/);
+    if (bChars[0].length === string.length) {
+      return string;
+    }
+    return bChars[0] + String.fromCharCode(206) + autoSelectFromA(string.substring(bChars[0].length));
+  }
+  function autoSelectFromC(string) {
+    var cMatch = string.match(/^(\xCF*[0-9]{2}\xCF*)+/)[0];
+    var length = cMatch.length;
+    if (length === string.length) {
+      return string;
+    }
+    string = string.substring(length);
+    var aLength = string.match(/^[\x00-\x5F\xC8-\xCF]*/)[0].length;
+    var bLength = string.match(/^[\x20-\x7F\xC8-\xCF]*/)[0].length;
+    if (aLength >= bLength) {
+      return cMatch + String.fromCharCode(206) + autoSelectFromA(string);
+    } else {
+      return cMatch + String.fromCharCode(205) + autoSelectFromB(string);
+    }
+  }
+  exports.default = CODE128AUTO;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE128/CODE128A.js", ["./CODE128.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _CODE2 = $__require('./CODE128.js');
+  var _CODE3 = _interopRequireDefault(_CODE2);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var CODE128A = function(_CODE) {
+    _inherits(CODE128A, _CODE);
+    function CODE128A(string) {
+      _classCallCheck(this, CODE128A);
+      return _possibleConstructorReturn(this, _CODE.call(this, String.fromCharCode(208) + string));
+    }
+    CODE128A.prototype.valid = function valid() {
+      return this.string.search(/^[\x00-\x5F\xC8-\xCF]+$/) !== -1;
+    };
+    return CODE128A;
+  }(_CODE3.default);
+  exports.default = CODE128A;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE128/CODE128B.js", ["./CODE128.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _CODE2 = $__require('./CODE128.js');
+  var _CODE3 = _interopRequireDefault(_CODE2);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var CODE128B = function(_CODE) {
+    _inherits(CODE128B, _CODE);
+    function CODE128B(string) {
+      _classCallCheck(this, CODE128B);
+      return _possibleConstructorReturn(this, _CODE.call(this, String.fromCharCode(209) + string));
+    }
+    CODE128B.prototype.valid = function valid() {
+      return this.string.search(/^[\x20-\x7F\xC8-\xCF]+$/) !== -1;
+    };
+    return CODE128B;
+  }(_CODE3.default);
+  exports.default = CODE128B;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE128/CODE128.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var CODE128 = function() {
+    function CODE128(string) {
+      _classCallCheck(this, CODE128);
+      this.bytes = [];
+      for (var i = 0; i < string.length; ++i) {
+        this.bytes.push(string.charCodeAt(i));
+      }
+      this.string = string.substring(1);
+      this.encodings = [740, 644, 638, 176, 164, 100, 224, 220, 124, 608, 604, 572, 436, 244, 230, 484, 260, 254, 650, 628, 614, 764, 652, 902, 868, 836, 830, 892, 844, 842, 752, 734, 590, 304, 112, 94, 416, 128, 122, 672, 576, 570, 464, 422, 134, 496, 478, 142, 910, 678, 582, 768, 762, 774, 880, 862, 814, 896, 890, 818, 914, 602, 930, 328, 292, 200, 158, 68, 62, 424, 412, 232, 218, 76, 74, 554, 616, 978, 556, 146, 340, 212, 182, 508, 268, 266, 956, 940, 938, 758, 782, 974, 400, 310, 118, 512, 506, 960, 954, 502, 518, 886, 966, 668, 680, 692, 5379];
+    }
+    CODE128.prototype.encode = function encode() {
+      var encodingResult;
+      var bytes = this.bytes;
+      var startIndex = bytes.shift() - 105;
+      if (startIndex === 103) {
+        encodingResult = this.nextA(bytes, 1);
+      } else if (startIndex === 104) {
+        encodingResult = this.nextB(bytes, 1);
+      } else if (startIndex === 105) {
+        encodingResult = this.nextC(bytes, 1);
+      }
+      return {
+        text: this.string.replace(/[^\x20-\x7E]/g, ""),
+        data: this.getEncoding(startIndex) + encodingResult.result + this.getEncoding((encodingResult.checksum + startIndex) % 103) + this.getEncoding(106)
+      };
+    };
+    CODE128.prototype.getEncoding = function getEncoding(n) {
+      return this.encodings[n] ? (this.encodings[n] + 1000).toString(2) : '';
+    };
+    CODE128.prototype.valid = function valid() {
+      return this.string.search(/^[\x00-\x7F\xC8-\xD3]+$/) !== -1;
+    };
+    CODE128.prototype.nextA = function nextA(bytes, depth) {
+      if (bytes.length <= 0) {
+        return {
+          "result": "",
+          "checksum": 0
+        };
+      }
+      var next,
+          index;
+      if (bytes[0] >= 200) {
+        index = bytes[0] - 105;
+        bytes.shift();
+        if (index === 99) {
+          next = this.nextC(bytes, depth + 1);
+        } else if (index === 100) {
+          next = this.nextB(bytes, depth + 1);
+        } else if (index === 98) {
+          bytes[0] = bytes[0] > 95 ? bytes[0] - 96 : bytes[0];
+          next = this.nextA(bytes, depth + 1);
+        } else {
+          next = this.nextA(bytes, depth + 1);
+        }
+      } else {
+        var charCode = bytes[0];
+        index = charCode < 32 ? charCode + 64 : charCode - 32;
+        bytes.shift();
+        next = this.nextA(bytes, depth + 1);
+      }
+      var enc = this.getEncoding(index);
+      var weight = index * depth;
+      return {
+        "result": enc + next.result,
+        "checksum": weight + next.checksum
+      };
+    };
+    CODE128.prototype.nextB = function nextB(bytes, depth) {
+      if (bytes.length <= 0) {
+        return {
+          "result": "",
+          "checksum": 0
+        };
+      }
+      var next,
+          index;
+      if (bytes[0] >= 200) {
+        index = bytes[0] - 105;
+        bytes.shift();
+        if (index === 99) {
+          next = this.nextC(bytes, depth + 1);
+        } else if (index === 101) {
+          next = this.nextA(bytes, depth + 1);
+        } else if (index === 98) {
+          bytes[0] = bytes[0] < 32 ? bytes[0] + 96 : bytes[0];
+          next = this.nextB(bytes, depth + 1);
+        } else {
+          next = this.nextB(bytes, depth + 1);
+        }
+      } else {
+        index = bytes[0] - 32;
+        bytes.shift();
+        next = this.nextB(bytes, depth + 1);
+      }
+      var enc = this.getEncoding(index);
+      var weight = index * depth;
+      return {
+        "result": enc + next.result,
+        "checksum": weight + next.checksum
+      };
+    };
+    CODE128.prototype.nextC = function nextC(bytes, depth) {
+      if (bytes.length <= 0) {
+        return {
+          "result": "",
+          "checksum": 0
+        };
+      }
+      var next,
+          index;
+      if (bytes[0] >= 200) {
+        index = bytes[0] - 105;
+        bytes.shift();
+        if (index === 100) {
+          next = this.nextB(bytes, depth + 1);
+        } else if (index === 101) {
+          next = this.nextA(bytes, depth + 1);
+        } else {
+          next = this.nextC(bytes, depth + 1);
+        }
+      } else {
+        index = (bytes[0] - 48) * 10 + bytes[1] - 48;
+        bytes.shift();
+        bytes.shift();
+        next = this.nextC(bytes, depth + 1);
+      }
+      var enc = this.getEncoding(index);
+      var weight = index * depth;
+      return {
+        "result": enc + next.result,
+        "checksum": weight + next.checksum
+      };
+    };
+    return CODE128;
+  }();
+  exports.default = CODE128;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE128/CODE128C.js", ["./CODE128.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _CODE2 = $__require('./CODE128.js');
+  var _CODE3 = _interopRequireDefault(_CODE2);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var CODE128C = function(_CODE) {
+    _inherits(CODE128C, _CODE);
+    function CODE128C(string) {
+      _classCallCheck(this, CODE128C);
+      return _possibleConstructorReturn(this, _CODE.call(this, String.fromCharCode(210) + string));
+    }
+    CODE128C.prototype.valid = function valid() {
+      return this.string.search(/^(\xCF*[0-9]{2}\xCF*)+$/) !== -1;
+    };
+    return CODE128C;
+  }(_CODE3.default);
+  exports.default = CODE128C;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/CODE128/index.js", ["./CODE128_AUTO.js", "./CODE128A.js", "./CODE128B.js", "./CODE128C.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.CODE128C = exports.CODE128B = exports.CODE128A = exports.CODE128 = undefined;
+  var _CODE128_AUTO = $__require('./CODE128_AUTO.js');
+  var _CODE128_AUTO2 = _interopRequireDefault(_CODE128_AUTO);
+  var _CODE128A = $__require('./CODE128A.js');
+  var _CODE128A2 = _interopRequireDefault(_CODE128A);
+  var _CODE128B = $__require('./CODE128B.js');
+  var _CODE128B2 = _interopRequireDefault(_CODE128B);
+  var _CODE128C = $__require('./CODE128C.js');
+  var _CODE128C2 = _interopRequireDefault(_CODE128C);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  exports.CODE128 = _CODE128_AUTO2.default;
+  exports.CODE128A = _CODE128A2.default;
+  exports.CODE128B = _CODE128B2.default;
+  exports.CODE128C = _CODE128C2.default;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/EAN13.js", ["./ean_encoder.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _ean_encoder = $__require('./ean_encoder.js');
+  var _ean_encoder2 = _interopRequireDefault(_ean_encoder);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var EAN13 = function() {
+    function EAN13(string, options) {
+      _classCallCheck(this, EAN13);
+      if (string.search(/^[0-9]{12}$/) !== -1) {
+        this.string = string + this.checksum(string);
+      } else {
+        this.string = string;
+      }
+      this.displayValue = options.displayValue;
+      this.structure = ["LLLLLL", "LLGLGG", "LLGGLG", "LLGGGL", "LGLLGG", "LGGLLG", "LGGGLL", "LGLGLG", "LGLGGL", "LGGLGL"];
+      if (options.fontSize > options.width * 10) {
+        this.fontSize = options.width * 10;
+      } else {
+        this.fontSize = options.fontSize;
+      }
+      this.guardHeight = options.height + this.fontSize / 2 + options.textMargin;
+      this.lastChar = options.lastChar;
+    }
+    EAN13.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]{13}$/) !== -1 && this.string[12] == this.checksum(this.string);
+    };
+    EAN13.prototype.encode = function encode() {
+      var encoder = new _ean_encoder2.default();
+      var result = [];
+      var structure = this.structure[this.string[0]];
+      var leftSide = this.string.substr(1, 6);
+      var rightSide = this.string.substr(7, 6);
+      if (this.displayValue) {
+        result.push({
+          data: "000000000000",
+          text: this.string[0],
+          options: {
+            textAlign: "left",
+            fontSize: this.fontSize
+          }
+        });
+      }
+      result.push({
+        data: "101",
+        options: {height: this.guardHeight}
+      });
+      result.push({
+        data: encoder.encode(leftSide, structure),
+        text: leftSide,
+        options: {fontSize: this.fontSize}
+      });
+      result.push({
+        data: "01010",
+        options: {height: this.guardHeight}
+      });
+      result.push({
+        data: encoder.encode(rightSide, "RRRRRR"),
+        text: rightSide,
+        options: {fontSize: this.fontSize}
+      });
+      result.push({
+        data: "101",
+        options: {height: this.guardHeight}
+      });
+      if (this.lastChar && this.displayValue) {
+        result.push({data: "00"});
+        result.push({
+          data: "00000",
+          text: this.lastChar,
+          options: {fontSize: this.fontSize}
+        });
+      }
+      return result;
+    };
+    EAN13.prototype.checksum = function checksum(number) {
+      var result = 0;
+      var i;
+      for (i = 0; i < 12; i += 2) {
+        result += parseInt(number[i]);
+      }
+      for (i = 1; i < 12; i += 2) {
+        result += parseInt(number[i]) * 3;
+      }
+      return (10 - result % 10) % 10;
+    };
+    return EAN13;
+  }();
+  exports.default = EAN13;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/EAN8.js", ["./ean_encoder.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _ean_encoder = $__require('./ean_encoder.js');
+  var _ean_encoder2 = _interopRequireDefault(_ean_encoder);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var EAN8 = function() {
+    function EAN8(string) {
+      _classCallCheck(this, EAN8);
+      if (string.search(/^[0-9]{7}$/) !== -1) {
+        this.string = string + this.checksum(string);
+      } else {
+        this.string = string;
+      }
+    }
+    EAN8.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]{8}$/) !== -1 && this.string[7] == this.checksum(this.string);
+    };
+    EAN8.prototype.encode = function encode() {
+      var encoder = new _ean_encoder2.default();
+      var result = "";
+      var leftSide = this.string.substr(0, 4);
+      var rightSide = this.string.substr(4, 4);
+      result += encoder.startBin;
+      result += encoder.encode(leftSide, "LLLL");
+      result += encoder.middleBin;
+      result += encoder.encode(rightSide, "RRRR");
+      result += encoder.endBin;
+      return {
+        data: result,
+        text: this.string
+      };
+    };
+    EAN8.prototype.checksum = function checksum(number) {
+      var result = 0;
+      var i;
+      for (i = 0; i < 7; i += 2) {
+        result += parseInt(number[i]) * 3;
+      }
+      for (i = 1; i < 7; i += 2) {
+        result += parseInt(number[i]);
+      }
+      return (10 - result % 10) % 10;
+    };
+    return EAN8;
+  }();
+  exports.default = EAN8;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/EAN5.js", ["./ean_encoder.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _ean_encoder = $__require('./ean_encoder.js');
+  var _ean_encoder2 = _interopRequireDefault(_ean_encoder);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var EAN5 = function() {
+    function EAN5(string) {
+      _classCallCheck(this, EAN5);
+      this.string = string;
+      this.structure = ["GGLLL", "GLGLL", "GLLGL", "GLLLG", "LGGLL", "LLGGL", "LLLGG", "LGLGL", "LGLLG", "LLGLG"];
+    }
+    EAN5.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]{5}$/) !== -1;
+    };
+    EAN5.prototype.encode = function encode() {
+      var encoder = new _ean_encoder2.default();
+      var checksum = this.checksum();
+      var result = "1011";
+      result += encoder.encode(this.string, this.structure[checksum], "01");
+      return {
+        data: result,
+        text: this.string
+      };
+    };
+    EAN5.prototype.checksum = function checksum() {
+      var result = 0;
+      result += parseInt(this.string[0]) * 3;
+      result += parseInt(this.string[1]) * 9;
+      result += parseInt(this.string[2]) * 3;
+      result += parseInt(this.string[3]) * 9;
+      result += parseInt(this.string[4]) * 3;
+      return result % 10;
+    };
+    return EAN5;
+  }();
+  exports.default = EAN5;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/EAN2.js", ["./ean_encoder.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _ean_encoder = $__require('./ean_encoder.js');
+  var _ean_encoder2 = _interopRequireDefault(_ean_encoder);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var EAN2 = function() {
+    function EAN2(string) {
+      _classCallCheck(this, EAN2);
+      this.string = string;
+      this.structure = ["LL", "LG", "GL", "GG"];
+    }
+    EAN2.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]{2}$/) !== -1;
+    };
+    EAN2.prototype.encode = function encode() {
+      var encoder = new _ean_encoder2.default();
+      var structure = this.structure[parseInt(this.string) % 4];
+      var result = "1011";
+      result += encoder.encode(this.string, structure, "01");
+      return {
+        data: result,
+        text: this.string
+      };
+    };
+    return EAN2;
+  }();
+  exports.default = EAN2;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/ean_encoder.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var EANencoder = function() {
+    function EANencoder() {
+      _classCallCheck(this, EANencoder);
+      this.startBin = "101";
+      this.endBin = "101";
+      this.middleBin = "01010";
+      this.Lbinary = ["0001101", "0011001", "0010011", "0111101", "0100011", "0110001", "0101111", "0111011", "0110111", "0001011"];
+      this.Gbinary = ["0100111", "0110011", "0011011", "0100001", "0011101", "0111001", "0000101", "0010001", "0001001", "0010111"];
+      this.Rbinary = ["1110010", "1100110", "1101100", "1000010", "1011100", "1001110", "1010000", "1000100", "1001000", "1110100"];
+    }
+    EANencoder.prototype.encode = function encode(number, structure, separator) {
+      var result = "";
+      separator = separator || "";
+      for (var i = 0; i < number.length; i++) {
+        if (structure[i] == "L") {
+          result += this.Lbinary[number[i]];
+        } else if (structure[i] == "G") {
+          result += this.Gbinary[number[i]];
+        } else if (structure[i] == "R") {
+          result += this.Rbinary[number[i]];
+        }
+        if (i < number.length - 1) {
+          result += separator;
+        }
+      }
+      return result;
+    };
+    return EANencoder;
+  }();
+  exports.default = EANencoder;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/UPC.js", ["./ean_encoder.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _ean_encoder = $__require('./ean_encoder.js');
+  var _ean_encoder2 = _interopRequireDefault(_ean_encoder);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var UPC = function() {
+    function UPC(string, options) {
+      _classCallCheck(this, UPC);
+      if (string.search(/^[0-9]{11}$/) !== -1) {
+        this.string = string + this.checksum(string);
+      } else {
+        this.string = string;
+      }
+      this.displayValue = options.displayValue;
+      if (options.fontSize > options.width * 10) {
+        this.fontSize = options.width * 10;
+      } else {
+        this.fontSize = options.fontSize;
+      }
+      this.guardHeight = options.height + this.fontSize / 2 + options.textMargin;
+    }
+    UPC.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]{12}$/) !== -1 && this.string[11] == this.checksum(this.string);
+    };
+    UPC.prototype.encode = function encode() {
+      var encoder = new _ean_encoder2.default();
+      var result = [];
+      if (this.displayValue) {
+        result.push({
+          data: "00000000",
+          text: this.string[0],
+          options: {
+            textAlign: "left",
+            fontSize: this.fontSize
+          }
+        });
+      }
+      result.push({
+        data: "101" + encoder.encode(this.string[0], "L"),
+        options: {height: this.guardHeight}
+      });
+      result.push({
+        data: encoder.encode(this.string.substr(1, 5), "LLLLL"),
+        text: this.string.substr(1, 5),
+        options: {fontSize: this.fontSize}
+      });
+      result.push({
+        data: "01010",
+        options: {height: this.guardHeight}
+      });
+      result.push({
+        data: encoder.encode(this.string.substr(6, 5), "RRRRR"),
+        text: this.string.substr(6, 5),
+        options: {fontSize: this.fontSize}
+      });
+      result.push({
+        data: encoder.encode(this.string[11], "R") + "101",
+        options: {height: this.guardHeight}
+      });
+      if (this.displayValue) {
+        result.push({
+          data: "00000000",
+          text: this.string[11],
+          options: {
+            textAlign: "right",
+            fontSize: this.fontSize
+          }
+        });
+      }
+      return result;
+    };
+    UPC.prototype.checksum = function checksum(number) {
+      var result = 0;
+      var i;
+      for (i = 1; i < 11; i += 2) {
+        result += parseInt(number[i]);
+      }
+      for (i = 0; i < 11; i += 2) {
+        result += parseInt(number[i]) * 3;
+      }
+      return (10 - result % 10) % 10;
+    };
+    return UPC;
+  }();
+  exports.default = UPC;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/EAN_UPC/index.js", ["./EAN13.js", "./EAN8.js", "./EAN5.js", "./EAN2.js", "./UPC.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.UPC = exports.EAN2 = exports.EAN5 = exports.EAN8 = exports.EAN13 = undefined;
+  var _EAN = $__require('./EAN13.js');
+  var _EAN2 = _interopRequireDefault(_EAN);
+  var _EAN3 = $__require('./EAN8.js');
+  var _EAN4 = _interopRequireDefault(_EAN3);
+  var _EAN5 = $__require('./EAN5.js');
+  var _EAN6 = _interopRequireDefault(_EAN5);
+  var _EAN7 = $__require('./EAN2.js');
+  var _EAN8 = _interopRequireDefault(_EAN7);
+  var _UPC = $__require('./UPC.js');
+  var _UPC2 = _interopRequireDefault(_UPC);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  exports.EAN13 = _EAN2.default;
+  exports.EAN8 = _EAN4.default;
+  exports.EAN5 = _EAN6.default;
+  exports.EAN2 = _EAN8.default;
+  exports.UPC = _UPC2.default;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/ITF14/index.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var ITF14 = function() {
+    function ITF14(string) {
+      _classCallCheck(this, ITF14);
+      this.string = string;
+      if (string.search(/^[0-9]{13}$/) !== -1) {
+        this.string += this.checksum(string);
+      }
+      this.binaryRepresentation = {
+        "0": "00110",
+        "1": "10001",
+        "2": "01001",
+        "3": "11000",
+        "4": "00101",
+        "5": "10100",
+        "6": "01100",
+        "7": "00011",
+        "8": "10010",
+        "9": "01010"
+      };
+    }
+    ITF14.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]{14}$/) !== -1 && this.string[13] == this.checksum();
+    };
+    ITF14.prototype.encode = function encode() {
+      var result = "1010";
+      for (var i = 0; i < 14; i += 2) {
+        result += this.calculatePair(this.string.substr(i, 2));
+      }
+      result += "11101";
+      return {
+        data: result,
+        text: this.string
+      };
+    };
+    ITF14.prototype.calculatePair = function calculatePair(numberPair) {
+      var result = "";
+      var number1Struct = this.binaryRepresentation[numberPair[0]];
+      var number2Struct = this.binaryRepresentation[numberPair[1]];
+      for (var i = 0; i < 5; i++) {
+        result += number1Struct[i] == "1" ? "111" : "1";
+        result += number2Struct[i] == "1" ? "000" : "0";
+      }
+      return result;
+    };
+    ITF14.prototype.checksum = function checksum() {
+      var result = 0;
+      for (var i = 0; i < 13; i++) {
+        result += parseInt(this.string[i]) * (3 - i % 2 * 2);
+      }
+      return Math.ceil(result / 10) * 10 - result;
+    };
+    return ITF14;
+  }();
+  exports.ITF14 = ITF14;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/ITF/index.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var ITF = function() {
+    function ITF(string) {
+      _classCallCheck(this, ITF);
+      this.string = string;
+      this.binaryRepresentation = {
+        "0": "00110",
+        "1": "10001",
+        "2": "01001",
+        "3": "11000",
+        "4": "00101",
+        "5": "10100",
+        "6": "01100",
+        "7": "00011",
+        "8": "10010",
+        "9": "01010"
+      };
+    }
+    ITF.prototype.valid = function valid() {
+      return this.string.search(/^([0-9]{2})+$/) !== -1;
+    };
+    ITF.prototype.encode = function encode() {
+      var result = "1010";
+      for (var i = 0; i < this.string.length; i += 2) {
+        result += this.calculatePair(this.string.substr(i, 2));
+      }
+      result += "11101";
+      return {
+        data: result,
+        text: this.string
+      };
+    };
+    ITF.prototype.calculatePair = function calculatePair(numberPair) {
+      var result = "";
+      var number1Struct = this.binaryRepresentation[numberPair[0]];
+      var number2Struct = this.binaryRepresentation[numberPair[1]];
+      for (var i = 0; i < 5; i++) {
+        result += number1Struct[i] == "1" ? "111" : "1";
+        result += number2Struct[i] == "1" ? "000" : "0";
+      }
+      return result;
+    };
+    return ITF;
+  }();
+  exports.ITF = ITF;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/MSI10.js", ["./MSI.js", "./checksums.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _MSI2 = $__require('./MSI.js');
+  var _MSI3 = _interopRequireDefault(_MSI2);
+  var _checksums = $__require('./checksums.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var MSI10 = function(_MSI) {
+    _inherits(MSI10, _MSI);
+    function MSI10(string) {
+      _classCallCheck(this, MSI10);
+      var _this = _possibleConstructorReturn(this, _MSI.call(this, string));
+      _this.string += (0, _checksums.mod10)(_this.string);
+      return _this;
+    }
+    return MSI10;
+  }(_MSI3.default);
+  exports.default = MSI10;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/MSI11.js", ["./MSI.js", "./checksums.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _MSI2 = $__require('./MSI.js');
+  var _MSI3 = _interopRequireDefault(_MSI2);
+  var _checksums = $__require('./checksums.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var MSI11 = function(_MSI) {
+    _inherits(MSI11, _MSI);
+    function MSI11(string) {
+      _classCallCheck(this, MSI11);
+      var _this = _possibleConstructorReturn(this, _MSI.call(this, string));
+      _this.string += (0, _checksums.mod11)(_this.string);
+      return _this;
+    }
+    return MSI11;
+  }(_MSI3.default);
+  exports.default = MSI11;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/MSI1010.js", ["./MSI.js", "./checksums.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _MSI2 = $__require('./MSI.js');
+  var _MSI3 = _interopRequireDefault(_MSI2);
+  var _checksums = $__require('./checksums.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var MSI1010 = function(_MSI) {
+    _inherits(MSI1010, _MSI);
+    function MSI1010(string) {
+      _classCallCheck(this, MSI1010);
+      var _this = _possibleConstructorReturn(this, _MSI.call(this, string));
+      _this.string += (0, _checksums.mod10)(_this.string);
+      _this.string += (0, _checksums.mod10)(_this.string);
+      return _this;
+    }
+    return MSI1010;
+  }(_MSI3.default);
+  exports.default = MSI1010;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/MSI.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var MSI = function() {
+    function MSI(string) {
+      _classCallCheck(this, MSI);
+      this.string = string;
+    }
+    MSI.prototype.encode = function encode() {
+      var ret = "110";
+      for (var i = 0; i < this.string.length; i++) {
+        var digit = parseInt(this.string[i]);
+        var bin = digit.toString(2);
+        bin = addZeroes(bin, 4 - bin.length);
+        for (var b = 0; b < bin.length; b++) {
+          ret += bin[b] == "0" ? "100" : "110";
+        }
+      }
+      ret += "1001";
+      return {
+        data: ret,
+        text: this.string
+      };
+    };
+    MSI.prototype.valid = function valid() {
+      return this.string.search(/^[0-9]+$/) !== -1;
+    };
+    return MSI;
+  }();
+  function addZeroes(number, n) {
+    for (var i = 0; i < n; i++) {
+      number = "0" + number;
+    }
+    return number;
+  }
+  exports.default = MSI;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/checksums.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.mod10 = mod10;
+  exports.mod11 = mod11;
+  function mod10(number) {
+    var sum = 0;
+    for (var i = 0; i < number.length; i++) {
+      var n = parseInt(number[i]);
+      if ((i + number.length) % 2 === 0) {
+        sum += n;
+      } else {
+        sum += n * 2 % 10 + Math.floor(n * 2 / 10);
+      }
+    }
+    return (10 - sum % 10) % 10;
+  }
+  function mod11(number) {
+    var sum = 0;
+    var weights = [2, 3, 4, 5, 6, 7];
+    for (var i = 0; i < number.length; i++) {
+      var n = parseInt(number[number.length - 1 - i]);
+      sum += weights[i % weights.length] * n;
+    }
+    return (11 - sum % 11) % 11;
+  }
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/MSI1110.js", ["./MSI.js", "./checksums.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _MSI2 = $__require('./MSI.js');
+  var _MSI3 = _interopRequireDefault(_MSI2);
+  var _checksums = $__require('./checksums.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var MSI1110 = function(_MSI) {
+    _inherits(MSI1110, _MSI);
+    function MSI1110(string) {
+      _classCallCheck(this, MSI1110);
+      var _this = _possibleConstructorReturn(this, _MSI.call(this, string));
+      _this.string += (0, _checksums.mod11)(_this.string);
+      _this.string += (0, _checksums.mod10)(_this.string);
+      return _this;
+    }
+    return MSI1110;
+  }(_MSI3.default);
+  exports.default = MSI1110;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/MSI/index.js", ["./MSI.js", "./MSI10.js", "./MSI11.js", "./MSI1010.js", "./MSI1110.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.MSI1110 = exports.MSI1010 = exports.MSI11 = exports.MSI10 = exports.MSI = undefined;
+  var _MSI = $__require('./MSI.js');
+  var _MSI2 = _interopRequireDefault(_MSI);
+  var _MSI3 = $__require('./MSI10.js');
+  var _MSI4 = _interopRequireDefault(_MSI3);
+  var _MSI5 = $__require('./MSI11.js');
+  var _MSI6 = _interopRequireDefault(_MSI5);
+  var _MSI7 = $__require('./MSI1010.js');
+  var _MSI8 = _interopRequireDefault(_MSI7);
+  var _MSI9 = $__require('./MSI1110.js');
+  var _MSI10 = _interopRequireDefault(_MSI9);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  exports.MSI = _MSI2.default;
+  exports.MSI10 = _MSI4.default;
+  exports.MSI11 = _MSI6.default;
+  exports.MSI1010 = _MSI8.default;
+  exports.MSI1110 = _MSI10.default;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/pharmacode/index.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var pharmacode = function() {
+    function pharmacode(string) {
+      _classCallCheck(this, pharmacode);
+      this.number = parseInt(string, 10);
+    }
+    pharmacode.prototype.encode = function encode() {
+      var z = this.number;
+      var result = "";
+      while (!isNaN(z) && z != 0) {
+        if (z % 2 === 0) {
+          result = "11100" + result;
+          z = (z - 2) / 2;
+        } else {
+          result = "100" + result;
+          z = (z - 1) / 2;
+        }
+      }
+      result = result.slice(0, -2);
+      return {
+        data: result,
+        text: this.number + ""
+      };
+    };
+    pharmacode.prototype.valid = function valid() {
+      return this.number >= 3 && this.number <= 131070;
+    };
+    return pharmacode;
+  }();
+  exports.pharmacode = pharmacode;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/GenericBarcode/index.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var GenericBarcode = function() {
+    function GenericBarcode(string) {
+      _classCallCheck(this, GenericBarcode);
+      this.string = string;
+    }
+    GenericBarcode.prototype.encode = function encode() {
+      return {
+        data: "10101010101010101010101010101010101010101",
+        text: this.string
+      };
+    };
+    GenericBarcode.prototype.valid = function valid() {
+      return true;
+    };
+    return GenericBarcode;
+  }();
+  exports.GenericBarcode = GenericBarcode;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/barcodes/index.js", ["./CODE39", "./CODE128", "./EAN_UPC", "./ITF14", "./ITF", "./MSI", "./pharmacode", "./GenericBarcode", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _CODE = $__require('./CODE39');
+  var _CODE2 = $__require('./CODE128');
+  var _EAN_UPC = $__require('./EAN_UPC');
+  var _ITF = $__require('./ITF14');
+  var _ITF2 = $__require('./ITF');
+  var _MSI = $__require('./MSI');
+  var _pharmacode = $__require('./pharmacode');
+  var _GenericBarcode = $__require('./GenericBarcode');
+  exports.default = {
+    CODE39: _CODE.CODE39,
+    CODE128: _CODE2.CODE128,
+    CODE128A: _CODE2.CODE128A,
+    CODE128B: _CODE2.CODE128B,
+    CODE128C: _CODE2.CODE128C,
+    EAN13: _EAN_UPC.EAN13,
+    EAN8: _EAN_UPC.EAN8,
+    EAN5: _EAN_UPC.EAN5,
+    EAN2: _EAN_UPC.EAN2,
+    UPC: _EAN_UPC.UPC,
+    ITF14: _ITF.ITF14,
+    ITF: _ITF2.ITF,
+    MSI: _MSI.MSI,
+    MSI10: _MSI.MSI10,
+    MSI11: _MSI.MSI11,
+    MSI1010: _MSI.MSI1010,
+    MSI1110: _MSI.MSI1110,
+    pharmacode: _pharmacode.pharmacode,
+    GenericBarcode: _GenericBarcode.GenericBarcode
+  };
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/help/linearizeEncodings.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.default = linearizeEncodings;
+  function linearizeEncodings(encodings) {
+    var linearEncodings = [];
+    function nextLevel(encoded) {
+      if (Array.isArray(encoded)) {
+        for (var i = 0; i < encoded.length; i++) {
+          nextLevel(encoded[i]);
+        }
+      } else {
+        encoded.text = encoded.text || "";
+        encoded.data = encoded.data || "";
+        linearEncodings.push(encoded);
+      }
+    }
+    nextLevel(encodings);
+    return linearEncodings;
+  }
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/help/fixOptions.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.default = fixOptions;
+  function fixOptions(options) {
+    options.marginTop = options.marginTop || options.margin;
+    options.marginBottom = options.marginBottom || options.margin;
+    options.marginRight = options.marginRight || options.margin;
+    options.marginLeft = options.marginLeft || options.margin;
+    return options;
+  }
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/help/optionsFromStrings.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.default = optionsFromStrings;
+  function optionsFromStrings(options) {
+    var intOptions = ["width", "height", "textMargin", "fontSize", "margin", "marginTop", "marginBottom", "marginLeft", "marginRight"];
+    for (var intOption in intOptions) {
+      if (intOptions.hasOwnProperty(intOption)) {
+        intOption = intOptions[intOption];
+        if (typeof options[intOption] === "string") {
+          options[intOption] = parseInt(options[intOption], 10);
+        }
+      }
+    }
+    if (typeof options["displayValue"] === "string") {
+      options["displayValue"] = options["displayValue"] != "false";
+    }
+    return options;
+  }
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/help/getOptionsFromElement.js", ["./optionsFromStrings.js", "../defaults/defaults.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _optionsFromStrings = $__require('./optionsFromStrings.js');
+  var _optionsFromStrings2 = _interopRequireDefault(_optionsFromStrings);
+  var _defaults = $__require('../defaults/defaults.js');
+  var _defaults2 = _interopRequireDefault(_defaults);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function getOptionsFromElement(element) {
+    var options = {};
+    for (var property in _defaults2.default) {
+      if (_defaults2.default.hasOwnProperty(property)) {
+        if (element.hasAttribute("jsbarcode-" + property.toLowerCase())) {
+          options[property] = element.getAttribute("jsbarcode-" + property.toLowerCase());
+        }
+        if (element.hasAttribute("data-" + property.toLowerCase())) {
+          options[property] = element.getAttribute("data-" + property.toLowerCase());
+        }
+      }
+    }
+    options["value"] = element.getAttribute("jsbarcode-value") || element.getAttribute("data-value");
+    options = (0, _optionsFromStrings2.default)(options);
+    return options;
+  }
+  exports.default = getOptionsFromElement;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/renderers/canvas.js", ["../help/merge.js", "./shared.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _merge = $__require('../help/merge.js');
+  var _merge2 = _interopRequireDefault(_merge);
+  var _shared = $__require('./shared.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var CanvasRenderer = function() {
+    function CanvasRenderer(canvas, encodings, options) {
+      _classCallCheck(this, CanvasRenderer);
+      this.canvas = canvas;
+      this.encodings = encodings;
+      this.options = options;
+    }
+    CanvasRenderer.prototype.render = function render() {
+      if (!this.canvas.getContext) {
+        throw new Error('The browser does not support canvas.');
+      }
+      this.prepareCanvas();
+      for (var i = 0; i < this.encodings.length; i++) {
+        var encodingOptions = (0, _merge2.default)(this.options, this.encodings[i].options);
+        this.drawCanvasBarcode(encodingOptions, this.encodings[i]);
+        this.drawCanvasText(encodingOptions, this.encodings[i]);
+        this.moveCanvasDrawing(this.encodings[i]);
+      }
+      this.restoreCanvas();
+    };
+    CanvasRenderer.prototype.prepareCanvas = function prepareCanvas() {
+      var ctx = this.canvas.getContext("2d");
+      ctx.save();
+      (0, _shared.calculateEncodingAttributes)(this.encodings, this.options, ctx);
+      var totalWidth = (0, _shared.getTotalWidthOfEncodings)(this.encodings);
+      var maxHeight = (0, _shared.getMaximumHeightOfEncodings)(this.encodings);
+      this.canvas.width = totalWidth + this.options.marginLeft + this.options.marginRight;
+      this.canvas.height = maxHeight;
+      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      if (this.options.background) {
+        ctx.fillStyle = this.options.background;
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      }
+      ctx.translate(this.options.marginLeft, 0);
+    };
+    CanvasRenderer.prototype.drawCanvasBarcode = function drawCanvasBarcode(options, encoding) {
+      var ctx = this.canvas.getContext("2d");
+      var binary = encoding.data;
+      var yFrom;
+      if (options.textPosition == "top") {
+        yFrom = options.marginTop + options.fontSize + options.textMargin;
+      } else {
+        yFrom = options.marginTop;
+      }
+      ctx.fillStyle = options.lineColor;
+      for (var b = 0; b < binary.length; b++) {
+        var x = b * options.width + encoding.barcodePadding;
+        if (binary[b] === "1") {
+          ctx.fillRect(x, yFrom, options.width, options.height);
+        } else if (binary[b]) {
+          ctx.fillRect(x, yFrom, options.width, options.height * binary[b]);
+        }
+      }
+    };
+    CanvasRenderer.prototype.drawCanvasText = function drawCanvasText(options, encoding) {
+      var ctx = this.canvas.getContext("2d");
+      var font = options.fontOptions + " " + options.fontSize + "px " + options.font;
+      if (options.displayValue) {
+        var x,
+            y;
+        if (options.textPosition == "top") {
+          y = options.marginTop + options.fontSize - options.textMargin;
+        } else {
+          y = options.height + options.textMargin + options.marginTop + options.fontSize;
+        }
+        ctx.font = font;
+        if (options.textAlign == "left" || encoding.barcodePadding > 0) {
+          x = 0;
+          ctx.textAlign = 'left';
+        } else if (options.textAlign == "right") {
+          x = encoding.width - 1;
+          ctx.textAlign = 'right';
+        } else {
+          x = encoding.width / 2;
+          ctx.textAlign = 'center';
+        }
+        ctx.fillText(encoding.text, x, y);
+      }
+    };
+    CanvasRenderer.prototype.moveCanvasDrawing = function moveCanvasDrawing(encoding) {
+      var ctx = this.canvas.getContext("2d");
+      ctx.translate(encoding.width, 0);
+    };
+    CanvasRenderer.prototype.restoreCanvas = function restoreCanvas() {
+      var ctx = this.canvas.getContext("2d");
+      ctx.restore();
+    };
+    return CanvasRenderer;
+  }();
+  exports.default = CanvasRenderer;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/help/merge.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.default = merge;
+  function merge(old, replaceObj) {
+    var newMerge = {};
+    var k;
+    for (k in old) {
+      if (old.hasOwnProperty(k)) {
+        newMerge[k] = old[k];
+      }
+    }
+    for (k in replaceObj) {
+      if (replaceObj.hasOwnProperty(k) && typeof replaceObj[k] !== "undefined") {
+        newMerge[k] = replaceObj[k];
+      }
+    }
+    return newMerge;
+  }
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/renderers/shared.js", ["../help/merge.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.getTotalWidthOfEncodings = exports.calculateEncodingAttributes = exports.getBarcodePadding = exports.getEncodingHeight = exports.getMaximumHeightOfEncodings = undefined;
+  var _merge = $__require('../help/merge.js');
+  var _merge2 = _interopRequireDefault(_merge);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function getEncodingHeight(encoding, options) {
+    return options.height + (options.displayValue && encoding.text.length > 0 ? options.fontSize + options.textMargin : 0) + options.marginTop + options.marginBottom;
+  }
+  function getBarcodePadding(textWidth, barcodeWidth, options) {
+    if (options.displayValue && barcodeWidth < textWidth) {
+      if (options.textAlign == "center") {
+        return Math.floor((textWidth - barcodeWidth) / 2);
+      } else if (options.textAlign == "left") {
+        return 0;
+      } else if (options.textAlign == "right") {
+        return Math.floor(textWidth - barcodeWidth);
+      }
+    }
+    return 0;
+  }
+  function calculateEncodingAttributes(encodings, barcodeOptions, context) {
+    for (var i = 0; i < encodings.length; i++) {
+      var encoding = encodings[i];
+      var options = (0, _merge2.default)(barcodeOptions, encoding.options);
+      var textWidth = messureText(encoding.text, options, context);
+      var barcodeWidth = encoding.data.length * options.width;
+      encoding.width = Math.ceil(Math.max(textWidth, barcodeWidth));
+      encoding.height = getEncodingHeight(encoding, options);
+      encoding.barcodePadding = getBarcodePadding(textWidth, barcodeWidth, options);
+    }
+  }
+  function getTotalWidthOfEncodings(encodings) {
+    var totalWidth = 0;
+    for (var i = 0; i < encodings.length; i++) {
+      totalWidth += encodings[i].width;
+    }
+    return totalWidth;
+  }
+  function getMaximumHeightOfEncodings(encodings) {
+    var maxHeight = 0;
+    for (var i = 0; i < encodings.length; i++) {
+      if (encodings[i].height > maxHeight) {
+        maxHeight = encodings[i].height;
+      }
+    }
+    return maxHeight;
+  }
+  function messureText(string, options, context) {
+    var ctx;
+    if (typeof context === "undefined") {
+      ctx = document.createElement("canvas").getContext("2d");
+    } else {
+      ctx = context;
+    }
+    ctx.font = options.fontOptions + " " + options.fontSize + "px " + options.font;
+    var size = ctx.measureText(string).width;
+    return size;
+  }
+  exports.getMaximumHeightOfEncodings = getMaximumHeightOfEncodings;
+  exports.getEncodingHeight = getEncodingHeight;
+  exports.getBarcodePadding = getBarcodePadding;
+  exports.calculateEncodingAttributes = calculateEncodingAttributes;
+  exports.getTotalWidthOfEncodings = getTotalWidthOfEncodings;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/renderers/svg.js", ["../help/merge.js", "./shared.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _merge = $__require('../help/merge.js');
+  var _merge2 = _interopRequireDefault(_merge);
+  var _shared = $__require('./shared.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var svgns = "http://www.w3.org/2000/svg";
+  var SVGRenderer = function() {
+    function SVGRenderer(svg, encodings, options) {
+      _classCallCheck(this, SVGRenderer);
+      this.svg = svg;
+      this.encodings = encodings;
+      this.options = options;
+    }
+    SVGRenderer.prototype.render = function render() {
+      var currentX = this.options.marginLeft;
+      this.prepareSVG();
+      for (var i = 0; i < this.encodings.length; i++) {
+        var encoding = this.encodings[i];
+        var encodingOptions = (0, _merge2.default)(this.options, encoding.options);
+        var group = createGroup(currentX, encodingOptions.marginTop, this.svg);
+        setGroupOptions(group, encodingOptions);
+        this.drawSvgBarcode(group, encodingOptions, encoding);
+        this.drawSVGText(group, encodingOptions, encoding);
+        currentX += encoding.width;
+      }
+    };
+    SVGRenderer.prototype.prepareSVG = function prepareSVG() {
+      while (this.svg.firstChild) {
+        this.svg.removeChild(this.svg.firstChild);
+      }
+      (0, _shared.calculateEncodingAttributes)(this.encodings, this.options);
+      var totalWidth = (0, _shared.getTotalWidthOfEncodings)(this.encodings);
+      var maxHeight = (0, _shared.getMaximumHeightOfEncodings)(this.encodings);
+      var width = totalWidth + this.options.marginLeft + this.options.marginRight;
+      this.setSvgAttributes(width, maxHeight);
+    };
+    SVGRenderer.prototype.drawSvgBarcode = function drawSvgBarcode(parent, options, encoding) {
+      var binary = encoding.data;
+      var yFrom;
+      if (options.textPosition == "top") {
+        yFrom = options.fontSize + options.textMargin;
+      } else {
+        yFrom = 0;
+      }
+      var barWidth = 0;
+      var x = 0;
+      for (var b = 0; b < binary.length; b++) {
+        x = b * options.width + encoding.barcodePadding;
+        if (binary[b] === "1") {
+          barWidth++;
+        } else if (barWidth > 0) {
+          drawLine(x - options.width * barWidth, yFrom, options.width * barWidth, options.height, parent);
+          barWidth = 0;
+        }
+      }
+      if (barWidth > 0) {
+        drawLine(x - options.width * (barWidth - 1), yFrom, options.width * barWidth, options.height, parent);
+      }
+    };
+    SVGRenderer.prototype.drawSVGText = function drawSVGText(parent, options, encoding) {
+      var textElem = document.createElementNS(svgns, 'text');
+      if (options.displayValue) {
+        var x,
+            y;
+        textElem.setAttribute("style", "font:" + options.fontOptions + " " + options.fontSize + "px " + options.font);
+        if (options.textPosition == "top") {
+          y = options.fontSize - options.textMargin;
+        } else {
+          y = options.height + options.textMargin + options.fontSize;
+        }
+        if (options.textAlign == "left" || encoding.barcodePadding > 0) {
+          x = 0;
+          textElem.setAttribute("text-anchor", "start");
+        } else if (options.textAlign == "right") {
+          x = encoding.width - 1;
+          textElem.setAttribute("text-anchor", "end");
+        } else {
+          x = encoding.width / 2;
+          textElem.setAttribute("text-anchor", "middle");
+        }
+        textElem.setAttribute("x", x);
+        textElem.setAttribute("y", y);
+        textElem.appendChild(document.createTextNode(encoding.text));
+        parent.appendChild(textElem);
+      }
+    };
+    SVGRenderer.prototype.setSvgAttributes = function setSvgAttributes(width, height) {
+      var svg = this.svg;
+      svg.setAttribute("width", width + "px");
+      svg.setAttribute("height", height + "px");
+      svg.setAttribute("x", "0px");
+      svg.setAttribute("y", "0px");
+      svg.setAttribute("viewBox", "0 0 " + width + " " + height);
+      svg.setAttribute("xmlns", svgns);
+      svg.setAttribute("version", "1.1");
+      svg.style.transform = "translate(0,0)";
+      if (this.options.background) {
+        svg.style.background = this.options.background;
+      }
+    };
+    return SVGRenderer;
+  }();
+  function createGroup(x, y, parent) {
+    var group = document.createElementNS(svgns, 'g');
+    group.setAttribute("transform", "translate(" + x + ", " + y + ")");
+    parent.appendChild(group);
+    return group;
+  }
+  function setGroupOptions(group, options) {
+    group.setAttribute("style", "fill:" + options.lineColor + ";");
+  }
+  function drawLine(x, y, width, height, parent) {
+    var line = document.createElementNS(svgns, 'rect');
+    line.setAttribute("x", x);
+    line.setAttribute("y", y);
+    line.setAttribute("width", width);
+    line.setAttribute("height", height);
+    parent.appendChild(line);
+  }
+  exports.default = SVGRenderer;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/renderers/index.js", ["./canvas.js", "./svg.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  exports.getRendererClass = undefined;
+  var _canvas = $__require('./canvas.js');
+  var _canvas2 = _interopRequireDefault(_canvas);
+  var _svg = $__require('./svg.js');
+  var _svg2 = _interopRequireDefault(_svg);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function getRendererClass(name) {
+    switch (name) {
+      case "canvas":
+        return _canvas2.default;
+      case "svg":
+        return _svg2.default;
+      default:
+        throw new Error("Invalid rederer");
+    }
+  }
+  exports.getRendererClass = getRendererClass;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/help/getRenderProperties.js", ["./getOptionsFromElement.js", "../renderers", "../exceptions/exceptions.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var _getOptionsFromElement = $__require('./getOptionsFromElement.js');
+  var _getOptionsFromElement2 = _interopRequireDefault(_getOptionsFromElement);
+  var _renderers = $__require('../renderers');
+  var _exceptions = $__require('../exceptions/exceptions.js');
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  function getRenderProperties(element) {
+    if (typeof element === "string") {
+      return querySelectedRenderProperties(element);
+    } else if (Array.isArray(element)) {
+      var returnArray = [];
+      for (var i = 0; i < element.length; i++) {
+        returnArray.push(getRenderProperties(element[i]));
+      }
+      return returnArray;
+    } else if (typeof HTMLCanvasElement !== 'undefined' && element instanceof HTMLImageElement) {
+      return newCanvasRenderProperties(element);
+    } else if (typeof SVGElement !== 'undefined' && element instanceof SVGElement) {
+      return {
+        element: element,
+        options: (0, _getOptionsFromElement2.default)(element),
+        renderer: (0, _renderers.getRendererClass)("svg")
+      };
+    } else if (typeof HTMLCanvasElement !== 'undefined' && element instanceof HTMLCanvasElement) {
+      return {
+        element: element,
+        options: (0, _getOptionsFromElement2.default)(element),
+        renderer: (0, _renderers.getRendererClass)("canvas")
+      };
+    } else if (element.getContext) {
+      return {
+        element: element,
+        renderer: (0, _renderers.getRendererClass)("canvas")
+      };
+    } else {
+      throw new _exceptions.InvalidElementException();
+    }
+  }
+  function querySelectedRenderProperties(string) {
+    var selector = document.querySelectorAll(string);
+    if (selector.length === 0) {
+      throw new _exceptions.NoElementException();
+    } else {
+      var returnArray = [];
+      for (var i = 0; i < selector.length; i++) {
+        returnArray.push(getRenderProperties(selector[i]));
+      }
+      return returnArray;
+    }
+  }
+  function newCanvasRenderProperties(imgElement) {
+    var canvas = document.createElement('canvas');
+    return {
+      element: canvas,
+      options: (0, _getOptionsFromElement2.default)(imgElement),
+      renderer: (0, _renderers.getRendererClass)("canvas"),
+      afterRender: function afterRender() {
+        imgElement.setAttribute("src", canvas.toDataURL());
+      }
+    };
+  }
+  exports.default = getRenderProperties;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/exceptions/ErrorHandler.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var ErrorHandler = function() {
+    function ErrorHandler(api) {
+      _classCallCheck(this, ErrorHandler);
+      this.api = api;
+    }
+    ErrorHandler.prototype.handleCatch = function handleCatch(e) {
+      if (e.name === "InvalidInputException") {
+        if (this.api._options.valid !== this.api._defaults.valid) {
+          this.api._options.valid(false);
+        } else {
+          throw e.message;
+        }
+      } else {
+        throw e;
+      }
+      this.api.render = function() {};
+    };
+    ErrorHandler.prototype.wrapBarcodeCall = function wrapBarcodeCall(func) {
+      try {
+        var result = func.apply(undefined, arguments);
+        this.api._options.valid(true);
+        return result;
+      } catch (e) {
+        this.handleCatch(e);
+        return this.api;
+      }
+    };
+    return ErrorHandler;
+  }();
+  exports.default = ErrorHandler;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/exceptions/exceptions.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }});
+    if (superClass)
+      Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+  var InvalidInputException = function(_Error) {
+    _inherits(InvalidInputException, _Error);
+    function InvalidInputException(symbology, input) {
+      _classCallCheck(this, InvalidInputException);
+      var _this = _possibleConstructorReturn(this, _Error.call(this));
+      _this.name = "InvalidInputException";
+      _this.symbology = symbology;
+      _this.input = input;
+      _this.message = '"' + _this.input + '" is not a valid input for ' + _this.symbology;
+      return _this;
+    }
+    return InvalidInputException;
+  }(Error);
+  var InvalidElementException = function(_Error2) {
+    _inherits(InvalidElementException, _Error2);
+    function InvalidElementException() {
+      _classCallCheck(this, InvalidElementException);
+      var _this2 = _possibleConstructorReturn(this, _Error2.call(this));
+      _this2.name = "InvalidElementException";
+      _this2.message = "Not supported type to render on";
+      return _this2;
+    }
+    return InvalidElementException;
+  }(Error);
+  var NoElementException = function(_Error3) {
+    _inherits(NoElementException, _Error3);
+    function NoElementException() {
+      _classCallCheck(this, NoElementException);
+      var _this3 = _possibleConstructorReturn(this, _Error3.call(this));
+      _this3.name = "NoElementException";
+      _this3.message = "No element to render on.";
+      return _this3;
+    }
+    return NoElementException;
+  }(Error);
+  exports.InvalidInputException = InvalidInputException;
+  exports.InvalidElementException = InvalidElementException;
+  exports.NoElementException = NoElementException;
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/defaults/defaults.js", ["process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  Object.defineProperty(exports, "__esModule", {value: true});
+  var defaults = {
+    width: 2,
+    height: 100,
+    format: "auto",
+    displayValue: true,
+    fontOptions: "",
+    font: "monospace",
+    textAlign: "center",
+    textPosition: "bottom",
+    textMargin: 2,
+    fontSize: 20,
+    background: "#ffffff",
+    lineColor: "#000000",
+    margin: 10,
+    marginTop: undefined,
+    marginBottom: undefined,
+    marginLeft: undefined,
+    marginRight: undefined,
+    valid: function valid() {}
+  };
+  exports.default = defaults;
+  return module.exports;
+});
+
+System.registerDynamic("github:jspm/nodelibs-process@0.2.0-alpha.json", [], false, function() {
+  return {
+    "main": "./process.js"
+  };
+});
+
+System.registerDynamic("github:jspm/nodelibs-process@0.2.0-alpha/process.js", ["@system-env"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var productionEnv = $__require('@system-env').production;
+  var process = module.exports = {};
+  var queue = [];
+  var draining = false;
+  var currentQueue;
+  var queueIndex = -1;
+  function cleanUpNextTick() {
+    draining = false;
+    if (currentQueue.length) {
+      queue = currentQueue.concat(queue);
+    } else {
+      queueIndex = -1;
+    }
+    if (queue.length) {
+      drainQueue();
+    }
+  }
+  function drainQueue() {
+    if (draining) {
+      return;
+    }
+    var timeout = setTimeout(cleanUpNextTick);
+    draining = true;
+    var len = queue.length;
+    while (len) {
+      currentQueue = queue;
+      queue = [];
+      while (++queueIndex < len) {
+        if (currentQueue) {
+          currentQueue[queueIndex].run();
+        }
+      }
+      queueIndex = -1;
+      len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    clearTimeout(timeout);
+  }
+  process.nextTick = function(fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+      for (var i = 1; i < arguments.length; i++) {
+        args[i - 1] = arguments[i];
+      }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+      setTimeout(drainQueue, 0);
+    }
+  };
+  function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+  }
+  Item.prototype.run = function() {
+    this.fun.apply(null, this.array);
+  };
+  process.title = 'browser';
+  process.browser = true;
+  process.env = {NODE_ENV: productionEnv ? 'production' : 'development'};
+  process.argv = [];
+  process.version = '';
+  process.versions = {};
+  function noop() {}
+  process.on = noop;
+  process.addListener = noop;
+  process.once = noop;
+  process.off = noop;
+  process.removeListener = noop;
+  process.removeAllListeners = noop;
+  process.emit = noop;
+  process.binding = function(name) {
+    throw new Error('process.binding is not supported');
+  };
+  process.cwd = function() {
+    return '/';
+  };
+  process.chdir = function(dir) {
+    throw new Error('process.chdir is not supported');
+  };
+  process.umask = function() {
+    return 0;
+  };
+  return module.exports;
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23.json", [], false, function() {
+  return {
+    "main": "bin/JsBarcode.js",
+    "format": "cjs",
+    "meta": {
+      "*": {
+        "globals": {
+          "process": "process"
+        }
+      },
+      "*.json": {
+        "format": "json"
+      },
+      "src/*": {
+        "format": "esm"
+      }
+    },
+    "map": {
+      "./bin/barcodes": "./bin/barcodes/index.js",
+      "./bin/barcodes/CODE128": "./bin/barcodes/CODE128/index.js",
+      "./bin/barcodes/CODE39": "./bin/barcodes/CODE39/index.js",
+      "./bin/barcodes/EAN_UPC": "./bin/barcodes/EAN_UPC/index.js",
+      "./bin/barcodes/GenericBarcode": "./bin/barcodes/GenericBarcode/index.js",
+      "./bin/barcodes/ITF": "./bin/barcodes/ITF/index.js",
+      "./bin/barcodes/ITF14": "./bin/barcodes/ITF14/index.js",
+      "./bin/barcodes/MSI": "./bin/barcodes/MSI/index.js",
+      "./bin/barcodes/pharmacode": "./bin/barcodes/pharmacode/index.js",
+      "./bin/renderers": "./bin/renderers/index.js"
+    }
+  };
+});
+
+System.registerDynamic("npm:jsbarcode@3.3.23/bin/JsBarcode.js", ["./barcodes", "./help/merge.js", "./help/linearizeEncodings.js", "./help/fixOptions.js", "./help/getRenderProperties.js", "./exceptions/ErrorHandler.js", "./exceptions/exceptions.js", "./defaults/defaults.js", "process"], true, function($__require, exports, module) {
+  "use strict";
+  var process = $__require("process");
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var _barcodes = $__require('./barcodes');
+  var _barcodes2 = _interopRequireDefault(_barcodes);
+  var _merge = $__require('./help/merge.js');
+  var _merge2 = _interopRequireDefault(_merge);
+  var _linearizeEncodings = $__require('./help/linearizeEncodings.js');
+  var _linearizeEncodings2 = _interopRequireDefault(_linearizeEncodings);
+  var _fixOptions = $__require('./help/fixOptions.js');
+  var _fixOptions2 = _interopRequireDefault(_fixOptions);
+  var _getRenderProperties = $__require('./help/getRenderProperties.js');
+  var _getRenderProperties2 = _interopRequireDefault(_getRenderProperties);
+  var _ErrorHandler = $__require('./exceptions/ErrorHandler.js');
+  var _ErrorHandler2 = _interopRequireDefault(_ErrorHandler);
+  var _exceptions = $__require('./exceptions/exceptions.js');
+  var _defaults = $__require('./defaults/defaults.js');
+  var _defaults2 = _interopRequireDefault(_defaults);
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {default: obj};
+  }
+  var API = function API() {};
+  var JsBarcode = function JsBarcode(element, text, options) {
+    var api = new API();
+    if (typeof element === "undefined") {
+      throw Error("No element to render on was provided.");
+    }
+    api._renderProperties = (0, _getRenderProperties2.default)(element);
+    api._encodings = [];
+    api._options = _defaults2.default;
+    api._errorHandler = new _ErrorHandler2.default(api);
+    if (typeof text !== "undefined") {
+      options = options || {};
+      if (!options.format) {
+        options.format = autoSelectBarcode();
+      }
+      api.options(options)[options.format](text, options).render();
+    }
+    return api;
+  };
+  JsBarcode.getModule = function(name) {
+    return _barcodes2.default[name];
+  };
+  for (var name in _barcodes2.default) {
+    if (_barcodes2.default.hasOwnProperty(name)) {
+      registerBarcode(_barcodes2.default, name);
+    }
+  }
+  function registerBarcode(barcodes, name) {
+    API.prototype[name] = API.prototype[name.toUpperCase()] = API.prototype[name.toLowerCase()] = function(text, options) {
+      var api = this;
+      return api._errorHandler.wrapBarcodeCall(function() {
+        var newOptions = (0, _merge2.default)(api._options, options);
+        var Encoder = barcodes[name];
+        var encoded = encode(text, Encoder, newOptions);
+        api._encodings.push(encoded);
+        return api;
+      });
+    };
+  }
+  function encode(text, Encoder, options) {
+    text = "" + text;
+    var encoder = new Encoder(text, options);
+    if (!encoder.valid()) {
+      throw new _exceptions.InvalidInputException(encoder.constructor.name, text);
+    }
+    var encoded = encoder.encode();
+    encoded = (0, _linearizeEncodings2.default)(encoded);
+    for (var i = 0; i < encoded.length; i++) {
+      encoded[i].options = (0, _merge2.default)(options, encoded[i].options);
+    }
+    return encoded;
+  }
+  function autoSelectBarcode() {
+    if (_barcodes2.default["CODE128"]) {
+      return "CODE128";
+    }
+    return Object.keys(_barcodes2.default)[0];
+  }
+  API.prototype.options = function(options) {
+    this._options = (0, _merge2.default)(this._options, options);
+    return this;
+  };
+  API.prototype.blank = function(size) {
+    var zeroes = "0".repeat(size);
+    this._encodings.push({data: zeroes});
+    return this;
+  };
+  API.prototype.init = function() {
+    if (!Array.isArray(this._renderProperties)) {
+      this._renderProperties = [this._renderProperties];
+    }
+    var renderProperty;
+    for (var i in this._renderProperties) {
+      renderProperty = this._renderProperties[i];
+      var options = (0, _merge2.default)(this._options, renderProperty.options);
+      if (options.format == "auto") {
+        options.format = autoSelectBarcode();
+      }
+      var text = options.value;
+      var Encoder = _barcodes2.default[options.format.toUpperCase()];
+      var encoded = encode(text, Encoder, options);
+      render(renderProperty, encoded, options);
+    }
+  };
+  API.prototype.render = function() {
+    if (Array.isArray(this._renderProperties)) {
+      for (var i = 0; i < this._renderProperties.length; i++) {
+        render(this._renderProperties[i], this._encodings, this._options);
+      }
+    } else {
+      render(this._renderProperties, this._encodings, this._options);
+    }
+    return this;
+  };
+  API.prototype._defaults = _defaults2.default;
+  function render(renderProperties, encodings, options) {
+    encodings = (0, _linearizeEncodings2.default)(encodings);
+    for (var i = 0; i < encodings.length; i++) {
+      encodings[i].options = (0, _merge2.default)(options, encodings[i].options);
+      (0, _fixOptions2.default)(encodings[i].options);
+    }
+    (0, _fixOptions2.default)(options);
+    var Renderer = renderProperties.renderer;
+    var renderer = new Renderer(renderProperties.element, encodings, options);
+    renderer.render();
+    if (renderProperties.afterRender) {
+      renderProperties.afterRender();
+    }
+  }
+  if (typeof window !== "undefined") {
+    window.JsBarcode = JsBarcode;
+  }
+  if (typeof jQuery !== 'undefined') {
+    jQuery.fn.JsBarcode = function(content, options) {
+      var elementArray = [];
+      jQuery(this).each(function() {
+        elementArray.push(this);
+      });
+      return JsBarcode(elementArray, content, options);
+    };
+  }
+  module.exports = JsBarcode;
+  return module.exports;
+});
 
 System.registerDynamic("npm:moment@2.13.0.json", [], false, function() {
   return {

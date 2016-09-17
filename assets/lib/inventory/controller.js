@@ -49,6 +49,20 @@ export default Marionette.Object.extend({
     Radio.channel('app').trigger('show:view', inventoryIndexView);
 
   },
+  showBin(id){
+    let inventoryIndexView =  new InventoryIndexView();
+    let travelerIdView = new TravelerIdView({bin:id});
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', travelerIdView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+
+  },
   inventoryTravelerIdEdits(){
     let inventoryIndexView =  new InventoryIndexView();
 

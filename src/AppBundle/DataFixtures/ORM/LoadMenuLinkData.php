@@ -46,6 +46,13 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $adminInventoryLink->setRouteMatches(['part','part_category','part_group','bin','bin_type','inventory_movement_rule']);
         $manager->persist($adminInventoryLink);
 
+        $adminAccountingLink = new MenuLink();
+        $adminAccountingLink->setName('Admin Accounting');
+        $adminAccountingLink->setUrl('/admin_accounting');
+        $adminAccountingLink->setRouteMatches(['client','customer','inbound_order','outbound_order']);
+        $manager->persist($adminAccountingLink);
+
+
         $manager->flush();
 
         $aclProvider = $this->container->get('security.acl.provider');

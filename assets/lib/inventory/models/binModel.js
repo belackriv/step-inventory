@@ -58,6 +58,7 @@ let Model = BaseUrlBaseModel.extend({
     parent: null,
     isActive: null,
     partCount: null,
+    travelerIds: null,
   },
 
 });

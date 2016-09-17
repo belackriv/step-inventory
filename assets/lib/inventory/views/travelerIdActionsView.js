@@ -40,6 +40,7 @@ export default Marionette.View.extend({
   childViewEvents: {
     'select:model': 'selectModel',
     'button:click': 'buttonClicked',
+    'link:click': 'linkClicked',
   },
   onRender(){
     this.showList();
@@ -68,6 +69,10 @@ export default Marionette.View.extend({
   buttonClicked(childView, args){
     let action = args.button.getAttribute('name');
     this[action](args.model);
+  },
+  linkClicked(childView, args){
+    let methodName = args.link.dataset.uiLink+'LinkClicked';
+    this[methodName](args.model);
   },
   selectAllToggleValue: false,
   toggleSelectAll(){
@@ -110,4 +115,7 @@ export default Marionette.View.extend({
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);
   },
+  binLinkClicked(model){
+    this.triggerMethod('show:bin', model.get('bin'));
+  }
 });

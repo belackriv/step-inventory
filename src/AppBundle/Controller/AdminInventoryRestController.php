@@ -464,7 +464,8 @@ class AdminInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Get("/bin/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\Get("/show/bin/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Bin"})
      */
     public function getBinAction(\AppBundle\Entity\Bin $bin)
     {
