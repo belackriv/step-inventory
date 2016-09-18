@@ -9,6 +9,7 @@ import viewTpl from  "./travelerIdView.hbs!";
 import TravelerIdActionsView from './travelerIdActionsView.js';
 import TravelerIdEditView from './travelerIdEditView.js';
 import BinView from './binView.js';
+import TravelerIdCardView from './travelerIdCardView.js';
 
 import TravelerIdModel from '../models/travelerIdModel.js';
 import BinModel from '../models/binModel.js';
@@ -27,15 +28,20 @@ export default Marionette.View.extend({
     'select:model': 'selectModel',
     'show:list': 'showList',
     'show:bin': 'showBin',
+    'show:card': 'showCard',
   },
   onRender(){
     if(this.options.id){
-      let tid = TravelerIdModel.findOrCreate({id: parseInt(this.options.id)});
-      tid.fetch();
-      this.selectModel({model: tid});
+      let tidModel = TravelerIdModel.findOrCreate({id: parseInt(this.options.id)});
+      tidModel.fetch();
+      this.selectModel({model: tidModel});
     }else if(this.options.bin){
       let binModel = BinModel.findOrCreate({id: this.options.bin});
        this.showBin(binModel);
+    }else if(this.options.show){
+      let tidModel = TravelerIdModel.findOrCreate({id: this.options.show});
+      tidModel.fetch();
+      this.showCard(tidModel);
     }else{
       this.showList();
     }
@@ -56,6 +62,12 @@ export default Marionette.View.extend({
     }));
     bin.fetch();
     Radio.channel('app').trigger('navigate', '/show'+bin.url(), {trigger: false});
+  },
+  showCard(travelerId){
+    this.showChildView('content', new TravelerIdCardView({
+      model: travelerId
+    }));
+    Radio.channel('app').trigger('navigate', '/show'+travelerId.url(), {trigger: false});
   },
   getSelectedCollection(){
     return this.selectedCollection;

@@ -34,6 +34,6 @@ class RelabelTravelerIdsCommand extends ContainerAwareCommand
     }
     public function getCommandName()
     {
-        return 'stepthrough:relabel-tids';
+        return 'step-inventory:relabel-tids';
     }
 }

@@ -13,7 +13,7 @@ import UserInfoView from './userInfoView.js';
 export default Marionette.View.extend({
   template: viewTpl,
   tagName: 'nav',
-  className: 'nav has-shadow stepthrough-nav',
+  className: 'nav has-shadow si-nav',
   regions: {
     menuSelection: "#menu-selection-container",
     menu: "#nav-menu",

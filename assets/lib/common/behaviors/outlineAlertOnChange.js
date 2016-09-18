@@ -13,10 +13,10 @@ export default Marionette.Behavior.extend({
     var pulseOn = true;
     var pulsate = function(propName){
       if(pulseOn){
-        behavior.$el.find('.stepthrough-change-outline-alert-'+propName.toLowerCase()).addClass('stepthrough-change-outline-alert-alert');
+        behavior.$el.find('.si-change-outline-alert-'+propName.toLowerCase()).addClass('si-change-outline-alert-alert');
         pulseOn = false;
       }else{
-        behavior.$el.find('.stepthrough-change-outline-alert-'+propName.toLowerCase()).removeClass('stepthrough-change-outline-alert-alert');
+        behavior.$el.find('.si-change-outline-alert-'+propName.toLowerCase()).removeClass('si-change-outline-alert-alert');
         pulseOn = true;
       }
 

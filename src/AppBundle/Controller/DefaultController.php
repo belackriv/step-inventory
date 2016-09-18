@@ -30,5 +30,5 @@ class DefaultController extends Controller
     }
 }
 
-//curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"DFW"}' http://localhost/~belac/stepthrough/app_dev.php/office
-//curl -v -H "Accept: application/json" -H "Content-type: application/json" http://localhost/~belac/stepthrough/app_dev.php/office
+//curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"DFW"}' http://localhost/~belac/step-inventory/app_dev.php/office
+//curl -v -H "Accept: application/json" -H "Content-type: application/json" http://localhost/~belac/step-inventory/app_dev.php/office

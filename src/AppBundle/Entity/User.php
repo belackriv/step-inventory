@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation As JMS;
 /**
  * AppBundle\Entity\User
  *
- * @ORM\Table(name="stepthrough_user")
+ * @ORM\Table(name="step_inventory_user")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
 class User implements AdvancedUserInterface, \Serializable

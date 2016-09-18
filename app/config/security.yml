@@ -10,7 +10,7 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        stepthrough_users:
+        step_inventory_users:
             entity:
                 class:              AppBundle:User
                 property:           username
@@ -32,7 +32,7 @@ security:
                 login_path: /login
                 check_path: /login_check
                 remember_me: true
-            provider: stepthrough_users
+            provider: step_inventory_users
             logout:
                 target: /login
             remember_me:

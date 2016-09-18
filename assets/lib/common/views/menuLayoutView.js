@@ -8,7 +8,7 @@ import MenuListView from './menuListView.js';
 export default Marionette.View.extend({
   template: viewTpl,
   tagName: 'menu',
-  className: 'column menu stepthrough-side-menu is-narrow',
+  className: 'column menu si-side-menu is-narrow',
   regions: {
     menuList: {
       el: 'ul',

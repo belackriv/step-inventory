@@ -54,6 +54,6 @@ class CreateMenuLinkCommand extends ContainerAwareCommand
     }
     public function getCommandName()
     {
-        return 'stepthrough:create-menu-link';
+        return 'step-inventory:create-menu-link';
     }
 }

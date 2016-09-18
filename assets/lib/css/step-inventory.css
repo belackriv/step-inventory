@@ -1,7 +1,7 @@
-.stepthrough-main{
+.si-main{
   height: 75px;
 }
-.stepthrough-main{
+.si-main{
   align-items: stretch;
 }
 #main-section{
@@ -10,10 +10,13 @@
 .footer{
   height: 50px;
 }
-.stepthrough-side-menu{
+.si-side-menu{
   width: 15em;
 }
-.stepthrough-change-outline-alert-alert{
+.si-change-outline-alert-alert{
 	border: 2px solid rgba(200,25,25,.75);
 	border-radius: 5px;
+}
+.si-tid-card{
+	width: 25em;
 }

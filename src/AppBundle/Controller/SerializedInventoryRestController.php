@@ -61,6 +61,7 @@ class SerializedInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Get("/tid/{id}")
+     * @Rest\Get("/show/tid/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)

@@ -115,9 +115,9 @@ doctrine_migrations:
     name: Application Migrations
 
 #voryx_thruway:
-#    realm: 'stepthrough'
+#    realm: 'step_inventory'
 #    enable_logging: true
-#    #user_provider: stepthrough_users
+#    #user_provider: step_inventory_users
 #    router:
 #        ip: '0.0.0.0'  # the ip that the router should start on
 #        port: '8080'  # public facing port

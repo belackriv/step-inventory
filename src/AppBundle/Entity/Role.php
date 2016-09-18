@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation As JMS;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="stepthrough_role")
+ * @ORM\Table(name="step_inventory_role")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\RoleRepository")
  */
 class Role implements RoleInterface

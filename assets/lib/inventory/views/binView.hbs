@@ -9,7 +9,7 @@
 				<li>
 					<p class="has-text-centered" data-ui-top-label>
 			    		{{#if this.attributes.part}}
-							Part: {{this.attributes.part.attributes.name}}
+							<span class="heading">Part:</span>{{this.attributes.part.attributes.name}}
 						{{/if}}
 					</p>
 					<svg jsbarcode-value="{{this.attributes.label}}"></svg>

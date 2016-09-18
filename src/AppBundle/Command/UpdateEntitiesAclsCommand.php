@@ -41,6 +41,6 @@ class UpdateEntitiesAclsCommand extends ContainerAwareCommand
 
     public function getCommandName()
     {
-        return 'stepthrough:update-entities-acls';
+        return 'step-inventory:update-entities-acls';
     }
 }

@@ -55,7 +55,7 @@ export default Marionette.View.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: travelerIdListTableLayoutTpl,
       entityRowTpl: travelerIdRowTpl,
-      colspan: 7,
+      colspan: 8,
     });
     this.showChildView('list', this.listView);
     Radio.channel('app').trigger('navigate', travelerIdCollection.url(), {trigger: false});
@@ -117,5 +117,8 @@ export default Marionette.View.extend({
   },
   binLinkClicked(model){
     this.triggerMethod('show:bin', model.get('bin'));
+  },
+  showCard(model){
+    this.triggerMethod('show:card', model);
   }
 });

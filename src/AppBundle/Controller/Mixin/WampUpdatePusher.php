@@ -16,6 +16,6 @@ trait WampUpdatePusher
         $classShortName = strtolower($entityReflectiion->getShortName());
         $json = $serializer->serialize($entity, 'json');
 
-        $client->publish("com.stepthrough."+$classShortName, [$json]);
+        $client->publish("com.step-inventory."+$classShortName, [$json]);
     }
 }

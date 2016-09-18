@@ -1,38 +1,38 @@
-define(["autobahn","app"], function(ab, StepThrough){
-	if(!StepThrough.Autobahn){
-		StepThrough.Autobahn = {
+define(["autobahn","app"], function(ab, StepInventory){
+	if(!StepInventory.Autobahn){
+		StepInventory.Autobahn = {
 			onOpenFunctions: []
 		};
 	}
-	if(!StepThrough.Autobahn.connection){
-		StepThrough.Autobahn.connection = new ab.Connection({
-	      url: 'ws://'+StepThrough.wsAddress,
-	      realm: 'stepthrough'
+	if(!StepInventory.Autobahn.connection){
+		StepInventory.Autobahn.connection = new ab.Connection({
+	      url: 'ws://'+StepInventory.wsAddress,
+	      realm: 'step-inventory'
 	    });
 
-	    StepThrough.Autobahn.connection.onopen = function(session, details){
+	    StepInventory.Autobahn.connection.onopen = function(session, details){
 	      console.warn('WebSocket connection opened');
-	      StepThrough.Autobahn.session = session;
+	      StepInventory.Autobahn.session = session;
 
-	      for(var i = 0; i< StepThrough.Autobahn.onOpenFunctions.length; i++){
-	      	StepThrough.Autobahn.onOpenFunctions[i]();
+	      for(var i = 0; i< StepInventory.Autobahn.onOpenFunctions.length; i++){
+	      	StepInventory.Autobahn.onOpenFunctions[i]();
 	      }
-	      StepThrough.Autobahn.onOpenFunctions = [];
+	      StepInventory.Autobahn.onOpenFunctions = [];
 		};
 
-	    StepThrough.Autobahn.connection.onclose = function(session, details){
+	    StepInventory.Autobahn.connection.onclose = function(session, details){
 	      	console.warn('WebSocket connection closed');
-	      	StepThrough.Autobahn.session = null;
-	      	StepThrough.Autobahn.connection = new ab.Connection({
-		      url: 'ws://'+StepThrough.wsAddress,
-		      realm: 'stepthrough'
+	      	StepInventory.Autobahn.session = null;
+	      	StepInventory.Autobahn.connection = new ab.Connection({
+		      url: 'ws://'+StepInventory.wsAddress,
+		      realm: 'step-inventory'
 		    });
-	      	StepThrough.Autobahn.connection.open();
+	      	StepInventory.Autobahn.connection.open();
 	    };
-	    StepThrough.Autobahn.connection.open();
+	    StepInventory.Autobahn.connection.open();
 	}
 
-	var StepThroughWampPusher = function(options){
+	var StepInventoryWampPusher = function(options){
 		if(typeof options === 'string'){
 			options = {
 				topic: options
@@ -47,7 +47,7 @@ define(["autobahn","app"], function(ab, StepThrough){
 		this.addModel = function(model){
 			modelList.push(model);
 		};
-		
+
 		var checkModels = function(args){
 			modelUpdate = JSON.parse(args[0]);
 			_.each(modelList, function(model){
@@ -58,14 +58,14 @@ define(["autobahn","app"], function(ab, StepThrough){
 		};
 
 
-		if(!StepThrough.Autobahn.session){
-		    StepThrough.Autobahn.onOpenFunctions.push(function(){
-		    	StepThrough.Autobahn.session.subscribe(options.topic, function(args) {
+		if(!StepInventory.Autobahn.session){
+		    StepInventory.Autobahn.onOpenFunctions.push(function(){
+		    	StepInventory.Autobahn.session.subscribe(options.topic, function(args) {
 					checkModels(args);
 			    });
 		    });
 		}else{
-			StepThrough.Autobahn.session.subscribe(options.topic, function(args) {
+			StepInventory.Autobahn.session.subscribe(options.topic, function(args) {
 				checkModels(args);
 		    });
 		}
@@ -74,5 +74,5 @@ define(["autobahn","app"], function(ab, StepThrough){
 	};
 
 
-	return StepThroughWampPusher;
+	return StepInventoryWampPusher;
 });

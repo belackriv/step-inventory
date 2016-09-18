@@ -22572,7 +22572,7 @@ System.registerDynamic("lib/appLayoutView.hbs!github:davis/plugin-hbs@1.2.3/hbs.
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      return "<nav class=\"nav has-shadow stepthrough-nav\"></nav>\r\n<div class=\"columns stepthrough-main\">\r\n	<menu class=\"column menu stepthrough-side-menu is-narrow\"></menu>\r\n	<div class=\"column\">\r\n		<section class=\"section\">\r\n			<div class=\"container is-fluid\" id=\"main-section\"></div>\r\n		</section>\r\n		<footer class=\"footer\"></footer>\r\n	</div>\r\n</div>\r\n<div id=\"dialog\"><div id=\"dialog-content\"></div></div>";
+      return "<nav class=\"nav has-shadow si-nav\"></nav>\r\n<div class=\"columns si-main\">\r\n	<menu class=\"column menu si-side-menu is-narrow\"></menu>\r\n	<div class=\"column\">\r\n		<section class=\"section\">\r\n			<div class=\"container is-fluid\" id=\"main-section\"></div>\r\n		</section>\r\n		<footer class=\"footer\"></footer>\r\n	</div>\r\n</div>\r\n<div id=\"dialog\"><div id=\"dialog-content\"></div></div>";
     },
     "useData": true
   });
@@ -23099,14 +23099,28 @@ System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@
     },
     "2": function(container, depth0, helpers, partials, data) {
       var stack1;
-      return "							Part: " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+      return "							<span class=\"heading\">Part:</span>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
     },
     "4": function(container, depth0, helpers, partials, data) {
       var stack1;
       return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1), {
         "name": "if",
         "hash": {},
-        "fn": container.program(2, data, 0),
+        "fn": container.program(5, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "					</p>\r\n					<svg jsbarcode-value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.label : stack1), depth0)) + "\"></svg>\r\n				</li>\r\n";
+    },
+    "5": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "							Part: " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+    },
+    "7": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(5, data, 0),
         "inverse": container.noop,
         "data": data
       })) != null ? stack1 : "") + "					</p>\r\n					<svg  jsbarcode-value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.label : stack1), depth0)) + "\"></svg>\r\n				</li>\r\n";
@@ -23132,13 +23146,13 @@ System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@
       })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["1"] : stack1), {
         "name": "each",
         "hash": {},
-        "fn": container.program(1, data, 0),
+        "fn": container.program(4, data, 0),
         "inverse": container.noop,
         "data": data
       })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["2"] : stack1), {
         "name": "each",
         "hash": {},
-        "fn": container.program(4, data, 0),
+        "fn": container.program(7, data, 0),
         "inverse": container.noop,
         "data": data
       })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-clearfix\"></div>\r\n	</div>\r\n</div>";
@@ -23795,6 +23809,42 @@ System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:dav
   return module.exports;
 });
 
+System.registerDynamic("lib/inventory/views/travelerIdCardView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "				<p class=\"has-text-centered\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.part : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</p>\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		<div data-ui-top-label>\r\n			<p class=\"has-text-centered\">" + container.escapeExpression(((helper = (helper = helpers.serial || (depth0 != null ? depth0.serial : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "serial",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</p>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.part : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "		</div>\r\n		<svg jsbarcode-value=\"" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "label",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\"></svg>\r\n	</div>\r\n</div>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
 System.registerDynamic("lib/inventory/views/travelerIdEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
@@ -23825,7 +23875,7 @@ System.registerDynamic("lib/inventory/views/travelerIdListTableLayoutTpl.hbs!git
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Label</th>\r\n			<th>Serial</th>\r\n			<th>Inbound Order</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>Type</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th colspan=\"2\">Label</th>\r\n			<th>Serial</th>\r\n			<th>Inbound Order</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>Type</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
     },
     "useData": true
   });
@@ -23847,7 +23897,7 @@ System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/pl
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>\r\n	<a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "entityUrl",
         "hash": {},
         "data": data
@@ -23855,7 +23905,7 @@ System.registerDynamic("lib/inventory/views/travelerIdRowTpl.hbs!github:davis/pl
         "name": "label",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.serial || (depth0 != null ? depth0.serial : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</a>\r\n</td>\r\n<td>\r\n	<button type=\"button\" name=\"showCard\" class=\"button small\">Show Card</button>\r\n</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.serial || (depth0 != null ? depth0.serial : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "serial",
         "hash": {},
         "data": data

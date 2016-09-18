@@ -1,0 +1,13 @@
+<button name="print" type="button" class="button">Print</button>
+<button name="back" type="button" class="button">Back</button>
+<div data-ui="printContainer">
+	<div class="box si-tid-card has-text-centered">
+		<div data-ui-top-label>
+			<p class="has-text-centered">{{serial}}</p>
+			{{#if part}}
+				<p class="has-text-centered">{{part.attributes.name}}</p>
+			{{/if}}
+		</div>
+		<svg jsbarcode-value="{{label}}"></svg>
+	</div>
+</div>

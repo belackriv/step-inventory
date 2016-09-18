@@ -25,6 +25,7 @@ export default Marionette.Object.extend({
     'tid': 'travelerIds',
     'tid/:id': 'travelerIds',
     'show/bin/:id': 'showBin',
+    'show/tid/:id': 'showTid',
     'inventory_tid_edit': 'inventoryTravelerIdEdits',
     'inventory_tid_movement': 'inventoryTravelerIdMovements',
     'bin_part_count': 'binPartCounts',
@@ -52,6 +53,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.showBin(id);
+    });
+  },
+  showTid(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.showTid(id);
     });
   },
   inventoryTravelerIdEdits(){
