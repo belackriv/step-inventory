@@ -2,7 +2,7 @@
 
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
-import SearchableListTableView from './searchableListTableView';
+import SearchableListTableView from './searchableListTableView.js';
 
 
 export default Marionette.View.extend({

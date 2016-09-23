@@ -69,6 +69,6 @@ class LoadLabelData extends AbstractFixture implements DependentFixtureInterface
     public function getDependencies()
     {
         //return array('AppBundle\DataFixtures\ORM\LoadRoleData'); // fixture classes fixture is dependent on
-        return [];
+        return ['AppBundle\DataFixtures\ORM\LoadRoleData'];
     }
 }

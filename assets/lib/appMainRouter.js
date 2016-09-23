@@ -3,11 +3,13 @@
 import Marionette from 'marionette';
 import AdminRouter from './admin/router.js';
 import InventoryRouter from './inventory/router.js';
+import ReportingRouter from './reporting/router.js';
 
 
 export default Marionette.AppRouter.extend({
   initialize(){
     new AdminRouter({appRouter:this});
     new InventoryRouter({appRouter:this});
+    new ReportingRouter({appRouter:this});
   }
 });

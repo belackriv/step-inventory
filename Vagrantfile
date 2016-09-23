@@ -85,6 +85,7 @@ Vagrant.configure("2") do |config|
 		sudo apt-get install -y php-mysql
     sudo apt-get install -y php-bcmath
     sudo apt-get install -y php-curl
+    sudo apt-get install -y php7.0-zip
     sudo apt-get install -y php-fpm
     sudo apt-get install -y libapache2-mod-fastcgi
     sudo a2enmod actions fastcgi alias

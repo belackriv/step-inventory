@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/lib/css/step-inventory.css') }}"/>
+{% endblock %}
+
+{% block content %}
+  <nav class="nav has-shadow si-nav">
+    <div class="nav-left">
+      <div class="nav-item" id="menu-selection-container"></div>
+    </div>
+    <div class="nav-center">
+      <div class="nav-item">
+        <h1 class="title is-1"><a href="./">Step Inventory</a></h1>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-item" id="menu-user-container">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">
+              Component update
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              Content
+              <small>11:09 PM - 1 Jan 2016</small>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a href="./logout">Logout</a>
+            <span id="loading-icon-container" class="icon"></span>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="columns si-main">
+    <menu class="column menu si-side-menu is-narrow"></menu>
+    <div class="column">
+      <section class="section">
+        <div class="container is-fluid" id="main-section">
+        	<h3 class="title is-3">Unrecoverable Error</h3>
+          	{% if errorMessage is defined %}
+                <p>
+                    {{errorMessage}}
+                </p>
+            {% else %}
+                <p>
+                    Unfortunately, an unrecoverable error has occurred. Step Inventory has logged the error and alerted the administrators.
+                </p>
+            {% endif %}
+            {% if app.debug and exception.getMessage is not empty %}
+                <span class="alert label">{{ exception.getMessage }}</span>
+            {% endif %}
+        </div>
+      </section>
+      <footer class="footer"></footer>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+{% endblock %}

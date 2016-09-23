@@ -6,6 +6,57 @@ import Moment from 'moment';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
+const castAsType = function(value, type){
+  switch (type) {
+    case 'integer':
+      return parseInt(value);
+    case 'boolean':
+      let boolValue = value?true:false;
+      return boolValue;
+    case 'string':
+      return ''+value;
+    default:
+      return value;
+  }
+};
+
+Handlebars.registerHelper('tableCell', function(column, data, options) {
+  if( typeof column != "object" ||
+    typeof data != "object"
+  ){return;}
+  let type = column.type.toLowerCase().replace(' ','');
+  let value = castAsType(data[column.name], type);
+  if(typeof Handlebars.helpers[column.helper] === 'function'){
+    let helperOptions = _.extend(options, column.helperOptions);
+    return Handlebars.helpers[column.helper](value, helperOptions);
+  }
+  switch (type) {
+    case 'integer':
+      return new Handlebars.SafeString(parseInt(value));
+    case 'boolean':
+      return Handlebars.helpers.boolean(value, options);
+    case 'percent':
+      return Handlebars.helpers.percent(value, options);
+    case 'datetime':
+       return Handlebars.helpers.moment(value, options);
+    default:
+      return new Handlebars.SafeString(value);
+  }
+});
+
+Handlebars.registerHelper('boolean', function(data, options) {
+  return data?'True':'False';
+});
+
+Handlebars.registerHelper('statusCode', function(data, options) {
+  return data?'Enabled':'Disabled';
+});
+
+Handlebars.registerHelper('percent', function(data, options) {
+  let value = Math.round(parseFloat(data) * 10000)/100;
+  return isNaN(value)?'':value+'%';
+});
+
 Handlebars.registerHelper('titleCase', function(str, options) {
   var newstr = (str+'').split(" ");
   for(var i=0;i<newstr.length;i++){
