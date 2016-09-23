@@ -29,12 +29,12 @@
         "doctrine/doctrine-migrations-bundle": "^1.1",
         "ramsey/uuid": "^3.5",
         "ramsey/uuid-doctrine": "^1.2",
-        "phpoffice/phpexcel": "^1.8"
+        "phpoffice/phpexcel": "^1.8",
+        "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "doctrine/doctrine-fixtures-bundle": "^2.3",
         "deployer/deployer": "^3.2"
     },
     "scripts": {
