@@ -98,6 +98,12 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
+        $objectIdentity = ObjectIdentity::fromDomainObject($adminAccountingLink);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
         $objectIdentity = ObjectIdentity::fromDomainObject($reportingLink);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
@@ -111,6 +117,7 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $this->addReference('inventoryAuditLink', $inventoryAuditLink);
         $this->addReference('adminLink', $adminLink);
         $this->addReference('adminInventoryLink', $adminInventoryLink);
+        $this->addReference('adminAccountingLink', $adminAccountingLink);
         $this->addReference('reportingLink', $reportingLink);
 
     }

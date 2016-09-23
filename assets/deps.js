@@ -27747,28 +27747,14 @@ System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@
     },
     "2": function(container, depth0, helpers, partials, data) {
       var stack1;
-      return "							<span class=\"heading\">Part:</span>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
+      return "							Part: " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
     },
     "4": function(container, depth0, helpers, partials, data) {
       var stack1;
       return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1), {
         "name": "if",
         "hash": {},
-        "fn": container.program(5, data, 0),
-        "inverse": container.noop,
-        "data": data
-      })) != null ? stack1 : "") + "					</p>\r\n					<svg jsbarcode-value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.label : stack1), depth0)) + "\"></svg>\r\n				</li>\r\n";
-    },
-    "5": function(container, depth0, helpers, partials, data) {
-      var stack1;
-      return "							Part: " + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "\r\n";
-    },
-    "7": function(container, depth0, helpers, partials, data) {
-      var stack1;
-      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.part : stack1), {
-        "name": "if",
-        "hash": {},
-        "fn": container.program(5, data, 0),
+        "fn": container.program(2, data, 0),
         "inverse": container.noop,
         "data": data
       })) != null ? stack1 : "") + "					</p>\r\n					<svg  jsbarcode-value=\"" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.label : stack1), depth0)) + "\"></svg>\r\n				</li>\r\n";
@@ -27794,13 +27780,13 @@ System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@
       })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["1"] : stack1), {
         "name": "each",
         "hash": {},
-        "fn": container.program(4, data, 0),
+        "fn": container.program(1, data, 0),
         "inverse": container.noop,
         "data": data
       })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.tidColumns : depth0)) != null ? stack1["2"] : stack1), {
         "name": "each",
         "hash": {},
-        "fn": container.program(7, data, 0),
+        "fn": container.program(4, data, 0),
         "inverse": container.noop,
         "data": data
       })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-clearfix\"></div>\r\n	</div>\r\n</div>";

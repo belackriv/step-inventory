@@ -242,7 +242,7 @@ class LoadSingleQueryReportData extends AbstractFixture implements ContainerAwar
                         'isFuzzy'   => false,
                         'isHidden'   => false,
                         'isOptional' => true,
-                        'template'  => '<label>Client</label><select use_select_2="true" name="client"><option value="">[All]</option></select>',
+                        'template'  => '<label class="label">Client</label><p class="control"<select use_select_2="true" name="client"><option value="">[All]</option></select></p>',
                         'value' => null,
                         'parts' => [
                             [

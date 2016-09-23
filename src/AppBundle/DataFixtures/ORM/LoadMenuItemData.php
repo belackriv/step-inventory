@@ -44,7 +44,7 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
                 $item->setMenuLink($this->getReference($linkRefName));
                 if(in_array($linkRefName, array('inventoryAuditLink','inventoryLink'))){
                     $item->setParent($items[$deptRefName]['mainLink']);
-                }else if(in_array($linkRefName, array('adminInventoryLink'))){
+                }else if(in_array($linkRefName, array('adminInventoryLink','adminAccountingLink'))){
                     $item->setParent($items[$deptRefName]['adminLink']);
                 }else{
                     $item->setDepartment($this->getReference($deptRefName));

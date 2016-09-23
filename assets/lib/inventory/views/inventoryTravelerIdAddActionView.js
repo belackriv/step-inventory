@@ -57,10 +57,11 @@ export default Marionette.View.extend({
   save(event){
     event.preventDefault();
     this.disableButtons();
-    this.addTravelerIds();
-    this.model.save().done(()=>{
-      Radio.channel('dialog').trigger('close');
-      Radio.channel('inventory').trigger('refresh:list:travelerId');
+    this.addTravelerIds().then(()=>{
+      this.model.save().done(()=>{
+        Radio.channel('dialog').trigger('close');
+        Radio.channel('inventory').trigger('refresh:list:travelerId');
+      });
     });
   },
   serialsChanged(){
@@ -75,26 +76,38 @@ export default Marionette.View.extend({
     this.ui.serialCount.text(serialsArray.length);
   },
   addTravelerIds(){
-    let attr = Syphon.serialize(this);
-    this.serialsChanged();
-    attr = {
-      inboundOrder: InboundOrderCollection.prototype.model.findOrCreate({id: parseInt(attr.inboundOrder)}),
-      bin: BinCollection.prototype.model.findOrCreate({id: parseInt(attr.bin)}),
-      part: PartCollection.prototype.model.findOrCreate({id: parseInt(attr.part)}),
-      count:  parseInt(attr.count)
-    };
-    for(var i = 0; i < attr.count; i++){
-      let travelerId = new TravelerIdModel({
-        inboundOrder: attr.inboundOrder,
-        bin: attr.bin,
-        part: attr.part,
-      });
-      let serial = this.model.get('serialsArray')[i];
-      if(serial){
-        travelerId.set('serial', serial);
+    return new Promise((resolve, reject)=>{
+      let attr = Syphon.serialize(this);
+      this.serialsChanged();
+      attr = {
+        inboundOrder: InboundOrderCollection.prototype.model.findOrCreate({id: parseInt(attr.inboundOrder)}),
+        bin: BinCollection.prototype.model.findOrCreate({id: parseInt(attr.bin)}),
+        part: PartCollection.prototype.model.findOrCreate({id: parseInt(attr.part)}),
+        count:  parseInt(attr.count)
+      };
+      let tidsCreated = 0;
+      let checkIfDone = function(){
+        if(tidsCreated >= attr.count){
+          resolve();
+        }
+      };
+      for(var i = 0; i < attr.count; i++){
+        setTimeout(()=>{
+          let travelerId = new TravelerIdModel({
+            inboundOrder: attr.inboundOrder,
+            bin: attr.bin,
+            part: attr.part,
+          });
+          let serial = this.model.get('serialsArray')[i];
+          if(serial){
+            travelerId.set('serial', serial);
+          }
+          this.model.get('travelerIds').add(travelerId);
+          tidsCreated++;
+          checkIfDone();
+        },(i+1)*10);
       }
-      this.model.get('travelerIds').add(travelerId);
-    }
+    });
   },
   disableButtons(){
     this.$el.find('button').prop('disabled', true);
