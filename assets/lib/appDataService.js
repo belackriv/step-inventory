@@ -6,6 +6,7 @@ import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
 import MyselfModel from 'lib/common/models/myselfModel.js';
+import UserModel from 'lib/common/models/userModel.js';
 
 export default Marionette.Object.extend({
   initialize(options){
@@ -43,6 +44,17 @@ export default Marionette.Object.extend({
   },
   setupMyself(){
     this.myself = new MyselfModel();
+    /*
+    this.myself.urlRoot = function(){
+      return this.baseUrl+'/myself';
+    };
+    this.myself.updateCurrentTime = function(){
+      //this.set('currentTime', new Date());
+    };
+    this.listenTo(this.myself, 'change', ()=>{
+      let test;
+    });
+    */
     this.myself.fetch();
     Radio.channel('data').reply('myself', this.getMyself.bind(this));
     setInterval(()=>{

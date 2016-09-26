@@ -18,6 +18,11 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
      */
     public function load(ObjectManager $manager)
     {
+        $stepDept = new Department();
+        $stepDept->setName('Home');
+        $stepDept->setOffice($this->getReference('stepOffice'));
+        $manager->persist($stepDept);
+
         $dfwCheckin = new Department();
         $dfwCheckin->setName('DFW-Check-In');
         $dfwCheckin->setOffice($this->getReference('dfwOffice'));
@@ -52,6 +57,12 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
         $leadRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_LEAD');
         $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
 
+        $objectIdentity = ObjectIdentity::fromDomainObject($stepDept);
+        $acl = $aclProvider->createAcl($objectIdentity);
+        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $aclProvider->updateAcl($acl);
+
         $objectIdentity = ObjectIdentity::fromDomainObject($dfwCheckin);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
@@ -83,6 +94,7 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
         $aclProvider->updateAcl($acl);
 
 
+        $this->addReference('stepDept', $stepDept);
         $this->addReference('dfwCheckin', $dfwCheckin);
         $this->addReference('dfwProcessing', $dfwProcessing);
         $this->addReference('dfwShipping', $dfwShipping);
@@ -96,7 +108,7 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
      */
     public function getDependencies()
     {
-        return array('AppBundle\DataFixtures\ORM\LoadOfficeData'); // fixture classes fixture is dependent on
+        return ['AppBundle\DataFixtures\ORM\LoadOfficeData']; // fixture classes fixture is dependent on
     }
 
     /**

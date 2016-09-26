@@ -60,6 +60,24 @@ Class BinType
 	}
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="Organization", inversedBy="binTypes")
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Exclude
+	 */
+	protected $organization = null;
+
+	public function getOrganizatiom()
+	{
+		return $this->organization;
+	}
+
+	public function setOrganizatiom(Organizatiom $organization)
+	{
+		$this->organization = $organization;
+		return $this;
+	}
+
+	/**
 	 * @ORM\Column(type="simple_array", nullable=true)
 	 * @JMS\Type("array")
 	 */

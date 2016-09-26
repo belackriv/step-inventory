@@ -6,6 +6,7 @@ import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 import viewTpl from  "./adminUsersEditView.hbs!";
 import OfficeCollection from 'lib/common/models/officeCollection.js';
+import OrganizationCollection from 'lib/common/models/organizationCollection.js';
 import RoleCollection from 'lib/common/models/roleCollection.js';
 import UserRoleModel from 'lib/common/models/userRoleModel.js';
 import FormChildListView from 'lib/common/views/formChildListView.js';
@@ -31,6 +32,7 @@ export default Marionette.View.extend({
     'firstNameInput': 'input[name="firstName"]',
     'lastNameInput': 'input[name="lastName"]',
     'emailInput': 'input[name="email"]',
+    'organizationSelect': 'select[name="organization"]',
     'defaultDepartmentSelect': 'select[name="defaultDepartment"]',
     'roleSelect': 'select[name="role"]',
     'addRoleButton': 'button[name="addRole"]',
@@ -59,6 +61,17 @@ export default Marionette.View.extend({
     '@ui.firstNameInput': 'firstName',
     '@ui.lastNameInput': 'lastName',
     '@ui.emailInput': 'email',
+    '@ui.organizationSelect': {
+      observe: 'organization',
+      useBackboneModels: true,
+      selectOptions:{
+        labelPath: 'attributes.name',
+        collection() {
+          let collection = Radio.channel('data').request('collection', OrganizationCollection, {fetchAll:true});
+          return collection;
+        },
+      }
+    },
     '@ui.defaultDepartmentSelect': {
       observe: 'defaultDepartment',
       useBackboneModels: true,

@@ -22,6 +22,70 @@ class DefaultRestController extends FOSRestController
     use Mixin\WampUpdatePusher;
 
     /**
+     * @Rest\Get("/organization")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listOrganizationAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(o.id)')
+            ->from('AppBundle:Organization', 'o');
+
+        if(!$this->get('security.authorization_checker')->isGranted('ROLE_DEV')){
+            $qb->where('o.id = :orgId')
+            ->setParameter('orgId', $this->getUser()->getOrganization()->getId());
+        }
+
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('o')
+            ->orderBy('o.name', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/organization/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getOrganizationAction(\AppBundle\Entity\Organization $organization)
+    {
+        if($this->get('security.authorization_checker')->isGranted('VIEW', $organization)){
+            if(!$this->get('security.authorization_checker')->isGranted('ROLE_DEV')){
+                if($this->getUser()->getOrganization() === $organization){
+                    return $organization;
+                }else{
+                    throw $this->createNotFoundException('Organization #'.$organization->getId().' Not Found');
+                }
+            }else{
+                return $organization;
+            }
+
+        }else{
+            throw $this->createNotFoundException('Organization #'.$organization->getId().' Not Found');
+        }
+    }
+
+    /**
      * @Rest\Get("/office")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "ListOffices"})
      */
@@ -29,7 +93,7 @@ class DefaultRestController extends FOSRestController
     {
         $offices = $this->getDoctrine()
         ->getRepository('AppBundle:Office')
-        ->findAll();
+        ->findBy(['organization' => $this->getUser()->getOrganization()]);
 
         $authorizationChecker = $this->get('security.authorization_checker');
         foreach($offices as $office){
@@ -126,9 +190,13 @@ class DefaultRestController extends FOSRestController
      */
     public function listDepartmentAction()
     {
-        $items = $this->getDoctrine()
-        ->getRepository('AppBundle:Department')
-        ->findAll();
+        $items = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('d')
+            ->from('AppBundle:Department', 'd')
+            ->join('d.office', 'o')
+            ->where('o.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization())
+            ->getQuery()->getResult();;
 
         $itemlist = array();
         $authorizationChecker = $this->get('security.authorization_checker');
@@ -215,7 +283,9 @@ class DefaultRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(mi.id)')
-            ->from('AppBundle:MenuItem', 'mi');
+            ->from('AppBundle:MenuItem', 'mi')
+            ->where('mi.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -401,7 +471,7 @@ class DefaultRestController extends FOSRestController
         $session = $request->getSession();
         $myself = $this->getUser();
         if($session->get('currentDepartmentId')){
-            $department = $this->getDoctrine() ->getRepository('AppBundle:DepartMent')
+            $department = $this->getDoctrine() ->getRepository('AppBundle:Department')
                 ->find($session->get('currentDepartmentId'));
             $myself->currentDepartment = $department;
         }else{
@@ -435,7 +505,9 @@ class DefaultRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(u.id)')
-            ->from('AppBundle:User', 'u');
+            ->from('AppBundle:User', 'u')
+            ->where('u.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());;
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -490,10 +562,19 @@ class DefaultRestController extends FOSRestController
             $encoded = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encoded);
 
+            if(!$this->get('security.authorization_checker')->isGranted('ROLE_DEV')){
+                $user->setOrganization($this->getUser()->getOrganization());
+            }
+
             $em->persist($user);
             foreach($user->getUserRoles() as $userRole){
-                $userRole->setUser($user);
-                $em->persist($userRole);
+                if($this->get('security.authorization_checker')->isGranted('VIEW', $userRole->getRole())){
+                    $userRole->setUser($user);
+                    $em->persist($userRole);
+                }else{
+                    $user->removeUserRole($userRole);
+                    $em->remove($userRole);
+                }
             }
 
             $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
@@ -533,9 +614,29 @@ class DefaultRestController extends FOSRestController
 
             $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
             $em->flush();
+            foreach($user->getUserRoles() as $userRole){
+                $this->updateAclByRoles($userRole, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            }
             return $user;
         }else{
               throw $this->createAccessDeniedException();
+        }
+    }
+
+
+    /**
+     * @Rest\Delete("/user/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteUserAction(\AppBundle\Entity\User $user)
+    {
+        if($this->get('security.authorization_checker')->isGranted('DELETE', $user)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($user);
+            $em->flush();
+            return $user;
+        }else{
+            throw $this->createAccessDeniedException();
         }
     }
 
@@ -550,7 +651,7 @@ class DefaultRestController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $em->remove($userRole);
             $em->flush();
-            return $role;
+            return [];
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -618,7 +719,9 @@ class DefaultRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(osp.id)')
-            ->from('AppBundle:OnSitePrinter', 'osp');
+            ->from('AppBundle:OnSitePrinter', 'osp')
+            ->where('osp.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -818,7 +921,10 @@ class DefaultRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(losp.id)')
-            ->from('AppBundle:LabelOnSitePrinter', 'losp');
+            ->from('AppBundle:LabelOnSitePrinter', 'losp')
+            ->join('losp.')
+            ->where('mi.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 

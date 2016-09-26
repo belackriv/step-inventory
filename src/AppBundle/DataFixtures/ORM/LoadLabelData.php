@@ -11,7 +11,7 @@ use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use AppBundle\Entity\Label;
 
-class LoadLabelData extends AbstractFixture implements DependentFixtureInterface, ContainerAwareInterface
+class LoadLabelData extends AbstractFixture implements ContainerAwareInterface
 {
 
     /**
@@ -63,12 +63,4 @@ class LoadLabelData extends AbstractFixture implements DependentFixtureInterface
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getDependencies()
-    {
-        //return array('AppBundle\DataFixtures\ORM\LoadRoleData'); // fixture classes fixture is dependent on
-        return ['AppBundle\DataFixtures\ORM\LoadRoleData'];
-    }
 }

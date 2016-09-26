@@ -32,7 +32,7 @@ Class TravelerId
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="InboundOrder", inversedBy="travelerIds")
-	 * @ORM\JoinColumn(nullable=true)
+	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\InboundOrder")
 	 */
 

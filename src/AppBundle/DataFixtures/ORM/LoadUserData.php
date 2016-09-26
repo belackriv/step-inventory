@@ -40,7 +40,8 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $belacUser->setFirstName('Belac');
         $belacUser->setLastName('Kriv');
         $belacUser->setIsActive(true);
-        $belacUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $belacUser->setDefaultDepartment($this->getReference('stepDept'));
+        $belacUser->setOrganization($this->getReference('stepOrg'));
         $belacUserRole = new UserRole();
         $belacUserRole->setUser($belacUser);
         $belacUserRole->setRole($this->getReference('ROLE_DEV'));
@@ -61,6 +62,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $plainUser->setLastName('Test');
         $plainUser->setIsActive(true);
         $plainUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $plainUser->setOrganization($this->getReference('demoOrg'));
         $plainUserRole = new UserRole();
         $plainUserRole->setUser($plainUser);
         $plainUserRole->setRole($this->getReference('ROLE_USER'));
@@ -81,6 +83,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $leadUser->setLastName('Test');
         $leadUser->setIsActive(true);
         $leadUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $leadUser->setOrganization($this->getReference('demoOrg'));
         $leadUserRole = new UserRole();
         $leadUserRole->setUser($leadUser);
         $leadUserRole->setRole($this->getReference('ROLE_LEAD'));
@@ -101,6 +104,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $adminUser->setLastName('Test');
         $adminUser->setIsActive(true);
         $adminUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $adminUser->setOrganization($this->getReference('demoOrg'));
         $adminUserRole = new UserRole();
         $adminUserRole->setUser($adminUser);
         $adminUserRole->setRole($this->getReference('ROLE_ADMIN'));
@@ -178,6 +182,6 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
      */
     public function getDependencies()
     {
-        return array('AppBundle\DataFixtures\ORM\LoadRoleData'); // fixture classes fixture is dependent on
+        return ['AppBundle\DataFixtures\ORM\LoadOrganizationData','AppBundle\DataFixtures\ORM\LoadDepartmentData','AppBundle\DataFixtures\ORM\LoadRoleData']; // fixture classes fixture is dependent on
     }
 }

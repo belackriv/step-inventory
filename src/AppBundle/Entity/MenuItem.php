@@ -192,6 +192,24 @@ Class MenuItem
 		return $this;
 	}
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="Organization")
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Exclude
+	 */
+	protected $organization = null;
+
+	public function getOrganization()
+	{
+		return $this->organization;
+	}
+
+	public function setOrganization(Organization $organization)
+	{
+		$this->organization = $organization;
+		return $this;
+	}
+
 	public function __construct() {
         $this->children = new ArrayCollection();
     }

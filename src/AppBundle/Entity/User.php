@@ -60,6 +60,13 @@ class User implements AdvancedUserInterface, \Serializable
     protected $isActive;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     * @JMS\Type("AppBundle\Entity\Organization")
+     */
+    protected $organization;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Department")
      * @JMS\Type("AppBundle\Entity\Department")
      */
@@ -319,6 +326,29 @@ class User implements AdvancedUserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+     /**
+     * Set organization
+     *
+     * @param \AppBundle\Entity\Organization $organization
+     * @return User
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+
+    /**
+     * Get organization
+     *
+     * @return \AppBundle\Entity\Organization
+     */
+    public function setOrganization(Organization $organization)
+    {
+        $this->organization = $organization;
+        return $this;
     }
 
     /**

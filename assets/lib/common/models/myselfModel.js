@@ -7,11 +7,17 @@ import Radio from 'backbone.radio';
 import UserModel from './userModel.js';
 
 let Model = UserModel.extend({
+  initialize(){
+    this.listenTo(this, 'change', this.test);
+  },
+  test(){
+    let test;
+  },
   urlRoot(){
     return this.baseUrl+'/myself';
   },
   updateCurrentTime(){
-    this.set('currentTime', new Date());
+    //this.set('currentTime', new Date());
   },
 });
 

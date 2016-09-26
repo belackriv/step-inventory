@@ -4,40 +4,31 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
-use AppBundle\Entity\Office;
+use AppBundle\Entity\Organization;
 
-class LoadOfficeData extends AbstractFixture implements DependentFixtureInterface, ContainerAwareInterface
+class LoadOrganizationData extends AbstractFixture implements ContainerAwareInterface
 {
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-        $stepOffice = new Office();
-        $stepOffice->setName('Home');
-        $stepOffice->setOrganization($this->getReference('stepOrg'));
-        $manager->persist($stepOffice);
+        $stepOrg = new Organization();
+        $stepOrg->setName('Step Inventory');
+        $manager->persist($stepOrg);
 
-        $dfwOffice = new Office();
-        $dfwOffice->setName('Coppell');
-        $dfwOffice->setOrganization($this->getReference('demoOrg'));
-        $manager->persist($dfwOffice);
-
-        $ausOffice = new Office();
-        $ausOffice->setName('Austin');
-        $ausOffice->setOrganization($this->getReference('demoOrg'));
-        $manager->persist($ausOffice);
+        $demoOrg = new Organization();
+        $demoOrg->setName('Acme Inc.');
+        $manager->persist($demoOrg);
 
         $manager->flush();
 
-        $this->addReference('stepOffice', $stepOffice);
-        $this->addReference('dfwOffice', $dfwOffice);
-        $this->addReference('ausOffice', $ausOffice);
+        $this->addReference('stepOrg', $stepOrg);
+        $this->addReference('demoOrg', $demoOrg);
 
         $aclProvider = $this->container->get('security.acl.provider');
         $devRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_DEV');
@@ -45,23 +36,18 @@ class LoadOfficeData extends AbstractFixture implements DependentFixtureInterfac
         $leadRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_LEAD');
         $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($stepOffice);
+        $objectIdentity = ObjectIdentity::fromDomainObject($stepOrg);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($dfwOffice);
+        $objectIdentity = ObjectIdentity::fromDomainObject($demoOrg);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($ausOffice);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
     }
 
     /**
@@ -75,14 +61,6 @@ class LoadOfficeData extends AbstractFixture implements DependentFixtureInterfac
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDependencies()
-    {
-        return ['AppBundle\DataFixtures\ORM\LoadOrganizationData']; // fixture classes fixture is dependent on
     }
 
 }

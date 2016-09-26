@@ -27028,6 +27028,9 @@ System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plug
     "1": function(container, depth0, helpers, partials, data) {
       return "disabled";
     },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "		<label class=\"label\">Organization</label>\r\n		<p class=\"control\">\r\n			<span class=\"select\">\r\n		  		<select name=\"organization\"></select>\r\n	  		</span>\r\n		</p>\r\n";
+    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
@@ -27042,7 +27045,13 @@ System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plug
         "fn": container.program(1, data, 0),
         "inverse": container.noop,
         "data": data
-      })) != null ? stack1 : "") + ">\r\n		<button type=\"button\" class=\"button is-warning\" name=\"resetPassword\">Reset</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">First Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"firstName\" type=\"text\" placeholder=\"Enter First Name\">\r\n	</p>\r\n	<label class=\"label\">Last Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"lastName\" type=\"text\" placeholder=\"Enter Liast Name\">\r\n	</p>\r\n	<label class=\"label\">Email</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"email\" type=\"text\" placeholder=\"Enter Email\">\r\n	</p>\r\n	<label class=\"label\">Default Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"defaultDepartment\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRole\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Assigned Roles</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"roles\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+      })) != null ? stack1 : "") + ">\r\n		<button type=\"button\" class=\"button is-warning\" name=\"resetPassword\">Reset</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">First Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"firstName\" type=\"text\" placeholder=\"Enter First Name\">\r\n	</p>\r\n	<label class=\"label\">Last Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"lastName\" type=\"text\" placeholder=\"Enter Liast Name\">\r\n	</p>\r\n	<label class=\"label\">Email</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"email\" type=\"text\" placeholder=\"Enter Email\">\r\n	</p>\r\n" + ((stack1 = (helpers.isGrantedRole || (depth0 && depth0.isGrantedRole) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "ROLE_DEV", {
+        "name": "isGrantedRole",
+        "hash": {},
+        "fn": container.program(3, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "	<label class=\"label\">Default Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"defaultDepartment\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRole\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Assigned Roles</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"roles\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
     },
     "useData": true
   });
@@ -27561,12 +27570,8 @@ System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-h
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      var helper;
-      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "baseUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">Step Inventory</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
+      var stack1;
+      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
     },
     "useData": true
   });

@@ -20,8 +20,9 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
     {
 
         $refs = $this->referenceRepository->getReferences();
-        $deptRefNames = array();
-        $linkRefNames = array();
+        $orgRefNames = [];
+        $deptRefNames = [];
+        $linkRefNames = [];
 
 
 
@@ -34,26 +35,29 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
                 $linkRefNames[] = $refNames[0];
             }
         }
-        $items = array();
+        $items = [];
         foreach($deptRefNames as $deptRefName){
             $i=1;
+            $department = $this->getReference($deptRefName);
             foreach($linkRefNames as $linkRefName){
                 $item = new MenuItem();
                 $item->isActive(true);
                 $item->setPosition($i);
                 $item->setMenuLink($this->getReference($linkRefName));
+                $item->setOrganization($department->getOffice()->getOrganization());
                 if(in_array($linkRefName, array('inventoryAuditLink','inventoryLink'))){
                     $item->setParent($items[$deptRefName]['mainLink']);
                 }else if(in_array($linkRefName, array('adminInventoryLink','adminAccountingLink'))){
                     $item->setParent($items[$deptRefName]['adminLink']);
                 }else{
-                    $item->setDepartment($this->getReference($deptRefName));
+                    $item->setDepartment($department);
                 }
                 $manager->persist($item);
                 $items[$deptRefName][$linkRefName] = $item;
                 $i++;
             }
         }
+
 
         $manager->flush();
 
@@ -80,7 +84,7 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
      */
     public function getDependencies()
     {
-        return array('AppBundle\DataFixtures\ORM\LoadMenuLinkData','AppBundle\DataFixtures\ORM\LoadDepartmentData'); // fixture classes fixture is dependent on
+        return ['AppBundle\DataFixtures\ORM\LoadOrganizationData','AppBundle\DataFixtures\ORM\LoadMenuLinkData','AppBundle\DataFixtures\ORM\LoadDepartmentData']; // fixture classes fixture is dependent on
     }
 
     /**

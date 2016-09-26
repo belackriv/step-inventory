@@ -11,6 +11,9 @@ import UserInfoView from './userInfoView.js';
 
 
 export default Marionette.View.extend({
+  initialize(){
+    this.listenTo(Radio.channel('data').request('myself'), 'change:organization', this.render);
+  },
   template: viewTpl,
   tagName: 'nav',
   className: 'nav has-shadow si-nav',

@@ -44,6 +44,24 @@ Class OnSitePrinter
 	}
 
 	/**
+     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="onSitePrinters")
+     * @ORM\JoinColumn(nullable=false)
+     * @JMS\Exclude
+     */
+    protected $organization = null;
+
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(Organization $organization)
+    {
+        $this->organization = $organization;
+        return $this;
+    }
+
+	/**
 	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
      */

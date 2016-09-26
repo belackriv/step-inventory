@@ -42,6 +42,24 @@ Class Office
 		return $this;
 	}
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="offices")
+     * @ORM\JoinColumn(nullable=false)
+     * @JMS\Exclude
+     */
+    protected $organization = null;
+
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(Organization $organization)
+    {
+        $this->organization = $organization;
+        return $this;
+    }
+
 	 /**
      * @ORM\OneToMany(targetEntity="Department", mappedBy="office")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\Department>")

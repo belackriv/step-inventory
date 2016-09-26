@@ -16,6 +16,15 @@ let Model = BaseUrlBaseModel.extend({
     key: 'role',
     relatedModel: 'RoleModel',
     includeInJSON: ['id'],
+  },{
+    type: Backbone.HasOne,
+    key: 'user',
+    relatedModel: 'UserModel',
+    includeInJSON: ['id'],
+    reverseRelation:{
+      key: 'userRoles',
+      includeInJSON: true
+    }
   }],
   defaults:{
     user: null,

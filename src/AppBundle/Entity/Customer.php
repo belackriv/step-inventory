@@ -42,4 +42,21 @@ Class Customer
 		return $this;
 	}
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="Organization", inversedBy="customers")
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Exclude
+	 */
+	protected $organization = null;
+
+	public function getOrganization()
+	{
+		return $this->organization;
+	}
+
+	public function setOrganization(Organization $organization)
+	{
+		$this->organization = $organization;
+		return $this;
+	}
 }

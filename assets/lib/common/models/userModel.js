@@ -1,6 +1,6 @@
 'use strict';
 
-
+import _ from 'underscore';
 import globalNamespace from 'lib/globalNamespace.js';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
@@ -13,7 +13,15 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/user';
   },
+  subModelTypes: {
+    'myself': 'MyselfModel',
+  },
   relations: [{
+    type: Backbone.HasOne,
+    key: 'organization',
+    relatedModel: 'OrganizationModel',
+    includeInJSON: ['id']
+  },{
     type: Backbone.HasOne,
     key: 'defaultDepartment',
     relatedModel: 'DepartmentModel',
@@ -23,15 +31,6 @@ let Model = BaseUrlBaseModel.extend({
     key: 'currentDepartment',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id']
-  },{
-    type: Backbone.HasMany,
-    key: 'userRoles',
-    relatedModel: 'UserRoleModel',
-    includeInJSON: ['id'],
-    reverseRelation:{
-      key: 'user',
-      includeInJSON: ['id']
-    }
   }],
   defaults:{
     username: null,
@@ -49,12 +48,30 @@ let Model = BaseUrlBaseModel.extend({
   },
   isGrantedRole(role, userAccount, subRole){
     var user = userAccount?userAccount:this;
-    if(user.get('userRoles') && user.get('userRoles') instanceof Backbone.Collection){
-      return user.get('userRoles').some((userRole)=>{
-        if( userRole.get('role').get('role') == role){
+    if(user.get('userRoles')){
+      let userRoles = [];
+      if(user.get('userRoles') instanceof Backbone.Collection){
+        userRoles = user.get('userRoles').models;
+      }else{
+        userRoles = user.get('userRoles');
+      }
+      return _.some(userRoles, (userRole)=>{
+        let userRoleStr = null;
+        if(userRole instanceof Backbone.Model){
+          if(userRole.get('role') instanceof Backbone.Model){
+            userRoleStr = userRole.get('role').get('role');
+          }else{
+            userRoleStr = userRole.get('role').role;
+          }
+        }else{
+          if(userRole && userRole.role){
+            userRoleStr = userRole.role.role;
+          }
+        }
+        if(userRoleStr == role){
           return true;
         }
-        var roleLookup = subRole?subRole:userRole.get('role').get('role');
+        var roleLookup = subRole?subRole:userRoleStr;
         var userGrantedRoles = this.get('roleHierarchy')[roleLookup];
         if(userGrantedRoles){
           if(userGrantedRoles.indexOf(role) > -1){
@@ -68,9 +85,8 @@ let Model = BaseUrlBaseModel.extend({
           }
         }
       });
-    }else{
-      return false;
     }
+    return false;
   }
 });
 

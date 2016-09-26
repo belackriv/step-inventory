@@ -130,6 +130,24 @@ Class Part
 	}
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="Organization", inversedBy="parts")
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Exclude
+	 */
+	protected $organization = null;
+
+	public function getOrganization()
+	{
+		return $this->organization;
+	}
+
+	public function setOrganization(Organization $organization)
+	{
+		$this->organization = $organization;
+		return $this;
+	}
+
+	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
      */

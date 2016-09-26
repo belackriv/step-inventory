@@ -50,9 +50,9 @@ Class Department
 	/**
 	 * @ORM\ManyToOne(targetEntity="Office", inversedBy="departments")
 	 * @JMS\Type("AppBundle\Entity\Office")
-     * @JMS\Groups({"GetMyself"})
+     * @JMS\Exclude
 	 */
-
+//JMS\Groups({"GetMyself"})
 	protected $office = null;
 
 	public function getOffice()
@@ -113,5 +113,10 @@ Class Department
 
     public function __construct() {
         $this->menuItems = new ArrayCollection();
+    }
+
+    public function getOrganization()
+    {
+        $this->getOffice()->getOrganization();
     }
 }

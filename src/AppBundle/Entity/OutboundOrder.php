@@ -138,7 +138,7 @@ Class OutboundOrder
     {
         $this->travelerIds->removeElement($travelerId);
         $travelerId->setOutboundOrder(null);
-        $this->travelerIds = new ArrayCollection(array_values($this->children->toArray()));
+        $this->travelerIds = new ArrayCollection(array_values($this->travelerIds->toArray()));
     }
 
 }
