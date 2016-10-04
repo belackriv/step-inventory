@@ -223,4 +223,13 @@ Class MenuItem
 			throw new \Exception("Cannot have a parent and department.");
 		}
     }
+
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return (
+        	$this->getOrganization() === $organization and
+        	(!$this->getDepartment() or $this->getDepartment()->isOwnedByOrganization($organization) ) and
+			(!$this->getParent() or $this->getParent()->isOwnedByOrganization($organization) )
+        );
+    }
 }

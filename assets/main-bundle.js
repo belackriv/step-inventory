@@ -18823,12 +18823,8 @@ System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-h
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      var helper;
-      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "baseUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">Step Inventory</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
+      var stack1;
+      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
     },
     "useData": true
   });
@@ -19075,6 +19071,10 @@ System.register('lib/common/views/navLayoutView.js', ['underscore', 'backbone', 
     }],
     execute: function () {
       _export('default', Marionette.View.extend({
+        initialize: function initialize() {
+          this.listenTo(Radio.channel('data').request('myself'), 'change:organization', this.render);
+        },
+
         template: viewTpl,
         tagName: 'nav',
         className: 'nav has-shadow si-nav',
@@ -19303,7 +19303,7 @@ System.registerDynamic("lib/common/views/defaultView.hbs!github:davis/plugin-hbs
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      return "Welcome To StepThrough<sup>&copy;</sup>";
+      return "Welcome To Step Inventory<sup>&copy;</sup>";
     },
     "useData": true
   });
@@ -19362,7 +19362,9 @@ System.register('lib/appLayoutView.js', ['underscore', 'marionette', 'backbone.r
           this.listenTo(Radio.channel('app'), 'change:menuItems', this._showMenuItem);
           this.listenTo(Radio.channel('app'), 'show:view', this._showView);
           this.listenTo(Radio.channel('dialog'), 'open', this._openDialog);
+          this.listenTo(Radio.channel('dialog'), 'opened', this._dialogOpened);
           this.listenTo(Radio.channel('dialog'), 'close', this._closeDialog);
+          this.listenTo(Radio.channel('dialog'), 'closed', this._dialogClosed);
         },
 
         template: appLayoutTpl,
@@ -19415,8 +19417,13 @@ System.register('lib/appLayoutView.js', ['underscore', 'marionette', 'backbone.r
           this.ui.dialog.dialog('option', options);
           this.ui.dialog.dialog('open');
         },
+        _dialogOpened: function _dialogOpened() {
+          //no-op
+        },
         _closeDialog: function _closeDialog() {
           this.ui.dialog.dialog('close');
+        },
+        _dialogClosed: function _dialogClosed() {
           this.getRegion('dialogContent').reset();
         }
       }));
@@ -20077,6 +20084,9 @@ System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plug
     "1": function(container, depth0, helpers, partials, data) {
       return "disabled";
     },
+    "3": function(container, depth0, helpers, partials, data) {
+      return "		<label class=\"label\">Organization</label>\r\n		<p class=\"control\">\r\n			<span class=\"select\">\r\n		  		<select name=\"organization\"></select>\r\n	  		</span>\r\n		</p>\r\n";
+    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
@@ -20091,13 +20101,72 @@ System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plug
         "fn": container.program(1, data, 0),
         "inverse": container.noop,
         "data": data
-      })) != null ? stack1 : "") + ">\r\n		<button type=\"button\" class=\"button is-warning\" name=\"resetPassword\">Reset</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">First Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"firstName\" type=\"text\" placeholder=\"Enter First Name\">\r\n	</p>\r\n	<label class=\"label\">Last Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"lastName\" type=\"text\" placeholder=\"Enter Liast Name\">\r\n	</p>\r\n	<label class=\"label\">Email</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"email\" type=\"text\" placeholder=\"Enter Email\">\r\n	</p>\r\n	<label class=\"label\">Default Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"defaultDepartment\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRole\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Assigned Roles</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"roles\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+      })) != null ? stack1 : "") + ">\r\n		<button type=\"button\" class=\"button is-warning\" name=\"resetPassword\">Reset</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">First Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"firstName\" type=\"text\" placeholder=\"Enter First Name\">\r\n	</p>\r\n	<label class=\"label\">Last Name</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"lastName\" type=\"text\" placeholder=\"Enter Liast Name\">\r\n	</p>\r\n	<label class=\"label\">Email</label>\r\n	<p class=\"control\">\r\n	  	<input class=\"input\" name=\"email\" type=\"text\" placeholder=\"Enter Email\">\r\n	</p>\r\n" + ((stack1 = (helpers.isGrantedRole || (depth0 && depth0.isGrantedRole) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "ROLE_DEV", {
+        "name": "isGrantedRole",
+        "hash": {},
+        "fn": container.program(3, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "	<label class=\"label\">Default Department</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"defaultDepartment\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Roles</label>\r\n	<p class=\"control has-addons\">\r\n		<span class=\"select\">\r\n	  		<select name=\"role\"></select>\r\n  		</span>\r\n  		<button type=\"button\" class=\"button is-success\" name=\"addRole\">Add</button>\r\n	</p>\r\n	<label class=\"label\">Assigned Roles</label>\r\n	<div class=\"control\">\r\n		<div class=\"box\" data-ui-name=\"roles\"></div>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
     },
     "useData": true
   });
   return module.exports;
 });
 
+'use strict';
+
+System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/organization';
+        },
+
+        defaults: {
+          name: null,
+          logo: null
+        }
+      });
+
+
+      globalNamespace.Models.OrganizationModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/organizationCollection.js', ['./baseUrlBaseCollection.js', './organizationModel.js'], function (_export, _context) {
+  "use strict";
+
+  var BaseUrlBaseCollection, Model;
+  return {
+    setters: [function (_baseUrlBaseCollectionJs) {
+      BaseUrlBaseCollection = _baseUrlBaseCollectionJs.default;
+    }, function (_organizationModelJs) {
+      Model = _organizationModelJs.default;
+    }],
+    execute: function () {
+      _export('default', BaseUrlBaseCollection.extend({
+        model: Model,
+        url: function url() {
+          return this.baseUrl + '/organization';
+        }
+      }));
+    }
+  };
+});
 System.registerDynamic("lib/admin/views/userRoleItemView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
@@ -20117,10 +20186,10 @@ System.registerDynamic("lib/admin/views/userRoleItemView.hbs!github:davis/plugin
 
 "use strict";
 
-System.register('lib/admin/views/adminUsersEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminUsersEditView.hbs!', 'lib/common/models/officeCollection.js', 'lib/common/models/roleCollection.js', 'lib/common/models/userRoleModel.js', 'lib/common/views/formChildListView.js', './userRoleItemView.hbs!'], function (_export, _context) {
+System.register('lib/admin/views/adminUsersEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminUsersEditView.hbs!', 'lib/common/models/officeCollection.js', 'lib/common/models/organizationCollection.js', 'lib/common/models/roleCollection.js', 'lib/common/models/userRoleModel.js', 'lib/common/views/formChildListView.js', './userRoleItemView.hbs!'], function (_export, _context) {
   "use strict";
 
-  var _, Backbone, Radio, Marionette, viewTpl, OfficeCollection, RoleCollection, UserRoleModel, FormChildListView, userRoleItemViewTpl;
+  var _, Backbone, Radio, Marionette, viewTpl, OfficeCollection, OrganizationCollection, RoleCollection, UserRoleModel, FormChildListView, userRoleItemViewTpl;
 
   return {
     setters: [function (_underscore) {
@@ -20135,6 +20204,8 @@ System.register('lib/admin/views/adminUsersEditView.js', ['underscore', 'backbon
       viewTpl = _adminUsersEditViewHbs.default;
     }, function (_libCommonModelsOfficeCollectionJs) {
       OfficeCollection = _libCommonModelsOfficeCollectionJs.default;
+    }, function (_libCommonModelsOrganizationCollectionJs) {
+      OrganizationCollection = _libCommonModelsOrganizationCollectionJs.default;
     }, function (_libCommonModelsRoleCollectionJs) {
       RoleCollection = _libCommonModelsRoleCollectionJs.default;
     }, function (_libCommonModelsUserRoleModelJs) {
@@ -20164,6 +20235,7 @@ System.register('lib/admin/views/adminUsersEditView.js', ['underscore', 'backbon
           'firstNameInput': 'input[name="firstName"]',
           'lastNameInput': 'input[name="lastName"]',
           'emailInput': 'input[name="email"]',
+          'organizationSelect': 'select[name="organization"]',
           'defaultDepartmentSelect': 'select[name="defaultDepartment"]',
           'roleSelect': 'select[name="role"]',
           'addRoleButton': 'button[name="addRole"]'
@@ -20193,6 +20265,17 @@ System.register('lib/admin/views/adminUsersEditView.js', ['underscore', 'backbon
           '@ui.firstNameInput': 'firstName',
           '@ui.lastNameInput': 'lastName',
           '@ui.emailInput': 'email',
+          '@ui.organizationSelect': {
+            observe: 'organization',
+            useBackboneModels: true,
+            selectOptions: {
+              labelPath: 'attributes.name',
+              collection: function collection() {
+                var collection = Radio.channel('data').request('collection', OrganizationCollection, { fetchAll: true });
+                return collection;
+              }
+            }
+          },
           '@ui.defaultDepartmentSelect': {
             observe: 'defaultDepartment',
             useBackboneModels: true,
@@ -20586,7 +20669,7 @@ System.register('lib/common/models/menuItemModel.js', ['lib/globalNamespace.js',
           includeInJSON: ['id'],
           reverseRelation: {
             key: 'menuItems',
-            includeInJSON: ['id']
+            includeInJSON: false
           }
         }, {
           type: Backbone.HasOne,
@@ -24230,6 +24313,7 @@ System.register('lib/inventory/views/inventoryTravelerIdAddActionView.js', ['und
         template: viewTpl,
         ui: {
           'form': 'form',
+          'submitButton': 'button[data-ui-name="save"]',
           'cancelButton': 'button[data-ui-name="cancel"]',
           'countInput': 'input[name="count"]',
           'serialsInput': 'textarea[name="serials"]',
@@ -24255,12 +24339,14 @@ System.register('lib/inventory/views/inventoryTravelerIdAddActionView.js', ['und
 
           event.preventDefault();
           this.disableButtons();
-          this.addTravelerIds().then(function () {
-            _this.model.save().done(function () {
-              Radio.channel('dialog').trigger('close');
-              Radio.channel('inventory').trigger('refresh:list:travelerId');
+          setTimeout(function () {
+            _this.addTravelerIds().then(function () {
+              _this.model.save().done(function () {
+                Radio.channel('dialog').trigger('close');
+                Radio.channel('inventory').trigger('refresh:list:travelerId');
+              });
             });
-          });
+          }, 5);
         },
         serialsChanged: function serialsChanged() {
           var serialsArray = [];
@@ -24285,32 +24371,28 @@ System.register('lib/inventory/views/inventoryTravelerIdAddActionView.js', ['und
               part: PartCollection.prototype.model.findOrCreate({ id: parseInt(attr.part) }),
               count: parseInt(attr.count)
             };
-            var tidsCreated = 0;
-            var checkIfDone = function checkIfDone() {
-              if (tidsCreated >= attr.count) {
-                resolve();
-              }
-            };
             for (var i = 0; i < attr.count; i++) {
-              setTimeout(function () {
-                var travelerId = new TravelerIdModel({
-                  inboundOrder: attr.inboundOrder,
-                  bin: attr.bin,
-                  part: attr.part
-                });
-                var serial = _this2.model.get('serialsArray')[i];
-                if (serial) {
-                  travelerId.set('serial', serial);
-                }
-                _this2.model.get('travelerIds').add(travelerId);
-                tidsCreated++;
-                checkIfDone();
-              }, (i + 1) * 10);
+              var travelerId = new TravelerIdModel({
+                inboundOrder: attr.inboundOrder,
+                bin: attr.bin,
+                part: attr.part
+              });
+              var serial = _this2.model.get('serialsArray')[i];
+              if (serial) {
+                travelerId.set('serial', serial);
+              }
+              _this2.model.get('travelerIds').add(travelerId);
             }
+            resolve();
           });
         },
         disableButtons: function disableButtons() {
-          this.$el.find('button').prop('disabled', true);
+          this.ui.submitButton.prop('disabled', true).addClass('is-loading');
+          this.ui.cancelButton.prop('disabled', true);
+        },
+        enableButtons: function enableButtons() {
+          this.ui.submitButton.prop('disabled', false).removeClass('is-loading');
+          this.ui.cancelButton.prop('disabled', false);
         }
       }));
     }
@@ -24448,12 +24530,14 @@ System.register('lib/inventory/views/inventoryTravelerIdMassEditActionView.js', 
 
           event.preventDefault();
           this.disableButtons();
-          this.editTravelerIds().then(function () {
-            _this.enableButtons();
-          }).catch(function (err) {
-            _this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
-            _this.enableButtons();
-          });
+          setTimeout(function () {
+            _this.editTravelerIds().then(function () {
+              _this.enableButtons();
+            }).catch(function (err) {
+              _this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
+              _this.enableButtons();
+            });
+          }, 5);
         },
         updateControl: function updateControl() {
           var updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
@@ -24628,7 +24712,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActi
         "name": "selectedCount",
         "hash": {},
         "data": data
-      }) : helper))) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+      }) : helper))) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"export\">Export Selected</button>\r\n	</p>\r\n</form>";
     },
     "useData": true
   });
@@ -24637,7 +24721,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActi
 
 'use strict';
 
-System.register('lib/inventory/views/inventoryTravelerIdMassSelectionActionView.js', ['underscore', 'jquery', 'marionette', 'backbone.radio', './inventoryTravelerIdMassSelectionActionView.hbs!', '../models/travelerIdModel.js'], function (_export, _context) {
+System.register('lib/inventory/views/inventoryTravelerIdMassSelectionActionView.js', ['underscore', 'jquery', 'marionette', 'backbone.radio', './inventoryTravelerIdMassSelectionActionView.hbs!', '../models/travelerIdModel.js'], function (_export2, _context) {
   "use strict";
 
   var _, jquery, Marionette, Radio, viewTpl, TravelerIdModel;
@@ -24657,7 +24741,7 @@ System.register('lib/inventory/views/inventoryTravelerIdMassSelectionActionView.
       TravelerIdModel = _modelsTravelerIdModelJs.default;
     }],
     execute: function () {
-      _export('default', Marionette.View.extend({
+      _export2('default', Marionette.View.extend({
         initialize: function initialize() {
           this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId');
         },
@@ -24671,12 +24755,14 @@ System.register('lib/inventory/views/inventoryTravelerIdMassSelectionActionView.
           'form': 'form',
           'saveButton': 'button[data-ui-name="save"]',
           'cancelButton': 'button[data-ui-name="cancel"]',
+          'exportButton': 'button[data-ui-name="export"]',
           'errorContainer': '[data-ui="errorContainer"]'
         },
         events: {
           'change @ui.travelerIdsInput': 'travelerIdsChanged',
           'submit @ui.form ': 'save',
-          'click @ui.cancelButton': 'cancel'
+          'click @ui.cancelButton': 'cancel',
+          'click @ui.exportButton': 'export'
         },
         serializeData: function serializeData() {
           var data = {};
@@ -24686,6 +24772,28 @@ System.register('lib/inventory/views/inventoryTravelerIdMassSelectionActionView.
         },
         cancel: function cancel() {
           Radio.channel('dialog').trigger('close');
+        },
+        export: function _export() {
+          var element = document.createElement('a');
+          var csvText = 'Label,Serial,Inbound Order,Outbound Order,Bin,Type\n';
+          this.selectedCollection.each(function (travelerId) {
+            csvText += travelerId.get('label') + ',';
+            csvText += travelerId.get('serial') + ',';
+            csvText += travelerId.get('inboundOrder').get('label') + ',';
+            csvText += travelerId.get('outboundOrder') ? travelerId.get('outboundOrder').get('label') + ',' : ',';
+            csvText += travelerId.get('bin').get('name') + ',';
+            csvText += travelerId.get('part') ? travelerId.get('part').get('name') + ',' : ',';
+            csvText += '\n';
+          });
+          element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvText));
+          element.setAttribute('download', 'selection.csv');
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
         },
         save: function save(event) {
           var _this = this;
@@ -31505,7 +31613,8 @@ System.register('lib/common/views/navTabsView.js', ['backbone.radio', 'marionett
       _export('default', Marionette.View.extend({
         initialize: function initialize() {
           this.listenTo(Radio.channel('app'), 'route:changed', this.render);
-          this.listenTo(Radio.channel('data').request('myself'), 'change', this.render);
+          this.listenTo(Radio.channel('data').request('myself'), 'update:userRoles', this.render);
+          this.listenTo(Radio.channel('data').request('myself'), 'change:userRoles', this.render);
         },
         getTemplate: function getTemplate() {
           return this.options.template;
@@ -37511,6 +37620,45 @@ System.register('lib/appMainRouter.js', ['marionette', './admin/router.js', './i
 });
 'use strict';
 
+System.register('lib/common/models/myselfModel.js', ['lib/globalNamespace.js', 'backbone', 'backbone.radio', './userModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, Backbone, Radio, UserModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_userModelJs) {
+      UserModel = _userModelJs.default;
+    }],
+    execute: function () {
+      Model = UserModel.extend({
+        initialize: function initialize() {
+          this.listenTo(this, 'change', this.test);
+        },
+        test: function test() {
+          var test = void 0;
+        },
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/myself';
+        },
+        updateCurrentTime: function updateCurrentTime() {
+          //this.set('currentTime', new Date());
+        }
+      });
+
+
+      globalNamespace.Models.MyselfModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
 System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
   "use strict";
 
@@ -37572,7 +37720,7 @@ System.register('lib/common/models/departmentModel.js', ['lib/globalNamespace.js
           includeInJSON: ['id'],
           reverseRelation: {
             key: 'departments',
-            includeInJSON: ['id']
+            includeInJSON: false
           }
         }],
         defaults: {
@@ -37699,6 +37847,15 @@ System.register('lib/common/models/userRoleModel.js', ['lib/globalNamespace.js',
           key: 'role',
           relatedModel: 'RoleModel',
           includeInJSON: ['id']
+        }, {
+          type: Backbone.HasOne,
+          key: 'user',
+          relatedModel: 'UserModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'userRoles',
+            includeInJSON: true
+          }
         }],
         defaults: {
           user: null,
@@ -37715,12 +37872,15 @@ System.register('lib/common/models/userRoleModel.js', ['lib/globalNamespace.js',
 });
 'use strict';
 
-System.register('lib/common/models/userModel.js', ['lib/globalNamespace.js', 'backbone', 'backbone.radio', './baseUrlBaseModel.js', './departmentModel.js', './userRoleModel.js'], function (_export, _context) {
+System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalNamespace.js', 'backbone', 'backbone.radio', './baseUrlBaseModel.js', './departmentModel.js', './userRoleModel.js'], function (_export, _context) {
   "use strict";
 
-  var globalNamespace, Backbone, Radio, BaseUrlBaseModel, Model;
+  var _, globalNamespace, Backbone, Radio, BaseUrlBaseModel, Model;
+
   return {
-    setters: [function (_libGlobalNamespaceJs) {
+    setters: [function (_underscore) {
+      _ = _underscore.default;
+    }, function (_libGlobalNamespaceJs) {
       globalNamespace = _libGlobalNamespaceJs.default;
     }, function (_backbone) {
       Backbone = _backbone.default;
@@ -37735,7 +37895,15 @@ System.register('lib/common/models/userModel.js', ['lib/globalNamespace.js', 'ba
           return this.baseUrl + '/user';
         },
 
+        subModelTypes: {
+          'myself': 'MyselfModel'
+        },
         relations: [{
+          type: Backbone.HasOne,
+          key: 'organization',
+          relatedModel: 'OrganizationModel',
+          includeInJSON: ['id']
+        }, {
           type: Backbone.HasOne,
           key: 'defaultDepartment',
           relatedModel: 'DepartmentModel',
@@ -37745,15 +37913,6 @@ System.register('lib/common/models/userModel.js', ['lib/globalNamespace.js', 'ba
           key: 'currentDepartment',
           relatedModel: 'DepartmentModel',
           includeInJSON: ['id']
-        }, {
-          type: Backbone.HasMany,
-          key: 'userRoles',
-          relatedModel: 'UserRoleModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'user',
-            includeInJSON: ['id']
-          }
         }],
         defaults: {
           username: null,
@@ -37773,12 +37932,30 @@ System.register('lib/common/models/userModel.js', ['lib/globalNamespace.js', 'ba
           var _this = this;
 
           var user = userAccount ? userAccount : this;
-          if (user.get('userRoles') && user.get('userRoles') instanceof Backbone.Collection) {
-            return user.get('userRoles').some(function (userRole) {
-              if (userRole.get('role').get('role') == role) {
+          if (user.get('userRoles')) {
+            var userRoles = [];
+            if (user.get('userRoles') instanceof Backbone.Collection) {
+              userRoles = user.get('userRoles').models;
+            } else {
+              userRoles = user.get('userRoles');
+            }
+            return _.some(userRoles, function (userRole) {
+              var userRoleStr = null;
+              if (userRole instanceof Backbone.Model) {
+                if (userRole.get('role') instanceof Backbone.Model) {
+                  userRoleStr = userRole.get('role').get('role');
+                } else {
+                  userRoleStr = userRole.get('role').role;
+                }
+              } else {
+                if (userRole && userRole.role) {
+                  userRoleStr = userRole.role.role;
+                }
+              }
+              if (userRoleStr == role) {
                 return true;
               }
-              var roleLookup = subRole ? subRole : userRole.get('role').get('role');
+              var roleLookup = subRole ? subRole : userRoleStr;
               var userGrantedRoles = _this.get('roleHierarchy')[roleLookup];
               if (userGrantedRoles) {
                 if (userGrantedRoles.indexOf(role) > -1) {
@@ -37813,9 +37990,8 @@ System.register('lib/common/models/userModel.js', ['lib/globalNamespace.js', 'ba
                 }
               }
             });
-          } else {
-            return false;
           }
+          return false;
         }
       });
 
@@ -37828,43 +38004,10 @@ System.register('lib/common/models/userModel.js', ['lib/globalNamespace.js', 'ba
 });
 'use strict';
 
-System.register('lib/common/models/myselfModel.js', ['lib/globalNamespace.js', 'backbone', 'backbone.radio', './userModel.js'], function (_export, _context) {
+System.register('lib/appDataService.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', 'lib/common/models/myselfModel.js', 'lib/common/models/userModel.js'], function (_export, _context) {
   "use strict";
 
-  var globalNamespace, Backbone, Radio, UserModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backbone) {
-      Backbone = _backbone.default;
-    }, function (_backboneRadio) {
-      Radio = _backboneRadio.default;
-    }, function (_userModelJs) {
-      UserModel = _userModelJs.default;
-    }],
-    execute: function () {
-      Model = UserModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/myself';
-        },
-        updateCurrentTime: function updateCurrentTime() {
-          this.set('currentTime', new Date());
-        }
-      });
-
-
-      globalNamespace.Models.MyselfModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/appDataService.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', 'lib/common/models/myselfModel.js'], function (_export, _context) {
-  "use strict";
-
-  var _, Backbone, Radio, Marionette, MyselfModel;
+  var _, Backbone, Radio, Marionette, MyselfModel, UserModel;
 
   return {
     setters: [function (_underscore) {
@@ -37877,6 +38020,8 @@ System.register('lib/appDataService.js', ['underscore', 'backbone', 'backbone.ra
       Marionette = _marionette.default;
     }, function (_libCommonModelsMyselfModelJs) {
       MyselfModel = _libCommonModelsMyselfModelJs.default;
+    }, function (_libCommonModelsUserModelJs) {
+      UserModel = _libCommonModelsUserModelJs.default;
     }],
     execute: function () {
       _export('default', Marionette.Object.extend({
@@ -37917,6 +38062,17 @@ System.register('lib/appDataService.js', ['underscore', 'backbone', 'backbone.ra
           var _this = this;
 
           this.myself = new MyselfModel();
+          /*
+          this.myself.urlRoot = function(){
+            return this.baseUrl+'/myself';
+          };
+          this.myself.updateCurrentTime = function(){
+            //this.set('currentTime', new Date());
+          };
+          this.listenTo(this.myself, 'change', ()=>{
+            let test;
+          });
+          */
           this.myself.fetch();
           Radio.channel('data').reply('myself', this.getMyself.bind(this));
           setInterval(function () {

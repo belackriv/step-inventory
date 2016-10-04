@@ -75,12 +75,14 @@ export default Marionette.View.extend({
   save(event){
     event.preventDefault();
     this.disableButtons();
-    this.editTravelerIds().then(()=>{
-      this.enableButtons();
-    }).catch((err)=>{
-      this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
-      this.enableButtons();
-    });
+    setTimeout(()=>{
+      this.editTravelerIds().then(()=>{
+        this.enableButtons();
+      }).catch((err)=>{
+        this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
+        this.enableButtons();
+      });
+    }, 5);
   },
   updateControl(){
     let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();

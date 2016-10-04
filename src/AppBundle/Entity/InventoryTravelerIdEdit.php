@@ -117,4 +117,12 @@ Class InventoryTravelerIdEdit
 		return $this;
 	}
 
+	public function isOwnedByOrganization(Organization $organization)
+    {
+        return (
+        	$this->getByUser()->isOwnedByOrganization($organization) and
+			$this->getTravelerId()->isOwnedByOrganization($organization)
+		);
+    }
+
 }

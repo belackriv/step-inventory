@@ -80,4 +80,12 @@ Class BinPartCount
 		$this->count = $count;
 		return $this;
 	}
+
+	public function isOwnedByOrganization(Organization $organization)
+	{
+		return (
+			$this->getBin()->isOwnedByOrganization($organization) and
+			$this->getPart()->isOwnedByOrganization($organization)
+		);
+	}
 }

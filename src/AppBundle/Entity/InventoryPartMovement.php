@@ -60,4 +60,12 @@ Class InventoryPartMovement extends InventoryMovement
 		$this->count = $count;
 		return $this;
 	}
+
+	public function isOwnedByOrganization(Organization $organization)
+	{
+		return (
+			parent::isOwnedByOrganization($organization) and
+			$this->getPart()->isOwnedByOrganization($organization)
+		);
+	}
 }

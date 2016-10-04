@@ -141,5 +141,8 @@ Class InventoryMovementRule
     	}
     }
 
-
+    public function isOwnedByOrganization(Organization $organization)
+	{
+		return ( $this->getBinType()->isOwnedByOrganization($organization) );
+	}
 }

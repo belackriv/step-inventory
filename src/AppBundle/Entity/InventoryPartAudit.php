@@ -124,4 +124,12 @@ Class InventoryPartAudit
         }
         return true;
 	}
+
+	public function isOwnedByOrganization(Organization $organization)
+	{
+		return (
+			$this->getInventoryAudit()->isOwnedByOrganization($organization) and
+			$this->getPart()->isOwnedByOrganization($organization)
+		);
+	}
 }

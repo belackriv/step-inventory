@@ -27245,7 +27245,7 @@ System.registerDynamic("lib/common/views/defaultView.hbs!github:davis/plugin-hbs
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      return "Welcome To StepThrough<sup>&copy;</sup>";
+      return "Welcome To Step Inventory<sup>&copy;</sup>";
     },
     "useData": true
   });
@@ -28384,7 +28384,7 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdMassSelectionActi
         "name": "selectedCount",
         "hash": {},
         "data": data
-      }) : helper))) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+      }) : helper))) + " Traveler Ids Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"export\">Export Selected</button>\r\n	</p>\r\n</form>";
     },
     "useData": true
   });

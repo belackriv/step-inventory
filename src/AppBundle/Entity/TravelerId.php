@@ -228,4 +228,14 @@ Class TravelerId
     		$this->setIsVoid(false);
     	}
     }
+
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return (
+        	$this->getInboundOrder()->isOwnedByOrganization($organization) and
+			$this->getBin()->isOwnedByOrganization($organization) and
+			(!$this->getOutboundOrder() or $this->getOutboundOrder()->isOwnedByOrganization($organization) ) and
+			(!$this->getPart() or $this->getPart()->isOwnedByOrganization($organization) )
+		);
+    }
 }

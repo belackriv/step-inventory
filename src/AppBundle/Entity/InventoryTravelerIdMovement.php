@@ -44,4 +44,12 @@ Class InventoryTravelerIdMovement extends InventoryMovement
 		return $this;
 	}
 
+	public function isOwnedByOrganization(Organization $organization)
+    {
+        return (
+        	parent::isOwnedByOrganization($organization) and
+			$this->getTravelerId()->isOwnedByOrganization($organization)
+		);
+    }
+
 }

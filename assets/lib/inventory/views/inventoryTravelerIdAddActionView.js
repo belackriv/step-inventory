@@ -34,6 +34,7 @@ export default Marionette.View.extend({
   template: viewTpl,
   ui: {
     'form': 'form',
+    'submitButton': 'button[data-ui-name="save"]',
     'cancelButton': 'button[data-ui-name="cancel"]',
     'countInput': 'input[name="count"]',
     'serialsInput': 'textarea[name="serials"]',
@@ -57,12 +58,14 @@ export default Marionette.View.extend({
   save(event){
     event.preventDefault();
     this.disableButtons();
-    this.addTravelerIds().then(()=>{
-      this.model.save().done(()=>{
-        Radio.channel('dialog').trigger('close');
-        Radio.channel('inventory').trigger('refresh:list:travelerId');
+    setTimeout(()=>{
+      this.addTravelerIds().then(()=>{
+        this.model.save().done(()=>{
+          Radio.channel('dialog').trigger('close');
+          Radio.channel('inventory').trigger('refresh:list:travelerId');
+        });
       });
-    });
+    }, 5);
   },
   serialsChanged(){
     let serialsArray = [];
@@ -85,14 +88,7 @@ export default Marionette.View.extend({
         part: PartCollection.prototype.model.findOrCreate({id: parseInt(attr.part)}),
         count:  parseInt(attr.count)
       };
-      let tidsCreated = 0;
-      let checkIfDone = function(){
-        if(tidsCreated >= attr.count){
-          resolve();
-        }
-      };
       for(var i = 0; i < attr.count; i++){
-        setTimeout(()=>{
           let travelerId = new TravelerIdModel({
             inboundOrder: attr.inboundOrder,
             bin: attr.bin,
@@ -103,13 +99,16 @@ export default Marionette.View.extend({
             travelerId.set('serial', serial);
           }
           this.model.get('travelerIds').add(travelerId);
-          tidsCreated++;
-          checkIfDone();
-        },(i+1)*10);
       }
+      resolve();
     });
   },
   disableButtons(){
-    this.$el.find('button').prop('disabled', true);
+    this.ui.submitButton.prop('disabled', true).addClass('is-loading');
+    this.ui.cancelButton.prop('disabled', true);
+  },
+  enableButtons(){
+    this.ui.submitButton.prop('disabled', false).removeClass('is-loading');
+    this.ui.cancelButton.prop('disabled', false);
   },
 });

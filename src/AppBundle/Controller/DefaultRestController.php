@@ -125,7 +125,9 @@ class DefaultRestController extends FOSRestController
      */
     public function getOfficeAction(\AppBundle\Entity\Office $office)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $office)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $office) and
+            $office->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $office;
         }else{
             throw $this->createNotFoundException('Office #'.$office->getId().' Not Found');
@@ -141,6 +143,7 @@ class DefaultRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('CREATE', $office)){
             $em = $this->getDoctrine()->getManager();
+            $office->setOrganization($this->getUser()->getOrganization());
             $em->persist($office);
             $em->flush();
             return $office;
@@ -158,11 +161,20 @@ class DefaultRestController extends FOSRestController
      */
     public function updateOfficeAction(\AppBundle\Entity\Office $office)
     {
+
         if($this->get('security.authorization_checker')->isGranted('EDIT', $office)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($office);
-            $em->flush();
-            return $office;
+            $em->detach($office);
+            $liveOffice = $this->getDoctrine()->getRepository('AppBundle:Office')->findOneById($office->getId());
+            if( $office->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveOffice->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($office);
+                $em->flush();
+                return $office;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$office->getOrganization()->getId().' Not Found');
+            }
         }else{
              throw $this->createAccessDeniedException();
         }
@@ -174,7 +186,9 @@ class DefaultRestController extends FOSRestController
      */
     public function deleteOfficeAction(\AppBundle\Entity\Office $office)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $office)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $office) and
+            $office->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($office);
             $em->flush();
@@ -186,7 +200,7 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/department")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Department"})
      */
     public function listDepartmentAction()
     {
@@ -211,11 +225,13 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Get("/department/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Department"})
      */
     public function getDepartmentAction(\AppBundle\Entity\Department $department)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $department)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $department) and
+            $department->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $department;
         }else{
             throw $this->createNotFoundException('Department #'.$department->getId().' Not Found');
@@ -224,12 +240,14 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Post("/department")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Department"})
      * @ParamConverter("department", converter="fos_rest.request_body")
      */
     public function createDepartmentAction(\AppBundle\Entity\Department $department)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $department)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $department) and
+            $department->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->persist($department);
             $em->flush();
@@ -242,16 +260,24 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Put("/department/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Department"})
      * @ParamConverter("department", converter="fos_rest.request_body")
      */
     public function updateDepartmentAction(\AppBundle\Entity\Department $department)
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $department)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($department);
-            $em->flush();
-            return $department;
+            $em->detach($department);
+            $liveDepartment = $this->getDoctrine()->getRepository('AppBundle:Department')->findOneById($department->getId());
+            if( $department->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveDepartment->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($department);
+                $em->flush();
+                return $department;
+            }else{
+                throw $this->createNotFoundException('Office #'.$department->getOffice()->getId().' Not Found');
+            }
         }else{
              throw $this->createAccessDeniedException();
         }
@@ -259,11 +285,13 @@ class DefaultRestController extends FOSRestController
 
     /**
      * @Rest\Delete("/department/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Department"})
      */
     public function deleteDepartmentAction(\AppBundle\Entity\Department $department)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $department)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $department) and
+            $department->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($department);
             $em->flush();
@@ -317,7 +345,9 @@ class DefaultRestController extends FOSRestController
      */
     public function getMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $menuItem)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $menuItem) and
+            $menuItem->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $menuItem;
         }else{
             throw $this->createNotFoundException('MenuItem #'.$menuItem->getId().' Not Found');
@@ -333,6 +363,7 @@ class DefaultRestController extends FOSRestController
     {
     	if($this->get('security.authorization_checker')->isGranted('CREATE', $menuItem)){
             $em = $this->getDoctrine()->getManager();
+            $menuItem->setOrganization($this->getUser()->getOrganization());
             $em->persist($menuItem);
             $em->flush();
             $this->updateAclByRoles($menuItem, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
@@ -351,9 +382,17 @@ class DefaultRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $menuItem)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($menuItem);
-            $em->flush();
-            return $menuItem;
+            $em->detach($menuItem);
+            $liveMenuItem = $this->getDoctrine()->getRepository('AppBundle:MenuItem')->findOneById($menuItem->getId());
+            if( $menuItem->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveMenuItem->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($menuItem);
+                $em->flush();
+                return $menuItem;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$menuItem->getOrganization()->getId().' Not Found');
+            }
         }else{
              throw $this->createAccessDeniedException();
         }
@@ -365,7 +404,9 @@ class DefaultRestController extends FOSRestController
      */
     public function deleteMenuItemAction(\AppBundle\Entity\MenuItem $menuItem)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $menuItem)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $menuItem) and
+            $menuItem->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($menuItem);
             $em->flush();
@@ -507,7 +548,7 @@ class DefaultRestController extends FOSRestController
             ->select('COUNT(u.id)')
             ->from('AppBundle:User', 'u')
             ->where('u.organization = :org')
-            ->setParameter('org', $this->getUser()->getOrganization());;
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -540,7 +581,9 @@ class DefaultRestController extends FOSRestController
      */
     public function getUserAction(\AppBundle\Entity\User $user)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $user)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $user) and
+            $user->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
             return $user;
         }else{
@@ -600,24 +643,32 @@ class DefaultRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $user)){
             $em = $this->getDoctrine()->getManager();
-            if($user->newPassword){
-                $encoder = $this->container->get('security.password_encoder');
-                $encoded = $encoder->encodePassword($user, $user->newPassword);
-                $user->setPassword($encoded);
-            }
+            $em->detach($user);
+            $liveUser = $this->getDoctrine()->getRepository('AppBundle:User')->findOneById($user->getId());
+            if( $user->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveUser->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                if($user->newPassword){
+                    $encoder = $this->container->get('security.password_encoder');
+                    $encoded = $encoder->encodePassword($user, $user->newPassword);
+                    $user->setPassword($encoded);
+                }
 
-            $em->merge($user);
-            foreach($user->getUserRoles() as $userRole){
-                $userRole->setUser($user);
-                $em->persist($userRole);
-            }
+                $em->merge($user);
+                foreach($user->getUserRoles() as $userRole){
+                    $userRole->setUser($user);
+                    $em->persist($userRole);
+                }
 
-            $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
-            $em->flush();
-            foreach($user->getUserRoles() as $userRole){
-                $this->updateAclByRoles($userRole, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+                $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
+                $em->flush();
+                foreach($user->getUserRoles() as $userRole){
+                    $this->updateAclByRoles($userRole, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+                }
+                return $user;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$user->getOrganization()->getId().' Not Found');
             }
-            return $user;
         }else{
               throw $this->createAccessDeniedException();
         }
@@ -630,7 +681,9 @@ class DefaultRestController extends FOSRestController
      */
     public function deleteUserAction(\AppBundle\Entity\User $user)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $user)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $user) and
+            $user->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();
@@ -647,7 +700,9 @@ class DefaultRestController extends FOSRestController
      */
     public function deleteUserRoleAction(\AppBundle\Entity\UserRole $userRole)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $userRole)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $userRole) and
+            $userRole->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($userRole);
             $em->flush();
@@ -753,7 +808,9 @@ class DefaultRestController extends FOSRestController
      */
     public function getOnSitePrinterAction(\AppBundle\Entity\OnSitePrinter $onSitePrinter)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $onSitePrinter)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $onSitePrinter) and
+            $onSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $onSitePrinter;
         }else{
             throw $this->createNotFoundException('OnSitePrinter #'.$onSitePrinter->getId().' Not Found');
@@ -769,6 +826,7 @@ class DefaultRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('CREATE', $onSitePrinter)){
             $em = $this->getDoctrine()->getManager();
+            $onSitePrinter->setOrganization($this->getUser()->getOrganization());
             $em->persist($onSitePrinter);
             $em->flush();
             $this->updateAclByRoles($onSitePrinter, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
@@ -787,9 +845,17 @@ class DefaultRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $onSitePrinter)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($onSitePrinter);
-            $em->flush();
-            return $onSitePrinter;
+            $em->detach($onSitePrinter);
+            $liveOnSitePrinter = $this->getDoctrine()->getRepository('AppBundle:OnSitePrinter')->findOneById($onSitePrinter->getId());
+            if( $onSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveOnSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($onSitePrinter);
+                $em->flush();
+                return $onSitePrinter;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$onSitePrinter->getOrganization()->getId().' Not Found');
+            }
         }else{
              throw $this->createAccessDeniedException();
         }
@@ -801,7 +867,9 @@ class DefaultRestController extends FOSRestController
      */
     public function deleteOnSitePrinterAction(\AppBundle\Entity\OnSitePrinter $onSitePrinter)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $onSitePrinter)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $onSitePrinter) and
+            $onSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($onSitePrinter);
             $em->flush();
@@ -911,6 +979,9 @@ class DefaultRestController extends FOSRestController
         }
     }
 
+//Need to rework this I think
+
+
     /**
      * @Rest\Get("/label_on_site_printer")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
@@ -956,7 +1027,9 @@ class DefaultRestController extends FOSRestController
      */
     public function getLabelOnSitePrinterAction(\AppBundle\Entity\LabelOnSitePrinter $labelOnSitePrinter)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $labelOnSitePrinter)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $labelOnSitePrinter) and
+            $labelOnSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $labelOnSitePrinter;
         }else{
             throw $this->createNotFoundException('LabelOnSitePrinter #'.$labelOnSitePrinter->getId().' Not Found');
@@ -970,7 +1043,9 @@ class DefaultRestController extends FOSRestController
      */
     public function createLabelOnSitePrinterAction(\AppBundle\Entity\LabelOnSitePrinter $labelOnSitePrinter)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $labelOnSitePrinter)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $labelOnSitePrinter) and
+            $labelOnSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->persist($labelOnSitePrinter);
             $em->flush();
@@ -987,7 +1062,9 @@ class DefaultRestController extends FOSRestController
      */
     public function deleteLabelOnSitePrinterAction(\AppBundle\Entity\LabelOnSitePrinter $labelOnSitePrinter)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $labelOnSitePrinter)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $labelOnSitePrinter) and
+            $labelOnSitePrinter->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($labelOnSitePrinter);
             $em->flush();

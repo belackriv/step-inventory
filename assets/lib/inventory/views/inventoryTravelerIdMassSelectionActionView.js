@@ -21,12 +21,14 @@ export default Marionette.View.extend({
     'form': 'form',
     'saveButton': 'button[data-ui-name="save"]',
     'cancelButton': 'button[data-ui-name="cancel"]',
+    'exportButton': 'button[data-ui-name="export"]',
     'errorContainer': '[data-ui="errorContainer"]'
   },
   events: {
     'change @ui.travelerIdsInput': 'travelerIdsChanged',
     'submit @ui.form ': 'save',
     'click @ui.cancelButton': 'cancel',
+    'click @ui.exportButton': 'export',
   },
   serializeData(){
     let data = {};
@@ -36,6 +38,28 @@ export default Marionette.View.extend({
   },
   cancel(){
     Radio.channel('dialog').trigger('close');
+  },
+  export(){
+    let element = document.createElement('a');
+    let csvText = 'Label,Serial,Inbound Order,Outbound Order,Bin,Type\n';
+    this.selectedCollection.each((travelerId)=>{
+      csvText += travelerId.get('label')+',';
+      csvText += travelerId.get('serial')+',';
+      csvText += travelerId.get('inboundOrder').get('label')+',';
+      csvText += travelerId.get('outboundOrder')?travelerId.get('outboundOrder').get('label')+',':',';
+      csvText += travelerId.get('bin').get('name')+',';
+      csvText += travelerId.get('part')?travelerId.get('part').get('name')+',':',';
+      csvText += '\n';
+    });
+    element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvText));
+    element.setAttribute('download', 'selection.csv');
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
   },
   save(event){
     event.preventDefault();

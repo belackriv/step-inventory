@@ -33,7 +33,9 @@ class AccountingRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(e.id)')
-            ->from('AppBundle:Client', 'e');
+            ->from('AppBundle:Client', 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -65,7 +67,9 @@ class AccountingRestController extends FOSRestController
      */
     public function getClientAction(\AppBundle\Entity\Client $client)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $client)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $client) and
+            $client->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $client;
         }else{
             throw $this->createNotFoundException('Client #'.$client->getId().' Not Found');
@@ -81,6 +85,7 @@ class AccountingRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('CREATE', $client)){
             $em = $this->getDoctrine()->getManager();
+            $client->setOrganization($this->getUser()->getOrganization());
             $em->persist($client);
             $em->flush();
             $this->updateAclByRoles($client, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
@@ -99,27 +104,17 @@ class AccountingRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $client)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($client);
-            $em->flush();
-            return $client;
-        }else{
-            throw $this->createAccessDeniedException();
-        }
-    }
-
-    /**
-     * @Rest\Patch("/client/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("client", converter="fos_rest.request_body")
-     */
-    public function patchClientAction(\AppBundle\Entity\Client $client, $id)
-    {
-        if($this->get('security.authorization_checker')->isGranted('EDIT', $client)){
-            $em = $this->getDoctrine()->getManager();
-            $liveClient = $em->getRepository('AppBundle:Client')->findOneById($id);
-            $this->patchEntity($liveClient, $client);
-            $em->flush();
-            return $client;
+            $em->detach($client);
+            $liveClient = $this->getDoctrine()->getRepository('AppBundle:Client')->findOneById($client->getId());
+            if( $client->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveClient->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($client);
+                $em->flush();
+                return $client;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$client->getOrganization()->getId().' Not Found');
+            }
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -131,7 +126,9 @@ class AccountingRestController extends FOSRestController
      */
     public function deleteClientAction(\AppBundle\Entity\Client $client)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $client)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $client) and
+            $client->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($client);
             $em->flush();
@@ -151,7 +148,9 @@ class AccountingRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(e.id)')
-            ->from('AppBundle:Customer', 'e');
+            ->from('AppBundle:Customer', 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());;;
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -183,7 +182,9 @@ class AccountingRestController extends FOSRestController
      */
     public function getCustomerAction(\AppBundle\Entity\Customer $customer)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $customer)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $customer) and
+            $customer->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $customer;
         }else{
             throw $this->createNotFoundException('Customer #'.$customer->getId().' Not Found');
@@ -199,6 +200,7 @@ class AccountingRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('CREATE', $customer)){
             $em = $this->getDoctrine()->getManager();
+            $customer->setOrganization($this->getUser()->getOrganization());
             $em->persist($customer);
             $em->flush();
             $this->updateAclByRoles($customer, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
@@ -217,27 +219,17 @@ class AccountingRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $customer)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($customer);
-            $em->flush();
-            return $customer;
-        }else{
-            throw $this->createAccessDeniedException();
-        }
-    }
-
-     /**
-     * @Rest\Patch("/customer/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("customer", converter="fos_rest.request_body")
-     */
-    public function patchCustomerAction(\AppBundle\Entity\Customer $customer, $id)
-    {
-        if($this->get('security.authorization_checker')->isGranted('EDIT', $customer)){
-            $em = $this->getDoctrine()->getManager();
-            $liveCustomer = $em->getRepository('AppBundle:Customer')->findOneById($id);
-            $this->patchEntity($liveCustomer, $customer);
-            $em->flush();
-            return $customer;
+            $em->detach($customer);
+            $liveCustomer = $this->getDoctrine()->getRepository('AppBundle:Customer')->findOneById($customer->getId());
+            if( $customer->isOwnedByOrganization($this->getUser()->getOrganization()) &&
+                $liveCustomer->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($customer);
+                $em->flush();
+                return $customer;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$customer->getOrganization()->getId().' Not Found');
+            }
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -249,7 +241,9 @@ class AccountingRestController extends FOSRestController
      */
     public function deleteCustomerAction(\AppBundle\Entity\Client $customer)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $customer)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $customer) and
+            $customer->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($customer);
             $em->flush();
@@ -269,7 +263,10 @@ class AccountingRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(e.id)')
-            ->from('AppBundle:InboundOrder', 'e');
+            ->from('AppBundle:InboundOrder', 'e')
+            ->join('e.client', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -301,7 +298,9 @@ class AccountingRestController extends FOSRestController
      */
     public function getInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $inboundOrder)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inboundOrder) and
+            $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $inboundOrder;
         }else{
             throw $this->createNotFoundException('InboundOrder #'.$inboundOrder->getId().' Not Found');
@@ -315,7 +314,9 @@ class AccountingRestController extends FOSRestController
      */
     public function createInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $inboundOrder)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inboundOrder) and
+            $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->persist($inboundOrder);
             $inboundOrder->setLabel('');
@@ -338,27 +339,17 @@ class AccountingRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $inboundOrder)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($inboundOrder);
-            $em->flush();
-            return $inboundOrder;
-        }else{
-            throw $this->createAccessDeniedException();
-        }
-    }
-
-     /**
-     * @Rest\Patch("/inbound_order/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("inboundOrder", converter="fos_rest.request_body")
-     */
-    public function patchInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder, $id)
-    {
-        if($this->get('security.authorization_checker')->isGranted('EDIT', $inboundOrder)){
-            $em = $this->getDoctrine()->getManager();
-            $liveInboundOrder = $em->getRepository('AppBundle:InboundOrder')->findOneById($id);
-            $this->patchEntity($liveInboundOrder, $inboundOrder);
-            $em->flush();
-            return $inboundOrder;
+            $em->detach($inboundOrder);
+            $liveInboundOrder = $em->getRepository('AppBundle:InboundOrder')->findOneById($inboundOrder->getId());
+            if( $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization()) &&
+                $liveInboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($inboundOrder);
+                $em->flush();
+                return $inboundOrder;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -370,7 +361,9 @@ class AccountingRestController extends FOSRestController
      */
     public function deleteInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $inboundOrder)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inboundOrder) and
+            $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($inboundOrder);
             $em->flush();
@@ -391,7 +384,10 @@ class AccountingRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(e.id)')
-            ->from('AppBundle:OutboundOrder', 'e');
+            ->from('AppBundle:OutboundOrder', 'e')
+            ->join('e.customer', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -423,7 +419,9 @@ class AccountingRestController extends FOSRestController
      */
     public function getOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $outboundOrder)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $outboundOrder) and
+            $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $outboundOrder;
         }else{
             throw $this->createNotFoundException('OutboundOrder #'.$outboundOrder->getId().' Not Found');
@@ -437,7 +435,9 @@ class AccountingRestController extends FOSRestController
      */
     public function createOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $outboundOrder)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $outboundOrder) and
+            $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->persist($outboundOrder);
             $outboundOrder->setLabel('');
@@ -460,27 +460,17 @@ class AccountingRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $outboundOrder)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($outboundOrder);
-            $em->flush();
-            return $outboundOrder;
-        }else{
-            throw $this->createAccessDeniedException();
-        }
-    }
-
-     /**
-     * @Rest\Patch("/outbound_order/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("outboundOrder", converter="fos_rest.request_body")
-     */
-    public function patchOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder, $id)
-    {
-        if($this->get('security.authorization_checker')->isGranted('EDIT', $outboundOrder)){
-            $em = $this->getDoctrine()->getManager();
-            $liveOutboundOrder = $em->getRepository('AppBundle:OutboundOrder')->findOneById($id);
-            $this->patchEntity($liveOutboundOrder, $outboundOrder);
-            $em->flush();
-            return $outboundOrder;
+            $em->detach($outboundOrder);
+            $liveOutboundOrder = $em->getRepository('AppBundle:OutboundOrder')->findOneById($outboundOrder->getId());
+            if( $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveOutboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($outboundOrder);
+                $em->flush();
+                return $outboundOrder;
+            }else{
+               throw $this->createAccessDeniedException();
+            }
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -492,7 +482,9 @@ class AccountingRestController extends FOSRestController
      */
     public function deleteOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $outboundOrder)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $outboundOrder) and
+            $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($outboundOrder);
             $em->flush();

@@ -64,7 +64,9 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function getInventoryAuditAction(\AppBundle\Entity\InventoryAudit $inventoryAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryAudit)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryAudit) and
+            $inventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $inventoryAudit;
         }else{
             throw $this->createNotFoundException('InventoryAudit #'.$inventoryAudit->getId().' Not Found');
@@ -78,7 +80,9 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function createInventoryAuditAction(\AppBundle\Entity\InventoryAudit $inventoryAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryAudit)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryAudit) and
+            $inventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $inventoryAudit->setByUser($this->getUser());
             $inventoryAudit->setStartedAt(new \DateTime());
@@ -100,23 +104,31 @@ class AuditInventoryRestController extends FOSRestController
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryAudit)){
             $em = $this->getDoctrine()->getManager();
-            $em->merge($inventoryAudit);
-            $inventoryMovements = [];
-            if($inventoryAudit->getEndedAt()){
-                $deviationBin = $this->getDoctrine()->getRepository('AppBundle:Bin')->findDeviationBin($inventoryAudit->getForBin());
-                if(!$deviationBin){
-                    throw new HttpException(Response::HTTP_CONFLICT, 'The Required Deviation Bin Was Not Found!' );
+            $em->detach($inventoryAudit);
+            $liveInventoryAudit = $this->getDoctrine()->getRepository('AppBundle:InventoryAudit')->findOneById($inventoryAudit->getId());
+            if( $inventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveInventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($inventoryAudit);
+                $inventoryMovements = [];
+                if($inventoryAudit->getEndedAt()){
+                    $deviationBin = $this->getDoctrine()->getRepository('AppBundle:Bin')->findDeviationBin($inventoryAudit->getForBin());
+                    if(!$deviationBin){
+                        throw new HttpException(Response::HTTP_CONFLICT, 'The Required Deviation Bin Was Not Found!' );
+                    }
+                    $inventoryMovements = $inventoryAudit->end($deviationBin);
+                    foreach($inventoryMovements as $movement){
+                        $em->persist($movement);
+                    }
                 }
-                $inventoryMovements = $inventoryAudit->end($deviationBin);
+                $em->flush();
                 foreach($inventoryMovements as $movement){
-                    $em->persist($movement);
+                    $this->updateAclByRoles($movement, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
                 }
+                return $inventoryAudit;
+            }else{
+                throw $this->createAccessDeniedException();
             }
-            $em->flush();
-            foreach($inventoryMovements as $movement){
-                $this->updateAclByRoles($movement, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
-            }
-            return $inventoryAudit;
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -131,7 +143,9 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function createInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAudit)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAudit) and
+            $inventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             try{
                 $inventoryPartAudit->isValid($this->getUser());
             }catch(\Exception $e){
@@ -167,27 +181,36 @@ class AuditInventoryRestController extends FOSRestController
     public function updateInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
     {
         if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryPartAudit)){
-            try{
-                $inventoryPartAudit->isValid($this->getUser());
-            }catch(\Exception $e){
-                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
-            }
-
             $em = $this->getDoctrine()->getManager();
-            $em->merge($inventoryPartAudit);
-            $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
-                ->findOneBy([
-                    'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
-                    'part' => $inventoryPartAudit->getPart()
-                ]);
-            if(!$binPartCount){
-                $inventoryPartAudit->setSystemCount(0);
-            }else{
-                $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
-            }
+            $em->detach($inventoryPartAudit);
+            $liveInventoryPartAudit = $this->getDoctrine()->getRepository('AppBundle:InventoryPartAudit')->findOneById($inventoryPartAudit->getId());
+            if( $inventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveInventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                try{
+                    $inventoryPartAudit->isValid($this->getUser());
+                }catch(\Exception $e){
+                    throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
+                }
 
-            $em->flush();
-            return $inventoryPartAudit;
+                $em = $this->getDoctrine()->getManager();
+                $em->merge($inventoryPartAudit);
+                $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                    ->findOneBy([
+                        'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
+                        'part' => $inventoryPartAudit->getPart()
+                    ]);
+                if(!$binPartCount){
+                    $inventoryPartAudit->setSystemCount(0);
+                }else{
+                    $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+                }
+
+                $em->flush();
+                return $inventoryPartAudit;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
         }else{
             throw $this->createAccessDeniedException();
         }
@@ -199,7 +222,9 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function deleteInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $inventoryPartAudit)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inventoryPartAudit) and
+            $inventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($inventoryPartAudit);
             $em->flush();
@@ -216,7 +241,9 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function createInventoryTravelerIdAuditAction(\AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryTravelerIdAudit)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryTravelerIdAudit) and
+            $inventoryTravelerIdAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $travelerId = $binTravelerIdCount = $this->getDoctrine()->getRepository('AppBundle:TravelerId')
                 ->findOneBy(['label' => $inventoryTravelerIdAudit->getTravelerIdLabel()]);
 
@@ -245,7 +272,9 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function deleteInventoryTravelerIdAuditAction(\AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('DELETE', $inventoryTravelerIdAudit)){
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inventoryTravelerIdAudit) and
+            $inventoryTravelerIdAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($inventoryTravelerIdAudit);
             $em->flush();

@@ -406,4 +406,9 @@ class User implements AdvancedUserInterface, \Serializable
         $this->isActive = true;
         $this->userRoles = new ArrayCollection();
     }
+
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return ($this->getOrganization() === $organization);
+    }
 }

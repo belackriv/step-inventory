@@ -33,7 +33,12 @@ class PartInventoryRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(bpc.id)')
-            ->from('AppBundle:BinPartCount', 'bpc');
+            ->from('AppBundle:BinPartCount', 'bpc')
+            ->join('bpc.bin', 'b')
+            ->join('b.department', 'd')
+            ->join('d.office', 'o')
+            ->where('o.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -65,7 +70,9 @@ class PartInventoryRestController extends FOSRestController
      */
     public function getBinPartCountAction(\AppBundle\Entity\BinPartCount $binPartCount)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $binPartCount)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $binPartCount) and
+            $binPartCount->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $binPartCount;
         }else{
             throw $this->createNotFoundException('BinPartCount #'.$binPartCount->getId().' Not Found');
@@ -82,7 +89,10 @@ class PartInventoryRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(ipa.id)')
-            ->from('AppBundle:InventoryPartAdjustment', 'ipa');
+            ->from('AppBundle:InventoryPartAdjustment', 'ipa')
+            ->join('ipa.part', 'p')
+            ->where('p.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -114,7 +124,9 @@ class PartInventoryRestController extends FOSRestController
      */
     public function getInventoryPartAdjustmentAction(\AppBundle\Entity\InventoryPartAdjustment $inventoryPartAdjustment)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryPartAdjustment)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryPartAdjustment) and
+            $inventoryPartAdjustment->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $inventoryPartAdjustment;
         }else{
             throw $this->createNotFoundException('InventoryPartAdjustment #'.$inventoryPartAdjustment->getId().' Not Found');
@@ -128,7 +140,9 @@ class PartInventoryRestController extends FOSRestController
      */
     public function createInventoryPartAdjustmentAction(\AppBundle\Entity\InventoryPartAdjustment $inventoryPartAdjustment)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAdjustment)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAdjustment) and
+            $inventoryPartAdjustment->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             $em = $this->getDoctrine()->getManager();
             $inventoryPartAdjustment->setByUser($this->getUser());
             $inventoryPartAdjustment->setPerformedAt(new \DateTime());
@@ -172,7 +186,10 @@ class PartInventoryRestController extends FOSRestController
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(ipm.id)')
-            ->from('AppBundle:InventoryPartMovement', 'ipm');
+            ->from('AppBundle:InventoryPartMovement', 'ipm')
+            ->join('ipm.part', 'p')
+            ->where('p.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());;
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
@@ -204,7 +221,9 @@ class PartInventoryRestController extends FOSRestController
      */
     public function getInventoryPartMovementAction(\AppBundle\Entity\InventoryPartMovement $inventoryPartMovement)
     {
-        if($this->get('security.authorization_checker')->isGranted('VIEW', $inventoryPartMovement)){
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryPartMovement) and
+            $inventoryPartMovement->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             return $inventoryPartMovement;
         }else{
             throw $this->createNotFoundException('InventoryPartMovement #'.$inventoryPartMovement->getId().' Not Found');
@@ -218,7 +237,9 @@ class PartInventoryRestController extends FOSRestController
      */
     public function createInventoryPartMovementAction(\AppBundle\Entity\InventoryPartMovement $inventoryPartMovement)
     {
-        if($this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAdjustment)){
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartMovement) and
+            $inventoryPartMovement->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
             if($inventoryPartMovement->getCount() === null){
                 throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Count Must Be Set To Move Parts.');
             }

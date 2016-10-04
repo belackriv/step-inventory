@@ -60,4 +60,8 @@ Class Client
 		return $this;
 	}
 
+	public function isOwnedByOrganization(Organization $organization)
+    {
+        return ( $this->getOrganization() === $organization );
+    }
 }

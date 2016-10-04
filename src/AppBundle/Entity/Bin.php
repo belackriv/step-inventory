@@ -230,4 +230,13 @@ Class Bin
     	return $this->travelerIds;
     }
 
+    public function isOwnedByOrganization(Organization $organization)
+	{
+		return (
+			$this->getBinType()->isOwnedByOrganization($organization) and
+			$this->getDepartment()->isOwnedByOrganization($organization) and
+			(!$this->getPartCategory() or $this->getPartCategory()->isOwnedByOrganization($organization) ) and
+			(!$this->getParent() or $this->getParent()->isOwnedByOrganization($organization) )
+		);
+	}
 }

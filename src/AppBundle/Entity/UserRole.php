@@ -90,4 +90,9 @@ class UserRole
         return $this->role;
     }
 
+     public function isOwnedByOrganization(Organization $organization)
+    {
+        return ( $this->getUser()->isOwnedByOrganization($organization) );
+    }
+
 }

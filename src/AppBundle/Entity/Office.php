@@ -92,4 +92,9 @@ Class Office
     public function __construct() {
         $this->departments = new ArrayCollection();
     }
+
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return ( $this->getOrganization() === $organization );
+    }
 }

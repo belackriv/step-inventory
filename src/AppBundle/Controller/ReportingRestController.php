@@ -70,9 +70,11 @@ class ReportingRestController extends FOSRestController
     public function getSingleQueryReportAction(\AppBundle\Entity\SingleQueryReport $singleQueryReport)
     {
         $accounts = $this->getAccessibleAccounts();
+        /*
         if($this->getAccessibleAccountIds() !== null and $singleQueryReport->getAvailableToAccounts() !== true){
             throw new HttpException(403,'This Query is not available to Account Users');
         }
+        */
         $singleQueryReport->setChoices($this->container);
         return $singleQueryReport;
     }

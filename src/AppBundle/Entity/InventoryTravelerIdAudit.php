@@ -107,4 +107,12 @@ Class InventoryTravelerIdAudit
         }
         return true;
 	}
+
+	public function isOwnedByOrganization(Organization $organization)
+	{
+		return (
+			$this->getInventoryAudit()->isOwnedByOrganization($organization) and
+			$this->getTravelerId()->isOwnedByOrganization($organization)
+		);
+	}
 }

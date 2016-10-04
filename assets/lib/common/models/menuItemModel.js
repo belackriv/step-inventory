@@ -24,7 +24,7 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
     reverseRelation:{
       key: 'menuItems',
-      includeInJSON: ['id'],
+      includeInJSON: false,
     }
   },{
     type: Backbone.HasOne,

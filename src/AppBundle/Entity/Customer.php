@@ -59,4 +59,9 @@ Class Customer
 		$this->organization = $organization;
 		return $this;
 	}
+
+	public function isOwnedByOrganization(Organization $organization)
+    {
+        return ( $this->getOrganization() === $organization );
+    }
 }

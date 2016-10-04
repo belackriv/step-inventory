@@ -50,9 +50,9 @@ Class Department
 	/**
 	 * @ORM\ManyToOne(targetEntity="Office", inversedBy="departments")
 	 * @JMS\Type("AppBundle\Entity\Office")
-     * @JMS\Exclude
+     * @JMS\Groups({"Department"})
 	 */
-//JMS\Groups({"GetMyself"})
+
 	protected $office = null;
 
 	public function getOffice()
@@ -117,6 +117,11 @@ Class Department
 
     public function getOrganization()
     {
-        $this->getOffice()->getOrganization();
+        return $this->getOffice()->getOrganization();
+    }
+
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return ( $this->getOffice()->isOwnedByOrganization($organization) );
     }
 }

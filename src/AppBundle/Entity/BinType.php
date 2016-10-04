@@ -66,12 +66,12 @@ Class BinType
 	 */
 	protected $organization = null;
 
-	public function getOrganizatiom()
+	public function getOrganization()
 	{
 		return $this->organization;
 	}
 
-	public function setOrganizatiom(Organizatiom $organization)
+	public function setOrganization(Organization $organization)
 	{
 		$this->organization = $organization;
 		return $this;
@@ -125,5 +125,10 @@ Class BinType
     public function canHaveParent()
     {
     	return (in_array($this->restrictions, 'cannotHaveParent'))?false:true;
+    }
+
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return ($this->getOrganization() === $organization);
     }
 }

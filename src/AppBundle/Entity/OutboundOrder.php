@@ -141,4 +141,8 @@ Class OutboundOrder
         $this->travelerIds = new ArrayCollection(array_values($this->travelerIds->toArray()));
     }
 
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return ( $this->getCustomer()->isOwnedByOrganization($organization) );
+    }
 }

@@ -18,7 +18,7 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
     reverseRelation:{
       key: 'departments',
-      includeInJSON: ['id'],
+      includeInJSON: false,
     }
   }],
   defaults: {

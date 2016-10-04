@@ -18,7 +18,9 @@ export default Marionette.View.extend({
     this.listenTo(Radio.channel('app'), 'change:menuItems', this._showMenuItem);
     this.listenTo(Radio.channel('app'), 'show:view', this._showView);
     this.listenTo(Radio.channel('dialog'), 'open', this._openDialog);
-    this.listenTo(  Radio.channel('dialog'), 'close', this._closeDialog);
+    this.listenTo(Radio.channel('dialog'), 'opened', this._dialogOpened);
+    this.listenTo(Radio.channel('dialog'), 'close', this._closeDialog);
+    this.listenTo(Radio.channel('dialog'), 'closed', this._dialogClosed);
   },
   template: appLayoutTpl,
   ui: {
@@ -70,8 +72,13 @@ export default Marionette.View.extend({
     this.ui.dialog.dialog('option', options);
     this.ui.dialog.dialog('open');
   },
+  _dialogOpened(){
+    //no-op
+  },
   _closeDialog(){
     this.ui.dialog.dialog('close');
-    this.getRegion('dialogContent').reset();
   },
+  _dialogClosed(){
+    this.getRegion('dialogContent').reset();
+  }
 });

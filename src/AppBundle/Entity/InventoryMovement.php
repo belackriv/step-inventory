@@ -124,4 +124,13 @@ Class InventoryMovement
 		return in_array((string)$tag, $this->tags);
 	}
 
+	public function isOwnedByOrganization(Organization $organization)
+	{
+		return (
+			$this->getByUser()->isOwnedByOrganization($organization) and
+			$this->getFromBin()->isOwnedByOrganization($organization) and
+			$this->getToBin()->isOwnedByOrganization($organization)
+		);
+	}
+
 }

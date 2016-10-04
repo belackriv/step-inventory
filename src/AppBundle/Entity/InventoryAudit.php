@@ -337,4 +337,12 @@ Class InventoryAudit
         $this->inventoryPartAudits = new ArrayCollection();
     }
 
+    public function isOwnedByOrganization(Organization $organization)
+    {
+        return (
+			$this->getByUser()->isOwnedByOrganization($organization) and
+         	$this->getForBin()->isOwnedByOrganization($organization)
+        );
+    }
+
 }

@@ -164,4 +164,13 @@ Class Part
 		return $this;
 	}
 
+	public function isOwnedByOrganization(Organization $organization)
+    {
+        return (
+        	(!$this->getPartCategory() or $this->getPartCategory()->isOwnedByOrganization($organization)) and
+        	(!$this->getPartGroup() or $this->getPartGroup()->isOwnedByOrganization($organization)) and
+        	$this->getOrganization() === $organization
+    	);
+    }
+
 }
