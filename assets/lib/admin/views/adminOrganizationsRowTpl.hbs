@@ -1,0 +1,7 @@
+<td><a class="entity-link" href="{{entityUrl}}">{{id}}</a></td>
+<td>{{name}}</td>
+<td>
+	{{#each offices.models}}
+		{{this.attributes.name}}{{#unless @last}}, {{/unless}}
+	{{/each}}
+</td>

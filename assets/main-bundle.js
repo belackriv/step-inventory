@@ -19692,7 +19692,17 @@ System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plug
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
+      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/organization", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/organization\">Orgainization</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
         "name": "ifIsRouteActive",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -20051,6 +20061,109 @@ System.register("lib/admin/views/adminAccountingIndexView.js", ["marionette", ".
     }
   };
 });
+"use strict";
+
+System.register('lib/admin/views/adminOrganizationsEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminOfficesEditView.hbs!'], function (_export, _context) {
+  "use strict";
+
+  var _, Backbone, Radio, Marionette, viewTpl;
+
+  return {
+    setters: [function (_underscore) {
+      _ = _underscore.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_marionette) {
+      Marionette = _marionette.default;
+    }, function (_adminOfficesEditViewHbs) {
+      viewTpl = _adminOfficesEditViewHbs.default;
+    }],
+    execute: function () {
+      _export('default', Marionette.View.extend({
+        template: viewTpl,
+        behaviors: {
+          'Stickit': {},
+          'ShowNotSynced': {},
+          'SetNotSynced': {},
+          'SaveCancelDelete': {}
+        },
+        ui: {
+          'nameInput': 'input[name="name"]'
+        },
+        bindings: {
+          '@ui.nameInput': 'name'
+        }
+      }));
+    }
+  };
+});
+System.registerDynamic("lib/admin/views/adminOrganizationsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Offices</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOrganizationsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.name : stack1), depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (data && data.last), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      return ", ";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.offices : depth0)) != null ? stack1.models : stack1), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
 'use strict';
 
 System.register('lib/common/models/userCollection.js', ['./baseUrlBaseCollection.js', './userModel.js'], function (_export, _context) {
@@ -20114,37 +20227,6 @@ System.registerDynamic("lib/admin/views/adminUsersEditView.hbs!github:davis/plug
   return module.exports;
 });
 
-'use strict';
-
-System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/organization';
-        },
-
-        defaults: {
-          name: null,
-          logo: null
-        }
-      });
-
-
-      globalNamespace.Models.OrganizationModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
 'use strict';
 
 System.register('lib/common/models/organizationCollection.js', ['./baseUrlBaseCollection.js', './organizationModel.js'], function (_export, _context) {
@@ -23195,10 +23277,10 @@ System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:dav
 
 'use strict';
 
-System.register('lib/admin/controller.js', ['npm:systemjs-plugin-babel@0.0.13/babel-helpers/slicedToArray.js', 'underscore', 'backbone', 'backbone.radio', 'marionette', 'lib/common/views/entity/indexView.js', './views/adminIndexView.js', './views/adminInventoryIndexView.js', './views/adminAccountingIndexView.js', 'lib/common/models/userCollection.js', './views/adminUsersEditView.js', './views/adminUsersListTableLayoutTpl.hbs!', './views/adminUsersRowTpl.hbs!', 'lib/common/models/officeCollection.js', './views/adminOfficesEditView.js', './views/adminOfficesListTableLayoutTpl.hbs!', './views/adminOfficesRowTpl.hbs!', 'lib/common/models/departmentCollection.js', './views/adminDepartmentsEditView.js', './views/adminDepartmentsListTableLayoutTpl.hbs!', './views/adminDepartmentsRowTpl.hbs!', 'lib/common/models/menuItemCollection.js', './views/adminMenuItemsEditView.js', './views/adminMenuItemsListTableLayoutTpl.hbs!', './views/adminMenuItemsRowTpl.hbs!', 'lib/common/models/menuLinkCollection.js', './views/adminMenuLinksEditView.js', './views/adminMenuLinksListTableLayoutTpl.hbs!', './views/adminMenuLinksRowTpl.hbs!', 'lib/inventory/models/partCollection.js', './views/adminPartsEditView.js', './views/adminPartsListTableLayoutTpl.hbs!', './views/adminPartsRowTpl.hbs!', 'lib/inventory/models/partCategoryCollection.js', './views/adminPartCategoriesEditView.js', './views/adminPartCategoriesListTableLayoutTpl.hbs!', './views/adminPartCategoriesRowTpl.hbs!', 'lib/inventory/models/partGroupCollection.js', './views/adminPartGroupsEditView.js', './views/adminPartGroupsListTableLayoutTpl.hbs!', './views/adminPartGroupsRowTpl.hbs!', 'lib/inventory/models/binTypeCollection.js', './views/adminBinTypesEditView.js', './views/adminBinTypesListTableLayoutTpl.hbs!', './views/adminBinTypesRowTpl.hbs!', 'lib/inventory/models/binCollection.js', './views/adminBinsEditView.js', './views/adminBinsListTableLayoutTpl.hbs!', './views/adminBinsRowTpl.hbs!', 'lib/inventory/models/inventoryMovementRuleCollection.js', './views/adminInventoryMovementRulesEditView.js', './views/adminInventoryMovementRulesListTableLayoutTpl.hbs!', './views/adminInventoryMovementRulesRowTpl.hbs!', 'lib/accounting/models/clientCollection.js', './views/adminClientsEditView.js', './views/adminClientsListTableLayoutTpl.hbs!', './views/adminClientsRowTpl.hbs!', 'lib/accounting/models/customerCollection.js', './views/adminCustomersEditView.js', './views/adminCustomersListTableLayoutTpl.hbs!', './views/adminCustomersRowTpl.hbs!', 'lib/accounting/models/inboundOrderCollection.js', './views/adminInboundOrdersEditView.js', './views/adminInboundOrdersListTableLayoutTpl.hbs!', './views/adminInboundOrdersRowTpl.hbs!', 'lib/accounting/models/outboundOrderCollection.js', './views/adminOutboundOrdersEditView.js', './views/adminOutboundOrdersListTableLayoutTpl.hbs!', './views/adminOutboundOrdersRowTpl.hbs!'], function (_export, _context) {
+System.register('lib/admin/controller.js', ['npm:systemjs-plugin-babel@0.0.13/babel-helpers/slicedToArray.js', 'underscore', 'backbone', 'backbone.radio', 'marionette', 'lib/common/views/entity/indexView.js', './views/adminIndexView.js', './views/adminInventoryIndexView.js', './views/adminAccountingIndexView.js', 'lib/common/models/organizationCollection.js', './views/adminOrganizationsEditView.js', './views/adminOrganizationsListTableLayoutTpl.hbs!', './views/adminOrganizationsRowTpl.hbs!', 'lib/common/models/userCollection.js', './views/adminUsersEditView.js', './views/adminUsersListTableLayoutTpl.hbs!', './views/adminUsersRowTpl.hbs!', 'lib/common/models/officeCollection.js', './views/adminOfficesEditView.js', './views/adminOfficesListTableLayoutTpl.hbs!', './views/adminOfficesRowTpl.hbs!', 'lib/common/models/departmentCollection.js', './views/adminDepartmentsEditView.js', './views/adminDepartmentsListTableLayoutTpl.hbs!', './views/adminDepartmentsRowTpl.hbs!', 'lib/common/models/menuItemCollection.js', './views/adminMenuItemsEditView.js', './views/adminMenuItemsListTableLayoutTpl.hbs!', './views/adminMenuItemsRowTpl.hbs!', 'lib/common/models/menuLinkCollection.js', './views/adminMenuLinksEditView.js', './views/adminMenuLinksListTableLayoutTpl.hbs!', './views/adminMenuLinksRowTpl.hbs!', 'lib/inventory/models/partCollection.js', './views/adminPartsEditView.js', './views/adminPartsListTableLayoutTpl.hbs!', './views/adminPartsRowTpl.hbs!', 'lib/inventory/models/partCategoryCollection.js', './views/adminPartCategoriesEditView.js', './views/adminPartCategoriesListTableLayoutTpl.hbs!', './views/adminPartCategoriesRowTpl.hbs!', 'lib/inventory/models/partGroupCollection.js', './views/adminPartGroupsEditView.js', './views/adminPartGroupsListTableLayoutTpl.hbs!', './views/adminPartGroupsRowTpl.hbs!', 'lib/inventory/models/binTypeCollection.js', './views/adminBinTypesEditView.js', './views/adminBinTypesListTableLayoutTpl.hbs!', './views/adminBinTypesRowTpl.hbs!', 'lib/inventory/models/binCollection.js', './views/adminBinsEditView.js', './views/adminBinsListTableLayoutTpl.hbs!', './views/adminBinsRowTpl.hbs!', 'lib/inventory/models/inventoryMovementRuleCollection.js', './views/adminInventoryMovementRulesEditView.js', './views/adminInventoryMovementRulesListTableLayoutTpl.hbs!', './views/adminInventoryMovementRulesRowTpl.hbs!', 'lib/accounting/models/clientCollection.js', './views/adminClientsEditView.js', './views/adminClientsListTableLayoutTpl.hbs!', './views/adminClientsRowTpl.hbs!', 'lib/accounting/models/customerCollection.js', './views/adminCustomersEditView.js', './views/adminCustomersListTableLayoutTpl.hbs!', './views/adminCustomersRowTpl.hbs!', 'lib/accounting/models/inboundOrderCollection.js', './views/adminInboundOrdersEditView.js', './views/adminInboundOrdersListTableLayoutTpl.hbs!', './views/adminInboundOrdersRowTpl.hbs!', 'lib/accounting/models/outboundOrderCollection.js', './views/adminOutboundOrdersEditView.js', './views/adminOutboundOrdersListTableLayoutTpl.hbs!', './views/adminOutboundOrdersRowTpl.hbs!'], function (_export, _context) {
   "use strict";
 
-  var _slicedToArray, _, Backbone, Radio, Marionette, EntityIndexView, AdminIndexView, AdminInventoryIndexView, AdminAccountingIndexView, UserCollection, AdminUsersEditView, adminUsersListTableLayoutTpl, adminUsersRowTpl, OfficeCollection, AdminOfficesEditView, adminOfficesListTableLayoutTpl, adminOfficesRowTpl, DepartmentCollection, AdminDepartmentsEditView, adminDepartmentsListTableLayoutTpl, adminDepartmentsRowTpl, MenuItemCollection, AdminMenuItemsEditView, adminMenuItemsListTableLayoutTpl, adminMenuItemsRowTpl, MenuLinkCollection, AdminMenuLinksEditView, adminMenuLinksListTableLayoutTpl, adminMenuLinksRowTpl, PartCollection, AdminPartsEditView, adminPartsListTableLayoutTpl, adminPartsRowTpl, PartCategoryCollection, AdminPartCategoriesEditView, adminPartCategoriesListTableLayoutTpl, adminPartCategoriesRowTpl, PartGroupCollection, AdminPartGroupsEditView, adminPartGroupsListTableLayoutTpl, adminPartGroupsRowTpl, BinTypeCollection, AdminBinTypesEditView, adminBinTypesListTableLayoutTpl, adminBinTypesRowTpl, BinCollection, AdminBinsEditView, adminBinsListTableLayoutTpl, adminBinsRowTpl, InventoryMovementRuleCollection, AdminInventoryMovementRulesEditView, adminInventoryMovementRulesListTableLayoutTpl, adminInventoryMovementRulesRowTpl, ClientCollection, AdminClientsEditView, adminClientsListTableLayoutTpl, adminClientsRowTpl, CustomerCollection, AdminCustomersEditView, adminCustomersListTableLayoutTpl, adminCustomersRowTpl, InboundOrderCollection, AdminInboundOrdersEditView, adminInboundOrdersListTableLayoutTpl, adminInboundOrdersRowTpl, OutboundOrderCollection, AdminOutboundOrdersEditView, adminOutboundOrdersListTableLayoutTpl, adminOutboundOrdersRowTpl;
+  var _slicedToArray, _, Backbone, Radio, Marionette, EntityIndexView, AdminIndexView, AdminInventoryIndexView, AdminAccountingIndexView, OrganizationCollection, AdminOrganizationsEditView, adminOrganizationsListTableLayoutTpl, adminOrganizationsRowTpl, UserCollection, AdminUsersEditView, adminUsersListTableLayoutTpl, adminUsersRowTpl, OfficeCollection, AdminOfficesEditView, adminOfficesListTableLayoutTpl, adminOfficesRowTpl, DepartmentCollection, AdminDepartmentsEditView, adminDepartmentsListTableLayoutTpl, adminDepartmentsRowTpl, MenuItemCollection, AdminMenuItemsEditView, adminMenuItemsListTableLayoutTpl, adminMenuItemsRowTpl, MenuLinkCollection, AdminMenuLinksEditView, adminMenuLinksListTableLayoutTpl, adminMenuLinksRowTpl, PartCollection, AdminPartsEditView, adminPartsListTableLayoutTpl, adminPartsRowTpl, PartCategoryCollection, AdminPartCategoriesEditView, adminPartCategoriesListTableLayoutTpl, adminPartCategoriesRowTpl, PartGroupCollection, AdminPartGroupsEditView, adminPartGroupsListTableLayoutTpl, adminPartGroupsRowTpl, BinTypeCollection, AdminBinTypesEditView, adminBinTypesListTableLayoutTpl, adminBinTypesRowTpl, BinCollection, AdminBinsEditView, adminBinsListTableLayoutTpl, adminBinsRowTpl, InventoryMovementRuleCollection, AdminInventoryMovementRulesEditView, adminInventoryMovementRulesListTableLayoutTpl, adminInventoryMovementRulesRowTpl, ClientCollection, AdminClientsEditView, adminClientsListTableLayoutTpl, adminClientsRowTpl, CustomerCollection, AdminCustomersEditView, adminCustomersListTableLayoutTpl, adminCustomersRowTpl, InboundOrderCollection, AdminInboundOrdersEditView, adminInboundOrdersListTableLayoutTpl, adminInboundOrdersRowTpl, OutboundOrderCollection, AdminOutboundOrdersEditView, adminOutboundOrdersListTableLayoutTpl, adminOutboundOrdersRowTpl;
 
   return {
     setters: [function (_npmSystemjsPluginBabel0013BabelHelpersSlicedToArrayJs) {
@@ -23219,6 +23301,14 @@ System.register('lib/admin/controller.js', ['npm:systemjs-plugin-babel@0.0.13/ba
       AdminInventoryIndexView = _viewsAdminInventoryIndexViewJs.default;
     }, function (_viewsAdminAccountingIndexViewJs) {
       AdminAccountingIndexView = _viewsAdminAccountingIndexViewJs.default;
+    }, function (_libCommonModelsOrganizationCollectionJs) {
+      OrganizationCollection = _libCommonModelsOrganizationCollectionJs.default;
+    }, function (_viewsAdminOrganizationsEditViewJs) {
+      AdminOrganizationsEditView = _viewsAdminOrganizationsEditViewJs.default;
+    }, function (_viewsAdminOrganizationsListTableLayoutTplHbs) {
+      adminOrganizationsListTableLayoutTpl = _viewsAdminOrganizationsListTableLayoutTplHbs.default;
+    }, function (_viewsAdminOrganizationsRowTplHbs) {
+      adminOrganizationsRowTpl = _viewsAdminOrganizationsRowTplHbs.default;
     }, function (_libCommonModelsUserCollectionJs) {
       UserCollection = _libCommonModelsUserCollectionJs.default;
     }, function (_viewsAdminUsersEditViewJs) {
@@ -23344,6 +23434,37 @@ System.register('lib/admin/controller.js', ['npm:systemjs-plugin-babel@0.0.13/ba
       _export('default', Marionette.Object.extend({
         index: function index() {
           this.users();
+        },
+        organizations: function organizations(id) {
+          var adminIndexView = new AdminIndexView();
+          var organizationCollection = Radio.channel('data').request('collection', OrganizationCollection, { doFetch: false });
+          var isCreatable = false;
+          var myself = Radio.channel('data').request('myself');
+          if (myself.isGrantedRole('ROLE_DEV')) {
+            isCreatable = true;
+          }
+          var entityViewOptions = {
+            isCreatable: isCreatable,
+            listLength: 20,
+            entityId: id,
+            collection: organizationCollection,
+            searchPath: ['id', 'name'],
+            EditView: AdminOrganizationsEditView,
+            useTableView: true,
+            usePagination: 'server',
+            entityListTableLayoutTpl: adminOrganizationsListTableLayoutTpl,
+            entityRowTpl: adminOrganizationsRowTpl,
+            colspan: 6
+          };
+
+          var entityView = new EntityIndexView(entityViewOptions);
+
+          this.buildViewStack([{
+            regionViewMap: new Map([['content', entityView]]),
+            viewInstance: adminIndexView
+          }]);
+
+          Radio.channel('app').trigger('show:view', adminIndexView);
         },
         users: function users(id) {
           var adminIndexView = new AdminIndexView();
@@ -23831,6 +23952,9 @@ System.register('lib/admin/router.js', ['underscore', 'backbone', 'backbone.radi
         },
 
         routes: {
+          'organization': 'organizations',
+          'organization/:id': 'organizations',
+          'admin/organization/:id': 'organizations',
           'user': 'users',
           'user/:id': 'users',
           'admin/user/:id': 'users',
@@ -23888,6 +24012,14 @@ System.register('lib/admin/router.js', ['underscore', 'backbone', 'backbone.radi
             Radio.channel('app').trigger('request:finished');
             var controller = new controllerModule.default();
             controller.users();
+          });
+        },
+        organizations: function organizations(id) {
+          Radio.channel('app').trigger('request:started');
+          System.import('lib/admin/controller.js').then(function (controllerModule) {
+            Radio.channel('app').trigger('request:finished');
+            var controller = new controllerModule.default();
+            controller.organizations(id);
           });
         },
         users: function users(id) {
@@ -37636,17 +37768,12 @@ System.register('lib/common/models/myselfModel.js', ['lib/globalNamespace.js', '
     }],
     execute: function () {
       Model = UserModel.extend({
-        initialize: function initialize() {
-          this.listenTo(this, 'change', this.test);
-        },
-        test: function test() {
-          var test = void 0;
-        },
+        initialize: function initialize() {},
         urlRoot: function urlRoot() {
           return this.baseUrl + '/myself';
         },
         updateCurrentTime: function updateCurrentTime() {
-          //this.set('currentTime', new Date());
+          this.set('currentTime', new Date());
         }
       });
 
@@ -37659,7 +37786,7 @@ System.register('lib/common/models/myselfModel.js', ['lib/globalNamespace.js', '
 });
 'use strict';
 
-System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
+System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
   "use strict";
 
   var globalNamespace, BaseUrlBaseModel, Model;
@@ -37672,10 +37799,54 @@ System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', '
     execute: function () {
       Model = BaseUrlBaseModel.extend({
         urlRoot: function urlRoot() {
-          return this.baseUrl + '/office';
+          return this.baseUrl + '/organization';
         },
 
         defaults: {
+          name: null,
+          logo: null
+        }
+      });
+
+
+      globalNamespace.Models.OrganizationModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', 'backbone', './baseUrlBaseModel.js', './organizationModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, Backbone, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_organizationModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/organization';
+        },
+
+        relations: [{
+          type: Backbone.HasOne,
+          key: 'organization',
+          relatedModel: 'OrganizationModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'offices',
+            includeInJSON: false
+          }
+        }],
+        defaults: {
+          organization: null,
           name: null,
           departments: null
         },

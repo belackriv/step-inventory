@@ -39,7 +39,7 @@ class LoadOrganizationData extends AbstractFixture implements ContainerAwareInte
         $objectIdentity = ObjectIdentity::fromDomainObject($stepOrg);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
         $objectIdentity = ObjectIdentity::fromDomainObject($demoOrg);

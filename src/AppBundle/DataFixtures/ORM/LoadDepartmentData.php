@@ -23,30 +23,30 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
         $stepDept->setOffice($this->getReference('stepOffice'));
         $manager->persist($stepDept);
 
-        $dfwCheckin = new Department();
-        $dfwCheckin->setName('DFW-Check-In');
-        $dfwCheckin->setOffice($this->getReference('dfwOffice'));
-        $manager->persist($dfwCheckin);
+        $oneOne = new Department();
+        $oneOne->setName('ONE-DeptOne');
+        $oneOne->setOffice($this->getReference('officeOne'));
+        $manager->persist($oneOne);
 
-        $dfwProcessing = new Department();
-        $dfwProcessing->setName('DFW-Processing');
-        $dfwProcessing->setOffice($this->getReference('dfwOffice'));
-        $manager->persist($dfwProcessing);
+        $oneTwo = new Department();
+        $oneTwo->setName('ONE-DeptTwo');
+        $oneTwo->setOffice($this->getReference('officeOne'));
+        $manager->persist($oneTwo);
 
-        $dfwShipping = new Department();
-        $dfwShipping->setName('DFW-Shipping');
-        $dfwShipping->setOffice($this->getReference('dfwOffice'));
-        $manager->persist($dfwShipping);
+        $oneThree = new Department();
+        $oneThree->setName('ONE-DeptThree');
+        $oneThree->setOffice($this->getReference('officeOne'));
+        $manager->persist($oneThree);
 
-        $ausCheckin = new Department();
-        $ausCheckin->setName('AUS-Check-In');
-        $ausCheckin->setOffice($this->getReference('ausOffice'));
-        $manager->persist($ausCheckin);
+        $twoOne = new Department();
+        $twoOne->setName('TWO-DeptOne');
+        $twoOne->setOffice($this->getReference('officeTwo'));
+        $manager->persist($twoOne);
 
-        $ausShipping = new Department();
-        $ausShipping->setName('AUS-Shipping');
-        $ausShipping->setOffice($this->getReference('ausOffice'));
-        $manager->persist($ausShipping);
+        $twoTwo = new Department();
+        $twoTwo->setName('TWO-DeptTwo');
+        $twoTwo->setOffice($this->getReference('officeTwo'));
+        $manager->persist($twoTwo);
 
         $manager->flush();
 
@@ -63,31 +63,31 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($dfwCheckin);
+        $objectIdentity = ObjectIdentity::fromDomainObject($oneOne);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($dfwProcessing);
+        $objectIdentity = ObjectIdentity::fromDomainObject($oneTwo);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($dfwShipping);
+        $objectIdentity = ObjectIdentity::fromDomainObject($oneThree);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($leadRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($ausCheckin);
+        $objectIdentity = ObjectIdentity::fromDomainObject($twoOne);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($ausShipping);
+        $objectIdentity = ObjectIdentity::fromDomainObject($twoTwo);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
@@ -95,11 +95,11 @@ class LoadDepartmentData extends AbstractFixture implements DependentFixtureInte
 
 
         $this->addReference('stepDept', $stepDept);
-        $this->addReference('dfwCheckin', $dfwCheckin);
-        $this->addReference('dfwProcessing', $dfwProcessing);
-        $this->addReference('dfwShipping', $dfwShipping);
-        $this->addReference('ausCheckin', $ausCheckin);
-        $this->addReference('ausShipping', $ausShipping);
+        $this->addReference('oneOne', $oneOne);
+        $this->addReference('oneTwo', $oneTwo);
+        $this->addReference('oneThree', $oneThree);
+        $this->addReference('twoOne', $twoOne);
+        $this->addReference('twoTwo', $twoTwo);
 
     }
 

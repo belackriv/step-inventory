@@ -22,6 +22,9 @@ export default Marionette.Object.extend({
     this.appRouter.processAppRoutes(this, this.routes);
   },
   routes:  {
+    'organization': 'organizations',
+    'organization/:id': 'organizations',
+    'admin/organization/:id': 'organizations',
     'user': 'users',
     'user/:id': 'users',
     'admin/user/:id': 'users',
@@ -79,6 +82,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.users();
+    });
+  },
+  organizations(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.organizations(id);
     });
   },
   users(id){

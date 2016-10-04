@@ -2,7 +2,6 @@
 
 import globalNamespace from 'lib/globalNamespace.js';
 import Backbone from 'backbone';
-
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 import './officeModel.js';

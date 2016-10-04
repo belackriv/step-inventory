@@ -26184,7 +26184,17 @@ System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plug
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
+      return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/organization", {
+        "name": "ifIsRouteActive",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression(((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "baseUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "/organization\">Orgainization</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
         "name": "ifIsRouteActive",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -26678,6 +26688,71 @@ System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plug
         "hash": {},
         "data": data
       }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.departments : depth0)) != null ? stack1.models : stack1), {
+        "name": "each",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "</td>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOrganizationsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Offices</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/admin/views/adminOrganizationsRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "		" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.name : stack1), depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (data && data.last), {
+        "name": "unless",
+        "hash": {},
+        "fn": container.program(2, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+      return ", ";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "name",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.offices : depth0)) != null ? stack1.models : stack1), {
         "name": "each",
         "hash": {},
         "fn": container.program(1, data, 0),

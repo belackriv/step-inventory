@@ -11,6 +11,12 @@ import AdminIndexView from './views/adminIndexView.js';
 import AdminInventoryIndexView from './views/adminInventoryIndexView.js';
 import AdminAccountingIndexView from './views/adminAccountingIndexView.js';
 
+import OrganizationCollection from  'lib/common/models/organizationCollection.js';
+import AdminOrganizationsEditView from  './views/adminOrganizationsEditView.js';
+import adminOrganizationsListTableLayoutTpl from  './views/adminOrganizationsListTableLayoutTpl.hbs!';
+import adminOrganizationsRowTpl from  './views/adminOrganizationsRowTpl.hbs!';
+
+
 import UserCollection from 'lib/common/models/userCollection.js';
 import AdminUsersEditView from './views/adminUsersEditView.js';
 import adminUsersListTableLayoutTpl from './views/adminUsersListTableLayoutTpl.hbs!';
@@ -89,6 +95,39 @@ import adminOutboundOrdersRowTpl from  './views/adminOutboundOrdersRowTpl.hbs!';
 export default Marionette.Object.extend({
    index(){
     this.users();
+  },
+  organizations(id){
+    let adminIndexView =  new AdminIndexView();
+    let organizationCollection = Radio.channel('data').request('collection', OrganizationCollection, {doFetch: false});
+    let isCreatable = false;
+    let myself =  Radio.channel('data').request('myself');
+    if(myself.isGrantedRole('ROLE_DEV')){
+      isCreatable = true;
+    }
+    let entityViewOptions = {
+      isCreatable: isCreatable,
+      listLength: 20,
+      entityId: id,
+      collection: organizationCollection,
+      searchPath: ['id', 'name'],
+      EditView: AdminOrganizationsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminOrganizationsListTableLayoutTpl,
+      entityRowTpl: adminOrganizationsRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
   },
   users(id){
     let adminIndexView =  new AdminIndexView();

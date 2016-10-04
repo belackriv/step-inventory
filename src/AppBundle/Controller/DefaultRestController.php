@@ -86,6 +86,69 @@ class DefaultRestController extends FOSRestController
     }
 
     /**
+     * @Rest\Post("/organization")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("organization", converter="fos_rest.request_body")
+     */
+    public function createOrganizationAction(\AppBundle\Entity\Organization $organization)
+    {
+        if($this->get('security.authorization_checker')->isGranted('ROLE_DEV')){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($organization);
+            $em->flush();
+            $this->updateAclByRoles($organization, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $organization;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+
+    /**
+     * @Rest\Put("/organization/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("organization", converter="fos_rest.request_body")
+     */
+    public function updateOrganizationAction(\AppBundle\Entity\Organization $organization)
+    {
+
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $organization)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($organization);
+            $liveOrganization = $this->getDoctrine()->getRepository('AppBundle:Organization')->findOneById($organization->getId());
+            if( $organization === $this->getUser()->getOrganization() and
+                $liveOrganization === $this->getUser()->getOrganization()
+            ){
+                $em->merge($organization);
+                $em->flush();
+                return $organization;
+            }else{
+                throw $this->createNotFoundException('Organization #'.$organization->getId().' Not Found');
+            }
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/organization/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteOrganizationAction(\AppBundle\Entity\Organization $organization)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $organization) and
+            $organization === $this->getUser()->getOrganization()
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($organization);
+            $em->flush();
+            return $organization;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
      * @Rest\Get("/office")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "ListOffices"})
      */
@@ -146,8 +209,8 @@ class DefaultRestController extends FOSRestController
             $office->setOrganization($this->getUser()->getOrganization());
             $em->persist($office);
             $em->flush();
-            return $office;
             $this->updateAclByRoles($office, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $office;
         }else{
              throw $this->createAccessDeniedException();
         }

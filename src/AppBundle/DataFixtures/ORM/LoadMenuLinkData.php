@@ -37,7 +37,7 @@ class LoadMenuLinkData extends AbstractFixture implements ContainerAwareInterfac
         $adminLink = new MenuLink();
         $adminLink->setName('Admin Options');
         $adminLink->setUrl('/admin');
-        $adminLink->setRouteMatches(['user','menu_item']);
+        $adminLink->setRouteMatches(['organization','user','office','department','menu_item','menu_link']);
         $manager->persist($adminLink);
 
         $adminInventoryLink = new MenuLink();

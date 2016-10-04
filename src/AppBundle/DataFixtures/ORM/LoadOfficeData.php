@@ -23,21 +23,21 @@ class LoadOfficeData extends AbstractFixture implements DependentFixtureInterfac
         $stepOffice->setOrganization($this->getReference('stepOrg'));
         $manager->persist($stepOffice);
 
-        $dfwOffice = new Office();
-        $dfwOffice->setName('Coppell');
-        $dfwOffice->setOrganization($this->getReference('demoOrg'));
-        $manager->persist($dfwOffice);
+        $officeOne = new Office();
+        $officeOne->setName('Office One');
+        $officeOne->setOrganization($this->getReference('demoOrg'));
+        $manager->persist($officeOne);
 
-        $ausOffice = new Office();
-        $ausOffice->setName('Austin');
-        $ausOffice->setOrganization($this->getReference('demoOrg'));
-        $manager->persist($ausOffice);
+        $officeTwo = new Office();
+        $officeTwo->setName('Office Two');
+        $officeTwo->setOrganization($this->getReference('demoOrg'));
+        $manager->persist($officeTwo);
 
         $manager->flush();
 
         $this->addReference('stepOffice', $stepOffice);
-        $this->addReference('dfwOffice', $dfwOffice);
-        $this->addReference('ausOffice', $ausOffice);
+        $this->addReference('officeOne', $officeOne);
+        $this->addReference('officeTwo', $officeTwo);
 
         $aclProvider = $this->container->get('security.acl.provider');
         $devRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_DEV');
@@ -51,13 +51,13 @@ class LoadOfficeData extends AbstractFixture implements DependentFixtureInterfac
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($dfwOffice);
+        $objectIdentity = ObjectIdentity::fromDomainObject($officeOne);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
         $aclProvider->updateAcl($acl);
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($ausOffice);
+        $objectIdentity = ObjectIdentity::fromDomainObject($officeTwo);
         $acl = $aclProvider->createAcl($objectIdentity);
         $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
         $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);

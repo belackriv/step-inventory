@@ -61,7 +61,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $plainUser->setFirstName('User');
         $plainUser->setLastName('Test');
         $plainUser->setIsActive(true);
-        $plainUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $plainUser->setDefaultDepartment($this->getReference('oneOne'));
         $plainUser->setOrganization($this->getReference('demoOrg'));
         $plainUserRole = new UserRole();
         $plainUserRole->setUser($plainUser);
@@ -82,7 +82,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $leadUser->setFirstName('Lead');
         $leadUser->setLastName('Test');
         $leadUser->setIsActive(true);
-        $leadUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $leadUser->setDefaultDepartment($this->getReference('oneOne'));
         $leadUser->setOrganization($this->getReference('demoOrg'));
         $leadUserRole = new UserRole();
         $leadUserRole->setUser($leadUser);
@@ -103,7 +103,7 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $adminUser->setFirstName('Admin');
         $adminUser->setLastName('Test');
         $adminUser->setIsActive(true);
-        $adminUser->setDefaultDepartment($this->getReference('dfwCheckin'));
+        $adminUser->setDefaultDepartment($this->getReference('oneOne'));
         $adminUser->setOrganization($this->getReference('demoOrg'));
         $adminUserRole = new UserRole();
         $adminUserRole->setUser($adminUser);
