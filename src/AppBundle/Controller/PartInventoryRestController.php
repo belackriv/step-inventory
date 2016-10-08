@@ -140,12 +140,12 @@ class PartInventoryRestController extends FOSRestController
      */
     public function createInventoryPartAdjustmentAction(\AppBundle\Entity\InventoryPartAdjustment $inventoryPartAdjustment)
     {
+        $inventoryPartAdjustment->setByUser($this->getUser());
         if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAdjustment) and
             $inventoryPartAdjustment->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
-            $em = $this->getDoctrine()->getManager();
-            $inventoryPartAdjustment->setByUser($this->getUser());
             $inventoryPartAdjustment->setPerformedAt(new \DateTime());
+            $em = $this->getDoctrine()->getManager();
             $em->persist($inventoryPartAdjustment);
 
             $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
@@ -170,6 +170,9 @@ class PartInventoryRestController extends FOSRestController
             $binPartCount->setCount($inventoryPartAdjustment->getNewCount());
 
             $em->flush();
+
+            $this->updateAclByRoles($inventoryPartAdjustment, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            $this->updateAclByRoles($binPartCount, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
             return $inventoryPartAdjustment;
         }else{
             throw $this->createAccessDeniedException();
@@ -237,16 +240,15 @@ class PartInventoryRestController extends FOSRestController
      */
     public function createInventoryPartMovementAction(\AppBundle\Entity\InventoryPartMovement $inventoryPartMovement)
     {
+        $inventoryPartMovement->setByUser($this->getUser());
         if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartMovement) and
             $inventoryPartMovement->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
             if($inventoryPartMovement->getCount() === null){
                 throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Count Must Be Set To Move Parts.');
             }
-
-            $em = $this->getDoctrine()->getManager();
-            $inventoryPartMovement->setByUser($this->getUser());
             $inventoryPartMovement->setMovedAt(new \DateTime());
+            $em = $this->getDoctrine()->getManager();
             $em->persist($inventoryPartMovement);
 
             $fromBinPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
@@ -278,6 +280,8 @@ class PartInventoryRestController extends FOSRestController
             }
 
             $em->flush();
+            $this->updateAclByRoles($inventoryPartMovement, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            $this->updateAclByRoles($toBinPartCount, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
             return $inventoryPartMovement;
         }else{
             throw $this->createAccessDeniedException();

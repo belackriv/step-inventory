@@ -693,8 +693,6 @@ class DefaultRestController extends FOSRestController
         }else{
              throw $this->createAccessDeniedException();
         }
-
-
     }
 
     /**
@@ -708,8 +706,9 @@ class DefaultRestController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $em->detach($user);
             $liveUser = $this->getDoctrine()->getRepository('AppBundle:User')->findOneById($user->getId());
-            if( $user->isOwnedByOrganization($this->getUser()->getOrganization()) and
-                $liveUser->isOwnedByOrganization($this->getUser()->getOrganization())
+            if( ( $user->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveUser->isOwnedByOrganization($this->getUser()->getOrganization()) ) or
+                $this->get('security.authorization_checker')->isGranted('ROLE_DEV')
             ){
                 if($user->newPassword){
                     $encoder = $this->container->get('security.password_encoder');
@@ -718,8 +717,9 @@ class DefaultRestController extends FOSRestController
                 }
 
                 $em->merge($user);
+
                 foreach($user->getUserRoles() as $userRole){
-                    $userRole->setUser($user);
+                    $userRole->setUser($liveUser);
                     $em->persist($userRole);
                 }
 
@@ -756,7 +756,6 @@ class DefaultRestController extends FOSRestController
         }
     }
 
-
     /**
      * @Rest\Delete("/user_role/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
@@ -774,9 +773,6 @@ class DefaultRestController extends FOSRestController
             throw $this->createAccessDeniedException();
         }
     }
-
-
-
 
     /**
      * @Rest\Get("/role")

@@ -20,7 +20,7 @@ let Model = BaseUrlBaseModel.extend({
     type: Backbone.HasOne,
     key: 'user',
     relatedModel: 'UserModel',
-    includeInJSON: ['id'],
+    includeInJSON: false,
     reverseRelation:{
       key: 'userRoles',
       includeInJSON: true

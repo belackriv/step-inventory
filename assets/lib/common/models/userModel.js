@@ -10,11 +10,19 @@ import './departmentModel.js';
 import './userRoleModel.js';
 
 let Model = BaseUrlBaseModel.extend({
+  initialize(attrs, options){
+    if(this.id || attrs.id){
+      let id = this.id?this.id:attrs.id;
+      let myself = Radio.channel('data').request('myself');
+      if(id == myself.id){
+        this.listenTo(this, 'change', ()=>{
+          myself.set(this.attributes);
+        });
+      }
+    }
+  },
   urlRoot(){
     return this.baseUrl+'/user';
-  },
-  subModelTypes: {
-    'myself': 'MyselfModel',
   },
   relations: [{
     type: Backbone.HasOne,

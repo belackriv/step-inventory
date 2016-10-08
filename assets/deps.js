@@ -25920,19 +25920,19 @@ System.registerDynamic("lib/admin/views/adminClientsRowTpl.hbs!github:davis/plug
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>";
+      }) : helper))) + "</a></td>";
     },
     "useData": true
   });
@@ -25986,19 +25986,19 @@ System.registerDynamic("lib/admin/views/adminCustomersRowTpl.hbs!github:davis/pl
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>";
+      }) : helper))) + "</a></td>";
     },
     "useData": true
   });
@@ -26053,19 +26053,19 @@ System.registerDynamic("lib/admin/views/adminDepartmentsRowTpl.hbs!github:davis/
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || (depth0 && depth0["return"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.getDepartmentTotalMenuItemCount : stack1), (depth0 != null ? depth0.office : depth0), (depth0 != null ? depth0.id : depth0), {
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || (depth0 && depth0["return"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.getDepartmentTotalMenuItemCount : stack1), (depth0 != null ? depth0.office : depth0), (depth0 != null ? depth0.id : depth0), {
         "name": "return",
         "hash": {},
         "data": data
@@ -26128,15 +26128,15 @@ System.registerDynamic("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:davi
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.client : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.client : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "label",
         "hash": {},
         "data": data
@@ -26194,7 +26194,7 @@ System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plug
         "name": "baseUrl",
         "hash": {},
         "data": data
-      }) : helper))) + "/organization\">Orgainization</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
+      }) : helper))) + "/organization\">Organization</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
         "name": "ifIsRouteActive",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -26675,19 +26675,19 @@ System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plug
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.departments : depth0)) != null ? stack1.models : stack1), {
+      }) : helper))) + "</a></td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.departments : depth0)) != null ? stack1.models : stack1), {
         "name": "each",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -26709,7 +26709,7 @@ System.registerDynamic("lib/admin/views/adminOrganizationsListTableLayoutTpl.hbs
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Offices</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
     },
     "useData": true
   });
@@ -26723,42 +26723,22 @@ System.registerDynamic("lib/admin/views/adminOrganizationsRowTpl.hbs!github:davi
       GLOBAL = global;
   var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
   module.exports = Handlebars.template({
-    "1": function(container, depth0, helpers, partials, data) {
-      var stack1;
-      return "		" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.name : stack1), depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (data && data.last), {
-        "name": "unless",
-        "hash": {},
-        "fn": container.program(2, data, 0),
-        "inverse": container.noop,
-        "data": data
-      })) != null ? stack1 : "") + "\r\n";
-    },
-    "2": function(container, depth0, helpers, partials, data) {
-      return ", ";
-    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      var stack1,
-          helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      var helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.offices : depth0)) != null ? stack1.models : stack1), {
-        "name": "each",
-        "hash": {},
-        "fn": container.program(1, data, 0),
-        "inverse": container.noop,
-        "data": data
-      })) != null ? stack1 : "") + "</td>\r\n";
+      }) : helper))) + "</a></td>";
     },
     "useData": true
   });
@@ -26817,15 +26797,15 @@ System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:dav
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.customer : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.customer : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "label",
         "hash": {},
         "data": data
