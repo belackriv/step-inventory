@@ -3,7 +3,14 @@
 </div>
 <div class="nav-center">
 	<div class="nav-item">
-		<h1 class="title is-1"><a href="/">{{organization.attributes.name}}</a></h1>
+		{{#if organization.attributes.logo }}
+			<div>
+				<img  class="si-org-logo" src="/image/{{organization.attributes.logo.id}}/src" />
+				<h1 class="title is-3"><a href="/">{{organization.attributes.name}}</a></h1>
+			</div>
+		{{else}}
+			<h1 class="title is-1"><a href="/">{{organization.attributes.name}}</a></h1>
+		{{/if}}
 	</div>
 </div>
 <div class="nav-right">

@@ -22,6 +22,9 @@ export default Marionette.View.extend({
     menu: "#nav-menu",
     userInfo: "#user-info-container",
   },
+  modelEvents: {
+    'change:organization': 'render'
+  },
   onRender(){
     let menuSelectionView = new MenuSelectionView({
       model: new Backbone.Model()

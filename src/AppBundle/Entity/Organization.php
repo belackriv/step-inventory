@@ -43,8 +43,8 @@ Class Organization
 	}
 
 	/**
-	 * @ORM\Column(type="blob", nullable=true)
-     * @JMS\Type("string")
+     * @ORM\ManyToOne(targetEntity="UploadedImage")
+     * @JMS\Type("AppBundle\Entity\UploadedImage")
      */
 	protected $logo = null;
 
@@ -53,9 +53,9 @@ Class Organization
 		return $this->logo;
 	}
 
-	public function setLogo($logo)
+	public function setLogo(UploadedImage $uploadedImage)
 	{
-		$this->logo = $logo;
+		$this->logo = $uploadedImage;
 		return $this;
 	}
 
@@ -341,6 +341,10 @@ Class Organization
         $this->onSitePrinters->removeElement($onSitePrinter);
         $onSitePrinter->setOrganization(null);
         $this->onSitePrinters = new ArrayCollection(array_values($this->onSitePrinters->toArray()));
+    }
+
+    public function __toString(){
+        return '#'.$this->id .' - ' .$this->name;
     }
 
 }

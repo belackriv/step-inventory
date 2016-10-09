@@ -1,0 +1,30 @@
+<h3 class="title is-3">Upload Image</h3>
+<div class="card">
+  	<div class="card-image">
+    	<figure class="image is-16by9">
+      		<img data-ui-name="imageDisplay" />
+    	</figure>
+  	</div>
+  	<div class="card-content">
+		<form>
+			<label class="label">Image</label>
+			<p class="control">
+				<div class="message" data-ui-name="dropTarget">
+				  	<div class="message-body">
+				  		<input class="is-hidden" name="image" type="file" />
+						<button type="button" name="openAddFile" class="button is-large">
+							<span class="icon is-large">
+								<span class="fa fa-download fa-5x"></span>
+							</span>
+						</button>
+						<p>Click Button or Drag Image File</p>
+				  	</div>
+				</div>
+			</p>
+			<p class="control">
+				<button type="submit" class="button is-primary" data-ui-name="upload">Upload</button>
+				<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+			</p>
+		</form>
+	</div>
+</div>

@@ -94,6 +94,23 @@ Class Part
 	}
 
 	/**
+     * @ORM\ManyToOne(targetEntity="UploadedImage")
+     * @JMS\Type("AppBundle\Entity\UploadedImage")
+     */
+	protected $image = null;
+
+	public function getImage()
+	{
+		return $this->image;
+	}
+
+	public function setImage(UploadedImage $uploadedImage)
+	{
+		$this->image = $uploadedImage;
+		return $this;
+	}
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="PartCategory")
 	 * @JMS\Type("AppBundle\Entity\PartCategory")
 	 */

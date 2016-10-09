@@ -8,6 +8,7 @@ import Marionette from 'marionette';
 import viewTpl from  "./adminPartsEditView.hbs!";
 import PartCategoryCollection from 'lib/inventory/models/partCategoryCollection.js';
 import PartGroupCollection from 'lib/inventory/models/partGroupCollection.js';
+import UploadImageView from 'lib/common/views/uploadImageView.js';
 
 
 
@@ -27,6 +28,13 @@ export default Marionette.View.extend({
     'isActiveInput': 'input[name="isActive"]',
     'partCategorySelect': 'select[name="partCategory"]',
     'partGroupSelect': 'select[name="partGroup"]',
+    'uploadButton': 'button[data-ui-name="upload"]',
+  },
+  events: {
+    'click @ui.uploadButton': 'showLogoUploadDialog'
+  },
+  modelEvents: {
+    'change:image': 'render'
   },
   bindings: {
     '@ui.nameInput': 'name',
@@ -65,4 +73,20 @@ export default Marionette.View.extend({
       }
     },
   },
+  showLogoUploadDialog(event){
+    let myself = Radio.channel('data').request('myself');
+    let organization = myself.get('organization');
+    event.preventDefault();
+    let options = {
+      title: 'Upload Image',
+      width: '400px'
+    };
+    let view = new UploadImageView({
+      model: this.model,
+      imageAttributeName: 'image',
+      organization: organization
+    });
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
+  }
 });

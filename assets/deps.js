@@ -26700,6 +26700,38 @@ System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plug
   return module.exports;
 });
 
+System.registerDynamic("lib/admin/views/adminOrganizationsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "					<img src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.logo : depth0)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<h3 class=\"title is-3\">Organization #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Logo</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\">\r\n			<figure class=\"image is-16by9\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.logo : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</figure>\r\n		</div>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"upload\">Upload Logo</button>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
 System.registerDynamic("lib/admin/views/adminOrganizationsListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
   ;
   var define,
@@ -26989,14 +27021,25 @@ System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plug
       GLOBAL = global;
   var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
   module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "					<img src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n";
+    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      var helper;
+      var stack1,
+          helper;
       return "<h3 class=\"title is-3\">Part #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Group</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partGroup\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Image</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\">\r\n			<figure class=\"image is-16by9\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.image : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</figure>\r\n		</div>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"upload\">Upload Image</button>\r\n	</p>\r\n	<label class=\"label\">Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Group</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partGroup\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
     },
     "useData": true
   });
@@ -27623,10 +27666,24 @@ System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-h
       GLOBAL = global;
   var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
   module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "			<div>\r\n				<img  class=\"si-org-logo\" src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.logo : stack1)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n				<h1 class=\"title is-3\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n			</div>\r\n";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "			<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n";
+    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var stack1;
-      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
+      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.logo : stack1), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
     },
     "useData": true
   });
@@ -27697,6 +27754,22 @@ System.registerDynamic("lib/common/views/propertyArrayListView.hbs!github:davis/
     },
     "useData": true,
     "useDepths": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/uploadImageView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h3 class=\"title is-3\">Upload Image</h3>\r\n<div class=\"card\">\r\n  	<div class=\"card-image\">\r\n    	<figure class=\"image is-16by9\">\r\n      		<img data-ui-name=\"imageDisplay\" />\r\n    	</figure>\r\n  	</div>\r\n  	<div class=\"card-content\">\r\n		<form>\r\n			<label class=\"label\">Image</label>\r\n			<p class=\"control\">\r\n				<div class=\"message\" data-ui-name=\"dropTarget\">\r\n				  	<div class=\"message-body\">\r\n				  		<input class=\"is-hidden\" name=\"image\" type=\"file\" />\r\n						<button type=\"button\" name=\"openAddFile\" class=\"button is-large\">\r\n							<span class=\"icon is-large\">\r\n								<span class=\"fa fa-download fa-5x\"></span>\r\n							</span>\r\n						</button>\r\n						<p>Click Button or Drag Image File</p>\r\n				  	</div>\r\n				</div>\r\n			</p>\r\n			<p class=\"control\">\r\n				<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"upload\">Upload</button>\r\n				<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n			</p>\r\n		</form>\r\n	</div>\r\n</div>\r\n";
+    },
+    "useData": true
   });
   return module.exports;
 });

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Library\Utilities;
+use AppBundle\Library\Service\UploadException;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -111,13 +112,10 @@ class DefaultRestController extends FOSRestController
      */
     public function updateOrganizationAction(\AppBundle\Entity\Organization $organization)
     {
-
         if($this->get('security.authorization_checker')->isGranted('EDIT', $organization)){
             $em = $this->getDoctrine()->getManager();
-            $em->detach($organization);
-            $liveOrganization = $this->getDoctrine()->getRepository('AppBundle:Organization')->findOneById($organization->getId());
-            if( $organization === $this->getUser()->getOrganization() and
-                $liveOrganization === $this->getUser()->getOrganization()
+            if( $organization === $this->getUser()->getOrganization() or
+                $this->get('security.authorization_checker')->isGranted('ROLE_DEV')
             ){
                 $em->merge($organization);
                 $em->flush();
@@ -137,7 +135,8 @@ class DefaultRestController extends FOSRestController
     public function deleteOrganizationAction(\AppBundle\Entity\Organization $organization)
     {
         if( $this->get('security.authorization_checker')->isGranted('DELETE', $organization) and
-            $organization === $this->getUser()->getOrganization()
+            (   $organization === $this->getUser()->getOrganization() or
+                $this->get('security.authorization_checker')->isGranted('ROLE_DEV') )
         ){
             $em = $this->getDoctrine()->getManager();
             $em->remove($organization);
@@ -1130,6 +1129,72 @@ class DefaultRestController extends FOSRestController
             return $labelOnSitePrinter;
         }else{
             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Post("/organization/{id}/upload_image", )
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function uploadImageAction(\AppBundle\Entity\Organization $organization, Request $request)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('EDIT', $organization) and
+            (   $this->getUser()->getOrganization() === $organization or
+                $this->get('security.authorization_checker')->isGranted('ROLE_DEV')     )
+        ){
+            $imageFileUpload = $request->files->get('image');
+            if($imageFileUpload->isValid()){
+                $image = new \AppBundle\Entity\UploadedImage();
+                $image->setOrganization($organization);
+                $image->setName($imageFileUpload->getBasename());
+                $image->setMimeType($imageFileUpload->getMimeType());
+                $image->setData(file_get_contents($imageFileUpload));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($image);
+                $em->flush();
+                $this->updateAclByRoles($image, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+                return $image;
+            }else{
+                 throw new HttpException(500, UploadException::codeToMessage($imageFileUpload->getError()) );
+            }
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Get("/image/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getImageAction(\AppBundle\Entity\Image $image)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $image) and
+            (   $image->isOwnedByOrganization($this->getUser()->getOrganization()) or
+                $this->get('security.authorization_checker')->isGranted('ROLE_DEV')     )
+        ){
+            return $image;
+        }else{
+            throw $this->createNotFoundException('Image #'.$image->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Get("/image/{id}/src", )
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getImageSrcAction(\AppBundle\Entity\UploadedImage $image)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('EDIT', $image) and
+            (   $image->isOwnedByOrganization($this->getUser()->getOrganization()) or
+                $this->get('security.authorization_checker')->isGranted('ROLE_DEV')     )
+        ){
+            $response = new Response();
+            rewind($image->getData());
+            $response->setContent(stream_get_contents($image->getData()));
+            $response->headers->set('Content-Type', $image->getMimeType());
+            return $response;
+        }else{
+             throw $this->createAccessDeniedException();
         }
     }
 

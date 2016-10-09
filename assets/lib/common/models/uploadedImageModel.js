@@ -8,30 +8,22 @@ import './organizationModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
-    return this.baseUrl+'/office';
+    return this.baseUrl+'/image';
   },
   relations: [{
     type: Backbone.HasOne,
     key: 'organization',
     relatedModel: 'OrganizationModel',
-    includeInJSON: ['id'],
-    reverseRelation:{
-      key: 'offices',
-      includeInJSON: false,
-    }
+    includeInJSON: false,
+    reverseRelation: false
   }],
   defaults: {
     organization: null,
     name: null,
-    departments: null,
+    mimeType: null,
   },
-  getDepartmentTotalMenuItemCount(departmentId){
-  	let department = this.get('departments').get(departmentId);
-  	let count = department.getTotalMenuItemCount();
-  	return count;
-  }
 });
 
-globalNamespace.Models.OfficeModel = Model;
+globalNamespace.Models.UploadedImageModel = Model;
 
 export default Model;
