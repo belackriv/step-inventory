@@ -21,6 +21,8 @@ let Model = BaseUrlBaseModel.extend({
     organization: null,
     name: null,
     mimeType: null,
+    width: null,
+    height: null,
   },
 });
 

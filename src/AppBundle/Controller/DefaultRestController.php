@@ -1148,7 +1148,11 @@ class DefaultRestController extends FOSRestController
                 $image->setOrganization($organization);
                 $image->setName($imageFileUpload->getBasename());
                 $image->setMimeType($imageFileUpload->getMimeType());
-                $image->setData(file_get_contents($imageFileUpload));
+                $imageData = file_get_contents($imageFileUpload);
+                $imageSize = getimagesizefromstring($imageData);
+                $image->setWidth($imageSize[0]);
+                $image->setHeight($imageSize[1]);
+                $image->setData($imageData);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($image);
                 $em->flush();

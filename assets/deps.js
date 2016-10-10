@@ -27023,7 +27023,7 @@ System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plug
   module.exports = Handlebars.template({
     "1": function(container, depth0, helpers, partials, data) {
       var stack1;
-      return "					<img src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n";
+      return "					<img width=\"" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.width : stack1), depth0)) + "\" height=\"" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.height : stack1), depth0)) + "\" src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n";
     },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
@@ -27033,7 +27033,11 @@ System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plug
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Image</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\">\r\n			<figure class=\"image is-16by9\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.image : depth0), {
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Image</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\" style=\"width:" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.width : stack1), depth0)) + "px;\">\r\n			<figure class=\"image " + container.escapeExpression((helpers.getAspectRatioClass || (depth0 && depth0.getAspectRatioClass) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.width : stack1), ((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.height : stack1), {
+        "name": "getAspectRatioClass",
+        "hash": {},
+        "data": data
+      })) + "\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.image : depth0), {
         "name": "if",
         "hash": {},
         "fn": container.program(1, data, 0),

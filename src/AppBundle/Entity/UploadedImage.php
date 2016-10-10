@@ -60,6 +60,40 @@ Class UploadedImage
     }
 
     /**
+     * @ORM\Column(type="integer")
+     * @JMS\Type("integer")
+     */
+    protected $width = null;
+
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    public function setWidth($width)
+    {
+        $this->width = $width;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="integer")
+     * @JMS\Type("integer")
+     */
+    protected $height = null;
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    public function setHeight($height)
+    {
+        $this->height = $height;
+        return $this;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="Organization")
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Exclude

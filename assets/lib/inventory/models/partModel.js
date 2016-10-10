@@ -6,6 +6,7 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import './partCategoryModel.js';
 import './partGroupModel.js';
+import 'lib/common/models/uploadedImageModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
@@ -21,6 +22,12 @@ let Model = BaseUrlBaseModel.extend({
     key: 'partGroup',
     relatedModel: 'PartGroupModel',
     includeInJSON: ['id'],
+  },{
+    type: Backbone.HasOne,
+    key: 'image',
+    relatedModel: 'UploadedImageModel',
+    includeInJSON: ['id'],
+    reverseRelation: false
   }],
   defaults: {
     name: null,
@@ -29,7 +36,8 @@ let Model = BaseUrlBaseModel.extend({
     description: null,
     partCategory: null,
     partGroup: null,
-    isActive: null
+    isActive: null,
+    image: null
   }
 });
 

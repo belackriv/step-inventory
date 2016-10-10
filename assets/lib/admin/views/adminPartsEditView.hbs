@@ -18,10 +18,10 @@
 	</p>
 	<label class="label">Image</label>
 	<p class="control">
-		<div class="si-uploaded-img-figure-container">
-			<figure class="image is-16by9">
+		<div class="si-uploaded-img-figure-container" style="width:{{image.attributes.width}}px;">
+			<figure class="image {{getAspectRatioClass image.attributes.width image.attributes.height}}">
 				{{#if image }}
-					<img src="/image/{{image.id}}/src" />
+					<img width="{{image.attributes.width}}" height="{{image.attributes.height}}" src="/image/{{image.id}}/src" />
 				{{/if}}
 			</figure>
 		</div>

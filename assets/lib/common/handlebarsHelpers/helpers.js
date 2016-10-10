@@ -146,6 +146,23 @@ Handlebars.registerHelper('return', function(fn, context) {
   return (typeof fn === 'function')?fn.apply(context, args):null;
 });
 
+Handlebars.registerHelper('getAspectRatioClass', function(width, height, options){
+  let ratio = width/height;
+  if(ratio < 1.3){
+    return 'is-1by1';
+  }else if(ratio < 1.5){
+    return 'is-4by3';
+  }else if(ratio < 1.7){
+    return 'is-3by2';
+  }else if(ratio < 2.0){
+    return 'is-16by9';
+  }else if(ratio < 2.5){
+    return 'is-2by1';
+  }else{
+    return '';
+  }
+});
+
 
 Handlebars.registerHelper('baseUrl', function (options) {
    let str = BaseUrlBaseModel.prototype.baseUrl+'';
