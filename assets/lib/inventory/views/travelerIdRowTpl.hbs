@@ -4,13 +4,7 @@
 <td>
 	<button type="button" name="showCard" class="button small">Show Card</button>
 </td>
-<td>{{serial}}</td>
 <td>{{inboundOrder.attributes.label}}</td>
-<td>{{outboundOrder.attributes.label}}</td>
 <td><a data-ui-link="bin" href="{{return bin.url bin}}">{{bin.attributes.name}}</a></td>
-<td>
-	{{#if part}}
-		Part: {{part.attributes.name}}
-	{{/if}}
-</td>
+<td>{{sku.attributes.name}}</td>
 <td><input type="checkbox" name="isSelected" /></td>

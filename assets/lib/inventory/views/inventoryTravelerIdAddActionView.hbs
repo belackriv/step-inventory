@@ -1,21 +1,15 @@
 <form>
 	<label class="label">Inbound Order</label>
 	<p class="control">
-  		<select name="inboundOrder">
-  			<option>Select a Inbound Order...</option>
-  		</select>
+  		<select name="inboundOrder"></select>
 	</p>
 	<label class="label">Bin</label>
 	<p class="control">
-  		<select name="bin">
-  			<option>Select a bin...</option>
-  		</select>
+  		<select name="bin"></select>
 	</p>
-	<label class="label">Part</label>
+	<label class="label">SKU</label>
 	<p class="control">
-  		<select name="part">
-  			<option>Select a part...</option>
-  		</select>
+  		<select name="sku"></select>
 	</p>
 	<label class="label">Count</label>
 	<p class="control">
@@ -24,7 +18,7 @@
 	<label class="label">Serials(<span data-ui="serialCount"></span>)</label>
 	<small>Optional</small>
 	<p class="control">
-		<textarea name="serials"></textarea>
+		<textarea rows="10" name="serials"></textarea>
 	</p>
 	<p class="control">
 		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>

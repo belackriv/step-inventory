@@ -1,0 +1,54 @@
+<h3 class="title is-3">Sku #{{id}}</h3>
+<form>
+	<label class="label">Name</label>
+	<p class="control">
+		<input class="input" name="name" type="text" placeholder="Enter Name">
+	</p>
+	<label class="label">Number</label>
+	<p class="control">
+		<input class="input" name="number" type="text" placeholder="Enter Number">
+	</p>
+	<label class="label">Label</label>
+	<p class="control">
+		<input class="input" name="label" type="text" placeholder="Enter Label">
+	</p>
+	<div class="box">
+		<h3 class="has-text-centered title is-3">One Of:</h3>
+		<div class="columns">
+			<div class="column">
+				<label class="label">Part</label>
+				<p class="control">
+			  		<select name="part"></select>
+				</p>
+			</div>
+			<div class="column">
+				<label class="label">Commodity</label>
+				<p class="control">
+			  		<select name="commodity"></select>
+				</p>
+			</div>
+			<div class="column">
+				<label class="label">Unit Type</label>
+				<p class="control">
+			  		<select name="unitType"></select>
+				</p>
+			</div>
+		</div>
+	</div>
+	<label class="label">Quantity</label>
+	<p class="control">
+		<input class="input" name="quantity" type="text" placeholder="Enter Number">
+	</p>
+	<p class="control">
+	  	<label class="checkbox">
+	    	<input name="isVoid" type="checkbox">
+	    	Is Void?
+	  	</label>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

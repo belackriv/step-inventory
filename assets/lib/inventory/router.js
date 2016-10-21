@@ -28,10 +28,10 @@ export default Marionette.Object.extend({
     'show/tid/:id': 'showTid',
     'inventory_tid_edit': 'inventoryTravelerIdEdits',
     'inventory_tid_movement': 'inventoryTravelerIdMovements',
-    'bin_part_count': 'binPartCounts',
-    'bin_part_count/:id': 'binPartCounts',
-    'inventory_part_adjustment': 'inventoryPartAdjustments',
-    'inventory_part_movement': 'inventoryPartMovements',
+    'bin_sku_count': 'binSkuCounts',
+    'bin_sku_count/:id': 'binSkuCounts',
+    'inventory_sku_adjustment': 'inventorySkuAdjustments',
+    'inventory_sku_movement': 'inventorySkuMovements',
     'inventory_audit': 'inventoryAudit',
     'inventory_audit/:id': 'inventoryAudit',
     'inventory': 'inventory'
@@ -79,28 +79,28 @@ export default Marionette.Object.extend({
       controller.inventoryTravelerIdMovements();
     });
   },
-  binPartCounts(id){
+  binSkuCounts(id){
     Radio.channel('app').trigger('request:started');
     System.import('lib/inventory/controller.js').then((controllerModule)=>{
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
-      controller.binPartCounts(id);
+      controller.binSkuCounts(id);
     });
   },
-  inventoryPartAdjustments(){
+  inventorySkuAdjustments(){
     Radio.channel('app').trigger('request:started');
     System.import('lib/inventory/controller.js').then((controllerModule)=>{
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
-      controller.inventoryPartAdjustments();
+      controller.inventorySkuAdjustments();
     });
   },
-  inventoryPartMovements(){
+  inventorySkuMovements(){
     Radio.channel('app').trigger('request:started');
     System.import('lib/inventory/controller.js').then((controllerModule)=>{
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
-      controller.inventoryPartMovements();
+      controller.inventorySkuMovements();
     });
   },
   inventoryAudit(id){

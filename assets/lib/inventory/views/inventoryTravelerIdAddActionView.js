@@ -9,7 +9,7 @@ import viewTpl from './inventoryTravelerIdAddActionView.hbs!';
 
 import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
-import PartCollection from '../models/partCollection.js';
+import SkuCollection from '../models/skuCollection.js';
 import TravelerIdModel from '../models/travelerIdModel.js';
 
 export default Marionette.View.extend({
@@ -17,17 +17,20 @@ export default Marionette.View.extend({
     'Stickit': {},
     'RemoteSearchSelect2': {
       inboundOrder:{
-        url: InboundOrderCollection.prototype.url(),
+        url: InboundOrderCollection.prototype.selectOptionsUrl,
         search: 'label',
-        textProperty: 'label'
+        textProperty: 'label',
+        placeholder: 'Select Inbound Order'
       },
       bin:{
-        url: BinCollection.prototype.url(),
-        search: 'name'
+        url: BinCollection.prototype.selectOptionsUrl,
+        search: 'name',
+        placeholder: 'Select Bin'
       },
-      part:{
-        url: PartCollection.prototype.url(),
-        search: 'name'
+      sku:{
+        url: SkuCollection.prototype.selectOptionsUrl,
+        search: 'name',
+        placeholder: 'Select SKU'
       }
     },
   },
@@ -85,14 +88,14 @@ export default Marionette.View.extend({
       attr = {
         inboundOrder: InboundOrderCollection.prototype.model.findOrCreate({id: parseInt(attr.inboundOrder)}),
         bin: BinCollection.prototype.model.findOrCreate({id: parseInt(attr.bin)}),
-        part: PartCollection.prototype.model.findOrCreate({id: parseInt(attr.part)}),
+        sku: SkuCollection.prototype.model.findOrCreate({id: parseInt(attr.sku)}),
         count:  parseInt(attr.count)
       };
       for(var i = 0; i < attr.count; i++){
           let travelerId = new TravelerIdModel({
             inboundOrder: attr.inboundOrder,
             bin: attr.bin,
-            part: attr.part,
+            sku: attr.sku,
           });
           let serial = this.model.get('serialsArray')[i];
           if(serial){

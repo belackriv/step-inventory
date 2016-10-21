@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use AppBundle\Library\Utilities;
 
-use Ramsey\Uuid\Uuid;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation As JMS;
@@ -52,26 +51,6 @@ Class TravelerId
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="OutboundOrder", inversedBy="travelerIds")
-	 * @ORM\JoinColumn(nullable=true)
-	 * @JMS\Type("AppBundle\Entity\OutboundOrder")
-	 */
-
-	protected $outboundOrder = null;
-
-	public function getOutboundOrder()
-	{
-		return $this->outboundOrder;
-	}
-
-	public function setOutboundOrder(OutboundOrder $outboundOrder)
-	{
-		$this->outboundOrder = $outboundOrder;
-		$this->outboundOrder->addTravelerId($this);
-		return $this;
-	}
-
-	/**
 	 * @ORM\Column(type="string", length=64, unique=true)
      * @JMS\Type("string")
      */
@@ -102,30 +81,6 @@ Class TravelerId
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64)
-     * @JMS\Type("string")
-     */
-	protected $serial = null;
-
-	public function getSerial()
-	{
-		return $this->serial;
-	}
-
-	public function setSerial($serial)
-	{
-		$this->serial = $serial;
-		return $this;
-	}
-
-	public function generateSerial()
-	{
-		$serial = Uuid::uuid4();
-		$this->setSerial($serial);
-		return $serial;
-	}
-
-	/**
 	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="travelerIds")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
@@ -145,25 +100,23 @@ Class TravelerId
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Part", )
-	 * @ORM\JoinColumn(nullable=true)
-	 * @JMS\Type("AppBundle\Entity\Part")
+	 * @ORM\ManyToOne(targetEntity="Sku", )
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Type("AppBundle\Entity\Sku")
 	 */
 
-	protected $part = null;
+	protected $sku = null;
 
-	public function getPart()
+	public function getSku()
 	{
-		return $this->part;
+		return $this->sku;
 	}
 
-	public function setPart(Part $part)
+	public function setSku(Sku $sku)
 	{
-		$this->part = $part;
+		$this->sku = $sku;
 		return $this;
 	}
-
-	//will add Device and Comodity
 
 	/**
 	 * @ORM\Column(type="boolean")
@@ -200,30 +153,10 @@ Class TravelerId
 	}
 
 	/**
-	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
-	 * @JMS\Type("string")
-	 */
-	protected $revenue;
-
-	public function getRevenue()
-	{
-		return $this->revenue;
-	}
-
-	public function setRevenue($revenue)
-	{
-		$this->revenue = $revenue;
-		return $this;
-	}
-
-	 /**
      * @ORM\PrePersist
      */
     public function onCreate()
     {
-    	if($this->getSerial() === null){
-    		$this->generateSerial();
-    	}
     	if($this->getIsVoid() === null){
     		$this->setIsVoid(false);
     	}
@@ -232,10 +165,9 @@ Class TravelerId
     public function isOwnedByOrganization(Organization $organization)
     {
         return (
-        	$this->getInboundOrder()->isOwnedByOrganization($organization) and
-			$this->getBin()->isOwnedByOrganization($organization) and
-			(!$this->getOutboundOrder() or $this->getOutboundOrder()->isOwnedByOrganization($organization) ) and
-			(!$this->getPart() or $this->getPart()->isOwnedByOrganization($organization) )
+        	$this->getInboundOrder() and $this->getInboundOrder()->isOwnedByOrganization($organization) and
+			$this->getBin() and $this->getBin()->isOwnedByOrganization($organization) and
+			$this->getSku() and $this->getSku()->isOwnedByOrganization($organization)
 		);
     }
 }

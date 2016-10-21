@@ -49,10 +49,6 @@
     "deps": {},
     "peerDeps": {}
   },
-  "npm:bulma@0.1.2": {
-    "deps": {},
-    "peerDeps": {}
-  },
   "npm:moment-timezone@0.5.4": {
     "deps": {
       "moment": "npm:moment"
@@ -128,6 +124,10 @@
     "peerDeps": {}
   },
   "github:jspm/nodelibs-fs@0.2.0-alpha": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:bulma@0.2.3": {
     "deps": {},
     "peerDeps": {}
   }

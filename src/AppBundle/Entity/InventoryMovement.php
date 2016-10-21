@@ -127,9 +127,9 @@ Class InventoryMovement
 	public function isOwnedByOrganization(Organization $organization)
 	{
 		return (
-			$this->getByUser()->isOwnedByOrganization($organization) and
-			$this->getFromBin()->isOwnedByOrganization($organization) and
-			$this->getToBin()->isOwnedByOrganization($organization)
+			$this->getByUser() and $this->getByUser()->isOwnedByOrganization($organization) and
+			$this->getFromBin() and $this->getFromBin()->isOwnedByOrganization($organization) and
+			$this->getToBin() and $this->getToBin()->isOwnedByOrganization($organization)
 		);
 	}
 

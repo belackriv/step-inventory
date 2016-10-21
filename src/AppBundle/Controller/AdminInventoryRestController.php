@@ -22,10 +22,124 @@ class AdminInventoryRestController extends FOSRestController
     use Mixin\UpdateAclMixin;
     use Mixin\WampUpdatePusher;
 
+     /**
+     * @Rest\Get("/sku")
+     * @Rest\Get("/admin_inventory")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listSkuAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(s.id)')
+            ->from('AppBundle:Sku', 's')
+            ->where('s.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('s')
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/sku/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getSkuAction(\AppBundle\Entity\Sku $sku)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $sku) and
+            $sku->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $sku;
+        }else{
+            throw $this->createNotFoundException('Sku #'.$sku->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/sku")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("sku", converter="fos_rest.request_body")
+     */
+    public function createSkuAction(\AppBundle\Entity\Sku $sku)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $sku)){
+            $em = $this->getDoctrine()->getManager();
+            $sku->setOrganization($this->getUser()->getOrganization());
+            $em->persist($sku);
+            $em->flush();
+            $this->updateAclByRoles($sku, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $sku;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/sku/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("sku", converter="fos_rest.request_body")
+     */
+    public function updateSkuAction(\AppBundle\Entity\Sku $sku)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $sku)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($sku);
+            $liveSku = $this->getDoctrine()->getRepository('AppBundle:Sku')->findOneById($sku->getId());
+            if( $sku->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveSku->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($sku);
+                $em->flush();
+                return $sku;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/sku/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteSkuAction(\AppBundle\Entity\Part $sku)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $sku) and
+            $sku->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($sku);
+            $em->flush();
+            return $sku;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
 
     /**
      * @Rest\Get("/part")
-     * @Rest\Get("/admin_inventory")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listPartAction(Request $request)
@@ -371,6 +485,237 @@ class AdminInventoryRestController extends FOSRestController
             throw $this->createAccessDeniedException();
         }
     }
+
+    /**
+     * @Rest\Get("/commodity")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listCommodityAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(p.id)')
+            ->from('AppBundle:Commodity', 'p')
+            ->where('p.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/commodity/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getCommodityAction(\AppBundle\Entity\Commodity $commodity)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $commodity) and
+            $commodity->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $commodity;
+        }else{
+            throw $this->createNotFoundException('Commodity #'.$commodity->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/commodity")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("commodity", converter="fos_rest.request_body")
+     */
+    public function createCommodityAction(\AppBundle\Entity\Commodity $commodity)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $commodity)){
+            $em = $this->getDoctrine()->getManager();
+            $commodity->setOrganization($this->getUser()->getOrganization());
+            $em->persist($commodity);
+            $em->flush();
+            $this->updateAclByRoles($commodity, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $commodity;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/commodity/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("commodity", converter="fos_rest.request_body")
+     */
+    public function updateCommodityAction(\AppBundle\Entity\Commodity $commodity)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $commodity)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($commodity);
+            $liveCommodity = $this->getDoctrine()->getRepository('AppBundle:Commodity')->findOneById($commodity->getId());
+            if( $commodity->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveCommodity->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($commodity);
+                $em->flush();
+                return $commodity;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/commodity/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteCommodityAction(\AppBundle\Entity\Commodity $commodity)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $commodity) and
+            $commodity->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($commodity);
+            $em->flush();
+            return $commodity;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Get("/unit_type")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listUnitTypeAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(ut.id)')
+            ->from('AppBundle:UnitType', 'ut')
+            ->where('ut.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('ut')
+            ->orderBy('ut.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/unit_type/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getUnitTypeAction(\AppBundle\Entity\UnitType $unitType)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $unitType) and
+            $unitType->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $unitType;
+        }else{
+            throw $this->createNotFoundException('UnitType #'.$unitType->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/unit_type")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("unitType", converter="fos_rest.request_body")
+     */
+    public function createUnitTypeAction(\AppBundle\Entity\UnitType $unitType)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $unitType)){
+            $em = $this->getDoctrine()->getManager();
+            $unitType->setOrganization($this->getUser()->getOrganization());
+            $em->persist($unitType);
+            $em->flush();
+            $this->updateAclByRoles($unitType, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $unitType;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/unit_type/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("unitType", converter="fos_rest.request_body")
+     */
+    public function updateUnitTypeAction(\AppBundle\Entity\UnitType $unitType)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $unitType)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($unitType);
+            $liveUnitType = $this->getDoctrine()->getRepository('AppBundle:UnitType')->findOneById($unitType->getId());
+            if( $unitType->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveUnitType->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($unitType);
+                $em->flush();
+                return $unitType;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/unit_type/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteUnitTypeAction(\AppBundle\Entity\UnitType $unitType)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $unitType) and
+            $unitType->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($unitType);
+            $em->flush();
+            return $unitType;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
 
     /**
      * @Rest\Get("/bin_type")

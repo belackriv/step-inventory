@@ -20,43 +20,48 @@ class ExceptionEventListener
 
     public function handleKernelException(GetResponseForExceptionEvent $event)
     {
-        $exception = FlattenException::create($event->getException());
+        if( !$this->container->get('security.authorization_checker')->isGranted('ROLE_DEV') and
+            $this->container->get('kernel')->getEnvironment() !== 'dev'
+        ){
 
-        // First, log the exception to the standard error logs.
-        $this->container
-            ->get('logger')
-            ->error( ' In File '.$exception->getFile().', on line '.$exception->getLine().': '.
-                $exception->getMessage());
+            $exception = FlattenException::create($event->getException());
 
-        // Determine what the HTTP status code should be.
-        if($event->getException() instanceof \Symfony\Component\HttpKernel\Exception\HttpException){
-            $httpStatusCode = $event->getException()->getStatusCode();
-        }else{
-            $httpStatusCode = $exception->getCode();
-            if ($exception->getCode() < 100 || $exception->getCode() >= 600) {
-                $httpStatusCode = 500;
+            // First, log the exception to the standard error logs.
+            $this->container
+                ->get('logger')
+                ->error( ' In File '.$exception->getFile().', on line '.$exception->getLine().': '.
+                    $exception->getMessage());
+
+            // Determine what the HTTP status code should be.
+            if($event->getException() instanceof \Symfony\Component\HttpKernel\Exception\HttpException){
+                $httpStatusCode = $event->getException()->getStatusCode();
+            }else{
+                $httpStatusCode = $exception->getCode();
+                if ($exception->getCode() < 100 || $exception->getCode() >= 600) {
+                    $httpStatusCode = 500;
+                }
             }
+
+            $parameters = [
+                'status_code' => $httpStatusCode,
+                'status_text' => $exception->getMessage(),
+                'exception' => $exception
+            ];
+
+            if( in_array('application/json', $event->getRequest()->getAcceptableContentTypes()) ){
+                $errorContent = $this->container
+                    ->get('templating')
+                    ->render(':default:exception.json.twig', $parameters);
+            }else{
+                $errorContent = $this->container
+                    ->get('templating')
+                    ->render(':default:error.html.twig', $parameters);
+            }
+
+            $response = new Response($errorContent, $httpStatusCode);
+            $response->setProtocolVersion('1.1');
+            $event->setResponse($response);
         }
-
-        $parameters = [
-            'status_code' => $httpStatusCode,
-            'status_text' => $exception->getMessage(),
-            'exception' => $exception
-        ];
-
-        if( in_array('application/json', $event->getRequest()->getAcceptableContentTypes()) ){
-            $errorContent = $this->container
-                ->get('templating')
-                ->render('TwigBundle:Exception:exception.json.twig', $parameters);
-        }else{
-            $errorContent = $this->container
-                ->get('templating')
-                ->render('AppBundle:Error:error.html.twig', $parameters);
-        }
-
-        $response = new Response($errorContent, $httpStatusCode);
-        $response->setProtocolVersion('1.1');
-        $event->setResponse($response);
     }
 
 }

@@ -48,7 +48,7 @@ Class InventoryTravelerIdMovement extends InventoryMovement
     {
         return (
         	parent::isOwnedByOrganization($organization) and
-			$this->getTravelerId()->isOwnedByOrganization($organization)
+			$this->getTravelerId() and $this->getTravelerId()->isOwnedByOrganization($organization)
 		);
     }
 

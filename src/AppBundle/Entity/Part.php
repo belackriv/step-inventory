@@ -26,7 +26,7 @@ Class Part
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64, unique=true)
+	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
      */
 	protected $name = null;
@@ -189,5 +189,14 @@ Class Part
         	$this->getOrganization() === $organization
     	);
     }
+
+    public function getSelectOptionData()
+	{
+		return [
+			'id' => $this->id,
+			'name' => $this->name,
+			'isActive' => $this->isActive
+		];
+	}
 
 }

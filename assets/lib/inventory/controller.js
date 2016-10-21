@@ -7,7 +7,7 @@ import Marionette from 'marionette';
 
 import InventoryIndexView from './views/inventoryIndexView.js';
 import TravelerIdView from './views/travelerIdView.js';
-import BinPartCountView from './views/binPartCountView.js';
+import BinSkuCountView from './views/binSkuCountView.js';
 
 import SearchableListLayoutView from 'lib/common/views/entity/searchableListLayoutView.js';
 
@@ -19,13 +19,13 @@ import InventoryTravelerIdMovementCollection from './models/inventoryTravelerIdM
 import inventoryTravelerIdMovementListTableLayoutTpl from './views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!';
 import inventoryTravelerIdMovementRowTpl from './views/inventoryTravelerIdMovementRowTpl.hbs!';
 
-import InventoryPartAdjustmentCollection from './models/inventoryPartAdjustmentCollection.js';
-import inventoryPartAdjustmentListTableLayoutTpl from './views/inventoryPartAdjustmentListTableLayoutTpl.hbs!';
-import inventoryPartAdjustmentRowTpl from './views/inventoryPartAdjustmentRowTpl.hbs!';
+import InventorySkuAdjustmentCollection from './models/inventorySkuAdjustmentCollection.js';
+import inventorySkuAdjustmentListTableLayoutTpl from './views/inventorySkuAdjustmentListTableLayoutTpl.hbs!';
+import inventorySkuAdjustmentRowTpl from './views/inventorySkuAdjustmentRowTpl.hbs!';
 
-import InventoryPartMovementCollection from './models/inventoryPartMovementCollection.js';
-import inventoryPartMovementListTableLayoutTpl from './views/inventoryPartMovementListTableLayoutTpl.hbs!';
-import inventoryPartMovementRowTpl from './views/inventoryPartMovementRowTpl.hbs!';
+import InventorySkuMovementCollection from './models/inventorySkuMovementCollection.js';
+import inventorySkuMovementListTableLayoutTpl from './views/inventorySkuMovementListTableLayoutTpl.hbs!';
+import inventorySkuMovementRowTpl from './views/inventorySkuMovementRowTpl.hbs!';
 
 import InventoryAuditListView from './views/inventoryAuditListView.js';
 import InventoryAuditView from './views/inventoryAuditView.js';
@@ -125,13 +125,13 @@ export default Marionette.Object.extend({
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
   },
-  binPartCounts(id){
+  binSkuCounts(id){
     let inventoryIndexView =  new InventoryIndexView();
-    let binPartCountView = new BinPartCountView();
+    let binSkuCountView = new BinSkuCountView();
 
     this.buildViewStack([
       {
-        regionViewMap: new Map([['content', binPartCountView]]),
+        regionViewMap: new Map([['content', binSkuCountView]]),
         viewInstance: inventoryIndexView
       }
     ]);
@@ -139,18 +139,18 @@ export default Marionette.Object.extend({
     Radio.channel('app').trigger('show:view', inventoryIndexView);
 
   },
-  inventoryPartAdjustments(){
+  inventorySkuAdjustments(){
     let inventoryIndexView =  new InventoryIndexView();
 
-    let inventoryPartAdjustmentCollection = Radio.channel('data').request('collection', InventoryPartAdjustmentCollection, {doFetch: false});
+    let inventorySkuAdjustmentCollection = Radio.channel('data').request('collection', InventorySkuAdjustmentCollection, {doFetch: false});
     let listView = new SearchableListLayoutView({
-      collection: inventoryPartAdjustmentCollection,
+      collection: inventorySkuAdjustmentCollection,
       listLength: 20,
-      searchPath: ['byUser.firstName','byUser.lastName','forBin.name','part.name'],
+      searchPath: ['byUser.firstName','byUser.lastName','forBin.name','sku.name'],
       useTableView: true,
       usePagination: 'server',
-      entityListTableLayoutTpl: inventoryPartAdjustmentListTableLayoutTpl,
-      entityRowTpl: inventoryPartAdjustmentRowTpl,
+      entityListTableLayoutTpl: inventorySkuAdjustmentListTableLayoutTpl,
+      entityRowTpl: inventorySkuAdjustmentRowTpl,
       colspan: 6,
     });
 
@@ -163,18 +163,18 @@ export default Marionette.Object.extend({
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
   },
-  inventoryPartMovements(){
+  inventorySkuMovements(){
     let inventoryIndexView =  new InventoryIndexView();
 
-    let inventoryPartMovementCollection = Radio.channel('data').request('collection', InventoryPartMovementCollection, {doFetch: false});
+    let inventorySkuMovementCollection = Radio.channel('data').request('collection', InventorySkuMovementCollection, {doFetch: false});
     let listView = new SearchableListLayoutView({
-      collection: inventoryPartMovementCollection,
+      collection: inventorySkuMovementCollection,
       listLength: 20,
-      searchPath: ['byUser.firstName','byUser.lastName','fromBin.name','toBin.name','part.name'],
+      searchPath: ['byUser.firstName','byUser.lastName','fromBin.name','toBin.name','sku.name'],
       useTableView: true,
       usePagination: 'server',
-      entityListTableLayoutTpl: inventoryPartMovementListTableLayoutTpl,
-      entityRowTpl: inventoryPartMovementRowTpl,
+      entityListTableLayoutTpl: inventorySkuMovementListTableLayoutTpl,
+      entityRowTpl: inventorySkuMovementRowTpl,
       colspan: 7,
     });
 

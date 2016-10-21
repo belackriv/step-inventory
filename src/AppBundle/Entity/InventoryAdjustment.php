@@ -68,8 +68,8 @@ Class InventoryAdjustment
 	public function isOwnedByOrganization(Organization $organization)
 	{
 		return (
-			$this->getByUser()->isOwnedByOrganization($organization) and
-			$this->getForBin()->isOwnedByOrganization($organization)
+			$this->getByUser() and $this->getByUser()->isOwnedByOrganization($organization) and
+			$this->getForBin() and $this->getForBin()->isOwnedByOrganization($organization)
 		);
 	}
 

@@ -20,3 +20,15 @@ services:
         class: AppBundle\Security\Role\DynamicRoleHierarchy
         arguments: ["@appBundle.role_repository"]
         public: false
+
+    security.listener.exception_listener:
+        class: AppBundle\Listener\ExceptionEventListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: handleKernelException }
+
+    security.listener.ajax_authentication_listener:
+        class: AppBundle\Listener\AjaxAuthenticationEventListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onCoreException, priority: 1000 }

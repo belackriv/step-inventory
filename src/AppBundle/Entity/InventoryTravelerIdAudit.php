@@ -111,8 +111,7 @@ Class InventoryTravelerIdAudit
 	public function isOwnedByOrganization(Organization $organization)
 	{
 		return (
-			$this->getInventoryAudit()->isOwnedByOrganization($organization) and
-			$this->getTravelerId()->isOwnedByOrganization($organization)
+			$this->getInventoryAudit() and $this->getInventoryAudit()->isOwnedByOrganization($organization)
 		);
 	}
 }

@@ -101,12 +101,29 @@ Class InventoryAudit
 		return $this;
 	}
 
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isCompleted = null;
+
+	public function getIsCompleted()
+	{
+		return $this->isCompleted;
+	}
+
+	public function setIsCompleted($isCompleted)
+	{
+		$this->isCompleted = $isCompleted;
+		return $this;
+	}
+
 	public function end(Bin $deviationBin)
 	{
 		$totalDeviations = 0;
 		$travelerIdCountDeviations = 0;
 		$travelerIdMatchDeviations = 0;
-		$partCountDeviations = 0;
+		$skuCountDeviations = 0;
 
 		$inventoryMovements = [];
 		$scannedTravelerIds = [];
@@ -133,13 +150,14 @@ Class InventoryAudit
 
 		$totalDeviations = $travelerIdCountDeviations + $travelerIdMatchDeviations;
 
-		foreach($this->inventoryPartAudits as $partAudit){
-			$totalDeviations += abs($partAudit->getUserCount() - $partAudit->getSystemCount());
-			$partCountDeviations += abs($partAudit->getUserCount() - $partAudit->getSystemCount());
+		foreach($this->inventorySkuAudits as $skuAudit){
+			$totalDeviations += abs($skuAudit->getUserCount() - $skuAudit->getSystemCount());
+			$skuCountDeviations += abs($skuAudit->getUserCount() - $skuAudit->getSystemCount());
 		}
 
-		$this->setPartCountDeviations($partCountDeviations);
+		$this->setSkuCountDeviations($skuCountDeviations);
 		$this->setTotalDeviations($totalDeviations);
+		$this->setIsCompleted(true);
 
 		return $inventoryMovements;
 	}
@@ -227,21 +245,21 @@ Class InventoryAudit
 	 * @JMS\Type("integer")
 	 */
 
-	protected $partCountDeviations = null;
+	protected $skuCountDeviations = null;
 
-	public function getPartCountDeviations()
+	public function getSkuCountDeviations()
 	{
-		return $this->partCountDeviations;
+		return $this->skuCountDeviations;
 	}
 
-	public function setPartCountDeviations($partCountDeviations)
+	public function setSkuCountDeviations($skuCountDeviations)
 	{
-		$this->partCountDeviations = $partCountDeviations;
+		$this->skuCountDeviations = $skuCountDeviations;
 		return $this;
 	}
 
 	/**
-     * @ORM\OneToMany(targetEntity="InventoryTravelerIdAudit", mappedBy="inventoryAudit")
+     * @ORM\OneToMany(targetEntity="InventoryTravelerIdAudit", mappedBy="inventoryAudit", cascade={"merge"})
      * @ORM\OrderBy({"id" = "ASC"})
      * @JMS\Type("ArrayCollection<AppBundle\Entity\InventoryTravelerIdAudit>")
      */
@@ -258,7 +276,7 @@ Class InventoryAudit
      * @param \AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit
      * @return InventoryAudit
      */
-    public function addInventoryTravelerIdAudit(\AppBundle\Entity\InventoryTravelerIdAudit $inventoryTravelerIdAudit)
+    public function addInventoryTravelerIdAudit(InventoryTravelerIdAudit $inventoryTravelerIdAudit)
     {
         if (!$this->inventoryTravelerIdAudits->contains($inventoryTravelerIdAudit)) {
             $this->inventoryTravelerIdAudits->add($inventoryTravelerIdAudit);
@@ -287,61 +305,61 @@ Class InventoryAudit
     }
 
 	/**
-     * @ORM\OneToMany(targetEntity="InventoryPartAudit", mappedBy="inventoryAudit")
+     * @ORM\OneToMany(targetEntity="InventorySkuAudit", mappedBy="inventoryAudit", cascade={"merge"})
      * @ORM\OrderBy({"id" = "ASC"})
-     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventoryPartAudit>")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventorySkuAudit>")
      */
-    protected $inventoryPartAudits;
+    protected $inventorySkuAudits;
 
-    public function getInventoryPartAudits()
+    public function getInventorySkuAudits()
     {
-    	return $this->inventoryPartAudits;
+    	return $this->inventorySkuAudits;
     }
 
     /**
-     * Add inventoryPartAudit
+     * Add inventorySkuAudit
      *
-     * @param \AppBundle\Entity\InventoryPartAudit $inventoryPartAudit
+     * @param \AppBundle\Entity\InventorySkuAudit $inventorySkuAudit
      * @return InventoryAudit
      */
-    public function addInventoryPartAudit(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
+    public function addInventorySkuAudit(InventorySkuAudit $inventorySkuAudit)
     {
-        if (!$this->inventoryPartAudits->contains($inventoryPartAudit)) {
-            $this->inventoryPartAudits->add($inventoryPartAudit);
+        if (!$this->inventorySkuAudits->contains($inventorySkuAudit)) {
+            $this->inventorySkuAudits->add($inventorySkuAudit);
         }
-        if($inventoryPartAudit->getInventoryAudit() != $this){
-            $inventoryPartAudit->setInventoryAudit($this);
+        if($inventorySkuAudit->getInventoryAudit() != $this){
+            $inventorySkuAudit->setInventoryAudit($this);
         }
         return $this;
     }
 
     /**
-     * Remove inventoryPartAudit
+     * Remove inventorySkuAudit
      *
-     * @param \AppBundle\Entity\InventoryPartAudit $inventoryPartAudit
+     * @param \AppBundle\Entity\InventorySkuAudit $inventorySkuAudit
      * @return InventoryAudit
      */
-    public function removeInventoryPartAudit(InventoryPartAudit $inventoryPartAudit)
+    public function removeInventorySkuAudit(InventorySkuAudit $inventorySkuAudit)
     {
-         if ($this->inventoryPartAudits->contains($inventoryPartAudit)) {
-            $this->inventoryPartAudits->removeElement($inventoryPartAudit);
+         if ($this->inventorySkuAudits->contains($inventorySkuAudit)) {
+            $this->inventorySkuAudits->removeElement($inventorySkuAudit);
         }
-        if($inventoryPartAudit->getInventoryAudit() !== null){
-        	$inventoryPartAudit->setInventoryAudit(null);
+        if($inventorySkuAudit->getInventoryAudit() !== null){
+        	$inventorySkuAudit->setInventoryAudit(null);
         }
         return $this;
     }
 
     public function __construct() {
     	$this->inventoryTravelerIdAudits = new ArrayCollection();
-        $this->inventoryPartAudits = new ArrayCollection();
+        $this->inventorySkuAudits = new ArrayCollection();
     }
 
     public function isOwnedByOrganization(Organization $organization)
     {
         return (
-			$this->getByUser()->isOwnedByOrganization($organization) and
-         	$this->getForBin()->isOwnedByOrganization($organization)
+			$this->getByUser() and $this->getByUser()->isOwnedByOrganization($organization) and
+         	$this->getForBin() and  $this->getForBin()->isOwnedByOrganization($organization)
         );
     }
 

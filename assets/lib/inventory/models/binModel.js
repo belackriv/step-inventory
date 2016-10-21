@@ -8,7 +8,7 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 import 'lib/common/models/departmentModel.js';
 import './partCategoryModel.js';
 import './binTypeModel.js';
-import './binPartCountModel.js';
+import './binSkuCountModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
@@ -40,8 +40,8 @@ let Model = BaseUrlBaseModel.extend({
     }
   },{
     type: Backbone.HasMany,
-    key: 'partCount',
-    relatedModel: 'BinPartCountModel',
+    key: 'skuCount',
+    relatedModel: 'BinSkuCountModel',
     includeInJSON: ['id'],
     reverseRelation: {
       key: 'bin',
@@ -57,7 +57,7 @@ let Model = BaseUrlBaseModel.extend({
     children: null,
     parent: null,
     isActive: null,
-    partCount: null,
+    skuCount: null,
     travelerIds: null,
   },
 

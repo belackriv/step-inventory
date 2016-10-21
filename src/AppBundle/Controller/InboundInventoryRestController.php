@@ -1,0 +1,417 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Library\Utilities;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use FOS\RestBundle\Controller\Annotations AS Rest;
+use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+class InboundInventoryRestController extends FOSRestController
+{
+
+    use Mixin\RestPatchMixin;
+    use Mixin\UpdateAclMixin;
+    use Mixin\WampUpdatePusher;
+    use Mixin\TravelerIdLogMixin;
+
+    /**
+     * @Rest\Get("/tid")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listTravelerIdAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(tid.id)')
+            ->from('AppBundle:TravelerId', 'tid')
+            ->join('tid.inboundOrder', 'o')
+            ->join('o.client', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('tid')
+            ->orderBy('tid.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/tid/{id}")
+     * @Rest\Get("/show/tid/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $travelerId) and
+            $travelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $travelerId;
+        }else{
+            throw $this->createNotFoundException('TravelerId #'.$travelerId->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/tid")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("travelerId", converter="fos_rest.request_body")
+     */
+    public function createTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $travelerId) and
+            $travelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($travelerId);
+            $travelerId->generateLabel();
+            $em->flush();
+            $this->updateAclByRoles($travelerId, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            return $travelerId;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/tid/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("travelerId", converter="fos_rest.request_body")
+     */
+    public function updateTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
+    {
+
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($travelerId);
+            $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($travelerId->getId());
+            if( $travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+                $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
+                $em->merge($travelerId);
+                $em->flush();
+                if($edit){
+                    $this->updateAclByRoles($edit, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                }
+                if($move){
+                    $this->updateAclByRoles($move, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                }
+                return $travelerId;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+     /**
+     * @Rest\Patch("/tid/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("travelerId", converter="fos_rest.request_body")
+     */
+    public function patchTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId, $id)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($travelerId);
+            $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($id);
+            if($liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())){
+                $hasOrgUpdate = false;
+                if( $travelerId->getInboundOrder() and
+                    $travelerId->getInboundOrder()->getClient() and
+                    $travelerId->getInboundOrder()->getClient()->getOrganization()
+                ){
+                    $hasOrgUpdate = true;
+                }
+                if( !$hasOrgUpdate or $travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) ){
+                    $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+                    $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
+                    $this->patchEntity($liveTravelerId, $travelerId);
+                    $em->flush();
+                    if($edit){
+                        $this->updateAclByRoles($edit, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                    }
+                    if($move){
+                        $this->updateAclByRoles($move, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                    }
+                    return $travelerId;
+                }else{
+                    throw $this->createAccessDeniedException();
+                }
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/tid/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteTravelerIdAction(\AppBundle\Entity\TravelerId $travelerId)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $travelerId) and
+            $travelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($travelerId);
+            $em->flush();
+            return $travelerId;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+
+    /**
+     * @Rest\Post("/mass_tid")
+     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("massTravelerId", converter="fos_rest.request_body")
+     */
+    public function createMassTravelerIdAction(\AppBundle\Entity\MassTravelerId $massTravelerId)
+    {
+        set_time_limit(300);
+        ini_set('memory_limit','1024M');
+        $em = $this->getDoctrine()->getManager();
+        foreach($massTravelerId->getTravelerIds() as $travelerId){
+            if( $this->get('security.authorization_checker')->isGranted('CREATE', $travelerId) and
+                $travelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->persist($travelerId);
+                $travelerId->generateLabel();
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }
+        $em->flush();
+        foreach($massTravelerId->getTravelerIds() as $travelerId){
+            $this->updateAclByRoles($travelerId, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+        }
+        return $massTravelerId;
+    }
+
+    /**
+     * @Rest\Put("/mass_tid/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("massTravelerId", converter="fos_rest.request_body")
+     */
+    public function updateMassTravelerIdAction(\AppBundle\Entity\MassTravelerId $massTravelerId)
+    {
+        set_time_limit(300);
+        ini_set('memory_limit','1024M');
+        $em = $this->getDoctrine()->getManager();
+        $travelerIdLogEntities = [];
+        foreach($massTravelerId->getTravelerIds() as $travelerId){
+            if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
+                $em->detach($travelerId);
+                $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($travelerId->getId());
+                if( $travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                    $liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+                ){
+                    $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+                    $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
+                    if($edit){
+                        $travelerIdLogEntities[] = $edit;
+                    }
+                    if($move){
+                        $travelerIdLogEntities[] = $move;
+                    }
+                    $em->merge($travelerId);
+                }else{
+                    throw $this->createAccessDeniedException();
+                }
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }
+        $em->flush();
+        foreach($travelerIdLogEntities as $logEntity){
+            $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+        }
+        return $massTravelerId;
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_edit")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryTravelerIdEditAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(ite.id)')
+            ->from('AppBundle:InventoryTravelerIdEdit', 'ite')
+            ->join('ite.travelerId', 'tid')
+            ->join('tid.inboundOrder', 'o')
+            ->join('o.client', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('ite')
+            ->orderBy('ite.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_edit/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryTravelerIdEditAction(\AppBundle\Entity\InventoryTravelerIdEdit $inventoryTravelerIdEdit)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdEdit) and
+            $inventoryTravelerIdEdit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $inventoryTravelerIdEdit;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdEdit #'.$inventoryTravelerIdEdit->getId().' Not Found');
+        }
+    }
+
+
+    /**
+     * @Rest\Get("/inventory_tid_movement")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryTravelerIdMovementAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(itm.id)')
+            ->from('AppBundle:InventoryTravelerIdMovement', 'itm')
+            ->join('itm.travelerId', 'tid')
+            ->join('tid.inboundOrder', 'o')
+            ->join('o.client', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('itm')
+            ->orderBy('itm.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_movement/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryTravelerIdMovementAction(\AppBundle\Entity\InventoryTravelerIdMovement $inventoryTravelerIdMovement)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdMovement) and
+            $inventoryTravelerIdMovement->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $inventoryTravelerIdMovement;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdMovement #'.$inventoryTravelerIdMovement->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Get("/unit")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listUnitAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(u.id)')
+            ->from('AppBundle:Unit', 'u')
+            ->where('u.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('u')
+            ->orderBy('u.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+}

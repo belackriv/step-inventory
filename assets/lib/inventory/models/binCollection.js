@@ -9,7 +9,5 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/bin';
   },
-  parse(response){
-    return response.list;
-  }
+  selectOptionsUrl: '/select_options/bin',
 });

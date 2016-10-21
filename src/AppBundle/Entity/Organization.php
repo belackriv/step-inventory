@@ -282,6 +282,36 @@ Class Organization
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="Sku", mappedBy="organization")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\Sku>")
+     * @JMS\Groups({"Sku"})
+     * @JMS\ReadOnly
+     */
+    protected $skus;
+
+    public function getSkus()
+    {
+        return $this->skus;
+    }
+
+    public function addSku(Sku $sku)
+    {
+        if(!$this->skus->contains($sku)){
+            $this->skus->add($sku);
+        }
+        if($sku->getOrganization() !== $this){
+            $sku->setOrganization($this);
+        }
+        return $this;
+    }
+
+    public function removeSku(Sku $sku)
+    {
+        $this->skus->removeElement($sku);
+        $this->skus = new ArrayCollection(array_values($this->skus->toArray()));
+    }
+
+    /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="organization")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\User>")
      * @JMS\Groups({"User"})

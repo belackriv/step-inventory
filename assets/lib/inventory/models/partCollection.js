@@ -9,7 +9,5 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/part';
   },
-  parse(response){
-    return response.list;
-  }
+  selectOptionsUrl: '/select_options/part',
 });

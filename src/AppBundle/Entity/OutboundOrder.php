@@ -111,38 +111,37 @@ Class OutboundOrder
 	}
 
 	/**
-     * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="outboundOrder")
-     * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
-     * @JMS\Groups({"TravelerId"})
+     * @ORM\OneToMany(targetEntity="SalesItem", mappedBy="outboundOrder")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
+     * @JMS\Groups({"SalesItem"})
      * @JMS\ReadOnly
      */
-    protected $travelerIds;
+    protected $salesItems;
 
-    public function getTravelerIds()
+    public function getSalesItems()
     {
-    	return $this->travelerIds;
+    	return $this->salesItems;
     }
 
-    public function addTravelerId(TravelerId $travelerId)
+    public function addSalesItem(SalesItem $salesItem)
     {
-        if(!$this->travelerIds->contains($travelerId)){
-            $this->travelerIds->add($travelerId);
+        if(!$this->salesItems->contains($salesItem)){
+            $this->salesItems->add($salesItem);
         }
-        if($travelerId->getOutboundOrder() !== $this){
-        	$travelerId->setOutboundOrder($this);
+        if($salesItem->getOutboundOrder() !== $this){
+        	$salesItem->setOutboundOrder($this);
         }
         return $this;
     }
 
-    public function removeTravelerId(TravelerId $travelerId)
+    public function removeSalesItem(SalesItem $salesItem)
     {
-        $this->travelerIds->removeElement($travelerId);
-        $travelerId->setOutboundOrder(null);
-        $this->travelerIds = new ArrayCollection(array_values($this->travelerIds->toArray()));
+        $this->salesItems->removeElement($salesItem);
+        $this->salesItems = new ArrayCollection(array_values($this->salesItems->toArray()));
     }
 
     public function isOwnedByOrganization(Organization $organization)
     {
-        return ( $this->getCustomer()->isOwnedByOrganization($organization) );
+        return ( $this->getCustomer() and $this->getCustomer()->isOwnedByOrganization($organization) );
     }
 }

@@ -9,7 +9,4 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/bin_type';
   },
-  parse(response){
-    return response.list;
-  }
 });

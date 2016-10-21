@@ -18821,10 +18821,24 @@ System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-h
       GLOBAL = global;
   var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
   module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "			<div>\r\n				<img  class=\"si-org-logo\" src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.logo : stack1)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n				<h1 class=\"title is-3\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n			</div>\r\n";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "			<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n";
+    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var stack1;
-      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n		<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
+      return "<div class=\"nav-left\">\r\n	<div class=\"nav-item\" id=\"menu-selection-container\"></div>\r\n</div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, ((stack1 = ((stack1 = (depth0 != null ? depth0.organization : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.logo : stack1), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.program(3, data, 0),
+        "data": data
+      })) != null ? stack1 : "") + "	</div>\r\n</div>\r\n<div class=\"nav-right\">\r\n	<div class=\"nav-item\" id=\"user-info-container\"></div>\r\n</div>";
     },
     "useData": true
   });
@@ -19082,6 +19096,9 @@ System.register('lib/common/views/navLayoutView.js', ['underscore', 'backbone', 
           menuSelection: "#menu-selection-container",
           menu: "#nav-menu",
           userInfo: "#user-info-container"
+        },
+        modelEvents: {
+          'change:organization': 'render'
         },
         onRender: function onRender() {
           var menuSelectionView = new MenuSelectionView({
@@ -19702,7 +19719,7 @@ System.registerDynamic("lib/admin/views/adminIndexTabsView.hbs!github:davis/plug
         "name": "baseUrl",
         "hash": {},
         "data": data
-      }) : helper))) + "/organization\">Orgainization</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
+      }) : helper))) + "/organization\">Organization</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || (depth0 && depth0.ifIsRouteActive) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/user", {
         "name": "ifIsRouteActive",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -20061,12 +20078,44 @@ System.register("lib/admin/views/adminAccountingIndexView.js", ["marionette", ".
     }
   };
 });
+System.registerDynamic("lib/admin/views/adminOrganizationsEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "					<img src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.logo : depth0)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n";
+    },
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      var stack1,
+          helper;
+      return "<h3 class=\"title is-3\">Organization #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "id",
+        "hash": {},
+        "data": data
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\" />\r\n	</p>\r\n	<label class=\"label\">Logo</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\">\r\n			<figure class=\"image is-16by9\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.logo : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</figure>\r\n		</div>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"upload\">Upload Logo</button>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>\r\n";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
 "use strict";
 
-System.register('lib/admin/views/adminOrganizationsEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminOfficesEditView.hbs!'], function (_export, _context) {
+System.register('lib/admin/views/adminOrganizationsEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminOrganizationsEditView.hbs!', 'lib/common/views/uploadImageView.js'], function (_export, _context) {
   "use strict";
 
-  var _, Backbone, Radio, Marionette, viewTpl;
+  var _, Backbone, Radio, Marionette, viewTpl, UploadImageView;
 
   return {
     setters: [function (_underscore) {
@@ -20077,8 +20126,10 @@ System.register('lib/admin/views/adminOrganizationsEditView.js', ['underscore', 
       Radio = _backboneRadio.default;
     }, function (_marionette) {
       Marionette = _marionette.default;
-    }, function (_adminOfficesEditViewHbs) {
-      viewTpl = _adminOfficesEditViewHbs.default;
+    }, function (_adminOrganizationsEditViewHbs) {
+      viewTpl = _adminOrganizationsEditViewHbs.default;
+    }, function (_libCommonViewsUploadImageViewJs) {
+      UploadImageView = _libCommonViewsUploadImageViewJs.default;
     }],
     execute: function () {
       _export('default', Marionette.View.extend({
@@ -20090,10 +20141,31 @@ System.register('lib/admin/views/adminOrganizationsEditView.js', ['underscore', 
           'SaveCancelDelete': {}
         },
         ui: {
-          'nameInput': 'input[name="name"]'
+          'nameInput': 'input[name="name"]',
+          'uploadButton': 'button[data-ui-name="upload"]'
+        },
+        events: {
+          'click @ui.uploadButton': 'showLogoUploadDialog'
+        },
+        modelEvents: {
+          'change:logo': 'render'
         },
         bindings: {
           '@ui.nameInput': 'name'
+        },
+        showLogoUploadDialog: function showLogoUploadDialog(event) {
+          event.preventDefault();
+          var options = {
+            title: 'Upload Logo',
+            width: '400px'
+          };
+          var view = new UploadImageView({
+            model: this.model,
+            imageAttributeName: 'logo',
+            organization: this.model
+          });
+          Radio.channel('dialog').trigger('close');
+          Radio.channel('dialog').trigger('open', view, options);
         }
       }));
     }
@@ -20108,7 +20180,7 @@ System.registerDynamic("lib/admin/views/adminOrganizationsListTableLayoutTpl.hbs
   module.exports = Handlebars.template({
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n			<th>Offices</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>#</th>\r\n			<th>Name</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
     },
     "useData": true
   });
@@ -20122,42 +20194,22 @@ System.registerDynamic("lib/admin/views/adminOrganizationsRowTpl.hbs!github:davi
       GLOBAL = global;
   var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
   module.exports = Handlebars.template({
-    "1": function(container, depth0, helpers, partials, data) {
-      var stack1;
-      return "		" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.name : stack1), depth0)) + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, (data && data.last), {
-        "name": "unless",
-        "hash": {},
-        "fn": container.program(2, data, 0),
-        "inverse": container.noop,
-        "data": data
-      })) != null ? stack1 : "") + "\r\n";
-    },
-    "2": function(container, depth0, helpers, partials, data) {
-      return ", ";
-    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      var stack1,
-          helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      var helper;
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.offices : depth0)) != null ? stack1.models : stack1), {
-        "name": "each",
-        "hash": {},
-        "fn": container.program(1, data, 0),
-        "inverse": container.noop,
-        "data": data
-      })) != null ? stack1 : "") + "</td>\r\n";
+      }) : helper))) + "</a></td>";
     },
     "useData": true
   });
@@ -20563,19 +20615,19 @@ System.registerDynamic("lib/admin/views/adminOfficesRowTpl.hbs!github:davis/plug
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.departments : depth0)) != null ? stack1.models : stack1), {
+      }) : helper))) + "</a></td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.departments : depth0)) != null ? stack1.models : stack1), {
         "name": "each",
         "hash": {},
         "fn": container.program(1, data, 0),
@@ -20692,19 +20744,19 @@ System.registerDynamic("lib/admin/views/adminDepartmentsRowTpl.hbs!github:davis/
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || (depth0 && depth0["return"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.getDepartmentTotalMenuItemCount : stack1), (depth0 != null ? depth0.office : depth0), (depth0 != null ? depth0.id : depth0), {
+      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers["return"] || (depth0 && depth0["return"]) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = (depth0 != null ? depth0.office : depth0)) != null ? stack1.getDepartmentTotalMenuItemCount : stack1), (depth0 != null ? depth0.office : depth0), (depth0 != null ? depth0.id : depth0), {
         "name": "return",
         "hash": {},
         "data": data
@@ -21369,14 +21421,45 @@ System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plug
       GLOBAL = global;
   var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
   module.exports = Handlebars.template({
+    "1": function(container, depth0, helpers, partials, data) {
+      var stack1;
+      return "					<img width=\"" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.width : stack1), depth0)) + "\" height=\"" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.height : stack1), depth0)) + "\" src=\"/image/" + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.id : stack1), depth0)) + "/src\" />\r\n";
+    },
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
-      var helper;
+      var stack1,
+          helper;
       return "<h3 class=\"title is-3\">Part #" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Group</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partGroup\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+      }) : helper))) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Part Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partId\" type=\"text\" placeholder=\"Enter Id\">\r\n	</p>\r\n	<label class=\"label\">Alternate Id</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"partAltId\" type=\"text\" placeholder=\"Enter Alternate Id\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Image</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\" style=\"width:" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.width : stack1), depth0)) + "px;\">\r\n			<figure class=\"image " + container.escapeExpression((helpers.getAspectRatioClass || (depth0 && depth0.getAspectRatioClass) || helpers.helperMissing).call(depth0 != null ? depth0 : {}, ((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.width : stack1), ((stack1 = ((stack1 = (depth0 != null ? depth0.image : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.height : stack1), {
+        "name": "getAspectRatioClass",
+        "hash": {},
+        "data": data
+      })) + "\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (depth0 != null ? depth0.image : depth0), {
+        "name": "if",
+        "hash": {},
+        "fn": container.program(1, data, 0),
+        "inverse": container.noop,
+        "data": data
+      })) != null ? stack1 : "") + "			</figure>\r\n		</div>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"upload\">Upload Image</button>\r\n	</p>\r\n	<label class=\"label\">Category</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partCategory\"></select>\r\n  		</span>\r\n	</p>\r\n	<label class=\"label\">Group</label>\r\n	<p class=\"control\">\r\n		<span class=\"select\">\r\n	  		<select name=\"partGroup\"></select>\r\n  		</span>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+    },
+    "useData": true
+  });
+  return module.exports;
+});
+
+System.registerDynamic("lib/common/views/uploadImageView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require('github:components/handlebars.js@4.0.5/handlebars.runtime.js');
+  module.exports = Handlebars.template({
+    "compiler": [7, ">= 4.0.0"],
+    "main": function(container, depth0, helpers, partials, data) {
+      return "<h3 class=\"title is-3\">Upload Image</h3>\r\n<div class=\"card\">\r\n  	<div class=\"card-image\">\r\n    	<figure class=\"image is-16by9\">\r\n      		<img data-ui-name=\"imageDisplay\" />\r\n    	</figure>\r\n  	</div>\r\n  	<div class=\"card-content\">\r\n		<form>\r\n			<label class=\"label\">Image</label>\r\n			<p class=\"control\">\r\n				<div class=\"message\" data-ui-name=\"dropTarget\">\r\n				  	<div class=\"message-body\">\r\n				  		<input class=\"is-hidden\" name=\"image\" type=\"file\" />\r\n						<button type=\"button\" name=\"openAddFile\" class=\"button is-large\">\r\n							<span class=\"icon is-large\">\r\n								<span class=\"fa fa-download fa-5x\"></span>\r\n							</span>\r\n						</button>\r\n						<p>Click Button or Drag Image File</p>\r\n				  	</div>\r\n				</div>\r\n			</p>\r\n			<p class=\"control\">\r\n				<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"upload\">Upload</button>\r\n				<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n			</p>\r\n		</form>\r\n	</div>\r\n</div>\r\n";
     },
     "useData": true
   });
@@ -21385,10 +21468,156 @@ System.registerDynamic("lib/admin/views/adminPartsEditView.hbs!github:davis/plug
 
 "use strict";
 
-System.register('lib/admin/views/adminPartsEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminPartsEditView.hbs!', 'lib/inventory/models/partCategoryCollection.js', 'lib/inventory/models/partGroupCollection.js'], function (_export, _context) {
+System.register('lib/common/views/uploadImageView.js', ['jquery', 'underscore', 'backbone', 'backbone.radio', 'marionette', 'lib/common/models/uploadedImageModel.js', './uploadImageView.hbs!'], function (_export, _context) {
   "use strict";
 
-  var _, Backbone, Radio, Marionette, viewTpl, PartCategoryCollection, PartGroupCollection;
+  var jquery, _, Backbone, Radio, Marionette, ImageModel, viewTpl;
+
+  return {
+    setters: [function (_jquery) {
+      jquery = _jquery.default;
+    }, function (_underscore) {
+      _ = _underscore.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_marionette) {
+      Marionette = _marionette.default;
+    }, function (_libCommonModelsUploadedImageModelJs) {
+      ImageModel = _libCommonModelsUploadedImageModelJs.default;
+    }, function (_uploadImageViewHbs) {
+      viewTpl = _uploadImageViewHbs.default;
+    }],
+    execute: function () {
+      _export('default', Marionette.View.extend({
+        template: viewTpl,
+        ui: {
+          'imageDisplay': '[data-ui-name="imageDisplay"]',
+          'dropTarget': '[data-ui-name="dropTarget"]',
+          'openAddFileButton': 'button[name="openAddFile"]',
+          'imageFileInput': 'input[name="image"]',
+          'uploadButton': 'button[data-ui-name="upload"]',
+          'cancelButton': 'button[data-ui-name="cancel"]',
+          'form': 'form'
+        },
+        events: {
+          'click @ui.openAddFileButton': 'onOpenAddFileButtonClick',
+          'change @ui.imageFileInput': 'addSelectedFile',
+          'click @ui.uploadButton': 'uploadImage',
+          'submit @ui.form': 'uploadImage',
+          'click @ui.cancelButton': 'cancel'
+        },
+        onRender: function onRender() {
+          var _this = this;
+
+          var dropTarget = this.ui.dropTarget.get(0);
+          ['dragenter', 'dragover', 'dragleave', 'dragstop', 'drop'].forEach(function (event) {
+            return dropTarget.addEventListener(event, _this.stopNormalBehavior.bind(_this), false);
+          });
+          ['dragenter', 'dragover'].forEach(function (event) {
+            return dropTarget.addEventListener(event, _this.showFilesHover.bind(_this), false);
+          });
+          ['drop', 'dragleave', 'dragstop'].forEach(function (event) {
+            return dropTarget.addEventListener(event, _this.hideFilesHover.bind(_this), false);
+          });
+          window.addEventListener('dragover', this.stopNormalBehavior.bind(this), false);
+          window.addEventListener('drop', this.stopNormalBehavior.bind(this), false);
+          dropTarget.addEventListener('drop', this.addDroppedFiles.bind(this), false);
+        },
+        stopNormalBehavior: function stopNormalBehavior(event) {
+          event.preventDefault();
+          event.stopPropagation();
+        },
+        showFilesHover: function showFilesHover(event) {
+          if (event.dataTransfer.files.length > 1) {
+            this.ui.dropTarget.addClass('is-danger');
+          } else {
+            this.ui.dropTarget.addClass('is-success');
+          }
+        },
+        hideFilesHover: function hideFilesHover(event) {
+          this.ui.dropTarget.removeClass('is-success is-danger');
+        },
+        onOpenAddFileButtonClick: function onOpenAddFileButtonClick(event) {
+          this.ui.imageFileInput.click();
+        },
+        addDroppedFiles: function addDroppedFiles(event) {
+          if (event.dataTransfer.files.length > 0) {
+            this.addFile(event.dataTransfer.files[0]);
+          }
+        },
+        addSelectedFile: function addSelectedFile(event) {
+          if (event.target.files.length > 0) {
+            this.addFile(event.target.files[0]);
+          }
+        },
+        addFile: function addFile(file) {
+          var _this2 = this;
+
+          this.imageFile = file;
+          var fileReader = new FileReader();
+          fileReader.onload = function () {
+            _this2.ui.imageDisplay.attr('src', fileReader.result);
+          };
+          fileReader.readAsDataURL(file);
+        },
+
+        imageFile: null,
+        uploadImage: function uploadImage(event) {
+          var _this3 = this;
+
+          event.preventDefault();
+          this.disableButtons();
+          if (this.imageFile) {
+            (function () {
+              var view = _this3;
+              var image = new ImageModel({
+                organization: _this3.options.organization
+              });
+              var formData = new FormData();
+              formData.append('image', _this3.imageFile);
+              jquery.ajax({
+                url: '/organization/' + _this3.options.organization.id + '/upload_image',
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function success(data) {
+                  image.set(data);
+                  view.assignImageToModelProperty(image);
+                }
+              });
+            })();
+          }
+        },
+        assignImageToModelProperty: function assignImageToModelProperty(image) {
+          this.model.set(this.options.imageAttributeName, image);
+          this.model.save().then(function () {
+            Radio.channel('dialog').trigger('close');
+          });
+        },
+        cancel: function cancel() {
+          Radio.channel('dialog').trigger('close');
+        },
+        disableButtons: function disableButtons() {
+          this.ui.uploadButton.prop('disabled', true).addClass('is-loading');
+          this.ui.cancelButton.prop('disabled', true);
+        },
+        enableButtons: function enableButtons() {
+          this.ui.uploadButton.prop('disabled', false).removeClass('is-loading');
+          this.ui.cancelButton.prop('disabled', false);
+        }
+      }));
+    }
+  };
+});
+"use strict";
+
+System.register('lib/admin/views/adminPartsEditView.js', ['underscore', 'backbone', 'backbone.radio', 'marionette', './adminPartsEditView.hbs!', 'lib/inventory/models/partCategoryCollection.js', 'lib/inventory/models/partGroupCollection.js', 'lib/common/views/uploadImageView.js'], function (_export, _context) {
+  "use strict";
+
+  var _, Backbone, Radio, Marionette, viewTpl, PartCategoryCollection, PartGroupCollection, UploadImageView;
 
   return {
     setters: [function (_underscore) {
@@ -21405,6 +21634,8 @@ System.register('lib/admin/views/adminPartsEditView.js', ['underscore', 'backbon
       PartCategoryCollection = _libInventoryModelsPartCategoryCollectionJs.default;
     }, function (_libInventoryModelsPartGroupCollectionJs) {
       PartGroupCollection = _libInventoryModelsPartGroupCollectionJs.default;
+    }, function (_libCommonViewsUploadImageViewJs) {
+      UploadImageView = _libCommonViewsUploadImageViewJs.default;
     }],
     execute: function () {
       _export('default', Marionette.View.extend({
@@ -21422,7 +21653,14 @@ System.register('lib/admin/views/adminPartsEditView.js', ['underscore', 'backbon
           'descriptionInput': 'textarea[name="description"]',
           'isActiveInput': 'input[name="isActive"]',
           'partCategorySelect': 'select[name="partCategory"]',
-          'partGroupSelect': 'select[name="partGroup"]'
+          'partGroupSelect': 'select[name="partGroup"]',
+          'uploadButton': 'button[data-ui-name="upload"]'
+        },
+        events: {
+          'click @ui.uploadButton': 'showLogoUploadDialog'
+        },
+        modelEvents: {
+          'change:image': 'render'
         },
         bindings: {
           '@ui.nameInput': 'name',
@@ -21462,6 +21700,22 @@ System.register('lib/admin/views/adminPartsEditView.js', ['underscore', 'backbon
               }
             }
           }
+        },
+        showLogoUploadDialog: function showLogoUploadDialog(event) {
+          var myself = Radio.channel('data').request('myself');
+          var organization = myself.get('organization');
+          event.preventDefault();
+          var options = {
+            title: 'Upload Image',
+            width: '400px'
+          };
+          var view = new UploadImageView({
+            model: this.model,
+            imageAttributeName: 'image',
+            organization: organization
+          });
+          Radio.channel('dialog').trigger('close');
+          Radio.channel('dialog').trigger('open', view, options);
         }
       }));
     }
@@ -22832,19 +23086,19 @@ System.registerDynamic("lib/admin/views/adminClientsRowTpl.hbs!github:davis/plug
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>";
+      }) : helper))) + "</a></td>";
     },
     "useData": true
   });
@@ -22936,19 +23190,19 @@ System.registerDynamic("lib/admin/views/adminCustomersRowTpl.hbs!github:davis/pl
     "compiler": [7, ">= 4.0.0"],
     "main": function(container, depth0, helpers, partials, data) {
       var helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "name",
         "hash": {},
         "data": data
-      }) : helper))) + "</td>";
+      }) : helper))) + "</a></td>";
     },
     "useData": true
   });
@@ -23088,15 +23342,15 @@ System.registerDynamic("lib/admin/views/adminInboundOrdersRowTpl.hbs!github:davi
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.client : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.client : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "label",
         "hash": {},
         "data": data
@@ -23248,15 +23502,15 @@ System.registerDynamic("lib/admin/views/adminOutboundOrdersRowTpl.hbs!github:dav
     "main": function(container, depth0, helpers, partials, data) {
       var stack1,
           helper;
-      return "<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
-        "name": "entityUrl",
-        "hash": {},
-        "data": data
-      }) : helper))) + "\">" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      return "<td>" + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "id",
         "hash": {},
         "data": data
-      }) : helper))) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.customer : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+      }) : helper))) + "</td>\r\n<td><a class=\"entity-link\" href=\"" + container.escapeExpression(((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
+        "name": "entityUrl",
+        "hash": {},
+        "data": data
+      }) : helper))) + "\">" + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.customer : depth0)) != null ? stack1.attributes : stack1)) != null ? stack1.name : stack1), depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing), (typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, {
         "name": "label",
         "hash": {},
         "data": data
@@ -31104,7 +31358,7 @@ System.register('lib/inventory/models/partGroupModel.js', ['lib/globalNamespace.
 });
 'use strict';
 
-System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 'backbone', 'lib/common/models/baseUrlBaseModel.js', './partCategoryModel.js', './partGroupModel.js'], function (_export, _context) {
+System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 'backbone', 'lib/common/models/baseUrlBaseModel.js', './partCategoryModel.js', './partGroupModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
   "use strict";
 
   var globalNamespace, Backbone, BaseUrlBaseModel, Model;
@@ -31115,7 +31369,7 @@ System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 
       Backbone = _backbone.default;
     }, function (_libCommonModelsBaseUrlBaseModelJs) {
       BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_partCategoryModelJs) {}, function (_partGroupModelJs) {}],
+    }, function (_partCategoryModelJs) {}, function (_partGroupModelJs) {}, function (_libCommonModelsUploadedImageModelJs) {}],
     execute: function () {
       Model = BaseUrlBaseModel.extend({
         urlRoot: function urlRoot() {
@@ -31132,6 +31386,12 @@ System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 
           key: 'partGroup',
           relatedModel: 'PartGroupModel',
           includeInJSON: ['id']
+        }, {
+          type: Backbone.HasOne,
+          key: 'image',
+          relatedModel: 'UploadedImageModel',
+          includeInJSON: ['id'],
+          reverseRelation: false
         }],
         defaults: {
           name: null,
@@ -31140,7 +31400,8 @@ System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 
           description: null,
           partCategory: null,
           partGroup: null,
-          isActive: null
+          isActive: null,
+          image: null
         }
       });
 
@@ -37786,22 +38047,74 @@ System.register('lib/common/models/myselfModel.js', ['lib/globalNamespace.js', '
 });
 'use strict';
 
-System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
+System.register('lib/common/models/uploadedImageModel.js', ['lib/globalNamespace.js', 'backbone', './baseUrlBaseModel.js', './organizationModel.js'], function (_export, _context) {
   "use strict";
 
-  var globalNamespace, BaseUrlBaseModel, Model;
+  var globalNamespace, Backbone, BaseUrlBaseModel, Model;
   return {
     setters: [function (_libGlobalNamespaceJs) {
       globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
     }, function (_baseUrlBaseModelJs) {
       BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }],
+    }, function (_organizationModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/image';
+        },
+
+        relations: [{
+          type: Backbone.HasOne,
+          key: 'organization',
+          relatedModel: 'OrganizationModel',
+          includeInJSON: false,
+          reverseRelation: false
+        }],
+        defaults: {
+          organization: null,
+          name: null,
+          mimeType: null,
+          width: null,
+          height: null
+        }
+      });
+
+
+      globalNamespace.Models.UploadedImageModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', 'backbone', './baseUrlBaseModel.js', './uploadedImageModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, Backbone, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_uploadedImageModelJs) {}],
     execute: function () {
       Model = BaseUrlBaseModel.extend({
         urlRoot: function urlRoot() {
           return this.baseUrl + '/organization';
         },
 
+        relations: [{
+          type: Backbone.HasOne,
+          key: 'logo',
+          relatedModel: 'UploadedImageModel',
+          includeInJSON: ['id'],
+          reverseRelation: false
+        }],
         defaults: {
           name: null,
           logo: null
@@ -37832,7 +38145,7 @@ System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', '
     execute: function () {
       Model = BaseUrlBaseModel.extend({
         urlRoot: function urlRoot() {
-          return this.baseUrl + '/organization';
+          return this.baseUrl + '/office';
         },
 
         relations: [{
@@ -38022,7 +38335,7 @@ System.register('lib/common/models/userRoleModel.js', ['lib/globalNamespace.js',
           type: Backbone.HasOne,
           key: 'user',
           relatedModel: 'UserModel',
-          includeInJSON: ['id'],
+          includeInJSON: false,
           reverseRelation: {
             key: 'userRoles',
             includeInJSON: true
@@ -38062,13 +38375,25 @@ System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalName
     }, function (_departmentModelJs) {}, function (_userRoleModelJs) {}],
     execute: function () {
       Model = BaseUrlBaseModel.extend({
+        initialize: function initialize(attrs, options) {
+          var _this = this;
+
+          if (this.id || attrs.id) {
+            (function () {
+              var id = _this.id ? _this.id : attrs.id;
+              var myself = Radio.channel('data').request('myself');
+              if (id == myself.id) {
+                _this.listenTo(_this, 'change', function () {
+                  myself.set(_this.attributes);
+                });
+              }
+            })();
+          }
+        },
         urlRoot: function urlRoot() {
           return this.baseUrl + '/user';
         },
 
-        subModelTypes: {
-          'myself': 'MyselfModel'
-        },
         relations: [{
           type: Backbone.HasOne,
           key: 'organization',
@@ -38100,7 +38425,7 @@ System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalName
           return this.get('userRoles').get(userRole) ? true : false;
         },
         isGrantedRole: function isGrantedRole(role, userAccount, subRole) {
-          var _this = this;
+          var _this2 = this;
 
           var user = userAccount ? userAccount : this;
           if (user.get('userRoles')) {
@@ -38127,7 +38452,7 @@ System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalName
                 return true;
               }
               var roleLookup = subRole ? subRole : userRoleStr;
-              var userGrantedRoles = _this.get('roleHierarchy')[roleLookup];
+              var userGrantedRoles = _this2.get('roleHierarchy')[roleLookup];
               if (userGrantedRoles) {
                 if (userGrantedRoles.indexOf(role) > -1) {
                   return true;
@@ -38140,7 +38465,7 @@ System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalName
                     for (var _iterator = userGrantedRoles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                       var _subRole = _step.value;
 
-                      if (_this.isGrantedRole(role, user, _subRole)) {
+                      if (_this2.isGrantedRole(role, user, _subRole)) {
                         return true;
                       }
                     }
@@ -54832,6 +55157,23 @@ System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handl
         var args = Array.from(arguments);
         args = args.slice(2);
         return typeof fn === 'function' ? fn.apply(context, args) : null;
+      });
+
+      Handlebars.registerHelper('getAspectRatioClass', function (width, height, options) {
+        var ratio = width / height;
+        if (ratio < 1.3) {
+          return 'is-1by1';
+        } else if (ratio < 1.5) {
+          return 'is-4by3';
+        } else if (ratio < 1.7) {
+          return 'is-3by2';
+        } else if (ratio < 2.0) {
+          return 'is-16by9';
+        } else if (ratio < 2.5) {
+          return 'is-2by1';
+        } else {
+          return '';
+        }
       });
 
       Handlebars.registerHelper('baseUrl', function (options) {

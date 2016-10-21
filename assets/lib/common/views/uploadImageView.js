@@ -100,9 +100,11 @@ export default Marionette.View.extend({
   },
   assignImageToModelProperty(image){
     this.model.set(this.options.imageAttributeName, image);
-    this.model.save().then(()=>{
-      Radio.channel('dialog').trigger('close');
-    });
+    if(!this.model.isNew()){
+      this.model.save().then(()=>{
+        Radio.channel('dialog').trigger('close');
+      });
+    }
   },
   cancel(){
     Radio.channel('dialog').trigger('close');

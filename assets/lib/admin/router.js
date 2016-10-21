@@ -40,7 +40,11 @@ export default Marionette.Object.extend({
     'menu_link': 'menuLinks',
     'menu_link/:id': 'menuLinks',
     'admin/menu_link/:id': 'menuLinks',
-    'admin_inventory': 'parts',
+    'admin_inventory': 'skus',
+    'admin_inventory/sku': 'skus',
+    'admin_inventory/sku/:id': 'skus',
+    'sku': 'skus',
+    'sku/:id': 'skus',
     'admin_inventory/part': 'parts',
     'admin_inventory/part/:id': 'parts',
     'part': 'parts',
@@ -53,6 +57,14 @@ export default Marionette.Object.extend({
     'admin_inventory/part_group/:id': 'partGroups',
     'part_group': 'partGroups',
     'part_group/:id': 'partGroups',
+    'admin_inventory/commodity': 'commodities',
+    'admin_inventory/commodity/:id': 'commodities',
+    'commodity': 'commodities',
+    'commodity/:id': 'commodities',
+    'admin_inventory/unit_type': 'unitTypes',
+    'admin_inventory/unit_type/:id': 'unitTypes',
+    'unit_type': 'unitTypes',
+    'unit_type/:id': 'unitTypes',
     'admin_inventory/bin_type': 'binTypes',
     'admin_inventory/bin_type/:id': 'binTypes',
     'bin_type': 'binTypes',
@@ -132,6 +144,14 @@ export default Marionette.Object.extend({
       controller.menuLinks(id);
     });
   },
+  skus(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.skus(id);
+    });
+  },
   parts(id){
     Radio.channel('app').trigger('request:started');
     System.import('lib/admin/controller.js').then((controllerModule)=>{
@@ -154,6 +174,22 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.partGroups(id);
+    });
+  },
+  commodities(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.commodities(id);
+    });
+  },
+  unitTypes(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.unitTypes(id);
     });
   },
   binTypes(id){

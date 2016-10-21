@@ -26,15 +26,6 @@ let Model = BaseUrlBaseModel.extend({
     }
   },{
     type: Backbone.HasOne,
-    key: 'outboundOrder',
-    relatedModel: 'OutboundOrderModel',
-    includeInJSON: ['id'],
-    reverseRelation: {
-      key: 'travelerIds',
-      includeInJSON: ['id'],
-    }
-  },{
-    type: Backbone.HasOne,
     key: 'bin',
     relatedModel: 'BinModel',
     includeInJSON: ['id'],
@@ -44,20 +35,17 @@ let Model = BaseUrlBaseModel.extend({
     }
   },{
     type: Backbone.HasOne,
-    key: 'part',
-    relatedModel: 'PartModel',
+    key: 'sku',
+    relatedModel: 'SkuModel',
     includeInJSON: ['id'],
   }],
   defaults: {
     inboundOrder: null,
-    outboundOrder: null,
     label: null,
-    serial: null,
     bin: null,
-    part: null,
+    sku: null,
     isVoid: null,
     cost: null,
-    revenue: null,
   },
   triggerIsSelectedChangeOnRadio(){
     Radio.channel('inventory').trigger('change:isSelected:travelerId', this);
@@ -68,24 +56,16 @@ let Model = BaseUrlBaseModel.extend({
         title: 'Inbound Order',
         type: 'select'
       },
-      outboundOrder: {
-        title: 'Outbound Order',
-        type: 'select'
-      },
       label: {
         title: 'Label',
-        type: 'text'
-      },
-      serial: {
-        title: 'Serial',
         type: 'text'
       },
       bin: {
         title: 'Bin',
         type: 'select'
       },
-      part: {
-        title: 'Part',
+      sku: {
+        title: 'SKU',
         type: 'select'
       },
       isVoid: {
@@ -94,10 +74,6 @@ let Model = BaseUrlBaseModel.extend({
       },
       cost: {
         title: 'Cost',
-        type: 'text'
-      },
-      revenue: {
-        title: 'Revenue',
         type: 'text'
       },
     };

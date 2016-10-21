@@ -13,9 +13,6 @@ export default Marionette.View.extend({
   events:{
     'click @ui.removeButton': 'remove'
   },
-  onRender(){
-    debugger;
-  },
   remove(event){
     event.preventDefault();
     if(this.ui.removeButton.data('confirm')){

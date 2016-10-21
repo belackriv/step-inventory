@@ -122,6 +122,6 @@ Class Department
 
     public function isOwnedByOrganization(Organization $organization)
     {
-        return ( $this->getOffice()->isOwnedByOrganization($organization) );
+        return ( $this->getOffice() and $this->getOffice()->isOwnedByOrganization($organization) );
     }
 }

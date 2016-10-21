@@ -11,9 +11,8 @@ import RemoteSearchSelect2Behavior from 'lib/common/behaviors/remoteSearchSelect
 import viewTpl from './inventoryTravelerIdMassEditActionView.hbs!';
 
 import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
-import OutboundOrderCollection from 'lib/accounting/models/outboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
-import PartCollection from '../models/partCollection.js';
+import SkuCollection from '../models/skuCollection.js';
 
 import TravelerIdModel from '../models/travelerIdModel.js';
 import MassTravelerIdModel from '../models/massTravelerIdModel.js';
@@ -42,24 +41,18 @@ export default Marionette.View.extend({
   select2Options:{
     inboundOrder:{
       collection: InboundOrderCollection,
-      url: InboundOrderCollection.prototype.url(),
-      search: 'label',
-      textProperty: 'label'
-    },
-    outboundOrder:{
-      collection: OutboundOrderCollection,
-      url: OutboundOrderCollection.prototype.url(),
+      url: InboundOrderCollection.prototype.selectOptionsUrl,
       search: 'label',
       textProperty: 'label'
     },
     bin:{
       collection: BinCollection,
-      url: BinCollection.prototype.url(),
+      url: BinCollection.prototype.selectOptionsUrl,
       search: 'name'
     },
-    part:{
-      collection: PartCollection,
-      url: PartCollection.prototype.url(),
+    sku:{
+      collection: SkuCollection,
+      url: SkuCollection.prototype.selectOptionsUrl,
       search: 'name'
     }
   },

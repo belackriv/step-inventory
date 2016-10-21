@@ -120,8 +120,8 @@ Class InventoryTravelerIdEdit
 	public function isOwnedByOrganization(Organization $organization)
     {
         return (
-        	$this->getByUser()->isOwnedByOrganization($organization) and
-			$this->getTravelerId()->isOwnedByOrganization($organization)
+        	$this->getByUser() and $this->getByUser()->isOwnedByOrganization($organization) and
+			$this->getTravelerId() and $this->getTravelerId()->isOwnedByOrganization($organization)
 		);
     }
 

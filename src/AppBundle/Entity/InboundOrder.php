@@ -138,12 +138,20 @@ Class InboundOrder
     public function removeTravelerId(TravelerId $travelerId)
     {
         $this->travelerIds->removeElement($travelerId);
-        $travelerId->setInboundOrder(null);
         $this->travelerIds = new ArrayCollection(array_values($this->travelerIds->toArray()));
     }
 
     public function isOwnedByOrganization(Organization $organization)
     {
-        return ( $this->getClient()->isOwnedByOrganization($organization) );
+        return ( $this->getClient() and $this->getClient()->isOwnedByOrganization($organization) );
     }
+
+    public function getSelectOptionData()
+	{
+		return [
+			'id' => $this->id,
+			'label' => $this->label,
+			'isVoid' => $this->isVoid
+		];
+	}
 }

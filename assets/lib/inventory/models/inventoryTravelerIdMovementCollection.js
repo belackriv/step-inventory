@@ -9,7 +9,4 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/inventory_tid_movement';
   },
-  parse(response){
-    return response.list;
-  }
 });

@@ -6,19 +6,9 @@
 			<option>Select a Inbound Order...</option>
   		</select>
 	</p>
-	<label class="label">Outbound Order</label>
-	<p class="control">
-  		<select name="outboundOrder">
-  			<option>Select a Outbound Order...</option>
-  		</select>
-	</p>
 	<label class="label">Label</label>
 	<p class="control">
   		<input class="input" name="label" type="text" placeholder="Enter Label" />
-	</p>
-	<label class="label">Serial</label>
-	<p class="control">
-  		<input class="input" name="serial" type="text" placeholder="Enter Serial" />
 	</p>
 	<label class="label">Bin</label>
 	<p class="control">
@@ -26,10 +16,10 @@
   			<option>Select a bin...</option>
   		</select>
 	</p>
-	<label class="label">Part</label>
+	<label class="label">SKU</label>
 	<p class="control">
-  		<select name="part">
-  			<option>Select a part...</option>
+  		<select name="sku">
+  			<option>Select a SKU...</option>
   		</select>
 	</p>
 	<p class="control">
@@ -41,10 +31,6 @@
 	<label class="label">Cost</label>
 	<p class="control">
   		<input class="input" name="cost" type="number" min="0.01" step="0.01" placeholder="Enter Cost" />
-	</p>
-	<label class="label">Revenue</label>
-	<p class="control">
-  		<input class="input" name="revenue" type="number" min="0.01" step="0.01" placeholder="Enter Cost" />
 	</p>
 	<p class="control">
 		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>

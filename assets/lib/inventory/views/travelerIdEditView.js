@@ -9,9 +9,8 @@ import Marionette from 'marionette';
 import viewTpl from  "./travelerIdEditView.hbs!";
 
 import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
-import OutboundOrderCollection from 'lib/accounting/models/outboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
-import PartCollection from '../models/partCollection.js';
+import SkuCollection from '../models/skuCollection.js';
 
 
 export default Marionette.View.extend({
@@ -29,17 +28,12 @@ export default Marionette.View.extend({
         search: 'label',
         textProperty: 'label'
       },
-      outboundOrder:{
-        url: OutboundOrderCollection.prototype.url(),
-        search: 'label',
-        textProperty: 'label'
-      },
       bin:{
         url: BinCollection.prototype.url(),
         search: 'name'
       },
-      part:{
-        url: PartCollection.prototype.url(),
+      sku:{
+        url: SkuCollection.prototype.url(),
         search: 'name'
       }
     },
@@ -49,21 +43,17 @@ export default Marionette.View.extend({
     'serialInput': 'input[name="serial"]',
     'isVoidInput': 'input[name="isVoid"]',
     'costInput': 'input[name="cost"]',
-    'revenueInput': 'input[name="revenue"]',
     'inboundOrderSelect' : 'select[name="inboundOrder"]',
-    'outboundOrderSelect' : 'select[name="outboundOrder"]',
     'binSelect' : 'select[name="bin"]',
-    'partSelect' : 'select[name="part"]',
+    'skuSelect' : 'select[name="sku"]',
     'saveButton': 'button[data-ui-name=save]',
     'cancelButton': 'button[data-ui-name=cancel]',
     'deleteButton': 'button[data-ui-name=delete]',
   },
   bindings: {
     '@ui.labelInput': 'label',
-    '@ui.serialInput': 'serial',
     '@ui.isVoidInput': 'isVoid',
     '@ui.costInput': 'cost',
-    '@ui.revenueInput': 'revenue',
   },
   save(event){
     this.disableFormButtons();
@@ -81,9 +71,8 @@ export default Marionette.View.extend({
     let attr = Syphon.serialize(this);
     let setAttr = {
       inboundOrder: InboundOrderCollection,
-      outboundOrder: OutboundOrderCollection,
       bin: BinCollection,
-      part: PartCollection,
+      sku: SkuCollection,
     };
     _.each(setAttr, (Collection, attributeName)=>{
       if(parseInt(attr[attributeName])){

@@ -9,7 +9,4 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/inventory_movement_rule';
   },
-  parse(response){
-    return response.list;
-  }
 });

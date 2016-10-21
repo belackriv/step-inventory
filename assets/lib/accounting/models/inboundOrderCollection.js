@@ -9,4 +9,5 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/inbound_order';
   },
+  selectOptionsUrl: '/select_options/inbound_order',
 });

@@ -9,7 +9,4 @@ export default BaseUrlBaseCollection.extend({
   url(){
     return this.baseUrl+'/part_group';
   },
-  parse(response){
-    return response.list;
-  }
 });

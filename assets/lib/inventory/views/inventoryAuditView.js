@@ -7,11 +7,11 @@ import Radio from 'backbone.radio';
 
 import viewTpl from './inventoryAuditView.hbs!';
 import InventoryTravelerIdAuditListView from './inventoryTravelerIdAuditListView.js';
-import InventoryPartAuditListView from './inventoryPartAuditListView.js';
-import InventoryPartAuditView from './inventoryPartAuditView.js';
+import InventorySkuAuditListView from './inventorySkuAuditListView.js';
+import InventorySkuAuditView from './inventorySkuAuditView.js';
 
 import InventoryTravelerIdAuditModel from '../models/inventoryTravelerIdAuditModel.js';
-import InventoryPartAuditModel from '../models/inventoryPartAuditModel.js';
+import InventorySkuAuditModel from '../models/inventorySkuAuditModel.js';
 
 export default Marionette.View.extend({
   template: viewTpl,
@@ -20,8 +20,8 @@ export default Marionette.View.extend({
       el: 'table[data-ui="travelerIdListTable"] > tbody',
       replaceElement: true
     },
-    partAudits: {
-      el: 'table[data-ui="partListTable"] > tbody',
+    skuAudits: {
+      el: 'table[data-ui="skuListTable"] > tbody',
       replaceElement: true
     }
   },
@@ -29,19 +29,19 @@ export default Marionette.View.extend({
     'travelerIdLabelInput': 'input[name="travelerIdLabel"]',
     'addTravelerIdAuditButton': 'button[name="addTravelerId"]',
     'travelerIdLabelForm': 'form[data-ui="travelerIdLabelForm"]',
-    'addPartAuditButton': 'button[name="addPartAudit"]',
+    'addSkuAuditButton': 'button[name="addSkuAudit"]',
     'endButton': 'button[name="end"]',
   },
   events: {
     'click @ui.addTravelerIdAuditButton': 'addTravelerId',
     'submit @ui.travelerIdLabelForm': 'addTravelerId',
-    'click @ui.addPartAuditButton': 'addPartAudit',
+    'click @ui.addSkuAuditButton': 'addSkuAudit',
     'click @ui.endButton': 'end',
   },
   onRender(){
     Radio.channel('app').trigger('navigate', this.model.url(), {trigger:false});
     this.showTravelerIdAuditList();
-    this.showPartAuditList();
+    this.showSkuAuditList();
   },
   showTravelerIdAuditList(){
     let travelerIdAuditListView = new InventoryTravelerIdAuditListView({
@@ -49,11 +49,11 @@ export default Marionette.View.extend({
     });
     this.showChildView('travelerIdAudits', travelerIdAuditListView);
   },
-  showPartAuditList(){
-    let partAuditListView = new InventoryPartAuditListView({
-      collection: this.model.get('inventoryPartAudits')
+  showSkuAuditList(){
+    let skuAuditListView = new InventorySkuAuditListView({
+      collection: this.model.get('inventorySkuAudits')
     });
-    this.showChildView('partAudits', partAuditListView);
+    this.showChildView('skuAudits', skuAuditListView);
   },
   addTravelerId(event){
     event.preventDefault();
@@ -64,17 +64,17 @@ export default Marionette.View.extend({
       travelerIdLabel: travelerIdLabel
     }).save();
   },
-  addPartAudit(event){
+  addSkuAudit(event){
     event.preventDefault();
     var options = {
-      title: 'Add Part Count',
+      title: 'Add Sku Count',
       width: '400px'
     };
-    let inventoryPartAudit = new InventoryPartAuditModel({
+    let inventorySkuAudit = new InventorySkuAuditModel({
       inventoryAudit: this.model
     });
-    let view = new InventoryPartAuditView({
-      model: inventoryPartAudit
+    let view = new InventorySkuAuditView({
+      model: inventorySkuAudit
     });
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);

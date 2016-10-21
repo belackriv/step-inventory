@@ -22,7 +22,7 @@ let Model = BaseUrlBaseModel.extend({
     customer: null,
     description: null,
     isVoid: false,
-    travelerIds: null,
+    salesItems: null,
   },
 });
 

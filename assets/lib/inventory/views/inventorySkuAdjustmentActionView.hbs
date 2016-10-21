@@ -1,0 +1,22 @@
+<form>
+	<label class="label">Bin</label>
+	<p class="control">
+  		{{forBin.attributes.name}}
+	</p>
+	<label class="label">SKU</label>
+	<p class="control">
+  		{{sku.attributes.name}}
+	</p>
+	<label class="label">Old Count</label>
+	<p class="control">
+  		{{oldCount}}
+	</p>
+	<label class="label">New Count</label>
+	<p class="control">
+		<input class="input" name="newCount" type="number" placeholder="Enter New Count">
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

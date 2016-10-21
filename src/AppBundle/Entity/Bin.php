@@ -32,7 +32,7 @@ Class Bin
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64, unique=true)
+	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
      */
 	protected $name = null;
@@ -205,16 +205,33 @@ Class Bin
 	}
 
 	/**
-     * @ORM\OneToMany(targetEntity="BinPartCount", mappedBy="bin")
-     * @JMS\Type("ArrayCollection<AppBundle\Entity\BinPartCount>")
-     * @JMS\Groups({"BinPartCount"})
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isLocked = null;
+
+	public function getIsLocked()
+	{
+		return $this->isLocked;
+	}
+
+	public function setIsLocked($isLocked)
+	{
+		$this->isLocked = $isLocked;
+		return $this;
+	}
+
+	/**
+     * @ORM\OneToMany(targetEntity="BinSkuCount", mappedBy="bin")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\BinSkuCount>")
+     * @JMS\Groups({"BinSkuCount"})
      * @JMS\ReadOnly
      */
-    protected $partCounts;
+    protected $skuCounts;
 
-    public function getPartCounts()
+    public function getSkuCounts()
     {
-    	return $this->partCounts;
+    	return $this->skuCounts;
     }
 
     /**
@@ -232,11 +249,26 @@ Class Bin
 
     public function isOwnedByOrganization(Organization $organization)
 	{
+		if(!$this->getBinType()){
+			throw new \Exception("Bins must Have a Bin Type");
+		}
+		if(!$this->getDepartment()){
+			throw new \Exception("Bins must Have a Department");
+		}
 		return (
-			$this->getBinType()->isOwnedByOrganization($organization) and
-			$this->getDepartment()->isOwnedByOrganization($organization) and
+			$this->getBinType() and $this->getBinType()->isOwnedByOrganization($organization) and
+			$this->getDepartment() and $this->getDepartment()->isOwnedByOrganization($organization) and
 			(!$this->getPartCategory() or $this->getPartCategory()->isOwnedByOrganization($organization) ) and
 			(!$this->getParent() or $this->getParent()->isOwnedByOrganization($organization) )
 		);
+	}
+
+	public function getSelectOptionData()
+	{
+		return [
+			'id' => $this->id,
+			'name' => $this->name,
+			'isActive' => $this->isActive
+		];
 	}
 }

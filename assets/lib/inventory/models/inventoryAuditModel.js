@@ -7,7 +7,7 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import 'lib/common/models/userModel.js';
 import './binModel.js';
-import './inventoryPartAuditModel.js';
+import './inventorySkuAuditModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
@@ -34,8 +34,8 @@ let Model = BaseUrlBaseModel.extend({
     }
   },{
     type: Backbone.HasMany,
-    key: 'inventoryPartAudits',
-    relatedModel: 'InventoryPartAuditModel',
+    key: 'inventorySkuAudits',
+    relatedModel: 'InventorySkuAuditModel',
     includeInJSON: ['id'],
     reverseRelation:{
       key: 'inventoryAudit',
@@ -52,7 +52,7 @@ let Model = BaseUrlBaseModel.extend({
     travelerIdMatchDeviations: null,
     partCountDeviations: null,
     inventoryTravelerIdAudits: null,
-    inventoryPartAudits: null,
+    inventorySkuAudits: null,
   },
 
 });

@@ -80,12 +80,13 @@ class AuditInventoryRestController extends FOSRestController
      */
     public function createInventoryAuditAction(\AppBundle\Entity\InventoryAudit $inventoryAudit)
     {
+        $inventoryAudit->setByUser($this->getUser());
         if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryAudit) and
             $inventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
             $em = $this->getDoctrine()->getManager();
-            $inventoryAudit->setByUser($this->getUser());
             $inventoryAudit->setStartedAt(new \DateTime());
+            $inventoryAudit->getForBin()->setIsLocked(true);
             $em->persist($inventoryAudit);
             $em->flush();
             $this->updateAclByRoles($inventoryAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
@@ -109,10 +110,12 @@ class AuditInventoryRestController extends FOSRestController
             if( $inventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization()) and
                 $liveInventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization())
             ){
+                $liveIsCompleted = $liveInventoryAudit->getIsCompleted();
                 $em->merge($inventoryAudit);
                 $inventoryMovements = [];
-                if($inventoryAudit->getEndedAt()){
+                if($inventoryAudit->getEndedAt() and $liveIsCompleted === false){
                     $deviationBin = $this->getDoctrine()->getRepository('AppBundle:Bin')->findDeviationBin($inventoryAudit->getForBin());
+                    $inventoryAudit->getForBin()->setIsLocked(false);
                     if(!$deviationBin){
                         throw new HttpException(Response::HTTP_CONFLICT, 'The Required Deviation Bin Was Not Found!' );
                     }
@@ -137,77 +140,77 @@ class AuditInventoryRestController extends FOSRestController
     }
 
     /**
-     * @Rest\Post("/inventory_part_audit")
+     * @Rest\Post("/inventory_sku_audit")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("inventoryPartAudit", converter="fos_rest.request_body")
+     * @ParamConverter("inventorySkuAudit", converter="fos_rest.request_body")
      */
-    public function createInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
+    public function createInventorySkuAuditAction(\AppBundle\Entity\InventorySkuAudit $inventorySkuAudit)
     {
-        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryPartAudit) and
-            $inventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventorySkuAudit) and
+            $inventorySkuAudit->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
             try{
-                $inventoryPartAudit->isValid($this->getUser());
+                $inventorySkuAudit->isValid($this->getUser());
             }catch(\Exception $e){
                 throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
             }
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($inventoryPartAudit);
-            $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+            $em->persist($inventorySkuAudit);
+            $binSkuCount = $binSkuCount = $this->getDoctrine()->getRepository('AppBundle:BinSkuCount')
                 ->findOneBy([
-                    'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
-                    'part' => $inventoryPartAudit->getPart()
+                    'bin' => $inventorySkuAudit->getInventoryAudit()->getForBin(),
+                    'sku' => $inventorySkuAudit->getSku()
                 ]);
-            if(!$binPartCount){
-                $inventoryPartAudit->setSystemCount(0);
+            if(!$binSkuCount){
+                $inventorySkuAudit->setSystemCount(0);
             }else{
-                $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+                $inventorySkuAudit->setSystemCount($binSkuCount->getCount()) ;
             }
 
             $em->flush();
-            $this->updateAclByRoles($inventoryPartAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
-            return $inventoryPartAudit;
+            $this->updateAclByRoles($inventorySkuAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventorySkuAudit;
         }else{
             throw $this->createAccessDeniedException();
         }
     }
 
      /**
-     * @Rest\Put("/inventory_part_audit/{id}")
+     * @Rest\Put("/inventory_sku_audit/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
-     * @ParamConverter("inventoryPartAudit", converter="fos_rest.request_body")
+     * @ParamConverter("inventorySkuAudit", converter="fos_rest.request_body")
      */
-    public function updateInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
+    public function updateInventorySkuAuditAction(\AppBundle\Entity\InventorySkuAudit $inventorySkuAudit)
     {
-        if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryPartAudit)){
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $inventorySkuAudit)){
             $em = $this->getDoctrine()->getManager();
-            $em->detach($inventoryPartAudit);
-            $liveInventoryPartAudit = $this->getDoctrine()->getRepository('AppBundle:InventoryPartAudit')->findOneById($inventoryPartAudit->getId());
-            if( $inventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization()) and
-                $liveInventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+            $em->detach($inventorySkuAudit);
+            $liveInventorySkuAudit = $this->getDoctrine()->getRepository('AppBundle:InventorySkuAudit')->findOneById($inventorySkuAudit->getId());
+            if( $inventorySkuAudit->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveInventorySkuAudit->isOwnedByOrganization($this->getUser()->getOrganization())
             ){
                 try{
-                    $inventoryPartAudit->isValid($this->getUser());
+                    $inventorySkuAudit->isValid($this->getUser());
                 }catch(\Exception $e){
                     throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
                 }
 
                 $em = $this->getDoctrine()->getManager();
-                $em->merge($inventoryPartAudit);
-                $binPartCount = $binPartCount = $this->getDoctrine()->getRepository('AppBundle:BinPartCount')
+                $em->merge($inventorySkuAudit);
+                $binSkuCount = $binSkuCount = $this->getDoctrine()->getRepository('AppBundle:BinSkuCount')
                     ->findOneBy([
-                        'bin' => $inventoryPartAudit->getInventoryAudit()->getForBin(),
-                        'part' => $inventoryPartAudit->getPart()
+                        'bin' => $inventorySkuAudit->getInventoryAudit()->getForBin(),
+                        'sku' => $inventorySkuAudit->getSku()
                     ]);
-                if(!$binPartCount){
-                    $inventoryPartAudit->setSystemCount(0);
+                if(!$binSkuCount){
+                    $inventorySkuAudit->setSystemCount(0);
                 }else{
-                    $inventoryPartAudit->setSystemCount($binPartCount->getCount()) ;
+                    $inventorySkuAudit->setSystemCount($binSkuCount->getCount()) ;
                 }
 
                 $em->flush();
-                return $inventoryPartAudit;
+                return $inventorySkuAudit;
             }else{
                 throw $this->createAccessDeniedException();
             }
@@ -217,18 +220,18 @@ class AuditInventoryRestController extends FOSRestController
     }
 
     /**
-     * @Rest\Delete("/inventory_part_audit/{id}")
+     * @Rest\Delete("/inventory_sku_audit/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function deleteInventoryPartAuditAction(\AppBundle\Entity\InventoryPartAudit $inventoryPartAudit)
+    public function deleteInventorySkuAuditAction(\AppBundle\Entity\InventorySkuAudit $inventorySkuAudit)
     {
-        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inventoryPartAudit) and
-            $inventoryPartAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inventorySkuAudit) and
+            $inventorySkuAudit->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
             $em = $this->getDoctrine()->getManager();
-            $em->remove($inventoryPartAudit);
+            $em->remove($inventorySkuAudit);
             $em->flush();
-            return $inventoryPartAudit;
+            return $inventorySkuAudit;
         }else{
             throw $this->createAccessDeniedException();
         }

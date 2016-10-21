@@ -28,7 +28,11 @@ export default Marionette.Behavior.extend({
     });
   },
   setupSelect2(ui, options){
+    let allowClear = options.allowClear?options.allowClear:false;
+    let placeholder = options.placeholder?options.placeholder:'';
     ui.select2({
+      allowClear: allowClear,
+      placeholder: placeholder,
       selectOnClose: true,
       minimumInputLength: 3,
       dropdownAutoWidth : true,

@@ -1,2 +1,8 @@
-<td>{{travelerId.attributes.label}}</td>
+<td>
+	{{#if id }}
+		{{travelerId.attributes.label}}
+	{{else}}
+		<span class="icon"><span class="fa fa-spinner fa-pulse"></span></span>
+	{{/if}}
+</td>
 <td><button class="button is-danger" name="remove">Remove</button></td>
