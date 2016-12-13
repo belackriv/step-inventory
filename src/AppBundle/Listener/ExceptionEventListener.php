@@ -20,10 +20,7 @@ class ExceptionEventListener
 
     public function handleKernelException(GetResponseForExceptionEvent $event)
     {
-        if( !$this->container->get('security.authorization_checker')->isGranted('ROLE_DEV') and
-            $this->container->get('kernel')->getEnvironment() !== 'dev'
-        ){
-
+        if($this->container->get('kernel')->getEnvironment() !== 'dev'){
             $exception = FlattenException::create($event->getException());
 
             // First, log the exception to the standard error logs.

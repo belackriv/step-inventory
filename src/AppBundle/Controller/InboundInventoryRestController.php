@@ -22,9 +22,11 @@ class InboundInventoryRestController extends FOSRestController
     use Mixin\UpdateAclMixin;
     use Mixin\WampUpdatePusher;
     use Mixin\TravelerIdLogMixin;
+    use Mixin\TravelerIdTransformMixin;
 
     /**
      * @Rest\Get("/tid")
+     * @Rest\Get("/inventory_action")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listTravelerIdAction(Request $request)
@@ -37,6 +39,7 @@ class InboundInventoryRestController extends FOSRestController
             ->join('tid.inboundOrder', 'o')
             ->join('o.client', 'c')
             ->where('c.organization = :org')
+            //->andWhere('tid.transform IS NULL')
             ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
@@ -120,10 +123,10 @@ class InboundInventoryRestController extends FOSRestController
                 $em->merge($travelerId);
                 $em->flush();
                 if($edit){
-                    $this->updateAclByRoles($edit, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                    $this->updateAclByRoles($edit, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
                 }
                 if($move){
-                    $this->updateAclByRoles($move, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                    $this->updateAclByRoles($move, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
                 }
                 return $travelerId;
             }else{
@@ -159,10 +162,10 @@ class InboundInventoryRestController extends FOSRestController
                     $this->patchEntity($liveTravelerId, $travelerId);
                     $em->flush();
                     if($edit){
-                        $this->updateAclByRoles($edit, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                        $this->updateAclByRoles($edit, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
                     }
                     if($move){
-                        $this->updateAclByRoles($move, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+                        $this->updateAclByRoles($move, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
                     }
                     return $travelerId;
                 }else{
@@ -233,31 +236,59 @@ class InboundInventoryRestController extends FOSRestController
         ini_set('memory_limit','1024M');
         $em = $this->getDoctrine()->getManager();
         $travelerIdLogEntities = [];
+        $transformEntities = [];
         foreach($massTravelerId->getTravelerIds() as $travelerId){
             if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
                 $em->detach($travelerId);
                 $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($travelerId->getId());
-                if( $travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) and
-                    $liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())
+                if( !$travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) or
+                    !$liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())
                 ){
-                    $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
-                    $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
-                    if($edit){
-                        $travelerIdLogEntities[] = $edit;
-                    }
-                    if($move){
-                        $travelerIdLogEntities[] = $move;
-                    }
-                    $em->merge($travelerId);
-                }else{
                     throw $this->createAccessDeniedException();
                 }
             }else{
                 throw $this->createAccessDeniedException();
             }
         }
+
+        if($massTravelerId->isTransform()){
+            foreach($massTravelerId->getTravelerIds() as $travelerId){
+                list($newTransformEntities, $transform, $mergedTravelerId) = $this->createTransformEntities($travelerId);
+                if(!in_array($transform, $travelerIdLogEntities)){
+                    $travelerIdLogEntities[] = $transform;
+                }
+                foreach($newTransformEntities as $newTransformEntity){
+                    if(!in_array($newTransformEntity, $transformEntities)){
+                        $transformEntities[] = $newTransformEntity;
+                    }
+                }
+                $massTravelerId->getTravelerIds()->removeElement($travelerId);
+                $massTravelerId->getTravelerIds()->add($mergedTravelerId);
+            }
+        }else{
+            foreach($massTravelerId->getTravelerIds() as $travelerId){
+                $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
+                $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
+                if($edit){
+                    $travelerIdLogEntities[] = $edit;
+                }
+                if($move){
+                    $travelerIdLogEntities[] = $move;
+                }
+                $massTravelerId->getTravelerIds()->removeElement($travelerId);
+                $mergedTravelerId = $em->merge($travelerId);
+                $massTravelerId->getTravelerIds()->add($mergedTravelerId);
+            }
+        }
+
         $em->flush();
+
+
         foreach($travelerIdLogEntities as $logEntity){
+            $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
+        }
+
+        foreach($transformEntities as $logEntity){
             $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
         }
         return $massTravelerId;
@@ -265,6 +296,7 @@ class InboundInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Get("/inventory_tid_edit")
+     * @Rest\Get("/inventory_log")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listInventoryTravelerIdEditAction(Request $request)
@@ -373,6 +405,94 @@ class InboundInventoryRestController extends FOSRestController
             return $inventoryTravelerIdMovement;
         }else{
             throw $this->createNotFoundException('InventoryTravelerIdMovement #'.$inventoryTravelerIdMovement->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_transform")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryTravelerIdTransformAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(itt.id)')
+            ->from('AppBundle:InventoryTravelerIdTransform', 'itt')
+            ->join('itt.fromTravelerId', 'tid')
+            ->join('tid.inboundOrder', 'io')
+            ->join('io.client', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('itt')
+            ->orderBy('itt.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_tid_transform/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryTravelerIdTransformAction(\AppBundle\Entity\InventoryTravelerIdTransform $inventoryTravelerIdTransform)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdTransform) and
+            $inventoryTravelerIdTransform->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $inventoryTravelerIdTransform;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdTransform #'.$inventoryTravelerIdTransform->getId().' Not Found');
+        }
+    }
+
+     /**
+     * @Rest\Get("/inventory_tid_transform/{id}/void")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function voidInventoryTravelerIdTransformAction(\AppBundle\Entity\InventoryTravelerIdTransform $inventoryTravelerIdTransform)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdTransform) and
+            $inventoryTravelerIdTransform->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $inventoryTravelerIdTransform->setIsVoid(true);
+            return $inventoryTravelerIdTransform;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdTransform #'.$inventoryTravelerIdTransform->getId().' Not Found');
+        }
+    }
+
+     /**
+     * @Rest\Get("/inventory_tid_transform/{id}/restore")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function restoreInventoryTravelerIdTransformAction(\AppBundle\Entity\InventoryTravelerIdTransform $inventoryTravelerIdTransform)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryTravelerIdTransform) and
+            $inventoryTravelerIdTransform->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $inventoryTravelerIdTransform->setIsVoid(false);
+            return $inventoryTravelerIdTransform;
+        }else{
+            throw $this->createNotFoundException('InventoryTravelerIdTransform #'.$inventoryTravelerIdTransform->getId().' Not Found');
         }
     }
 

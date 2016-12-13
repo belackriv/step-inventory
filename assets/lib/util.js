@@ -37,7 +37,7 @@ Backbone.ajax = function() {
             },
             401(){
                 // Redirect the to the login page.
-                window.location = '/authentication/sign-in';
+                window.location = '/login';
             },
             403(){
                 // 403 -- Access denied

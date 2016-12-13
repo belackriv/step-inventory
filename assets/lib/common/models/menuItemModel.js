@@ -3,6 +3,7 @@
 import globalNamespace from 'lib/globalNamespace.js';
 import _ from 'underscore';
 import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
@@ -18,7 +19,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/menu_item';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'department',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id'],
@@ -27,12 +28,12 @@ let Model = BaseUrlBaseModel.extend({
       includeInJSON: false,
     }
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'menuLink',
     relatedModel: 'MenuLinkModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasMany,
+    type: BackboneRelational.HasMany,
     key: 'children',
     includeInJSON: ['id'],
     reverseRelation:{

@@ -93,7 +93,6 @@ Class InboundOrder
 		return $this;
 	}
 
-
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
@@ -108,6 +107,23 @@ Class InboundOrder
 	public function setIsVoid($isVoid)
 	{
 		$this->isVoid = $isVoid;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isReceived = false;
+
+	public function getIsReceived()
+	{
+		return $this->isReceived;
+	}
+
+	public function setIsReceived($isReceived)
+	{
+		$this->isReceived = $isReceived;
 		return $this;
 	}
 

@@ -1,7 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 import './organizationModel.js';
@@ -11,7 +11,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/office';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'organization',
     relatedModel: 'OrganizationModel',
     includeInJSON: ['id'],

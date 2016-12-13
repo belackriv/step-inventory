@@ -31,11 +31,10 @@ Class SalesItem
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="OutboundOrder", inversedBy="travelerIds")
-	 * @ORM\JoinColumn(nullable=false)
+	 * @ORM\ManyToOne(targetEntity="OutboundOrder", inversedBy="salesItems")
+	 * @ORM\JoinColumn(nullable=true)
 	 * @JMS\Type("AppBundle\Entity\OutboundOrder")
 	 */
-
 	protected $outboundOrder = null;
 
 	public function getOutboundOrder()
@@ -45,11 +44,23 @@ Class SalesItem
 
 	public function setOutboundOrder(OutboundOrder $outboundOrder = null)
 	{
-		$this->outboundOrder = $outboundOrder;
-		$outboundOrder->addSalesItem($this);
+		if($outboundOrder){
+			$this->outboundOrder = $outboundOrder;
+			$outboundOrder->addSalesItem($this);
+		}else{
+			if($this->outboundOrder and !$this->getSalesItems()->contains($this)){
+				$this->outboundOrder->removeSalesItem($this);
+			}
+			$this->outboundOrder = $outboundOrder;
+		}
 		return $this;
 	}
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="travelerIds")
+	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Type("AppBundle\Entity\Bin")
+	 */
 	protected $bin = null;
 
 	public function getBin()
@@ -68,7 +79,6 @@ Class SalesItem
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Sku")
 	 */
-
 	protected $sku = null;
 
 	public function getSku()
@@ -100,6 +110,23 @@ Class SalesItem
 	}
 
 	/**
+	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=false)
+	 * @JMS\Type("string")
+	 */
+	protected $quantity;
+
+	public function getQuantity()
+	{
+		return $this->quantity;
+	}
+
+	public function setQuantity($quantity)
+	{
+		$this->quantity = $quantity;
+		return $this;
+	}
+
+	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
 	 * @JMS\Type("string")
 	 */
@@ -116,7 +143,34 @@ Class SalesItem
 		return $this;
 	}
 
-	 /**
+	/**
+	 * @ORM\ManyToOne(targetEntity="InventoryTravelerIdTransform", inversedBy="toSalesItems")
+	 * @ORM\JoinColumn(nullable=true)
+	 * @JMS\Type("AppBundle\Entity\InventoryTravelerIdTransform")
+	 */
+	protected $reverseTransform = null;
+
+	public function getReverseTransform()
+	{
+		return $this->reverseTransform;
+	}
+
+	public function setReverseTransform(InventoryTravelerIdTransform $transform = null)
+	{
+		if($transform and !$transform->getToSalesItems()->contains($this)){
+			$this->reverseTransform = $transform;
+			$transform->addToSalesItem($this);
+		}else if(	$transform === null and $this->reverseTransform and
+					$this->reverseTransform->getToSalesItems()->contains($this)){
+			$this->reverseTransform->removeToSalesItem($this);
+			$this->reverseTransform = $transform;
+		}else{
+			$this->reverseTransform = $transform;
+		}
+		return $this;
+	}
+
+	/**
      * @ORM\PrePersist
      */
     public function onCreate()
@@ -129,9 +183,18 @@ Class SalesItem
     public function isOwnedByOrganization(Organization $organization)
     {
         return (
-        	$this->getOutboundOrder() and $this->getOutboundOrder()->isOwnedByOrganization($organization) and
+        	(!$this->getOutboundOrder() or $this->getOutboundOrder()->isOwnedByOrganization($organization)) and
 			$this->getBin() and $this->getBin()->isOwnedByOrganization($organization) and
 			$this->getSku() and $this->getSku()->isOwnedByOrganization($organization)
 		);
+    }
+
+    public function assignPropertiesFromDataTransferObject(SalesItemDataTransferObject $dto)
+    {
+    	$this->setOutboundOrder($dto->outboundOrder);
+		$this->setBin($dto->bin);
+		$this->setIsVoid($dto->isVoid);
+		$this->setRevenue($dto->revenue);
+		return $this;
     }
 }

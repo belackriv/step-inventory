@@ -1,24 +1,87 @@
 {
-  "npm:moment@2.13.0": {
+  "npm:moment@2.17.1": {
     "deps": {},
     "peerDeps": {}
   },
-  "npm:jquery@3.1.0": {
+  "npm:jquery@3.1.1": {
     "deps": {},
     "peerDeps": {}
   },
-  "npm:jsbarcode@3.3.23": {
+  "npm:jsbarcode@3.5.6": {
     "deps": {
       "jquery": "npm:jquery"
     },
     "peerDeps": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0"
     }
   },
-  "github:components/jqueryui@1.12.0": {
+  "github:VitalStorm/Backbone-relational@master": {
+    "deps": {},
+    "peerDeps": {
+      "backbone": "npm:backbone@1.2.3"
+    }
+  },
+  "github:VitalStorm/backbone.stickit@master": {
+    "deps": {
+      "backbone": "npm:backbone"
+    },
+    "peerDeps": {}
+  },
+  "npm:moment-timezone@0.5.10": {
+    "deps": {
+      "moment": "npm:moment"
+    },
+    "peerDeps": {}
+  },
+  "npm:underscore@1.8.3": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:backbone.paginator@2.0.5": {
+    "deps": {
+      "underscore": "npm:underscore@^1.8.0",
+      "backbone": "npm:backbone@^1.3.2"
+    },
+    "peerDeps": {}
+  },
+  "npm:bulma@0.2.3": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-child_process@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-assert@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-process@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-fs@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:backbone@1.3.3": {
+    "deps": {
+      "underscore": "npm:underscore"
+    },
+    "peerDeps": {}
+  },
+  "npm:systemjs-plugin-babel@0.0.13": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:moment-duration-format@1.3.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:components/jqueryui@1.12.1": {
     "deps": {
       "jquery": "npm:jquery"
     },
@@ -30,62 +93,11 @@
     },
     "peerDeps": {}
   },
-  "npm:underscore@1.8.3": {
+  "github:marionettejs/backbone.radio@1.0.5": {
     "deps": {},
     "peerDeps": {}
   },
-  "npm:moment-duration-format@1.3.0": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:backbone.paginator@2.0.5": {
-    "deps": {
-      "underscore": "npm:underscore@^1.8.0",
-      "backbone": "npm:backbone@^1.3.2"
-    },
-    "peerDeps": {}
-  },
-  "npm:systemjs-plugin-babel@0.0.13": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:moment-timezone@0.5.4": {
-    "deps": {
-      "moment": "npm:moment"
-    },
-    "peerDeps": {}
-  },
-  "npm:backbone@1.3.3": {
-    "deps": {
-      "underscore": "npm:underscore"
-    },
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.babysitter@0.1.11": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.radio@1.0.4": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:jspm/nodelibs-assert@0.2.0-alpha": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.syphon@0.6.3": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:VitalStorm/Backbone-relational@master": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:marionettejs/backbone.marionette@3.0.0-pre.4": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:components/handlebars.js@4.0.5": {
+  "github:marionettejs/backbone.marionette@3.1.0": {
     "deps": {},
     "peerDeps": {}
   },
@@ -93,17 +105,19 @@
     "deps": {},
     "peerDeps": {}
   },
-  "github:jspm/nodelibs-process@0.2.0-alpha": {
+  "github:marionettejs/backbone.syphon@0.6.3": {
     "deps": {},
     "peerDeps": {}
   },
-  "github:davis/plugin-hbs@1.2.3": {
-    "deps": {
-      "handlebars": "github:components/handlebars.js@^4.0.5"
-    },
+  "github:marionettejs/backbone.wreqr@1.4.0": {
+    "deps": {},
     "peerDeps": {}
   },
-  "github:marionettejs/backbone.wreqr@1.3.6": {
+  "github:systemjs/plugin-css@0.1.32": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "github:marionettejs/backbone.babysitter@0.1.12": {
     "deps": {},
     "peerDeps": {}
   },
@@ -111,24 +125,14 @@
     "deps": {},
     "peerDeps": {}
   },
-  "github:systemjs/plugin-css@0.1.21": {
+  "github:components/handlebars.js@4.0.5": {
     "deps": {},
     "peerDeps": {}
   },
-  "github:jspm/nodelibs-child_process@0.2.0-alpha": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:VitalStorm/backbone.stickit@master": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "github:jspm/nodelibs-fs@0.2.0-alpha": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:bulma@0.2.3": {
-    "deps": {},
+  "github:davis/plugin-hbs@1.2.3": {
+    "deps": {
+      "handlebars": "github:components/handlebars.js@^4.0.5"
+    },
     "peerDeps": {}
   }
 }

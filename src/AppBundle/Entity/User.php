@@ -102,6 +102,14 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public $newPassword;
 
+     /**
+     * @JMS\VirtualProperty
+     */
+     public function isAccountOwner()
+     {
+        return ($this->getOrganization()->getAccount()->getOwner() === $this);
+     }
+
     /**
      * @inheritDoc
      */

@@ -1,8 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import _ from 'underscore';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import 'lib/common/models/userRoleModel.js';
@@ -19,12 +18,12 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/inventory_movement_rule';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'role',
     relatedModel: 'UserRoleModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'binType',
     relatedModel: 'BinTypeModel',
     includeInJSON: ['id'],

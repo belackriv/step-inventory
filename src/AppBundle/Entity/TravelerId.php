@@ -34,7 +34,6 @@ Class TravelerId
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\InboundOrder")
 	 */
-
 	protected $inboundOrder = null;
 
 	public function getInboundOrder()
@@ -85,7 +84,6 @@ Class TravelerId
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
-
 	protected $bin = null;
 
 	public function getBin()
@@ -104,7 +102,6 @@ Class TravelerId
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Sku")
 	 */
-
 	protected $sku = null;
 
 	public function getSku()
@@ -136,6 +133,23 @@ Class TravelerId
 	}
 
 	/**
+	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=false)
+	 * @JMS\Type("string")
+	 */
+	protected $quantity;
+
+	public function getQuantity()
+	{
+		return $this->quantity;
+	}
+
+	public function setQuantity($quantity)
+	{
+		$this->quantity = $quantity;
+		return $this;
+	}
+
+	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
 	 * @JMS\Type("string")
 	 */
@@ -149,6 +163,60 @@ Class TravelerId
 	public function setCost($cost)
 	{
 		$this->cost = $cost;
+		return $this;
+	}
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="InventoryTravelerIdTransform", inversedBy="fromTravelerIds")
+	 * @ORM\JoinColumn(nullable=true)
+	 * @JMS\Type("AppBundle\Entity\InventoryTravelerIdTransform")
+	 */
+	protected $transform = null;
+
+	public function getTransform()
+	{
+		return $this->transform;
+	}
+
+	public function setTransform(InventoryTravelerIdTransform $transform = null)
+	{
+		if($transform and !$transform->getFromTravelerIds()->contains($this)){
+			$this->transform = $transform;
+			$transform->addFromTravelerId($this);
+		}else if(	$transform === null and $this->transform and
+					$this->transform->getFromTravelerIds()->contains($this)){
+			$this->transform->removeFromTravelerId($this);
+			$this->transform = $transform;
+		}else{
+			$this->transform = $transform;
+		}
+		return $this;
+	}
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="InventoryTravelerIdTransform", inversedBy="toTravelerIds")
+	 * @ORM\JoinColumn(nullable=true)
+	 * @JMS\Type("AppBundle\Entity\InventoryTravelerIdTransform")
+	 */
+	protected $reverseTransform = null;
+
+	public function getReverseTransform()
+	{
+		return $this->reverseTransform;
+	}
+
+	public function setReverseTransform(InventoryTravelerIdTransform $transform = null)
+	{
+		if($transform and !$transform->getToTravelerIds()->contains($this)){
+			$this->reverseTransform = $transform;
+			$transform->addToTravelerId($this);
+		}else if(	$transform === null and $this->reverseTransform and
+					$this->reverseTransform->getToTravelerIds()->contains($this)){
+			$this->reverseTransform->removeToTravelerId($this);
+			$this->reverseTransform = $transform;
+		}else{
+			$this->reverseTransform = $transform;
+		}
 		return $this;
 	}
 
@@ -169,5 +237,11 @@ Class TravelerId
 			$this->getBin() and $this->getBin()->isOwnedByOrganization($organization) and
 			$this->getSku() and $this->getSku()->isOwnedByOrganization($organization)
 		);
+    }
+
+
+    public function __toString()
+    {
+    	return (string)$this->label;
     }
 }

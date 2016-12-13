@@ -1,7 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import 'lib/inventory/models/travelerIdModel';
@@ -12,7 +12,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/inbound_order';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'client',
     relatedModel: 'ClientModel',
     includeInJSON: ['id'],
@@ -22,6 +22,7 @@ let Model = BaseUrlBaseModel.extend({
     client: null,
     description: null,
     isVoid: false,
+    isReceived: false,
     travelerIds: null,
   },
 });

@@ -64,6 +64,10 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+#sennsio converters
+sensio_framework_extra:
+    request: { converters: true }
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

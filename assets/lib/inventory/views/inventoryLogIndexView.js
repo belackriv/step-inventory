@@ -1,19 +1,19 @@
 "use strict";
 
 import Marionette from 'marionette';
-import viewTpl from  "./inventoryIndexView.hbs!";
 import Radio from 'backbone.radio';
+import viewTpl from  "./inventoryLogIndexView.hbs!";
 import NavTabsView from 'lib/common/views/navTabsView.js';
-import tabsTpl from './inventoryIndexTabsView.hbs!';
+import tabsTpl from './inventoryLogIndexTabsView.hbs!';
 
 export default Marionette.View.extend({
   template: viewTpl,
   regions: {
     content: "#inventory-content",
-    tabs: "#inventory-tabs"
+    tabs: "#inventory-log-tabs"
   },
   ui: {
-    tabLink: "#inventory-tabs a"
+    tabLink: "#inventory-log-tabs a"
   },
   events: {
     "click @ui.tabLink": "navigate"

@@ -14,10 +14,10 @@ import travelerIdRowTpl from './travelerIdRowTpl.hbs!';
 import InventoryTravelerIdAddActionView from './inventoryTravelerIdAddActionView.js';
 import InventoryTravelerIdMassEditActionView from './inventoryTravelerIdMassEditActionView.js';
 import InventoryTravelerIdMassSelectionActionView from './inventoryTravelerIdMassSelectionActionView.js';
+import InventoryTravelerIdMassTransformActionView from './inventoryTravelerIdMassTransformActionView.js';
 
 import TravelerIdCollection from '../models/travelerIdCollection.js';
 import MassTravelerIdModel from '../models/massTravelerIdModel.js';
-
 
 export default Marionette.View.extend({
   initialize(options){
@@ -31,11 +31,13 @@ export default Marionette.View.extend({
     'addButton': 'button[name="add"]',
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
+    'massTransformButton': 'button[name="massTransform"]',
   },
   events: {
     'click @ui.addButton': 'add',
     'click @ui.massEditButton': 'massEdit',
     'click @ui.massSelectButton': 'massSelect',
+    'click @ui.massTransformButton': 'massTransform',
   },
   childViewEvents: {
     'select:model': 'selectModel',
@@ -50,7 +52,7 @@ export default Marionette.View.extend({
     this.listView = new SearchableListLayoutView({
       collection: travelerIdCollection,
       listLength: 20,
-      searchPath: ['label','serial', 'inboundOrder.label', 'outboundOrder.label', 'bin.name', 'part.name'],
+      searchPath: ['label', 'inboundOrder.label', 'bin.name', 'sku.name', 'sku.number', 'sku.label'],
       useTableView: true,
       usePagination: 'server',
       entityListTableLayoutTpl: travelerIdListTableLayoutTpl,
@@ -85,10 +87,11 @@ export default Marionette.View.extend({
   add(event){
     event.preventDefault();
     var options = {
-      title: 'Add Inventory',
+      title: 'Add TravelerIds',
       width: '400px'
     };
     let massTravelerId = new MassTravelerIdModel();
+    massTravelerId.set('type', 'add');
     let view = new InventoryTravelerIdAddActionView({
       model: massTravelerId
     });
@@ -98,7 +101,7 @@ export default Marionette.View.extend({
   massEdit(event){
     event.preventDefault();
     var options = {
-      title: 'Mass Edit Inventory',
+      title: 'Mass Edit TravelerIds',
       width: '400px'
     };
     let view = new InventoryTravelerIdMassEditActionView();
@@ -108,10 +111,20 @@ export default Marionette.View.extend({
   massSelect(event){
     event.preventDefault();
      var options = {
-      title: 'Mass Select Inventory',
+      title: 'Mass Select TravelerIds',
       width: '400px'
     };
     let view = new InventoryTravelerIdMassSelectionActionView();
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
+  },
+  massTransform(event){
+    event.preventDefault();
+     var options = {
+      title: 'Mass Transform TravelerIds',
+      width: '400px'
+    };
+    let view = new InventoryTravelerIdMassTransformActionView();
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);
   },

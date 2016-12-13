@@ -3,10 +3,17 @@
 <div data-ui="printContainer">
 	<div class="box si-tid-card has-text-centered">
 		<div data-ui-top-label>
-			<p class="has-text-centered">{{serial}}</p>
-			{{#if part}}
-				<p class="has-text-centered">{{part.attributes.name}}</p>
-			{{/if}}
+			<p class="has-text-centered">
+				{{#if unit}}
+					{{unit.attributes.serial}}
+				{{else if part}}
+					{{part.attributes.name}}
+				{{else if commodity}}
+					{{commodity.attributes.name}}
+				{{else if unitType}}
+					{{unitType.attributes.name}}
+				{{/if}}
+			</p>
 		</div>
 		<svg jsbarcode-value="{{label}}"></svg>
 	</div>

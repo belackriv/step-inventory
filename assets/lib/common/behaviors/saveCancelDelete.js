@@ -46,14 +46,14 @@ export default Marionette.Behavior.extend({
     this.previousAttributes = _.clone(this.model.attributes);
   },
   disableFormButtons(){
-    this.ui.saveButton.addClass('is-disabled').prop('disable', true);
-    this.ui.cancelButton.addClass('is-disabled').prop('disable', true);
-    this.ui.deleteButton.addClass('is-disabled').prop('disable', true);
+    this.ui.saveButton.addClass('is-loading').prop('disabled', true);
+    this.ui.cancelButton.addClass('is-disabled').prop('disabled', true);
+    this.ui.deleteButton.addClass('is-disabled').prop('disabled', true);
   },
   enableFormButtons(){
-    this.ui.saveButton.removeClass('is-disabled').prop('disable', false);
-    this.ui.cancelButton.removeClass('is-disabled').prop('disable', false);
-    this.ui.deleteButton.removeClass('is-disabled').prop('disable', false);
+    this.ui.saveButton.removeClass('is-loading').prop('disabled', false);
+    this.ui.cancelButton.removeClass('is-disabled').prop('disabled', false);
+    this.ui.deleteButton.removeClass('is-disabled').prop('disabled', false);
   },
   save(event){
     event.preventDefault();

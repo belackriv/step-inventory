@@ -2,7 +2,7 @@
 
 import globalNamespace from 'lib/globalNamespace.js';
 import _ from 'underscore';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import './skuModel.js';
@@ -12,7 +12,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/bin_sku_count';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'sku',
     relatedModel: 'SkuModel',
     includeInJSON: ['id'],

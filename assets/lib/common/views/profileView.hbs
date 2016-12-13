@@ -1,0 +1,35 @@
+<h2 class="title is-2">Profile</h2>
+<div class="tabs is-centered is-medium">
+	<ul>
+		<li>User Info</li>
+	</ul>
+</div>
+<form data-ui="userInfo">
+	<label class="label">Username:</label>
+	<p class="control">
+		<input name="username" class="input" />
+	</p>
+	<label class="label">Email:</label>
+	<p class="control">
+		<input name="email" class="input" />
+	</p>
+	<label class="label">First Name:</label>
+	<p class="control">
+		<input name="firstName" class="input" />
+	</p>
+	<label class="label">Last Name:</label>
+	<p class="control">
+		<input name="lastName" class="input" />
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="update">Update</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="revert">Revert</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>
+<div data-ui="accountInfoTabs" class="tabs is-centered is-medium">
+	<ul>
+		<li>Account Info</li>
+	</ul>
+</div>
+<div data-region="accountInfo"></div>

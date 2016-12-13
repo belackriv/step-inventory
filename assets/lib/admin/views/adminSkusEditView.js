@@ -16,6 +16,8 @@ export default Marionette.View.extend({
   template: viewTpl,
   behaviors: {
     'Stickit': {},
+    'ShowNotSynced': {},
+    'SetNotSynced': {},
     'SaveCancelDelete': {
       save: 'save'
     },

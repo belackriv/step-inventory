@@ -71,6 +71,8 @@ export default Marionette.View.extend({
     setTimeout(()=>{
       this.editTravelerIds().then(()=>{
         this.enableButtons();
+        Radio.channel('dialog').trigger('close');
+        Radio.channel('inventory').trigger('refresh:list:travelerId');
       }).catch((err)=>{
         this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
         this.enableButtons();
@@ -130,7 +132,8 @@ export default Marionette.View.extend({
         let massTravlerId = MassTravelerIdModel.findOrCreate({
           id: 1
         });
-        massTravlerId.get('travelerIds').add(this.selectedCollection.models);
+        massTravlerId.set('type', 'edit');
+        massTravlerId.get('travelerIds').reset(this.selectedCollection.models);
         massTravlerId.save().done(()=>{
           resolve();
         });

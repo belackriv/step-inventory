@@ -26,3 +26,9 @@
 img.si-org-logo{
 	max-height: 128px !important;
 }
+.si-is-void{
+	color: #ff1f4b;
+}
+.si-has-transform{
+	text-decoration: line-through;
+}

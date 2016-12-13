@@ -1,7 +1,6 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 

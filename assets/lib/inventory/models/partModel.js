@@ -1,7 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import './partCategoryModel.js';
@@ -13,17 +13,17 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/part';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'partCategory',
     relatedModel: 'PartCategoryModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'partGroup',
     relatedModel: 'PartGroupModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'image',
     relatedModel: 'UploadedImageModel',
     includeInJSON: ['id'],

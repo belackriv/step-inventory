@@ -1,0 +1,55 @@
+<form>
+	<label class="label">SKU</label>
+	<p class="control">
+  		<select name="sku"></select>
+	</p>
+	<label class="label">Transform To</label>
+	<p class="control">
+  		<label class="radio">
+	    	<input type="radio" name="target" value="travelerId" />
+    		Traveler Id
+	  	</label>
+	  	<label class="radio">
+		    <input type="radio" name="target" value="salesItem" />
+	    	Sales Item
+	  	</label>
+	</p>
+	<label class="label">Quantity</label>
+	<p class="control">
+		<input class="input" name="quantity" type="number" placeholder="Enter Quantity" />
+		<span class="help is-info">SKU per Target</span>
+	</p>
+	<label class="label">Transform Type</label>
+	<p class="control">
+  		<label class="radio">
+	    	<input type="radio" name="type" value="oneToOne" checked />
+    		One To One
+	  	</label>
+	  	<label class="radio">
+		    <input type="radio" name="type" value="breakdown" />
+	    	Breakdown
+	  	</label>
+	  	<label class="radio">
+		    <input type="radio" name="type" value="consolidate" />
+	    	Consolidate
+	  	</label>
+	</p>
+	<label class="label">Transform Ratio</label>
+	<div class="control is-grouped">
+		<p class="control">
+			<input class="input is-disabled" value="1" name="fromCount" type="number" placeholder="Enter 'From' Count" disabled />
+		</p>
+		<p class="control">
+			to
+		</p>
+		<p class="control">
+			<input class="input is-disabled" value="1" name="toCount" type="number" placeholder="Enter 'To' Count" disabled />
+		</p>
+	</div>
+	<label class="label" data-ui="countLabel">Transform {{selectedCount}} Traveler Ids</label>
+	<p data-ui="errorContainer" class="is-hidden notification is-danger"></p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

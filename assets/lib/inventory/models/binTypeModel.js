@@ -1,8 +1,6 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import _ from 'underscore';
-import Backbone from 'backbone';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 let Model = BaseUrlBaseModel.extend({

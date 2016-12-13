@@ -1,7 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import SingleQueryReportParameterModel from './singleQueryReportParameterModel.js';
@@ -11,7 +11,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/single_query_report';
   },
   relations: [{
-	    type: Backbone.HasMany,
+	    type: BackboneRelational.HasMany,
 	    key: 'singleQueryReportParameters',
 	    relatedModel: 'SingleQueryReportParameterModel',
 	    includeInJSON: ['id'],

@@ -1,8 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
-import Radio from 'backbone.radio';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import './partModel.js';
@@ -14,17 +13,17 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/sku';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'part',
     relatedModel: 'PartModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'commodity',
     relatedModel: 'CommodityModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'unitType',
     relatedModel: 'UnitTypeModel',
     includeInJSON: ['id'],

@@ -1,14 +1,17 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
-import 'lib/accounting/models/inboundOrderModel';
-import 'lib/accounting/models/outboundOrderModel';
+import 'lib/accounting/models/inboundOrderModel.js';
+import './binModel.js';
+import './skuModel.js';
+import './inventoryTravelerIdTransformModel.js';
 
 let Model = BaseUrlBaseModel.extend({
+  modelName: 'TravelerId',
   initialize(){
     this.listenTo(this, 'change:isSelected', this.triggerIsSelectedChangeOnRadio);
   },
@@ -16,7 +19,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/tid';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'inboundOrder',
     relatedModel: 'InboundOrderModel',
     includeInJSON: ['id'],
@@ -25,7 +28,7 @@ let Model = BaseUrlBaseModel.extend({
       includeInJSON: ['id'],
     }
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'bin',
     relatedModel: 'BinModel',
     includeInJSON: ['id'],
@@ -34,10 +37,28 @@ let Model = BaseUrlBaseModel.extend({
       includeInJSON: ['id'],
     }
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'sku',
     relatedModel: 'SkuModel',
     includeInJSON: ['id'],
+  },{
+    type: BackboneRelational.HasOne,
+    key: 'transform',
+    relatedModel: 'InventoryTravelerIdTransformModel',
+    includeInJSON: true,
+    reverseRelation: {
+      key: 'fromTravelerIds',
+      includeInJSON: ['id'],
+    }
+  },{
+    type: BackboneRelational.HasOne,
+    key: 'reverseTransform',
+    relatedModel: 'InventoryTravelerIdTransformModel',
+    includeInJSON: false,
+    reverseRelation: {
+      key: 'toTravelerIds',
+      includeInJSON: true,
+    }
   }],
   defaults: {
     inboundOrder: null,
@@ -45,7 +66,10 @@ let Model = BaseUrlBaseModel.extend({
     bin: null,
     sku: null,
     isVoid: null,
+    quantity: null,
     cost: null,
+    transform: null,
+    reverseTransform: null,
   },
   triggerIsSelectedChangeOnRadio(){
     Radio.channel('inventory').trigger('change:isSelected:travelerId', this);
@@ -71,6 +95,10 @@ let Model = BaseUrlBaseModel.extend({
       isVoid: {
         title: 'Is Void? (Use "Yes" and "No" for multiple)',
         type: 'checkbox'
+      },
+      quantity: {
+        title: 'Quantity',
+        type: 'text'
       },
       cost: {
         title: 'Cost',

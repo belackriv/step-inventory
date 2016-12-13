@@ -26,18 +26,27 @@ export default Marionette.Object.extend({
     'tid/:id': 'travelerIds',
     'show/bin/:id': 'showBin',
     'show/tid/:id': 'showTid',
-    'inventory_tid_edit': 'inventoryTravelerIdEdits',
-    'inventory_tid_movement': 'inventoryTravelerIdMovements',
     'bin_sku_count': 'binSkuCounts',
     'bin_sku_count/:id': 'binSkuCounts',
+    'sales_item': 'salesItems',
+    'sales_item/:id': 'salesItems',
+    'show/sales_item/:id': 'showSalesItem',
+    'inventory_tid_edit': 'inventoryTravelerIdEdits',
+    'inventory_tid_movement': 'inventoryTravelerIdMovements',
+    'inventory_tid_transform': 'inventoryTravelerIdTransforms',
     'inventory_sku_adjustment': 'inventorySkuAdjustments',
     'inventory_sku_movement': 'inventorySkuMovements',
+    'inventory_sku_transform': 'inventorySkuTransforms',
     'inventory_audit': 'inventoryAudit',
     'inventory_audit/:id': 'inventoryAudit',
-    'inventory': 'inventory'
+    'inventory_action': 'inventoryAction',
+    'inventory_log': 'inventoryLog'
   },
-  inventory(){
+  inventoryAction(){
     this.travelerIds();
+  },
+  inventoryLog(){
+    this.inventoryTravelerIdEdits();
   },
   travelerIds(id){
     Radio.channel('app').trigger('request:started');
@@ -63,6 +72,30 @@ export default Marionette.Object.extend({
       controller.showTid(id);
     });
   },
+  binSkuCounts(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.binSkuCounts(id);
+    });
+  },
+  salesItems(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.salesItems(id);
+    });
+  },
+  showSalesItem(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.showSalesItem(id);
+    });
+  },
   inventoryTravelerIdEdits(){
     Radio.channel('app').trigger('request:started');
     System.import('lib/inventory/controller.js').then((controllerModule)=>{
@@ -79,12 +112,12 @@ export default Marionette.Object.extend({
       controller.inventoryTravelerIdMovements();
     });
   },
-  binSkuCounts(id){
+  inventoryTravelerIdTransforms(){
     Radio.channel('app').trigger('request:started');
     System.import('lib/inventory/controller.js').then((controllerModule)=>{
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
-      controller.binSkuCounts(id);
+      controller.inventoryTravelerIdTransforms();
     });
   },
   inventorySkuAdjustments(){
@@ -101,6 +134,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.inventorySkuMovements();
+    });
+  },
+  inventorySkuTransforms(){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.inventorySkuTransforms();
     });
   },
   inventoryAudit(id){

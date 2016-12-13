@@ -39,11 +39,13 @@ export default Marionette.View.extend({
     'form': 'form',
     'submitButton': 'button[data-ui-name="save"]',
     'cancelButton': 'button[data-ui-name="cancel"]',
+    'quantityInput': 'input[name="quantity"]',
     'countInput': 'input[name="count"]',
     'serialsInput': 'textarea[name="serials"]',
     'serialCount': '[data-ui="serialCount"]',
   },
   bindings: {
+    '@ui.quantityInput': 'quantity',
     '@ui.countInput': 'count',
     '@ui.serialsInput': 'serials',
   },
@@ -62,6 +64,7 @@ export default Marionette.View.extend({
     event.preventDefault();
     this.disableButtons();
     setTimeout(()=>{
+      this.model.get('travelerIds').reset();
       this.addTravelerIds().then(()=>{
         this.model.save().done(()=>{
           Radio.channel('dialog').trigger('close');
@@ -89,13 +92,15 @@ export default Marionette.View.extend({
         inboundOrder: InboundOrderCollection.prototype.model.findOrCreate({id: parseInt(attr.inboundOrder)}),
         bin: BinCollection.prototype.model.findOrCreate({id: parseInt(attr.bin)}),
         sku: SkuCollection.prototype.model.findOrCreate({id: parseInt(attr.sku)}),
-        count:  parseInt(attr.count)
+        count:  parseInt(attr.count),
+        quantity: attr.quantity
       };
       for(var i = 0; i < attr.count; i++){
-          let travelerId = new TravelerIdModel({
+          let travelerId = TravelerIdModel.findOrCreate({
             inboundOrder: attr.inboundOrder,
             bin: attr.bin,
             sku: attr.sku,
+            quantity: attr.quantity
           });
           let serial = this.model.get('serialsArray')[i];
           if(serial){

@@ -1,8 +1,6 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
-parameters:
-#    parameter_name: value
-    jms_serializer.serialized_name_annotation_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
+
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
@@ -10,6 +8,12 @@ services:
     jms_serializer.object_constructor:
         alias: jms_serializer.doctrine_object_constructor
         public: false
+
+    jms_serializer.std_class_handler:
+        class:  AppBundle\Serializer\Handler\StdClassHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler}
+        arguments: ["@service_container"]
 
     appBundle.role_repository:
         class: Doctrine\ORM\EntityRepository

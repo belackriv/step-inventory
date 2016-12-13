@@ -1,0 +1,32 @@
+<h3 class="title is-3">Sales Item #{{id}}</h3>
+<span class="subtitle is-5">SKU: {{sku.attributes.name}}, QTY: {{quantity}}</span>
+<form>
+	<label class="label">Outbound Order</label>
+	<p class="control">
+  		<select name="outboundOrder">
+			<option>Select a Outbound Order...</option>
+  		</select>
+	</p>
+	<label class="label">Bin</label>
+	<p class="control">
+  		<select name="bin">
+  			<option>Select a bin...</option>
+  		</select>
+	</p>
+	<p class="control">
+	  	<label class="checkbox">
+	    	<input name="isVoid" type="checkbox">
+	    	Is Void?
+	  	</label>
+	</p>
+	<label class="label">Revenue</label>
+	<p class="control">
+  		<input class="input" name="revenue" type="number" min="0.01" step="0.01" placeholder="Enter Revenue" />
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

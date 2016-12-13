@@ -5,9 +5,12 @@ import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
-import InventoryIndexView from './views/inventoryIndexView.js';
+import InventoryActionIndexView from './views/inventoryActionIndexView.js';
+import InventoryLogIndexView from './views/inventoryLogIndexView.js';
+
 import TravelerIdView from './views/travelerIdView.js';
 import BinSkuCountView from './views/binSkuCountView.js';
+import SalesItemView from './views/salesItemView.js';
 
 import SearchableListLayoutView from 'lib/common/views/entity/searchableListLayoutView.js';
 
@@ -19,6 +22,10 @@ import InventoryTravelerIdMovementCollection from './models/inventoryTravelerIdM
 import inventoryTravelerIdMovementListTableLayoutTpl from './views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!';
 import inventoryTravelerIdMovementRowTpl from './views/inventoryTravelerIdMovementRowTpl.hbs!';
 
+import InventoryTravelerIdTransformCollection from './models/inventoryTravelerIdTransformCollection.js';
+import inventoryTravelerIdTransformListTableLayoutTpl from './views/inventoryTravelerIdTransformListTableLayoutTpl.hbs!';
+import inventoryTravelerIdTransformRowTpl from './views/inventoryTravelerIdTransformRowTpl.hbs!';
+
 import InventorySkuAdjustmentCollection from './models/inventorySkuAdjustmentCollection.js';
 import inventorySkuAdjustmentListTableLayoutTpl from './views/inventorySkuAdjustmentListTableLayoutTpl.hbs!';
 import inventorySkuAdjustmentRowTpl from './views/inventorySkuAdjustmentRowTpl.hbs!';
@@ -26,6 +33,10 @@ import inventorySkuAdjustmentRowTpl from './views/inventorySkuAdjustmentRowTpl.h
 import InventorySkuMovementCollection from './models/inventorySkuMovementCollection.js';
 import inventorySkuMovementListTableLayoutTpl from './views/inventorySkuMovementListTableLayoutTpl.hbs!';
 import inventorySkuMovementRowTpl from './views/inventorySkuMovementRowTpl.hbs!';
+
+import InventorySkuTransformCollection from './models/inventorySkuTransformCollection.js';
+import inventorySkuTransformListTableLayoutTpl from './views/inventorySkuTransformListTableLayoutTpl.hbs!';
+import inventorySkuTransformRowTpl from './views/inventorySkuTransformRowTpl.hbs!';
 
 import InventoryAuditListView from './views/inventoryAuditListView.js';
 import InventoryAuditView from './views/inventoryAuditView.js';
@@ -36,7 +47,7 @@ export default Marionette.Object.extend({
     this.travelerIds();
   },
   travelerIds(id){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryActionIndexView();
     let travelerIdView = new TravelerIdView({id:id});
 
     this.buildViewStack([
@@ -50,7 +61,7 @@ export default Marionette.Object.extend({
 
   },
   showBin(id){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryActionIndexView();
     let travelerIdView = new TravelerIdView({bin:id});
 
     this.buildViewStack([
@@ -64,7 +75,7 @@ export default Marionette.Object.extend({
 
   },
   showTid(id){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryActionIndexView();
     let travelerIdView = new TravelerIdView({show:id});
 
     this.buildViewStack([
@@ -77,8 +88,36 @@ export default Marionette.Object.extend({
     Radio.channel('app').trigger('show:view', inventoryIndexView);
 
   },
+  salesItems(id){
+    let inventoryIndexView =  new InventoryActionIndexView();
+    let salesItemView = new SalesItemView({id:id});
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', salesItemView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+
+  },
+  showSalesItem(id){
+    let inventoryIndexView =  new InventoryActionIndexView();
+    let salesItemView = new SalesItemView({shoq:id});
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', salesItemView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+
+  },
   inventoryTravelerIdEdits(){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryLogIndexView();
 
     let inventoryTravelerIdEditCollection = Radio.channel('data').request('collection', InventoryTravelerIdEditCollection, {doFetch: false});
     let listView = new SearchableListLayoutView({
@@ -102,7 +141,7 @@ export default Marionette.Object.extend({
     Radio.channel('app').trigger('show:view', inventoryIndexView);
   },
   inventoryTravelerIdMovements(){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryLogIndexView();
 
     let inventoryTravelerIdMovementCollection = Radio.channel('data').request('collection', InventoryTravelerIdMovementCollection, {doFetch: false});
     let listView = new SearchableListLayoutView({
@@ -125,8 +164,32 @@ export default Marionette.Object.extend({
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
   },
+  inventoryTravelerIdTransforms(){
+    let inventoryIndexView =  new InventoryLogIndexView();
+
+    let inventoryTravelerIdTransformCollection = Radio.channel('data').request('collection', InventoryTravelerIdTransformCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventoryTravelerIdTransformCollection,
+      listLength: 20,
+      searchPath: ['byUser.firstName','byUser.lastName','fromTravelerId.label', 'toTravelerId.label', 'toSalesItem.id'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventoryTravelerIdTransformListTableLayoutTpl,
+      entityRowTpl: inventoryTravelerIdTransformRowTpl,
+      colspan: 6,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+  },
   binSkuCounts(id){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryActionIndexView();
     let binSkuCountView = new BinSkuCountView();
 
     this.buildViewStack([
@@ -140,7 +203,7 @@ export default Marionette.Object.extend({
 
   },
   inventorySkuAdjustments(){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryLogIndexView();
 
     let inventorySkuAdjustmentCollection = Radio.channel('data').request('collection', InventorySkuAdjustmentCollection, {doFetch: false});
     let listView = new SearchableListLayoutView({
@@ -164,7 +227,7 @@ export default Marionette.Object.extend({
     Radio.channel('app').trigger('show:view', inventoryIndexView);
   },
   inventorySkuMovements(){
-    let inventoryIndexView =  new InventoryIndexView();
+    let inventoryIndexView =  new InventoryLogIndexView();
 
     let inventorySkuMovementCollection = Radio.channel('data').request('collection', InventorySkuMovementCollection, {doFetch: false});
     let listView = new SearchableListLayoutView({
@@ -175,6 +238,30 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: inventorySkuMovementListTableLayoutTpl,
       entityRowTpl: inventorySkuMovementRowTpl,
+      colspan: 7,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+  },
+  inventorySkuTransforms(){
+    let inventoryIndexView =  new InventoryLogIndexView();
+
+    let inventorySkuTransformCollection = Radio.channel('data').request('collection', InventorySkuTransformCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventorySkuTransformCollection,
+      listLength: 20,
+      searchPath: ['byUser.firstName','byUser.lastName','fromBinSkuCount.sku.name','fromBinSkuCount.bin.name'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventorySkuTransformListTableLayoutTpl,
+      entityRowTpl: inventorySkuTransformRowTpl,
       colspan: 7,
     });
 

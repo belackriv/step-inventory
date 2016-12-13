@@ -1,0 +1,13 @@
+<td>{{id}}</td>
+<td>
+	{{#if newOwner}}
+		Owner
+	{{/if}}
+	{{#if newSubscription}}
+		Subscription
+	{{/if}}
+</td>
+<td>{{moment changedAt}}</td>
+<td>{{changedBy.attributes.username}}</td>
+<td>{{oldOwner.attributes.name}}{{oldSubscription.attributes.name}}</td>
+<td>{{newOwner.attributes.name}}{{newSubscription.attributes.name}}</td>

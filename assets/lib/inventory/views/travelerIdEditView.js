@@ -42,6 +42,7 @@ export default Marionette.View.extend({
     'labelInput': 'input[name="label"]',
     'serialInput': 'input[name="serial"]',
     'isVoidInput': 'input[name="isVoid"]',
+    'quantityInput': 'input[name="quantity"]',
     'costInput': 'input[name="cost"]',
     'inboundOrderSelect' : 'select[name="inboundOrder"]',
     'binSelect' : 'select[name="bin"]',
@@ -53,6 +54,7 @@ export default Marionette.View.extend({
   bindings: {
     '@ui.labelInput': 'label',
     '@ui.isVoidInput': 'isVoid',
+    '@ui.quantityInput': 'quantity',
     '@ui.costInput': 'cost',
   },
   save(event){

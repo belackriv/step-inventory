@@ -23,6 +23,72 @@ class DefaultRestController extends FOSRestController
     use Mixin\WampUpdatePusher;
 
     /**
+     * @Rest\Get("/profile")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getProfileAction(Request $request)
+    {
+        return $this->getUser();
+    }
+
+    /**
+     * @Rest\Put("/profile")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("profileData", class="stdClass", converter="fos_rest.request_body")
+     */
+    public function updateProfileAction($profileData, Request $request)
+    {
+        $myself = $this->getUser();
+        $profile = (object)$profileData;
+        $myself->setUsername($profile->username);
+        $myself->setFirstName($profile->firstName);
+        $myself->setLastName($profile->lastName);
+        $myself->setEmail($profile->email);
+        $em = $this->getDoctrine()->getManager()->flush();
+        return $profile;
+    }
+
+    /**
+     * @Rest\Post("/account_change")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("accountChange",  converter="fos_rest.request_body")
+     */
+    public function createAccountChangeAction(\AppBundle\Entity\AccountChange $accountChange, Request $request)
+    {
+        $accountChange->setAccount($this->getUser()->getOrganization()->getAccount());
+        $accountChange->setChangedBy($this->getUser());
+        $accountChange->setChangedAt(new \DateTime);
+        $this->getDoctrine()->getManager()->persist($accountChange);
+        $accountChange->updateAccount();
+        $this->getDoctrine()->getManager()->flush();
+        return $accountChange;
+    }
+
+    /**
+     * @Rest\Get("/account")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listAccountAction(Request $request)
+    {
+        $account = $this->getDoctrine()->getRepository('AppBundle:Account')->findOneBy([
+            'organization' => $this->getUser()->getOrganization()
+        ]);
+
+        return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
+    }
+
+     /**
+     * @Rest\Get("/subscription")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listSubscritionsAction(Request $request)
+    {
+        $subscriptions = $this->getDoctrine()->getRepository('AppBundle:Subscription')->findAll();
+
+        return ['total_count'=> count($subscriptions), 'total_items' => count($subscriptions), 'list'=>$subscriptions];
+    }
+
+    /**
      * @Rest\Get("/organization")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */

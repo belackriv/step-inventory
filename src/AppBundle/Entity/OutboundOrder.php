@@ -111,6 +111,23 @@ Class OutboundOrder
 	}
 
 	/**
+	 * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+	protected $isShipped = false;
+
+	public function getIsShipped()
+	{
+		return $this->isShipped;
+	}
+
+	public function setIsShipped($isShipped)
+	{
+		$this->isShipped = $isShipped;
+		return $this;
+	}
+
+	/**
      * @ORM\OneToMany(targetEntity="SalesItem", mappedBy="outboundOrder")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
      * @JMS\Groups({"SalesItem"})

@@ -1,8 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
-import _ from 'underscore';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import './travelerIdModel.js';
@@ -12,7 +11,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/inventory_tid_audit';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'travelerId',
     relatedModel: 'TravelerIdModel',
     includeInJSON: ['id'],

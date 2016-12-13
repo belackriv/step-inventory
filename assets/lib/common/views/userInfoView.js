@@ -1,6 +1,7 @@
 "use strict";
 
 import _ from 'underscore';
+import Handlebars from 'handlebars/handlebars.runtime.js';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
@@ -16,17 +17,33 @@ export default Marionette.View.extend({
   },
   template: viewTpl,
   className: 'card is-fullwidth',
+  ui:{
+    'currentTime': '[data-ui="currentTime"]',
+  },
+  events:{
+    "click a": "navigate"
+  },
   regions: {
     loading: "#loading-icon-container",
   },
   modelEvents:{
-    'change': 'render'
+    'change:firstName': 'render',
+    'change:appMessage': 'render',
+    'change:currentTime': 'currentTimeChanged'
   },
    _showLoading(){
     this.showChildView('loading', new LoadingView());
   },
   _hideLoading(){
     this.getRegion('loading').empty();
+  },
+  currentTimeChanged(){
+    this.ui.currentTime.text(Handlebars.helpers.moment(this.model.get('currentTime'),{hash: {}}));
+  },
+ navigate: function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    Radio.channel('app').trigger('navigate', e.currentTarget.getAttribute('href'));
   },
   onDestroy(){
     clearInterval(this.currentTimeUpdateInterval);

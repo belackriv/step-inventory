@@ -2,7 +2,7 @@
 
 import globalNamespace from 'lib/globalNamespace.js';
 import _ from 'underscore';
-import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import 'lib/common/models/departmentModel.js';
@@ -15,22 +15,22 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/bin';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'department',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'partCategory',
     relatedModel: 'PartCategoryModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'binType',
     relatedModel: 'BinTypeModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasMany,
+    type: BackboneRelational.HasMany,
     key: 'children',
     relatedModel: 'BinModel',
     includeInJSON: ['id'],
@@ -39,7 +39,7 @@ let Model = BaseUrlBaseModel.extend({
       includeInJSON: ['id'],
     }
   },{
-    type: Backbone.HasMany,
+    type: BackboneRelational.HasMany,
     key: 'skuCount',
     relatedModel: 'BinSkuCountModel',
     includeInJSON: ['id'],
@@ -59,6 +59,7 @@ let Model = BaseUrlBaseModel.extend({
     isActive: null,
     skuCount: null,
     travelerIds: null,
+    salesItems: null,
   },
 
 });

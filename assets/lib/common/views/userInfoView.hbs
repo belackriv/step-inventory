@@ -2,11 +2,14 @@
 	<p class="card-header-title">
 		Hello {{firstName}}
 	</p>
+	<a class="card-header-icon" href="/profile" title="Show Profile">
+		<i class="fa fa-gear"></i>
+	</a>
 </header>
 <div class="card-content">
 	<div class="content">
 		<p>{{appMessage}}</p>
-		<small>It is {{moment currentTime}}.</small>
+		<small>It is <span data-ui="currentTime">{{moment currentTime}}</span>.</small>
 	</div>
 </div>
 <footer class="card-footer">

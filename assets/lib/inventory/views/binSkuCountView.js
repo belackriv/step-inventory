@@ -12,10 +12,12 @@ import binSkuCountListTableLayoutTpl from './binSkuCountListTableLayoutTpl.hbs!'
 import binSkuCountRowTpl from './binSkuCountRowTpl.hbs!';
 import InventorySkuAdjustmentActionView from './inventorySkuAdjustmentActionView.js';
 import InventorySkuMovementActionView from './inventorySkuMovementActionView.js';
+import InventorySkuTransformActionView from './inventorySkuTransformActionView.js';
 
 import BinSkuCountCollection from '../models/binSkuCountCollection.js';
 import InventorySkuAdjustmentModel from '../models/inventorySkuAdjustmentModel.js';
 import InventorySkuMovementModel from '../models/inventorySkuMovementModel.js';
+import InventorySkuTransformModel from '../models/inventorySkuTransformModel.js';
 
 export default Marionette.View.extend({
   initialize(options){
@@ -67,7 +69,7 @@ export default Marionette.View.extend({
   add(event){
     event.preventDefault();
     var options = {
-      title: 'Add Inventory',
+      title: 'Add SKU Inventory',
       width: '400px'
     };
     let inventorySkuAdjustment = new InventorySkuAdjustmentModel();
@@ -79,7 +81,7 @@ export default Marionette.View.extend({
   },
   adjust(model){
     var options = {
-      title: 'Adjust Inventory',
+      title: 'Adjust SKU Inventory',
       width: '400px'
     };
     let inventorySkuAdjustment = new InventorySkuAdjustmentModel({
@@ -95,7 +97,7 @@ export default Marionette.View.extend({
   },
   moveIn(model){
     var options = {
-      title: 'Move In Inventory',
+      title: 'Move In SKU Inventory',
       width: '400px'
     };
     let inventorySkuMovement = new InventorySkuMovementModel({
@@ -110,7 +112,7 @@ export default Marionette.View.extend({
   },
   moveOut(model){
      var options = {
-      title: 'Move Out Inventory',
+      title: 'Move Out SKU Inventory',
       width: '400px'
     };
     let inventorySkuMovement = new InventorySkuMovementModel({
@@ -119,6 +121,20 @@ export default Marionette.View.extend({
     });
     let view = new InventorySkuMovementActionView({
       model: inventorySkuMovement
+    });
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
+  },
+  transform(model){
+    var options = {
+      title: 'Transform SKU Inventory',
+      width: '400px'
+    };
+    let inventorySkuTransform = new InventorySkuTransformModel({
+        fromBinSkuCount: model
+    });
+    let view = new InventorySkuTransformActionView({
+      model: inventorySkuTransform
     });
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);

@@ -3,9 +3,9 @@
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 
-const proto = Backbone.RelationalModel.prototype;
+const proto = Backbone.Relational.Model.prototype;
 
-export default Backbone.RelationalModel.extend({
+export default Backbone.Relational.Model.extend({
   //baseUrl: '/~belac/step-inventory/app_dev.php',
   baseUrl: '',
   fetch(options){
@@ -34,7 +34,7 @@ export default Backbone.RelationalModel.extend({
       if(typeof currentModel === 'undefined'){
         throw 'Path part "'+pathPart+'" undefined!';
       }
-      if(!Backbone.RelationalModel || !(currentModel instanceof Backbone.RelationalModel) ){
+      if(!Backbone.Relational.Model || !(currentModel instanceof Backbone.Relational.Model) ){
         break;
       }
     }

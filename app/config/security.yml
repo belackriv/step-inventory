@@ -24,10 +24,11 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
         login_firewall:
-            pattern:   ^/login$
-            anonymous: ~
+            pattern: /login$
+            anonymous: true
         site:
-            pattern:    ^/
+            anonymous: false
+            pattern: ^/
             form_login:
                 login_path: /login
                 check_path: /login_check
@@ -38,7 +39,7 @@ security:
             remember_me:
                 secret: '%secret%'
                 name: user_account
-                lifetime: 604800
+                lifetime: 1800
                 httponly: true
                 always_remember_me: true
 
@@ -46,5 +47,5 @@ security:
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
-        - { path: ^/login, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
-        - { path: ^/, roles: [IS_AUTHENTICATED_REMEMBERED ] } #IS_AUTHENTICATED_REMEMBERED
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY } #IS_AUTHENTICATED_ANONYMOUSLY
+        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } #IS_AUTHENTICATED_REMEMBERED

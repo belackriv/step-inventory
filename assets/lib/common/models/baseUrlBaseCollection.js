@@ -5,8 +5,7 @@ import Radio from 'backbone.radio';
 import 'backbone.paginator';
 
 const proto = Backbone.PageableCollection.prototype;
-
-export default Backbone.PageableCollection.extend({
+const PageableCollection = Backbone.PageableCollection.extend({
   //baseUrl: '/~belac/step-inventory/app_dev.php',
   baseUrl: '',
   fetch(options){
@@ -25,3 +24,8 @@ export default Backbone.PageableCollection.extend({
     return resp.list;
   }
 });
+
+PageableCollection.prototype.__prepareModel = PageableCollection.prototype._prepareModel;
+PageableCollection.prototype._prepareModel  = Backbone.Relational.Collection.prototype._prepareModel;
+
+export default PageableCollection;

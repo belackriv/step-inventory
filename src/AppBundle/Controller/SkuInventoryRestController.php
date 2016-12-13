@@ -288,4 +288,106 @@ class SkuInventoryRestController extends FOSRestController
         }
     }
 
+    /**
+     * @Rest\Get("/inventory_sku_transform")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventorySkuTransformAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(ist.id)')
+            ->from('AppBundle:InventorySkuTransform', 'ist')
+            ->join('ist.fromBinSkuCount', 'bsc')
+            ->join('bsc.sku', 's')
+            ->where('s.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());;
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('ist')
+            ->orderBy('ist.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_sku_transform/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventorySkuTransformAction(\AppBundle\Entity\InventorySkuTransform $inventorySkuTransform)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventorySkuTransform) and
+            $inventorySkuTransform->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $inventorySkuTransform;
+        }else{
+            throw $this->createNotFoundException('InventorySkuTransform #'.$inventorySkuTransform->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/inventory_sku_transform")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("inventorySkuTransform", converter="fos_rest.request_body")
+     */
+    public function createInventorySkuTransformAction(\AppBundle\Entity\InventorySkuTransform $inventorySkuTransform)
+    {
+        $inventorySkuTransform->setByUser($this->getUser());
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventorySkuTransform) and
+            $inventorySkuTransform->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $inventorySkuTransform->setTransformedAt(new \DateTime());
+            $inventorySkuTransform->setIsVoid(false);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inventorySkuTransform);
+            $salesItem = $inventorySkuTransform->getToSalesItem();
+            $em->persist($salesItem);
+
+            $binSkuCount = $inventorySkuTransform->getFromBinSkuCount();
+            $newCount = $binSkuCount->getCount() - $inventorySkuTransform->getQuantity();
+            if($newCount < 0){
+                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Transform Quantity is greater than available inventory.');
+            }
+
+            $inventorySkuAdjustment = new \AppBundle\Entity\InventorySkuAdjustment();
+            $inventorySkuAdjustment->setByUser($this->getUser());
+            $inventorySkuAdjustment->setForBin($binSkuCount->getBin());
+            $inventorySkuAdjustment->setPerformedAt(new \DateTime());
+            $inventorySkuAdjustment->setSku($binSkuCount->getSku());
+            $inventorySkuAdjustment->setOldCount($binSkuCount->getCount());
+            $inventorySkuAdjustment->addTag('transform');
+            $inventorySkuAdjustment->addTag('transform_id:'.$inventorySkuTransform->getId());
+
+            $binSkuCount->setCount($newCount);
+            $inventorySkuAdjustment->setNewCount($newCount);
+            $em->persist($inventorySkuAdjustment);
+
+            $em->flush();
+            $this->updateAclByRoles($inventorySkuTransform, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            $this->updateAclByRoles($inventorySkuAdjustment, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            $this->updateAclByRoles($salesItem, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            return $inventorySkuTransform;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
 }

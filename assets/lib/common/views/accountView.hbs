@@ -1,0 +1,42 @@
+<form data-ui="accountInfo">
+	<label class="label">Owner</label>
+	<p class="control has-addons">
+		<span class="select">
+	    	<select name="owner"></select>
+		</span>
+	   	<button class="button is-primary" data-ui="changeOwner">Change</button>
+	</p>
+	<label class="label">Subscription</label>
+	<p class="control has-addons">
+		<span class="select">
+	    	<select name="subscription"></select>
+		</span>
+	   	<button class="button is-primary" data-ui="changeSubscription">Change</button>
+		<p data-ui="subscriptionDesc"></p>
+	</p>
+</form>
+<table class="table is-striped">
+	<thead>
+		<tr><th colspan="6"><h4 class="title is-4 has-text-centered">Change History</h4></th></tr>
+		<tr>
+			<th>#</th>
+			<th>Type</th>
+			<th>Changed At</th>
+			<th>Changed By</th>
+			<th>Old Value</th>
+			<th>New Value</th>
+		</tr>
+	</thead>
+	<tbody data-region="changeHistory"></tbody>
+</table>
+<table class="table is-striped">
+	<thead>
+		<tr><th colspan="3"><h4 class="title is-4 has-text-centered">Billing History</h4></th></tr>
+		<tr>
+			<th>#</th>
+			<th>Charged At</th>
+			<th>Amount</th>
+		</tr>
+	</thead>
+	<tbody data-region="billingHistory"></tbody>
+</table>

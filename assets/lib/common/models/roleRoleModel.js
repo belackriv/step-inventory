@@ -2,8 +2,7 @@
 
 
 import globalNamespace from 'lib/globalNamespace.js';
-import Backbone from 'backbone';
-import Radio from 'backbone.radio';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 import './roleModel.js';
@@ -13,12 +12,12 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/role_role';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'roleSource',
     relatedModel: 'RoleModel',
     includeInJSON: ['id'],
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'roleTarget',
     relatedModel: 'RoleModel',
     includeInJSON: ['id'],

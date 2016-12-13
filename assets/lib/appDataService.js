@@ -11,7 +11,9 @@ import UserModel from 'lib/common/models/userModel.js';
 export default Marionette.Object.extend({
   initialize(options){
     this.collections = [];
+    this.namedCollections =  {};
     Radio.channel('data').reply('collection', this.getCollection.bind(this));
+    Radio.channel('data').reply('named:collection', this.getNamedCollection.bind(this));
     this.setupMyself();
   },
   getCollection(Constructor, options){
@@ -41,6 +43,17 @@ export default Marionette.Object.extend({
       });
     }
     return collection;
+  },
+  getNamedCollection(Constructor, name, options){
+    if(typeof name !== 'string'){
+      throw 'Name must be a string';
+    }
+    options = _.extend({}, options);
+    if(!this.namedCollections[name]){
+      let collectionOptions = _.extend({}, options.collectionOptions);
+      this.namedCollections[name] = new Constructor(null, collectionOptions);
+    }
+    return this.namedCollections[name];
   },
   setupMyself(){
     this.myself = new MyselfModel();

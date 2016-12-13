@@ -25,6 +25,27 @@ Class Organization
 		return $this->id;
 	}
 
+    /**
+     * @ORM\OneToOne(targetEntity="Account", mappedBy="organization")
+     * @JMS\Type("AppBundle\Entity\Account")
+     */
+
+    protected $account = null;
+
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    public function setAccount(Account $account)
+    {
+        $this->account = $account;
+        if($account->getOrganization() !== $this){
+            $account->setOrganization($this);
+        }
+        return $this;
+    }
+
 	/**
 	 * @ORM\Column(type="string", length=32)
      * @JMS\Type("string")

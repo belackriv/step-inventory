@@ -117,6 +117,13 @@ Handlebars.registerHelper('concat', function(options) {
   return str;
 });
 
+Handlebars.registerHelper('lpad', function(data, options) {
+  let z = options.z || '0';
+  let width = options.width || 6;
+  let n = data + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+});
+
 Handlebars.registerHelper('truncate', function(data, options) {
   let maxLength = options.hash.maxLength?parseInt(options.hash.maxLength):30;
   let str = ''+data;

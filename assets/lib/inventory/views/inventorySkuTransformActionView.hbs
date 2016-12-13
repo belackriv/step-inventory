@@ -1,0 +1,21 @@
+<form>
+	<label class="label">From Bin - SKU</label>
+	<p class="control">
+  		#{{fromBinSkuCount.id}} :{{fromBinSkuCount.attributes.bin.attributes.name}} - {{fromBinSkuCount.attributes.sku.attributes.name}}
+	</p>
+	<label class="label">To SKU</label>
+	<p class="control">
+  		<select name="sku">
+  			<option>Select a SKU...</option>
+  		</select>
+	</p>
+	<label class="label">Transform Quantity</label>
+	<p class="control">
+		<input class="input" name="quantity" type="number" placeholder="Enter Transform Quantity">
+		<span class="help is-info">Max {{fromBinSkuCount.attributes.count}}</span>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

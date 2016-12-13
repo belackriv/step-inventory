@@ -3,6 +3,7 @@
 import _ from 'underscore';
 import globalNamespace from 'lib/globalNamespace.js';
 import Backbone from 'backbone';
+import BackboneRelational from 'backbone.relational';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
@@ -25,17 +26,17 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/user';
   },
   relations: [{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'organization',
     relatedModel: 'OrganizationModel',
     includeInJSON: ['id']
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'defaultDepartment',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id']
   },{
-    type: Backbone.HasOne,
+    type: BackboneRelational.HasOne,
     key: 'currentDepartment',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id']
@@ -46,6 +47,7 @@ let Model = BaseUrlBaseModel.extend({
     firstName: null,
     lastName: null,
     isActive: null,
+    organization: null,
     defaultDepartment: null,
     currentDepartment: null,
     userRoles: null,
@@ -95,6 +97,9 @@ let Model = BaseUrlBaseModel.extend({
       });
     }
     return false;
+  },
+  isAccountOwner(){
+    return this.get('isAccountOwner') || this.isGrantedRole('ROLE_DEV');
   }
 });
 

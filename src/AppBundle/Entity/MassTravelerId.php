@@ -32,17 +32,13 @@ Class MassTravelerId
         if(!$this->travelerIds->contains($travelerId)){
             $this->travelerIds->add($travelerId);
         }
-        if($travelerId->getInboundOrder() !== $this){
-        	$travelerId->setInboundOrder($this);
-        }
         return $this;
     }
 
     public function removeTravelerId(TravelerId $travelerId)
     {
         $this->travelerIds->removeElement($travelerId);
-        $travelerId->setInboundOrder(null);
-        $this->travelerIds = new ArrayCollection(array_values($this->children->toArray()));
+        $this->travelerIds = new ArrayCollection(array_values($this->travelerIds->toArray()));
     }
 
     /**
@@ -94,4 +90,8 @@ Class MassTravelerId
         }
     }
 
+    public function isTransform()
+    {
+        return ($this->type === 'transform');
+    }
 }

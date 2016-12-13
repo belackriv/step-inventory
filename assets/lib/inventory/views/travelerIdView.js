@@ -16,7 +16,7 @@ import BinModel from '../models/binModel.js';
 
 export default Marionette.View.extend({
   initialize(options){
-    this.selectedCollection = new Backbone.Collection();
+    this.selectedCollection = Radio.channel('data').request('named:collection', Backbone.Collection, 'selectedTids');
     this.listenTo(Radio.channel('inventory'), 'change:isSelected:travelerId', this.isSelectedChanged);
     Radio.channel('inventory').reply('get:isSelected:travelerId', this.getSelectedCollection.bind(this));
   },
