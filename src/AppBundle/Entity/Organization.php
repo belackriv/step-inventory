@@ -394,6 +394,21 @@ Class Organization
         $this->onSitePrinters = new ArrayCollection(array_values($this->onSitePrinters->toArray()));
     }
 
+    public function __construct()
+    {
+        $this->isActive = true;
+        $this->clients = new ArrayCollection();
+        $this->customers = new ArrayCollection();
+        $this->offices = new ArrayCollection();
+        $this->binTypes = new ArrayCollection();
+        $this->parts = new ArrayCollection();
+        $this->partCategories = new ArrayCollection();
+        $this->partGroups = new ArrayCollection();
+        $this->skus = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->onSitePrinters = new ArrayCollection();
+    }
+
     public function __toString(){
         return '#'.$this->id .' - ' .$this->name;
     }

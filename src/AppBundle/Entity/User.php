@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation As JMS;
@@ -12,6 +14,8 @@ use JMS\Serializer\Annotation As JMS;
  *
  * @ORM\Table(name="step_inventory_user")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements AdvancedUserInterface, \Serializable
 {
@@ -28,6 +32,12 @@ class User implements AdvancedUserInterface, \Serializable
      * @JMS\Type("string")
      */
     protected $username;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -125,6 +135,16 @@ class User implements AdvancedUserInterface, \Serializable
     {
         // Using bcrypt, so no salt needed.
         return null;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     /**

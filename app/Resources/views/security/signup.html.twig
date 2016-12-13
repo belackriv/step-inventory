@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/lib/css/step-inventory.css') }}"/>
+{% endblock %}
+
+{% block content %}
+  <nav class="nav has-shadow si-nav">
+    <div class="nav-left">
+      <div class="nav-item" id="menu-selection-container"></div>
+    </div>
+    <div class="nav-center">
+      <div class="nav-item">
+        <h1 class="title is-1"><a href="./">Step Inventory</a></h1>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-item" id="menu-user-container">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">
+              Component update
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              Content
+              <small>11:09 PM - 1 Jan 2016</small>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a href="./logout">Logout</a>
+            <span id="loading-icon-container" class="icon"></span>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="columns si-main">
+    <menu class="column menu si-side-menu is-narrow"></menu>
+    <div class="column">
+      <section class="section">
+        <div class="container is-fluid" id="main-section">
+          <form action="{{ path('signup_route') }}" method="post">
+            {{form_label(form.organizationName, 'Organization Name', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.organizationName, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.organizationName) }}</span>
+            </div>
+            {{form_label(form.username, 'Username', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.username, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.username) }}</span>
+            </div>
+            {{form_label(form.firstName, 'First Name', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.firstName, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.firstName) }}</span>
+            </div>
+            {{form_label(form.lastName, 'Last Name', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.lastName, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.lastName) }}</span>
+            </div>
+            {{form_label(form.email, 'Email', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.email, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.email) }}</span>
+            </div>
+            {{form_label(form.plainPassword, 'Password', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.plainPassword.first) }}</span>
+            </div>
+            {{form_label(form.plainPassword, 'Repeated Passord', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'input'} }) }}
+              <span class="help is-danger">{{ form_errors(form.plainPassword.second) }}</span>
+            </div>
+
+            {{form_label(form.termsAccepted, 'Accept Terms?', { 'label_attr': {'class': 'label'} })}}
+            <div class="control">
+              {{ form_widget(form.termsAccepted, { 'attr': {'class': 'checkbox'} }) }}
+              <span class="help is-danger">{{ form_errors(form.termsAccepted) }}</span>
+            </div>
+            <div class="control">
+              {{ form_row(form._token) }}
+              <button type="submit" class="button is-primary">Create Account</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <footer class="footer"></footer>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
+
+{% block jspm %}{% endblock %}
+
+
+
+

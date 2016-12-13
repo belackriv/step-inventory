@@ -677,7 +677,7 @@ class DefaultRestController extends FOSRestController
             ->from('AppBundle:User', 'u')
             ->where('u.organization = :org')
             ->setParameter('org', $this->getUser()->getOrganization());
-
+dump($this->getUser());
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
         Utilities::setupSearchableEntityQueryBuild($qb, $request);

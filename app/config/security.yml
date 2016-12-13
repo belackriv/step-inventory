@@ -23,6 +23,9 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        signup_firewall:
+            pattern: /signup$
+            anonymous: true
         login_firewall:
             pattern: /login$
             anonymous: true
@@ -47,5 +50,6 @@ security:
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
+        - { path: ^/signup, roles: IS_AUTHENTICATED_ANONYMOUSLY } #IS_AUTHENTICATED_ANONYMOUSLY
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY } #IS_AUTHENTICATED_ANONYMOUSLY
         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } #IS_AUTHENTICATED_REMEMBERED

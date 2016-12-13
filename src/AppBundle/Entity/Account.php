@@ -64,7 +64,7 @@ Class Account
         return $this->owner;
     }
 
-    public function changeOwner(AccountOwnerhange $ownerChange)
+    public function changeOwner(AccountOwnerChange $ownerChange)
     {
         if( $ownerChange->getNewOwner() === null  ){
             throw new Exception("Cannot change owner to 'null'.");
@@ -159,4 +159,9 @@ Class Account
         $this->bills = new ArrayCollection(array_values($this->bills->toArray()));
     }
 
+    public function __construct()
+    {
+        $this->accountChanges = new ArrayCollection();
+        $this->bills = new ArrayCollection();
+    }
 }

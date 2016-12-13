@@ -69,7 +69,7 @@ abstract Class AccountChange
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Account", inversedBy="accChanges")
+     * @ORM\ManyToOne(targetEntity="Account", inversedBy="accountChanges")
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Account")
      */
