@@ -1,6 +1,9 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
 
+parameters:
+    security.exception_listener.class: AppBundle\Security\Firewall\ExceptionListener
+
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
@@ -15,14 +18,14 @@ services:
             - { name: jms_serializer.subscribing_handler}
         arguments: ["@service_container"]
 
-    appBundle.role_repository:
+    app.role_repository:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [AppBundle\Entity\Role, ]
 
     security.role_hierarchy:
         class: AppBundle\Security\Role\DynamicRoleHierarchy
-        arguments: ["@appBundle.role_repository"]
+        arguments: ["@app.role_repository"]
         public: false
 
     security.listener.exception_listener:
@@ -36,3 +39,14 @@ services:
         arguments: ["@service_container"]
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onCoreException, priority: 1000 }
+
+    app.user_limit_listener:
+        class: AppBundle\EventListener\UserLimitEventListener
+        arguments: ["@service_container"]
+        tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
+
+    app.stripe.plan_collector:
+        class: AppBundle\Library\Stripe\PlanCollector
+        calls:
+            - [setContainer, ["@service_container"]]

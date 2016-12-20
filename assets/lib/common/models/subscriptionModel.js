@@ -1,19 +1,43 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
+import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
+
+import './planModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/subscription';
   },
+  relations: [{
+    type: BackboneRelational.HasOne,
+    key: 'account',
+    relatedModel: 'AccountModel',
+    includeInJSON: ['id'],
+    reverseRelation: false
+  },{
+    type: BackboneRelational.HasOne,
+    key: 'plan',
+    relatedModel: 'PlanModel',
+    includeInJSON: ['id'],
+    reverseRelation: false
+  }],
   defaults: {
-    name: null,
-    description: null,
-    isActive: null,
-    amount: null,
-    maxConcurrentUsers: null,
-    maxSkus: null,
+    account: null,
+    plan: null,
+    createdAt: null,
+    cancelAtPeriodEnd: null,
+    canceledAt: null,
+    currentPeriodEnd: null,
+    currentPeriodStart: null,
+    endedAt: null,
+    quantity: null,
+    startAt: null,
+    status: null,
+    taxPercent: null,
+    trialEnd: null,
+    trialStart: null,
   },
 });
 

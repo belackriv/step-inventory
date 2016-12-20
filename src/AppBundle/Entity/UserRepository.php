@@ -4,31 +4,31 @@ namespace AppBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
 
-class UserRepository extends EntityRepository implements UserProviderInterface
+class UserRepository extends EntityRepository implements UserProviderInterface, UserLoaderInterface
 {
     public function loadUserByUsername($username)
     {
-        $q = $this
+        $query = $this
             ->createQueryBuilder('u')
-            ->select('u, r')
-            ->leftJoin('u.roles', 'r')
-            ->where('u.username = :username OR u.email = :email')
-            ->setParameter('username', $username)
-            ->setParameter('email', $username)
+            ->select('u')
+            ->where('lower(u.username) = :username OR lower(u.email) = :email')
+            ->setParameter('username', strtolower($username))
+            ->setParameter('email', strtolower($username))
             ->getQuery();
 
         try {
             // The Query::getSingleResult() method throws an exception
             // if there is no record matching the criteria.
-            $user = $q->getSingleResult();
+            $user = $query->getSingleResult();
         } catch (NoResultException $e) {
             $message = sprintf(
-                'Unable to find an active admin AcmeUserBundle:User object identified by "%s".',
+                'Unable to find an user identified by "%s".',
                 $username
             );
             throw new UsernameNotFoundException($message, 0, $e);

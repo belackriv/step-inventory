@@ -27,6 +27,29 @@ Class Account
 	}
 
     /**
+     * @ORM\Column(type="string", length=64, unique=true)
+     * @JMS\Exclude
+     */
+    protected $externalId = null;
+
+    public function getExternalId()
+    {
+        return $this->externalId;
+    }
+
+    public function setExternalId($externalId)
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+
+    /**
+     * @JMS\Type("string")
+     * @JMS\ReadOnly
+     */
+    public $stripePublicKey;
+
+    /**
      * @ORM\OneToOne(targetEntity="Organization", inversedBy="account")
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Organization")
@@ -67,7 +90,7 @@ Class Account
     public function changeOwner(AccountOwnerChange $ownerChange)
     {
         if( $ownerChange->getNewOwner() === null  ){
-            throw new Exception("Cannot change owner to 'null'.");
+            throw new \Exception("Cannot change owner to 'null'.");
         }
         $this->owner = $ownerChange->getNewOwner();
         $this->addAccountChange($ownerChange);
@@ -75,8 +98,8 @@ Class Account
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Subscription")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="Subscription")
+     * @ORM\JoinColumn(nullable=true)
      * @JMS\Type("AppBundle\Entity\Subscription")
      * @JMS\ReadOnly
      */
@@ -91,13 +114,13 @@ Class Account
     public function changeSubscription(AccountSubscriptionChange $subscriptionChange)
     {
         if( $subscriptionChange->getNewSubscription() === null  ){
-            throw new Exception("Cannot change subscription to 'null'.");
+            throw new \Exception("Cannot change subscription to 'null'.");
         }
         $this->subscription = $subscriptionChange->getNewSubscription();
         $this->addAccountChange($subscriptionChange);
+
         return $this;
     }
-
 
     /**
      * @ORM\OneToMany(targetEntity="AccountChange", mappedBy="account", orphanRemoval=true)
@@ -159,9 +182,45 @@ Class Account
         $this->bills = new ArrayCollection(array_values($this->bills->toArray()));
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="PaymentSource", mappedBy="account", orphanRemoval=true)
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\PaymentSource>")
+     * @JMS\ReadOnly
+     */
+    protected $paymentSources;
+
+    public function getPaymentSources()
+    {
+        return $this->paymentSources;
+    }
+
+    public function addPaymentSource(PaymentSource $paymentSource)
+    {
+        if(!$this->paymentSources->contains($paymentSource)){
+            $this->paymentSources->add($paymentSource);
+        }
+        if($paymentSource->getAccount() !== $this){
+            $paymentSource->setAccount($this);
+        }
+        return $this;
+    }
+
+    public function removePaymentSource(PaymentSource $paymentSource)
+    {
+        $this->paymentSources->removeElement($paymentSource);
+        $paymentSource->setAccount(null);
+        $this->paymentSources = new ArrayCollection(array_values($this->paymentSources->toArray()));
+    }
+
     public function __construct()
     {
         $this->accountChanges = new ArrayCollection();
         $this->bills = new ArrayCollection();
+        $this->paymentSources = new ArrayCollection();
+    }
+
+    public function isActive()
+    {
+        return $this->subscription->isActive();
     }
 }

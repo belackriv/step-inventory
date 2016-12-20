@@ -6,13 +6,15 @@ import Radio from 'backbone.radio';
 import viewTpl from './accountView.hbs!';
 
 import UserCollection from '../models/userCollection.js';
-import SubscriptionCollection from '../models/subscriptionCollection.js';
+import PlanCollection from '../models/planCollection.js';
+import SubscriptionModel from '../models/subscriptionModel.js';
 import AccountOwnerChangeModel from '../models/accountOwnerChangeModel.js';
 import AccountSubscriptionChangeModel from '../models/accountSubscriptionChangeModel.js';
 
 import NoChildrenRowView from 'lib/common/views/noChildrenRowView.js';
 import AccountChangeItemView from './accountChangeItemView.js';
 import BillItemView from './billItemView.js';
+import PaymentInfoView from './paymentInfoView.js';
 
 export default Marionette.View.extend({
   initialize(){
@@ -34,14 +36,16 @@ export default Marionette.View.extend({
   },
   ui: {
     'ownerSelect': 'select[name="owner"]',
-    'subscriptionSelect': 'select[name="subscription"]',
-    'subscriptionDesc': '[data-ui="subscriptionDesc"]',
+    'planSelect': 'select[name="plan"]',
+    'planDesc': '[data-ui="planDesc"]',
     'changeOwnerButton': 'button[data-ui="changeOwner"]',
     'changeSubscriptionButton': 'button[data-ui="changeSubscription"]',
+    'addPaymentInfoButton': 'button[data-ui="addPaymentInfo"]',
   },
   events:{
     'click @ui.changeOwnerButton': 'changeOwner',
     'click @ui.changeSubscriptionButton': 'changeSubscription',
+    'click @ui.addPaymentInfoButton': 'openAddPaymentInfoDialog'
   },
   modelEvents:{
     'change:organization': 'setInitialProperties',
@@ -63,13 +67,21 @@ export default Marionette.View.extend({
         }
       }
     },
-    '@ui.subscriptionSelect': {
+    '@ui.planSelect': {
       observe: 'subscription',
       useBackboneModels: true,
+      onGet(value){
+        return value.get('plan');
+      },
+      onSet(value){
+        return SubscriptionModel.findOrCreate({
+          plan: value
+        });
+      },
       selectOptions:{
         labelPath: 'attributes.name',
         collection(){
-          let collection = Radio.channel('data').request('collection', SubscriptionCollection, {fetchAll: true});
+          let collection = Radio.channel('data').request('collection', PlanCollection, {fetchAll: true});
           return collection;
         },
         defaultOption: {
@@ -86,7 +98,7 @@ export default Marionette.View.extend({
     };
   },
   subscriptionChanged(){
-    this.ui.subscriptionDesc.text(this.model.get('subscription').get('description'));
+    this.ui.planDesc.text(this.model.get('subscription').get('plan').get('description'));
   },
   onRender(){
     this.subscriptionChanged();
@@ -119,6 +131,8 @@ export default Marionette.View.extend({
     });
     accountOwnerChange.save().always(()=>{
       this.enableButtons();
+    }).done(()=>{
+      this.model.get('accountChanges').add(accountOwnerChange);
     });
   },
   changeSubscription(event){
@@ -131,7 +145,21 @@ export default Marionette.View.extend({
     });
     accountSubscriptionChange.save().always(()=>{
       this.enableButtons();
+    }).done(()=>{
+      this.model.get('accountChanges').add(accountSubscriptionChange);
     });
+  },
+  openAddPaymentInfoDialog(event){
+    event.preventDefault();
+    var options = {
+      title: 'Add Payment Info',
+      width: '400px'
+    };
+    let view = new PaymentInfoView({
+      model: this.model
+    });
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
   },
   disableButtons(loadingButtonName){
     this.ui.changeOwnerButton.addClass('is-disabled').prop('disabled', true);

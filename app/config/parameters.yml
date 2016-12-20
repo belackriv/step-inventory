@@ -12,3 +12,5 @@ parameters:
     mailer_password: null
     locale: en
     secret: dffdb931f389132b6ccba2a16e78cd12fb1a01ca
+    stripe_secure_key: sk_test_QqY0wijEcTobCxBHlZr1FZi3
+    stripe_public_key: pk_test_BSxUMAjsOumeXgnTtQlrLMDg

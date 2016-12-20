@@ -13,7 +13,7 @@ Class AccountSubscriptionChange extends AccountChange
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="Subscription")
+     * @ORM\ManyToOne(targetEntity="Subscription", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      * @JMS\Type("AppBundle\Entity\Subscription")
      */
@@ -32,7 +32,7 @@ Class AccountSubscriptionChange extends AccountChange
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Subscription")
+     * @ORM\ManyToOne(targetEntity="Subscription",  cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      * @JMS\Type("AppBundle\Entity\Subscription")
      */
@@ -52,6 +52,13 @@ Class AccountSubscriptionChange extends AccountChange
 
     public function updateAccount()
     {
+        $stripeSubscription = \Stripe\Subscription::create([
+            "customer" => $this->account->getExternalId(),
+            "plan" =>  $this->newSubscription->getPlan()->getExternalId(),
+            "trial_end" => "now"
+        ]);
+        $this->newSubscription->updateFromStripe($stripeSubscription);
+        $this->newSubscription->setAccount($this->account);
         $this->account->changeSubscription($this);
     }
 

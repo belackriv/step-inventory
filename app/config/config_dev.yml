@@ -44,5 +44,11 @@ monolog:
 assetic:
     use_controller: true
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    spool:     { type: memory }
+    transport: smtp
+    host:      mailtrap.io
+    username:  7de2a2e5f20bc0
+    password:  1f9b5d8c4bc90b
+    auth_mode: cram-md5
+    port: 2525

@@ -66,6 +66,9 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+
+  #redis stuff at https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+  #mail stuff at https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-16-04
  	config.vm.provision "shell", inline: <<-SHELL
  		mkdir /var/www/step-inventory
  		cd /var/www/step-inventory
@@ -88,13 +91,14 @@ Vagrant.configure("2") do |config|
     sudo apt-get install -y php7.0-zip
     sudo apt-get install -y php-gd
     sudo apt-get install -y php-fpm
+    sudo apt-get install -y php-redis
+    sudo apt-get install -y php-mbstring
     sudo apt-get install -y libapache2-mod-fastcgi
     sudo a2enmod actions fastcgi alias
     sudo service apache2 restart
 	SHELL
 
 	#do this after
-
 	# sudo apt install -y mariadb-server
 	# sudo mysql -uroot -pvagrant < create_db_user.sql
 	# sudo mysql -uroot -pvagrant 'step-inventory' < db_dump.sql

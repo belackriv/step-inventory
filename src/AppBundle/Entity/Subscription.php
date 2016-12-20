@@ -12,6 +12,20 @@ use JMS\Serializer\Annotation As JMS;
  */
 Class Subscription
 {
+    const STATUS_TRIALING = 1;
+    const STATUS_ACTIVE = 2;
+    const STATUS_PAST_DUE = 3;
+    const STATUS_CANCELED = 4;
+    const STATUS_UNPAID = 5;
+
+    public static $stripeStatuses = [
+        'trialing' => self::STATUS_TRIALING,
+        'active' => self::STATUS_ACTIVE,
+        'past_due' => self::STATUS_PAST_DUE,
+        'canceled' => self::STATUS_CANCELED,
+        'unpaid' => self::STATUS_UNPAID,
+    ];
+
 	/**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -26,53 +40,157 @@ Class Subscription
 	}
 
     /**
-     * @ORM\Column(type="string", length=64)
-     * @JMS\Type("string")
+     * @ORM\Column(type="string", length=64, unique=true)
+     * @JMS\Exclude
      */
-    protected $name = null;
+    protected $externalId = null;
 
-    public function getName()
+    public function getExternalId()
     {
-        return $this->name;
+        return $this->externalId;
     }
 
-    public function setName($name)
+    public function setExternalId($externalId)
     {
-        $this->name = $name;
+        $this->externalId = $externalId;
         return $this;
     }
 
     /**
-     * @ORM\Column(type="text")
-     * @JMS\Type("string")
+     * @ORM\ManyToOne(targetEntity="Account")
+     * @ORM\JoinColumn(nullable=false)
+     * @JMS\Type("AppBundle\Entity\Account")
      */
-    protected $description = null;
 
-    public function getDescription()
+    protected $account = null;
+
+    public function getAccount()
     {
-        return $this->description;
+        return $this->account;
     }
 
-    public function setDescription($description)
+    public function setAccount(Account $account = null)
     {
-        $this->description = $description;
+        $this->account = $account;
         return $this;
     }
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\ManyToOne(targetEntity="Plan")
+     * @JMS\Type("AppBundle\Entity\Plan")
+     */
+    protected $plan = null;
+
+    public function getPlan()
+    {
+        return $this->plan;
+    }
+
+    public function setPlan(Plan $plan)
+    {
+        $this->plan = $plan;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @JMS\Type("DateTime")
+     */
+    protected $createdAt = null;
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
      * @JMS\Type("boolean")
      */
-    protected $isActive = null;
+    protected $cancelAtPeriodEnd = null;
 
-    public function getIsActive()
+    public function getCancelAtPeriodEnd()
     {
-        return $this->isActive;
+        return $this->cancelAtPeriodEnd;
     }
 
-    public function setIsActive($isActive)
+    public function setCancelAtPeriodEnd($cancelAtPeriodEnd)
     {
-        $this->isActive = $isActive;
+        $this->cancelAtPeriodEnd = (boolean)$cancelAtPeriodEnd;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
+     */
+    protected $canceledAt = null;
+
+    public function getCanceledAt()
+    {
+        return $this->canceledAt;
+    }
+
+    public function setCanceledAt(\DateTime $canceledAt)
+    {
+        $this->canceledAt = $canceledAt;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @JMS\Type("DateTime")
+     */
+    protected $currentPeriodEnd = null;
+
+    public function getCurrentPeriodEnd()
+    {
+        return $this->currentPeriodEnd;
+    }
+
+    public function setCurrentPeriodEnd(\DateTime $currentPeriodEnd)
+    {
+        $this->currentPeriodEnd = $currentPeriodEnd;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @JMS\Type("DateTime")
+     */
+    protected $currentPeriodStart = null;
+
+    public function getCurrentPeriodStart()
+    {
+        return $this->currentPeriodStart;
+    }
+
+    public function setCurrentPeriodStart(\DateTime $currentPeriodStart)
+    {
+        $this->currentPeriodStart = $currentPeriodStart;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
+     */
+    protected $endedAt = null;
+
+    public function getEndedAt()
+    {
+        return $this->endedAt;
+    }
+
+    public function setEndedAt(\DateTime $endedAt)
+    {
+        $this->endedAt = $endedAt;
         return $this;
     }
 
@@ -80,16 +198,34 @@ Class Subscription
      * @ORM\Column(type="smallint", nullable=false)
      * @JMS\Type("integer")
      */
-    protected $amount = null;
+    protected $quantity = null;
 
-    public function getAmount()
+    public function getQuantity()
     {
-        return $this->amount;
+        return $this->quantity;
     }
 
-    public function setAmount($amount)
+    public function setQuantity($quantity)
     {
-        $this->amount = $amount;
+        $this->quantity = $quantity;
+        return $this;
+    }
+
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @JMS\Type("DateTime")
+     */
+    protected $startAt = null;
+
+    public function getStartAt()
+    {
+        return $this->startAt;
+    }
+
+    public function setStartAt(\DateTime $startAt)
+    {
+        $this->startAt = $startAt;
         return $this;
     }
 
@@ -97,34 +233,93 @@ Class Subscription
      * @ORM\Column(type="smallint", nullable=false)
      * @JMS\Type("integer")
      */
-    protected $maxConcurrentUsers = null;
+    protected $status = null;
 
-    public function getMaxConcurrentUsers()
+    public function getStatus()
     {
-        return $this->maxConcurrentUsers;
+        return $this->status;
     }
 
-    public function setMaxConcurrentUsers($maxConcurrentUsers)
+    public function setStatus($status)
     {
-        $this->maxConcurrentUsers = $maxConcurrentUsers;
+        $this->status = $status;
+        return $this;
+    }
+
+
+    /**
+     * @ORM\Column(type="decimal", precision=7, scale=4, nullable=true)
+     * @JMS\Type("string")
+     */
+    protected $taxPercent;
+
+    public function getTaxPercent()
+    {
+        return $this->taxPercent;
+    }
+
+    public function setTaxPercent($taxPercent)
+    {
+        $this->taxPercent = $taxPercent;
         return $this;
     }
 
     /**
-     * @ORM\Column(type="smallint", nullable=false)
-     * @JMS\Type("integer")
+     * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
      */
-    protected $maxSkus = null;
+    protected $trialEnd = null;
 
-    public function getMaxSkus()
+    public function getTrialEnd()
     {
-        return $this->maxSkus;
+        return $this->trialEnd;
     }
 
-    public function setMaxSkus($maxSkus)
+    public function setTrialEnd(\DateTime $trialEnd)
     {
-        $this->maxSkus = $maxSkus;
+        $this->trialEnd = $trialEnd;
         return $this;
     }
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
+     */
+    protected $trialStart = null;
+
+    public function getTrialStart()
+    {
+        return $this->trialStart;
+    }
+
+    public function setTrialStart(\DateTime $trialStart)
+    {
+        $this->trialStart = $trialStart;
+        return $this;
+    }
+
+    public function isActive()
+    {
+        return ($this->status === self::STATUS_TRIALING or $this->status === self::STATUS_ACTIVE);
+    }
+
+    public function updateFromStripe(\Stripe\Subscription $stripeSubscription)
+    {
+        $this->externalId = $stripeSubscription->id;
+        $this->createdAt = new \DateTime("@".$stripeSubscription->created);
+        $this->cancelAtPeriodEnd = (boolean)$stripeSubscription->cancel_at_period_end;
+        $this->canceledAt = $stripeSubscription->canceled_at?new \DateTime("@".$stripeSubscription->canceled_at):null;
+        $this->currentPeriodEnd = new \DateTime("@".$stripeSubscription->current_period_end);
+        $this->currentPeriodStart = new \DateTime("@".$stripeSubscription->current_period_start);
+        $this->endedAt = $stripeSubscription->ended_at?new \DateTime("@".$stripeSubscription->ended_at):null;
+        $this->quantity = $stripeSubscription->quantity;
+        $this->startAt = new \DateTime("@".$stripeSubscription->start);
+        $this->status = self::$stripeStatuses[$stripeSubscription->status];
+        $this->taxPercent = $stripeSubscription->tax_percent;
+        $this->trialEnd = $stripeSubscription->trial_end?new \DateTime("@".$stripeSubscription->trial_end):null;
+        $this->trialStart = $stripeSubscription->trial_start?new \DateTime("@".$stripeSubscription->trial_start):null;
+    }
+
+
 
 }

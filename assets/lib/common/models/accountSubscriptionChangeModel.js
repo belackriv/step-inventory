@@ -15,7 +15,7 @@ let Model = AccountChangeModel.extend({
     type: BackboneRelational.HasOne,
     key: 'newSubscription',
     relatedModel: 'SubscriptionModel',
-    includeInJSON: ['id'],
+    includeInJSON: ['id', 'plan'],
     reverseRelation: false
   }],
   defaults: {

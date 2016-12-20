@@ -5,9 +5,6 @@ import BackboneRelational from 'backbone.relational';
 import AccountChangeModel from './accountChangeModel.js';
 
 let Model = AccountChangeModel.extend({
-  urlRoot(){
-    return this.baseUrl+'/subscription_change';
-  },
   relations: [{
     type: BackboneRelational.HasOne,
     key: 'oldOwner',

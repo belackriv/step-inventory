@@ -413,4 +413,9 @@ Class Organization
         return '#'.$this->id .' - ' .$this->name;
     }
 
+    public function getUserLimit()
+    {
+        return $this->getAccount()->getSubscription()->getPlan()->getMaxConcurrentUsers();
+    }
+
 }

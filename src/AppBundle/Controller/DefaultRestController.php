@@ -55,6 +55,7 @@ class DefaultRestController extends FOSRestController
      */
     public function createAccountChangeAction(\AppBundle\Entity\AccountChange $accountChange, Request $request)
     {
+        \Stripe\Stripe::setApiKey($this->container->getParameter('stripe_secure_key'));
         $accountChange->setAccount($this->getUser()->getOrganization()->getAccount());
         $accountChange->setChangedBy($this->getUser());
         $accountChange->setChangedAt(new \DateTime);
@@ -65,15 +66,32 @@ class DefaultRestController extends FOSRestController
     }
 
     /**
+     * @Rest\Post("/payment_source")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("paymentSource",  converter="fos_rest.request_body")
+     */
+    public function createPaymentSourceAction(\AppBundle\Entity\PaymentSource $paymentSource, Request $request)
+    {
+        $account = $this->getUser()->getOrganization()->getAccount();
+        \Stripe\Stripe::setApiKey($this->container->getParameter('stripe_secure_key'));
+        $stripeCustomer = \Stripe\Customer::retrieve($account->getExternalId());
+        $stripePaymentSource = $stripeCustomer->sources->create(["source" => $paymentSource->getExternalId()]);
+        $paymentSource = \AppBundle\Entity\PaymentSource::getInstance($stripePaymentSource);
+        $paymentSource->updateFromStripe($stripePaymentSource);
+        $paymentSource->setAccount($account);
+        $this->getDoctrine()->getManager()->persist($paymentSource);
+        $this->getDoctrine()->getManager()->flush();
+        return $paymentSource;
+    }
+
+    /**
      * @Rest\Get("/account")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function listAccountAction(Request $request)
     {
-        $account = $this->getDoctrine()->getRepository('AppBundle:Account')->findOneBy([
-            'organization' => $this->getUser()->getOrganization()
-        ]);
-
+        $account = $this->getUser()->getOrganization()->getAccount();
+        $account->stripePublicKey = $this->container->getParameter('stripe_public_key');
         return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
     }
 
@@ -83,9 +101,27 @@ class DefaultRestController extends FOSRestController
      */
     public function listSubscritionsAction(Request $request)
     {
-        $subscriptions = $this->getDoctrine()->getRepository('AppBundle:Subscription')->findAll();
+        $account = $this->getDoctrine()->getRepository('AppBundle:Account')->findOneBy([
+            'organization' => $this->getUser()->getOrganization()
+        ]);
+        $subscriptions = $this->getDoctrine()->getRepository('AppBundle:Subscription')->findBy([
+            'account' => $account
+        ]);
 
         return ['total_count'=> count($subscriptions), 'total_items' => count($subscriptions), 'list'=>$subscriptions];
+    }
+
+     /**
+     * @Rest\Get("/plan")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listPlansAction(Request $request)
+    {
+        $plans = $this->getDoctrine()->getRepository('AppBundle:Plan')->findBy([
+            'isActive' => true
+        ]);
+
+        return ['total_count'=> count($plans), 'total_items' => count($plans), 'list'=>$plans];
     }
 
     /**

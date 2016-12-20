@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/lib/css/step-inventory.css') }}"/>
+{% endblock %}
+
+{% block content %}
+  {{ include('partial/nav.html.twig') }}
+  <div class="columns si-main">
+    <menu class="column menu si-side-menu is-narrow"></menu>
+    <div class="column">
+      <section class="section">
+        <div class="container is-fluid" id="main-section">
+          <p>Your signup is complete. Click <a href="{{ path('login_route') }}">Here</a> to login.</p>
+        </div>
+      </section>
+      <footer class="footer"></footer>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
+
+{% block jspm %}{% endblock %}
+
+
+
+

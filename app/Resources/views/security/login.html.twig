@@ -7,37 +7,7 @@
 {% endblock %}
 
 {% block content %}
-  <nav class="nav has-shadow si-nav">
-    <div class="nav-left">
-      <div class="nav-item" id="menu-selection-container"></div>
-    </div>
-    <div class="nav-center">
-      <div class="nav-item">
-        <h1 class="title is-1"><a href="./">Step Inventory</a></h1>
-      </div>
-    </div>
-    <div class="nav-right">
-      <div class="nav-item" id="menu-user-container">
-        <div class="card is-fullwidth">
-          <header class="card-header">
-            <p class="card-header-title">
-              Component update
-            </p>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              Content
-              <small>11:09 PM - 1 Jan 2016</small>
-            </div>
-          </div>
-          <footer class="card-footer">
-            <a href="./logout">Logout</a>
-            <span id="loading-icon-container" class="icon"></span>
-          </footer>
-        </div>
-      </div>
-    </div>
-  </nav>
+  {{ include('partial/nav.html.twig') }}
   <div class="columns si-main">
     <menu class="column menu si-side-menu is-narrow"></menu>
     <div class="column">
@@ -47,17 +17,19 @@
             <div class="notification is-danger">{{ error.messageKey|trans(error.messageData) }}</div>
           {% endif %}
           <form action="{{ path('login_check') }}" method="post">
-            <label for="inputUsername" class="label">Username</label>
+            <label for="inputUsername" class="label">Username or Email</label>
             <div class="control">
-              <input {% if last_username is not defined or last_username is null  %}autofocus {% endif %}type="text" class="input" id="inputUsername" placeholder="Username"  name="_username" value="{{ last_username }}" />
+              <input {% if last_username is not defined or last_username is null  %}autofocus {% endif %}type="text" class="input" id="inputUsername" placeholder="Username or Email"  name="_username" value="{{ last_username }}" />
             </div>
             <label for="inputPassword" class="label">Password</label>
             <div class="control">
               <input {% if last_username %}autofocus {% endif %}type="password" class="input" id="inputPassword" placeholder="Password"  name="_password"  />
+              <span class="help"><a href="{{ path('reset_password') }}">Forgot?</a></span>
             </div>
             <div class="control">
               <button type="submit" class="button is-primary">Log in</button>
             </div>
+            <div>Don't have an account? <a href="{{ path('signup_route') }}">Sign Up.</a></div>
           </form>
         </div>
       </section>

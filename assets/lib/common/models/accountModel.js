@@ -14,7 +14,7 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/account';
   },
-   relations: [{
+  relations: [{
     type: BackboneRelational.HasOne,
     key: 'organization',
     relatedModel: 'OrganizationModel',

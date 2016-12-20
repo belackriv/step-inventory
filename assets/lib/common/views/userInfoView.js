@@ -41,9 +41,11 @@ export default Marionette.View.extend({
     this.ui.currentTime.text(Handlebars.helpers.moment(this.model.get('currentTime'),{hash: {}}));
   },
  navigate: function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    Radio.channel('app').trigger('navigate', e.currentTarget.getAttribute('href'));
+    if(e.currentTarget.dataset.defaultNavAction !== 'true'){
+      e.preventDefault();
+      e.stopPropagation();
+      Radio.channel('app').trigger('navigate', e.currentTarget.getAttribute('href'));
+    }
   },
   onDestroy(){
     clearInterval(this.currentTimeUpdateInterval);

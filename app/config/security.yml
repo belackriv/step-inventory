@@ -13,7 +13,7 @@ security:
         step_inventory_users:
             entity:
                 class:              AppBundle:User
-                property:           username
+#               property:           username
                 manager_name:       ~
 
     # the main part of the security, where you can set up firewalls
@@ -23,14 +23,17 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        signup_firewall:
-            pattern: /signup$
-            anonymous: true
-        login_firewall:
-            pattern: /login$
-            anonymous: true
+#        signup_firewall:
+#            pattern: /signup
+#            anonymous: true
+#        login_firewall:
+#            pattern: /login$
+#            anonymous: true
+#        reset_password_firewall:
+#            pattern: /reset_password
+#            anonymous: true
         site:
-            anonymous: false
+            anonymous: true
             pattern: ^/
             form_login:
                 login_path: /login
@@ -52,4 +55,5 @@ security:
     access_control:
         - { path: ^/signup, roles: IS_AUTHENTICATED_ANONYMOUSLY } #IS_AUTHENTICATED_ANONYMOUSLY
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY } #IS_AUTHENTICATED_ANONYMOUSLY
+        - { path: ^/reset_password, roles: IS_AUTHENTICATED_ANONYMOUSLY } #IS_AUTHENTICATED_ANONYMOUSLY
         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } #IS_AUTHENTICATED_REMEMBERED

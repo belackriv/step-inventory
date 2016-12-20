@@ -31,7 +31,10 @@
         "phpoffice/phpexcel": "^1.8",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "sensio/generator-bundle": "^3.0",
-        "symfony/security-acl": "^3.0"
+        "symfony/security-acl": "^3.0",
+        "snc/redis-bundle": "2.x-dev",
+        "predis/predis": "^1.0",
+        "stripe/stripe-php": "^4.3"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0",

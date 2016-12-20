@@ -10,6 +10,7 @@ parameters:
     jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
     jms_serializer.array_collection_handler.class: AppBundle\Serializer\Handler\ArrayCollectionHandler
     jms_serializer.unserialize_object_constructor.class: AppBundle\Serializer\ObjectConstructor
+    from_email: app@stepinventory.com
 
 framework:
     #esi:             ~
@@ -29,8 +30,9 @@ framework:
     trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
-        handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        #handler_id:  session.handler.native_file
+        #save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        handler_id: snc_redis.session.handler
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -117,6 +119,15 @@ doctrine_migrations:
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://localhost
+    session:
+        client: default
 
 #voryx_thruway:
 #    realm: 'step_inventory'

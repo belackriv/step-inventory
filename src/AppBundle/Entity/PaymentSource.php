@@ -8,10 +8,16 @@ use JMS\Serializer\Annotation As JMS;
 
 /**
  * @ORM\Entity
- * @ORM\Table()
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discriminator", type="string")
+ * @ORM\DiscriminatorMap({"PaymentCardSource" = "PaymentCardSource"})
+ * @JMS\Discriminator(field = "discriminator", map = {
+ *      "PaymentCardSource": "AppBundle\Entity\PaymentCardSource",
+ *  })
  */
-Class Bill
+abstract Class PaymentSource
 {
+
 	/**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -27,7 +33,7 @@ Class Bill
 
     /**
      * @ORM\Column(type="string", length=64, unique=true)
-     * @JMS\Exclude
+     * @JMS\Type("string")
      */
     protected $externalId = null;
 
@@ -43,42 +49,7 @@ Class Bill
     }
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
-     * @JMS\Type("DateTime")
-     */
-
-    protected $chargedAt = null;
-
-    public function getChargedAt()
-    {
-        return $this->chargedAt;
-    }
-
-    public function setChargedAt(\DateTime $chargedAt)
-    {
-        $this->chargedAt = $chargedAt;
-        return $this;
-    }
-
-    /**
-     * @ORM\Column(type="smallint", nullable=false)
-     * @JMS\Type("integer")
-     */
-    protected $amount = null;
-
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-        return $this;
-    }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Account", inversedBy="bills")
+     * @ORM\ManyToOne(targetEntity="Account", inversedBy="paymentSources")
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Account")
      */
@@ -96,4 +67,11 @@ Class Bill
         return $this;
     }
 
- }
+    public static function getInstance($stripePaymentSource)
+    {
+        if(is_a($stripePaymentSource, \Stripe\Card::class)){
+            return new PaymentCardSource();
+        }
+        return null;
+    }
+}

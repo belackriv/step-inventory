@@ -95,18 +95,24 @@ class User implements AdvancedUserInterface, \Serializable
     public $currentDepartment;
 
     /**
+     * @ORM\Column(type="string", length=64, unique=true, nullable=true)
+     * @JMS\Exclude
+     */
+    public $activationToken;
+
+    /**
      * Populated from session
      * @JMS\Type("string")
      */
     public $appMessage;
 
-     /**
+    /**
      * Populated from session
      * @JMS\Type("array")
      */
     public $roleHierarchy;
 
-     /**
+    /**
      * Populated when password changed
      * @JMS\Type("string")
      */
