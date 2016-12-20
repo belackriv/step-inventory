@@ -4,18 +4,30 @@
 		<span class="select">
 	    	<select name="owner"></select>
 		</span>
-	   	<button class="button is-primary" data-ui="changeOwner">Change</button>
+	   	<button class="button is-primary" type="button" data-ui="changeOwner">Change</button>
 	</p>
 	<label class="label">Subscription Plan</label>
 	<p class="control has-addons">
 		<span class="select">
 	    	<select name="plan"></select>
 		</span>
-	   	<button class="button is-primary" data-ui="changeSubscription">Change</button>
+	   	<button class="button is-primary" type="button" data-ui="changePlan">Change</button>
 		<p data-ui="planDesc"></p>
 	</p>
 </form>
-<button class="button is-info" data-ui="addPaymentInfo">Add Payment Info</button>
+<button class="button is-info" type="button" data-ui="addPaymentInfo">Add Payment Info</button>
+<table class="table is-striped">
+	<thead>
+		<tr><th colspan="6"><h4 class="title is-4 has-text-centered">Payment Methods</h4></th></tr>
+		<tr>
+			<th>#</th>
+			<th>Type</th>
+			<th>Last Four Digits</th>
+			<th>Expiration</th>
+		</tr>
+	</thead>
+	<tbody data-region="paymentSources"></tbody>
+</table>
 <table class="table is-striped">
 	<thead>
 		<tr><th colspan="6"><h4 class="title is-4 has-text-centered">Change History</h4></th></tr>

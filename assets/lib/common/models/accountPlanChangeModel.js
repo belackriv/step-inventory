@@ -7,23 +7,23 @@ import AccountChangeModel from './accountChangeModel.js';
 let Model = AccountChangeModel.extend({
   relations: [{
     type: BackboneRelational.HasOne,
-    key: 'oldSubscription',
-    relatedModel: 'SubscriptionModel',
+    key: 'oldPlan',
+    relatedModel: 'PlanModel',
     includeInJSON: ['id'],
     reverseRelation: false
   },{
     type: BackboneRelational.HasOne,
-    key: 'newSubscription',
-    relatedModel: 'SubscriptionModel',
+    key: 'newPlan',
+    relatedModel: 'PlanModel',
     includeInJSON: ['id', 'plan'],
     reverseRelation: false
   }],
   defaults: {
-    oldSubscription: null,
-    newSubscription: null,
+    oldPlan: null,
+    newPlan: null,
   },
 });
 
-globalNamespace.Models.AccountSubscriptionChangeModel = Model;
+globalNamespace.Models.AccountPlanChangeModel = Model;
 
 export default Model;

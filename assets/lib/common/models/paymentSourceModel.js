@@ -12,6 +12,7 @@ let Model = BaseUrlBaseModel.extend({
   subModelTypes: {
     'PaymentCardSource': 'PaymentCardSourceModel'
   },
+  /*
   relations: [{
     type: BackboneRelational.HasOne,
     key: 'account',
@@ -19,6 +20,7 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
     reverseRelation: false
   }],
+  */
   defaults: {
     externalId: null,
     account: null,

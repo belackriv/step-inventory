@@ -111,14 +111,22 @@ Class Account
         return $this->subscription;
     }
 
-    public function changeSubscription(AccountSubscriptionChange $subscriptionChange)
+    public function setSubscription(Subscription $subscription)
     {
-        if( $subscriptionChange->getNewSubscription() === null  ){
+        $this->subscription = $subscription;
+        if($subscription->getAccount() !== $this){
+            $subscription->setAccount($this);
+        }
+        return $this;
+    }
+
+    public function changePlan(AccountPlanChange $planChange)
+    {
+        if( $planChange->getNewPlan() === null  ){
             throw new \Exception("Cannot change subscription to 'null'.");
         }
-        $this->subscription = $subscriptionChange->getNewSubscription();
-        $this->addAccountChange($subscriptionChange);
-
+        $this->subscription->setPlan($planChange->getNewPlan());
+        $this->addAccountChange($planChange);
         return $this;
     }
 

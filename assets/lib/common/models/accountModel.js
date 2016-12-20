@@ -7,7 +7,10 @@ import BaseUrlBaseModel from './baseUrlBaseModel.js';
 import './organizationModel.js';
 import './userModel.js';
 import './subscriptionModel.js';
+import './paymentSourceModel.js';
 import './accountChangeModel.js';
+import './accountOwnerChangeModel.js';
+import './accountPlanChangeModel.js';
 import './billModel.js';
 
 let Model = BaseUrlBaseModel.extend({
@@ -34,16 +37,31 @@ let Model = BaseUrlBaseModel.extend({
     reverseRelation: false
   },{
     type: BackboneRelational.HasMany,
+    key: 'paymentSources',
+    relatedModel: 'PaymentSourceModel',
+    includeInJSON:  false,
+    reverseRelation: {
+      key: 'account',
+      includeInJSON: ['id'],
+    }
+  },{
+    type: BackboneRelational.HasMany,
     key: 'accountChanges',
     relatedModel: 'AccountChangeModel',
-    includeInJSON: ['id'],
-    reverseRelation: false
+    includeInJSON: false,
+    reverseRelation: {
+      key: 'account',
+      includeInJSON: ['id'],
+    }
   },{
     type: BackboneRelational.HasMany,
     key: 'bills',
     relatedModel: 'BillModel',
-    includeInJSON: ['id'],
-    reverseRelation: false
+    includeInJSON:  false,
+    reverseRelation: {
+      key: 'account',
+      includeInJSON: ['id'],
+    }
   }],
   defaults: {
     organization: null,

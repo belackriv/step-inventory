@@ -11,7 +11,7 @@ let Model = BaseUrlBaseModel.extend({
   subModelTypeAttribute: 'discriminator',
   subModelTypes: {
     'AccountOwnerChange': 'AccountOwnerChangeModel',
-    'AccountSubscriptionChange': 'AccountSubscriptionChangeModel'
+    'AccountPlanChange': 'AccountPlanChangeModel'
   },
   relations: [{
     type: BackboneRelational.HasOne,
@@ -19,13 +19,13 @@ let Model = BaseUrlBaseModel.extend({
     relatedModel: 'UserModel',
     includeInJSON: ['id'],
     reverseRelation: false
-  },{
+  },/*{
     type: BackboneRelational.HasOne,
     key: 'account',
     relatedModel: 'AccountModel',
     includeInJSON: ['id'],
     reverseRelation: false
-  }],
+  }*/],
   defaults: {
     changedBy: null,
     changedAt: null,

@@ -9,11 +9,13 @@ import UserCollection from '../models/userCollection.js';
 import PlanCollection from '../models/planCollection.js';
 import SubscriptionModel from '../models/subscriptionModel.js';
 import AccountOwnerChangeModel from '../models/accountOwnerChangeModel.js';
-import AccountSubscriptionChangeModel from '../models/accountSubscriptionChangeModel.js';
+import AccountPlanChangeModel from '../models/accountPlanChangeModel.js';
 
 import NoChildrenRowView from 'lib/common/views/noChildrenRowView.js';
+import PaymentSourceItemView from './paymentSourceItemView.js';
 import AccountChangeItemView from './accountChangeItemView.js';
 import BillItemView from './billItemView.js';
+
 import PaymentInfoView from './paymentInfoView.js';
 
 export default Marionette.View.extend({
@@ -25,6 +27,10 @@ export default Marionette.View.extend({
     'Stickit': {},
   },
   regions:{
+    'paymentSources': {
+      el: 'tbody[data-region="paymentSources"]',
+      replaceElement: true
+    },
     'changeHistory': {
       el: 'tbody[data-region="changeHistory"]',
       replaceElement: true
@@ -39,17 +45,17 @@ export default Marionette.View.extend({
     'planSelect': 'select[name="plan"]',
     'planDesc': '[data-ui="planDesc"]',
     'changeOwnerButton': 'button[data-ui="changeOwner"]',
-    'changeSubscriptionButton': 'button[data-ui="changeSubscription"]',
+    'changePlanButton': 'button[data-ui="changePlan"]',
     'addPaymentInfoButton': 'button[data-ui="addPaymentInfo"]',
   },
   events:{
     'click @ui.changeOwnerButton': 'changeOwner',
-    'click @ui.changeSubscriptionButton': 'changeSubscription',
+    'click @ui.changePlanButton': 'changePlan',
     'click @ui.addPaymentInfoButton': 'openAddPaymentInfoDialog'
   },
   modelEvents:{
     'change:organization': 'setInitialProperties',
-    'change:subscription': 'subscriptionChanged'
+    'change:newPlan': 'planChanged'
   },
   bindings: {
     '@ui.ownerSelect': {
@@ -73,10 +79,9 @@ export default Marionette.View.extend({
       onGet(value){
         return value.get('plan');
       },
-      onSet(value){
-        return SubscriptionModel.findOrCreate({
-          plan: value
-        });
+      updateModel(value){
+        this.model.set('newPlan', value);
+        return false;
       },
       selectOptions:{
         labelPath: 'attributes.name',
@@ -97,11 +102,22 @@ export default Marionette.View.extend({
       subscription: this.model.get('subscription'),
     };
   },
-  subscriptionChanged(){
-    this.ui.planDesc.text(this.model.get('subscription').get('plan').get('description'));
+  planChanged(){
+    this.ui.planDesc.text(this.model.get('newPlan').get('description'));
   },
   onRender(){
-    this.subscriptionChanged();
+    if(this.model.get('subscription') && this.model.get('subscription').get('plan')){
+      this.ui.planDesc.text(this.model.get('subscription').get('plan').get('description'));
+    }
+    this.showChildView('paymentSources', new Marionette.CollectionView({
+      collection: this.model.get('paymentSources'),
+      childView: PaymentSourceItemView,
+      tagName: 'tbody',
+      emptyView: NoChildrenRowView,
+      emptyViewOptions:{
+        colspan: 4
+      }
+    }));
     this.showChildView('changeHistory', new Marionette.CollectionView({
       collection: this.model.get('accountChanges'),
       childView: AccountChangeItemView,
@@ -135,18 +151,18 @@ export default Marionette.View.extend({
       this.model.get('accountChanges').add(accountOwnerChange);
     });
   },
-  changeSubscription(event){
+  changePlan(event){
     event.preventDefault();
-    this.disableButtons('changeSubscriptionButton');
-    let accountSubscriptionChange = AccountSubscriptionChangeModel.findOrCreate({
+    this.disableButtons('changePlanButton');
+    let accountPlanChange = AccountPlanChangeModel.findOrCreate({
       account: this.model,
-      oldSubscription: this.initialProperties.subscription,
-      newSubscription: this.model.get('subscription'),
+      oldPlan: this.model.get('subscription').get('plan'),
+      newPlan: this.model.get('newPlan'),
     });
-    accountSubscriptionChange.save().always(()=>{
+    accountPlanChange.save().always(()=>{
       this.enableButtons();
     }).done(()=>{
-      this.model.get('accountChanges').add(accountSubscriptionChange);
+      this.model.get('accountChanges').add(accountPlanChange);
     });
   },
   openAddPaymentInfoDialog(event){
@@ -163,11 +179,11 @@ export default Marionette.View.extend({
   },
   disableButtons(loadingButtonName){
     this.ui.changeOwnerButton.addClass('is-disabled').prop('disabled', true);
-    this.ui.changeSubscriptionButton.addClass('is-disabled').prop('disabled', true);
+    this.ui.changePlanButton.addClass('is-disabled').prop('disabled', true);
     this.ui[loadingButtonName].removeClass('is-disabled').addClass('is-loading');
   },
   enableButtons(){
     this.ui.changeOwnerButton.removeClass('is-disabled is-loading').prop('disabled', false);
-    this.ui.changeSubscriptionButton.removeClass('is-disabled is-loading').prop('disabled', false);
+    this.ui.changePlanButton.removeClass('is-disabled is-loading').prop('disabled', false);
   }
 });

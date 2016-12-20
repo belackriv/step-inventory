@@ -118,6 +118,7 @@ class SecurityController extends Controller
             $em->persist($subscription);
 
             $organization->setAccount($account);
+            $account->setSubscription($subscription);
 
             $office = new Office();
             $office->setName('Main Office');
@@ -128,16 +129,6 @@ class SecurityController extends Controller
             $department->setName('Default Department');
             $department->setOffice($office);
             $em->persist($department);
-
-            $em->flush();
-
-            $accountSubscriptionChange = new AccountSubscriptionChange();
-            $accountSubscriptionChange->setChangedBy($user);
-            $accountSubscriptionChange->setChangedAt(new \DateTime);
-            $accountSubscriptionChange->setAccount($account);
-            $accountSubscriptionChange->setNewSubscription($subscription);
-            $em->persist($accountSubscriptionChange);
-            $accountSubscriptionChange->updateAccount();
 
             $em->flush();
 
