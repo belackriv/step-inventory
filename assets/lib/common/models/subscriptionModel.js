@@ -1,5 +1,6 @@
 'use strict';
 
+import jquery from 'jquery';
 import globalNamespace from 'lib/globalNamespace.js';
 import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from './baseUrlBaseModel.js';
@@ -39,6 +40,22 @@ let Model = BaseUrlBaseModel.extend({
     trialEnd: null,
     trialStart: null,
   },
+  cancel(){
+    let thisModel = this;
+    return new Promise((resolve, reject)=>{
+      jquery.ajax('/cancel_subscription',{
+        accepts: {
+          json: 'application/json'
+        },
+        dataType: 'json'
+      }).done((subscriptionData)=>{
+        thisModel.set(subscriptionData);
+        resolve(subscriptionData);
+      }).fail((response)=>{
+        reject(response);
+      });
+    });
+  }
 });
 
 globalNamespace.Models.SubscriptionModel = Model;

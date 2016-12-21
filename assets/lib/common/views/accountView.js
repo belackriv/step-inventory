@@ -46,11 +46,15 @@ export default Marionette.View.extend({
     'planDesc': '[data-ui="planDesc"]',
     'changeOwnerButton': 'button[data-ui="changeOwner"]',
     'changePlanButton': 'button[data-ui="changePlan"]',
+    'cancelSubscriptionButton': 'button[data-ui="cancelSubscription"]',
+    'startSubscriptionButton': 'button[data-ui="startSubscription"]',
     'addPaymentInfoButton': 'button[data-ui="addPaymentInfo"]',
   },
   events:{
     'click @ui.changeOwnerButton': 'changeOwner',
     'click @ui.changePlanButton': 'changePlan',
+    'click @ui.cancelSubscriptionButton': 'cancelSubscription',
+    'click @ui.startSubscriptionButton': 'startSubscription',
     'click @ui.addPaymentInfoButton': 'openAddPaymentInfoDialog'
   },
   modelEvents:{
@@ -77,7 +81,11 @@ export default Marionette.View.extend({
       observe: 'subscription',
       useBackboneModels: true,
       onGet(value){
-        return value.get('plan');
+        if(value){
+          return value.get('plan');
+        }else{
+          return null;
+        }
       },
       updateModel(value){
         this.model.set('newPlan', value);
@@ -164,6 +172,40 @@ export default Marionette.View.extend({
     }).done(()=>{
       this.model.get('accountChanges').add(accountPlanChange);
     });
+  },
+  cancelSubscription(event){
+    event.preventDefault();
+    if(this.ui.cancelSubscriptionButton.data('confirmed') === true){
+      this.ui.cancelSubscriptionButton.prop('disabled', true);
+      this.disableButtons('cancelSubscriptionButton');
+      if(this.model.get('subscription')){
+        this.model.get('subscription').cancel().then(()=>{
+          this.model.set('subscription', null);
+          this.render();
+        });
+      }
+    }else{
+      this.ui.cancelSubscriptionButton.data('confirmed', true).text('Confirm?');
+    }
+  },
+  startSubscription(event){
+    event.preventDefault();
+    if(this.ui.startSubscriptionButton.data('confirmed') === true){
+      this.ui.startSubscriptionButton.prop('disabled', true);
+      this.disableButtons('startSubscriptionButton');
+      if(this.model.get('subscription') === null && this.model.get('newPlan')){
+        let subscription = SubscriptionModel.findOrCreate({
+          plan: this.model.get('newPlan'),
+          account: this.model
+        });
+        subscription.save().then(()=>{
+          this.model.set('subscription', subscription);
+          this.render();
+        });
+      }
+    }else{
+      this.ui.startSubscriptionButton.data('confirmed', true).text('Confirm?');
+    }
   },
   openAddPaymentInfoDialog(event){
     event.preventDefault();

@@ -111,10 +111,10 @@ Class Account
         return $this->subscription;
     }
 
-    public function setSubscription(Subscription $subscription)
+    public function setSubscription(Subscription $subscription = null)
     {
         $this->subscription = $subscription;
-        if($subscription->getAccount() !== $this){
+        if($subscription and $subscription->getAccount() !== $this){
             $subscription->setAccount($this);
         }
         return $this;

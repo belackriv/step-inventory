@@ -4,66 +4,88 @@ namespace AppBundle\EventListener;
 
 use AppBundle\Entity\User;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 
 class UserLimitEventListener
 {
-    protected $tokenStorage;
-    protected $em;
+	protected $tokenStorage;
+	protected $em;
 
-    /** @var Symfony\Component\DependencyInjection\ContainerInterface */
-    protected $container;
+	/** @var Symfony\Component\DependencyInjection\ContainerInterface */
+	protected $container;
 
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-        $this->tokenStorage =  $container->get('security.token_storage');
-        $this->em = $container->get('doctrine')->getManager();
-    }
+	public function __construct(ContainerInterface $container)
+	{
+		$this->container = $container;
+		$this->tokenStorage =  $container->get('security.token_storage');
+		$this->em = $container->get('doctrine')->getManager();
+	}
 
 
-    /**
-     * On each request we want to check the user limits
-     *
-     * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
-     * @return void
-     */
-    public function onCoreController(FilterControllerEvent $event)
-    {
-        if($this->tokenStorage->getToken()){
-            $user = $this->tokenStorage->getToken()->getUser();
-            if($user instanceof User){
-                if(!$user->getOrganization()->getAccount()->isActive()){
-                    throw new \Exception("Account is Not Active");
-                }
+	/**
+	 * On each request we want to check the user limits
+	 *
+	 * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
+	 * @return void
+	 */
+	public function onCoreController(FilterControllerEvent $event)
+	{
+		if(!$this->isAccountRelatedUrl($event->getRequest())){
+			if($this->tokenStorage->getToken()){
+				$user = $this->tokenStorage->getToken()->getUser();
+				if($user instanceof User){
+					if(!$user->getOrganization()->getAccount()->isActive()){
+						throw new \Exception("Account is Not Active");
+					}
 
-                $redisClient = $this->container->get('snc_redis.default');
-                $orgId = $user->getOrganization()->getId();
-                $orgSessionLimit = $user->getOrganization()->getUserLimit();
-                $key = 'org#'.$orgId;
+					$redisClient = $this->container->get('snc_redis.default');
+					$orgId = $user->getOrganization()->getId();
+					$orgSessionLimit = $user->getOrganization()->getUserLimit();
+					$key = 'org#'.$orgId;
 
-                $sessions = $redisClient->hgetall($key);
-                $sessionCount = 0;
-                $thirtyMinutesAgo = new \DateTime('-30 minute');
+					$sessions = $redisClient->hgetall($key);
+					$sessionCount = 0;
+					$thirtyMinutesAgo = new \DateTime('-30 minute');
 
-                foreach($sessions as $sessionKey => $timeStr){
-                  $time = new \DateTime($timeStr);
-                  if($time < $thirtyMinutesAgo){
-                      $redisClient->hdel($key, $sessionKey);
-                  }else{
-                      $sessionCount++;
-                  }
-                }
+					foreach($sessions as $sessionKey => $timeStr){
+					  $time = new \DateTime($timeStr);
+					  if($time < $thirtyMinutesAgo){
+						  $redisClient->hdel($key, $sessionKey);
+					  }else{
+						  $sessionCount++;
+					  }
+					}
 
-                if($sessionCount <= $orgSessionLimit){
-                  $sessionKey = $this->container->get('session')->getId();
-                  $redisClient->hset($key, $sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP') );
-                }else{
-                  throw new \Exception("Session Limit Reached");
-                }
-            }
-        }
-    }
+					if($sessionCount <= $orgSessionLimit){
+					  $sessionKey = $this->container->get('session')->getId();
+					  $redisClient->hset($key, $sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP') );
+					}else{
+					  throw new \Exception("Session Limit Reached");
+					}
+				}
+			}
+		}
+	}
+
+	private function isAccountRelatedUrl(Request $request)
+	{
+		if(
+			preg_match('/myself/', $request->getPathInfo()) === 1 or
+			preg_match('/office/', $request->getPathInfo()) === 1 or
+			preg_match('/account/', $request->getPathInfo()) === 1 or
+			preg_match('/profile/', $request->getPathInfo()) === 1 or
+			preg_match('/account_change/', $request->getPathInfo()) === 1 or
+			preg_match('/subscription/', $request->getPathInfo()) === 1 or
+			preg_match('/subscription_cancel/', $request->getPathInfo()) === 1 or
+			preg_match('/plan/', $request->getPathInfo()) === 1 or
+			preg_match('/user/', $request->getPathInfo()) === 1
+		){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

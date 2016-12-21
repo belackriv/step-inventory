@@ -23,6 +23,17 @@ class DefaultRestController extends FOSRestController
     use Mixin\WampUpdatePusher;
 
     /**
+     * @Rest\Get("/account")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listAccountAction(Request $request)
+    {
+        $account = $this->getUser()->getOrganization()->getAccount();
+        $account->stripePublicKey = $this->container->getParameter('stripe_public_key');
+        return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
+    }
+
+    /**
      * @Rest\Get("/profile")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
@@ -84,15 +95,48 @@ class DefaultRestController extends FOSRestController
         return $paymentSource;
     }
 
-    /**
-     * @Rest\Get("/account")
+     /**
+     * @Rest\Post("/subscription")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("subscription",  converter="fos_rest.request_body")
      */
-    public function listAccountAction(Request $request)
+    public function createSubscriptionAction(\AppBundle\Entity\Subscription $subscription, Request $request)
     {
         $account = $this->getUser()->getOrganization()->getAccount();
-        $account->stripePublicKey = $this->container->getParameter('stripe_public_key');
-        return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
+
+        if($account->getSubscription() !== null){
+            throw new HttpException(500, 'Account Already Has A Subscription');
+        }
+
+        \Stripe\Stripe::setApiKey($this->container->getParameter('stripe_secure_key'));
+        $stripeSubscription = \Stripe\Subscription::create([
+            'customer' => $account->getExternalId(),
+            'plan' => $subscription->getPlan()->getExternalId(),
+            'trial_end' => 'now'
+        ]);
+        $subscription->setAccount($account);
+        $subscription->updateFromStripe($stripeSubscription);
+        $account->setSubscription($subscription);
+        $this->getDoctrine()->getManager()->persist($subscription);
+        $this->getDoctrine()->getManager()->flush();
+        return $subscription;
+    }
+
+    /**
+     * @Rest\Get("/subscription_cancel")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function cancelSubscriptionAction(Request $request)
+    {
+        $subscription = $this->getUser()->getOrganization()->getAccount()->getSubscription();
+        \Stripe\Stripe::setApiKey($this->container->getParameter('stripe_secure_key'));
+        $stripeSubscription = \Stripe\Subscription::retrieve($subscription->getExternalId());
+        $stripeSubscription->cancel();
+        $subscription->updateFromStripe($stripeSubscription);
+
+
+        $this->getDoctrine()->getManager()->flush();
+        return $subscription;
     }
 
      /**

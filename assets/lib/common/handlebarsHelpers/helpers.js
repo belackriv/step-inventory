@@ -58,7 +58,7 @@ Handlebars.registerHelper('percent', function(data, options) {
 });
 
 Handlebars.registerHelper('titleCase', function(str, options) {
-  var newstr = (str+'').split(" ");
+  var newstr = (str+'').replace('_', ' ').split(' ');
   for(var i=0;i<newstr.length;i++){
     var copy = newstr[i].substring(1).toLowerCase();
     newstr[i] = newstr[i][0].toUpperCase() + copy;

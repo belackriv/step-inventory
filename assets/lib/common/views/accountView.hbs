@@ -12,10 +12,19 @@
 	    	<select name="plan"></select>
 		</span>
 	   	<button class="button is-primary" type="button" data-ui="changePlan">Change</button>
+	   	{{#if subscription}}
+	   		<button class="button is-danger" type="button" data-ui="cancelSubscription">Cancel</button>
+   		{{else}}
+   			<button class="button" type="button" data-ui="startSubscription">Start</button>
+   		{{/if}}
+	   	{{#each subscription.attributes.stripeStatuses}}
+	   		{{#ifCond this '==' ../subscription.attributes.status}}
+	   			<span class="tag {{#ifCond this '<' 3}}is-info{{else}}is-danger{{/ifCond}}">{{titleCase @key}}</span>
+   			{{/ifCond}}
+	   	{{/each}}
 		<p data-ui="planDesc"></p>
 	</p>
 </form>
-<button class="button is-info" type="button" data-ui="addPaymentInfo">Add Payment Info</button>
 <table class="table is-striped">
 	<thead>
 		<tr><th colspan="6"><h4 class="title is-4 has-text-centered">Payment Methods</h4></th></tr>
@@ -24,10 +33,12 @@
 			<th>Type</th>
 			<th>Last Four Digits</th>
 			<th>Expiration</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody data-region="paymentSources"></tbody>
 </table>
+<button class="button is-info" type="button" data-ui="addPaymentInfo">Add Payment Info</button>
 <table class="table is-striped">
 	<thead>
 		<tr><th colspan="6"><h4 class="title is-4 has-text-centered">Change History</h4></th></tr>
