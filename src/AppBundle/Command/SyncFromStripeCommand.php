@@ -9,23 +9,25 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SyncStripePlansCommand extends ContainerAwareCommand
+class SyncFromStripeCommand extends ContainerAwareCommand
 {
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $stripePlanCount = $this->getContainer()->get('app.stripe.plan_collector')->collect();
         $output->writeln('<info>Synced '.$stripePlanCount.' plans.</info>');
+        $stripeInvoiceCount = $this->getContainer()->get('app.stripe.invoice_collector')->collect();
+        $output->writeln('<info>Synced '.$stripeInvoiceCount.' bills.</info>');
         return 0;
     }
     public function configure()
     {
         $this->setName($this->getCommandName())
-            ->setDescription("Sync Plans with Stripe.");
+            ->setDescription("Sync From Stripe.");
 
         return true;
     }
     public function getCommandName()
     {
-        return 'step-inventory:sync-stripe-plans';
+        return 'step-inventory:sync-from-stripe';
     }
 }

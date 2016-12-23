@@ -95,6 +95,26 @@ class DefaultRestController extends FOSRestController
         return $paymentSource;
     }
 
+    /**
+     * @Rest\Delete("/payment_source/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function removePaymentSourceAction(\AppBundle\Entity\PaymentSource $paymentSource, Request $request)
+    {
+        $account = $this->getUser()->getOrganization()->getAccount();
+        if($account != $paymentSource->getAccount()){
+            throw $this->createAccessDeniedException();
+        }
+        \Stripe\Stripe::setApiKey($this->container->getParameter('stripe_secure_key'));
+        $stripeCustomer = \Stripe\Customer::retrieve($account->getExternalId());
+        $stripeCustomer->sources->retrieve($paymentSource->getExternalId())->delete();
+        $account->removePaymentSource($paymentSource);
+        $paymentSource->setAccount(null);
+        $this->getDoctrine()->getManager()->remove($paymentSource);
+        $this->getDoctrine()->getManager()->flush();
+        return $paymentSource;
+    }
+
      /**
      * @Rest\Post("/subscription")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
@@ -289,7 +309,7 @@ class DefaultRestController extends FOSRestController
             $em->flush();
             return $organization;
         }else{
-             throw $this->createAccessDeniedException();
+            throw $this->createAccessDeniedException();
         }
     }
 

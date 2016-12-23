@@ -7,23 +7,29 @@
 	   	<button class="button is-primary" type="button" data-ui="changeOwner">Change</button>
 	</p>
 	<label class="label">Subscription Plan</label>
-	<p class="control has-addons">
-		<span class="select">
-	    	<select name="plan"></select>
-		</span>
-	   	<button class="button is-primary" type="button" data-ui="changePlan">Change</button>
-	   	{{#if subscription}}
-	   		<button class="button is-danger" type="button" data-ui="cancelSubscription">Cancel</button>
-   		{{else}}
-   			<button class="button" type="button" data-ui="startSubscription">Start</button>
-   		{{/if}}
-	   	{{#each subscription.attributes.stripeStatuses}}
-	   		{{#ifCond this '==' ../subscription.attributes.status}}
-	   			<span class="tag {{#ifCond this '<' 3}}is-info{{else}}is-danger{{/ifCond}}">{{titleCase @key}}</span>
-   			{{/ifCond}}
-	   	{{/each}}
-		<p data-ui="planDesc"></p>
-	</p>
+	<div class="control is-grouped level">
+		<p class="control has-addons">
+			<span class="select">
+		    	<select name="plan"></select>
+			</span>
+		   	<button class="button is-primary" type="button" data-ui="changePlan">Change</button>
+		</p>
+		<p class="control">
+		   	{{#if subscription}}
+		   		<button class="button is-danger" type="button" data-ui="cancelSubscription">Cancel</button>
+	   		{{else}}
+	   			<button class="button" type="button" data-ui="startSubscription">Start</button>
+	   		{{/if}}
+		</p>
+		<p class="control">
+			{{#each subscription.attributes.stripeStatuses}}
+		   		{{#ifCond this '==' ../subscription.attributes.status}}
+		   			<span class="tag {{#ifCond this '<' 3}}is-info{{else}}is-danger{{/ifCond}}">{{titleCase @key}}</span>
+	   			{{/ifCond}}
+		   	{{/each}}
+		<p>
+	</div>
+	<p data-ui="planDesc"></p>
 </form>
 <table class="table is-striped">
 	<thead>
@@ -33,7 +39,7 @@
 			<th>Type</th>
 			<th>Last Four Digits</th>
 			<th>Expiration</th>
-			<th></th>
+			<th style="width:50px"></th>
 		</tr>
 	</thead>
 	<tbody data-region="paymentSources"></tbody>

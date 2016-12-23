@@ -50,3 +50,8 @@ services:
         class: AppBundle\Library\Stripe\PlanCollector
         calls:
             - [setContainer, ["@service_container"]]
+
+    app.stripe.invoice_collector:
+        class: AppBundle\Library\Stripe\InvoiceCollector
+        calls:
+            - [setContainer, ["@service_container"]]

@@ -9,18 +9,7 @@ import viewTpl from './paymentInfoView.hbs!';
 import PaymentSourceCardModel from '../models/paymentCardSourceModel.js';
 
 export default Marionette.View.extend({
-  initialize(){
-
-  },
   template: viewTpl,
-  regions:{
-/*
-    'billingHistory': {
-      el: 'tbody[data-region="billingHistory"]',
-      replaceElement: true
-    }
-*/
-  },
   ui: {
     'form': 'form',
     'addButton': '[data-ui-name="add"]',
@@ -51,6 +40,7 @@ export default Marionette.View.extend({
       });
       paymentSource.save().then(()=>{
         this.enableButtons();
+        Radio.channel('dialog').trigger('close');
       });
     });
   },

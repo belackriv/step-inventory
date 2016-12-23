@@ -61,8 +61,8 @@ Class Bill
     }
 
     /**
-     * @ORM\Column(type="smallint", nullable=false)
-     * @JMS\Type("integer")
+     * @ORM\Column(type="decimal", precision=7, scale=2)
+     * @JMS\Type("float")
      */
     protected $amount = null;
 
@@ -76,6 +76,41 @@ Class Bill
         $this->amount = $amount;
         return $this;
     }
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @JMS\Type("boolean")
+     */
+    protected $isClosed = null;
+
+    public function getIsClosed()
+    {
+        return $this->isClosed;
+    }
+
+    public function setIsClosed($isClosed)
+    {
+        $this->isClosed = $isClosed;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=3)
+     * @JMS\Type("string")
+     */
+    protected $currency = null;
+
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+        return $this;
+    }
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Account", inversedBy="bills")
@@ -95,5 +130,15 @@ Class Bill
         $this->account = $account;
         return $this;
     }
+
+    public function updateFromStripe(\Stripe\Invoice $stripeInvoice)
+    {
+        $this->externalId = $stripeInvoice->id;
+        $this->amount = $stripeInvoice->amount_due/100;
+        $this->isClosed = $stripeInvoice->closed;
+        $this->currency = $stripeInvoice->currency;
+        $this->chargedAt = new \DateTime("@".$stripeInvoice->date);
+    }
+
 
  }

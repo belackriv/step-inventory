@@ -123,7 +123,7 @@ export default Marionette.View.extend({
       tagName: 'tbody',
       emptyView: NoChildrenRowView,
       emptyViewOptions:{
-        colspan: 4
+        colspan: 5
       }
     }));
     this.showChildView('changeHistory', new Marionette.CollectionView({
