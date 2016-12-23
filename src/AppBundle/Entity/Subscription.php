@@ -249,7 +249,7 @@ Class Subscription
 
     /**
      * @ORM\Column(type="decimal", precision=7, scale=4, nullable=true)
-     * @JMS\Type("string")
+     * @JMS\Type("float")
      */
     protected $taxPercent;
 

@@ -134,7 +134,7 @@ Class TravelerId
 
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=false)
-	 * @JMS\Type("string")
+	 * @JMS\Type("float")
 	 */
 	protected $quantity;
 
@@ -151,7 +151,7 @@ Class TravelerId
 
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
-	 * @JMS\Type("string")
+	 * @JMS\Type("float")
 	 */
 	protected $cost;
 
