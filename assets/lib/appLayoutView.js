@@ -1,6 +1,7 @@
 "use strict";
 
 import _ from 'underscore';
+import Backbone from 'backbone';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
 
@@ -10,17 +11,20 @@ import DialogRegion from 'lib/common/regions/dialogRegion.js';
 import NavLayoutView from 'lib/common/views/navLayoutView.js'
 import MenuLayoutView from 'lib/common/views/menuLayoutView.js';
 import DefaultView from 'lib/common/views/defaultView.js';
+import MenuStaticView from 'lib/common/views/menuStaticView.js';
+import HelpView from 'lib/common/views/helpView.js';
 
 import MyselfModel from 'lib/common/models/myselfModel.js';
 
 export default Marionette.View.extend({
   initialize(){
-    this.listenTo(Radio.channel('app'), 'change:menuItems', this._showMenuItem);
+    //this.listenTo(Radio.channel('app'), 'change:menuItems', this._showMenuItem);
     this.listenTo(Radio.channel('app'), 'show:view', this._showView);
     this.listenTo(Radio.channel('dialog'), 'open', this._openDialog);
     this.listenTo(Radio.channel('dialog'), 'opened', this._dialogOpened);
     this.listenTo(Radio.channel('dialog'), 'close', this._closeDialog);
     this.listenTo(Radio.channel('dialog'), 'closed', this._dialogClosed);
+    this.listenTo(Radio.channel('help'), 'show', this._showHelp);
   },
   template: appLayoutTpl,
   ui: {
@@ -35,6 +39,7 @@ export default Marionette.View.extend({
       el: '.menu',
       replaceElement: true
     },
+    help: '#help-panel',
     main: "#main-section",
     dialogContent: DialogRegion,
     footer: '.footer'
@@ -45,6 +50,7 @@ export default Marionette.View.extend({
       model: myself
     }));
     this.showChildView('main', new DefaultView());
+    this.showChildView('menu', new MenuStaticView());
     myself.fetch();
     this.ui.dialog.dialog({
       autoOpen: false,
@@ -80,5 +86,11 @@ export default Marionette.View.extend({
   },
   _dialogClosed(){
     this.getRegion('dialogContent').reset();
+  },
+  _showHelp(helpItemName){
+    let helpItem = Radio.channel('help').request('get', helpItemName);
+    this.showChildView('help', new HelpView({
+      model: new Backbone.Model(helpItem)
+    }));
   }
 });

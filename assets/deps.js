@@ -26572,7 +26572,7 @@ System.registerDynamic("lib/appLayoutView.hbs!github:davis/plugin-hbs@1.2.3/hbs.
       GLOBAL = global;
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      return "<nav class=\"nav has-shadow si-nav\"></nav>\r\n<div class=\"columns si-main\">\r\n	<menu class=\"column menu si-side-menu is-narrow\"></menu>\r\n	<div class=\"column\">\r\n		<section class=\"section\">\r\n			<div class=\"container is-fluid\" id=\"main-section\"></div>\r\n		</section>\r\n		<footer class=\"footer\"></footer>\r\n	</div>\r\n</div>\r\n<div id=\"dialog\"><div id=\"dialog-content\"></div></div>";
+      return "<nav class=\"nav has-shadow si-nav\"></nav>\r\n<div class=\"columns si-main\">\r\n	<menu class=\"column menu is-narrow si-side-menu\"></menu>\r\n	<div class=\"column\">\r\n		<section class=\"section\">\r\n			<div class=\"container is-fluid\" id=\"main-section\"></div>\r\n		</section>\r\n		<footer class=\"footer has-text-centered\">&copy; StepInventory 2016</footer>\r\n	</div>\r\n	<div class=\"column is-narrow si-help\" id=\"help-panel\"></div>\r\n</div>\r\n<div id=\"dialog\"><div id=\"dialog-content\"></div></div>";
     }, "useData": true });
   return module.exports;
 });
@@ -26728,6 +26728,18 @@ System.registerDynamic("lib/common/views/errorMessageView.hbs!github:davis/plugi
         }, "useData": true });
     return module.exports;
 });
+System.registerDynamic("lib/common/views/helpView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      var stack1, helper;
+
+      return "<p class=\"panel-heading\">\r\n	" + container.escapeExpression((helper = (helper = helpers.heading || (depth0 != null ? depth0.heading : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "heading", "hash": {}, "data": data }) : helper)) + "\r\n</p>\r\n<div class=\"panel-block\">\r\n	" + ((stack1 = (helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "content", "hash": {}, "data": data }) : helper)) != null ? stack1 : "") + "\r\n</div>";
+    }, "useData": true });
+  return module.exports;
+});
 System.registerDynamic("lib/common/views/loadingView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
   var define,
       global = this || self,
@@ -26777,6 +26789,16 @@ System.registerDynamic("lib/common/views/menuSelectionView.hbs!github:davis/plug
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
       return "<div class=\"control is-horizontal\">\r\n  <div class=\"control-label\">\r\n    <label class=\"label\">Office:</label>\r\n  </div>\r\n  <div class=\"control\">\r\n    <div class=\"select is-fullwidth\">\r\n      <select id=\"menu-office-select\"></select>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"control is-horizontal\">\r\n  <div class=\"control-label\">\r\n    <label class=\"label\">Department:</label>\r\n  </div>\r\n  <div class=\"control\">\r\n    <div class=\"select is-fullwidth\">\r\n      <select id=\"menu-department-select\"></select>\r\n    </div>\r\n  </div>\r\n</div>";
+    }, "useData": true });
+  return module.exports;
+});
+System.registerDynamic("lib/common/views/menuStaticView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      return "<ul class=\"menu-list\"></ul>";
     }, "useData": true });
   return module.exports;
 });

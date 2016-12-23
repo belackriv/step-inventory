@@ -8,20 +8,20 @@ import Marionette from 'marionette';
 import AppLayoutView from './appLayoutView.js';
 import AppMainRouter from './appMainRouter.js';
 import AppDataService from './appDataService.js';
+import AppHelpService from './appHelpService.js';
 
 export default Marionette.Application.extend({
   initialize(){
     this.router = new AppMainRouter();
     this.dataService = new AppDataService();
+    this.helpService = new AppHelpService();
     this.listenTo(Radio.channel('app'), 'print', this.print);
     this.listenTo(Radio.channel('app'), 'navigate', this.navigate);
     this.listenTo(Radio.channel('app'), 'request:started', this.requestStarted);
     this.listenTo(Radio.channel('app'), 'request:finished', this.requestFinished);
     Radio.channel('app').reply('currentRoute', this.getCurrentRoute);
   },
-  //baseUrl: '/~belac/step-inventory/app_dev.php',
   baseUrl: '',
-  wsAddress: '192.168.1.7:8080',
   currentRequests: 0,
   navigate(route,  options){
     options = options ||  {

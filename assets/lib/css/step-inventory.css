@@ -1,7 +1,4 @@
 .si-main{
-  height: 75px;
-}
-.si-main{
   align-items: stretch;
 }
 #main-section{
@@ -31,4 +28,10 @@ img.si-org-logo{
 }
 .si-has-transform{
 	text-decoration: line-through;
+}
+.si-help{
+	width: 15em;
+}
+.si-help-panel{
+	margin-top: 1em;
 }

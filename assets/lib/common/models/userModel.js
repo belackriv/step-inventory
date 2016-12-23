@@ -82,17 +82,21 @@ let Model = BaseUrlBaseModel.extend({
           return true;
         }
         var roleLookup = subRole?subRole:userRoleStr;
-        var userGrantedRoles = this.get('roleHierarchy')[roleLookup];
-        if(userGrantedRoles){
-          if(userGrantedRoles.indexOf(role) > -1){
-            return true;
-          }else{
-            for(let subRole of userGrantedRoles){
-              if(this.isGrantedRole(role, user, subRole)){
-                return true;
+        if(this.get('roleHierarchy')){
+          var userGrantedRoles = this.get('roleHierarchy')[roleLookup];
+          if(userGrantedRoles){
+            if(userGrantedRoles.indexOf(role) > -1){
+              return true;
+            }else{
+              for(let subRole of userGrantedRoles){
+                if(this.isGrantedRole(role, user, subRole)){
+                  return true;
+                }
               }
             }
           }
+        }else{
+          return false;
         }
       });
     }

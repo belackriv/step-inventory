@@ -339,6 +339,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'parts');
   },
   partCategories(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
