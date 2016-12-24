@@ -17,6 +17,7 @@ Class Subscription
     const STATUS_PAST_DUE = 3;
     const STATUS_CANCELED = 4;
     const STATUS_UNPAID = 5;
+    const STATUS_LEGACY = 6;
 
     public static $stripeStatuses = [
         'trialing' => self::STATUS_TRIALING,
@@ -24,6 +25,7 @@ Class Subscription
         'past_due' => self::STATUS_PAST_DUE,
         'canceled' => self::STATUS_CANCELED,
         'unpaid' => self::STATUS_UNPAID,
+        'legacy' => self::STATUS_LEGACY,
     ];
 
 	/**
@@ -40,7 +42,7 @@ Class Subscription
 	}
 
     /**
-     * @ORM\Column(type="string", length=64, unique=true)
+     * @ORM\Column(type="string", length=64, unique=true, nullable=true)
      * @JMS\Exclude
      */
     protected $externalId = null;
@@ -300,7 +302,11 @@ Class Subscription
 
     public function isActive()
     {
-        return ($this->status === self::STATUS_TRIALING or $this->status === self::STATUS_ACTIVE);
+        return (
+            $this->status === self::STATUS_TRIALING or
+            $this->status === self::STATUS_ACTIVE or
+            $this->status === self::STATUS_LEGACY
+        );
     }
 
     public function updateFromStripe(\Stripe\Subscription $stripeSubscription)

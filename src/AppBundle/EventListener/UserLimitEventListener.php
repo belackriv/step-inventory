@@ -43,7 +43,7 @@ class UserLimitEventListener
 							throw new \Exception("Account is Not Active");
 						}
 					}else{
-						if(!$this->isAccountRelatedUrl($event->getRequest())){
+						if(preg_match('/profile/', $event->getRequest()->getPathInfo()) !== 1){
 							$event->setController(function(){
 						        return new RedirectResponse('/profile');
 						    });
@@ -90,7 +90,8 @@ class UserLimitEventListener
 			preg_match('/subscription/', $request->getPathInfo()) === 1 or
 			preg_match('/subscription_cancel/', $request->getPathInfo()) === 1 or
 			preg_match('/plan/', $request->getPathInfo()) === 1 or
-			preg_match('/user/', $request->getPathInfo()) === 1
+			preg_match('/user/', $request->getPathInfo()) === 1 or
+			preg_match('/menu_link/', $request->getPathInfo()) === 1
 		){
 			return true;
 		}else{

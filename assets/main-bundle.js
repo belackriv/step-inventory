@@ -26564,9 +26564,11 @@ System.register('lib/inventory/views/binView.js', ['underscore', 'jquery', 'jsba
         },
         onRender: function onRender() {
           this.ui.barcode.each(function (idx, elem) {
-            JsBarcode(elem, elem.getAttribute('jsbarcode-value'), {
-              height: 20
-            });
+            if (elem.getAttribute('jsbarcode-value')) {
+              JsBarcode(elem, elem.getAttribute('jsbarcode-value'), {
+                height: 20
+              });
+            }
           });
         },
         onAttach: function onAttach() {

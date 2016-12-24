@@ -655,10 +655,12 @@ class DefaultRestController extends FOSRestController
         ->findAll();
 
         $itemlist = array();
-        $authorizationChecker = $this->get('security.authorization_checker');
-        foreach($items as $item){
-            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
-                $itemlist[] = $item;
+        if($this->getUser()->getOrganization()->getAccount()->isActive()){
+            $authorizationChecker = $this->get('security.authorization_checker');
+            foreach($items as $item){
+                if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                    $itemlist[] = $item;
+                }
             }
         }
 
@@ -777,7 +779,7 @@ class DefaultRestController extends FOSRestController
             ->from('AppBundle:User', 'u')
             ->where('u.organization = :org')
             ->setParameter('org', $this->getUser()->getOrganization());
-dump($this->getUser());
+
         $totalItems = $qb->getQuery()->getSingleScalarResult();
 
         Utilities::setupSearchableEntityQueryBuild($qb, $request);

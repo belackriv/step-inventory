@@ -35,9 +35,11 @@ export default Marionette.View.extend({
   },
   onRender(){
     this.ui.barcode.each((idx, elem)=>{
-      JsBarcode(elem, elem.getAttribute('jsbarcode-value'), {
-        height:20
-      });
+      if(elem.getAttribute('jsbarcode-value')){
+        JsBarcode(elem, elem.getAttribute('jsbarcode-value'), {
+          height:20
+        });
+      }
     });
   },
   onAttach(){

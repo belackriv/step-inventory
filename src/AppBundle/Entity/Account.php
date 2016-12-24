@@ -27,7 +27,7 @@ Class Account
 	}
 
     /**
-     * @ORM\Column(type="string", length=64, unique=true)
+     * @ORM\Column(type="string", length=64, unique=true, nullable=true)
      * @JMS\Exclude
      */
     protected $externalId = null;
@@ -229,6 +229,10 @@ Class Account
 
     public function isActive()
     {
-        return $this->subscription->isActive();
+        if($this->subscription){
+            return $this->subscription->isActive();
+        }else{
+            return false;
+        }
     }
 }
