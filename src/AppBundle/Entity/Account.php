@@ -50,7 +50,7 @@ Class Account
     public $stripePublicKey;
 
     /**
-     * @ORM\OneToOne(targetEntity="Organization", inversedBy="account")
+     * @ORM\OneToOne(targetEntity="Organization", inversedBy="account", cascade={"merge"})
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Organization")
      * @JMS\ReadOnly
@@ -74,7 +74,7 @@ Class Account
 
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\OneToOne(targetEntity="User", cascade={"merge"})
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\User")
      * @JMS\ReadOnly

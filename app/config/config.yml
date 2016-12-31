@@ -128,7 +128,9 @@ snc_redis:
             dsn: redis://localhost
     session:
         client: default
-
+    profiler_storage:
+        client: default
+        ttl: 3600
 #voryx_thruway:
 #    realm: 'step_inventory'
 #    enable_logging: true

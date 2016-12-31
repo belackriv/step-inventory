@@ -26,7 +26,7 @@ Class Organization
 	}
 
     /**
-     * @ORM\OneToOne(targetEntity="Account", mappedBy="organization")
+     * @ORM\OneToOne(targetEntity="Account", mappedBy="organization", cascade={"merge"})
      * @JMS\Type("AppBundle\Entity\Account")
      */
 
@@ -394,6 +394,61 @@ Class Organization
         $this->onSitePrinters = new ArrayCollection(array_values($this->onSitePrinters->toArray()));
     }
 
+    private $salesItems;
+
+    public function getSalesItems()
+    {
+        if(!$this->salesItems){
+            $this->salesItems = new ArrayCollection();
+        }
+        foreach($this->offices as $office){
+            foreach($office->getDepartments() as $department){
+                foreach($department->getBins() as $bin){
+                    foreach($bin->getSalesItems() as $salesItem){
+                        if(!$this->salesItems->contains($salesItem)){
+                            $this->salesItems->add($salesItem);
+                        }
+                    }
+                }
+            }
+        }
+        return $this->salesItems;
+    }
+
+    private $inboundOrders;
+
+    public function getInboundOrders()
+    {
+        if(!$this->inboundOrders){
+            $this->inboundOrders = new ArrayCollection();
+        }
+        foreach($this->clients as $client){
+            foreach($client->getInboundOrders() as $inboundOrder){
+                if(!$this->inboundOrders->contains($inboundOrder)){
+                    $this->inboundOrders->add($inboundOrder);
+                }
+            }
+        }
+        return $this->inboundOrders;
+    }
+
+    private $outboundOrders;
+
+    public function getOutboundOrders()
+    {
+        if(!$this->outboundOrders){
+            $this->outboundOrders = new ArrayCollection();
+        }
+        foreach($this->customers as $customer){
+            foreach($customer->getOutboundOrders() as $outboundOrder){
+                if(!$this->outboundOrders->contains($outboundOrder)){
+                    $this->outboundOrders->add($outboundOrder);
+                }
+            }
+        }
+        return $this->outboundOrders;
+    }
+
     public function __construct()
     {
         $this->isActive = true;
@@ -415,7 +470,14 @@ Class Organization
 
     public function getUserLimit()
     {
-        return $this->getAccount()->getSubscription()->getPlan()->getMaxConcurrentUsers();
+        if( $this->getAccount() and
+            $this->getAccount()->getSubscription() and
+            $this->getAccount()->getSubscription()->getPlan()
+        ){
+            return $this->getAccount()->getSubscription()->getPlan()->getMaxConcurrentUsers();
+        }else{
+            return null;
+        }
     }
 
 }

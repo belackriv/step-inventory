@@ -27,9 +27,24 @@ export default Marionette.View.extend({
   serializeData(){
     let data = _.clone(this.model.attributes);
     data.tidColumns = [[],[],[]];
+    data.travelerIdCount = 0;
+    let columnIndex = 0;
     this.model.get('travelerIds').each((tid, index)=>{
-      let columnIndex = index % data.tidColumns.length;
-      data.tidColumns[columnIndex].push(tid);
+      if(!tid.get('transform') && !tid.get('isVoid')){
+        data.tidColumns[columnIndex].push(tid);
+        columnIndex = ((columnIndex + 1) >= data.tidColumns.length)?0:columnIndex + 1;
+        data.travelerIdCount++;
+      }
+    });
+    data.siColumns = [[],[],[]];
+    data.salesItemCount = 0;
+    columnIndex = 0;
+    this.model.get('salesItems').each((si, index)=>{
+      if(!si.get('isVoid')){
+        data.siColumns[columnIndex].push(si);
+        columnIndex = ((columnIndex + 1) >= data.siColumns.length)?0:columnIndex + 1;
+        data.salesItemCount++
+      }
     });
     return data;
   },

@@ -70,7 +70,7 @@ class User implements AdvancedUserInterface, \Serializable
     protected $isActive;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Organization", inversedBy="users", cascade={"merge"})
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Organization")
      */
@@ -444,5 +444,10 @@ class User implements AdvancedUserInterface, \Serializable
     public function isOwnedByOrganization(Organization $organization)
     {
         return ($this->getOrganization() === $organization);
+    }
+
+    public function __toString()
+    {
+        return '#'.$this->id.', '.$this->username;
     }
 }

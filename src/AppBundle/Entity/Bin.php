@@ -16,6 +16,7 @@ Class Bin
     {
         $this->partCounts = new ArrayCollection();
         $this->travelerIds = new ArrayCollection();
+        $this->salesItems = new ArrayCollection();
     }
 
 	/**
@@ -245,6 +246,19 @@ Class Bin
     public function getTravelerIds()
     {
     	return $this->travelerIds;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="SalesItem", mappedBy="bin")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
+     * @JMS\Groups({"SalesItem","Bin"})
+     * @JMS\ReadOnly
+     */
+    protected $salesItems;
+
+    public function getSalesItems()
+    {
+    	return $this->salesItems;
     }
 
     public function isOwnedByOrganization(Organization $organization)

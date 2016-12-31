@@ -57,7 +57,42 @@ Class SalesItem
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="travelerIds")
+	 * @ORM\Column(type="string", length=64)
+     * @JMS\Type("string")
+     */
+	protected $label = null;
+
+	public function getLabel()
+	{
+		return $this->label;
+	}
+
+	public function setLabel($label)
+	{
+		$this->label = $label;
+		return $this;
+	}
+
+	public function generateLabel()
+	{
+		$salesItems = $this->getSku()->getOrganization()->getSalesItems();
+		if(!$salesItems->contains($this)){
+            $salesItems->add($this);
+        }
+
+        $iterator = $salesItems->getIterator();
+		$iterator->uasort(function ($a, $b) {
+		    return ($a->getId() < $b->getId()) ? -1 : 1;
+		});
+		$salesItems = new ArrayCollection(iterator_to_array($iterator));
+
+		$label = 'SI-'.Utilities::baseEncode($salesItems->indexOf($this)+1,6);
+		$this->setLabel($label);
+		return $label;
+	}
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="salesItems")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
@@ -178,6 +213,7 @@ Class SalesItem
     	if($this->getIsVoid() === null){
     		$this->setIsVoid(false);
     	}
+    	$this->generateLabel();
     }
 
     public function isOwnedByOrganization(Organization $organization)
@@ -192,9 +228,15 @@ Class SalesItem
     public function assignPropertiesFromDataTransferObject(SalesItemDataTransferObject $dto)
     {
     	$this->setOutboundOrder($dto->outboundOrder);
+		$this->setLabel($dto->label);
 		$this->setBin($dto->bin);
 		$this->setIsVoid($dto->isVoid);
 		$this->setRevenue($dto->revenue);
 		return $this;
+    }
+
+    public function __toString()
+    {
+    	return (string)$this->label;
     }
 }

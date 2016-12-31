@@ -23,10 +23,10 @@
 img.si-org-logo{
 	max-height: 128px !important;
 }
-.si-is-void{
+.si-is-void, .si-is-void text{
 	color: #ff1f4b;
 }
-.si-has-transform{
+.si-has-transform, .si-has-transform text{
 	text-decoration: line-through;
 }
 .si-help{

@@ -33,7 +33,7 @@ Class OutboundOrder
 
 
 	/**
-	 * @ORM\Column(type="string", length=64, unique=true)
+	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
      */
 	protected $label = null;
@@ -51,13 +51,24 @@ Class OutboundOrder
 
 	public function generateLabel()
 	{
-		$label = Utilities::baseEncode($this->getId());
+		$outboundOrders = $this->getCustomer()->getOrganization()->getOutboundOrders();
+		if(!$outboundOrders->contains($this)){
+            $outboundOrders->add($this);
+        }
+
+        $iterator = $outboundOrders->getIterator();
+		$iterator->uasort(function ($a, $b) {
+		    return ($a->getId() < $b->getId()) ? -1 : 1;
+		});
+		$outboundOrders = new ArrayCollection(iterator_to_array($iterator));
+
+		$label = Utilities::baseEncode($outboundOrders->indexOf($this)+1);
 		$this->setLabel($label);
 		return $label;
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Customer")
+	 * @ORM\ManyToOne(targetEntity="Customer", inversedBy="outboundOrders")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Customer")
 	 */

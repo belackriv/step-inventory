@@ -114,13 +114,28 @@ class InboundInventoryRestController extends FOSRestController
         if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
             $em = $this->getDoctrine()->getManager();
             $em->detach($travelerId);
+            if($travelerId->getTransform()){
+                $em->detach($travelerId->getTransform());
+            }
+            if($travelerId->getReverseTransform()){
+                $em->detach($travelerId->getReverseTransform());
+            }
+
             $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($travelerId->getId());
             if( $travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) and
                 $liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())
             ){
                 $edit = $this->checkForTravelerIdEdit($liveTravelerId, $travelerId);
                 $move = $this->checkForTravelerIdMovement($liveTravelerId, $travelerId);
-                $em->merge($travelerId);
+
+                $travelerId = $em->merge($travelerId);
+                if($travelerId->getTransform()){
+                    $em->merge($travelerId->getTransform());
+                }
+                if($travelerId->getReverseTransform()){
+                    $em->merge($travelerId->getReverseTransform());
+                }
+
                 $em->flush();
                 if($edit){
                     $this->updateAclByRoles($edit, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
@@ -237,6 +252,7 @@ class InboundInventoryRestController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $travelerIdLogEntities = [];
         $transformEntities = [];
+
         foreach($massTravelerId->getTravelerIds() as $travelerId){
             if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
                 $em->detach($travelerId);

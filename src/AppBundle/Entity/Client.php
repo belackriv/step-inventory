@@ -64,4 +64,16 @@ Class Client
     {
         return ( $this->getOrganization() === $organization );
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="InboundOrder", mappedBy="client")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InboundOrder>")
+     * @JMS\Exclude
+     */
+    protected $inboundOrders;
+
+    public function getInboundOrders()
+    {
+        return $this->inboundOrders;
+    }
 }

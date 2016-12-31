@@ -6,6 +6,9 @@ import Moment from 'moment';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
+import TravelerIdModel from 'lib/inventory/models/travelerIdModel.js';
+import SalesItemModel from 'lib/inventory/models/salesItemModel.js';
+
 const castAsType = function(value, type){
   switch (type) {
     case 'integer':
@@ -20,7 +23,14 @@ const castAsType = function(value, type){
   }
 };
 
-Handlebars.registerHelper('tableCell', function(column, data, options) {
+const lpad = function(str, width, fill){
+  fill = fill || '0';
+  width = width || 6;
+  str = str + '';
+  return str.length >= width ? str : new Array(width - str.length + 1).join(fill) + str;
+};
+
+Handlebars.registerHelper('tableCell', function(column, data, options){
   if( typeof column != "object" ||
     typeof data != "object"
   ){return;}
@@ -44,20 +54,20 @@ Handlebars.registerHelper('tableCell', function(column, data, options) {
   }
 });
 
-Handlebars.registerHelper('boolean', function(data, options) {
+Handlebars.registerHelper('boolean', function(data, options){
   return data?'True':'False';
 });
 
-Handlebars.registerHelper('statusCode', function(data, options) {
+Handlebars.registerHelper('statusCode', function(data, options){
   return data?'Enabled':'Disabled';
 });
 
-Handlebars.registerHelper('percent', function(data, options) {
+Handlebars.registerHelper('percent', function(data, options){
   let value = Math.round(parseFloat(data) * 10000)/100;
   return isNaN(value)?'':value+'%';
 });
 
-Handlebars.registerHelper('titleCase', function(str, options) {
+Handlebars.registerHelper('titleCase', function(str, options){
   var newstr = (str+'').replace('_', ' ').split(' ');
   for(var i=0;i<newstr.length;i++){
     var copy = newstr[i].substring(1).toLowerCase();
@@ -67,26 +77,26 @@ Handlebars.registerHelper('titleCase', function(str, options) {
    return newstr;
 });
 
-Handlebars.registerHelper('upperCase', function(str, options) {
+Handlebars.registerHelper('upperCase', function(str, options){
    return (str+'').toUpperCase();
 });
 
-Handlebars.registerHelper('boolean', function(boolean, options) {
+Handlebars.registerHelper('boolean', function(boolean, options){
    return (boolean)?'Yes':'No';
 });
 
-Handlebars.registerHelper('moment', function(data, options) {
+Handlebars.registerHelper('moment', function(data, options){
   var format = options.hash.format?options.hash.format:'h:mm A, ddd MMM D YYYY';
   return Moment(data).format(format);
 });
 
 
-Handlebars.registerHelper('log', function(data, options) {
+Handlebars.registerHelper('log', function(data, options){
   console.log(data);
   return '';
 });
 
-Handlebars.registerHelper('ifIsRouteActive', function(route, options) {
+Handlebars.registerHelper('ifIsRouteActive', function(route, options){
   route = (route[0]=='/')?route.slice(1):route;
   let routeRegExp = new RegExp('^'+route+'(/\\d+)?$');
   let currentRoute = Radio.channel('app').request('currentRoute');
@@ -97,17 +107,17 @@ Handlebars.registerHelper('ifIsRouteActive', function(route, options) {
   }
 });
 
-Handlebars.registerHelper('isGrantedRole', function (role, options) {
+Handlebars.registerHelper('isGrantedRole', function(role, options){
   let myself =  Radio.channel('data').request('myself');
   return (myself.isGrantedRole(role, myself) )?options.fn(this):options.inverse(this);
 });
 
-Handlebars.registerHelper('isMyself', function (user, options) {
+Handlebars.registerHelper('isMyself', function (user, options){
   let myself =  Radio.channel('data').request('myself');
   return (myself.id === user.id)?options.fn(this):options.inverse(this);
 });
 
-Handlebars.registerHelper('concat', function(options) {
+Handlebars.registerHelper('concat', function(options){
   let str = '';
   _.each(arguments, (arg)=>{
     if(typeof arg === 'string'){
@@ -117,14 +127,11 @@ Handlebars.registerHelper('concat', function(options) {
   return str;
 });
 
-Handlebars.registerHelper('lpad', function(data, options) {
-  let z = options.z || '0';
-  let width = options.width || 6;
-  let n = data + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+Handlebars.registerHelper('lpad', function(data, options){
+  return lpad(data, options.width, options.z)
 });
 
-Handlebars.registerHelper('truncate', function(data, options) {
+Handlebars.registerHelper('truncate', function(data, options){
   let maxLength = options.hash.maxLength?parseInt(options.hash.maxLength):30;
   let str = ''+data;
   if(str.length > maxLength && maxLength > 3){
@@ -134,11 +141,11 @@ Handlebars.registerHelper('truncate', function(data, options) {
   }
 });
 
-Handlebars.registerHelper('translate', function(term, dict, options) {
+Handlebars.registerHelper('translate', function(term, dict, options){
   return dict[term];
 });
 
-Handlebars.registerHelper('join', function(array, seperator, options) {
+Handlebars.registerHelper('join', function(array, seperator, options){
   if(typeof array === 'object' && array && array.join){
     seperator = (typeof seperator==='string')?seperator:',';
     return array.join(seperator);
@@ -147,11 +154,57 @@ Handlebars.registerHelper('join', function(array, seperator, options) {
   }
 });
 
-Handlebars.registerHelper('return', function(fn, context) {
+Handlebars.registerHelper('return', function(fn, context){
   let args = Array.from(arguments);
   args = args.slice(2);
   return (typeof fn === 'function')?fn.apply(context, args):null;
 });
+
+Handlebars.registerHelper('barcodeHtml', function(data, options){
+  let barcodeValue = '';
+  if(data instanceof TravelerIdModel || options.hash.type == 'TravelerIdModel'){
+    barcodeValue = data.attributes?data.attributes.label:data.label;
+  }else if(data instanceof SalesItemModel || options.hash.type == 'SalesItemModel'){
+    barcodeValue = data.attributes?data.attributes.label:data.label;
+  }else{
+    throw 'Must supply a Model or a option Type to barcodeHtml helper';
+  }
+  if(data instanceof TravelerIdModel || data instanceof SalesItemModel){
+    data = data.attributes;
+  }
+  let html;
+  if(options.hash.isCard){
+    html = '<div data-ui-top-label><p class="has-text-centered">';
+  }else{
+    html = '<p class="has-text-centered" data-ui-top-label>';
+  }
+  if(data.sku){
+    if(data.sku.attributes.unit){
+      html += 'Unit: '+data.sku.attributes.unit.attributes.serial;
+    }else if(data.sku.attributes.part){
+      html += 'Part: '+data.sku.attributes.part.attributes.name;
+    }else if(data.sku.attributes.commodity){
+      html += 'Item: '+data.sku.attributes.commodity.attributes.name;
+    }else if(data.sku.attributes.unitType){
+      html += 'Type: '+data.sku.attributes.unitType.attributes.name;
+    }
+  }
+  html += '</p>';
+  if(options.hash.isCard){
+    html += '</div>';
+  }
+  let svgClass = '';
+  if(data.isVoid){
+    svgClass = 'si-is-void';
+  }
+  if(data.transform && !data.transform.attributes.isVoid){
+    svgClass += ' si-has-transform';
+  }
+  html += '<svg jsbarcode-value="'+barcodeValue+'" class="'+svgClass+'"></svg>';
+  return new Handlebars.SafeString(html);
+});
+
+
 
 Handlebars.registerHelper('getAspectRatioClass', function(width, height, options){
   let ratio = width/height;
@@ -171,7 +224,7 @@ Handlebars.registerHelper('getAspectRatioClass', function(width, height, options
 });
 
 
-Handlebars.registerHelper('baseUrl', function (options) {
+Handlebars.registerHelper('baseUrl', function(options){
    let str = BaseUrlBaseModel.prototype.baseUrl+'';
   _.each(arguments, (arg)=>{
     if(typeof arg === 'string'){
@@ -181,7 +234,7 @@ Handlebars.registerHelper('baseUrl', function (options) {
   return str;
 });
 
-Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+Handlebars.registerHelper('ifCond', function(v1, operator, v2, options){
   switch (operator) {
     case '==':
       return (v1 == v2) ? options.fn(this) : options.inverse(this);

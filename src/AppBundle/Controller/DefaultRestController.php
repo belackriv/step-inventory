@@ -873,8 +873,9 @@ class DefaultRestController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $em->detach($user);
             $liveUser = $this->getDoctrine()->getRepository('AppBundle:User')->findOneById($user->getId());
-            if( ( $user->isOwnedByOrganization($this->getUser()->getOrganization()) and
-                $liveUser->isOwnedByOrganization($this->getUser()->getOrganization()) ) or
+            $liveCurrentUser = $this->getDoctrine()->getRepository('AppBundle:User')->findOneById($this->getUser()->getId());
+            if( ( $user->isOwnedByOrganization($liveCurrentUser->getOrganization()) and
+                $liveUser->isOwnedByOrganization($liveCurrentUser->getOrganization()) ) or
                 $this->get('security.authorization_checker')->isGranted('ROLE_DEV')
             ){
                 if($user->newPassword){
@@ -883,7 +884,8 @@ class DefaultRestController extends FOSRestController
                     $user->setPassword($encoded);
                 }
 
-                $em->merge($user);
+                $liveUser = $em->merge($liveUser); //for cascading
+                $user = $em->merge($user);
 
                 foreach($user->getUserRoles() as $userRole){
                     $userRole->setUser($liveUser);

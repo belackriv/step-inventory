@@ -5,6 +5,7 @@ namespace AppBundle\EventListener;
 use AppBundle\Entity\User;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
@@ -73,7 +74,18 @@ class UserLimitEventListener
 				  $sessionKey = $this->container->get('session')->getId();
 				  $redisClient->hset($key, $sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP') );
 				}else{
-				  throw new \Exception("Session Limit Reached");
+					if( $event->getRequest()->isXmlHttpRequest()){
+					  	throw new \Exception("Active Session Limit Reached");
+					}else{
+						$errorContent = $this->container
+		                    ->get('templating')
+		                    ->render(':security:session-limit.html.twig', []);
+						$response = new Response($errorContent, 403);
+			            $response->setProtocolVersion('1.1');
+			            $event->setController(function() use ($response){
+					        return $response;
+					    });
+					}
 				}
 			}
 		}
@@ -89,6 +101,7 @@ class UserLimitEventListener
 			preg_match('/account_change/', $request->getPathInfo()) === 1 or
 			preg_match('/subscription/', $request->getPathInfo()) === 1 or
 			preg_match('/subscription_cancel/', $request->getPathInfo()) === 1 or
+			preg_match('/payment_source/', $request->getPathInfo()) === 1 or
 			preg_match('/plan/', $request->getPathInfo()) === 1 or
 			preg_match('/user/', $request->getPathInfo()) === 1 or
 			preg_match('/menu_link/', $request->getPathInfo()) === 1

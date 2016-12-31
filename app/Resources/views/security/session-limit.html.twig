@@ -13,19 +13,7 @@
     <div class="column">
       <section class="section">
         <div class="container is-fluid" id="main-section">
-        	<h3 class="title is-3">Unrecoverable Error</h3>
-          	{% if errorMessage is defined %}
-                <p>
-                    {{errorMessage}}
-                </p>
-            {% else %}
-                <p>
-                    Unfortunately, an unrecoverable error has occurred. Step Inventory has logged the error and alerted the administrators.
-                </p>
-            {% endif %}
-            {% if app.debug and exception.getMessage is not empty %}
-                <span class="alert label">{{ exception.getMessage }}</span>
-            {% endif %}
+          <div class="notification is-danger">Active Session Limit Reached.</div>
         </div>
       </section>
       <footer class="footer"></footer>

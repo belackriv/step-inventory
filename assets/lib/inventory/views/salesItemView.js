@@ -59,6 +59,13 @@ export default Marionette.View.extend({
     }));
     Radio.channel('app').trigger('navigate', '/show'+salesItem.url(), {trigger: false});
   },
+  showBin(bin){
+    this.showChildView('content', new BinView({
+      model: bin
+    }));
+    bin.fetch();
+    Radio.channel('app').trigger('navigate', '/show'+bin.url(), {trigger: false});
+  },
   getSelectedCollection(){
     return this.selectedCollection;
   },

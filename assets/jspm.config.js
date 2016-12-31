@@ -43,7 +43,7 @@ SystemJS.config({
     "jquery": "npm:jquery@3.1.1",
     "jquery-datetimepicker": "github:xdan/datetimepicker@2.4.5",
     "jquery-ui": "github:components/jqueryui@1.12.1",
-    "jsbarcode": "npm:jsbarcode@3.5.6",
+    "jsbarcode": "npm:jsbarcode@3.5.7",
     "marionette": "github:marionettejs/backbone.marionette@3.1.0",
     "moment": "npm:moment@2.17.1",
     "moment-duration-format": "npm:moment-duration-format@1.3.0",
@@ -76,11 +76,6 @@ SystemJS.config({
         "handlebars": "github:components/handlebars.js@4.0.5"
       }
     },
-    "npm:jsbarcode@3.5.6": {
-      "map": {
-        "jquery": "npm:jquery@3.1.1"
-      }
-    },
     "npm:moment-timezone@0.5.10": {
       "map": {
         "moment": "npm:moment@2.17.1"
@@ -94,6 +89,11 @@ SystemJS.config({
     "github:VitalStorm/backbone.stickit@master": {
       "map": {
         "backbone": "npm:backbone@1.3.3"
+      }
+    },
+    "npm:jsbarcode@3.5.7": {
+      "map": {
+        "jquery": "npm:jquery@3.1.1"
       }
     }
   }

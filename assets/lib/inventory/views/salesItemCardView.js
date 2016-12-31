@@ -5,7 +5,7 @@ import jquery from 'jquery';
 import JsBarcode from 'jsbarcode';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
-import viewTpl from  "./travelerIdCardView.hbs!";
+import viewTpl from  "./salesItemCardView.hbs!";
 
 
 export default Marionette.View.extend({

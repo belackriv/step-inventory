@@ -33,6 +33,7 @@ export default Marionette.View.extend({
     },
   },
   ui: {
+    'labelInput': 'input[name="label"]',
     'isVoidInput': 'input[name="isVoid"]',
     'revenueInput': 'input[name="revenue"]',
     'saveButton': 'button[data-ui-name=save]',
@@ -40,6 +41,7 @@ export default Marionette.View.extend({
     'deleteButton': 'button[data-ui-name=delete]',
   },
   bindings: {
+    '@ui.labelInput': 'label',
     '@ui.isVoidInput': 'isVoid',
     '@ui.revenueInput': 'revenue',
   },

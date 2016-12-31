@@ -18,6 +18,11 @@ Class SalesItemDataTransferObject
 	public $outboundOrder = null;
 
 	/**
+	 * @JMS\Type("string")
+	 */
+	public $label = null;
+
+	/**
 	 * @JMS\Type("AppBundle\Entity\Bin")
 	 */
 	public $bin = null;

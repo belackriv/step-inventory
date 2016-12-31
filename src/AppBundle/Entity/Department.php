@@ -111,8 +111,21 @@ Class Department
         $this->menuItems = new ArrayCollection(array_values($this->menuItems->toArray()));
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="Bin", mappedBy="department")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\Bin>")
+     * @JMS\Exclude
+     */
+    protected $bins;
+
+    public function getBins()
+    {
+        return $this->bins;
+    }
+
     public function __construct() {
         $this->menuItems = new ArrayCollection();
+        $this->bins = new ArrayCollection();
     }
 
     public function getOrganization()

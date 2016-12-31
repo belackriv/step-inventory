@@ -34,7 +34,7 @@ Class InboundOrder
 
 
 	/**
-	 * @ORM\Column(type="string", length=64, unique=true)
+	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
      */
 	protected $label = null;
@@ -52,13 +52,24 @@ Class InboundOrder
 
 	public function generateLabel()
 	{
-		$label = Utilities::baseEncode($this->getId());
+		$inboundOrders = $this->getClient()->getOrganization()->getInboundOrders();
+		if(!$inboundOrders->contains($this)){
+            $inboundOrders->add($this);
+        }
+
+        $iterator = $inboundOrders->getIterator();
+		$iterator->uasort(function ($a, $b) {
+		    return ($a->getId() < $b->getId()) ? -1 : 1;
+		});
+		$inboundOrders = new ArrayCollection(iterator_to_array($iterator));
+
+		$label = Utilities::baseEncode($inboundOrders->indexOf($this)+1);
 		$this->setLabel($label);
 		return $label;
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Client")
+	 * @ORM\ManyToOne(targetEntity="Client", inversedBy="outboundOrders")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Client")
 	 */

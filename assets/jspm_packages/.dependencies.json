@@ -3,21 +3,6 @@
     "deps": {},
     "peerDeps": {}
   },
-  "npm:jquery@3.1.1": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:jsbarcode@3.5.6": {
-    "deps": {
-      "jquery": "npm:jquery"
-    },
-    "peerDeps": {
-      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
-      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
-      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
-      "process": "npm:jspm-nodelibs-process@^0.2.0"
-    }
-  },
   "github:VitalStorm/Backbone-relational@master": {
     "deps": {},
     "peerDeps": {
@@ -48,22 +33,6 @@
     "peerDeps": {}
   },
   "npm:bulma@0.2.3": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:jspm-nodelibs-child_process@0.2.0": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:jspm-nodelibs-assert@0.2.0": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:jspm-nodelibs-process@0.2.0": {
-    "deps": {},
-    "peerDeps": {}
-  },
-  "npm:jspm-nodelibs-fs@0.2.0": {
     "deps": {},
     "peerDeps": {}
   },
@@ -133,6 +102,37 @@
     "deps": {
       "handlebars": "github:components/handlebars.js@^4.0.5"
     },
+    "peerDeps": {}
+  },
+  "npm:jsbarcode@3.5.7": {
+    "deps": {
+      "jquery": "npm:jquery"
+    },
+    "peerDeps": {
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0"
+    }
+  },
+  "npm:jquery@3.1.1": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-child_process@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-assert@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-fs@0.2.0": {
+    "deps": {},
+    "peerDeps": {}
+  },
+  "npm:jspm-nodelibs-process@0.2.0": {
+    "deps": {},
     "peerDeps": {}
   }
 }

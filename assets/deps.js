@@ -26945,28 +26945,26 @@ System.registerDynamic("lib/inventory/views/binSkuCountView.hbs!github:davis/plu
   return module.exports;
 });
 System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
-      GLOBAL = global;
-  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
-  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
-      var stack1;
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+    module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.part : stack1, { "name": "if", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "					</p>\r\n					<svg jsbarcode-value=\"" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.label : stack1, depth0)) + "\"></svg>\r\n				</li>\r\n";
-    }, "2": function (container, depth0, helpers, partials, data) {
-      var stack1;
+            return "		<h5 class=\"subtitle is-5\">Has " + container.escapeExpression((helper = (helper = helpers.travelerIdCount || (depth0 != null ? depth0.travelerIdCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "travelerIdCount", "hash": {}, "data": data }) : helper)) + " Traveler Ids</h5>\r\n		<div class=\"box\">\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["0"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["1"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["2"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-clearfix\"></div>\r\n		</div>\r\n";
+        }, "2": function (container, depth0, helpers, partials, data) {
+            return "					<li>\r\n						" + container.escapeExpression((helpers.barcodeHtml || depth0 && depth0.barcodeHtml || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, { "name": "barcodeHtml", "hash": {}, "data": data })) + "\r\n					</li>\r\n";
+        }, "4": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "							Part: " + container.escapeExpression(container.lambda((stack1 = (stack1 = (stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.part : stack1) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-    }, "4": function (container, depth0, helpers, partials, data) {
-      var stack1;
+            return "		<h5 class=\"subtitle is-5\">Has " + container.escapeExpression((helper = (helper = helpers.salesItemCount || (depth0 != null ? depth0.salesItemCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "salesItemCount", "hash": {}, "data": data }) : helper)) + " Sales Items</h5>\r\n		<div class=\"box\">\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.siColumns : depth0) != null ? stack1["0"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.siColumns : depth0) != null ? stack1["1"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.siColumns : depth0) != null ? stack1["2"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-clearfix\"></div>\r\n		</div>\r\n";
+        }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.part : stack1, { "name": "if", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "					</p>\r\n					<svg  jsbarcode-value=\"" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.label : stack1, depth0)) + "\"></svg>\r\n				</li>\r\n";
-    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      var stack1, helper;
-
-      return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<h3 class=\"title is-3\">Bin #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + " : " + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + ", Has " + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.travelerIds : depth0) != null ? stack1.length : stack1, depth0)) + " Traveler Ids.</h3>\r\n	<div class=\"box\">\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["0"] : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["1"] : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["2"] : stack1, { "name": "each", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-clearfix\"></div>\r\n	</div>\r\n</div>";
-    }, "useData": true });
-  return module.exports;
+            return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<h3 class=\"title is-3\">Bin #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + " : " + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</h3>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.travelerIdCount : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.salesItemCount : depth0, { "name": "if", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "	</div>\r\n</div>";
+        }, "useData": true });
+    return module.exports;
 });
 System.registerDynamic("lib/inventory/views/inventoryActionIndexTabsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
     var define,
@@ -27372,6 +27370,26 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdTransformRowTpl.h
     }, "useData": true });
   return module.exports;
 });
+System.registerDynamic("lib/inventory/views/salesItemActionsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      return "<button name=\"massEdit\" class=\"button\">Mass Edit Sales Items</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Sales Items</button>\r\n<div data-region=\"list\"></div>";
+    }, "useData": true });
+  return module.exports;
+});
+System.registerDynamic("lib/inventory/views/salesItemCardView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+   var define,
+       global = this || self,
+       GLOBAL = global;
+   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+         return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		" + container.escapeExpression((helpers.barcodeHtml || depth0 && depth0.barcodeHtml || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, { "name": "barcodeHtml", "hash": { "type": "SalesItemModel", "isCard": "true" }, "data": data })) + "\r\n	</div>\r\n</div>";
+      }, "useData": true });
+   return module.exports;
+});
 System.registerDynamic("lib/inventory/views/salesItemEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
   var define,
       global = this || self,
@@ -27380,7 +27398,7 @@ System.registerDynamic("lib/inventory/views/salesItemEditView.hbs!github:davis/p
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
       var stack1, helper;
 
-      return "<h3 class=\"title is-3\">Sales Item #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<span class=\"subtitle is-5\">SKU: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + ", QTY: " + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</span>\r\n<form>\r\n	<label class=\"label\">Outbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"outboundOrder\">\r\n			<option>Select a Outbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Revenue</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"revenue\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Revenue\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+      return "<h3 class=\"title is-3\">Sales Item #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<span class=\"subtitle is-5\">SKU: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + ", QTY: " + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</span>\r\n<form>\r\n	<label class=\"label\">Outbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"outboundOrder\">\r\n			<option>Select a Outbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Label</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"label\" type=\"text\" placeholder=\"Enter Label\" />\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Revenue</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"revenue\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Revenue\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
     }, "useData": true });
   return module.exports;
 });
@@ -27390,7 +27408,7 @@ System.registerDynamic("lib/inventory/views/salesItemListTableLayoutTpl.hbs!gith
       GLOBAL = global;
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th colspan=\"2\">SalesItem#</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>SKU</th>\r\n			<th>Quantity</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th colspan=\"2\">Label</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>SKU</th>\r\n			<th>Quantity</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
     }, "useData": true });
   return module.exports;
 });
@@ -27404,7 +27422,7 @@ System.registerDynamic("lib/inventory/views/salesItemRowTpl.hbs!github:davis/plu
         }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
             var stack1, helper;
 
-            return "<td>\r\n	<a class=\"entity-link" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a>\r\n</td>\r\n<td>\r\n	<button type=\"button\" name=\"showCard\" class=\"button small\">Show Card</button>\r\n</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.outboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td><a data-ui-link=\"bin\" href=\"" + container.escapeExpression((helpers["return"] || depth0 && depth0["return"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.url : stack1, depth0 != null ? depth0.bin : depth0, { "name": "return", "hash": {}, "data": data })) + "\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><input type=\"checkbox\" name=\"isSelected\" /></td>";
+            return "<td>\r\n	<a class=\"entity-link" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</a>\r\n</td>\r\n<td>\r\n	<button type=\"button\" name=\"showCard\" class=\"button small\">Show Card</button>\r\n</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.outboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td><a data-ui-link=\"bin\" href=\"" + container.escapeExpression((helpers["return"] || depth0 && depth0["return"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.url : stack1, depth0 != null ? depth0.bin : depth0, { "name": "return", "hash": {}, "data": data })) + "\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><input type=\"checkbox\" name=\"isSelected\" /></td>";
         }, "useData": true });
     return module.exports;
 });
@@ -27429,44 +27447,14 @@ System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:dav
   return module.exports;
 });
 System.registerDynamic("lib/inventory/views/travelerIdCardView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
-      GLOBAL = global;
-  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
-  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.unit : depth0) != null ? stack1.attributes : stack1) != null ? stack1.serial : stack1, depth0)) + "\r\n";
-    }, "3": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.part : depth0, { "name": "if", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.program(6, data, 0), "data": data })) != null ? stack1 : "";
-    }, "4": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-    }, "6": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.commodity : depth0, { "name": "if", "hash": {}, "fn": container.program(7, data, 0), "inverse": container.program(9, data, 0), "data": data })) != null ? stack1 : "";
-    }, "7": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.commodity : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-    }, "9": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.unitType : depth0, { "name": "if", "hash": {}, "fn": container.program(10, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "";
-    }, "10": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.unitType : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n				";
-    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      var stack1, helper;
-
-      return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		<div data-ui-top-label>\r\n			<p class=\"has-text-centered\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.unit : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "			</p>\r\n		</div>\r\n		<svg jsbarcode-value=\"" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "\"></svg>\r\n	</div>\r\n</div>";
-    }, "useData": true });
-  return module.exports;
+   var define,
+       global = this || self,
+       GLOBAL = global;
+   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+         return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		" + container.escapeExpression((helpers.barcodeHtml || depth0 && depth0.barcodeHtml || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, { "name": "barcodeHtml", "hash": { "type": "TravelerIdModel", "isCard": "true" }, "data": data })) + "\r\n	</div>\r\n</div>";
+      }, "useData": true });
+   return module.exports;
 });
 System.registerDynamic("lib/inventory/views/travelerIdEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
   var define,
@@ -39558,7 +39546,7 @@ System.register("npm:bulma@0.2.3/css/bulma.css!github:systemjs/plugin-text@0.0.9
     }
   };
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE39/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/CODE39/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -39678,7 +39666,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE39/index.js", ["../
 	exports.CODE39 = CODE39;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128_AUTO.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128_AUTO.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -39813,7 +39801,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128_AUTO.js
 	exports.default = CODE128AUTO;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128A.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128A.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -39869,7 +39857,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128A.js', [
 	exports.default = CODE128A;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128B.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128B.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -39925,7 +39913,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128B.js', [
 	exports.default = CODE128B;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -40177,7 +40165,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128.js", ["
 	exports.default = CODE128;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128C.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128C.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -40233,7 +40221,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128C.js', [
 	exports.default = CODE128C;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/index.js', ['./CODE128_AUTO.js', './CODE128A.js', './CODE128B.js', './CODE128C.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/index.js', ['./CODE128_AUTO.js', './CODE128A.js', './CODE128B.js', './CODE128C.js', 'process'], true, function ($__require, exports, module) {
   'use strict';
 
   var process = $__require('process');
@@ -40271,7 +40259,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/index.js', ['./
   exports.CODE128C = _CODE128C2.default;
   return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN13.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN13.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -40470,7 +40458,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN13.js", ["./
 	exports.default = EAN13;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN8.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN8.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -40587,7 +40575,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN8.js", ["./e
 	exports.default = EAN8;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN5.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN5.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -40680,7 +40668,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN5.js", ["./e
 	exports.default = EAN5;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN2.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN2.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -40762,7 +40750,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN2.js", ["./e
 	exports.default = EAN2;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/ean_encoder.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/ean_encoder.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -40833,7 +40821,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/ean_encoder.js"
 	exports.default = EANencoder;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/UPC.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/UPC.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41011,7 +40999,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/UPC.js", ["./ea
 	exports.default = UPC;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/index.js', ['./EAN13.js', './EAN8.js', './EAN5.js', './EAN2.js', './UPC.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/index.js', ['./EAN13.js', './EAN8.js', './EAN5.js', './EAN2.js', './UPC.js', 'process'], true, function ($__require, exports, module) {
   'use strict';
 
   var process = $__require('process');
@@ -41054,7 +41042,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/index.js', ['./
   exports.UPC = _UPC2.default;
   return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF14/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/ITF14/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41178,7 +41166,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF14/index.js", ["../B
 	exports.ITF14 = ITF14;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/ITF/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41285,7 +41273,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF/index.js", ["../Bar
 	exports.ITF = ITF;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI10.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI10.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -41339,7 +41327,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI10.js', ['./MSI.
 	exports.default = MSI10;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI11.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI11.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -41393,7 +41381,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI11.js', ['./MSI.
 	exports.default = MSI11;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1010.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI1010.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -41449,7 +41437,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1010.js', ['./MS
 	exports.default = MSI1010;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41538,7 +41526,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI.js", ["../Barco
 	exports.default = MSI;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/checksums.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/MSI/checksums.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41574,7 +41562,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/checksums.js", ["pr
 	}
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1110.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI1110.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -41630,7 +41618,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1110.js', ['./MS
 	exports.default = MSI1110;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/index.js', ['./MSI.js', './MSI10.js', './MSI11.js', './MSI1010.js', './MSI1110.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/index.js', ['./MSI.js', './MSI10.js', './MSI11.js', './MSI1010.js', './MSI1110.js', 'process'], true, function ($__require, exports, module) {
   'use strict';
 
   var process = $__require('process');
@@ -41673,7 +41661,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/index.js', ['./MSI.
   exports.MSI1110 = _MSI10.default;
   return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/pharmacode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/pharmacode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41761,7 +41749,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/pharmacode/index.js", [
 	exports.pharmacode = pharmacode;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/codabar/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/codabar/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41867,7 +41855,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/codabar/index.js", ["..
 	exports.codabar = codabar;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/Barcode.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/Barcode.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41895,7 +41883,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/Barcode.js", ["process"
 	exports.default = Barcode;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/GenericBarcode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/GenericBarcode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -41965,7 +41953,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/GenericBarcode/index.js
 	exports.GenericBarcode = GenericBarcode;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/index.js', ['./CODE39', './CODE128', './EAN_UPC', './ITF14', './ITF', './MSI', './pharmacode', './codabar', './GenericBarcode', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/index.js', ['./CODE39', './CODE128', './EAN_UPC', './ITF14', './ITF', './MSI', './pharmacode', './codabar', './GenericBarcode', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -42007,7 +41995,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/index.js', ['./CODE39',
 	};
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/linearizeEncodings.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/linearizeEncodings.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42041,7 +42029,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/linearizeEncodings.js", ["p
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/fixOptions.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/fixOptions.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42064,7 +42052,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/fixOptions.js", ["process"]
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getOptionsFromElement.js", ["./optionsFromStrings.js", "../options/defaults.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/getOptionsFromElement.js", ["./optionsFromStrings.js", "../options/defaults.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42114,7 +42102,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getOptionsFromElement.js", 
 	exports.default = getOptionsFromElement;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/canvas.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/renderers/canvas.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42275,7 +42263,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/canvas.js", ["../help/
 	exports.default = CanvasRenderer;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/merge.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/merge.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42304,7 +42292,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/merge.js", ["process"], tru
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/shared.js", ["../help/merge.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/renderers/shared.js", ["../help/merge.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42398,7 +42386,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/shared.js", ["../help/
 	exports.getTotalWidthOfEncodings = getTotalWidthOfEncodings;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/svg.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/renderers/svg.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42588,7 +42576,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/svg.js", ["../help/mer
 	exports.default = SVGRenderer;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/renderers/index.js', ['./canvas.js', './svg.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/renderers/index.js', ['./canvas.js', './svg.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -42626,7 +42614,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/renderers/index.js', ['./canvas.
 	exports.getRendererClass = getRendererClass;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getRenderProperties.js", ["./getOptionsFromElement.js", "../renderers", "../exceptions/exceptions.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/getRenderProperties.js", ["./getOptionsFromElement.js", "../renderers", "../exceptions/exceptions.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42734,7 +42722,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getRenderProperties.js", ["
 	exports.default = getRenderProperties;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/optionsFromStrings.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/optionsFromStrings.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42768,7 +42756,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/optionsFromStrings.js", ["p
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/ErrorHandler.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/exceptions/ErrorHandler.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -42827,7 +42815,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/ErrorHandler.js", ["p
 	exports.default = ErrorHandler;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/exceptions.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/exceptions/exceptions.js", ["process"], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require("process");
@@ -42913,7 +42901,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/exceptions.js", ["pro
 	exports.NoElementException = NoElementException;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/options/defaults.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/options/defaults.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -43060,7 +43048,7 @@ System.registerDynamic('npm:jspm-nodelibs-process@0.2.0/process.js', ['@system-e
     };
     return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6.json", [], false, function() {
+System.registerDynamic("npm:jsbarcode@3.5.7.json", [], false, function() {
   return {
     "main": "bin/JsBarcode.js",
     "format": "cjs",
@@ -43093,7 +43081,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6.json", [], false, function() {
   };
 });
 
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/JsBarcode.js', ['./barcodes', './help/merge.js', './help/linearizeEncodings.js', './help/fixOptions.js', './help/getRenderProperties.js', './help/optionsFromStrings.js', './exceptions/ErrorHandler.js', './exceptions/exceptions.js', './options/defaults.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/JsBarcode.js', ['./barcodes', './help/merge.js', './help/linearizeEncodings.js', './help/fixOptions.js', './help/getRenderProperties.js', './help/optionsFromStrings.js', './exceptions/ErrorHandler.js', './exceptions/exceptions.js', './options/defaults.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -43281,13 +43269,13 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/JsBarcode.js', ['./barcodes', '.
 				options.format = autoSelectBarcode();
 			}
 
-			var text = options.value;
+			this._errorHandler.wrapBarcodeCall(function () {
+				var text = options.value;
+				var Encoder = _barcodes2.default[options.format.toUpperCase()];
+				var encoded = encode(text, Encoder, options);
 
-			var Encoder = _barcodes2.default[options.format.toUpperCase()];
-
-			var encoded = encode(text, Encoder, options);
-
-			render(renderProperty, encoded, options);
+				render(renderProperty, encoded, options);
+			});
 		}
 	};
 

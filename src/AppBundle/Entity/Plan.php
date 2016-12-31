@@ -230,6 +230,9 @@ Class Plan
         if(isset($stripePlan->metadata['max_skus'])){
             $this->maxSkus = (int)$stripePlan->metadata['max_skus'];
         }
+        if(isset($stripePlan->metadata['long_description'])){
+            $this->description = $stripePlan->metadata['long_description'];
+        }
     }
 
 }

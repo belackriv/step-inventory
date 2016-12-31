@@ -5,7 +5,7 @@ import Backbone from 'backbone';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
 
-import viewTpl from './travelerIdActionsView.hbs!';
+import viewTpl from './salesItemActionsView.hbs!';
 import SearchableListLayoutView from 'lib/common/views/entity/searchableListLayoutView.js';
 
 import salesItemListTableLayoutTpl from './salesItemListTableLayoutTpl.hbs!';

@@ -51,6 +51,7 @@ let Model = BaseUrlBaseModel.extend({
   }],
   defaults: {
     outboundOrder: null,
+    label: null,
     bin: null,
     sku: null,
     isVoid: null,

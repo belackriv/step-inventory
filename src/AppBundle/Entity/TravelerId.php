@@ -50,7 +50,7 @@ Class TravelerId
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64, unique=true)
+	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
      */
 	protected $label = null;
