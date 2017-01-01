@@ -2,12 +2,11 @@
 
 import BaseUrlBaseCollection from 'lib/common/models/baseUrlBaseCollection.js';
 
-import Model from './outboundOrderModel.js';
+import Model from './inventorySalesItemMovementModel.js';
 
 export default BaseUrlBaseCollection.extend({
   model: Model,
   url(){
-    return this.baseUrl+'/outbound_order';
+    return this.baseUrl+'/inventory_sales_item_movement';
   },
-  selectOptionsUrl: '/select_options/outbound_order',
 });

@@ -8,18 +8,18 @@ import Radio from 'backbone.radio';
 
 import RemoteSearchSelect2Behavior from 'lib/common/behaviors/remoteSearchSelect2.js';
 
-import viewTpl from './inventoryTravelerIdMassEditActionView.hbs!';
+import viewTpl from './inventorySalesItemMassEditActionView.hbs!';
 
-import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
+import OutboundOrderCollection from 'lib/accounting/models/outboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
 import SkuCollection from '../models/skuCollection.js';
 
-import TravelerIdModel from '../models/travelerIdModel.js';
-import MassTravelerIdModel from '../models/massTravelerIdModel.js';
+import SalesItemModel from '../models/salesItemModel.js';
+import MassSalesItemModel from '../models/massSalesItemModel.js';
 
 export default Marionette.View.extend({
   initialize(){
-    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId');
+    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:salesItem');
   },
   template: viewTpl,
   ui: {
@@ -39,9 +39,9 @@ export default Marionette.View.extend({
     'click @ui.updateTypeRadio': 'updateControl'
   },
   select2Options:{
-    inboundOrder:{
-      collection: InboundOrderCollection,
-      url: InboundOrderCollection.prototype.selectOptionsUrl,
+    outboundOrder:{
+      collection: OutboundOrderCollection,
+      url: OutboundOrderCollection.prototype.selectOptionsUrl,
       search: 'label',
       textProperty: 'label'
     },
@@ -49,11 +49,11 @@ export default Marionette.View.extend({
       collection: BinCollection,
       url: BinCollection.prototype.selectOptionsUrl,
       search: 'name'
-    }
+    },
   },
   serializeData(){
     let data = {};
-    data.updateableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    data.updateableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
     data.selectedCount = this.selectedCollection.length;
     return data;
   },
@@ -64,10 +64,10 @@ export default Marionette.View.extend({
     event.preventDefault();
     this.disableButtons();
     setTimeout(()=>{
-      this.editTravelerIds().then(()=>{
+      this.editSalesItems().then(()=>{
         this.enableButtons();
         Radio.channel('dialog').trigger('close');
-        Radio.channel('inventory').trigger('refresh:list:travelerId');
+        Radio.channel('inventory').trigger('refresh:list:salesItem');
       }).catch((err)=>{
         this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
         this.enableButtons();
@@ -75,7 +75,7 @@ export default Marionette.View.extend({
     }, 5);
   },
   updateControl(){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
     let attribute = this.ui.attributeSelect.val();
     let type = this.ui.updateTypeRadio.filter(':checked').val();
     if(!attribute || !type){
@@ -96,9 +96,9 @@ export default Marionette.View.extend({
       this.ui.controlContainer.empty().append($input);
     }
   },
-  editTravelerIds(){
+  editSalesItems(){
     return new Promise((resolve, reject)=>{
-      let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+      let updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
       let attr = Syphon.serialize(this);
       let type = this.ui.updateTypeRadio.filter(':checked').val();
       let valuePromise = null;
@@ -124,12 +124,12 @@ export default Marionette.View.extend({
           });
         }
         //set an Id so backbone does a "put" rather than "post"
-        let massTravlerId = MassTravelerIdModel.findOrCreate({
+        let massSalesItem = MassSalesItemModel.findOrCreate({
           id: 1
         });
-        massTravlerId.set('type', 'edit');
-        massTravlerId.get('travelerIds').reset(this.selectedCollection.models);
-        massTravlerId.save().done(()=>{
+        massSalesItem.set('type', 'edit');
+        massSalesItem.get('salesItems').reset(this.selectedCollection.models);
+        massSalesItem.save().done(()=>{
           resolve();
         });
       }).catch((err)=>{
@@ -138,7 +138,7 @@ export default Marionette.View.extend({
     });
   },
   getSingleValue(valueStr, attribute){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
     let updateValue = null;
     return new Promise((resolve, reject)=>{
       if(updatableAttributes[attribute].type === 'select'){
@@ -150,7 +150,7 @@ export default Marionette.View.extend({
     });
   },
   getValuesArray(valueStr, attribute){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
     let valuesLookup = {};
     let rawValuesArray = [];
     let valuesArray = [];
@@ -164,7 +164,7 @@ export default Marionette.View.extend({
       }
     });
     if(rawValuesArray.length !== this.selectedCollection.length){
-      throw 'Selected TID Count and Suppplied Values Count do not match';
+      throw 'Selected Sales Item Count and Suppplied Values Count do not match';
     }
     return new Promise((resolve, reject)=>{
       this.getAjaxResult(valuesLookup, attribute, (err)=>{
@@ -181,7 +181,7 @@ export default Marionette.View.extend({
     });
   },
   getAjaxResult(valuesLookup, attribute, callback){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
     if(updatableAttributes[attribute].type === 'select'){
       let search = this.select2Options[attribute].search;
       let terms = _.keys(valuesLookup);

@@ -89,7 +89,9 @@ export default Marionette.View.extend({
     }
   },
   setOfficeAndDepartmentFromMyself(myself){
-    this.model.set('office', myself.get('currentDepartment').get('office'));
-    this.model.set('department', myself.get('currentDepartment'));
+    if(myself.get('currentDepartment') && myself.get('currentDepartment') instanceof Backbone.Model){
+      this.model.set('office', myself.get('currentDepartment').get('office'));
+      this.model.set('department', myself.get('currentDepartment'));
+    }
   }
 });

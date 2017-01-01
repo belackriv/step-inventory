@@ -5,11 +5,11 @@ import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import 'lib/common/models/userModel.js';
-import './travelerIdModel.js';
+import './salesItemModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
-    return this.baseUrl+'/inventory_tid_edit';
+    return this.baseUrl+'/inventory_sales_item_edit';
   },
   relations: [{
     type: BackboneRelational.HasOne,
@@ -18,8 +18,8 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
   },{
     type: BackboneRelational.HasOne,
-    key: 'travelerId',
-    relatedModel: 'TravelerIdModel',
+    key: 'salesItem',
+    relatedModel: 'SalesItemModel',
     includeInJSON: ['id'],
   }],
   defaults: {
@@ -27,11 +27,11 @@ let Model = BaseUrlBaseModel.extend({
     oldAttributes: null,
     newAttributes: null,
     editedAt: null,
-    travelerId: null,
+    salesItem: null,
   },
 
 });
 
-globalNamespace.Models.InventoryTravelerIdEditModel = Model;
+globalNamespace.Models.InventorySalesItemEditModel = Model;
 
 export default Model;

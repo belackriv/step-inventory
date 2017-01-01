@@ -10,12 +10,11 @@ import SearchableListLayoutView from 'lib/common/views/entity/searchableListLayo
 
 import salesItemListTableLayoutTpl from './salesItemListTableLayoutTpl.hbs!';
 import salesItemRowTpl from './salesItemRowTpl.hbs!';
-/*
-import InventoryTravelerIdAddActionView from './inventoryTravelerIdAddActionView.js';
-import InventoryTravelerIdMassEditActionView from './inventoryTravelerIdMassEditActionView.js';
-import InventoryTravelerIdMassSelectionActionView from './inventoryTravelerIdMassSelectionActionView.js';
-import InventoryTravelerIdMassTransformActionView from './inventoryTravelerIdMassTransformActionView.js';
-*/
+
+
+import InventorySalesItemMassEditActionView from './inventorySalesItemMassEditActionView.js';
+import InventorySalesItemMassSelectionActionView from './inventorySalesItemMassSelectionActionView.js';
+
 import SalesItemCollection from '../models/salesItemCollection.js';
 
 export default Marionette.View.extend({
@@ -85,9 +84,9 @@ export default Marionette.View.extend({
       title: 'Mass Edit SalesItem',
       width: '400px'
     };
-    //let view = new InventoryTravelerIdMassEditActionView();
-    //Radio.channel('dialog').trigger('close');
-    //Radio.channel('dialog').trigger('open', view, options);
+    let view = new InventorySalesItemMassEditActionView();
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
   },
   massSelect(event){
     event.preventDefault();
@@ -95,9 +94,9 @@ export default Marionette.View.extend({
       title: 'Mass Select SalesItem',
       width: '400px'
     };
-    //let view = new InventoryTravelerIdMassSelectionActionView();
-    //Radio.channel('dialog').trigger('close');
-    //Radio.channel('dialog').trigger('open', view, options);
+    let view = new InventorySalesItemMassSelectionActionView();
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
   },
   binLinkClicked(model){
     this.triggerMethod('show:bin', model.get('bin'));

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use AppBundle\Library\Utilities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation As JMS;
 
@@ -15,7 +16,7 @@ Class OutboundOrder
 {
 	public function __construct()
     {
-        $this->travelerIds = new ArrayCollection();
+        $this->salesItems = new ArrayCollection();
     }
 
 	/**
@@ -172,4 +173,13 @@ Class OutboundOrder
     {
         return ( $this->getCustomer() and $this->getCustomer()->isOwnedByOrganization($organization) );
     }
+
+    public function getSelectOptionData()
+	{
+		return [
+			'id' => $this->id,
+			'label' => $this->label,
+			'isVoid' => $this->isVoid
+		];
+	}
 }

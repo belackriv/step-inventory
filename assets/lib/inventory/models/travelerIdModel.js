@@ -80,18 +80,22 @@ let Model = BaseUrlBaseModel.extend({
         title: 'Inbound Order',
         type: 'select'
       },
+      /*
       label: {
         title: 'Label',
         type: 'text'
       },
+      */
       bin: {
         title: 'Bin',
         type: 'select'
       },
+      /*
       sku: {
         title: 'SKU',
         type: 'select'
       },
+      */
       isVoid: {
         title: 'Is Void? (Use "Yes" and "No" for multiple)',
         type: 'checkbox'

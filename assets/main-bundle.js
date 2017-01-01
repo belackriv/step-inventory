@@ -17722,8 +17722,10 @@ System.register('lib/common/views/menuSelectionView.js', ['underscore', 'backbon
           }
         },
         setOfficeAndDepartmentFromMyself: function setOfficeAndDepartmentFromMyself(myself) {
-          this.model.set('office', myself.get('currentDepartment').get('office'));
-          this.model.set('department', myself.get('currentDepartment'));
+          if (myself.get('currentDepartment') && myself.get('currentDepartment') instanceof Backbone.Model) {
+            this.model.set('office', myself.get('currentDepartment').get('office'));
+            this.model.set('department', myself.get('currentDepartment'));
+          }
         }
       }));
     }
@@ -24145,7 +24147,7 @@ System.registerDynamic("lib/inventory/views/inventoryLogIndexTabsView.hbs!github
         }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
             var stack1, helper;
 
-            return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_edit", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_edit\">Traveler Id Edit Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_movement\">Traveler Id Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_transform", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_transform\">Traveler Id Transform Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sku_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sku_adjustment\">SKU Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sku_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sku_movement\">SKU Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sku_transform", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sku_transform\">SKU Transform Logs</a></li>\r\n</ul>";
+            return "<ul>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_edit", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_edit\">Traveler Id Edit Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_movement\">Traveler Id Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_tid_transform", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_tid_transform\">Traveler Id Transform Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sales_item_edit", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sales_item_edit\">Sales Item Edit Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sales_item_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sales_item_movement\">Sales Item Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sku_adjustment", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sku_adjustment\">SKU Adjustment Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sku_movement", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sku_movement\">SKU Movement Logs</a></li>\r\n	<li class=\"" + ((stack1 = (helpers.ifIsRouteActive || depth0 && depth0.ifIsRouteActive || helpers.helperMissing).call(depth0 != null ? depth0 : {}, "/inventory_sku_transform", { "name": "ifIsRouteActive", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\"><a href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/inventory_sku_transform\">SKU Transform Logs</a></li>\r\n</ul>";
         }, "useData": true });
     return module.exports;
 });
@@ -24200,6 +24202,16 @@ System.registerDynamic("lib/inventory/views/travelerIdView.hbs!github:davis/plug
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
       return "<div data-region=\"content\"></div>";
+    }, "useData": true });
+  return module.exports;
+});
+System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      return "<button name=\"add\" class=\"button\">Add Traveler Ids</button>\r\n<button name=\"massEdit\" class=\"button\">Mass Edit Traveler Ids</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Traveler Ids</button>\r\n<button name=\"massTransform\" class=\"button\">Mass Transform Traveler Ids</button>\r\n<div data-region=\"list\"></div>";
     }, "useData": true });
   return module.exports;
 });
@@ -24469,11 +24481,6 @@ System.register('lib/inventory/views/inventoryTravelerIdMassEditActionView.js', 
             collection: BinCollection,
             url: BinCollection.prototype.selectOptionsUrl,
             search: 'name'
-          },
-          sku: {
-            collection: SkuCollection,
-            url: SkuCollection.prototype.selectOptionsUrl,
-            search: 'name'
           }
         },
         serializeData: function serializeData() {
@@ -24729,14 +24736,13 @@ System.register('lib/inventory/views/inventoryTravelerIdMassSelectionActionView.
         },
         export: function _export() {
           var element = document.createElement('a');
-          var csvText = 'Label,Serial,Inbound Order,Outbound Order,Bin,Type\n';
+          var csvText = 'Label,Serial,SKU,Inbound Order,Bin\n';
           this.selectedCollection.each(function (travelerId) {
             csvText += travelerId.get('label') + ',';
             csvText += travelerId.get('serial') + ',';
+            csvText += travelerId.get('sku').get('label') + ',';
             csvText += travelerId.get('inboundOrder').get('label') + ',';
-            csvText += travelerId.get('outboundOrder') ? travelerId.get('outboundOrder').get('label') + ',' : ',';
-            csvText += travelerId.get('bin').get('name') + ',';
-            csvText += travelerId.get('part') ? travelerId.get('part').get('name') + ',' : ',';
+            csvText += travelerId.get('bin').get('name');
             csvText += '\n';
           });
           element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvText));
@@ -25464,6 +25470,16 @@ System.register('lib/inventory/views/travelerIdEditView.js', ['underscore', 'bac
     }
   };
 });
+System.registerDynamic("lib/inventory/views/travelerIdCardView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+   var define,
+       global = this || self,
+       GLOBAL = global;
+   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+         return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		" + container.escapeExpression((helpers.barcodeHtml || depth0 && depth0.barcodeHtml || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, { "name": "barcodeHtml", "hash": { "type": "TravelerIdModel", "isCard": "true" }, "data": data })) + "\r\n	</div>\r\n</div>";
+      }, "useData": true });
+   return module.exports;
+});
 "use strict";
 
 System.register('lib/inventory/views/travelerIdCardView.js', ['underscore', 'jquery', 'jsbarcode', 'marionette', 'backbone.radio', './travelerIdCardView.hbs!'], function (_export, _context) {
@@ -26167,13 +26183,13 @@ System.registerDynamic("lib/inventory/views/salesItemView.hbs!github:davis/plugi
     }, "useData": true });
   return module.exports;
 });
-System.registerDynamic("lib/inventory/views/travelerIdActionsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+System.registerDynamic("lib/inventory/views/salesItemActionsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
   var define,
       global = this || self,
       GLOBAL = global;
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      return "<button name=\"add\" class=\"button\">Add Traveler Ids</button>\r\n<button name=\"massEdit\" class=\"button\">Mass Edit Traveler Ids</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Traveler Ids</button>\r\n<button name=\"massTransform\" class=\"button\">Mass Transform Traveler Ids</button>\r\n<div data-region=\"list\"></div>";
+      return "<button name=\"massEdit\" class=\"button\">Mass Edit Sales Items</button>\r\n<button name=\"massSelect\" class=\"button\">Mass Select Sales Items</button>\r\n<div data-region=\"list\"></div>";
     }, "useData": true });
   return module.exports;
 });
@@ -26183,7 +26199,7 @@ System.registerDynamic("lib/inventory/views/salesItemListTableLayoutTpl.hbs!gith
       GLOBAL = global;
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th colspan=\"2\">SalesItem#</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>SKU</th>\r\n			<th>Quantity</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th colspan=\"2\">Label</th>\r\n			<th>Outbound Order</th>\r\n			<th>Bin</th>\r\n			<th>SKU</th>\r\n			<th>Quantity</th>\r\n			<th><button type=\"button\" name=\"toggleSelectAll\" class=\"button small\">Toggle Select All</button></th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
     }, "useData": true });
   return module.exports;
 });
@@ -26197,9 +26213,508 @@ System.registerDynamic("lib/inventory/views/salesItemRowTpl.hbs!github:davis/plu
         }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
             var stack1, helper;
 
-            return "<td>\r\n	<a class=\"entity-link" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</a>\r\n</td>\r\n<td>\r\n	<button type=\"button\" name=\"showCard\" class=\"button small\">Show Card</button>\r\n</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.outboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td><a data-ui-link=\"bin\" href=\"" + container.escapeExpression((helpers["return"] || depth0 && depth0["return"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.url : stack1, depth0 != null ? depth0.bin : depth0, { "name": "return", "hash": {}, "data": data })) + "\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><input type=\"checkbox\" name=\"isSelected\" /></td>";
+            return "<td>\r\n	<a class=\"entity-link" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\" href=\"" + container.escapeExpression((helper = (helper = helpers.entityUrl || (depth0 != null ? depth0.entityUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "entityUrl", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "</a>\r\n</td>\r\n<td>\r\n	<button type=\"button\" name=\"showCard\" class=\"button small\">Show Card</button>\r\n</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.outboundOrder : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td><a data-ui-link=\"bin\" href=\"" + container.escapeExpression((helpers["return"] || depth0 && depth0["return"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.url : stack1, depth0 != null ? depth0.bin : depth0, { "name": "return", "hash": {}, "data": data })) + "\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.bin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</a></td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td><input type=\"checkbox\" name=\"isSelected\" /></td>";
         }, "useData": true });
     return module.exports;
+});
+System.registerDynamic("lib/inventory/views/inventorySalesItemMassEditActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
+      var helper;
+
+      return "  				<option value=\"" + container.escapeExpression((helper = (helper = helpers.key || data && data.key) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "key", "hash": {}, "data": data }) : helper)) + "\">" + container.escapeExpression(container.lambda(depth0 != null ? depth0.title : depth0, depth0)) + "</option>\r\n";
+    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      var stack1, helper;
+
+      return "<form>\r\n	<label class=\"label\">Update Attribute</label>\r\n	<p class=\"control\">\r\n		<select name=\"updateAttribute\">\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.updateableAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "  		</select>\r\n	</p>\r\n	<label class=\"label\">Update Type</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"updateType\" value=\"single\" />\r\n	    	Single Value\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"updateType\" value=\"multiple\" />\r\n		    Multiple Values\r\n		</label>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"controlLabel\"></label>\r\n	<p class=\"control\" data-ui=\"controlContainer\"></p>\r\n	<label class=\"label\" data-ui=\"countLabel\">Update " + container.escapeExpression((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "selectedCount", "hash": {}, "data": data }) : helper)) + " Sales Items</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n	</p>\r\n</form>";
+    }, "useData": true });
+  return module.exports;
+});
+'use strict';
+
+System.register('lib/inventory/models/massSalesItemModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/accounting/models/outboundOrderModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libAccountingModelsOutboundOrderModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/mass_sales_item';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasMany,
+          key: 'salesItems',
+          relatedModel: 'SalesItemModel',
+          includeInJSON: true
+        }],
+        defaults: {
+          salesItems: null
+        }
+      });
+
+
+      globalNamespace.Models.MassSalesItemModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/views/inventorySalesItemMassEditActionView.js', ['underscore', 'jquery', 'backbone.syphon', 'marionette', 'backbone.radio', 'lib/common/behaviors/remoteSearchSelect2.js', './inventorySalesItemMassEditActionView.hbs!', 'lib/accounting/models/outboundOrderCollection.js', '../models/binCollection.js', '../models/skuCollection.js', '../models/salesItemModel.js', '../models/massSalesItemModel.js'], function (_export, _context) {
+  "use strict";
+
+  var _, jquery, Syphon, Marionette, Radio, RemoteSearchSelect2Behavior, viewTpl, OutboundOrderCollection, BinCollection, SkuCollection, SalesItemModel, MassSalesItemModel;
+
+  return {
+    setters: [function (_underscore) {
+      _ = _underscore.default;
+    }, function (_jquery) {
+      jquery = _jquery.default;
+    }, function (_backboneSyphon) {
+      Syphon = _backboneSyphon.default;
+    }, function (_marionette) {
+      Marionette = _marionette.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_libCommonBehaviorsRemoteSearchSelect2Js) {
+      RemoteSearchSelect2Behavior = _libCommonBehaviorsRemoteSearchSelect2Js.default;
+    }, function (_inventorySalesItemMassEditActionViewHbs) {
+      viewTpl = _inventorySalesItemMassEditActionViewHbs.default;
+    }, function (_libAccountingModelsOutboundOrderCollectionJs) {
+      OutboundOrderCollection = _libAccountingModelsOutboundOrderCollectionJs.default;
+    }, function (_modelsBinCollectionJs) {
+      BinCollection = _modelsBinCollectionJs.default;
+    }, function (_modelsSkuCollectionJs) {
+      SkuCollection = _modelsSkuCollectionJs.default;
+    }, function (_modelsSalesItemModelJs) {
+      SalesItemModel = _modelsSalesItemModelJs.default;
+    }, function (_modelsMassSalesItemModelJs) {
+      MassSalesItemModel = _modelsMassSalesItemModelJs.default;
+    }],
+    execute: function () {
+      _export('default', Marionette.View.extend({
+        initialize: function initialize() {
+          this.selectedCollection = Radio.channel('inventory').request('get:isSelected:salesItem');
+        },
+
+        template: viewTpl,
+        ui: {
+          'attributeSelect': 'select[name="updateAttribute"]',
+          'updateTypeRadio': 'input[name="updateType"]',
+          'controlLabel': '[data-ui="controlLabel"]',
+          'controlContainer': '[data-ui="controlContainer"]',
+          'form': 'form',
+          'submitButton': 'button[data-ui-name="save"]',
+          'cancelButton': 'button[data-ui-name="cancel"]',
+          'errorContainer': '[data-ui="errorContainer"]'
+        },
+        events: {
+          'submit @ui.form ': 'save',
+          'click @ui.cancelButton': 'cancel',
+          'change @ui.attributeSelect': 'updateControl',
+          'click @ui.updateTypeRadio': 'updateControl'
+        },
+        select2Options: {
+          outboundOrder: {
+            collection: OutboundOrderCollection,
+            url: OutboundOrderCollection.prototype.selectOptionsUrl,
+            search: 'label',
+            textProperty: 'label'
+          },
+          bin: {
+            collection: BinCollection,
+            url: BinCollection.prototype.selectOptionsUrl,
+            search: 'name'
+          }
+        },
+        serializeData: function serializeData() {
+          var data = {};
+          data.updateableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+          data.selectedCount = this.selectedCollection.length;
+          return data;
+        },
+        cancel: function cancel() {
+          Radio.channel('dialog').trigger('close');
+        },
+        save: function save(event) {
+          var _this = this;
+
+          event.preventDefault();
+          this.disableButtons();
+          setTimeout(function () {
+            _this.editSalesItems().then(function () {
+              _this.enableButtons();
+              Radio.channel('dialog').trigger('close');
+              Radio.channel('inventory').trigger('refresh:list:salesItem');
+            }).catch(function (err) {
+              _this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
+              _this.enableButtons();
+            });
+          }, 5);
+        },
+        updateControl: function updateControl() {
+          var updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+          var attribute = this.ui.attributeSelect.val();
+          var type = this.ui.updateTypeRadio.filter(':checked').val();
+          if (!attribute || !type) {
+            return;
+          }
+          this.ui.controlLabel.text(updatableAttributes[attribute].title);
+          if (type === 'single') {
+            if (updatableAttributes[attribute].type === 'select') {
+              var $select = jquery('<select name="' + attribute + '">');
+              this.ui.controlContainer.empty().append($select);
+              RemoteSearchSelect2Behavior.prototype.setupSelect2($select, this.select2Options[attribute]);
+            } else {
+              var $input = jquery('<input name="' + attribute + '" type="' + updatableAttributes[attribute].type + '" />');
+              this.ui.controlContainer.empty().append($input);
+            }
+          } else {
+            var _$input = jquery('<textarea rows="10" name="' + attribute + '" ></textarea>');
+            this.ui.controlContainer.empty().append(_$input);
+          }
+        },
+        editSalesItems: function editSalesItems() {
+          var _this2 = this;
+
+          return new Promise(function (resolve, reject) {
+            var updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+            var attr = Syphon.serialize(_this2);
+            var type = _this2.ui.updateTypeRadio.filter(':checked').val();
+            var valuePromise = null;
+            var attrKey = null;
+            _.each(attr, function (value, key) {
+              if (key.indexOf('update') < 0) {
+                attrKey = key;
+                if (type === 'single') {
+                  valuePromise = _this2.getSingleValue(value, key);
+                } else {
+                  valuePromise = _this2.getValuesArray(value, key);
+                }
+              }
+            });
+            valuePromise.then(function (updateValue) {
+              if (Array.isArray(updateValue)) {
+                _this2.selectedCollection.each(function (travelerId, index) {
+                  travelerId.set(attrKey, updateValue[index]);
+                });
+              } else {
+                _this2.selectedCollection.each(function (travelerId) {
+                  travelerId.set(attrKey, updateValue);
+                });
+              }
+              //set an Id so backbone does a "put" rather than "post"
+              var massSalesItem = MassSalesItemModel.findOrCreate({
+                id: 1
+              });
+              massSalesItem.set('type', 'edit');
+              massSalesItem.get('salesItems').reset(_this2.selectedCollection.models);
+              massSalesItem.save().done(function () {
+                resolve();
+              });
+            }).catch(function (err) {
+              reject(err);
+            });
+          });
+        },
+        getSingleValue: function getSingleValue(valueStr, attribute) {
+          var _this3 = this;
+
+          var updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+          var updateValue = null;
+          return new Promise(function (resolve, reject) {
+            if (updatableAttributes[attribute].type === 'select') {
+              updateValue = _this3.select2Options[attribute].collection.prototype.model.findOrCreate({ id: parseInt(valueStr) });
+            } else {
+              updateValue = valueStr;
+            }
+            resolve(updateValue);
+          });
+        },
+        getValuesArray: function getValuesArray(valueStr, attribute) {
+          var _this4 = this;
+
+          var updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+          var valuesLookup = {};
+          var rawValuesArray = [];
+          var valuesArray = [];
+          _.each(valueStr.split('\n'), function (value) {
+            var trimmedValue = value.trim();
+            if (trimmedValue) {
+              rawValuesArray.push(trimmedValue);
+              if (!valuesLookup[trimmedValue]) {
+                valuesLookup[trimmedValue] = true;
+              }
+            }
+          });
+          if (rawValuesArray.length !== this.selectedCollection.length) {
+            throw 'Selected Sales Item Count and Suppplied Values Count do not match';
+          }
+          return new Promise(function (resolve, reject) {
+            _this4.getAjaxResult(valuesLookup, attribute, function (err) {
+              if (err) {
+                reject(err);
+              } else {
+                _.each(rawValuesArray, function (value) {
+                  var trimmedValue = value.trim();
+                  valuesArray.push(valuesLookup[trimmedValue]);
+                });
+                resolve(valuesArray);
+              }
+            });
+          });
+        },
+        getAjaxResult: function getAjaxResult(valuesLookup, attribute, callback) {
+          var _this5 = this;
+
+          var updatableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+          if (updatableAttributes[attribute].type === 'select') {
+            (function () {
+              var search = _this5.select2Options[attribute].search;
+              var terms = _.keys(valuesLookup);
+              jquery.ajax({
+                url: _this5.select2Options[attribute].url,
+                dataType: 'json',
+                data: {
+                  terms: terms.join(','),
+                  search: search,
+                  page: 1,
+                  per_page: 1000
+                }
+              }).done(function (data) {
+                _.each(data.list, function (attrs) {
+                  valuesLookup[attrs[search]] = _this5.select2Options[attribute].collection.prototype.model.findOrCreate(attrs);
+                });
+                _.each(valuesLookup, function (value, key) {
+                  if (!(value instanceof _this5.select2Options[attribute].collection.prototype.model)) {
+                    callback('Missing Value for "' + key + '"');
+                  }
+                });
+                callback();
+              });
+            })();
+          } else {
+            _.each(valuesLookup, function (value, key) {
+              valuesLookup[key] = key;
+            });
+            callback();
+          }
+        },
+        disableButtons: function disableButtons() {
+          this.ui.submitButton.prop('disabled', true).addClass('is-loading');
+          this.ui.cancelButton.prop('disabled', true);
+        },
+        enableButtons: function enableButtons() {
+          this.ui.submitButton.prop('disabled', false).removeClass('is-loading');
+          this.ui.cancelButton.prop('disabled', false);
+        }
+      }));
+    }
+  };
+});
+System.registerDynamic("lib/inventory/views/inventorySalesItemMassSelectionActionView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      var helper;
+
+      return "<form>\r\n	<label class=\"label\">Mode</label>\r\n	<p class=\"control\">\r\n		<label class=\"radio\">\r\n		    <input type=\"radio\" name=\"mode\" value=\"add\" />\r\n	    	Add\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"remove\" />\r\n		    Remove\r\n		</label>\r\n		<label class=\"radio\">\r\n			<input type=\"radio\" name=\"mode\" value=\"replace\" />\r\n		    Replace\r\n		</label>\r\n	</p>\r\n	<label class=\"label\">Sales Items(<span data-ui=\"count\"></span>)</label>\r\n	<p class=\"control\">\r\n		<textarea rows=\"10\" name=\"salesItems\"></textarea>\r\n	</p>\r\n	<label class=\"label\" data-ui=\"countLabel\">" + container.escapeExpression((helper = (helper = helpers.selectedCount || (depth0 != null ? depth0.selectedCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "selectedCount", "hash": {}, "data": data }) : helper)) + " Sales Items Selected</label>\r\n	<p data-ui=\"errorContainer\" class=\"is-hidden notification is-danger\"></p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"export\">Export Selected</button>\r\n	</p>\r\n</form>";
+    }, "useData": true });
+  return module.exports;
+});
+'use strict';
+
+System.register('lib/inventory/views/inventorySalesItemMassSelectionActionView.js', ['underscore', 'jquery', 'marionette', 'backbone.radio', './inventorySalesItemMassSelectionActionView.hbs!', '../models/salesItemModel.js'], function (_export2, _context) {
+  "use strict";
+
+  var _, jquery, Marionette, Radio, viewTpl, SalesItemModel;
+
+  return {
+    setters: [function (_underscore) {
+      _ = _underscore.default;
+    }, function (_jquery) {
+      jquery = _jquery.default;
+    }, function (_marionette) {
+      Marionette = _marionette.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_inventorySalesItemMassSelectionActionViewHbs) {
+      viewTpl = _inventorySalesItemMassSelectionActionViewHbs.default;
+    }, function (_modelsSalesItemModelJs) {
+      SalesItemModel = _modelsSalesItemModelJs.default;
+    }],
+    execute: function () {
+      _export2('default', Marionette.View.extend({
+        initialize: function initialize() {
+          this.selectedCollection = Radio.channel('inventory').request('get:isSelected:salesItem');
+        },
+
+        template: viewTpl,
+        ui: {
+          'modeRadio': 'input[name="mode"]',
+          'salesItemsInput': 'textarea[name="salesItems"]',
+          'count': '[data-ui="count"]',
+          'selectedCountLabel': '[data-ui="countLabel"]',
+          'form': 'form',
+          'saveButton': 'button[data-ui-name="save"]',
+          'cancelButton': 'button[data-ui-name="cancel"]',
+          'exportButton': 'button[data-ui-name="export"]',
+          'errorContainer': '[data-ui="errorContainer"]'
+        },
+        events: {
+          'change @ui.salesItemsInput': 'salesItemsChanged',
+          'submit @ui.form ': 'save',
+          'click @ui.cancelButton': 'cancel',
+          'click @ui.exportButton': 'export'
+        },
+        serializeData: function serializeData() {
+          var data = {};
+          data.updateableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
+          data.selectedCount = this.selectedCollection.length;
+          return data;
+        },
+        cancel: function cancel() {
+          Radio.channel('dialog').trigger('close');
+        },
+        export: function _export() {
+          var element = document.createElement('a');
+          var csvText = 'Label,Serial,SKU,Outbound Order,Bin\n';
+          this.selectedCollection.each(function (salesItem) {
+            csvText += salesItem.get('label') + ',';
+            csvText += salesItem.get('serial') + ',';
+            csvText += salesItem.get('sku').get('label') + ',';
+            csvText += salesItem.get('outboundOrder') ? salesItem.get('outboundOrder').get('label') + ',' : ',';
+            csvText += salesItem.get('bin').get('name');
+            csvText += '\n';
+          });
+          element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvText));
+          element.setAttribute('download', 'selection.csv');
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        },
+        save: function save(event) {
+          var _this = this;
+
+          event.preventDefault();
+          this.disableButtons();
+          var mode = this.ui.modeRadio.filter(':checked').val();
+          var promise = null;
+          if (mode === 'add') {
+            promise = this.addSalesItemsToSelection();
+          } else if (mode === 'remove') {
+            promise = this.removeSalesItemsFromSelection();
+          } else if (mode === 'replace') {
+            this.clearSelection();
+            promise = this.addSalesItemsToSelection();
+          }
+          if (promise) {
+            promise.then(function () {
+              Radio.channel('dialog').trigger('close');
+            }).catch(function (err) {
+              _this.ui.errorContainer.removeClass('is-hidden').show().text(err).fadeOut(3000);
+              _this.enableButtons();
+            });
+          } else {
+            this.enableButtons();
+          }
+        },
+        salesItemsChanged: function salesItemsChanged() {
+          this.ui.count.text(this.getSalesItemsFromInput().length);
+        },
+        getSalesItemsFromInput: function getSalesItemsFromInput() {
+          var salesItemsArray = [];
+          _.each(this.ui.salesItemsInput.val().split('\n'), function (value) {
+            var trimmedValue = value.trim();
+            if (trimmedValue) {
+              salesItemsArray.push(trimmedValue);
+            }
+          });
+          return salesItemsArray;
+        },
+        addSalesItemsToSelection: function addSalesItemsToSelection() {
+          var _this2 = this;
+
+          return new Promise(function (resolve, reject) {
+            var salesItems = _this2.getSalesItemsFromInput();
+            jquery.ajax({
+              url: SalesItemModel.prototype.urlRoot(),
+              dataType: 'json',
+              data: {
+                terms: salesItems.join(','),
+                search: 'label',
+                page: 1,
+                per_page: 1000
+              }
+            }).done(function (data) {
+              _.each(data.list, function (attrs) {
+                var salesItem = SalesItemModel.findOrCreate(attrs);
+                salesItem.set('isSelected', true);
+              });
+              _.each(salesItems, function (salesItem) {
+                var travlerIdModel = _this2.selectedCollection.findWhere({ label: salesItem });
+                if (!travlerIdModel) {
+                  reject('No Traveler Id found for "' + salesItem + '"');
+                }
+              });
+              resolve();
+            });
+          });
+        },
+        removeSalesItemsFromSelection: function removeSalesItemsFromSelection() {
+          var _this3 = this;
+
+          return new Promise(function (resolve, reject) {
+            var salesItems = _this3.getSalesItemsFromInput();
+            var salesItemModels = [];
+            _this3.selectedCollection.each(function (salesItem) {
+              if (salesItems.indexOf(salesItem.get('label')) > -1) {
+                salesItemModels.push(salesItem);
+              }
+            });
+            _.invoke(salesItemModels, 'set', 'isSelected', false);
+            resolve();
+          });
+        },
+        clearSelection: function clearSelection() {
+          var salesItemsArray = [];
+          this.selectedCollection.each(function (salesItem) {
+            salesItemsArray.push(salesItem);
+          });
+          _.each(salesItemsArray, function (salesItem) {
+            salesItem.set('isSelected', false);
+          });
+        },
+        disableButtons: function disableButtons() {
+          this.ui.saveButton.addClass('is-loading').prop('disabled', true);
+          this.ui.cancelButton.prop('disabled', true);
+        },
+        enableButtons: function enableButtons() {
+          this.ui.saveButton.removeClass('is-loading').prop('disabled', false);
+          this.ui.cancelButton.prop('disabled', false);
+        }
+      }));
+    }
+  };
 });
 'use strict';
 
@@ -26225,10 +26740,10 @@ System.register('lib/inventory/models/salesItemCollection.js', ['lib/common/mode
 });
 'use strict';
 
-System.register('lib/inventory/views/salesItemActionsView.js', ['underscore', 'backbone', 'marionette', 'backbone.radio', './travelerIdActionsView.hbs!', 'lib/common/views/entity/searchableListLayoutView.js', './salesItemListTableLayoutTpl.hbs!', './salesItemRowTpl.hbs!', '../models/salesItemCollection.js'], function (_export, _context) {
+System.register('lib/inventory/views/salesItemActionsView.js', ['underscore', 'backbone', 'marionette', 'backbone.radio', './salesItemActionsView.hbs!', 'lib/common/views/entity/searchableListLayoutView.js', './salesItemListTableLayoutTpl.hbs!', './salesItemRowTpl.hbs!', './inventorySalesItemMassEditActionView.js', './inventorySalesItemMassSelectionActionView.js', '../models/salesItemCollection.js'], function (_export, _context) {
   "use strict";
 
-  var _, Backbone, Marionette, Radio, viewTpl, SearchableListLayoutView, salesItemListTableLayoutTpl, salesItemRowTpl, SalesItemCollection;
+  var _, Backbone, Marionette, Radio, viewTpl, SearchableListLayoutView, salesItemListTableLayoutTpl, salesItemRowTpl, InventorySalesItemMassEditActionView, InventorySalesItemMassSelectionActionView, SalesItemCollection;
 
   return {
     setters: [function (_underscore) {
@@ -26239,14 +26754,18 @@ System.register('lib/inventory/views/salesItemActionsView.js', ['underscore', 'b
       Marionette = _marionette.default;
     }, function (_backboneRadio) {
       Radio = _backboneRadio.default;
-    }, function (_travelerIdActionsViewHbs) {
-      viewTpl = _travelerIdActionsViewHbs.default;
+    }, function (_salesItemActionsViewHbs) {
+      viewTpl = _salesItemActionsViewHbs.default;
     }, function (_libCommonViewsEntitySearchableListLayoutViewJs) {
       SearchableListLayoutView = _libCommonViewsEntitySearchableListLayoutViewJs.default;
     }, function (_salesItemListTableLayoutTplHbs) {
       salesItemListTableLayoutTpl = _salesItemListTableLayoutTplHbs.default;
     }, function (_salesItemRowTplHbs) {
       salesItemRowTpl = _salesItemRowTplHbs.default;
+    }, function (_inventorySalesItemMassEditActionViewJs) {
+      InventorySalesItemMassEditActionView = _inventorySalesItemMassEditActionViewJs.default;
+    }, function (_inventorySalesItemMassSelectionActionViewJs) {
+      InventorySalesItemMassSelectionActionView = _inventorySalesItemMassSelectionActionViewJs.default;
     }, function (_modelsSalesItemCollectionJs) {
       SalesItemCollection = _modelsSalesItemCollectionJs.default;
     }],
@@ -26320,9 +26839,9 @@ System.register('lib/inventory/views/salesItemActionsView.js', ['underscore', 'b
             title: 'Mass Edit SalesItem',
             width: '400px'
           };
-          //let view = new InventoryTravelerIdMassEditActionView();
-          //Radio.channel('dialog').trigger('close');
-          //Radio.channel('dialog').trigger('open', view, options);
+          var view = new InventorySalesItemMassEditActionView();
+          Radio.channel('dialog').trigger('close');
+          Radio.channel('dialog').trigger('open', view, options);
         },
         massSelect: function massSelect(event) {
           event.preventDefault();
@@ -26330,9 +26849,9 @@ System.register('lib/inventory/views/salesItemActionsView.js', ['underscore', 'b
             title: 'Mass Select SalesItem',
             width: '400px'
           };
-          //let view = new InventoryTravelerIdMassSelectionActionView();
-          //Radio.channel('dialog').trigger('close');
-          //Radio.channel('dialog').trigger('open', view, options);
+          var view = new InventorySalesItemMassSelectionActionView();
+          Radio.channel('dialog').trigger('close');
+          Radio.channel('dialog').trigger('open', view, options);
         },
         binLinkClicked: function binLinkClicked(model) {
           this.triggerMethod('show:bin', model.get('bin'));
@@ -26352,7 +26871,7 @@ System.registerDynamic("lib/inventory/views/salesItemEditView.hbs!github:davis/p
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
       var stack1, helper;
 
-      return "<h3 class=\"title is-3\">Sales Item #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<span class=\"subtitle is-5\">SKU: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + ", QTY: " + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</span>\r\n<form>\r\n	<label class=\"label\">Outbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"outboundOrder\">\r\n			<option>Select a Outbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Revenue</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"revenue\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Revenue\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+      return "<h3 class=\"title is-3\">Sales Item #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<span class=\"subtitle is-5\">SKU: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.sku : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + ", QTY: " + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</span>\r\n<form>\r\n	<label class=\"label\">Outbound Order</label>\r\n	<p class=\"control\">\r\n  		<select name=\"outboundOrder\">\r\n			<option>Select a Outbound Order...</option>\r\n  		</select>\r\n	</p>\r\n	<label class=\"label\">Label</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"label\" type=\"text\" placeholder=\"Enter Label\" />\r\n	</p>\r\n	<label class=\"label\">Bin</label>\r\n	<p class=\"control\">\r\n  		<select name=\"bin\">\r\n  			<option>Select a bin...</option>\r\n  		</select>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isVoid\" type=\"checkbox\">\r\n	    	Is Void?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Revenue</label>\r\n	<p class=\"control\">\r\n  		<input class=\"input\" name=\"revenue\" type=\"number\" min=\"0.01\" step=\"0.01\" placeholder=\"Enter Revenue\" />\r\n	</p>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
     }, "useData": true });
   return module.exports;
 });
@@ -26373,7 +26892,9 @@ System.register('lib/accounting/models/outboundOrderCollection.js', ['lib/common
         model: Model,
         url: function url() {
           return this.baseUrl + '/outbound_order';
-        }
+        },
+
+        selectOptionsUrl: '/select_options/outbound_order'
       }));
     }
   };
@@ -26426,6 +26947,7 @@ System.register('lib/inventory/views/salesItemEditView.js', ['underscore', 'back
           }
         },
         ui: {
+          'labelInput': 'input[name="label"]',
           'isVoidInput': 'input[name="isVoid"]',
           'revenueInput': 'input[name="revenue"]',
           'saveButton': 'button[data-ui-name=save]',
@@ -26433,6 +26955,7 @@ System.register('lib/inventory/views/salesItemEditView.js', ['underscore', 'back
           'deleteButton': 'button[data-ui-name=delete]'
         },
         bindings: {
+          '@ui.labelInput': 'label',
           '@ui.isVoidInput': 'isVoid',
           '@ui.revenueInput': 'revenue'
         },
@@ -26492,28 +27015,26 @@ System.register('lib/inventory/views/salesItemEditView.js', ['underscore', 'back
   };
 });
 System.registerDynamic("lib/inventory/views/binView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
-      GLOBAL = global;
-  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
-  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
-      var stack1;
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+    module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.part : stack1, { "name": "if", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "					</p>\r\n					<svg jsbarcode-value=\"" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.label : stack1, depth0)) + "\"></svg>\r\n				</li>\r\n";
-    }, "2": function (container, depth0, helpers, partials, data) {
-      var stack1;
+            return "		<h5 class=\"subtitle is-5\">Has " + container.escapeExpression((helper = (helper = helpers.travelerIdCount || (depth0 != null ? depth0.travelerIdCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "travelerIdCount", "hash": {}, "data": data }) : helper)) + " Traveler Ids</h5>\r\n		<div class=\"box\">\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["0"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["1"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["2"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-clearfix\"></div>\r\n		</div>\r\n";
+        }, "2": function (container, depth0, helpers, partials, data) {
+            return "					<li>\r\n						" + container.escapeExpression((helpers.barcodeHtml || depth0 && depth0.barcodeHtml || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, { "name": "barcodeHtml", "hash": {}, "data": data })) + "\r\n					</li>\r\n";
+        }, "4": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "							Part: " + container.escapeExpression(container.lambda((stack1 = (stack1 = (stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.part : stack1) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-    }, "4": function (container, depth0, helpers, partials, data) {
-      var stack1;
+            return "		<h5 class=\"subtitle is-5\">Has " + container.escapeExpression((helper = (helper = helpers.salesItemCount || (depth0 != null ? depth0.salesItemCount : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "salesItemCount", "hash": {}, "data": data }) : helper)) + " Sales Items</h5>\r\n		<div class=\"box\">\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.siColumns : depth0) != null ? stack1["0"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.siColumns : depth0) != null ? stack1["1"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-pulled-left\">\r\n				<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.siColumns : depth0) != null ? stack1["2"] : stack1, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "				</ul>\r\n			</div>\r\n			<div class=\"is-clearfix\"></div>\r\n		</div>\r\n";
+        }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "				<li>\r\n					<p class=\"has-text-centered\" data-ui-top-label>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.part : stack1, { "name": "if", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "					</p>\r\n					<svg  jsbarcode-value=\"" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.label : stack1, depth0)) + "\"></svg>\r\n				</li>\r\n";
-    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      var stack1, helper;
-
-      return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<h3 class=\"title is-3\">Bin #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + " : " + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + ", Has " + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.travelerIds : depth0) != null ? stack1.length : stack1, depth0)) + " Traveler Ids.</h3>\r\n	<div class=\"box\">\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["0"] : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["1"] : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-pulled-left\">\r\n			<ul>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.tidColumns : depth0) != null ? stack1["2"] : stack1, { "name": "each", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</ul>\r\n		</div>\r\n		<div class=\"is-clearfix\"></div>\r\n	</div>\r\n</div>";
-    }, "useData": true });
-  return module.exports;
+            return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<h3 class=\"title is-3\">Bin #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + " : " + container.escapeExpression((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "name", "hash": {}, "data": data }) : helper)) + "</h3>\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.travelerIdCount : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.salesItemCount : depth0, { "name": "if", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "	</div>\r\n</div>";
+        }, "useData": true });
+    return module.exports;
 });
 "use strict";
 
@@ -26556,9 +27077,24 @@ System.register('lib/inventory/views/binView.js', ['underscore', 'jquery', 'jsba
         serializeData: function serializeData() {
           var data = _.clone(this.model.attributes);
           data.tidColumns = [[], [], []];
+          data.travelerIdCount = 0;
+          var columnIndex = 0;
           this.model.get('travelerIds').each(function (tid, index) {
-            var columnIndex = index % data.tidColumns.length;
-            data.tidColumns[columnIndex].push(tid);
+            if (!tid.get('transform') && !tid.get('isVoid')) {
+              data.tidColumns[columnIndex].push(tid);
+              columnIndex = columnIndex + 1 >= data.tidColumns.length ? 0 : columnIndex + 1;
+              data.travelerIdCount++;
+            }
+          });
+          data.siColumns = [[], [], []];
+          data.salesItemCount = 0;
+          columnIndex = 0;
+          this.model.get('salesItems').each(function (si, index) {
+            if (!si.get('isVoid')) {
+              data.siColumns[columnIndex].push(si);
+              columnIndex = columnIndex + 1 >= data.siColumns.length ? 0 : columnIndex + 1;
+              data.salesItemCount++;
+            }
           });
           return data;
         },
@@ -26595,7 +27131,7 @@ System.register('lib/inventory/views/binView.js', ['underscore', 'jquery', 'jsba
     }
   };
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE39/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/CODE39/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -26715,7 +27251,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE39/index.js", ["../
 	exports.CODE39 = CODE39;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128_AUTO.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128_AUTO.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -26850,7 +27386,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128_AUTO.js
 	exports.default = CODE128AUTO;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128A.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128A.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -26906,7 +27442,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128A.js', [
 	exports.default = CODE128A;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128B.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128B.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -26962,7 +27498,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128B.js', [
 	exports.default = CODE128B;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -27214,7 +27750,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128.js", ["
 	exports.default = CODE128;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128C.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/CODE128C.js', ['./CODE128.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -27270,7 +27806,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/CODE128C.js', [
 	exports.default = CODE128C;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/index.js', ['./CODE128_AUTO.js', './CODE128A.js', './CODE128B.js', './CODE128C.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/CODE128/index.js', ['./CODE128_AUTO.js', './CODE128A.js', './CODE128B.js', './CODE128C.js', 'process'], true, function ($__require, exports, module) {
   'use strict';
 
   var process = $__require('process');
@@ -27308,7 +27844,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/CODE128/index.js', ['./
   exports.CODE128C = _CODE128C2.default;
   return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN13.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN13.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -27507,7 +28043,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN13.js", ["./
 	exports.default = EAN13;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN8.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN8.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -27624,7 +28160,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN8.js", ["./e
 	exports.default = EAN8;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN5.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN5.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -27717,7 +28253,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN5.js", ["./e
 	exports.default = EAN5;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN2.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/EAN2.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -27799,7 +28335,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/EAN2.js", ["./e
 	exports.default = EAN2;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/ean_encoder.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/ean_encoder.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -27870,7 +28406,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/ean_encoder.js"
 	exports.default = EANencoder;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/UPC.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/UPC.js", ["./ean_encoder.js", "../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28048,7 +28584,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/UPC.js", ["./ea
 	exports.default = UPC;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/index.js', ['./EAN13.js', './EAN8.js', './EAN5.js', './EAN2.js', './UPC.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/EAN_UPC/index.js', ['./EAN13.js', './EAN8.js', './EAN5.js', './EAN2.js', './UPC.js', 'process'], true, function ($__require, exports, module) {
   'use strict';
 
   var process = $__require('process');
@@ -28091,7 +28627,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/EAN_UPC/index.js', ['./
   exports.UPC = _UPC2.default;
   return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF14/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/ITF14/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28215,7 +28751,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF14/index.js", ["../B
 	exports.ITF14 = ITF14;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/ITF/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28322,7 +28858,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/ITF/index.js", ["../Bar
 	exports.ITF = ITF;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI10.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI10.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -28376,7 +28912,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI10.js', ['./MSI.
 	exports.default = MSI10;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI11.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI11.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -28430,7 +28966,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI11.js', ['./MSI.
 	exports.default = MSI11;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1010.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI1010.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -28486,7 +29022,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1010.js', ['./MS
 	exports.default = MSI1010;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28575,7 +29111,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI.js", ["../Barco
 	exports.default = MSI;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/checksums.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/MSI/checksums.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28611,7 +29147,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/MSI/checksums.js", ["pr
 	}
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1110.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/MSI1110.js', ['./MSI.js', './checksums.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -28667,7 +29203,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/MSI1110.js', ['./MS
 	exports.default = MSI1110;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/index.js', ['./MSI.js', './MSI10.js', './MSI11.js', './MSI1010.js', './MSI1110.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/MSI/index.js', ['./MSI.js', './MSI10.js', './MSI11.js', './MSI1010.js', './MSI1110.js', 'process'], true, function ($__require, exports, module) {
   'use strict';
 
   var process = $__require('process');
@@ -28710,7 +29246,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/MSI/index.js', ['./MSI.
   exports.MSI1110 = _MSI10.default;
   return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/pharmacode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/pharmacode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28798,7 +29334,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/pharmacode/index.js", [
 	exports.pharmacode = pharmacode;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/codabar/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/codabar/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28904,7 +29440,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/codabar/index.js", ["..
 	exports.codabar = codabar;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/Barcode.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/Barcode.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -28932,7 +29468,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/Barcode.js", ["process"
 	exports.default = Barcode;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/GenericBarcode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/barcodes/GenericBarcode/index.js", ["../Barcode.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29002,7 +29538,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/barcodes/GenericBarcode/index.js
 	exports.GenericBarcode = GenericBarcode;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/index.js', ['./CODE39', './CODE128', './EAN_UPC', './ITF14', './ITF', './MSI', './pharmacode', './codabar', './GenericBarcode', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/barcodes/index.js', ['./CODE39', './CODE128', './EAN_UPC', './ITF14', './ITF', './MSI', './pharmacode', './codabar', './GenericBarcode', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -29044,7 +29580,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/barcodes/index.js', ['./CODE39',
 	};
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/linearizeEncodings.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/linearizeEncodings.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29078,7 +29614,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/linearizeEncodings.js", ["p
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/fixOptions.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/fixOptions.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29101,7 +29637,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/fixOptions.js", ["process"]
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getOptionsFromElement.js", ["./optionsFromStrings.js", "../options/defaults.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/getOptionsFromElement.js", ["./optionsFromStrings.js", "../options/defaults.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29151,7 +29687,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getOptionsFromElement.js", 
 	exports.default = getOptionsFromElement;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/canvas.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/renderers/canvas.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29312,7 +29848,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/canvas.js", ["../help/
 	exports.default = CanvasRenderer;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/merge.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/merge.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29341,7 +29877,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/merge.js", ["process"], tru
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/shared.js", ["../help/merge.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/renderers/shared.js", ["../help/merge.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29435,7 +29971,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/shared.js", ["../help/
 	exports.getTotalWidthOfEncodings = getTotalWidthOfEncodings;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/svg.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/renderers/svg.js", ["../help/merge.js", "./shared.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29625,7 +30161,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/renderers/svg.js", ["../help/mer
 	exports.default = SVGRenderer;
 	return module.exports;
 });
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/renderers/index.js', ['./canvas.js', './svg.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/renderers/index.js', ['./canvas.js', './svg.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -29663,7 +30199,7 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/renderers/index.js', ['./canvas.
 	exports.getRendererClass = getRendererClass;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getRenderProperties.js", ["./getOptionsFromElement.js", "../renderers", "../exceptions/exceptions.js", "process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/getRenderProperties.js", ["./getOptionsFromElement.js", "../renderers", "../exceptions/exceptions.js", "process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29771,7 +30307,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/getRenderProperties.js", ["
 	exports.default = getRenderProperties;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/optionsFromStrings.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/help/optionsFromStrings.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29805,7 +30341,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/help/optionsFromStrings.js", ["p
 	}
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/ErrorHandler.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/exceptions/ErrorHandler.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -29864,7 +30400,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/ErrorHandler.js", ["p
 	exports.default = ErrorHandler;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/exceptions.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/exceptions/exceptions.js", ["process"], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require("process");
@@ -29950,7 +30486,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6/bin/exceptions/exceptions.js", ["pro
 	exports.NoElementException = NoElementException;
 	return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6/bin/options/defaults.js", ["process"], true, function ($__require, exports, module) {
+System.registerDynamic("npm:jsbarcode@3.5.7/bin/options/defaults.js", ["process"], true, function ($__require, exports, module) {
 	"use strict";
 
 	var process = $__require("process");
@@ -30097,7 +30633,7 @@ System.registerDynamic('npm:jspm-nodelibs-process@0.2.0/process.js', ['@system-e
     };
     return module.exports;
 });
-System.registerDynamic("npm:jsbarcode@3.5.6.json", [], false, function() {
+System.registerDynamic("npm:jsbarcode@3.5.7.json", [], false, function() {
   return {
     "main": "bin/JsBarcode.js",
     "format": "cjs",
@@ -30130,7 +30666,7 @@ System.registerDynamic("npm:jsbarcode@3.5.6.json", [], false, function() {
   };
 });
 
-System.registerDynamic('npm:jsbarcode@3.5.6/bin/JsBarcode.js', ['./barcodes', './help/merge.js', './help/linearizeEncodings.js', './help/fixOptions.js', './help/getRenderProperties.js', './help/optionsFromStrings.js', './exceptions/ErrorHandler.js', './exceptions/exceptions.js', './options/defaults.js', 'process'], true, function ($__require, exports, module) {
+System.registerDynamic('npm:jsbarcode@3.5.7/bin/JsBarcode.js', ['./barcodes', './help/merge.js', './help/linearizeEncodings.js', './help/fixOptions.js', './help/getRenderProperties.js', './help/optionsFromStrings.js', './exceptions/ErrorHandler.js', './exceptions/exceptions.js', './options/defaults.js', 'process'], true, function ($__require, exports, module) {
 	'use strict';
 
 	var process = $__require('process');
@@ -30318,13 +30854,13 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/JsBarcode.js', ['./barcodes', '.
 				options.format = autoSelectBarcode();
 			}
 
-			var text = options.value;
+			this._errorHandler.wrapBarcodeCall(function () {
+				var text = options.value;
+				var Encoder = _barcodes2.default[options.format.toUpperCase()];
+				var encoded = encode(text, Encoder, options);
 
-			var Encoder = _barcodes2.default[options.format.toUpperCase()];
-
-			var encoded = encode(text, Encoder, options);
-
-			render(renderProperty, encoded, options);
+				render(renderProperty, encoded, options);
+			});
 		}
 	};
 
@@ -30388,49 +30924,19 @@ System.registerDynamic('npm:jsbarcode@3.5.6/bin/JsBarcode.js', ['./barcodes', '.
 	module.exports = JsBarcode;
 	return module.exports;
 });
-System.registerDynamic("lib/inventory/views/travelerIdCardView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
-      GLOBAL = global;
-  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
-  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.unit : depth0) != null ? stack1.attributes : stack1) != null ? stack1.serial : stack1, depth0)) + "\r\n";
-    }, "3": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.part : depth0, { "name": "if", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.program(6, data, 0), "data": data })) != null ? stack1 : "";
-    }, "4": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.part : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-    }, "6": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.commodity : depth0, { "name": "if", "hash": {}, "fn": container.program(7, data, 0), "inverse": container.program(9, data, 0), "data": data })) != null ? stack1 : "";
-    }, "7": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.commodity : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n";
-    }, "9": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return (stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.unitType : depth0, { "name": "if", "hash": {}, "fn": container.program(10, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "";
-    }, "10": function (container, depth0, helpers, partials, data) {
-      var stack1;
-
-      return "					" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.unitType : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "\r\n				";
-    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      var stack1, helper;
-
-      return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		<div data-ui-top-label>\r\n			<p class=\"has-text-centered\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.unit : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "			</p>\r\n		</div>\r\n		<svg jsbarcode-value=\"" + container.escapeExpression((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "label", "hash": {}, "data": data }) : helper)) + "\"></svg>\r\n	</div>\r\n</div>";
-    }, "useData": true });
-  return module.exports;
+System.registerDynamic("lib/inventory/views/salesItemCardView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+   var define,
+       global = this || self,
+       GLOBAL = global;
+   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+         return "<button name=\"print\" type=\"button\" class=\"button\">Print</button>\r\n<button name=\"back\" type=\"button\" class=\"button\">Back</button>\r\n<div data-ui=\"printContainer\">\r\n	<div class=\"box si-tid-card has-text-centered\">\r\n		" + container.escapeExpression((helpers.barcodeHtml || depth0 && depth0.barcodeHtml || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0, { "name": "barcodeHtml", "hash": { "type": "SalesItemModel", "isCard": "true" }, "data": data })) + "\r\n	</div>\r\n</div>";
+      }, "useData": true });
+   return module.exports;
 });
 "use strict";
 
-System.register('lib/inventory/views/salesItemCardView.js', ['underscore', 'jquery', 'jsbarcode', 'marionette', 'backbone.radio', './travelerIdCardView.hbs!'], function (_export, _context) {
+System.register('lib/inventory/views/salesItemCardView.js', ['underscore', 'jquery', 'jsbarcode', 'marionette', 'backbone.radio', './salesItemCardView.hbs!'], function (_export, _context) {
   "use strict";
 
   var _, jquery, JsBarcode, Marionette, Radio, viewTpl;
@@ -30446,8 +30952,8 @@ System.register('lib/inventory/views/salesItemCardView.js', ['underscore', 'jque
       Marionette = _marionette.default;
     }, function (_backboneRadio) {
       Radio = _backboneRadio.default;
-    }, function (_travelerIdCardViewHbs) {
-      viewTpl = _travelerIdCardViewHbs.default;
+    }, function (_salesItemCardViewHbs) {
+      viewTpl = _salesItemCardViewHbs.default;
     }],
     execute: function () {
       _export('default', Marionette.View.extend({
@@ -30563,6 +31069,13 @@ System.register('lib/inventory/views/salesItemView.js', ['backbone', 'backbone.r
           }));
           Radio.channel('app').trigger('navigate', '/show' + salesItem.url(), { trigger: false });
         },
+        showBin: function showBin(bin) {
+          this.showChildView('content', new BinView({
+            model: bin
+          }));
+          bin.fetch();
+          Radio.channel('app').trigger('navigate', '/show' + bin.url(), { trigger: false });
+        },
         getSelectedCollection: function getSelectedCollection() {
           return this.selectedCollection;
         },
@@ -30579,7 +31092,7 @@ System.register('lib/inventory/views/salesItemView.js', ['backbone', 'backbone.r
 });
 'use strict';
 
-System.register('lib/inventory/models/inventoryTravelerIdEditModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/userModel.js', './binModel.js', './travelerIdModel.js'], function (_export, _context) {
+System.register('lib/inventory/models/inventoryTravelerIdEditModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/userModel.js', './travelerIdModel.js'], function (_export, _context) {
   "use strict";
 
   var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
@@ -30590,7 +31103,7 @@ System.register('lib/inventory/models/inventoryTravelerIdEditModel.js', ['lib/gl
       BackboneRelational = _backboneRelational.default;
     }, function (_libCommonModelsBaseUrlBaseModelJs) {
       BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libCommonModelsUserModelJs) {}, function (_binModelJs) {}, function (_travelerIdModelJs) {}],
+    }, function (_libCommonModelsUserModelJs) {}, function (_travelerIdModelJs) {}],
     execute: function () {
       Model = BaseUrlBaseModel.extend({
         urlRoot: function urlRoot() {
@@ -30804,19 +31317,224 @@ System.registerDynamic("lib/inventory/views/inventoryTravelerIdTransformListTabl
       GLOBAL = global;
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Transformed At</th>\r\n			<th>From Traveler Id</th>\r\n			<th>To Traveler Id</th>\r\n			<th>To Sales Item</th>\r\n			<th>Quantity</th>\r\n			<th>Is Void?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Transformed At</th>\r\n			<th>From Traveler Ids</th>\r\n			<th>Quantity</th>\r\n			<th>Ratio</th>\r\n			<th>To Traveler Ids</th>\r\n			<th>To Sales Items</th>\r\n			<th>Is Void?</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
     }, "useData": true });
   return module.exports;
 });
 System.registerDynamic("lib/inventory/views/inventoryTravelerIdTransformRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+    module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
+            var stack1;
+
+            return "		" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.attributes : depth0) != null ? stack1.label : stack1, depth0)) + "\r\n		" + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : {}, data && data.last, { "name": "unless", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "\r\n";
+        }, "2": function (container, depth0, helpers, partials, data) {
+            return ",";
+        }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
+
+            return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.transformedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.fromTravelerIds : depth0) != null ? stack1.models : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.ratio || (depth0 != null ? depth0.ratio : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "ratio", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.toTravelerIds : depth0) != null ? stack1.models : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, (stack1 = depth0 != null ? depth0.toSalesItems : depth0) != null ? stack1.models : stack1, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || depth0 && depth0["boolean"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "boolean", "hash": {}, "data": data })) + "</td>";
+        }, "useData": true });
+    return module.exports;
+});
+'use strict';
+
+System.register('lib/inventory/models/inventorySalesItemEditModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/userModel.js', './salesItemModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libCommonModelsUserModelJs) {}, function (_salesItemModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/inventory_sales_item_edit';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'byUser',
+          relatedModel: 'UserModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'salesItem',
+          relatedModel: 'SalesItemModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          byUser: null,
+          oldAttributes: null,
+          newAttributes: null,
+          editedAt: null,
+          salesItem: null
+        }
+
+      });
+
+
+      globalNamespace.Models.InventorySalesItemEditModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/inventorySalesItemEditCollection.js', ['lib/common/models/baseUrlBaseCollection.js', './inventorySalesItemEditModel.js'], function (_export, _context) {
+  "use strict";
+
+  var BaseUrlBaseCollection, Model;
+  return {
+    setters: [function (_libCommonModelsBaseUrlBaseCollectionJs) {
+      BaseUrlBaseCollection = _libCommonModelsBaseUrlBaseCollectionJs.default;
+    }, function (_inventorySalesItemEditModelJs) {
+      Model = _inventorySalesItemEditModelJs.default;
+    }],
+    execute: function () {
+      _export('default', BaseUrlBaseCollection.extend({
+        model: Model,
+        url: function url() {
+          return this.baseUrl + '/inventory_sales_item_edit';
+        }
+      }));
+    }
+  };
+});
+System.registerDynamic("lib/inventory/views/inventorySalesItemEditListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
   var define,
       global = this || self,
       GLOBAL = global;
   var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      var stack1, helper;
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Sales Item</th>\r\n			<th>Old Attributes</th>\r\n			<th>New Attributes</th>\r\n			<th>Tags</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    }, "useData": true });
+  return module.exports;
+});
+System.registerDynamic("lib/inventory/views/inventorySalesItemEditRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
+      var helper;
 
-      return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.transformedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.fromTravelerId : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toTravelerId : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>#" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.toSalesItem : depth0) != null ? stack1.id : stack1, depth0)) + ", SKU: " + container.escapeExpression(container.lambda((stack1 = (stack1 = (stack1 = (stack1 = depth0 != null ? depth0.toSalesItem : depth0) != null ? stack1.attributes : stack1) != null ? stack1.sku : stack1) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + ", QTY: " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toSalesItem : depth0) != null ? stack1.attributes : stack1) != null ? stack1.quantity : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "quantity", "hash": {}, "data": data }) : helper)) + "</td>\r\n<td>" + container.escapeExpression((helpers["boolean"] || depth0 && depth0["boolean"] || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isVoid : depth0, { "name": "boolean", "hash": {}, "data": data })) + "</td>";
+      return "		<strong>" + container.escapeExpression((helper = (helper = helpers.key || data && data.key) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "key", "hash": {}, "data": data }) : helper)) + ":</strong> " + container.escapeExpression(container.lambda(depth0, depth0)) + "\r\n";
+    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      var stack1;
+
+      return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.editedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.salesItem : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.oldAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>\r\n" + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.newAttributes : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "</td>\r\n<td>" + container.escapeExpression((helpers.join || depth0 && depth0.join || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.tags : depth0, { "name": "join", "hash": {}, "data": data })) + "</td>";
+    }, "useData": true });
+  return module.exports;
+});
+'use strict';
+
+System.register('lib/inventory/models/inventorySalesItemMovementModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/userModel.js', './binModel.js', './salesItemModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libCommonModelsUserModelJs) {}, function (_binModelJs) {}, function (_salesItemModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/inventory_sales_item_movement';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'byUser',
+          relatedModel: 'UserModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'fromBin',
+          relatedModel: 'BinModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'toBin',
+          relatedModel: 'BinModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'salesItem',
+          relatedModel: 'SalesItemModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          byUser: null,
+          fromBin: null,
+          toBin: null,
+          movedAt: null,
+          salesItem: null,
+          tags: null
+        }
+
+      });
+
+
+      globalNamespace.Models.InventorySalesItemMovementModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/inventorySalesItemMovementCollection.js', ['lib/common/models/baseUrlBaseCollection.js', './inventorySalesItemMovementModel.js'], function (_export, _context) {
+  "use strict";
+
+  var BaseUrlBaseCollection, Model;
+  return {
+    setters: [function (_libCommonModelsBaseUrlBaseCollectionJs) {
+      BaseUrlBaseCollection = _libCommonModelsBaseUrlBaseCollectionJs.default;
+    }, function (_inventorySalesItemMovementModelJs) {
+      Model = _inventorySalesItemMovementModelJs.default;
+    }],
+    execute: function () {
+      _export('default', BaseUrlBaseCollection.extend({
+        model: Model,
+        url: function url() {
+          return this.baseUrl + '/inventory_sales_item_movement';
+        }
+      }));
+    }
+  };
+});
+System.registerDynamic("lib/inventory/views/inventorySalesItemMovementListTableLayoutTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      return "<table class=\"table is-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>By User</th>\r\n			<th>Edit At</th>\r\n			<th>Sales Item</th>\r\n			<th>From Bin</th>\r\n			<th>To Bin</th>\r\n			<th>Tags</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody></tbody>\r\n</table>\r\n";
+    }, "useData": true });
+  return module.exports;
+});
+System.registerDynamic("lib/inventory/views/inventorySalesItemMovementRowTpl.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+  module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+      var stack1;
+
+      return "<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.firstName : stack1, depth0)) + " " + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.byUser : depth0) != null ? stack1.attributes : stack1) != null ? stack1.lastName : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.moment || depth0 && depth0.moment || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.movedAt : depth0, { "name": "moment", "hash": {}, "data": data })) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.salesItem : depth0) != null ? stack1.attributes : stack1) != null ? stack1.label : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.fromBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.toBin : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</td>\r\n<td>" + container.escapeExpression((helpers.join || depth0 && depth0.join || helpers.helperMissing).call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.tags : depth0, { "name": "join", "hash": {}, "data": data })) + "</td>";
     }, "useData": true });
   return module.exports;
 });
@@ -32165,431 +32883,6 @@ System.register('lib/inventory/views/inventorySkuAuditView.js', ['backbone.sypho
 });
 'use strict';
 
-System.register('lib/accounting/models/clientModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/client';
-        },
-
-        defaults: {
-          name: null
-        }
-      });
-
-
-      globalNamespace.Models.ClientModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/accounting/models/inboundOrderModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/inventory/models/travelerIdModel', './clientModel'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libInventoryModelsTravelerIdModel) {}, function (_clientModel) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/inbound_order';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'client',
-          relatedModel: 'ClientModel',
-          includeInJSON: ['id']
-        }],
-        defaults: {
-          label: null,
-          client: null,
-          description: null,
-          isVoid: false,
-          isReceived: false,
-          travelerIds: null
-        }
-      });
-
-
-      globalNamespace.Models.InboundOrderModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/accounting/models/customerModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/customer';
-        },
-
-        defaults: {
-          name: null
-        }
-      });
-
-
-      globalNamespace.Models.CustomerModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/accounting/models/outboundOrderModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/inventory/models/travelerIdModel', './customerModel'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libInventoryModelsTravelerIdModel) {}, function (_customerModel) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/outbound_order';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'customer',
-          relatedModel: 'CustomerModel',
-          includeInJSON: ['id']
-        }],
-        defaults: {
-          label: null,
-          customer: null,
-          description: null,
-          isVoid: false,
-          isShipped: false,
-          salesItems: null
-        }
-      });
-
-
-      globalNamespace.Models.OutboundOrderModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/salesItemModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'backbone.radio', 'lib/common/models/baseUrlBaseModel.js', 'lib/accounting/models/outboundOrderModel.js', './binModel.js', './skuModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, Radio, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_backboneRadio) {
-      Radio = _backboneRadio.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libAccountingModelsOutboundOrderModelJs) {}, function (_binModelJs) {}, function (_skuModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        initialize: function initialize() {
-          this.listenTo(this, 'change:isSelected', this.triggerIsSelectedChangeOnRadio);
-        },
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/sales_item';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'outboundOrder',
-          relatedModel: 'OutboundOrderModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'travelerIds',
-            includeInJSON: ['id']
-          }
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'bin',
-          relatedModel: 'BinModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'salesItems',
-            includeInJSON: ['id']
-          }
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'sku',
-          relatedModel: 'SkuModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'reverseTransform',
-          relatedModel: 'InventoryTravelerIdTransformModel',
-          includeInJSON: false,
-          reverseRelation: {
-            key: 'toSalesItems',
-            includeInJSON: true
-          }
-        }],
-        defaults: {
-          outboundOrder: null,
-          bin: null,
-          sku: null,
-          isVoid: null,
-          quantity: null,
-          revenue: null,
-          reverseTransform: null
-        },
-        triggerIsSelectedChangeOnRadio: function triggerIsSelectedChangeOnRadio() {
-          Radio.channel('inventory').trigger('change:isSelected:salesItem', this);
-        },
-        getUpdatadableAttributes: function getUpdatadableAttributes() {
-          return {
-            inboundOrder: {
-              title: 'Inbound Order',
-              type: 'select'
-            },
-            label: {
-              title: 'Label',
-              type: 'text'
-            },
-            bin: {
-              title: 'Bin',
-              type: 'select'
-            },
-            sku: {
-              title: 'SKU',
-              type: 'select'
-            },
-            isVoid: {
-              title: 'Is Void? (Use "Yes" and "No" for multiple)',
-              type: 'checkbox'
-            },
-            quantity: {
-              title: 'Quantity',
-              type: 'text'
-            },
-            revenue: {
-              title: 'Revenue',
-              type: 'text'
-            }
-          };
-        }
-      });
-
-
-      globalNamespace.Models.SalesItemModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/inventoryTravelerIdTransformModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/userModel.js', './salesItemModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libCommonModelsUserModelJs) {}, function (_salesItemModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/inventory_tid_transform';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'byUser',
-          relatedModel: 'UserModel',
-          includeInJSON: ['id']
-        }],
-        defaults: {
-          byUser: null,
-          transformedAt: null,
-          fromTravelerIds: null,
-          quantity: null,
-          ratio: null,
-          toTravelerIds: null,
-          toSalesItems: null
-        }
-
-      });
-
-
-      globalNamespace.Models.InventoryTravelerIdTransformModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/travelerIdModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'backbone.radio', 'lib/common/models/baseUrlBaseModel.js', 'lib/accounting/models/inboundOrderModel.js', './binModel.js', './skuModel.js', './inventoryTravelerIdTransformModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, Radio, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_backboneRadio) {
-      Radio = _backboneRadio.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libAccountingModelsInboundOrderModelJs) {}, function (_binModelJs) {}, function (_skuModelJs) {}, function (_inventoryTravelerIdTransformModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        modelName: 'TravelerId',
-        initialize: function initialize() {
-          this.listenTo(this, 'change:isSelected', this.triggerIsSelectedChangeOnRadio);
-        },
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/tid';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'inboundOrder',
-          relatedModel: 'InboundOrderModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'travelerIds',
-            includeInJSON: ['id']
-          }
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'bin',
-          relatedModel: 'BinModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'travelerIds',
-            includeInJSON: ['id']
-          }
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'sku',
-          relatedModel: 'SkuModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'transform',
-          relatedModel: 'InventoryTravelerIdTransformModel',
-          includeInJSON: true,
-          reverseRelation: {
-            key: 'fromTravelerIds',
-            includeInJSON: ['id']
-          }
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'reverseTransform',
-          relatedModel: 'InventoryTravelerIdTransformModel',
-          includeInJSON: false,
-          reverseRelation: {
-            key: 'toTravelerIds',
-            includeInJSON: true
-          }
-        }],
-        defaults: {
-          inboundOrder: null,
-          label: null,
-          bin: null,
-          sku: null,
-          isVoid: null,
-          quantity: null,
-          cost: null,
-          transform: null,
-          reverseTransform: null
-        },
-        triggerIsSelectedChangeOnRadio: function triggerIsSelectedChangeOnRadio() {
-          Radio.channel('inventory').trigger('change:isSelected:travelerId', this);
-        },
-        getUpdatadableAttributes: function getUpdatadableAttributes() {
-          return {
-            inboundOrder: {
-              title: 'Inbound Order',
-              type: 'select'
-            },
-            label: {
-              title: 'Label',
-              type: 'text'
-            },
-            bin: {
-              title: 'Bin',
-              type: 'select'
-            },
-            sku: {
-              title: 'SKU',
-              type: 'select'
-            },
-            isVoid: {
-              title: 'Is Void? (Use "Yes" and "No" for multiple)',
-              type: 'checkbox'
-            },
-            quantity: {
-              title: 'Quantity',
-              type: 'text'
-            },
-            cost: {
-              title: 'Cost',
-              type: 'text'
-            }
-          };
-        }
-      });
-
-
-      globalNamespace.Models.TravelerIdModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
 System.register('lib/inventory/models/inventoryTravelerIdAuditModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './travelerIdModel.js'], function (_export, _context) {
   "use strict";
 
@@ -32748,447 +33041,6 @@ System.register('lib/inventory/views/inventoryAuditView.js', ['underscore', 'bac
 });
 'use strict';
 
-System.register('lib/inventory/models/binTypeModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        initialize: function initialize() {
-          this.set('behavoirs', []);
-        },
-
-        behavoirList: {
-          'cannotHaveParent': 'Can not have parent'
-        },
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/bin_type';
-        },
-
-        defaults: {
-          name: null,
-          description: null,
-          isActive: null,
-          behavoirs: null
-        },
-        hasBehavoir: function hasBehavoir(behavoir) {
-          return this.get('behavoirs').indexOf(behavoir) > -1;
-        },
-        addBehavoir: function addBehavoir(behavoir) {
-          if (!this.hasBehavoir(behavoir)) {
-            this.get('behavoirs').push(behavoir);
-            this.trigger('change:behavoirs', this, this.get('behavoirs'), {});
-          }
-        },
-        removeBehavoir: function removeBehavoir(behavoir) {
-          var index = this.get('behavoirs').indexOf(behavoir);
-          if (index > -1) {
-            this.get('behavoirs').splice(index, 1);
-            this.trigger('change:behavoirs', this, this.get('behavoirs'), {});
-          }
-        }
-      });
-
-
-      globalNamespace.Models.BinTypeModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/binSkuCountModel.js', ['lib/globalNamespace.js', 'underscore', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './skuModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, _, BackboneRelational, BaseUrlBaseModel, Model;
-
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_underscore) {
-      _ = _underscore.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_skuModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/bin_sku_count';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'sku',
-          relatedModel: 'SkuModel',
-          includeInJSON: ['id']
-        }],
-        defaults: {
-          bin: null,
-          sku: null,
-          count: null
-        }
-      });
-
-
-      globalNamespace.Models.BinSkuCountModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/binModel.js', ['lib/globalNamespace.js', 'underscore', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/departmentModel.js', './partCategoryModel.js', './binTypeModel.js', './binSkuCountModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, _, BackboneRelational, BaseUrlBaseModel, Model;
-
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_underscore) {
-      _ = _underscore.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libCommonModelsDepartmentModelJs) {}, function (_partCategoryModelJs) {}, function (_binTypeModelJs) {}, function (_binSkuCountModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/bin';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'department',
-          relatedModel: 'DepartmentModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'partCategory',
-          relatedModel: 'PartCategoryModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'binType',
-          relatedModel: 'BinTypeModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasMany,
-          key: 'children',
-          relatedModel: 'BinModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'parent',
-            includeInJSON: ['id']
-          }
-        }, {
-          type: BackboneRelational.HasMany,
-          key: 'skuCount',
-          relatedModel: 'BinSkuCountModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'bin',
-            includeInJSON: ['id']
-          }
-        }],
-        defaults: {
-          name: null,
-          description: null,
-          department: null,
-          partCategory: null,
-          binType: null,
-          children: null,
-          parent: null,
-          isActive: null,
-          skuCount: null,
-          travelerIds: null,
-          salesItems: null
-        }
-
-      });
-
-
-      globalNamespace.Models.BinModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/partCategoryModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/part_category';
-        },
-
-        defaults: {
-          name: null,
-          isActive: null
-        }
-      });
-
-
-      globalNamespace.Models.PartCategoryModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/partGroupModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/part_group';
-        },
-
-        defaults: {
-          name: null,
-          isActive: null
-        }
-      });
-
-
-      globalNamespace.Models.PartGroupModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './partCategoryModel.js', './partGroupModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_partCategoryModelJs) {}, function (_partGroupModelJs) {}, function (_libCommonModelsUploadedImageModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/part';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'partCategory',
-          relatedModel: 'PartCategoryModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'partGroup',
-          relatedModel: 'PartGroupModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'image',
-          relatedModel: 'UploadedImageModel',
-          includeInJSON: ['id'],
-          reverseRelation: false
-        }],
-        defaults: {
-          name: null,
-          partId: null,
-          partAltId: null,
-          description: null,
-          partCategory: null,
-          partGroup: null,
-          isActive: null,
-          image: null
-        }
-      });
-
-
-      globalNamespace.Models.PartModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/commodityModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libCommonModelsUploadedImageModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/commodity';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'image',
-          relatedModel: 'UploadedImageModel',
-          includeInJSON: ['id'],
-          reverseRelation: false
-        }],
-        defaults: {
-          name: null,
-          commodityId: null,
-          commodityAltId: null,
-          description: null,
-          image: null,
-          isActive: null
-        }
-      });
-
-
-      globalNamespace.Models.CommodityModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/unitTypeModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_libCommonModelsUploadedImageModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/unit_type';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'image',
-          relatedModel: 'UploadedImageModel',
-          includeInJSON: ['id'],
-          reverseRelation: false
-        }],
-        defaults: {
-          name: null,
-          manufacturer: null,
-          model: null,
-          description: null,
-          image: null,
-          isActive: null
-        }
-      });
-
-
-      globalNamespace.Models.UnitTypeModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/inventory/models/skuModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './partModel.js', './commodityModel.js', './unitTypeModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_libCommonModelsBaseUrlBaseModelJs) {
-      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
-    }, function (_partModelJs) {}, function (_commodityModelJs) {}, function (_unitTypeModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/sku';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'part',
-          relatedModel: 'PartModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'commodity',
-          relatedModel: 'CommodityModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'unitType',
-          relatedModel: 'UnitTypeModel',
-          includeInJSON: ['id']
-        }],
-        defaults: {
-          name: null,
-          number: null,
-          label: null,
-          part: null,
-          commodity: null,
-          unitType: null,
-          isVoid: null,
-          quantity: null,
-          averageValue: null
-        }
-      });
-
-
-      globalNamespace.Models.SkuModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
 System.register('lib/inventory/models/inventorySkuAuditModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './skuModel.js'], function (_export, _context) {
   "use strict";
 
@@ -33302,10 +33154,10 @@ System.register('lib/inventory/models/inventoryAuditModel.js', ['lib/globalNames
 });
 'use strict';
 
-System.register('lib/inventory/controller.js', ['npm:systemjs-plugin-babel@0.0.13/babel-helpers/slicedToArray.js', 'underscore', 'backbone', 'backbone.radio', 'marionette', './views/inventoryActionIndexView.js', './views/inventoryLogIndexView.js', './views/travelerIdView.js', './views/binSkuCountView.js', './views/salesItemView.js', 'lib/common/views/entity/searchableListLayoutView.js', './models/inventoryTravelerIdEditCollection.js', './views/inventoryTravelerIdEditListTableLayoutTpl.hbs!', './views/inventoryTravelerIdEditRowTpl.hbs!', './models/inventoryTravelerIdMovementCollection.js', './views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!', './views/inventoryTravelerIdMovementRowTpl.hbs!', './models/inventoryTravelerIdTransformCollection.js', './views/inventoryTravelerIdTransformListTableLayoutTpl.hbs!', './views/inventoryTravelerIdTransformRowTpl.hbs!', './models/inventorySkuAdjustmentCollection.js', './views/inventorySkuAdjustmentListTableLayoutTpl.hbs!', './views/inventorySkuAdjustmentRowTpl.hbs!', './models/inventorySkuMovementCollection.js', './views/inventorySkuMovementListTableLayoutTpl.hbs!', './views/inventorySkuMovementRowTpl.hbs!', './models/inventorySkuTransformCollection.js', './views/inventorySkuTransformListTableLayoutTpl.hbs!', './views/inventorySkuTransformRowTpl.hbs!', './views/inventoryAuditListView.js', './views/inventoryAuditView.js', './models/inventoryAuditModel.js'], function (_export, _context) {
+System.register('lib/inventory/controller.js', ['npm:systemjs-plugin-babel@0.0.13/babel-helpers/slicedToArray.js', 'underscore', 'backbone', 'backbone.radio', 'marionette', './views/inventoryActionIndexView.js', './views/inventoryLogIndexView.js', './views/travelerIdView.js', './views/binSkuCountView.js', './views/salesItemView.js', 'lib/common/views/entity/searchableListLayoutView.js', './models/inventoryTravelerIdEditCollection.js', './views/inventoryTravelerIdEditListTableLayoutTpl.hbs!', './views/inventoryTravelerIdEditRowTpl.hbs!', './models/inventoryTravelerIdMovementCollection.js', './views/inventoryTravelerIdMovementListTableLayoutTpl.hbs!', './views/inventoryTravelerIdMovementRowTpl.hbs!', './models/inventoryTravelerIdTransformCollection.js', './views/inventoryTravelerIdTransformListTableLayoutTpl.hbs!', './views/inventoryTravelerIdTransformRowTpl.hbs!', './models/inventorySalesItemEditCollection.js', './views/inventorySalesItemEditListTableLayoutTpl.hbs!', './views/inventorySalesItemEditRowTpl.hbs!', './models/inventorySalesItemMovementCollection.js', './views/inventorySalesItemMovementListTableLayoutTpl.hbs!', './views/inventorySalesItemMovementRowTpl.hbs!', './models/inventorySkuAdjustmentCollection.js', './views/inventorySkuAdjustmentListTableLayoutTpl.hbs!', './views/inventorySkuAdjustmentRowTpl.hbs!', './models/inventorySkuMovementCollection.js', './views/inventorySkuMovementListTableLayoutTpl.hbs!', './views/inventorySkuMovementRowTpl.hbs!', './models/inventorySkuTransformCollection.js', './views/inventorySkuTransformListTableLayoutTpl.hbs!', './views/inventorySkuTransformRowTpl.hbs!', './views/inventoryAuditListView.js', './views/inventoryAuditView.js', './models/inventoryAuditModel.js'], function (_export, _context) {
   "use strict";
 
-  var _slicedToArray, _, Backbone, Radio, Marionette, InventoryActionIndexView, InventoryLogIndexView, TravelerIdView, BinSkuCountView, SalesItemView, SearchableListLayoutView, InventoryTravelerIdEditCollection, inventoryTravelerIdEditListTableLayoutTpl, inventoryTravelerIdEditRowTpl, InventoryTravelerIdMovementCollection, inventoryTravelerIdMovementListTableLayoutTpl, inventoryTravelerIdMovementRowTpl, InventoryTravelerIdTransformCollection, inventoryTravelerIdTransformListTableLayoutTpl, inventoryTravelerIdTransformRowTpl, InventorySkuAdjustmentCollection, inventorySkuAdjustmentListTableLayoutTpl, inventorySkuAdjustmentRowTpl, InventorySkuMovementCollection, inventorySkuMovementListTableLayoutTpl, inventorySkuMovementRowTpl, InventorySkuTransformCollection, inventorySkuTransformListTableLayoutTpl, inventorySkuTransformRowTpl, InventoryAuditListView, InventoryAuditView, InventoryAuditModel;
+  var _slicedToArray, _, Backbone, Radio, Marionette, InventoryActionIndexView, InventoryLogIndexView, TravelerIdView, BinSkuCountView, SalesItemView, SearchableListLayoutView, InventoryTravelerIdEditCollection, inventoryTravelerIdEditListTableLayoutTpl, inventoryTravelerIdEditRowTpl, InventoryTravelerIdMovementCollection, inventoryTravelerIdMovementListTableLayoutTpl, inventoryTravelerIdMovementRowTpl, InventoryTravelerIdTransformCollection, inventoryTravelerIdTransformListTableLayoutTpl, inventoryTravelerIdTransformRowTpl, InventorySalesItemEditCollection, inventorySalesItemEditListTableLayoutTpl, inventorySalesItemEditRowTpl, InventorySalesItemMovementCollection, inventorySalesItemMovementListTableLayoutTpl, inventorySalesItemMovementRowTpl, InventorySkuAdjustmentCollection, inventorySkuAdjustmentListTableLayoutTpl, inventorySkuAdjustmentRowTpl, InventorySkuMovementCollection, inventorySkuMovementListTableLayoutTpl, inventorySkuMovementRowTpl, InventorySkuTransformCollection, inventorySkuTransformListTableLayoutTpl, inventorySkuTransformRowTpl, InventoryAuditListView, InventoryAuditView, InventoryAuditModel;
 
   return {
     setters: [function (_npmSystemjsPluginBabel0013BabelHelpersSlicedToArrayJs) {
@@ -33348,6 +33200,18 @@ System.register('lib/inventory/controller.js', ['npm:systemjs-plugin-babel@0.0.1
       inventoryTravelerIdTransformListTableLayoutTpl = _viewsInventoryTravelerIdTransformListTableLayoutTplHbs.default;
     }, function (_viewsInventoryTravelerIdTransformRowTplHbs) {
       inventoryTravelerIdTransformRowTpl = _viewsInventoryTravelerIdTransformRowTplHbs.default;
+    }, function (_modelsInventorySalesItemEditCollectionJs) {
+      InventorySalesItemEditCollection = _modelsInventorySalesItemEditCollectionJs.default;
+    }, function (_viewsInventorySalesItemEditListTableLayoutTplHbs) {
+      inventorySalesItemEditListTableLayoutTpl = _viewsInventorySalesItemEditListTableLayoutTplHbs.default;
+    }, function (_viewsInventorySalesItemEditRowTplHbs) {
+      inventorySalesItemEditRowTpl = _viewsInventorySalesItemEditRowTplHbs.default;
+    }, function (_modelsInventorySalesItemMovementCollectionJs) {
+      InventorySalesItemMovementCollection = _modelsInventorySalesItemMovementCollectionJs.default;
+    }, function (_viewsInventorySalesItemMovementListTableLayoutTplHbs) {
+      inventorySalesItemMovementListTableLayoutTpl = _viewsInventorySalesItemMovementListTableLayoutTplHbs.default;
+    }, function (_viewsInventorySalesItemMovementRowTplHbs) {
+      inventorySalesItemMovementRowTpl = _viewsInventorySalesItemMovementRowTplHbs.default;
     }, function (_modelsInventorySkuAdjustmentCollectionJs) {
       InventorySkuAdjustmentCollection = _modelsInventorySkuAdjustmentCollectionJs.default;
     }, function (_viewsInventorySkuAdjustmentListTableLayoutTplHbs) {
@@ -33484,11 +33348,55 @@ System.register('lib/inventory/controller.js', ['npm:systemjs-plugin-babel@0.0.1
           var listView = new SearchableListLayoutView({
             collection: inventoryTravelerIdTransformCollection,
             listLength: 20,
-            searchPath: ['byUser.firstName', 'byUser.lastName', 'fromTravelerId.label', 'toTravelerId.label', 'toSalesItem.id'],
+            searchPath: ['byUser.firstName', 'byUser.lastName', 'fromTravelerIds.label', 'toTravelerIds.label', 'toSalesItems.label'],
             useTableView: true,
             usePagination: 'server',
             entityListTableLayoutTpl: inventoryTravelerIdTransformListTableLayoutTpl,
             entityRowTpl: inventoryTravelerIdTransformRowTpl,
+            colspan: 6
+          });
+
+          this.buildViewStack([{
+            regionViewMap: new Map([['content', listView]]),
+            viewInstance: inventoryIndexView
+          }]);
+
+          Radio.channel('app').trigger('show:view', inventoryIndexView);
+        },
+        inventorySalesItemEdits: function inventorySalesItemEdits() {
+          var inventoryIndexView = new InventoryLogIndexView();
+
+          var inventorySalesItemEditCollection = Radio.channel('data').request('collection', InventorySalesItemEditCollection, { doFetch: false });
+          var listView = new SearchableListLayoutView({
+            collection: inventorySalesItemEditCollection,
+            listLength: 20,
+            searchPath: ['byUser.firstName', 'byUser.lastName', 'salesItem.label'],
+            useTableView: true,
+            usePagination: 'server',
+            entityListTableLayoutTpl: inventorySalesItemEditListTableLayoutTpl,
+            entityRowTpl: inventorySalesItemEditRowTpl,
+            colspan: 6
+          });
+
+          this.buildViewStack([{
+            regionViewMap: new Map([['content', listView]]),
+            viewInstance: inventoryIndexView
+          }]);
+
+          Radio.channel('app').trigger('show:view', inventoryIndexView);
+        },
+        inventorySalesItemMovements: function inventorySalesItemMovements() {
+          var inventoryIndexView = new InventoryLogIndexView();
+
+          var inventorySalesItemMovementCollection = Radio.channel('data').request('collection', InventorySalesItemMovementCollection, { doFetch: false });
+          var listView = new SearchableListLayoutView({
+            collection: inventorySalesItemMovementCollection,
+            listLength: 20,
+            searchPath: ['byUser.firstName', 'byUser.lastName', 'fromBin.name', 'toBin.name', 'salesItem.label'],
+            useTableView: true,
+            usePagination: 'server',
+            entityListTableLayoutTpl: inventorySalesItemMovementListTableLayoutTpl,
+            entityRowTpl: inventorySalesItemMovementRowTpl,
             colspan: 6
           });
 
@@ -33698,6 +33606,8 @@ System.register('lib/inventory/router.js', ['underscore', 'backbone', 'backbone.
           'inventory_tid_edit': 'inventoryTravelerIdEdits',
           'inventory_tid_movement': 'inventoryTravelerIdMovements',
           'inventory_tid_transform': 'inventoryTravelerIdTransforms',
+          'inventory_sales_item_edit': 'inventorySalesItemEdits',
+          'inventory_sales_item_movement': 'inventorySalesItemMovements',
           'inventory_sku_adjustment': 'inventorySkuAdjustments',
           'inventory_sku_movement': 'inventorySkuMovements',
           'inventory_sku_transform': 'inventorySkuTransforms',
@@ -33782,6 +33692,22 @@ System.register('lib/inventory/router.js', ['underscore', 'backbone', 'backbone.
             Radio.channel('app').trigger('request:finished');
             var controller = new controllerModule.default();
             controller.inventoryTravelerIdTransforms();
+          });
+        },
+        inventorySalesItemEdits: function inventorySalesItemEdits() {
+          Radio.channel('app').trigger('request:started');
+          System.import('lib/inventory/controller.js').then(function (controllerModule) {
+            Radio.channel('app').trigger('request:finished');
+            var controller = new controllerModule.default();
+            controller.inventorySalesItemEdits();
+          });
+        },
+        inventorySalesItemMovements: function inventorySalesItemMovements() {
+          Radio.channel('app').trigger('request:started');
+          System.import('lib/inventory/controller.js').then(function (controllerModule) {
+            Radio.channel('app').trigger('request:finished');
+            var controller = new controllerModule.default();
+            controller.inventorySalesItemMovements();
           });
         },
         inventorySkuAdjustments: function inventorySkuAdjustments() {
@@ -39877,1719 +39803,6 @@ System.register('lib/common/models/myselfModel.js', ['lib/globalNamespace.js', '
 
 
       globalNamespace.Models.MyselfModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/uploadedImageModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/image';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'organization',
-          relatedModel: 'OrganizationModel',
-          includeInJSON: false,
-          reverseRelation: false
-        }],
-        defaults: {
-          organization: null,
-          name: null,
-          mimeType: null,
-          width: null,
-          height: null
-        }
-      });
-
-
-      globalNamespace.Models.UploadedImageModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js', './uploadedImageModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }, function (_uploadedImageModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/organization';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'logo',
-          relatedModel: 'UploadedImageModel',
-          includeInJSON: ['id'],
-          reverseRelation: false
-        }],
-        defaults: {
-          name: null,
-          logo: null
-        }
-      });
-
-
-      globalNamespace.Models.OrganizationModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js', './organizationModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }, function (_organizationModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/office';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'organization',
-          relatedModel: 'OrganizationModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'offices',
-            includeInJSON: false
-          }
-        }],
-        defaults: {
-          organization: null,
-          name: null,
-          departments: null
-        },
-        getDepartmentTotalMenuItemCount: function getDepartmentTotalMenuItemCount(departmentId) {
-          var department = this.get('departments').get(departmentId);
-          var count = department.getTotalMenuItemCount();
-          return count;
-        }
-      });
-
-
-      globalNamespace.Models.OfficeModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/departmentModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js', './officeModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }, function (_officeModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/department';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'office',
-          relatedModel: 'OfficeModel',
-          includeInJSON: ['id'],
-          reverseRelation: {
-            key: 'departments',
-            includeInJSON: false
-          }
-        }],
-        defaults: {
-          name: null,
-          office: null,
-          menuItems: null
-        },
-        getTotalMenuItemCount: function getTotalMenuItemCount() {
-          var count = this.get('menuItems').length;
-          this.get('menuItems').each(function (menuItem) {
-            count += menuItem.getChildCount();
-          });
-          return count;
-        }
-      });
-
-
-      globalNamespace.Models.DepartmentModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-System.registerDynamic("npm:systemjs-plugin-babel@0.0.13.json", [], false, function() {
-  return {
-    "main": "plugin-babel.js",
-    "map": {
-      "systemjs-babel-build": {
-        "browser": "./systemjs-babel-browser.js",
-        "default": "./systemjs-babel-browser.js"
-      }
-    },
-    "meta": {
-      "./plugin-babel.js": {
-        "format": "cjs"
-      }
-    }
-  };
-});
-
-System.registerDynamic("github:VitalStorm/Backbone-relational@master.json", [], false, function() {
-  return {
-    "main": "backbone-relational.js"
-  };
-});
-
-(function() {
-var define = System.amdDefine;
-(function(factory) {
-  var root = (typeof self == 'object' && self.self == self && self) || (typeof global == 'object' && global.global == global && global);
-  if (typeof define === 'function' && define.amd) {
-    define("github:VitalStorm/Backbone-relational@master/backbone-relational.js", ["exports", "backbone", "underscore"], function(exports, Backbone, _) {
-      factory(exports, Backbone, _, root);
-    });
-  } else if (typeof exports !== 'undefined') {
-    factory(exports, require('backbone'), require('underscore'), root);
-  } else {
-    root.Backbone.Relational = factory({}, root.Backbone, root._, root);
-  }
-}(function(module, Backbone, _, root) {
-  "use strict";
-  module.Collection = Backbone.Collection.extend();
-  module.showWarnings = true;
-  module.Semaphore = {
-    _permitsAvailable: null,
-    _permitsUsed: 0,
-    acquire: function() {
-      if (this._permitsAvailable && this._permitsUsed >= this._permitsAvailable) {
-        throw new Error('Max permits acquired');
-      } else {
-        this._permitsUsed++;
-      }
-    },
-    release: function() {
-      if (this._permitsUsed === 0) {
-        throw new Error('All permits released');
-      } else {
-        this._permitsUsed--;
-      }
-    },
-    isLocked: function() {
-      return this._permitsUsed > 0;
-    },
-    setAvailablePermits: function(amount) {
-      if (this._permitsUsed > amount) {
-        throw new Error('Available permits cannot be less than used permits');
-      }
-      this._permitsAvailable = amount;
-    }
-  };
-  module.BlockingQueue = function() {
-    this._queue = [];
-  };
-  _.extend(module.BlockingQueue.prototype, module.Semaphore, {
-    _queue: null,
-    add: function(func) {
-      if (this.isBlocked()) {
-        this._queue.push(func);
-      } else {
-        func();
-      }
-    },
-    process: function() {
-      var queue = this._queue;
-      this._queue = [];
-      while (queue && queue.length) {
-        queue.shift()();
-      }
-    },
-    block: function() {
-      this.acquire();
-    },
-    unblock: function() {
-      this.release();
-      if (!this.isBlocked()) {
-        this.process();
-      }
-    },
-    isBlocked: function() {
-      return this.isLocked();
-    }
-  });
-  module.eventQueue = new module.BlockingQueue();
-  module.Store = function() {
-    this._collections = [];
-    this._reverseRelations = [];
-    this._orphanRelations = [];
-    this._subModels = [];
-    this._modelScopes = [root];
-  };
-  _.extend(module.Store.prototype, Backbone.Events, {
-    initializeRelation: function(model, relation, options) {
-      var type = !_.isString(relation.type) ? relation.type : module[relation.type] || this.getObjectByName(relation.type);
-      if (type && type.prototype instanceof module.Relation) {
-        var rel = new type(model, relation, options);
-      } else {
-        module.showWarnings && typeof console !== 'undefined' && console.warn('Relation=%o; missing or invalid relation type!', relation);
-      }
-    },
-    addModelScope: function(scope) {
-      this._modelScopes.push(scope);
-    },
-    removeModelScope: function(scope) {
-      this._modelScopes = _.without(this._modelScopes, scope);
-    },
-    addSubModels: function(subModelTypes, superModelType) {
-      this._subModels.push({
-        'superModelType': superModelType,
-        'subModels': subModelTypes
-      });
-    },
-    setupSuperModel: function(modelType) {
-      _.find(this._subModels, function(subModelDef) {
-        return _.filter(subModelDef.subModels || [], function(subModelTypeName, typeValue) {
-          var subModelType = this.getObjectByName(subModelTypeName);
-          if (modelType === subModelType) {
-            subModelDef.superModelType._subModels[typeValue] = modelType;
-            modelType._superModel = subModelDef.superModelType;
-            modelType._subModelTypeValue = typeValue;
-            modelType._subModelTypeAttribute = subModelDef.superModelType.prototype.subModelTypeAttribute;
-            return true;
-          }
-        }, this).length;
-      }, this);
-    },
-    addReverseRelation: function(relation) {
-      var exists = _.any(this._reverseRelations, function(rel) {
-        return _.all(relation || [], function(val, key) {
-          return val === rel[key];
-        });
-      });
-      if (!exists && relation.model && relation.type) {
-        this._reverseRelations.push(relation);
-        this._addRelation(relation.model, relation);
-        this.retroFitRelation(relation);
-      }
-    },
-    addOrphanRelation: function(relation) {
-      var exists = _.any(this._orphanRelations, function(rel) {
-        return _.all(relation || [], function(val, key) {
-          return val === rel[key];
-        });
-      });
-      if (!exists && relation.model && relation.type) {
-        this._orphanRelations.push(relation);
-      }
-    },
-    processOrphanRelations: function() {
-      _.each(this._orphanRelations.slice(0), function(rel) {
-        var relatedModel = module.store.getObjectByName(rel.relatedModel);
-        if (relatedModel) {
-          this.initializeRelation(null, rel);
-          this._orphanRelations = _.without(this._orphanRelations, rel);
-        }
-      }, this);
-    },
-    _addRelation: function(type, relation) {
-      if (!type.prototype.relations) {
-        type.prototype.relations = [];
-      }
-      type.prototype.relations.push(relation);
-      _.each(type._subModels || [], function(subModel) {
-        this._addRelation(subModel, relation);
-      }, this);
-    },
-    retroFitRelation: function(relation) {
-      var coll = this.getCollection(relation.model, false);
-      coll && coll.each(function(model) {
-        if (!(model instanceof relation.model)) {
-          return;
-        }
-        var rel = new relation.type(model, relation);
-      }, this);
-    },
-    getCollection: function(type, create) {
-      if (type instanceof module.Model) {
-        type = type.constructor;
-      }
-      var rootModel = type;
-      while (rootModel._superModel) {
-        rootModel = rootModel._superModel;
-      }
-      var coll = _.find(this._collections, function(item) {
-        return item.model === rootModel;
-      });
-      if (!coll && create !== false) {
-        coll = this._createCollection(rootModel);
-      }
-      return coll;
-    },
-    getObjectByName: function(name) {
-      var parts = name.split('.'),
-          type = null;
-      _.find(this._modelScopes, function(scope) {
-        type = _.reduce(parts || [], function(memo, val) {
-          return memo ? memo[val] : undefined;
-        }, scope);
-        if (type && type !== scope) {
-          return true;
-        }
-      }, this);
-      return type;
-    },
-    _createCollection: function(type) {
-      var coll;
-      if (type instanceof module.Model) {
-        type = type.constructor;
-      }
-      if (type.prototype instanceof module.Model) {
-        coll = new module.Collection();
-        coll.model = type;
-        this._collections.push(coll);
-      }
-      return coll;
-    },
-    resolveIdForItem: function(type, item) {
-      var id = _.isString(item) || _.isNumber(item) ? item : null;
-      if (id === null) {
-        if (item instanceof module.Model) {
-          id = item.id;
-        } else if (_.isObject(item)) {
-          id = item[type.prototype.idAttribute];
-        }
-      }
-      if (!id && id !== 0) {
-        id = null;
-      }
-      return id;
-    },
-    find: function(type, item) {
-      var id = this.resolveIdForItem(type, item),
-          coll = this.getCollection(type);
-      if (coll) {
-        var obj = coll.get(id);
-        if (obj instanceof type) {
-          return obj;
-        }
-      }
-      return null;
-    },
-    register: function(model) {
-      var coll = this.getCollection(model);
-      if (coll) {
-        var modelColl = model.collection;
-        coll.add(model);
-        model.collection = modelColl;
-      }
-    },
-    checkId: function(model, id) {
-      var coll = this.getCollection(model),
-          duplicate = coll && coll.get(id);
-      if (duplicate && model !== duplicate) {
-        if (module.showWarnings && typeof console !== 'undefined') {
-          console.warn('Duplicate id! Old RelationalModel=%o, new RelationalModel=%o', duplicate, model);
-        }
-        throw new Error("Cannot instantiate more than one Backbone.Relational.Model with the same id per type!");
-      }
-    },
-    update: function(model) {
-      var coll = this.getCollection(model);
-      if (!coll.contains(model)) {
-        this.register(model);
-      }
-      coll._onModelEvent('change:' + model.idAttribute, model, coll);
-      model.trigger('relational:change:id', model, coll);
-    },
-    unregister: function(type) {
-      var coll,
-          models;
-      if (type instanceof Backbone.Model) {
-        coll = this.getCollection(type);
-        models = [type];
-      } else if (type instanceof module.Collection) {
-        coll = this.getCollection(type.model);
-        models = _.clone(type.models);
-      } else {
-        coll = this.getCollection(type);
-        models = _.clone(coll.models);
-      }
-      _.each(models, function(model) {
-        this.stopListening(model);
-        _.invoke(model.getRelations(), 'stopListening');
-      }, this);
-      if (_.contains(this._collections, type)) {
-        coll.reset([]);
-      } else {
-        _.each(models, function(model) {
-          if (coll.get(model)) {
-            coll.remove(model);
-          } else {
-            coll.trigger('relational:remove', model, coll);
-          }
-        }, this);
-      }
-    },
-    reset: function() {
-      this.stopListening();
-      _.each(this._collections, function(coll) {
-        this.unregister(coll);
-      }, this);
-      this._collections = [];
-      this._subModels = [];
-      this._modelScopes = [root];
-    }
-  });
-  module.store = new module.Store();
-  module.Relation = function(instance, options, opts) {
-    this.instance = instance;
-    options = _.isObject(options) ? options : {};
-    this.reverseRelation = _.defaults(options.reverseRelation || {}, this.options.reverseRelation);
-    this.options = _.defaults(options, this.options, module.Relation.prototype.options);
-    this.reverseRelation.type = !_.isString(this.reverseRelation.type) ? this.reverseRelation.type : module[this.reverseRelation.type] || module.store.getObjectByName(this.reverseRelation.type);
-    this.key = this.options.key;
-    this.keySource = this.options.keySource || this.key;
-    this.keyDestination = this.options.keyDestination || this.keySource || this.key;
-    this.model = this.options.model || this.instance.constructor;
-    this.relatedModel = this.options.relatedModel;
-    if (_.isUndefined(this.relatedModel)) {
-      this.relatedModel = this.model;
-    }
-    if (_.isFunction(this.relatedModel) && !(this.relatedModel.prototype instanceof module.Model)) {
-      this.relatedModel = _.result(this, 'relatedModel');
-    }
-    if (_.isString(this.relatedModel)) {
-      this.relatedModel = module.store.getObjectByName(this.relatedModel);
-    }
-    if (!this.checkPreconditions()) {
-      return;
-    }
-    if (!this.options.isAutoRelation && this.reverseRelation.type && this.reverseRelation.key) {
-      module.store.addReverseRelation(_.defaults({
-        isAutoRelation: true,
-        model: this.relatedModel,
-        relatedModel: this.model,
-        reverseRelation: this.options
-      }, this.reverseRelation));
-    }
-    if (instance) {
-      var contentKey = this.keySource;
-      if (contentKey !== this.key && _.isObject(this.instance.get(this.key))) {
-        contentKey = this.key;
-      }
-      this.setKeyContents(this.instance.get(contentKey));
-      this.relatedCollection = module.store.getCollection(this.relatedModel);
-      if (this.keySource !== this.key) {
-        delete this.instance.attributes[this.keySource];
-      }
-      this.instance._relations[this.key] = this;
-      this.initialize(opts);
-      if (this.options.autoFetch) {
-        this.instance.getAsync(this.key, _.isObject(this.options.autoFetch) ? this.options.autoFetch : {});
-      }
-      this.listenTo(this.instance, 'destroy', this.destroy).listenTo(this.relatedCollection, 'relational:add relational:change:id', this.tryAddRelated).listenTo(this.relatedCollection, 'relational:remove', this.removeRelated);
-    }
-  };
-  module.Relation.extend = Backbone.Model.extend;
-  _.extend(module.Relation.prototype, Backbone.Events, module.Semaphore, {
-    options: {
-      createModels: true,
-      includeInJSON: true,
-      isAutoRelation: false,
-      autoFetch: false,
-      parse: false
-    },
-    instance: null,
-    key: null,
-    keyContents: null,
-    relatedModel: null,
-    relatedCollection: null,
-    reverseRelation: null,
-    related: null,
-    checkPreconditions: function() {
-      var i = this.instance,
-          k = this.key,
-          m = this.model,
-          rm = this.relatedModel,
-          warn = module.showWarnings && typeof console !== 'undefined';
-      if (!m || !k || !rm) {
-        warn && console.warn('Relation=%o: missing model, key or relatedModel (%o, %o, %o).', this, m, k, rm);
-        return false;
-      }
-      if (!(m.prototype instanceof module.Model)) {
-        warn && console.warn('Relation=%o: model does not inherit from Backbone.Relational.Model (%o).', this, i);
-        return false;
-      }
-      if (!(rm.prototype instanceof module.Model)) {
-        warn && console.warn('Relation=%o: relatedModel does not inherit from Backbone.Relational.Model (%o).', this, rm);
-        return false;
-      }
-      if (this instanceof module.HasMany && this.reverseRelation.type === module.HasMany) {
-        warn && console.warn('Relation=%o: relation is a HasMany, and the reverseRelation is HasMany as well.', this);
-        return false;
-      }
-      if (i && _.keys(i._relations).length) {
-        var existing = _.find(i._relations, function(rel) {
-          return rel.key === k;
-        }, this);
-        if (existing) {
-          warn && console.warn('Cannot create relation=%o on %o for model=%o: already taken by relation=%o.', this, k, i, existing);
-          return false;
-        }
-      }
-      return true;
-    },
-    setRelated: function(related) {
-      this.related = related;
-      this.instance.attributes[this.key] = related;
-    },
-    _isReverseRelation: function(relation) {
-      return relation.instance instanceof this.relatedModel && this.reverseRelation.key === relation.key && this.key === relation.reverseRelation.key;
-    },
-    getReverseRelations: function(model) {
-      var reverseRelations = [];
-      var models = !_.isUndefined(model) ? [model] : this.related && (this.related.models || [this.related]),
-          relations = null,
-          relation = null;
-      for (var i = 0; i < (models || []).length; i++) {
-        relations = models[i].getRelations() || [];
-        for (var j = 0; j < relations.length; j++) {
-          relation = relations[j];
-          if (this._isReverseRelation(relation)) {
-            reverseRelations.push(relation);
-          }
-        }
-      }
-      return reverseRelations;
-    },
-    destroy: function() {
-      this.stopListening();
-      if (this instanceof module.HasOne) {
-        this.setRelated(null);
-      } else if (this instanceof module.HasMany) {
-        this.setRelated(this._prepareCollection());
-      }
-      _.each(this.getReverseRelations(), function(relation) {
-        relation.removeRelated(this.instance);
-      }, this);
-    }
-  });
-  module.HasOne = module.Relation.extend({
-    options: {reverseRelation: {type: 'HasMany'}},
-    initialize: function(opts) {
-      this.listenTo(this.instance, 'relational:change:' + this.key, this.onChange);
-      var related = this.findRelated(opts);
-      this.setRelated(related);
-      _.each(this.getReverseRelations(), function(relation) {
-        relation.addRelated(this.instance, opts);
-      }, this);
-    },
-    findRelated: function(options) {
-      var related = null;
-      options = _.defaults({parse: this.options.parse}, options);
-      if (this.keyContents instanceof this.relatedModel) {
-        related = this.keyContents;
-      } else if (this.keyContents || this.keyContents === 0) {
-        var opts = _.defaults({create: this.options.createModels}, options);
-        related = this.relatedModel.findOrCreate(this.keyContents, opts);
-      }
-      if (related) {
-        this.keyId = null;
-      }
-      return related;
-    },
-    setKeyContents: function(keyContents) {
-      this.keyContents = keyContents;
-      this.keyId = module.store.resolveIdForItem(this.relatedModel, this.keyContents);
-    },
-    onChange: function(model, attr, options) {
-      if (this.isLocked()) {
-        return;
-      }
-      this.acquire();
-      options = options ? _.clone(options) : {};
-      var changed = _.isUndefined(options.__related),
-          oldRelated = changed ? this.related : options.__related;
-      if (changed) {
-        this.setKeyContents(attr);
-        var related = this.findRelated(options);
-        this.setRelated(related);
-      }
-      if (oldRelated && this.related !== oldRelated) {
-        _.each(this.getReverseRelations(oldRelated), function(relation) {
-          relation.removeRelated(this.instance, null, options);
-        }, this);
-      }
-      _.each(this.getReverseRelations(), function(relation) {
-        relation.addRelated(this.instance, options);
-      }, this);
-      if (!options.silent && this.related !== oldRelated) {
-        var dit = this;
-        this.changed = true;
-        module.eventQueue.add(function() {
-          dit.instance.trigger('change:' + dit.key, dit.instance, dit.related, options, true);
-          dit.changed = false;
-        });
-      }
-      this.release();
-    },
-    tryAddRelated: function(model, coll, options) {
-      if ((this.keyId || this.keyId === 0) && model.id === this.keyId) {
-        this.addRelated(model, options);
-        this.keyId = null;
-      }
-    },
-    addRelated: function(model, options) {
-      var dit = this;
-      model.queue(function() {
-        if (model !== dit.related) {
-          var oldRelated = dit.related || null;
-          dit.setRelated(model);
-          dit.onChange(dit.instance, model, _.defaults({__related: oldRelated}, options));
-        }
-      });
-    },
-    removeRelated: function(model, coll, options) {
-      if (!this.related) {
-        return;
-      }
-      if (model === this.related) {
-        var oldRelated = this.related || null;
-        this.setRelated(null);
-        this.onChange(this.instance, model, _.defaults({__related: oldRelated}, options));
-      }
-    }
-  });
-  module.HasMany = module.Relation.extend({
-    collectionType: null,
-    options: {
-      reverseRelation: {type: 'HasOne'},
-      collectionType: module.Collection,
-      collectionKey: true,
-      collectionOptions: {}
-    },
-    initialize: function(opts) {
-      this.listenTo(this.instance, 'relational:change:' + this.key, this.onChange);
-      this.collectionType = this.options.collectionType;
-      if (_.isFunction(this.collectionType) && this.collectionType !== module.Collection && !(this.collectionType.prototype instanceof module.Collection)) {
-        this.collectionType = _.result(this, 'collectionType');
-      }
-      if (_.isString(this.collectionType)) {
-        this.collectionType = module.store.getObjectByName(this.collectionType);
-      }
-      if (this.collectionType !== module.Collection && !(this.collectionType.prototype instanceof module.Collection)) {
-        throw new Error('`collectionType` must inherit from module.Collection');
-      }
-      var related = this.findRelated(opts);
-      this.setRelated(related);
-    },
-    _prepareCollection: function(collection) {
-      if (this.related) {
-        this.stopListening(this.related);
-      }
-      if (!collection || !(collection instanceof module.Collection)) {
-        var options = _.isFunction(this.options.collectionOptions) ? this.options.collectionOptions(this.instance) : this.options.collectionOptions;
-        collection = new this.collectionType(null, options);
-      }
-      collection.model = this.relatedModel;
-      if (this.options.collectionKey) {
-        var key = this.options.collectionKey === true ? this.options.reverseRelation.key : this.options.collectionKey;
-        if (collection[key] && collection[key] !== this.instance) {
-          if (module.showWarnings && typeof console !== 'undefined') {
-            console.warn('Relation=%o; collectionKey=%s already exists on collection=%o', this, key, this.options.collectionKey);
-          }
-        } else if (key) {
-          collection[key] = this.instance;
-        }
-      }
-      this.listenTo(collection, 'relational:add', this.handleAddition).listenTo(collection, 'relational:remove', this.handleRemoval).listenTo(collection, 'relational:reset', this.handleReset);
-      return collection;
-    },
-    findRelated: function(options) {
-      var related = null;
-      options = _.defaults({parse: this.options.parse}, options);
-      if (this.keyContents instanceof module.Collection) {
-        this._prepareCollection(this.keyContents);
-        related = this.keyContents;
-      } else {
-        var toAdd = [];
-        _.each(this.keyContents, function(attributes) {
-          var model = null;
-          if (attributes instanceof this.relatedModel) {
-            model = attributes;
-          } else {
-            model = (_.isObject(attributes) && options.parse && this.relatedModel.prototype.parse) ? this.relatedModel.prototype.parse(_.clone(attributes), options) : attributes;
-          }
-          model && toAdd.push(model);
-        }, this);
-        if (this.related instanceof module.Collection) {
-          related = this.related;
-        } else {
-          related = this._prepareCollection();
-        }
-        related.set(toAdd, _.defaults({parse: false}, options));
-      }
-      this.keyIds = _.difference(this.keyIds, _.pluck(related.models, 'id'));
-      return related;
-    },
-    setKeyContents: function(keyContents) {
-      this.keyContents = keyContents instanceof module.Collection ? keyContents : null;
-      this.keyIds = [];
-      if (!this.keyContents && (keyContents || keyContents === 0)) {
-        this.keyContents = _.isArray(keyContents) ? keyContents : [keyContents];
-        _.each(this.keyContents, function(item) {
-          var itemId = module.store.resolveIdForItem(this.relatedModel, item);
-          if (itemId || itemId === 0) {
-            this.keyIds.push(itemId);
-          }
-        }, this);
-      }
-    },
-    onChange: function(model, attr, options) {
-      options = options ? _.clone(options) : {};
-      this.setKeyContents(attr);
-      this.changed = false;
-      var related = this.findRelated(options);
-      this.setRelated(related);
-      if (!options.silent) {
-        var dit = this;
-        module.eventQueue.add(function() {
-          if (dit.changed) {
-            dit.instance.trigger('change:' + dit.key, dit.instance, dit.related, options, true);
-            dit.changed = false;
-          }
-        });
-      }
-    },
-    handleAddition: function(model, coll, options) {
-      options = options ? _.clone(options) : {};
-      this.changed = true;
-      _.each(this.getReverseRelations(model), function(relation) {
-        relation.addRelated(this.instance, options);
-      }, this);
-      var dit = this;
-      !options.silent && module.eventQueue.add(function() {
-        dit.instance.trigger('add:' + dit.key, model, dit.related, options);
-      });
-    },
-    handleRemoval: function(model, coll, options) {
-      options = options ? _.clone(options) : {};
-      this.changed = true;
-      _.each(this.getReverseRelations(model), function(relation) {
-        relation.removeRelated(this.instance, null, options);
-      }, this);
-      var dit = this;
-      !options.silent && module.eventQueue.add(function() {
-        dit.instance.trigger('remove:' + dit.key, model, dit.related, options);
-      });
-    },
-    handleReset: function(coll, options) {
-      var dit = this;
-      options = options ? _.clone(options) : {};
-      !options.silent && module.eventQueue.add(function() {
-        dit.instance.trigger('reset:' + dit.key, dit.related, options);
-      });
-    },
-    tryAddRelated: function(model, coll, options) {
-      var item = _.contains(this.keyIds, model.id);
-      if (item) {
-        this.addRelated(model, options);
-        this.keyIds = _.without(this.keyIds, model.id);
-      }
-    },
-    addRelated: function(model, options) {
-      var dit = this;
-      model.queue(function() {
-        if (dit.related && !dit.related.get(model)) {
-          dit.related.add(model, _.defaults({parse: false}, options));
-        }
-      });
-    },
-    removeRelated: function(model, coll, options) {
-      if (this.related.get(model)) {
-        this.related.remove(model, options);
-      }
-    }
-  });
-  module.Model = Backbone.Model.extend({
-    relations: null,
-    _relations: null,
-    _isInitialized: false,
-    _deferProcessing: false,
-    _queue: null,
-    _attributeChangeFired: false,
-    subModelTypeAttribute: 'type',
-    subModelTypes: null,
-    constructor: function(attributes, options) {
-      if (options && options.collection) {
-        var dit = this,
-            collection = this.collection = options.collection;
-        delete options.collection;
-        this._deferProcessing = true;
-        var processQueue = function(model) {
-          if (model === dit) {
-            dit._deferProcessing = false;
-            dit.processQueue();
-            collection.off('relational:add', processQueue);
-          }
-        };
-        collection.on('relational:add', processQueue);
-        _.defer(function() {
-          processQueue(dit);
-        });
-      }
-      module.store.processOrphanRelations();
-      module.store.listenTo(this, 'relational:unregister', module.store.unregister);
-      this._queue = new module.BlockingQueue();
-      this._queue.block();
-      module.eventQueue.block();
-      try {
-        Backbone.Model.apply(this, arguments);
-      } finally {
-        module.eventQueue.unblock();
-      }
-    },
-    trigger: function(eventName) {
-      if (eventName.length > 5 && eventName.indexOf('change') === 0) {
-        var dit = this,
-            args = arguments;
-        if (!module.eventQueue.isLocked()) {
-          Backbone.Model.prototype.trigger.apply(dit, args);
-        } else {
-          module.eventQueue.add(function() {
-            var changed = true;
-            if (eventName === 'change') {
-              changed = dit.hasChanged() || dit._attributeChangeFired;
-              dit._attributeChangeFired = false;
-            } else {
-              var attr = eventName.slice(7),
-                  rel = dit.getRelation(attr);
-              if (rel) {
-                changed = (args[4] === true);
-                if (changed) {
-                  dit.changed[attr] = args[2];
-                } else if (!rel.changed) {
-                  delete dit.changed[attr];
-                }
-              } else if (changed) {
-                dit._attributeChangeFired = true;
-              }
-            }
-            changed && Backbone.Model.prototype.trigger.apply(dit, args);
-          });
-        }
-      } else if (eventName === 'destroy') {
-        Backbone.Model.prototype.trigger.apply(this, arguments);
-        module.store.unregister(this);
-      } else {
-        Backbone.Model.prototype.trigger.apply(this, arguments);
-      }
-      return this;
-    },
-    initializeRelations: function(options) {
-      this.acquire();
-      this._relations = {};
-      _.each(this.relations || [], function(rel) {
-        module.store.initializeRelation(this, rel, options);
-      }, this);
-      this._isInitialized = true;
-      this.release();
-      this.processQueue();
-    },
-    updateRelations: function(changedAttrs, options) {
-      if (this._isInitialized && !this.isLocked()) {
-        _.each(this._relations, function(rel) {
-          if (!changedAttrs || (rel.keySource in changedAttrs || rel.key in changedAttrs)) {
-            var value = this.attributes[rel.keySource] || this.attributes[rel.key],
-                attr = changedAttrs && (changedAttrs[rel.keySource] || changedAttrs[rel.key]);
-            if (rel.related !== value || (value === null && attr === null)) {
-              this.trigger('relational:change:' + rel.key, this, value, options || {});
-            }
-          }
-          if (rel.keySource !== rel.key) {
-            delete this.attributes[rel.keySource];
-          }
-        }, this);
-      }
-    },
-    queue: function(func) {
-      this._queue.add(func);
-    },
-    processQueue: function() {
-      if (this._isInitialized && !this._deferProcessing && this._queue.isBlocked()) {
-        this._queue.unblock();
-      }
-    },
-    getRelation: function(attr) {
-      return this._relations[attr];
-    },
-    getRelations: function() {
-      return _.values(this._relations);
-    },
-    getIdsToFetch: function(attr, refresh) {
-      var rel = attr instanceof module.Relation ? attr : this.getRelation(attr),
-          ids = rel ? (rel.keyIds && rel.keyIds.slice(0)) || ((rel.keyId || rel.keyId === 0) ? [rel.keyId] : []) : [];
-      if (refresh) {
-        var models = rel.related && (rel.related.models || [rel.related]);
-        _.each(models, function(model) {
-          if (model.id || model.id === 0) {
-            ids.push(model.id);
-          }
-        });
-      }
-      return ids;
-    },
-    getAsync: function(attr, options) {
-      options = _.extend({
-        add: true,
-        remove: false,
-        refresh: false
-      }, options);
-      var dit = this,
-          requests = [],
-          rel = this.getRelation(attr),
-          idsToFetch = rel && this.getIdsToFetch(rel, options.refresh),
-          coll = rel.related instanceof module.Collection ? rel.related : rel.relatedCollection;
-      if (idsToFetch && idsToFetch.length) {
-        var models = [],
-            createdModels = [],
-            setUrl,
-            createModels = function() {
-              models = _.map(idsToFetch, function(id) {
-                var model = rel.relatedModel.findModel(id);
-                if (!model) {
-                  var attrs = {};
-                  attrs[rel.relatedModel.prototype.idAttribute] = id;
-                  model = rel.relatedModel.findOrCreate(attrs, options);
-                  createdModels.push(model);
-                }
-                return model;
-              }, this);
-            };
-        if (coll instanceof module.Collection && _.isFunction(coll.url)) {
-          var defaultUrl = coll.url();
-          setUrl = coll.url(idsToFetch);
-          if (setUrl === defaultUrl) {
-            createModels();
-            setUrl = coll.url(models);
-            if (setUrl === defaultUrl) {
-              setUrl = null;
-            }
-          }
-        }
-        if (setUrl) {
-          var opts = _.defaults({
-            error: function() {
-              _.each(createdModels, function(model) {
-                model.trigger('destroy', model, model.collection, options);
-              });
-              options.error && options.error.apply(models, arguments);
-            },
-            url: setUrl
-          }, options);
-          requests = [coll.fetch(opts)];
-        } else {
-          if (!models.length) {
-            createModels();
-          }
-          requests = _.map(models, function(model) {
-            var opts = _.defaults({error: function() {
-                if (_.contains(createdModels, model)) {
-                  model.trigger('destroy', model, model.collection, options);
-                }
-                options.error && options.error.apply(models, arguments);
-              }}, options);
-            return model.fetch(opts);
-          }, this);
-        }
-      }
-      return this.deferArray(requests).then(function() {
-        return Backbone.Model.prototype.get.call(dit, attr);
-      });
-    },
-    deferArray: function(deferArray) {
-      return Backbone.$.when.apply(null, deferArray);
-    },
-    set: function(key, value, options) {
-      module.eventQueue.block();
-      var attributes,
-          result;
-      if (_.isObject(key) || key == null) {
-        attributes = key;
-        options = value;
-      } else {
-        attributes = {};
-        attributes[key] = value;
-      }
-      try {
-        var id = this.id,
-            newId = attributes && this.idAttribute in attributes && attributes[this.idAttribute];
-        module.store.checkId(this, newId);
-        result = Backbone.Model.prototype.set.apply(this, arguments);
-        if (!this._isInitialized && !this.isLocked()) {
-          this.constructor.initializeModelHierarchy();
-          if (newId || newId === 0) {
-            module.store.register(this);
-          }
-          this.initializeRelations(options);
-        } else if (newId && newId !== id) {
-          module.store.update(this);
-        }
-        if (attributes) {
-          this.updateRelations(attributes, options);
-        }
-      } finally {
-        module.eventQueue.unblock();
-      }
-      return result;
-    },
-    clone: function() {
-      var attributes = _.clone(this.attributes);
-      if (!_.isUndefined(attributes[this.idAttribute])) {
-        attributes[this.idAttribute] = null;
-      }
-      _.each(this.getRelations(), function(rel) {
-        delete attributes[rel.key];
-      });
-      return new this.constructor(attributes);
-    },
-    toJSON: function(options) {
-      if (this.isLocked()) {
-        var relation = null;
-        var me = this;
-        _.each(this._relations, function(rel) {
-          if (typeof rel.relatedModel === 'function' && me instanceof rel.relatedModel) {
-            relation = rel;
-          }
-        });
-        if (relation) {
-          var includeInJSON = relation.options.includeInJSON;
-          if (includeInJSON === true) {
-            return {id: this.id};
-          } else if (_.isString(includeInJSON)) {
-            return this.id;
-          } else if (_.isArray(includeInJSON)) {
-            return {id: this.id};
-          }
-        } else {
-          return this.id;
-        }
-      }
-      this.acquire();
-      var json = Backbone.Model.prototype.toJSON.call(this, options);
-      if (this.constructor._superModel && !(this.constructor._subModelTypeAttribute in json)) {
-        json[this.constructor._subModelTypeAttribute] = this.constructor._subModelTypeValue;
-      }
-      _.each(this._relations, function(rel) {
-        var related = json[rel.key],
-            includeInJSON = rel.options.includeInJSON,
-            value = null;
-        if (includeInJSON === true) {
-          if (related && _.isFunction(related.toJSON)) {
-            value = related.toJSON(options);
-          }
-        } else if (_.isString(includeInJSON)) {
-          if (related instanceof module.Collection) {
-            value = [];
-            related.each(function(model) {
-              var modelJSON = model.toJSON(options);
-              if (typeof modelJSON !== 'undefined') {
-                value.push(modelJSON[includeInJSON]);
-              }
-            });
-          } else if (related instanceof Backbone.Model) {
-            var relatedJSON = related.toJSON(options);
-            if (typeof relatedJSON !== 'undefined') {
-              value = relatedJSON[includeInJSON];
-            }
-          }
-          if (includeInJSON === rel.relatedModel.prototype.idAttribute) {
-            if (rel instanceof module.HasMany) {
-              value = value.concat(rel.keyIds);
-            } else if (rel instanceof module.HasOne) {
-              value = value || rel.keyId;
-              if (!value && !_.isObject(rel.keyContents)) {
-                value = rel.keyContents || null;
-              }
-            }
-          }
-        } else if (_.isArray(includeInJSON)) {
-          if (related instanceof module.Collection) {
-            value = [];
-            related.each(function(model) {
-              var curJson = {};
-              var modelJSON = model.toJSON(options);
-              if (typeof modelJSON === 'number') {
-                curJson.id = modelJSON;
-              } else if (typeof modelJSON !== 'undefined') {
-                _.each(includeInJSON, function(key) {
-                  curJson[key] = modelJSON[key];
-                });
-              }
-              value.push(curJson);
-            });
-          } else if (related instanceof Backbone.Model) {
-            value = {};
-            var relatedJSON = related.toJSON(options);
-            if (typeof modelJSON === 'number') {
-              value.id = modelJSON;
-            } else if (typeof relatedJSON !== 'undefined') {
-              _.each(includeInJSON, function(key) {
-                value[key] = relatedJSON[key];
-              });
-            }
-          }
-        } else {
-          delete json[rel.key];
-        }
-        if (value === null && options && options.wait) {
-          value = related;
-        }
-        if (includeInJSON) {
-          json[rel.keyDestination] = value;
-        }
-        if (rel.keyDestination !== rel.key) {
-          delete json[rel.key];
-        }
-      });
-      this.release();
-      return json;
-    }
-  }, {
-    setup: function(superModel) {
-      this.prototype.relations = (this.prototype.relations || []).slice(0);
-      this._subModels = {};
-      this._superModel = null;
-      if (this.prototype.hasOwnProperty('subModelTypes')) {
-        module.store.addSubModels(this.prototype.subModelTypes, this);
-      } else {
-        this.prototype.subModelTypes = null;
-      }
-      _.each(this.prototype.relations || [], function(rel) {
-        if (!rel.model) {
-          rel.model = this;
-        }
-        if (rel.reverseRelation && rel.model === this) {
-          var preInitialize = true;
-          if (_.isString(rel.relatedModel)) {
-            var relatedModel = module.store.getObjectByName(rel.relatedModel);
-            preInitialize = relatedModel && (relatedModel.prototype instanceof module.Model);
-          }
-          if (preInitialize) {
-            module.store.initializeRelation(null, rel);
-          } else if (_.isString(rel.relatedModel)) {
-            module.store.addOrphanRelation(rel);
-          }
-        }
-      }, this);
-      return this;
-    },
-    build: function(attributes, options) {
-      this.initializeModelHierarchy();
-      var model = this._findSubModelType(this, attributes) || this;
-      return new model(attributes, options);
-    },
-    _findSubModelType: function(type, attributes) {
-      if (type._subModels && type.prototype.subModelTypeAttribute in attributes) {
-        var subModelTypeAttribute = attributes[type.prototype.subModelTypeAttribute];
-        var subModelType = type._subModels[subModelTypeAttribute];
-        if (subModelType) {
-          return subModelType;
-        } else {
-          for (subModelTypeAttribute in type._subModels) {
-            subModelType = this._findSubModelType(type._subModels[subModelTypeAttribute], attributes);
-            if (subModelType) {
-              return subModelType;
-            }
-          }
-        }
-      }
-      return null;
-    },
-    initializeModelHierarchy: function() {
-      this.inheritRelations();
-      if (this.prototype.subModelTypes) {
-        var resolvedSubModels = _.keys(this._subModels);
-        var unresolvedSubModels = _.omit(this.prototype.subModelTypes, resolvedSubModels);
-        _.each(unresolvedSubModels, function(subModelTypeName) {
-          var subModelType = module.store.getObjectByName(subModelTypeName);
-          subModelType && subModelType.initializeModelHierarchy();
-        });
-      }
-    },
-    inheritRelations: function() {
-      if (!_.isUndefined(this._superModel) && !_.isNull(this._superModel)) {
-        return;
-      }
-      module.store.setupSuperModel(this);
-      if (this._superModel) {
-        this._superModel.inheritRelations();
-        if (this._superModel.prototype.relations) {
-          var inheritedRelations = _.filter(this._superModel.prototype.relations || [], function(superRel) {
-            return !_.any(this.prototype.relations || [], function(rel) {
-              return superRel.relatedModel === rel.relatedModel && superRel.key === rel.key;
-            }, this);
-          }, this);
-          this.prototype.relations = inheritedRelations.concat(this.prototype.relations);
-        }
-      } else {
-        this._superModel = false;
-      }
-    },
-    findOrCreate: function(attributes, options) {
-      options || (options = {});
-      var parsedAttributes = (_.isObject(attributes) && options.parse && this.prototype.parse) ? this.prototype.parse(_.clone(attributes), options) : attributes;
-      var model = this.findModel(parsedAttributes);
-      if (_.isObject(attributes)) {
-        if (model && options.merge !== false) {
-          delete options.collection;
-          delete options.url;
-          model.set(parsedAttributes, options);
-        } else if (!model && options.create !== false) {
-          model = this.build(parsedAttributes, _.defaults({parse: false}, options));
-        }
-      }
-      return model;
-    },
-    find: function(attributes, options) {
-      options || (options = {});
-      options.create = false;
-      return this.findOrCreate(attributes, options);
-    },
-    findModel: function(attributes) {
-      return module.store.find(this, attributes);
-    }
-  });
-  _.extend(module.Model.prototype, module.Semaphore);
-  module.Collection.prototype.__prepareModel = module.Collection.prototype._prepareModel;
-  module.Collection.prototype._prepareModel = function(attrs, options) {
-    var model;
-    if (attrs instanceof Backbone.Model) {
-      if (!attrs.collection) {
-        attrs.collection = this;
-      }
-      model = attrs;
-    } else {
-      options = options ? _.clone(options) : {};
-      options.collection = this;
-      if (typeof this.model.findOrCreate !== 'undefined') {
-        model = this.model.findOrCreate(attrs, options);
-      } else {
-        model = new this.model(attrs, options);
-      }
-      if (model && model.validationError) {
-        this.trigger('invalid', this, attrs, options);
-        model = false;
-      }
-    }
-    return model;
-  };
-  var set = module.Collection.prototype.__set = module.Collection.prototype.set;
-  module.Collection.prototype.set = function(models, options) {
-    if (!(this.model.prototype instanceof module.Model)) {
-      return set.call(this, models, options);
-    }
-    if (options && options.parse) {
-      models = this.parse(models, options);
-    }
-    var singular = !_.isArray(models),
-        newModels = [],
-        toAdd = [],
-        model = null;
-    models = singular ? (models ? [models] : []) : _.clone(models);
-    for (var i = 0; i < models.length; i++) {
-      model = models[i];
-      if (!(model instanceof Backbone.Model)) {
-        model = module.Collection.prototype._prepareModel.call(this, model, options);
-      }
-      if (model) {
-        toAdd.push(model);
-        if (!(this.get(model) || this.get(model.cid))) {
-          newModels.push(model);
-        } else if (model.id != null) {
-          this._byId[model.id] = model;
-        }
-      }
-    }
-    toAdd = singular ? (toAdd.length ? toAdd[0] : null) : toAdd;
-    var result = set.call(this, toAdd, _.defaults({
-      merge: false,
-      parse: false
-    }, options));
-    for (i = 0; i < newModels.length; i++) {
-      model = newModels[i];
-      if (this.get(model) || this.get(model.cid)) {
-        this.trigger('relational:add', model, this, options);
-      }
-    }
-    return result;
-  };
-  var _removeModels = Backbone.Collection.prototype.___removeModels = Backbone.Collection.prototype._removeModels;
-  Backbone.Collection.prototype._removeModels = function(models, options) {
-    if (!(this.model.prototype instanceof module.Model)) {
-      return _removeModels.call(this, models, options);
-    }
-    var toRemove = [];
-    _.each(models, function(model) {
-      model = this.get(model) || (model && this.get(model.cid));
-      model && toRemove.push(model);
-    }, this);
-    var result = _removeModels.call(this, toRemove, options);
-    _.each(toRemove, function(model) {
-      this.trigger('relational:remove', model, this, options);
-    }, this);
-    return result;
-  };
-  var reset = module.Collection.prototype.__reset = module.Collection.prototype.reset;
-  module.Collection.prototype.reset = function(models, options) {
-    options = _.extend({merge: true}, options);
-    var result = reset.call(this, models, options);
-    if (this.model.prototype instanceof module.Model) {
-      this.trigger('relational:reset', this, options);
-    }
-    return result;
-  };
-  var sort = module.Collection.prototype.__sort = module.Collection.prototype.sort;
-  module.Collection.prototype.sort = function(options) {
-    var result = sort.call(this, options);
-    if (this.model.prototype instanceof module.Model) {
-      this.trigger('relational:reset', this, options);
-    }
-    return result;
-  };
-  var trigger = module.Collection.prototype.__trigger = module.Collection.prototype.trigger;
-  module.Collection.prototype.trigger = function(eventName) {
-    if (!(this.model.prototype instanceof module.Model)) {
-      return trigger.apply(this, arguments);
-    }
-    if (eventName === 'add' || eventName === 'remove' || eventName === 'reset' || eventName === 'sort') {
-      var dit = this,
-          args = arguments;
-      if (_.isObject(args[3])) {
-        args = _.toArray(args);
-        args[3] = _.clone(args[3]);
-      }
-      module.eventQueue.add(function() {
-        trigger.apply(dit, args);
-      });
-    } else {
-      trigger.apply(this, arguments);
-    }
-    return this;
-  };
-  module.Model.extend = function(protoProps, classProps) {
-    var child = Backbone.Model.extend.apply(this, arguments);
-    child.setup(this);
-    return child;
-  };
-  return module;
-}));
-
-})();
-'use strict';
-
-System.register('lib/globalNamespace.js', ['backbone', 'backbone.relational'], function (_export, _context) {
-  "use strict";
-
-  var Backbone, Relational, namespace;
-  return {
-    setters: [function (_backbone) {
-      Backbone = _backbone.default;
-    }, function (_backboneRelational) {
-      Relational = _backboneRelational.default;
-    }],
-    execute: function () {
-      namespace = {
-        Models: {},
-        Views: {}
-      };
-
-
-      Backbone.Relational = Relational;
-      Backbone.Relational.store.addModelScope(namespace.Models);
-
-      _export('default', namespace);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/roleModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/role';
-        },
-
-        defaults: {
-          isAllowedToSwitch: null,
-          name: null,
-          role: null
-        }
-      });
-
-
-      globalNamespace.Models.RoleModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/userRoleModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'backbone.radio', './baseUrlBaseModel.js', './roleModel.js'], function (_export, _context) {
-  "use strict";
-
-  var globalNamespace, BackboneRelational, Radio, BaseUrlBaseModel, Model;
-  return {
-    setters: [function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_backboneRadio) {
-      Radio = _backboneRadio.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }, function (_roleModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/user_role';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'role',
-          relatedModel: 'RoleModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'user',
-          relatedModel: 'UserModel',
-          includeInJSON: false,
-          reverseRelation: {
-            key: 'userRoles',
-            includeInJSON: true
-          }
-        }],
-        defaults: {
-          user: null,
-          role: null
-        }
-      });
-
-
-      globalNamespace.Models.UserRoleModel = Model;
-
-      _export('default', Model);
-    }
-  };
-});
-'use strict';
-
-System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalNamespace.js', 'backbone', 'backbone.relational', 'backbone.radio', './baseUrlBaseModel.js', './departmentModel.js', './userRoleModel.js'], function (_export, _context) {
-  "use strict";
-
-  var _, globalNamespace, Backbone, BackboneRelational, Radio, BaseUrlBaseModel, Model;
-
-  return {
-    setters: [function (_underscore) {
-      _ = _underscore.default;
-    }, function (_libGlobalNamespaceJs) {
-      globalNamespace = _libGlobalNamespaceJs.default;
-    }, function (_backbone) {
-      Backbone = _backbone.default;
-    }, function (_backboneRelational) {
-      BackboneRelational = _backboneRelational.default;
-    }, function (_backboneRadio) {
-      Radio = _backboneRadio.default;
-    }, function (_baseUrlBaseModelJs) {
-      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
-    }, function (_departmentModelJs) {}, function (_userRoleModelJs) {}],
-    execute: function () {
-      Model = BaseUrlBaseModel.extend({
-        initialize: function initialize(attrs, options) {
-          var _this = this;
-
-          if (this.id || attrs.id) {
-            (function () {
-              var id = _this.id ? _this.id : attrs.id;
-              var myself = Radio.channel('data').request('myself');
-              if (id == myself.id) {
-                _this.listenTo(_this, 'change', function () {
-                  myself.set(_this.attributes);
-                });
-              }
-            })();
-          }
-        },
-        urlRoot: function urlRoot() {
-          return this.baseUrl + '/user';
-        },
-
-        relations: [{
-          type: BackboneRelational.HasOne,
-          key: 'organization',
-          relatedModel: 'OrganizationModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'defaultDepartment',
-          relatedModel: 'DepartmentModel',
-          includeInJSON: ['id']
-        }, {
-          type: BackboneRelational.HasOne,
-          key: 'currentDepartment',
-          relatedModel: 'DepartmentModel',
-          includeInJSON: ['id']
-        }],
-        defaults: {
-          username: null,
-          email: null,
-          firstName: null,
-          lastName: null,
-          isActive: null,
-          organization: null,
-          defaultDepartment: null,
-          currentDepartment: null,
-          userRoles: null,
-          roleHierarchy: null
-        },
-        hasUserRole: function hasUserRole(userRole) {
-          return this.get('userRoles').get(userRole) ? true : false;
-        },
-        isGrantedRole: function isGrantedRole(role, userAccount, subRole) {
-          var _this2 = this;
-
-          var user = userAccount ? userAccount : this;
-          if (user.get('userRoles')) {
-            var userRoles = [];
-            if (user.get('userRoles') instanceof Backbone.Collection) {
-              userRoles = user.get('userRoles').models;
-            } else {
-              userRoles = user.get('userRoles');
-            }
-            return _.some(userRoles, function (userRole) {
-              var userRoleStr = null;
-              if (userRole instanceof Backbone.Model) {
-                if (userRole.get('role') instanceof Backbone.Model) {
-                  userRoleStr = userRole.get('role').get('role');
-                } else {
-                  userRoleStr = userRole.get('role').role;
-                }
-              } else {
-                if (userRole && userRole.role) {
-                  userRoleStr = userRole.role.role;
-                }
-              }
-              if (userRoleStr == role) {
-                return true;
-              }
-              var roleLookup = subRole ? subRole : userRoleStr;
-              if (_this2.get('roleHierarchy')) {
-                var userGrantedRoles = _this2.get('roleHierarchy')[roleLookup];
-                if (userGrantedRoles) {
-                  if (userGrantedRoles.indexOf(role) > -1) {
-                    return true;
-                  } else {
-                    var _iteratorNormalCompletion = true;
-                    var _didIteratorError = false;
-                    var _iteratorError = undefined;
-
-                    try {
-                      for (var _iterator = userGrantedRoles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var _subRole = _step.value;
-
-                        if (_this2.isGrantedRole(role, user, _subRole)) {
-                          return true;
-                        }
-                      }
-                    } catch (err) {
-                      _didIteratorError = true;
-                      _iteratorError = err;
-                    } finally {
-                      try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                          _iterator.return();
-                        }
-                      } finally {
-                        if (_didIteratorError) {
-                          throw _iteratorError;
-                        }
-                      }
-                    }
-                  }
-                }
-              } else {
-                return false;
-              }
-            });
-          }
-          return false;
-        },
-        isAccountOwner: function isAccountOwner() {
-          return this.get('isAccountOwner') || this.isGrantedRole('ROLE_DEV');
-        }
-      });
-
-
-      globalNamespace.Models.UserModel = Model;
 
       _export('default', Model);
     }
@@ -49780,6 +47993,2335 @@ var define = System.amdDefine;
   hooks.prototype = proto;
   return hooks;
 })));
+
+})();
+'use strict';
+
+System.register('lib/accounting/models/clientModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/client';
+        },
+
+        defaults: {
+          name: null
+        }
+      });
+
+
+      globalNamespace.Models.ClientModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/accounting/models/inboundOrderModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/inventory/models/travelerIdModel', './clientModel'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libInventoryModelsTravelerIdModel) {}, function (_clientModel) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/inbound_order';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'client',
+          relatedModel: 'ClientModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          label: null,
+          client: null,
+          description: null,
+          isVoid: false,
+          isReceived: false,
+          travelerIds: null
+        }
+      });
+
+
+      globalNamespace.Models.InboundOrderModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/roleModel.js', ['lib/globalNamespace.js', './baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/role';
+        },
+
+        defaults: {
+          isAllowedToSwitch: null,
+          name: null,
+          role: null
+        }
+      });
+
+
+      globalNamespace.Models.RoleModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/userRoleModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'backbone.radio', './baseUrlBaseModel.js', './roleModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, Radio, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_roleModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/user_role';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'role',
+          relatedModel: 'RoleModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'user',
+          relatedModel: 'UserModel',
+          includeInJSON: false,
+          reverseRelation: {
+            key: 'userRoles',
+            includeInJSON: true
+          }
+        }],
+        defaults: {
+          user: null,
+          role: null
+        }
+      });
+
+
+      globalNamespace.Models.UserRoleModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/userModel.js', ['underscore', 'lib/globalNamespace.js', 'backbone', 'backbone.relational', 'backbone.radio', './baseUrlBaseModel.js', './departmentModel.js', './userRoleModel.js'], function (_export, _context) {
+  "use strict";
+
+  var _, globalNamespace, Backbone, BackboneRelational, Radio, BaseUrlBaseModel, Model;
+
+  return {
+    setters: [function (_underscore) {
+      _ = _underscore.default;
+    }, function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_departmentModelJs) {}, function (_userRoleModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        initialize: function initialize(attrs, options) {
+          var _this = this;
+
+          if (this.id || attrs.id) {
+            (function () {
+              var id = _this.id ? _this.id : attrs.id;
+              var myself = Radio.channel('data').request('myself');
+              if (id == myself.id) {
+                _this.listenTo(_this, 'change', function () {
+                  myself.set(_this.attributes);
+                });
+              }
+            })();
+          }
+        },
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/user';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'organization',
+          relatedModel: 'OrganizationModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'defaultDepartment',
+          relatedModel: 'DepartmentModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'currentDepartment',
+          relatedModel: 'DepartmentModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          username: null,
+          email: null,
+          firstName: null,
+          lastName: null,
+          isActive: null,
+          organization: null,
+          defaultDepartment: null,
+          currentDepartment: null,
+          userRoles: null,
+          roleHierarchy: null
+        },
+        hasUserRole: function hasUserRole(userRole) {
+          return this.get('userRoles').get(userRole) ? true : false;
+        },
+        isGrantedRole: function isGrantedRole(role, userAccount, subRole) {
+          var _this2 = this;
+
+          var user = userAccount ? userAccount : this;
+          if (user.get('userRoles')) {
+            var userRoles = [];
+            if (user.get('userRoles') instanceof Backbone.Collection) {
+              userRoles = user.get('userRoles').models;
+            } else {
+              userRoles = user.get('userRoles');
+            }
+            return _.some(userRoles, function (userRole) {
+              var userRoleStr = null;
+              if (userRole instanceof Backbone.Model) {
+                if (userRole.get('role') instanceof Backbone.Model) {
+                  userRoleStr = userRole.get('role').get('role');
+                } else {
+                  userRoleStr = userRole.get('role').role;
+                }
+              } else {
+                if (userRole && userRole.role) {
+                  userRoleStr = userRole.role.role;
+                }
+              }
+              if (userRoleStr == role) {
+                return true;
+              }
+              var roleLookup = subRole ? subRole : userRoleStr;
+              if (_this2.get('roleHierarchy')) {
+                var userGrantedRoles = _this2.get('roleHierarchy')[roleLookup];
+                if (userGrantedRoles) {
+                  if (userGrantedRoles.indexOf(role) > -1) {
+                    return true;
+                  } else {
+                    var _iteratorNormalCompletion = true;
+                    var _didIteratorError = false;
+                    var _iteratorError = undefined;
+
+                    try {
+                      for (var _iterator = userGrantedRoles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var _subRole = _step.value;
+
+                        if (_this2.isGrantedRole(role, user, _subRole)) {
+                          return true;
+                        }
+                      }
+                    } catch (err) {
+                      _didIteratorError = true;
+                      _iteratorError = err;
+                    } finally {
+                      try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                          _iterator.return();
+                        }
+                      } finally {
+                        if (_didIteratorError) {
+                          throw _iteratorError;
+                        }
+                      }
+                    }
+                  }
+                }
+              } else {
+                return false;
+              }
+            });
+          }
+          return false;
+        },
+        isAccountOwner: function isAccountOwner() {
+          return this.get('isAccountOwner') || this.isGrantedRole('ROLE_DEV');
+        }
+      });
+
+
+      globalNamespace.Models.UserModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/inventoryTravelerIdTransformModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/userModel.js', './salesItemModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libCommonModelsUserModelJs) {}, function (_salesItemModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/inventory_tid_transform';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'byUser',
+          relatedModel: 'UserModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          byUser: null,
+          transformedAt: null,
+          fromTravelerIds: null,
+          quantity: null,
+          ratio: null,
+          toTravelerIds: null,
+          toSalesItems: null
+        }
+
+      });
+
+
+      globalNamespace.Models.InventoryTravelerIdTransformModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/travelerIdModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'backbone.radio', 'lib/common/models/baseUrlBaseModel.js', 'lib/accounting/models/inboundOrderModel.js', './binModel.js', './skuModel.js', './inventoryTravelerIdTransformModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, Radio, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libAccountingModelsInboundOrderModelJs) {}, function (_binModelJs) {}, function (_skuModelJs) {}, function (_inventoryTravelerIdTransformModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        modelName: 'TravelerId',
+        initialize: function initialize() {
+          this.listenTo(this, 'change:isSelected', this.triggerIsSelectedChangeOnRadio);
+        },
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/tid';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'inboundOrder',
+          relatedModel: 'InboundOrderModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'travelerIds',
+            includeInJSON: ['id']
+          }
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'bin',
+          relatedModel: 'BinModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'travelerIds',
+            includeInJSON: ['id']
+          }
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'sku',
+          relatedModel: 'SkuModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'transform',
+          relatedModel: 'InventoryTravelerIdTransformModel',
+          includeInJSON: true,
+          reverseRelation: {
+            key: 'fromTravelerIds',
+            includeInJSON: ['id']
+          }
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'reverseTransform',
+          relatedModel: 'InventoryTravelerIdTransformModel',
+          includeInJSON: false,
+          reverseRelation: {
+            key: 'toTravelerIds',
+            includeInJSON: true
+          }
+        }],
+        defaults: {
+          inboundOrder: null,
+          label: null,
+          bin: null,
+          sku: null,
+          isVoid: null,
+          quantity: null,
+          cost: null,
+          transform: null,
+          reverseTransform: null
+        },
+        triggerIsSelectedChangeOnRadio: function triggerIsSelectedChangeOnRadio() {
+          Radio.channel('inventory').trigger('change:isSelected:travelerId', this);
+        },
+        getUpdatadableAttributes: function getUpdatadableAttributes() {
+          return {
+            inboundOrder: {
+              title: 'Inbound Order',
+              type: 'select'
+            },
+            /*
+            label: {
+              title: 'Label',
+              type: 'text'
+            },
+            */
+            bin: {
+              title: 'Bin',
+              type: 'select'
+            },
+            /*
+            sku: {
+              title: 'SKU',
+              type: 'select'
+            },
+            */
+            isVoid: {
+              title: 'Is Void? (Use "Yes" and "No" for multiple)',
+              type: 'checkbox'
+            },
+            quantity: {
+              title: 'Quantity',
+              type: 'text'
+            },
+            cost: {
+              title: 'Cost',
+              type: 'text'
+            }
+          };
+        }
+      });
+
+
+      globalNamespace.Models.TravelerIdModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/accounting/models/customerModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/customer';
+        },
+
+        defaults: {
+          name: null
+        }
+      });
+
+
+      globalNamespace.Models.CustomerModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/accounting/models/outboundOrderModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/inventory/models/travelerIdModel', './customerModel'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libInventoryModelsTravelerIdModel) {}, function (_customerModel) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/outbound_order';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'customer',
+          relatedModel: 'CustomerModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          label: null,
+          customer: null,
+          description: null,
+          isVoid: false,
+          isShipped: false,
+          salesItems: null
+        }
+      });
+
+
+      globalNamespace.Models.OutboundOrderModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/organizationModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js', './uploadedImageModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_uploadedImageModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/organization';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'logo',
+          relatedModel: 'UploadedImageModel',
+          includeInJSON: ['id'],
+          reverseRelation: false
+        }],
+        defaults: {
+          name: null,
+          logo: null
+        }
+      });
+
+
+      globalNamespace.Models.OrganizationModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/officeModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js', './organizationModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_organizationModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/office';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'organization',
+          relatedModel: 'OrganizationModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'offices',
+            includeInJSON: false
+          }
+        }],
+        defaults: {
+          organization: null,
+          name: null,
+          departments: null
+        },
+        getDepartmentTotalMenuItemCount: function getDepartmentTotalMenuItemCount(departmentId) {
+          var department = this.get('departments').get(departmentId);
+          var count = department.getTotalMenuItemCount();
+          return count;
+        }
+      });
+
+
+      globalNamespace.Models.OfficeModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/models/departmentModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js', './officeModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }, function (_officeModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/department';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'office',
+          relatedModel: 'OfficeModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'departments',
+            includeInJSON: false
+          }
+        }],
+        defaults: {
+          name: null,
+          office: null,
+          menuItems: null
+        },
+        getTotalMenuItemCount: function getTotalMenuItemCount() {
+          var count = this.get('menuItems').length;
+          this.get('menuItems').each(function (menuItem) {
+            count += menuItem.getChildCount();
+          });
+          return count;
+        }
+      });
+
+
+      globalNamespace.Models.DepartmentModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/binTypeModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        initialize: function initialize() {
+          this.set('behavoirs', []);
+        },
+
+        behavoirList: {
+          'cannotHaveParent': 'Can not have parent'
+        },
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/bin_type';
+        },
+
+        defaults: {
+          name: null,
+          description: null,
+          isActive: null,
+          behavoirs: null
+        },
+        hasBehavoir: function hasBehavoir(behavoir) {
+          return this.get('behavoirs').indexOf(behavoir) > -1;
+        },
+        addBehavoir: function addBehavoir(behavoir) {
+          if (!this.hasBehavoir(behavoir)) {
+            this.get('behavoirs').push(behavoir);
+            this.trigger('change:behavoirs', this, this.get('behavoirs'), {});
+          }
+        },
+        removeBehavoir: function removeBehavoir(behavoir) {
+          var index = this.get('behavoirs').indexOf(behavoir);
+          if (index > -1) {
+            this.get('behavoirs').splice(index, 1);
+            this.trigger('change:behavoirs', this, this.get('behavoirs'), {});
+          }
+        }
+      });
+
+
+      globalNamespace.Models.BinTypeModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/binSkuCountModel.js', ['lib/globalNamespace.js', 'underscore', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './skuModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, _, BackboneRelational, BaseUrlBaseModel, Model;
+
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_underscore) {
+      _ = _underscore.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_skuModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/bin_sku_count';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'sku',
+          relatedModel: 'SkuModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          bin: null,
+          sku: null,
+          count: null
+        }
+      });
+
+
+      globalNamespace.Models.BinSkuCountModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/binModel.js', ['lib/globalNamespace.js', 'underscore', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/departmentModel.js', './partCategoryModel.js', './binTypeModel.js', './binSkuCountModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, _, BackboneRelational, BaseUrlBaseModel, Model;
+
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_underscore) {
+      _ = _underscore.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libCommonModelsDepartmentModelJs) {}, function (_partCategoryModelJs) {}, function (_binTypeModelJs) {}, function (_binSkuCountModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/bin';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'department',
+          relatedModel: 'DepartmentModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'partCategory',
+          relatedModel: 'PartCategoryModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'binType',
+          relatedModel: 'BinTypeModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasMany,
+          key: 'children',
+          relatedModel: 'BinModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'parent',
+            includeInJSON: ['id']
+          }
+        }, {
+          type: BackboneRelational.HasMany,
+          key: 'skuCount',
+          relatedModel: 'BinSkuCountModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'bin',
+            includeInJSON: ['id']
+          }
+        }],
+        defaults: {
+          name: null,
+          description: null,
+          department: null,
+          partCategory: null,
+          binType: null,
+          children: null,
+          parent: null,
+          isActive: null,
+          skuCount: null,
+          travelerIds: null,
+          salesItems: null
+        }
+
+      });
+
+
+      globalNamespace.Models.BinModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/partCategoryModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/part_category';
+        },
+
+        defaults: {
+          name: null,
+          isActive: null
+        }
+      });
+
+
+      globalNamespace.Models.PartCategoryModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/partGroupModel.js', ['lib/globalNamespace.js', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/part_group';
+        },
+
+        defaults: {
+          name: null,
+          isActive: null
+        }
+      });
+
+
+      globalNamespace.Models.PartGroupModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/partModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './partCategoryModel.js', './partGroupModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_partCategoryModelJs) {}, function (_partGroupModelJs) {}, function (_libCommonModelsUploadedImageModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/part';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'partCategory',
+          relatedModel: 'PartCategoryModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'partGroup',
+          relatedModel: 'PartGroupModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'image',
+          relatedModel: 'UploadedImageModel',
+          includeInJSON: ['id'],
+          reverseRelation: false
+        }],
+        defaults: {
+          name: null,
+          partId: null,
+          partAltId: null,
+          description: null,
+          partCategory: null,
+          partGroup: null,
+          isActive: null,
+          image: null
+        }
+      });
+
+
+      globalNamespace.Models.PartModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/commodityModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libCommonModelsUploadedImageModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/commodity';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'image',
+          relatedModel: 'UploadedImageModel',
+          includeInJSON: ['id'],
+          reverseRelation: false
+        }],
+        defaults: {
+          name: null,
+          commodityId: null,
+          commodityAltId: null,
+          description: null,
+          image: null,
+          isActive: null
+        }
+      });
+
+
+      globalNamespace.Models.CommodityModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+System.registerDynamic("npm:systemjs-plugin-babel@0.0.13.json", [], false, function() {
+  return {
+    "main": "plugin-babel.js",
+    "map": {
+      "systemjs-babel-build": {
+        "browser": "./systemjs-babel-browser.js",
+        "default": "./systemjs-babel-browser.js"
+      }
+    },
+    "meta": {
+      "./plugin-babel.js": {
+        "format": "cjs"
+      }
+    }
+  };
+});
+
+'use strict';
+
+System.register('lib/globalNamespace.js', ['backbone', 'backbone.relational'], function (_export, _context) {
+  "use strict";
+
+  var Backbone, Relational, namespace;
+  return {
+    setters: [function (_backbone) {
+      Backbone = _backbone.default;
+    }, function (_backboneRelational) {
+      Relational = _backboneRelational.default;
+    }],
+    execute: function () {
+      namespace = {
+        Models: {},
+        Views: {}
+      };
+
+
+      Backbone.Relational = Relational;
+      Backbone.Relational.store.addModelScope(namespace.Models);
+
+      _export('default', namespace);
+    }
+  };
+});
+System.registerDynamic("github:VitalStorm/Backbone-relational@master.json", [], false, function() {
+  return {
+    "main": "backbone-relational.js"
+  };
+});
+
+(function() {
+var define = System.amdDefine;
+(function(factory) {
+  var root = (typeof self == 'object' && self.self == self && self) || (typeof global == 'object' && global.global == global && global);
+  if (typeof define === 'function' && define.amd) {
+    define("github:VitalStorm/Backbone-relational@master/backbone-relational.js", ["exports", "backbone", "underscore"], function(exports, Backbone, _) {
+      factory(exports, Backbone, _, root);
+    });
+  } else if (typeof exports !== 'undefined') {
+    factory(exports, require('backbone'), require('underscore'), root);
+  } else {
+    root.Backbone.Relational = factory({}, root.Backbone, root._, root);
+  }
+}(function(module, Backbone, _, root) {
+  "use strict";
+  module.Collection = Backbone.Collection.extend();
+  module.showWarnings = true;
+  module.Semaphore = {
+    _permitsAvailable: null,
+    _permitsUsed: 0,
+    acquire: function() {
+      if (this._permitsAvailable && this._permitsUsed >= this._permitsAvailable) {
+        throw new Error('Max permits acquired');
+      } else {
+        this._permitsUsed++;
+      }
+    },
+    release: function() {
+      if (this._permitsUsed === 0) {
+        throw new Error('All permits released');
+      } else {
+        this._permitsUsed--;
+      }
+    },
+    isLocked: function() {
+      return this._permitsUsed > 0;
+    },
+    setAvailablePermits: function(amount) {
+      if (this._permitsUsed > amount) {
+        throw new Error('Available permits cannot be less than used permits');
+      }
+      this._permitsAvailable = amount;
+    }
+  };
+  module.BlockingQueue = function() {
+    this._queue = [];
+  };
+  _.extend(module.BlockingQueue.prototype, module.Semaphore, {
+    _queue: null,
+    add: function(func) {
+      if (this.isBlocked()) {
+        this._queue.push(func);
+      } else {
+        func();
+      }
+    },
+    process: function() {
+      var queue = this._queue;
+      this._queue = [];
+      while (queue && queue.length) {
+        queue.shift()();
+      }
+    },
+    block: function() {
+      this.acquire();
+    },
+    unblock: function() {
+      this.release();
+      if (!this.isBlocked()) {
+        this.process();
+      }
+    },
+    isBlocked: function() {
+      return this.isLocked();
+    }
+  });
+  module.eventQueue = new module.BlockingQueue();
+  module.Store = function() {
+    this._collections = [];
+    this._reverseRelations = [];
+    this._orphanRelations = [];
+    this._subModels = [];
+    this._modelScopes = [root];
+  };
+  _.extend(module.Store.prototype, Backbone.Events, {
+    initializeRelation: function(model, relation, options) {
+      var type = !_.isString(relation.type) ? relation.type : module[relation.type] || this.getObjectByName(relation.type);
+      if (type && type.prototype instanceof module.Relation) {
+        var rel = new type(model, relation, options);
+      } else {
+        module.showWarnings && typeof console !== 'undefined' && console.warn('Relation=%o; missing or invalid relation type!', relation);
+      }
+    },
+    addModelScope: function(scope) {
+      this._modelScopes.push(scope);
+    },
+    removeModelScope: function(scope) {
+      this._modelScopes = _.without(this._modelScopes, scope);
+    },
+    addSubModels: function(subModelTypes, superModelType) {
+      this._subModels.push({
+        'superModelType': superModelType,
+        'subModels': subModelTypes
+      });
+    },
+    setupSuperModel: function(modelType) {
+      _.find(this._subModels, function(subModelDef) {
+        return _.filter(subModelDef.subModels || [], function(subModelTypeName, typeValue) {
+          var subModelType = this.getObjectByName(subModelTypeName);
+          if (modelType === subModelType) {
+            subModelDef.superModelType._subModels[typeValue] = modelType;
+            modelType._superModel = subModelDef.superModelType;
+            modelType._subModelTypeValue = typeValue;
+            modelType._subModelTypeAttribute = subModelDef.superModelType.prototype.subModelTypeAttribute;
+            return true;
+          }
+        }, this).length;
+      }, this);
+    },
+    addReverseRelation: function(relation) {
+      var exists = _.any(this._reverseRelations, function(rel) {
+        return _.all(relation || [], function(val, key) {
+          return val === rel[key];
+        });
+      });
+      if (!exists && relation.model && relation.type) {
+        this._reverseRelations.push(relation);
+        this._addRelation(relation.model, relation);
+        this.retroFitRelation(relation);
+      }
+    },
+    addOrphanRelation: function(relation) {
+      var exists = _.any(this._orphanRelations, function(rel) {
+        return _.all(relation || [], function(val, key) {
+          return val === rel[key];
+        });
+      });
+      if (!exists && relation.model && relation.type) {
+        this._orphanRelations.push(relation);
+      }
+    },
+    processOrphanRelations: function() {
+      _.each(this._orphanRelations.slice(0), function(rel) {
+        var relatedModel = module.store.getObjectByName(rel.relatedModel);
+        if (relatedModel) {
+          this.initializeRelation(null, rel);
+          this._orphanRelations = _.without(this._orphanRelations, rel);
+        }
+      }, this);
+    },
+    _addRelation: function(type, relation) {
+      if (!type.prototype.relations) {
+        type.prototype.relations = [];
+      }
+      type.prototype.relations.push(relation);
+      _.each(type._subModels || [], function(subModel) {
+        this._addRelation(subModel, relation);
+      }, this);
+    },
+    retroFitRelation: function(relation) {
+      var coll = this.getCollection(relation.model, false);
+      coll && coll.each(function(model) {
+        if (!(model instanceof relation.model)) {
+          return;
+        }
+        var rel = new relation.type(model, relation);
+      }, this);
+    },
+    getCollection: function(type, create) {
+      if (type instanceof module.Model) {
+        type = type.constructor;
+      }
+      var rootModel = type;
+      while (rootModel._superModel) {
+        rootModel = rootModel._superModel;
+      }
+      var coll = _.find(this._collections, function(item) {
+        return item.model === rootModel;
+      });
+      if (!coll && create !== false) {
+        coll = this._createCollection(rootModel);
+      }
+      return coll;
+    },
+    getObjectByName: function(name) {
+      var parts = name.split('.'),
+          type = null;
+      _.find(this._modelScopes, function(scope) {
+        type = _.reduce(parts || [], function(memo, val) {
+          return memo ? memo[val] : undefined;
+        }, scope);
+        if (type && type !== scope) {
+          return true;
+        }
+      }, this);
+      return type;
+    },
+    _createCollection: function(type) {
+      var coll;
+      if (type instanceof module.Model) {
+        type = type.constructor;
+      }
+      if (type.prototype instanceof module.Model) {
+        coll = new module.Collection();
+        coll.model = type;
+        this._collections.push(coll);
+      }
+      return coll;
+    },
+    resolveIdForItem: function(type, item) {
+      var id = _.isString(item) || _.isNumber(item) ? item : null;
+      if (id === null) {
+        if (item instanceof module.Model) {
+          id = item.id;
+        } else if (_.isObject(item)) {
+          id = item[type.prototype.idAttribute];
+        }
+      }
+      if (!id && id !== 0) {
+        id = null;
+      }
+      return id;
+    },
+    find: function(type, item) {
+      var id = this.resolveIdForItem(type, item),
+          coll = this.getCollection(type);
+      if (coll) {
+        var obj = coll.get(id);
+        if (obj instanceof type) {
+          return obj;
+        }
+      }
+      return null;
+    },
+    register: function(model) {
+      var coll = this.getCollection(model);
+      if (coll) {
+        var modelColl = model.collection;
+        coll.add(model);
+        model.collection = modelColl;
+      }
+    },
+    checkId: function(model, id) {
+      var coll = this.getCollection(model),
+          duplicate = coll && coll.get(id);
+      if (duplicate && model !== duplicate) {
+        if (module.showWarnings && typeof console !== 'undefined') {
+          console.warn('Duplicate id! Old RelationalModel=%o, new RelationalModel=%o', duplicate, model);
+        }
+        throw new Error("Cannot instantiate more than one Backbone.Relational.Model with the same id per type!");
+      }
+    },
+    update: function(model) {
+      var coll = this.getCollection(model);
+      if (!coll.contains(model)) {
+        this.register(model);
+      }
+      coll._onModelEvent('change:' + model.idAttribute, model, coll);
+      model.trigger('relational:change:id', model, coll);
+    },
+    unregister: function(type) {
+      var coll,
+          models;
+      if (type instanceof Backbone.Model) {
+        coll = this.getCollection(type);
+        models = [type];
+      } else if (type instanceof module.Collection) {
+        coll = this.getCollection(type.model);
+        models = _.clone(type.models);
+      } else {
+        coll = this.getCollection(type);
+        models = _.clone(coll.models);
+      }
+      _.each(models, function(model) {
+        this.stopListening(model);
+        _.invoke(model.getRelations(), 'stopListening');
+      }, this);
+      if (_.contains(this._collections, type)) {
+        coll.reset([]);
+      } else {
+        _.each(models, function(model) {
+          if (coll.get(model)) {
+            coll.remove(model);
+          } else {
+            coll.trigger('relational:remove', model, coll);
+          }
+        }, this);
+      }
+    },
+    reset: function() {
+      this.stopListening();
+      _.each(this._collections, function(coll) {
+        this.unregister(coll);
+      }, this);
+      this._collections = [];
+      this._subModels = [];
+      this._modelScopes = [root];
+    }
+  });
+  module.store = new module.Store();
+  module.Relation = function(instance, options, opts) {
+    this.instance = instance;
+    options = _.isObject(options) ? options : {};
+    this.reverseRelation = _.defaults(options.reverseRelation || {}, this.options.reverseRelation);
+    this.options = _.defaults(options, this.options, module.Relation.prototype.options);
+    this.reverseRelation.type = !_.isString(this.reverseRelation.type) ? this.reverseRelation.type : module[this.reverseRelation.type] || module.store.getObjectByName(this.reverseRelation.type);
+    this.key = this.options.key;
+    this.keySource = this.options.keySource || this.key;
+    this.keyDestination = this.options.keyDestination || this.keySource || this.key;
+    this.model = this.options.model || this.instance.constructor;
+    this.relatedModel = this.options.relatedModel;
+    if (_.isUndefined(this.relatedModel)) {
+      this.relatedModel = this.model;
+    }
+    if (_.isFunction(this.relatedModel) && !(this.relatedModel.prototype instanceof module.Model)) {
+      this.relatedModel = _.result(this, 'relatedModel');
+    }
+    if (_.isString(this.relatedModel)) {
+      this.relatedModel = module.store.getObjectByName(this.relatedModel);
+    }
+    if (!this.checkPreconditions()) {
+      return;
+    }
+    if (!this.options.isAutoRelation && this.reverseRelation.type && this.reverseRelation.key) {
+      module.store.addReverseRelation(_.defaults({
+        isAutoRelation: true,
+        model: this.relatedModel,
+        relatedModel: this.model,
+        reverseRelation: this.options
+      }, this.reverseRelation));
+    }
+    if (instance) {
+      var contentKey = this.keySource;
+      if (contentKey !== this.key && _.isObject(this.instance.get(this.key))) {
+        contentKey = this.key;
+      }
+      this.setKeyContents(this.instance.get(contentKey));
+      this.relatedCollection = module.store.getCollection(this.relatedModel);
+      if (this.keySource !== this.key) {
+        delete this.instance.attributes[this.keySource];
+      }
+      this.instance._relations[this.key] = this;
+      this.initialize(opts);
+      if (this.options.autoFetch) {
+        this.instance.getAsync(this.key, _.isObject(this.options.autoFetch) ? this.options.autoFetch : {});
+      }
+      this.listenTo(this.instance, 'destroy', this.destroy).listenTo(this.relatedCollection, 'relational:add relational:change:id', this.tryAddRelated).listenTo(this.relatedCollection, 'relational:remove', this.removeRelated);
+    }
+  };
+  module.Relation.extend = Backbone.Model.extend;
+  _.extend(module.Relation.prototype, Backbone.Events, module.Semaphore, {
+    options: {
+      createModels: true,
+      includeInJSON: true,
+      isAutoRelation: false,
+      autoFetch: false,
+      parse: false
+    },
+    instance: null,
+    key: null,
+    keyContents: null,
+    relatedModel: null,
+    relatedCollection: null,
+    reverseRelation: null,
+    related: null,
+    checkPreconditions: function() {
+      var i = this.instance,
+          k = this.key,
+          m = this.model,
+          rm = this.relatedModel,
+          warn = module.showWarnings && typeof console !== 'undefined';
+      if (!m || !k || !rm) {
+        warn && console.warn('Relation=%o: missing model, key or relatedModel (%o, %o, %o).', this, m, k, rm);
+        return false;
+      }
+      if (!(m.prototype instanceof module.Model)) {
+        warn && console.warn('Relation=%o: model does not inherit from Backbone.Relational.Model (%o).', this, i);
+        return false;
+      }
+      if (!(rm.prototype instanceof module.Model)) {
+        warn && console.warn('Relation=%o: relatedModel does not inherit from Backbone.Relational.Model (%o).', this, rm);
+        return false;
+      }
+      if (this instanceof module.HasMany && this.reverseRelation.type === module.HasMany) {
+        warn && console.warn('Relation=%o: relation is a HasMany, and the reverseRelation is HasMany as well.', this);
+        return false;
+      }
+      if (i && _.keys(i._relations).length) {
+        var existing = _.find(i._relations, function(rel) {
+          return rel.key === k;
+        }, this);
+        if (existing) {
+          warn && console.warn('Cannot create relation=%o on %o for model=%o: already taken by relation=%o.', this, k, i, existing);
+          return false;
+        }
+      }
+      return true;
+    },
+    setRelated: function(related) {
+      this.related = related;
+      this.instance.attributes[this.key] = related;
+    },
+    _isReverseRelation: function(relation) {
+      return relation.instance instanceof this.relatedModel && this.reverseRelation.key === relation.key && this.key === relation.reverseRelation.key;
+    },
+    getReverseRelations: function(model) {
+      var reverseRelations = [];
+      var models = !_.isUndefined(model) ? [model] : this.related && (this.related.models || [this.related]),
+          relations = null,
+          relation = null;
+      for (var i = 0; i < (models || []).length; i++) {
+        relations = models[i].getRelations() || [];
+        for (var j = 0; j < relations.length; j++) {
+          relation = relations[j];
+          if (this._isReverseRelation(relation)) {
+            reverseRelations.push(relation);
+          }
+        }
+      }
+      return reverseRelations;
+    },
+    destroy: function() {
+      this.stopListening();
+      if (this instanceof module.HasOne) {
+        this.setRelated(null);
+      } else if (this instanceof module.HasMany) {
+        this.setRelated(this._prepareCollection());
+      }
+      _.each(this.getReverseRelations(), function(relation) {
+        relation.removeRelated(this.instance);
+      }, this);
+    }
+  });
+  module.HasOne = module.Relation.extend({
+    options: {reverseRelation: {type: 'HasMany'}},
+    initialize: function(opts) {
+      this.listenTo(this.instance, 'relational:change:' + this.key, this.onChange);
+      var related = this.findRelated(opts);
+      this.setRelated(related);
+      _.each(this.getReverseRelations(), function(relation) {
+        relation.addRelated(this.instance, opts);
+      }, this);
+    },
+    findRelated: function(options) {
+      var related = null;
+      options = _.defaults({parse: this.options.parse}, options);
+      if (this.keyContents instanceof this.relatedModel) {
+        related = this.keyContents;
+      } else if (this.keyContents || this.keyContents === 0) {
+        var opts = _.defaults({create: this.options.createModels}, options);
+        related = this.relatedModel.findOrCreate(this.keyContents, opts);
+      }
+      if (related) {
+        this.keyId = null;
+      }
+      return related;
+    },
+    setKeyContents: function(keyContents) {
+      this.keyContents = keyContents;
+      this.keyId = module.store.resolveIdForItem(this.relatedModel, this.keyContents);
+    },
+    onChange: function(model, attr, options) {
+      if (this.isLocked()) {
+        return;
+      }
+      this.acquire();
+      options = options ? _.clone(options) : {};
+      var changed = _.isUndefined(options.__related),
+          oldRelated = changed ? this.related : options.__related;
+      if (changed) {
+        this.setKeyContents(attr);
+        var related = this.findRelated(options);
+        this.setRelated(related);
+      }
+      if (oldRelated && this.related !== oldRelated) {
+        _.each(this.getReverseRelations(oldRelated), function(relation) {
+          relation.removeRelated(this.instance, null, options);
+        }, this);
+      }
+      _.each(this.getReverseRelations(), function(relation) {
+        relation.addRelated(this.instance, options);
+      }, this);
+      if (!options.silent && this.related !== oldRelated) {
+        var dit = this;
+        this.changed = true;
+        module.eventQueue.add(function() {
+          dit.instance.trigger('change:' + dit.key, dit.instance, dit.related, options, true);
+          dit.changed = false;
+        });
+      }
+      this.release();
+    },
+    tryAddRelated: function(model, coll, options) {
+      if ((this.keyId || this.keyId === 0) && model.id === this.keyId) {
+        this.addRelated(model, options);
+        this.keyId = null;
+      }
+    },
+    addRelated: function(model, options) {
+      var dit = this;
+      model.queue(function() {
+        if (model !== dit.related) {
+          var oldRelated = dit.related || null;
+          dit.setRelated(model);
+          dit.onChange(dit.instance, model, _.defaults({__related: oldRelated}, options));
+        }
+      });
+    },
+    removeRelated: function(model, coll, options) {
+      if (!this.related) {
+        return;
+      }
+      if (model === this.related) {
+        var oldRelated = this.related || null;
+        this.setRelated(null);
+        this.onChange(this.instance, model, _.defaults({__related: oldRelated}, options));
+      }
+    }
+  });
+  module.HasMany = module.Relation.extend({
+    collectionType: null,
+    options: {
+      reverseRelation: {type: 'HasOne'},
+      collectionType: module.Collection,
+      collectionKey: true,
+      collectionOptions: {}
+    },
+    initialize: function(opts) {
+      this.listenTo(this.instance, 'relational:change:' + this.key, this.onChange);
+      this.collectionType = this.options.collectionType;
+      if (_.isFunction(this.collectionType) && this.collectionType !== module.Collection && !(this.collectionType.prototype instanceof module.Collection)) {
+        this.collectionType = _.result(this, 'collectionType');
+      }
+      if (_.isString(this.collectionType)) {
+        this.collectionType = module.store.getObjectByName(this.collectionType);
+      }
+      if (this.collectionType !== module.Collection && !(this.collectionType.prototype instanceof module.Collection)) {
+        throw new Error('`collectionType` must inherit from module.Collection');
+      }
+      var related = this.findRelated(opts);
+      this.setRelated(related);
+    },
+    _prepareCollection: function(collection) {
+      if (this.related) {
+        this.stopListening(this.related);
+      }
+      if (!collection || !(collection instanceof module.Collection)) {
+        var options = _.isFunction(this.options.collectionOptions) ? this.options.collectionOptions(this.instance) : this.options.collectionOptions;
+        collection = new this.collectionType(null, options);
+      }
+      collection.model = this.relatedModel;
+      if (this.options.collectionKey) {
+        var key = this.options.collectionKey === true ? this.options.reverseRelation.key : this.options.collectionKey;
+        if (collection[key] && collection[key] !== this.instance) {
+          if (module.showWarnings && typeof console !== 'undefined') {
+            console.warn('Relation=%o; collectionKey=%s already exists on collection=%o', this, key, this.options.collectionKey);
+          }
+        } else if (key) {
+          collection[key] = this.instance;
+        }
+      }
+      this.listenTo(collection, 'relational:add', this.handleAddition).listenTo(collection, 'relational:remove', this.handleRemoval).listenTo(collection, 'relational:reset', this.handleReset);
+      return collection;
+    },
+    findRelated: function(options) {
+      var related = null;
+      options = _.defaults({parse: this.options.parse}, options);
+      if (this.keyContents instanceof module.Collection) {
+        this._prepareCollection(this.keyContents);
+        related = this.keyContents;
+      } else {
+        var toAdd = [];
+        _.each(this.keyContents, function(attributes) {
+          var model = null;
+          if (attributes instanceof this.relatedModel) {
+            model = attributes;
+          } else {
+            model = (_.isObject(attributes) && options.parse && this.relatedModel.prototype.parse) ? this.relatedModel.prototype.parse(_.clone(attributes), options) : attributes;
+          }
+          model && toAdd.push(model);
+        }, this);
+        if (this.related instanceof module.Collection) {
+          related = this.related;
+        } else {
+          related = this._prepareCollection();
+        }
+        related.set(toAdd, _.defaults({parse: false}, options));
+      }
+      this.keyIds = _.difference(this.keyIds, _.pluck(related.models, 'id'));
+      return related;
+    },
+    setKeyContents: function(keyContents) {
+      this.keyContents = keyContents instanceof module.Collection ? keyContents : null;
+      this.keyIds = [];
+      if (!this.keyContents && (keyContents || keyContents === 0)) {
+        this.keyContents = _.isArray(keyContents) ? keyContents : [keyContents];
+        _.each(this.keyContents, function(item) {
+          var itemId = module.store.resolveIdForItem(this.relatedModel, item);
+          if (itemId || itemId === 0) {
+            this.keyIds.push(itemId);
+          }
+        }, this);
+      }
+    },
+    onChange: function(model, attr, options) {
+      options = options ? _.clone(options) : {};
+      this.setKeyContents(attr);
+      this.changed = false;
+      var related = this.findRelated(options);
+      this.setRelated(related);
+      if (!options.silent) {
+        var dit = this;
+        module.eventQueue.add(function() {
+          if (dit.changed) {
+            dit.instance.trigger('change:' + dit.key, dit.instance, dit.related, options, true);
+            dit.changed = false;
+          }
+        });
+      }
+    },
+    handleAddition: function(model, coll, options) {
+      options = options ? _.clone(options) : {};
+      this.changed = true;
+      _.each(this.getReverseRelations(model), function(relation) {
+        relation.addRelated(this.instance, options);
+      }, this);
+      var dit = this;
+      !options.silent && module.eventQueue.add(function() {
+        dit.instance.trigger('add:' + dit.key, model, dit.related, options);
+      });
+    },
+    handleRemoval: function(model, coll, options) {
+      options = options ? _.clone(options) : {};
+      this.changed = true;
+      _.each(this.getReverseRelations(model), function(relation) {
+        relation.removeRelated(this.instance, null, options);
+      }, this);
+      var dit = this;
+      !options.silent && module.eventQueue.add(function() {
+        dit.instance.trigger('remove:' + dit.key, model, dit.related, options);
+      });
+    },
+    handleReset: function(coll, options) {
+      var dit = this;
+      options = options ? _.clone(options) : {};
+      !options.silent && module.eventQueue.add(function() {
+        dit.instance.trigger('reset:' + dit.key, dit.related, options);
+      });
+    },
+    tryAddRelated: function(model, coll, options) {
+      var item = _.contains(this.keyIds, model.id);
+      if (item) {
+        this.addRelated(model, options);
+        this.keyIds = _.without(this.keyIds, model.id);
+      }
+    },
+    addRelated: function(model, options) {
+      var dit = this;
+      model.queue(function() {
+        if (dit.related && !dit.related.get(model)) {
+          dit.related.add(model, _.defaults({parse: false}, options));
+        }
+      });
+    },
+    removeRelated: function(model, coll, options) {
+      if (this.related.get(model)) {
+        this.related.remove(model, options);
+      }
+    }
+  });
+  module.Model = Backbone.Model.extend({
+    relations: null,
+    _relations: null,
+    _isInitialized: false,
+    _deferProcessing: false,
+    _queue: null,
+    _attributeChangeFired: false,
+    subModelTypeAttribute: 'type',
+    subModelTypes: null,
+    constructor: function(attributes, options) {
+      if (options && options.collection) {
+        var dit = this,
+            collection = this.collection = options.collection;
+        delete options.collection;
+        this._deferProcessing = true;
+        var processQueue = function(model) {
+          if (model === dit) {
+            dit._deferProcessing = false;
+            dit.processQueue();
+            collection.off('relational:add', processQueue);
+          }
+        };
+        collection.on('relational:add', processQueue);
+        _.defer(function() {
+          processQueue(dit);
+        });
+      }
+      module.store.processOrphanRelations();
+      module.store.listenTo(this, 'relational:unregister', module.store.unregister);
+      this._queue = new module.BlockingQueue();
+      this._queue.block();
+      module.eventQueue.block();
+      try {
+        Backbone.Model.apply(this, arguments);
+      } finally {
+        module.eventQueue.unblock();
+      }
+    },
+    trigger: function(eventName) {
+      if (eventName.length > 5 && eventName.indexOf('change') === 0) {
+        var dit = this,
+            args = arguments;
+        if (!module.eventQueue.isLocked()) {
+          Backbone.Model.prototype.trigger.apply(dit, args);
+        } else {
+          module.eventQueue.add(function() {
+            var changed = true;
+            if (eventName === 'change') {
+              changed = dit.hasChanged() || dit._attributeChangeFired;
+              dit._attributeChangeFired = false;
+            } else {
+              var attr = eventName.slice(7),
+                  rel = dit.getRelation(attr);
+              if (rel) {
+                changed = (args[4] === true);
+                if (changed) {
+                  dit.changed[attr] = args[2];
+                } else if (!rel.changed) {
+                  delete dit.changed[attr];
+                }
+              } else if (changed) {
+                dit._attributeChangeFired = true;
+              }
+            }
+            changed && Backbone.Model.prototype.trigger.apply(dit, args);
+          });
+        }
+      } else if (eventName === 'destroy') {
+        Backbone.Model.prototype.trigger.apply(this, arguments);
+        module.store.unregister(this);
+      } else {
+        Backbone.Model.prototype.trigger.apply(this, arguments);
+      }
+      return this;
+    },
+    initializeRelations: function(options) {
+      this.acquire();
+      this._relations = {};
+      _.each(this.relations || [], function(rel) {
+        module.store.initializeRelation(this, rel, options);
+      }, this);
+      this._isInitialized = true;
+      this.release();
+      this.processQueue();
+    },
+    updateRelations: function(changedAttrs, options) {
+      if (this._isInitialized && !this.isLocked()) {
+        _.each(this._relations, function(rel) {
+          if (!changedAttrs || (rel.keySource in changedAttrs || rel.key in changedAttrs)) {
+            var value = this.attributes[rel.keySource] || this.attributes[rel.key],
+                attr = changedAttrs && (changedAttrs[rel.keySource] || changedAttrs[rel.key]);
+            if (rel.related !== value || (value === null && attr === null)) {
+              this.trigger('relational:change:' + rel.key, this, value, options || {});
+            }
+          }
+          if (rel.keySource !== rel.key) {
+            delete this.attributes[rel.keySource];
+          }
+        }, this);
+      }
+    },
+    queue: function(func) {
+      this._queue.add(func);
+    },
+    processQueue: function() {
+      if (this._isInitialized && !this._deferProcessing && this._queue.isBlocked()) {
+        this._queue.unblock();
+      }
+    },
+    getRelation: function(attr) {
+      return this._relations[attr];
+    },
+    getRelations: function() {
+      return _.values(this._relations);
+    },
+    getIdsToFetch: function(attr, refresh) {
+      var rel = attr instanceof module.Relation ? attr : this.getRelation(attr),
+          ids = rel ? (rel.keyIds && rel.keyIds.slice(0)) || ((rel.keyId || rel.keyId === 0) ? [rel.keyId] : []) : [];
+      if (refresh) {
+        var models = rel.related && (rel.related.models || [rel.related]);
+        _.each(models, function(model) {
+          if (model.id || model.id === 0) {
+            ids.push(model.id);
+          }
+        });
+      }
+      return ids;
+    },
+    getAsync: function(attr, options) {
+      options = _.extend({
+        add: true,
+        remove: false,
+        refresh: false
+      }, options);
+      var dit = this,
+          requests = [],
+          rel = this.getRelation(attr),
+          idsToFetch = rel && this.getIdsToFetch(rel, options.refresh),
+          coll = rel.related instanceof module.Collection ? rel.related : rel.relatedCollection;
+      if (idsToFetch && idsToFetch.length) {
+        var models = [],
+            createdModels = [],
+            setUrl,
+            createModels = function() {
+              models = _.map(idsToFetch, function(id) {
+                var model = rel.relatedModel.findModel(id);
+                if (!model) {
+                  var attrs = {};
+                  attrs[rel.relatedModel.prototype.idAttribute] = id;
+                  model = rel.relatedModel.findOrCreate(attrs, options);
+                  createdModels.push(model);
+                }
+                return model;
+              }, this);
+            };
+        if (coll instanceof module.Collection && _.isFunction(coll.url)) {
+          var defaultUrl = coll.url();
+          setUrl = coll.url(idsToFetch);
+          if (setUrl === defaultUrl) {
+            createModels();
+            setUrl = coll.url(models);
+            if (setUrl === defaultUrl) {
+              setUrl = null;
+            }
+          }
+        }
+        if (setUrl) {
+          var opts = _.defaults({
+            error: function() {
+              _.each(createdModels, function(model) {
+                model.trigger('destroy', model, model.collection, options);
+              });
+              options.error && options.error.apply(models, arguments);
+            },
+            url: setUrl
+          }, options);
+          requests = [coll.fetch(opts)];
+        } else {
+          if (!models.length) {
+            createModels();
+          }
+          requests = _.map(models, function(model) {
+            var opts = _.defaults({error: function() {
+                if (_.contains(createdModels, model)) {
+                  model.trigger('destroy', model, model.collection, options);
+                }
+                options.error && options.error.apply(models, arguments);
+              }}, options);
+            return model.fetch(opts);
+          }, this);
+        }
+      }
+      return this.deferArray(requests).then(function() {
+        return Backbone.Model.prototype.get.call(dit, attr);
+      });
+    },
+    deferArray: function(deferArray) {
+      return Backbone.$.when.apply(null, deferArray);
+    },
+    set: function(key, value, options) {
+      module.eventQueue.block();
+      var attributes,
+          result;
+      if (_.isObject(key) || key == null) {
+        attributes = key;
+        options = value;
+      } else {
+        attributes = {};
+        attributes[key] = value;
+      }
+      try {
+        var id = this.id,
+            newId = attributes && this.idAttribute in attributes && attributes[this.idAttribute];
+        module.store.checkId(this, newId);
+        result = Backbone.Model.prototype.set.apply(this, arguments);
+        if (!this._isInitialized && !this.isLocked()) {
+          this.constructor.initializeModelHierarchy();
+          if (newId || newId === 0) {
+            module.store.register(this);
+          }
+          this.initializeRelations(options);
+        } else if (newId && newId !== id) {
+          module.store.update(this);
+        }
+        if (attributes) {
+          this.updateRelations(attributes, options);
+        }
+      } finally {
+        module.eventQueue.unblock();
+      }
+      return result;
+    },
+    clone: function() {
+      var attributes = _.clone(this.attributes);
+      if (!_.isUndefined(attributes[this.idAttribute])) {
+        attributes[this.idAttribute] = null;
+      }
+      _.each(this.getRelations(), function(rel) {
+        delete attributes[rel.key];
+      });
+      return new this.constructor(attributes);
+    },
+    toJSON: function(options) {
+      if (this.isLocked()) {
+        var relation = null;
+        var me = this;
+        _.each(this._relations, function(rel) {
+          if (typeof rel.relatedModel === 'function' && me instanceof rel.relatedModel) {
+            relation = rel;
+          }
+        });
+        if (relation) {
+          var includeInJSON = relation.options.includeInJSON;
+          if (includeInJSON === true) {
+            return {id: this.id};
+          } else if (_.isString(includeInJSON)) {
+            return this.id;
+          } else if (_.isArray(includeInJSON)) {
+            return {id: this.id};
+          }
+        } else {
+          return this.id;
+        }
+      }
+      this.acquire();
+      var json = Backbone.Model.prototype.toJSON.call(this, options);
+      if (this.constructor._superModel && !(this.constructor._subModelTypeAttribute in json)) {
+        json[this.constructor._subModelTypeAttribute] = this.constructor._subModelTypeValue;
+      }
+      _.each(this._relations, function(rel) {
+        var related = json[rel.key],
+            includeInJSON = rel.options.includeInJSON,
+            value = null;
+        if (includeInJSON === true) {
+          if (related && _.isFunction(related.toJSON)) {
+            value = related.toJSON(options);
+          }
+        } else if (_.isString(includeInJSON)) {
+          if (related instanceof module.Collection) {
+            value = [];
+            related.each(function(model) {
+              var modelJSON = model.toJSON(options);
+              if (typeof modelJSON !== 'undefined') {
+                value.push(modelJSON[includeInJSON]);
+              }
+            });
+          } else if (related instanceof Backbone.Model) {
+            var relatedJSON = related.toJSON(options);
+            if (typeof relatedJSON !== 'undefined') {
+              value = relatedJSON[includeInJSON];
+            }
+          }
+          if (includeInJSON === rel.relatedModel.prototype.idAttribute) {
+            if (rel instanceof module.HasMany) {
+              value = value.concat(rel.keyIds);
+            } else if (rel instanceof module.HasOne) {
+              value = value || rel.keyId;
+              if (!value && !_.isObject(rel.keyContents)) {
+                value = rel.keyContents || null;
+              }
+            }
+          }
+        } else if (_.isArray(includeInJSON)) {
+          if (related instanceof module.Collection) {
+            value = [];
+            related.each(function(model) {
+              var curJson = {};
+              var modelJSON = model.toJSON(options);
+              if (typeof modelJSON === 'number') {
+                curJson.id = modelJSON;
+              } else if (typeof modelJSON !== 'undefined') {
+                _.each(includeInJSON, function(key) {
+                  curJson[key] = modelJSON[key];
+                });
+              }
+              value.push(curJson);
+            });
+          } else if (related instanceof Backbone.Model) {
+            value = {};
+            var relatedJSON = related.toJSON(options);
+            if (typeof modelJSON === 'number') {
+              value.id = modelJSON;
+            } else if (typeof relatedJSON !== 'undefined') {
+              _.each(includeInJSON, function(key) {
+                value[key] = relatedJSON[key];
+              });
+            }
+          }
+        } else {
+          delete json[rel.key];
+        }
+        if (value === null && options && options.wait) {
+          value = related;
+        }
+        if (includeInJSON) {
+          json[rel.keyDestination] = value;
+        }
+        if (rel.keyDestination !== rel.key) {
+          delete json[rel.key];
+        }
+      });
+      this.release();
+      return json;
+    }
+  }, {
+    setup: function(superModel) {
+      this.prototype.relations = (this.prototype.relations || []).slice(0);
+      this._subModels = {};
+      this._superModel = null;
+      if (this.prototype.hasOwnProperty('subModelTypes')) {
+        module.store.addSubModels(this.prototype.subModelTypes, this);
+      } else {
+        this.prototype.subModelTypes = null;
+      }
+      _.each(this.prototype.relations || [], function(rel) {
+        if (!rel.model) {
+          rel.model = this;
+        }
+        if (rel.reverseRelation && rel.model === this) {
+          var preInitialize = true;
+          if (_.isString(rel.relatedModel)) {
+            var relatedModel = module.store.getObjectByName(rel.relatedModel);
+            preInitialize = relatedModel && (relatedModel.prototype instanceof module.Model);
+          }
+          if (preInitialize) {
+            module.store.initializeRelation(null, rel);
+          } else if (_.isString(rel.relatedModel)) {
+            module.store.addOrphanRelation(rel);
+          }
+        }
+      }, this);
+      return this;
+    },
+    build: function(attributes, options) {
+      this.initializeModelHierarchy();
+      var model = this._findSubModelType(this, attributes) || this;
+      return new model(attributes, options);
+    },
+    _findSubModelType: function(type, attributes) {
+      if (type._subModels && type.prototype.subModelTypeAttribute in attributes) {
+        var subModelTypeAttribute = attributes[type.prototype.subModelTypeAttribute];
+        var subModelType = type._subModels[subModelTypeAttribute];
+        if (subModelType) {
+          return subModelType;
+        } else {
+          for (subModelTypeAttribute in type._subModels) {
+            subModelType = this._findSubModelType(type._subModels[subModelTypeAttribute], attributes);
+            if (subModelType) {
+              return subModelType;
+            }
+          }
+        }
+      }
+      return null;
+    },
+    initializeModelHierarchy: function() {
+      this.inheritRelations();
+      if (this.prototype.subModelTypes) {
+        var resolvedSubModels = _.keys(this._subModels);
+        var unresolvedSubModels = _.omit(this.prototype.subModelTypes, resolvedSubModels);
+        _.each(unresolvedSubModels, function(subModelTypeName) {
+          var subModelType = module.store.getObjectByName(subModelTypeName);
+          subModelType && subModelType.initializeModelHierarchy();
+        });
+      }
+    },
+    inheritRelations: function() {
+      if (!_.isUndefined(this._superModel) && !_.isNull(this._superModel)) {
+        return;
+      }
+      module.store.setupSuperModel(this);
+      if (this._superModel) {
+        this._superModel.inheritRelations();
+        if (this._superModel.prototype.relations) {
+          var inheritedRelations = _.filter(this._superModel.prototype.relations || [], function(superRel) {
+            return !_.any(this.prototype.relations || [], function(rel) {
+              return superRel.relatedModel === rel.relatedModel && superRel.key === rel.key;
+            }, this);
+          }, this);
+          this.prototype.relations = inheritedRelations.concat(this.prototype.relations);
+        }
+      } else {
+        this._superModel = false;
+      }
+    },
+    findOrCreate: function(attributes, options) {
+      options || (options = {});
+      var parsedAttributes = (_.isObject(attributes) && options.parse && this.prototype.parse) ? this.prototype.parse(_.clone(attributes), options) : attributes;
+      var model = this.findModel(parsedAttributes);
+      if (_.isObject(attributes)) {
+        if (model && options.merge !== false) {
+          delete options.collection;
+          delete options.url;
+          model.set(parsedAttributes, options);
+        } else if (!model && options.create !== false) {
+          model = this.build(parsedAttributes, _.defaults({parse: false}, options));
+        }
+      }
+      return model;
+    },
+    find: function(attributes, options) {
+      options || (options = {});
+      options.create = false;
+      return this.findOrCreate(attributes, options);
+    },
+    findModel: function(attributes) {
+      return module.store.find(this, attributes);
+    }
+  });
+  _.extend(module.Model.prototype, module.Semaphore);
+  module.Collection.prototype.__prepareModel = module.Collection.prototype._prepareModel;
+  module.Collection.prototype._prepareModel = function(attrs, options) {
+    var model;
+    if (attrs instanceof Backbone.Model) {
+      if (!attrs.collection) {
+        attrs.collection = this;
+      }
+      model = attrs;
+    } else {
+      options = options ? _.clone(options) : {};
+      options.collection = this;
+      if (typeof this.model.findOrCreate !== 'undefined') {
+        model = this.model.findOrCreate(attrs, options);
+      } else {
+        model = new this.model(attrs, options);
+      }
+      if (model && model.validationError) {
+        this.trigger('invalid', this, attrs, options);
+        model = false;
+      }
+    }
+    return model;
+  };
+  var set = module.Collection.prototype.__set = module.Collection.prototype.set;
+  module.Collection.prototype.set = function(models, options) {
+    if (!(this.model.prototype instanceof module.Model)) {
+      return set.call(this, models, options);
+    }
+    if (options && options.parse) {
+      models = this.parse(models, options);
+    }
+    var singular = !_.isArray(models),
+        newModels = [],
+        toAdd = [],
+        model = null;
+    models = singular ? (models ? [models] : []) : _.clone(models);
+    for (var i = 0; i < models.length; i++) {
+      model = models[i];
+      if (!(model instanceof Backbone.Model)) {
+        model = module.Collection.prototype._prepareModel.call(this, model, options);
+      }
+      if (model) {
+        toAdd.push(model);
+        if (!(this.get(model) || this.get(model.cid))) {
+          newModels.push(model);
+        } else if (model.id != null) {
+          this._byId[model.id] = model;
+        }
+      }
+    }
+    toAdd = singular ? (toAdd.length ? toAdd[0] : null) : toAdd;
+    var result = set.call(this, toAdd, _.defaults({
+      merge: false,
+      parse: false
+    }, options));
+    for (i = 0; i < newModels.length; i++) {
+      model = newModels[i];
+      if (this.get(model) || this.get(model.cid)) {
+        this.trigger('relational:add', model, this, options);
+      }
+    }
+    return result;
+  };
+  var _removeModels = Backbone.Collection.prototype.___removeModels = Backbone.Collection.prototype._removeModels;
+  Backbone.Collection.prototype._removeModels = function(models, options) {
+    if (!(this.model.prototype instanceof module.Model)) {
+      return _removeModels.call(this, models, options);
+    }
+    var toRemove = [];
+    _.each(models, function(model) {
+      model = this.get(model) || (model && this.get(model.cid));
+      model && toRemove.push(model);
+    }, this);
+    var result = _removeModels.call(this, toRemove, options);
+    _.each(toRemove, function(model) {
+      this.trigger('relational:remove', model, this, options);
+    }, this);
+    return result;
+  };
+  var reset = module.Collection.prototype.__reset = module.Collection.prototype.reset;
+  module.Collection.prototype.reset = function(models, options) {
+    options = _.extend({merge: true}, options);
+    var result = reset.call(this, models, options);
+    if (this.model.prototype instanceof module.Model) {
+      this.trigger('relational:reset', this, options);
+    }
+    return result;
+  };
+  var sort = module.Collection.prototype.__sort = module.Collection.prototype.sort;
+  module.Collection.prototype.sort = function(options) {
+    var result = sort.call(this, options);
+    if (this.model.prototype instanceof module.Model) {
+      this.trigger('relational:reset', this, options);
+    }
+    return result;
+  };
+  var trigger = module.Collection.prototype.__trigger = module.Collection.prototype.trigger;
+  module.Collection.prototype.trigger = function(eventName) {
+    if (!(this.model.prototype instanceof module.Model)) {
+      return trigger.apply(this, arguments);
+    }
+    if (eventName === 'add' || eventName === 'remove' || eventName === 'reset' || eventName === 'sort') {
+      var dit = this,
+          args = arguments;
+      if (_.isObject(args[3])) {
+        args = _.toArray(args);
+        args[3] = _.clone(args[3]);
+      }
+      module.eventQueue.add(function() {
+        trigger.apply(dit, args);
+      });
+    } else {
+      trigger.apply(this, arguments);
+    }
+    return this;
+  };
+  module.Model.extend = function(protoProps, classProps) {
+    var child = Backbone.Model.extend.apply(this, arguments);
+    child.setup(this);
+    return child;
+  };
+  return module;
+}));
 
 })();
 System.registerDynamic("npm:underscore@1.8.3.json", [], false, function() {
@@ -59879,10 +60421,257 @@ System.register('lib/common/models/baseUrlBaseModel.js', ['backbone', 'backbone.
 });
 'use strict';
 
-System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handlebars/handlebars.runtime.js', 'moment', 'backbone.radio', 'lib/common/models/baseUrlBaseModel.js'], function (_export, _context) {
+System.register('lib/common/models/uploadedImageModel.js', ['lib/globalNamespace.js', 'backbone.relational', './baseUrlBaseModel.js'], function (_export, _context) {
   "use strict";
 
-  var _, Handlebars, Moment, Radio, BaseUrlBaseModel, castAsType;
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_baseUrlBaseModelJs) {
+      BaseUrlBaseModel = _baseUrlBaseModelJs.default;
+    }],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/image';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'organization',
+          relatedModel: 'OrganizationModel',
+          includeInJSON: false,
+          reverseRelation: false
+        }],
+        defaults: {
+          organization: null,
+          name: null,
+          mimeType: null,
+          width: null,
+          height: null
+        }
+      });
+
+
+      globalNamespace.Models.UploadedImageModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/unitTypeModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', 'lib/common/models/uploadedImageModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libCommonModelsUploadedImageModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/unit_type';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'image',
+          relatedModel: 'UploadedImageModel',
+          includeInJSON: ['id'],
+          reverseRelation: false
+        }],
+        defaults: {
+          name: null,
+          manufacturer: null,
+          model: null,
+          description: null,
+          image: null,
+          isActive: null
+        }
+      });
+
+
+      globalNamespace.Models.UnitTypeModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/skuModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'lib/common/models/baseUrlBaseModel.js', './partModel.js', './commodityModel.js', './unitTypeModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_partModelJs) {}, function (_commodityModelJs) {}, function (_unitTypeModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/sku';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'part',
+          relatedModel: 'PartModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'commodity',
+          relatedModel: 'CommodityModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'unitType',
+          relatedModel: 'UnitTypeModel',
+          includeInJSON: ['id']
+        }],
+        defaults: {
+          name: null,
+          number: null,
+          label: null,
+          part: null,
+          commodity: null,
+          unitType: null,
+          isVoid: null,
+          quantity: null,
+          averageValue: null
+        }
+      });
+
+
+      globalNamespace.Models.SkuModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/inventory/models/salesItemModel.js', ['lib/globalNamespace.js', 'backbone.relational', 'backbone.radio', 'lib/common/models/baseUrlBaseModel.js', 'lib/accounting/models/outboundOrderModel.js', './binModel.js', './skuModel.js'], function (_export, _context) {
+  "use strict";
+
+  var globalNamespace, BackboneRelational, Radio, BaseUrlBaseModel, Model;
+  return {
+    setters: [function (_libGlobalNamespaceJs) {
+      globalNamespace = _libGlobalNamespaceJs.default;
+    }, function (_backboneRelational) {
+      BackboneRelational = _backboneRelational.default;
+    }, function (_backboneRadio) {
+      Radio = _backboneRadio.default;
+    }, function (_libCommonModelsBaseUrlBaseModelJs) {
+      BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libAccountingModelsOutboundOrderModelJs) {}, function (_binModelJs) {}, function (_skuModelJs) {}],
+    execute: function () {
+      Model = BaseUrlBaseModel.extend({
+        initialize: function initialize() {
+          this.listenTo(this, 'change:isSelected', this.triggerIsSelectedChangeOnRadio);
+        },
+        urlRoot: function urlRoot() {
+          return this.baseUrl + '/sales_item';
+        },
+
+        relations: [{
+          type: BackboneRelational.HasOne,
+          key: 'outboundOrder',
+          relatedModel: 'OutboundOrderModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'travelerIds',
+            includeInJSON: ['id']
+          }
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'bin',
+          relatedModel: 'BinModel',
+          includeInJSON: ['id'],
+          reverseRelation: {
+            key: 'salesItems',
+            includeInJSON: ['id']
+          }
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'sku',
+          relatedModel: 'SkuModel',
+          includeInJSON: ['id']
+        }, {
+          type: BackboneRelational.HasOne,
+          key: 'reverseTransform',
+          relatedModel: 'InventoryTravelerIdTransformModel',
+          includeInJSON: false,
+          reverseRelation: {
+            key: 'toSalesItems',
+            includeInJSON: true
+          }
+        }],
+        defaults: {
+          outboundOrder: null,
+          label: null,
+          bin: null,
+          sku: null,
+          isVoid: null,
+          quantity: null,
+          revenue: null,
+          reverseTransform: null
+        },
+        triggerIsSelectedChangeOnRadio: function triggerIsSelectedChangeOnRadio() {
+          Radio.channel('inventory').trigger('change:isSelected:salesItem', this);
+        },
+        getUpdatadableAttributes: function getUpdatadableAttributes() {
+          return {
+            outboundOrder: {
+              title: 'Outbound Order',
+              type: 'select'
+            },
+            bin: {
+              title: 'Bin',
+              type: 'select'
+            },
+            isVoid: {
+              title: 'Is Void? (Use "Yes" and "No" for multiple)',
+              type: 'checkbox'
+            },
+            quantity: {
+              title: 'Quantity',
+              type: 'text'
+            },
+            revenue: {
+              title: 'Revenue',
+              type: 'text'
+            }
+          };
+        }
+      });
+
+
+      globalNamespace.Models.SalesItemModel = Model;
+
+      _export('default', Model);
+    }
+  };
+});
+'use strict';
+
+System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handlebars/handlebars.runtime.js', 'moment', 'backbone.radio', 'lib/common/models/baseUrlBaseModel.js', 'lib/inventory/models/travelerIdModel.js', 'lib/inventory/models/salesItemModel.js'], function (_export, _context) {
+  "use strict";
+
+  var _, Handlebars, Moment, Radio, BaseUrlBaseModel, TravelerIdModel, SalesItemModel, castAsType, lpad;
 
   return {
     setters: [function (_underscore) {
@@ -59895,6 +60684,10 @@ System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handl
       Radio = _backboneRadio.default;
     }, function (_libCommonModelsBaseUrlBaseModelJs) {
       BaseUrlBaseModel = _libCommonModelsBaseUrlBaseModelJs.default;
+    }, function (_libInventoryModelsTravelerIdModelJs) {
+      TravelerIdModel = _libInventoryModelsTravelerIdModelJs.default;
+    }, function (_libInventoryModelsSalesItemModelJs) {
+      SalesItemModel = _libInventoryModelsSalesItemModelJs.default;
     }],
     execute: function () {
       castAsType = function castAsType(value, type) {
@@ -59909,6 +60702,13 @@ System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handl
           default:
             return value;
         }
+      };
+
+      lpad = function lpad(str, width, fill) {
+        fill = fill || '0';
+        width = width || 6;
+        str = str + '';
+        return str.length >= width ? str : new Array(width - str.length + 1).join(fill) + str;
       };
 
       Handlebars.registerHelper('tableCell', function (column, data, options) {
@@ -60008,10 +60808,7 @@ System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handl
       });
 
       Handlebars.registerHelper('lpad', function (data, options) {
-        var z = options.z || '0';
-        var width = options.width || 6;
-        var n = data + '';
-        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+        return lpad(data, options.width, options.z);
       });
 
       Handlebars.registerHelper('truncate', function (data, options) {
@@ -60041,6 +60838,50 @@ System.register('lib/common/handlebarsHelpers/helpers.js', ['underscore', 'handl
         var args = Array.from(arguments);
         args = args.slice(2);
         return typeof fn === 'function' ? fn.apply(context, args) : null;
+      });
+
+      Handlebars.registerHelper('barcodeHtml', function (data, options) {
+        var barcodeValue = '';
+        if (data instanceof TravelerIdModel || options.hash.type == 'TravelerIdModel') {
+          barcodeValue = data.attributes ? data.attributes.label : data.label;
+        } else if (data instanceof SalesItemModel || options.hash.type == 'SalesItemModel') {
+          barcodeValue = data.attributes ? data.attributes.label : data.label;
+        } else {
+          throw 'Must supply a Model or a option Type to barcodeHtml helper';
+        }
+        if (data instanceof TravelerIdModel || data instanceof SalesItemModel) {
+          data = data.attributes;
+        }
+        var html = void 0;
+        if (options.hash.isCard) {
+          html = '<div data-ui-top-label><p class="has-text-centered">';
+        } else {
+          html = '<p class="has-text-centered" data-ui-top-label>';
+        }
+        if (data.sku) {
+          if (data.sku.attributes.unit) {
+            html += 'Unit: ' + data.sku.attributes.unit.attributes.serial;
+          } else if (data.sku.attributes.part) {
+            html += 'Part: ' + data.sku.attributes.part.attributes.name;
+          } else if (data.sku.attributes.commodity) {
+            html += 'Item: ' + data.sku.attributes.commodity.attributes.name;
+          } else if (data.sku.attributes.unitType) {
+            html += 'Type: ' + data.sku.attributes.unitType.attributes.name;
+          }
+        }
+        html += '</p>';
+        if (options.hash.isCard) {
+          html += '</div>';
+        }
+        var svgClass = '';
+        if (data.isVoid) {
+          svgClass = 'si-is-void';
+        }
+        if (data.transform && !data.transform.attributes.isVoid) {
+          svgClass += ' si-has-transform';
+        }
+        html += '<svg jsbarcode-value="' + barcodeValue + '" class="' + svgClass + '"></svg>';
+        return new Handlebars.SafeString(html);
       });
 
       Handlebars.registerHelper('getAspectRatioClass', function (width, height, options) {

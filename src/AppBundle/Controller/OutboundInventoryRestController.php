@@ -136,53 +136,33 @@ class OutboundInventoryRestController extends FOSRestController
         set_time_limit(300);
         ini_set('memory_limit','1024M');
         $em = $this->getDoctrine()->getManager();
-        $travelerIdLogEntities = [];
-        $transformEntities = [];
-        foreach($massSalesItem->getSalesItems() as $travelerId){
-            if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
-                $em->detach($travelerId);
-                $liveSalesItem = $em->getRepository('AppBundle:SalesItem')->findOneById($travelerId->getId());
-                if( !$travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) or
-                    !$liveSalesItem->isOwnedByOrganization($this->getUser()->getOrganization())
-                ){
-                    throw $this->createAccessDeniedException();
+        $salesItemLogEntities = [];
+
+        foreach($massSalesItem->getSalesItems() as $salesItemDto){
+            $salesItem = $em->getRepository('AppBundle:SalesItem')->findOneById($salesItemDto->id);
+            if( $this->get('security.authorization_checker')->isGranted('EDIT', $salesItem) and
+                $salesItem->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $edit = $this->checkForSalesItemEdit($salesItem, $salesItemDto);
+                $move = $this->checkForSalesItemMovement($salesItem, $salesItemDto);
+                $salesItem->assignPropertiesFromDataTransferObject($salesItemDto);
+                if($edit){
+                    $salesItemLogEntities[] = $edit;
+                }
+                if($move){
+                    $salesItemLogEntities[] = $move;
                 }
             }else{
                 throw $this->createAccessDeniedException();
             }
         }
 
-        if($massSalesItem->isTransform()){
-            foreach($massSalesItem->getSalesItems() as $travelerId){
-                $em->merge($travelerId);
-            }
-            foreach($massSalesItem->getSalesItems() as $travelerId){
-                $transformEntities[] = $this->createTransformEntities($travelerId);
-                $travelerIdLogEntities[] = $travelerId->getTransform();
-            }
-        }else{
-            foreach($massSalesItem->getSalesItems() as $travelerId){
-                $edit = $this->checkForSalesItemEdit($liveSalesItem, $travelerId);
-                $move = $this->checkForSalesItemMovement($liveSalesItem, $travelerId);
-                if($edit){
-                    $travelerIdLogEntities[] = $edit;
-                }
-                if($move){
-                    $travelerIdLogEntities[] = $move;
-                }
-                $em->merge($travelerId);
-            }
-        }
-
         $em->flush();
 
-        foreach($travelerIdLogEntities as $logEntity){
+        foreach($salesItemLogEntities as $logEntity){
             $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view'], 'ROLE_ADMIN'=>'operator']);
         }
 
-        foreach($transformEntities as $logEntity){
-            $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
-        }
         return $massSalesItem;
     }
 
@@ -197,10 +177,9 @@ class OutboundInventoryRestController extends FOSRestController
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(ite.id)')
             ->from('AppBundle:InventorySalesItemEdit', 'ite')
-            ->join('ite.travelerId', 'tid')
-            ->join('tid.inboundOrder', 'o')
-            ->join('o.client', 'c')
-            ->where('c.organization = :org')
+            ->join('ite.salesItem', 'si')
+            ->join('si.sku', 's')
+            ->where('s.organization = :org')
             ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();
@@ -254,10 +233,9 @@ class OutboundInventoryRestController extends FOSRestController
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(itm.id)')
             ->from('AppBundle:InventorySalesItemMovement', 'itm')
-            ->join('itm.travelerId', 'sales_item')
-            ->join('sales_item.inboundOrder', 'o')
-            ->join('o.client', 'c')
-            ->where('c.organization = :org')
+            ->join('itm.salesItem', 'si')
+            ->join('si.sku', 's')
+            ->where('s.organization = :org')
             ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();

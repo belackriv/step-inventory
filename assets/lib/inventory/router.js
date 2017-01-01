@@ -34,6 +34,8 @@ export default Marionette.Object.extend({
     'inventory_tid_edit': 'inventoryTravelerIdEdits',
     'inventory_tid_movement': 'inventoryTravelerIdMovements',
     'inventory_tid_transform': 'inventoryTravelerIdTransforms',
+    'inventory_sales_item_edit': 'inventorySalesItemEdits',
+    'inventory_sales_item_movement': 'inventorySalesItemMovements',
     'inventory_sku_adjustment': 'inventorySkuAdjustments',
     'inventory_sku_movement': 'inventorySkuMovements',
     'inventory_sku_transform': 'inventorySkuTransforms',
@@ -118,6 +120,22 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.inventoryTravelerIdTransforms();
+    });
+  },
+  inventorySalesItemEdits(){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.inventorySalesItemEdits();
+    });
+  },
+  inventorySalesItemMovements(){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.inventorySalesItemMovements();
     });
   },
   inventorySkuAdjustments(){

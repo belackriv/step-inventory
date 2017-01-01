@@ -1,7 +1,23 @@
 <td>{{byUser.attributes.firstName}} {{byUser.attributes.lastName}}</td>
 <td>{{moment transformedAt}}</td>
-<td>{{fromTravelerId.attributes.label}}</td>
-<td>{{toTravelerId.attributes.label}}</td>
-<td>#{{toSalesItem.id}}, SKU: {{toSalesItem.attributes.sku.attributes.name}}, QTY: {{toSalesItem.attributes.quantity}}</td>
+<td>
+	{{#each fromTravelerIds.models}}
+		{{this.attributes.label}}
+		{{#unless @last}},{{/unless}}
+	{{/each}}
+</td>
 <td>{{quantity}}</td>
+<td>{{ratio}}</td>
+<td>
+	{{#each toTravelerIds.models}}
+		{{this.attributes.label}}
+		{{#unless @last}},{{/unless}}
+	{{/each}}
+</td>
+<td>
+	{{#each toSalesItems.models}}
+		{{this.attributes.label}}
+		{{#unless @last}},{{/unless}}
+	{{/each}}
+</td>
 <td>{{boolean isVoid}}</td>

@@ -1,0 +1,28 @@
+<form>
+	<label class="label">Mode</label>
+	<p class="control">
+		<label class="radio">
+		    <input type="radio" name="mode" value="add" />
+	    	Add
+		</label>
+		<label class="radio">
+			<input type="radio" name="mode" value="remove" />
+		    Remove
+		</label>
+		<label class="radio">
+			<input type="radio" name="mode" value="replace" />
+		    Replace
+		</label>
+	</p>
+	<label class="label">Sales Items(<span data-ui="count"></span>)</label>
+	<p class="control">
+		<textarea rows="10" name="salesItems"></textarea>
+	</p>
+	<label class="label" data-ui="countLabel">{{selectedCount}} Sales Items Selected</label>
+	<p data-ui="errorContainer" class="is-hidden notification is-danger"></p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-secondary is-outlined" data-ui-name="export">Export Selected</button>
+	</p>
+</form>

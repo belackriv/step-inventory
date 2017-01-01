@@ -5,17 +5,17 @@ import jquery from 'jquery';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
 
-import viewTpl from './inventoryTravelerIdMassSelectionActionView.hbs!';
-import TravelerIdModel from '../models/travelerIdModel.js';
+import viewTpl from './inventorySalesItemMassSelectionActionView.hbs!';
+import SalesItemModel from '../models/salesItemModel.js';
 
 export default Marionette.View.extend({
   initialize(){
-    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId');
+    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:salesItem');
   },
   template: viewTpl,
   ui: {
     'modeRadio': 'input[name="mode"]',
-    'travelerIdsInput': 'textarea[name="travelerIds"]',
+    'salesItemsInput': 'textarea[name="salesItems"]',
     'count': '[data-ui="count"]',
     'selectedCountLabel': '[data-ui="countLabel"]',
     'form': 'form',
@@ -25,14 +25,14 @@ export default Marionette.View.extend({
     'errorContainer': '[data-ui="errorContainer"]'
   },
   events: {
-    'change @ui.travelerIdsInput': 'travelerIdsChanged',
+    'change @ui.salesItemsInput': 'salesItemsChanged',
     'submit @ui.form ': 'save',
     'click @ui.cancelButton': 'cancel',
     'click @ui.exportButton': 'export',
   },
   serializeData(){
     let data = {};
-    data.updateableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    data.updateableAttributes = SalesItemModel.prototype.getUpdatadableAttributes();
     data.selectedCount = this.selectedCollection.length;
     return data;
   },
@@ -41,13 +41,13 @@ export default Marionette.View.extend({
   },
   export(){
     let element = document.createElement('a');
-    let csvText = 'Label,Serial,SKU,Inbound Order,Bin\n';
-    this.selectedCollection.each((travelerId)=>{
-      csvText += travelerId.get('label')+',';
-      csvText += travelerId.get('serial')+',';
-      csvText += travelerId.get('sku').get('label')+',';
-      csvText += travelerId.get('inboundOrder').get('label')+',';
-      csvText += travelerId.get('bin').get('name');
+    let csvText = 'Label,Serial,SKU,Outbound Order,Bin\n';
+    this.selectedCollection.each((salesItem)=>{
+      csvText += salesItem.get('label')+',';
+      csvText += salesItem.get('serial')+',';
+      csvText += salesItem.get('sku').get('label')+',';
+      csvText += salesItem.get('outboundOrder')?salesItem.get('outboundOrder').get('label')+',':',';
+      csvText += salesItem.get('bin').get('name');
       csvText += '\n';
     });
     element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvText));
@@ -66,12 +66,12 @@ export default Marionette.View.extend({
     let mode = this.ui.modeRadio.filter(':checked').val();
     let promise = null;
     if(mode === 'add'){
-      promise = this.addTravelerIdsToSelection();
+      promise = this.addSalesItemsToSelection();
     }else if(mode === 'remove'){
-      promise = this.removeTravelerIdsFromSelection();
+      promise = this.removeSalesItemsFromSelection();
     }else if(mode === 'replace'){
      this.clearSelection();
-      promise = this.addTravelerIdsToSelection();
+      promise = this.addSalesItemsToSelection();
     }
     if(promise){
       promise.then(()=>{
@@ -84,66 +84,66 @@ export default Marionette.View.extend({
       this.enableButtons();
     }
   },
-  travelerIdsChanged(){
-    this.ui.count.text(this.getTravelerIdsFromInput().length);
+  salesItemsChanged(){
+    this.ui.count.text(this.getSalesItemsFromInput().length);
   },
-  getTravelerIdsFromInput(){
-    let travelerIdsArray = [];
-    _.each(this.ui.travelerIdsInput.val().split('\n'), (value)=>{
+  getSalesItemsFromInput(){
+    let salesItemsArray = [];
+    _.each(this.ui.salesItemsInput.val().split('\n'), (value)=>{
       let trimmedValue = value.trim();
       if(trimmedValue){
-        travelerIdsArray.push(trimmedValue);
+        salesItemsArray.push(trimmedValue);
       }
     });
-    return travelerIdsArray;
+    return salesItemsArray;
   },
-  addTravelerIdsToSelection(){
+  addSalesItemsToSelection(){
     return new Promise((resolve, reject)=>{
-      let travelerIds = this.getTravelerIdsFromInput();
+      let salesItems = this.getSalesItemsFromInput();
       jquery.ajax({
-        url: TravelerIdModel.prototype.urlRoot(),
+        url: SalesItemModel.prototype.urlRoot(),
         dataType: 'json',
         data:{
-          terms: travelerIds.join(','),
+          terms: salesItems.join(','),
           search: 'label',
           page: 1,
           per_page: 1000
         },
       }).done((data)=>{
         _.each(data.list, (attrs)=>{
-          let travelerId = TravelerIdModel.findOrCreate(attrs);
-          travelerId.set('isSelected', true);
+          let salesItem = SalesItemModel.findOrCreate(attrs);
+          salesItem.set('isSelected', true);
         });
-        _.each(travelerIds, (travelerId)=>{
-          let travlerIdModel = this.selectedCollection.findWhere({label: travelerId})
+        _.each(salesItems, (salesItem)=>{
+          let travlerIdModel = this.selectedCollection.findWhere({label: salesItem})
           if(!travlerIdModel){
-            reject('No Traveler Id found for "'+travelerId+'"');
+            reject('No Traveler Id found for "'+salesItem+'"');
           }
         });
         resolve();
       });
     });
   },
-  removeTravelerIdsFromSelection(){
+  removeSalesItemsFromSelection(){
     return new Promise((resolve, reject)=>{
-      let travelerIds = this.getTravelerIdsFromInput();
-      let travelerIdModels = [];
-      this.selectedCollection.each((travelerId)=>{
-        if(travelerIds.indexOf(travelerId.get('label')) > -1){
-          travelerIdModels.push(travelerId);
+      let salesItems = this.getSalesItemsFromInput();
+      let salesItemModels = [];
+      this.selectedCollection.each((salesItem)=>{
+        if(salesItems.indexOf(salesItem.get('label')) > -1){
+          salesItemModels.push(salesItem);
         }
       });
-      _.invoke(travelerIdModels, 'set', 'isSelected', false);
+      _.invoke(salesItemModels, 'set', 'isSelected', false);
       resolve();
     });
   },
   clearSelection(){
-    let travelerIdsArray = [];
-    this.selectedCollection.each((travelerId)=>{
-      travelerIdsArray.push(travelerId);
+    let salesItemsArray = [];
+    this.selectedCollection.each((salesItem)=>{
+      salesItemsArray.push(salesItem);
     });
-    _.each(travelerIdsArray, (travelerId)=>{
-      travelerId.set('isSelected', false);
+    _.each(salesItemsArray, (salesItem)=>{
+      salesItem.set('isSelected', false);
     });
   },
   disableButtons(){

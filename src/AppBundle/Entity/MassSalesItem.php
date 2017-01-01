@@ -17,7 +17,7 @@ Class MassSalesItem
     }
 
 	/**
-     * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItemDataTransferObject>")
      * @JMS\Groups({"Default"})
      */
     protected $salesItems;
@@ -27,7 +27,7 @@ Class MassSalesItem
     	return $this->salesItems;
     }
 
-    public function addSalesItem(SalesItem $salesItem)
+    public function addSalesItem(SalesItemDataTransferObject $salesItem)
     {
         if(!$this->salesItems->contains($salesItem)){
             $this->salesItems->add($salesItem);
@@ -35,7 +35,7 @@ Class MassSalesItem
         return $this;
     }
 
-    public function removeSalesItem(SalesItem $salesItem)
+    public function removeSalesItem(SalesItemDataTransferObject $salesItem)
     {
         $this->salesItems->removeElement($salesItem);
         $this->salesItems = new ArrayCollection(array_values($this->children->toArray()));

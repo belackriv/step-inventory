@@ -1,0 +1,14 @@
+<td>{{byUser.attributes.firstName}} {{byUser.attributes.lastName}}</td>
+<td>{{moment editedAt}}</td>
+<td>{{salesItem.attributes.label}}</td>
+<td>
+	{{#each oldAttributes}}
+		<strong>{{@key}}:</strong> {{this}}
+	{{/each}}
+</td>
+<td>
+	{{#each newAttributes}}
+		<strong>{{@key}}:</strong> {{this}}
+	{{/each}}
+</td>
+<td>{{join tags}}</td>

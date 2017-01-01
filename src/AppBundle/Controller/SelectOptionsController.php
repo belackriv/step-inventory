@@ -53,6 +53,36 @@ class SelectOptionsController extends FOSRestController
         return ['total_count'=> count($itemlist), 'total_items' => count($itemlist), 'list'=>$itemlist];
     }
 
+    /**
+     * @Rest\Get("/select_options/outbound_order")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listSelectOptionsForOutboundOrderAction(Request $request)
+    {
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('oo')
+            ->from('AppBundle:OutboundOrder', 'oo')
+            ->join('oo.customer', 'c')
+            ->where('c.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $qb->select('oo')->orderBy('oo.label', 'ASC');
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item->getSelectOptionData();
+            }
+        }
+
+        return ['total_count'=> count($itemlist), 'total_items' => count($itemlist), 'list'=>$itemlist];
+    }
+
 
     /**
      * @Rest\Get("/select_options/sku")

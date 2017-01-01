@@ -433,9 +433,9 @@ class InboundInventoryRestController extends FOSRestController
         $page = (int)$request->query->get('page') - 1;
         $perPage =(int)$request->query->get('per_page');
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
-            ->select('COUNT(itt.id)')
+            ->select('COUNT(DISTINCT itt.id)')
             ->from('AppBundle:InventoryTravelerIdTransform', 'itt')
-            ->join('itt.fromTravelerId', 'tid')
+            ->join('itt.fromTravelerIds', 'tid')
             ->join('tid.inboundOrder', 'io')
             ->join('io.client', 'c')
             ->where('c.organization = :org')

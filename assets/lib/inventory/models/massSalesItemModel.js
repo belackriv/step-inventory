@@ -4,7 +4,7 @@ import globalNamespace from 'lib/globalNamespace.js';
 import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
-import 'lib/accounting/models/outboundOrderModel';
+import 'lib/accounting/models/outboundOrderModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){

@@ -64,20 +64,12 @@ let Model = BaseUrlBaseModel.extend({
   },
   getUpdatadableAttributes(){
     return {
-      inboundOrder: {
-        title: 'Inbound Order',
+      outboundOrder: {
+        title: 'Outbound Order',
         type: 'select'
-      },
-      label: {
-        title: 'Label',
-        type: 'text'
       },
       bin: {
         title: 'Bin',
-        type: 'select'
-      },
-      sku: {
-        title: 'SKU',
         type: 'select'
       },
       isVoid: {

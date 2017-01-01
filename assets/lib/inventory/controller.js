@@ -26,6 +26,14 @@ import InventoryTravelerIdTransformCollection from './models/inventoryTravelerId
 import inventoryTravelerIdTransformListTableLayoutTpl from './views/inventoryTravelerIdTransformListTableLayoutTpl.hbs!';
 import inventoryTravelerIdTransformRowTpl from './views/inventoryTravelerIdTransformRowTpl.hbs!';
 
+import InventorySalesItemEditCollection from './models/inventorySalesItemEditCollection.js';
+import inventorySalesItemEditListTableLayoutTpl from './views/inventorySalesItemEditListTableLayoutTpl.hbs!';
+import inventorySalesItemEditRowTpl from './views/inventorySalesItemEditRowTpl.hbs!';
+
+import InventorySalesItemMovementCollection from './models/inventorySalesItemMovementCollection.js';
+import inventorySalesItemMovementListTableLayoutTpl from './views/inventorySalesItemMovementListTableLayoutTpl.hbs!';
+import inventorySalesItemMovementRowTpl from './views/inventorySalesItemMovementRowTpl.hbs!';
+
 import InventorySkuAdjustmentCollection from './models/inventorySkuAdjustmentCollection.js';
 import inventorySkuAdjustmentListTableLayoutTpl from './views/inventorySkuAdjustmentListTableLayoutTpl.hbs!';
 import inventorySkuAdjustmentRowTpl from './views/inventorySkuAdjustmentRowTpl.hbs!';
@@ -171,11 +179,59 @@ export default Marionette.Object.extend({
     let listView = new SearchableListLayoutView({
       collection: inventoryTravelerIdTransformCollection,
       listLength: 20,
-      searchPath: ['byUser.firstName','byUser.lastName','fromTravelerId.label', 'toTravelerId.label', 'toSalesItem.id'],
+      searchPath: ['byUser.firstName','byUser.lastName','fromTravelerIds.label', 'toTravelerIds.label', 'toSalesItems.label'],
       useTableView: true,
       usePagination: 'server',
       entityListTableLayoutTpl: inventoryTravelerIdTransformListTableLayoutTpl,
       entityRowTpl: inventoryTravelerIdTransformRowTpl,
+      colspan: 6,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+  },
+  inventorySalesItemEdits(){
+    let inventoryIndexView =  new InventoryLogIndexView();
+
+    let inventorySalesItemEditCollection = Radio.channel('data').request('collection', InventorySalesItemEditCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventorySalesItemEditCollection,
+      listLength: 20,
+      searchPath: ['byUser.firstName','byUser.lastName','salesItem.label'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventorySalesItemEditListTableLayoutTpl,
+      entityRowTpl: inventorySalesItemEditRowTpl,
+      colspan: 6,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+  },
+  inventorySalesItemMovements(){
+    let inventoryIndexView =  new InventoryLogIndexView();
+
+    let inventorySalesItemMovementCollection = Radio.channel('data').request('collection', InventorySalesItemMovementCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventorySalesItemMovementCollection,
+      listLength: 20,
+      searchPath: ['byUser.firstName','byUser.lastName','fromBin.name','toBin.name','salesItem.label'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventorySalesItemMovementListTableLayoutTpl,
+      entityRowTpl: inventorySalesItemMovementRowTpl,
       colspan: 6,
     });
 
