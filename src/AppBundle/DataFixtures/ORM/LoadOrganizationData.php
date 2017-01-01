@@ -17,13 +17,22 @@ class LoadOrganizationData extends AbstractFixture implements ContainerAwareInte
      */
     public function load(ObjectManager $manager)
     {
-        $stepOrg = new Organization();
-        $stepOrg->setName('Step Inventory');
-        $manager->persist($stepOrg);
+        $createdEntities = [];
+        $stepOrg = $manager->getRepository('AppBundle:SingleQueryReport')->findOneBy(['name'=>'Step Inventory']);
+        if(!$stepOrg){
+            $stepOrg = new Organization();
+            $stepOrg->setName('Step Inventory');
+            $manager->persist($stepOrg);
+            $createdEntities['stepOrg'] = true;
+        }
 
-        $demoOrg = new Organization();
-        $demoOrg->setName('Acme Inc.');
-        $manager->persist($demoOrg);
+        $demoOrg = $manager->getRepository('AppBundle:SingleQueryReport')->findOneBy(['name'=>'Acme Inc.']);
+        if(!$demoOrg){
+            $demoOrg = new Organization();
+            $demoOrg->setName('Acme Inc.');
+            $manager->persist($demoOrg);
+            $createdEntities['demoOrg'] = true;
+        }
 
         $manager->flush();
 
@@ -36,17 +45,21 @@ class LoadOrganizationData extends AbstractFixture implements ContainerAwareInte
         $leadRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_LEAD');
         $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($stepOrg);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        if(isset($createdEntities['stepOrg']) and $createdEntities['stepOrg']){
+            $objectIdentity = ObjectIdentity::fromDomainObject($stepOrg);
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($demoOrg);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        if(isset($createdEntities['demoOrg']) and $createdEntities['demoOrg']){
+            $objectIdentity = ObjectIdentity::fromDomainObject($demoOrg);
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
     }
 

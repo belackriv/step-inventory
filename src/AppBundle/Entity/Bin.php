@@ -67,7 +67,7 @@ Class Bin
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Department")
+	 * @ORM\ManyToOne(targetEntity="Department", inversedBy="bins")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Department")
 	 */

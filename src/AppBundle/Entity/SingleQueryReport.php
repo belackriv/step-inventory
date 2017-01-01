@@ -282,9 +282,9 @@ Class SingleQueryReport
     {
         $qb = $container->get('doctrine')->getManager()->createQueryBuilder();
         $this->buildQuery($qb, $this->parts);
-        //$this->addSecurityQueryParts($qb, $container);
+        $this->addSecurityQueryParts($qb, $container);
         $this->assignQueryParamters($qb, $request);
-        //$this->assignSecurityParamaters($qb, $container);
+        $this->assignSecurityParamaters($qb, $container);
         return $qb->getQuery();
     }
 
@@ -292,9 +292,9 @@ Class SingleQueryReport
     {
         $countQb = $container->get('doctrine')->getManager()->createQueryBuilder();
         $this->buildQuery($countQb, $this->countParts);
-        //$this->addSecurityQueryParts($countQb, $container);
+        $this->addSecurityQueryParts($countQb, $container);
         $this->assignQueryParamters($countQb, $request);
-        //$this->assignSecurityParamaters($countQb, $container);
+        $this->assignSecurityParamaters($countQb, $container);
         return $countQb->getQuery();
     }
 
@@ -323,36 +323,12 @@ Class SingleQueryReport
 
     private function addSecurityQueryParts(\Doctrine\ORM\QueryBuilder $qb, ContainerInterface $container)
     {
-        if($this->getAccessibleAccountIds($container) !== null and $this->getAvailableToAccounts() !== true){
-            throw new \Exception('This Query is not available to Account Users', 403);
-        }
-        if($this->getAccessibleAccountIds($container) !== null){
-            $qb->andWhere('a.id in (:sqr_account_ids)');
-        }
+        $qb->andWhere('org.id = :org_id');
     }
 
     private function assignSecurityParamaters(\Doctrine\ORM\QueryBuilder $qb, ContainerInterface $container)
     {
-        if($this->getAccessibleAccountIds($container) !== null and $this->getAvailableToAccounts() !== true){
-            throw new \Exception('This Query is not available to Account Users', 403);
-        }
-        $accountIds = $this->getAccessibleAccountIds($container);
-        if($accountIds  !== null){
-            $qb->setParameter('sqr_account_ids', $accountIds);
-        }
-    }
-
-    public function getAccessibleAccountIds(ContainerInterface $container)
-    {
-        $accountIds = null;
-        $accounts = $container->get('vitalstorm_metrics_app.accessible_accounts')->getAccessibleAccounts();
-        if($accounts !== null){
-            $accountIds = [];
-            foreach($accounts as $account){
-                $accountIds[] = $account->getId();
-            }
-        }
-        return $accountIds;
+        $qb->setParameter('org_id', $container->get('security.token_storage')->getToken()->getUser()->getOrganization()->getId());
     }
 
 }

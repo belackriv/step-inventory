@@ -167,6 +167,10 @@ class LoadSingleQueryReportData extends AbstractFixture implements ContainerAwar
                         'args' => ["i.client", "c"],
                     ],
                     [
+                        'methodName' => 'join',
+                        'args' => ["c.organization", "org"],
+                    ],
+                    [
                         'methodName' => 'groupBy',
                         'args' => ["b.name"],
                     ],
@@ -211,6 +215,10 @@ class LoadSingleQueryReportData extends AbstractFixture implements ContainerAwar
                     [
                         'methodName' => 'join',
                         'args' => ["i.client", "c"],
+                    ],
+                    [
+                        'methodName' => 'join',
+                        'args' => ["c.organization", "org"],
                     ],
                 ],
                 'columns'   => [

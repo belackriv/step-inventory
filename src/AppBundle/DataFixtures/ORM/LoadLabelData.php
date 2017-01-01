@@ -33,18 +33,22 @@ class LoadLabelData extends AbstractFixture implements ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
-        $tidLabel = new Label();
-        $tidLabel->setName('TravelerId Label');
-        $tidLabel->setDescription('ZPL TID Label');
-        $tidLabel->setTemplate('
-            ^XA
-            ^FO50,50^BY3
-            ^BCN,100,Y,N,N
-            ^FD{{tid}}
-            ^XZ
-        ');
-
-        $manager->persist($tidLabel);
+        $createdEntities = [];
+        $tidLabel = $manager->getRepository('AppBundle:SingleQueryReport')->findOneBy(['name'=>'TravelerId Label']);
+        if(!$tidLabel){
+            $tidLabel = new Label();
+            $tidLabel->setName('TravelerId Label');
+            $tidLabel->setDescription('ZPL TID Label');
+            $tidLabel->setTemplate('
+                ^XA
+                ^FO50,50^BY3
+                ^BCN,100,Y,N,N
+                ^FD{{tid}}
+                ^XZ
+            ');
+            $manager->persist($tidLabel);
+            $createdEntities['tidLabel'] = true;
+        }
         $manager->flush();
 
         //$this->addReference('dfwOffice', $dfwOffice);
@@ -55,11 +59,13 @@ class LoadLabelData extends AbstractFixture implements ContainerAwareInterface
         $leadRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_LEAD');
         $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($tidLabel);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        if(isset($createdEntities['tidLabel']) and $createdEntities['tidLabel']){
+            $objectIdentity = ObjectIdentity::fromDomainObject($tidLabel);
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
     }
 

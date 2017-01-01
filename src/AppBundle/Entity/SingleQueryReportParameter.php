@@ -342,7 +342,10 @@ Class SingleQueryReportParameter {
         $qb = $container->get('doctrine')->getManager()->createQueryBuilder()
             ->select('c.id value, c.name label')
             ->from('AppBundle:Client', 'c')
-            ->orderBy('c.name', 'ASC');
+            ->join('c.organization', 'org')
+            ->where('org.id = :org_id')
+            ->orderBy('c.name', 'ASC')
+            ->setParameter('org_id', $container->get('security.token_storage')->getToken()->getUser()->getOrganization()->getId());
 
         $this->clientsChoicesList = $qb->getQuery()->getResult();
     }

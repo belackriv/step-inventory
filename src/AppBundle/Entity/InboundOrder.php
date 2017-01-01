@@ -69,7 +69,7 @@ Class InboundOrder
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Client", inversedBy="outboundOrders")
+	 * @ORM\ManyToOne(targetEntity="Client", inversedBy="inboundOrders")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Client")
 	 */
