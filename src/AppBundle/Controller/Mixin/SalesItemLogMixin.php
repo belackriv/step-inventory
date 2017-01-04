@@ -47,6 +47,12 @@ trait SalesItemLogMixin
     {
         $move = null;
         if($salesItem->getBin() !== $dto->bin){
+            if($salesItem->getBin()->isLocked()){
+                throw new \Exception('Bin "'.$salesItem->getBin()->getName().'" is locked.');
+            }
+            if($dto->bin->isLocked()){
+                throw new \Exception('Bin "'.$dto->bin->getName().'" is locked.');
+            }
             $move = new InventorySalesItemMovement();
             $move->setSalesItem($salesItem);
             $move->setByUser($this->getUser());

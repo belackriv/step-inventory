@@ -8,6 +8,7 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
 import TravelerIdModel from 'lib/inventory/models/travelerIdModel.js';
 import SalesItemModel from 'lib/inventory/models/salesItemModel.js';
+import BinSkuCountModel from 'lib/inventory/models/binSkuCountModel.js';
 
 const castAsType = function(value, type){
   switch (type) {
@@ -166,6 +167,8 @@ Handlebars.registerHelper('barcodeHtml', function(data, options){
     barcodeValue = data.attributes?data.attributes.label:data.label;
   }else if(data instanceof SalesItemModel || options.hash.type == 'SalesItemModel'){
     barcodeValue = data.attributes?data.attributes.label:data.label;
+  }else if(data instanceof BinSkuCountModel || options.hash.type == 'BinSkuCountModel'){
+    barcodeValue = data.attributes?data.attributes.sku.attributes.label:data.sku.attributes.label;
   }else{
     throw 'Must supply a Model or a option Type to barcodeHtml helper';
   }

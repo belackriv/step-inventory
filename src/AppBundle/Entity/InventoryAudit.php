@@ -114,7 +114,7 @@ Class InventoryAudit
 
 	public function setIsCompleted($isCompleted)
 	{
-		$this->isCompleted = $isCompleted;
+		$this->isCompleted = (boolean)$isCompleted;
 		return $this;
 	}
 
@@ -123,12 +123,16 @@ Class InventoryAudit
 		$totalDeviations = 0;
 		$travelerIdCountDeviations = 0;
 		$travelerIdMatchDeviations = 0;
+		$salesItemCountDeviations = 0;
+		$salesItemMatchDeviations = 0;
 		$skuCountDeviations = 0;
 
 		$inventoryMovements = [];
 		$scannedTravelerIds = [];
+		$scannedSalesItems = [];
 
 		$travelerIdCountDeviations = abs($this->inventoryTravelerIdAudits->count() - $this->getForBin()->getTravelerIds()->count());
+		$salesItemCountDeviations = abs($this->inventorySalesItemAudits->count() - $this->getForBin()->getSalesItems()->count());
 
 		foreach($this->inventoryTravelerIdAudits as $travelerIdAudit){
 			$travelerId = $travelerIdAudit->getTravelerId();
@@ -149,6 +153,26 @@ Class InventoryAudit
 		}
 
 		$totalDeviations = $travelerIdCountDeviations + $travelerIdMatchDeviations;
+
+		foreach($this->inventorySalesItemAudits as $salesItemAudit){
+			$salesItem = $salesItemAudit->getSalesItem();
+			$scannedSalesItems[] = $salesItem;
+			if($salesItem->getBin() !== $this->getForBin()){
+				$salesItemMatchDeviations++;
+				$inventoryMovements[] = $this->createSalesItemMovementIntoForBin($salesItem);
+				$salesItem->setBin($this->getForBin());
+			}
+		}
+
+		foreach($this->getForBin()->getSalesItems() as $salesItem){
+			if(!in_array($salesItem, $scannedSalesItems)){
+				$salesItemMatchDeviations++;
+				$inventoryMovements[] = $this->createSalesItemMovementIntoDeviation($salesItem, $deviationBin);
+				$salesItem->setBin($deviationBin);
+			}
+		}
+
+		$totalDeviations = $salesItemCountDeviations + $salesItemMatchDeviations;
 
 		foreach($this->inventorySkuAudits as $skuAudit){
 			$totalDeviations += abs($skuAudit->getUserCount() - $skuAudit->getSystemCount());
@@ -178,6 +202,30 @@ Class InventoryAudit
 	{
 		$move = new InventoryTravelerIdMovement();
         $move->setTravelerId($travelerId);
+        $move->setByUser($this->getByUser());
+        $move->setMovedAt(new \DateTime());
+        $move->setFromBin($this->getForBin());
+        $move->setToBin($deviationBin);
+        $move->addTag('audit');
+		return $move;
+	}
+
+	public function createSalesItemMovementIntoForBin(SalesItem $salesItem)
+	{
+		$move = new InventorySalesItemMovement();
+        $move->setSalesItem($salesItem);
+        $move->setByUser($this->getByUser());
+        $move->setMovedAt(new \DateTime());
+        $move->setFromBin($salesItem->getBin());
+        $move->setToBin($this->getForBin());
+        $move->addTag('audit');
+		return $move;
+	}
+
+	public function createSalesItemMovementIntoDeviation(SalesItem $salesItem, Bin $deviationBin)
+	{
+		$move = new InventorySalesItemMovement();
+        $move->setSalesItem($salesItem);
         $move->setByUser($this->getByUser());
         $move->setMovedAt(new \DateTime());
         $move->setFromBin($this->getForBin());
@@ -245,6 +293,42 @@ Class InventoryAudit
 	 * @JMS\Type("integer")
 	 */
 
+	protected $salesItemCountDeviations = null;
+
+	public function getSalesItemCountDeviations()
+	{
+		return $this->salesItemCountDeviations;
+	}
+
+	public function setSalesItemCountDeviations($salesItemCountDeviations)
+	{
+		$this->salesItemCountDeviations = $salesItemCountDeviations;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="smallint", nullable=true)
+	 * @JMS\Type("integer")
+	 */
+
+	protected $salesItemMatchDeviations = null;
+
+	public function getSalesItemMatchDeviations()
+	{
+		return $this->salesItemMatchDeviations;
+	}
+
+	public function setSalesItemMatchDeviations($salesItemMatchDeviations)
+	{
+		$this->salesItemMatchDeviations = $salesItemMatchDeviations;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="smallint", nullable=true)
+	 * @JMS\Type("integer")
+	 */
+
 	protected $skuCountDeviations = null;
 
 	public function getSkuCountDeviations()
@@ -304,6 +388,52 @@ Class InventoryAudit
         return $this;
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="InventorySalesItemAudit", mappedBy="inventoryAudit", cascade={"merge"})
+     * @ORM\OrderBy({"id" = "ASC"})
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventorySalesItemAudit>")
+     */
+    protected $inventorySalesItemAudits;
+
+    public function getInventorySalesItemAudits()
+    {
+    	return $this->inventorySalesItemAudits;
+    }
+
+    /**
+     * Add inventorySalesItemAudit
+     *
+     * @param \AppBundle\Entity\InventorySalesItemAudit $inventorySalesItemAudit
+     * @return InventoryAudit
+     */
+    public function addInventorySalesItemAudit(InventorySalesItemAudit $inventorySalesItemAudit)
+    {
+        if (!$this->inventorySalesItemAudits->contains($inventorySalesItemAudit)) {
+            $this->inventorySalesItemAudits->add($inventorySalesItemAudit);
+        }
+        if($inventorySalesItemAudit->getInventoryAudit() != $this){
+            $inventorySalesItemAudit->setInventoryAudit($this);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove inventorySalesItemAudit
+     *
+     * @param \AppBundle\Entity\InventorySalesItemAudit $inventorySalesItemAudit
+     * @return InventoryAudit
+     */
+    public function removeInventorySalesItemAudit(InventorySalesItemAudit $inventorySalesItemAudit)
+    {
+         if ($this->inventorySalesItemAudits->contains($inventorySalesItemAudit)) {
+            $this->inventorySalesItemAudits->removeElement($inventorySalesItemAudit);
+        }
+        if($inventorySalesItemAudit->getInventoryAudit() !== null){
+        	$inventorySalesItemAudit->setInventoryAudit(null);
+        }
+        return $this;
+    }
+
 	/**
      * @ORM\OneToMany(targetEntity="InventorySkuAudit", mappedBy="inventoryAudit", cascade={"merge"})
      * @ORM\OrderBy({"id" = "ASC"})
@@ -352,6 +482,7 @@ Class InventoryAudit
 
     public function __construct() {
     	$this->inventoryTravelerIdAudits = new ArrayCollection();
+    	$this->inventorySalesItemAudits = new ArrayCollection();
         $this->inventorySkuAudits = new ArrayCollection();
     }
 

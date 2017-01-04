@@ -137,7 +137,8 @@ class SecurityController extends Controller
                 $this->updateAclByRoles($userRole, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
             }
             $this->updateAclByRoles($organization, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
-
+            $this->updateAclByRoles($office, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            $this->updateAclByRoles($department, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
 
             $body = $this->get('templating')
                 ->render('email/signup-complete.html.twig', ['user' => $user, 'token' => $user->activationToken]);

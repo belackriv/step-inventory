@@ -46,6 +46,12 @@ trait TravelerIdLogMixin
     {
         $move = null;
         if($liveTravelerId->getBin() !== $travelerId->getBin()){
+            if($liveTravelerId->getBin()->isLocked()){
+                throw new \Exception('Bin "'.$liveTravelerId->getBin()->getName().'" is locked.');
+            }
+            if($travelerId->getBin()->isLocked()){
+                throw new \Exception('Bin "'.$travelerId->getBin()->getName().'" is locked.');
+            }
             $move = new InventoryTravelerIdMovement();
             $move->setTravelerId($liveTravelerId);
             $move->setByUser($this->getUser());

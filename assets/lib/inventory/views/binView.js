@@ -11,6 +11,7 @@ import viewTpl from  "./binView.hbs!";
 export default Marionette.View.extend({
   template: viewTpl,
   ui: {
+    'toggleViewTypeButton': 'button[name="toggleViewType"]',
     'printButton': 'button[name="print"]',
     'backButton': 'button[name="back"]',
     'printContainer': 'div[data-ui="printContainer"]',
@@ -18,34 +19,49 @@ export default Marionette.View.extend({
     'topLabel': 'p[data-ui-top-label]'
   },
   events: {
+    'click @ui.toggleViewTypeButton': 'toggleViewType',
     'click @ui.printButton': 'print',
     'click @ui.backButton': 'back'
   },
   modelEvents:{
     'change': 'render'
   },
+  showCompactView: false,
   serializeData(){
     let data = _.clone(this.model.attributes);
-    data.tidColumns = [[],[],[]];
-    data.travelerIdCount = 0;
-    let columnIndex = 0;
-    this.model.get('travelerIds').each((tid, index)=>{
-      if(!tid.get('transform') && !tid.get('isVoid')){
-        data.tidColumns[columnIndex].push(tid);
-        columnIndex = ((columnIndex + 1) >= data.tidColumns.length)?0:columnIndex + 1;
-        data.travelerIdCount++;
-      }
-    });
-    data.siColumns = [[],[],[]];
-    data.salesItemCount = 0;
-    columnIndex = 0;
-    this.model.get('salesItems').each((si, index)=>{
-      if(!si.get('isVoid')){
-        data.siColumns[columnIndex].push(si);
-        columnIndex = ((columnIndex + 1) >= data.siColumns.length)?0:columnIndex + 1;
-        data.salesItemCount++
-      }
-    });
+    data.showCompactView = this.showCompactView;
+    if(!this.showCompactView){
+      data.tidColumns = [[],[],[]];
+      data.travelerIdCount = 0;
+      let columnIndex = 0;
+      this.model.get('travelerIds').each((tid, index)=>{
+        if(!tid.get('transform') && !tid.get('isVoid')){
+          data.tidColumns[columnIndex].push(tid);
+          columnIndex = ((columnIndex + 1) >= data.tidColumns.length)?0:columnIndex + 1;
+          data.travelerIdCount++;
+        }
+      });
+      data.salesItemColumns = [[],[],[]];
+      data.salesItemCount = 0;
+      columnIndex = 0;
+      this.model.get('salesItems').each((salesItem, index)=>{
+        if(!salesItem.get('isVoid')){
+          data.salesItemColumns[columnIndex].push(salesItem);
+          columnIndex = ((columnIndex + 1) >= data.salesItemColumns.length)?0:columnIndex + 1;
+          data.salesItemCount++
+        }
+      });
+      data.binSkuCountColumns = [[],[],[]];
+      data.binSkuCountCount = 0;
+      columnIndex = 0;
+      this.model.get('skuCount').each((binSkuCount, index)=>{
+        if(!binSkuCount.get('count') > 0){
+          data.binSkuCountColumns[columnIndex].push(binSkuCount);
+          columnIndex = ((columnIndex + 1) >= data.binSkuCountColumns.length)?0:columnIndex + 1;
+          data.binSkuCountCount++
+        }
+      });
+    }
     return data;
   },
   onRender(){
@@ -68,6 +84,10 @@ export default Marionette.View.extend({
       let width = jquery(elem).siblings('svg').first().width();
       jquery(elem).width(width);
     });
+  },
+  toggleViewType(){
+    this.showCompactView = !this.showCompactView;
+    this.render();
   },
   print(event){
     event.preventDefault();

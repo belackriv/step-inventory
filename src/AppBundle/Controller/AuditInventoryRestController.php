@@ -86,6 +86,7 @@ class AuditInventoryRestController extends FOSRestController
         ){
             $em = $this->getDoctrine()->getManager();
             $inventoryAudit->setStartedAt(new \DateTime());
+            $inventoryAudit->setIsCompleted(false);
             $inventoryAudit->getForBin()->setIsLocked(true);
             $em->persist($inventoryAudit);
             $em->flush();
@@ -247,7 +248,7 @@ class AuditInventoryRestController extends FOSRestController
         if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryTravelerIdAudit) and
             $inventoryTravelerIdAudit->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
-            $travelerId = $binTravelerIdCount = $this->getDoctrine()->getRepository('AppBundle:TravelerId')
+            $travelerId = $this->getDoctrine()->getRepository('AppBundle:TravelerId')
                 ->findOneBy(['label' => $inventoryTravelerIdAudit->getTravelerIdLabel()]);
 
             $inventoryTravelerIdAudit->setTravelerId($travelerId);
@@ -282,6 +283,56 @@ class AuditInventoryRestController extends FOSRestController
             $em->remove($inventoryTravelerIdAudit);
             $em->flush();
             return $inventoryTravelerIdAudit;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Post("/inventory_sales_item_audit")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("inventorySalesItemAudit", converter="fos_rest.request_body")
+     */
+    public function createInventorySalesItemAuditAction(\AppBundle\Entity\InventorySalesItemAudit $inventorySalesItemAudit)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventorySalesItemAudit) and
+            $inventorySalesItemAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $salesItem = $this->getDoctrine()->getRepository('AppBundle:SalesItem')
+                ->findOneBy(['label' => $inventorySalesItemAudit->getSalesItemLabel()]);
+
+            $inventorySalesItemAudit->setSalesItem($salesItem);
+
+            try{
+                $inventorySalesItemAudit->isValid($this->getUser());
+            }catch(\Exception $e){
+                throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, $e->getMessage() );
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inventorySalesItemAudit);
+            $em->flush();
+
+            $this->updateAclByRoles($inventorySalesItemAudit, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventorySalesItemAudit;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/inventory_sales_item_audit/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteInventorySalesItemAuditAction(\AppBundle\Entity\InventorySalesItemAudit $inventorySalesItemAudit)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inventorySalesItemAudit) and
+            $inventorySalesItemAudit->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($inventorySalesItemAudit);
+            $em->flush();
+            return $inventorySalesItemAudit;
         }else{
             throw $this->createAccessDeniedException();
         }

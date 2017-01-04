@@ -33,6 +33,15 @@ let Model = BaseUrlBaseModel.extend({
     }
   },{
     type: BackboneRelational.HasMany,
+    key: 'inventorySalesItemAudits',
+    relatedModel: 'InventorySalesItemAuditModel',
+    includeInJSON: ['id'],
+    reverseRelation:{
+      key: 'inventoryAudit',
+      includeInJSON: ['id'],
+    }
+  },{
+    type: BackboneRelational.HasMany,
     key: 'inventorySkuAudits',
     relatedModel: 'InventorySkuAuditModel',
     includeInJSON: ['id'],
@@ -49,8 +58,11 @@ let Model = BaseUrlBaseModel.extend({
     totalDeviations: null,
     travelerIdCountDeviations: null,
     travelerIdMatchDeviations: null,
+    salesItemCountDeviations: null,
+    salesItemMatchDeviations: null,
     partCountDeviations: null,
     inventoryTravelerIdAudits: null,
+    inventorySalesItemAudits: null,
     inventorySkuAudits: null,
   },
 

@@ -1,72 +1,139 @@
+<button name="toggleViewType" type="button" class="button">
+	{{#if showCompactView}}
+		Show Barcodes
+	{{else}}
+		Show List
+	{{/if}}
+</button>
 <button name="print" type="button" class="button">Print</button>
 <button name="back" type="button" class="button">Back</button>
 <div data-ui="printContainer">
 	<h3 class="title is-3">Bin #{{id}} : {{name}}</h3>
-	{{#if travelerIdCount}}
-		<h5 class="subtitle is-5">Has {{travelerIdCount}} Traveler Ids</h5>
-		<div class="box">
-			<div class="is-pulled-left">
-				<ul>
-				{{#each tidColumns.[0]}}
-					<li>
-						{{barcodeHtml this}}
-					</li>
-				{{/each}}
-				</ul>
+	{{#if showCompactView}}
+		<h5 class="subtitle is-5">
+			Has {{travelerIds.models.length}} Traveler Ids,
+			{{salesItems.models.length}} Sales Items,
+			and {{skuCount.models.length}} Untracked SKUs.
+		</h5>
+		<ul>
+			{{#each travelerIds.models}}
+				{{#unless this.attributes.transform}}
+					{{#unless this.attributes.isVoid}}
+						<li>{{this.attributes.label}}</li>
+					{{/unless}}
+				{{/unless}}
+			{{/each}}
+			{{#each salesItems.models}}
+				{{#unless this.attributes.isVoid}}
+					<li>{{this.attributes.label}}</li>
+				{{/unless}}
+			{{/each}}
+			{{#each skuCount.models}}
+				{{#if this.attributes.count}}
+					<li>{{this.attributes.sku.attributes.label}}:{{this.attributes.count}}</li>
+				{{/if}}
+			{{/each}}
+		</ul>
+	{{else}}
+		{{#if travelerIdCount}}
+			<h5 class="subtitle is-5">Has {{travelerIdCount}} Traveler Ids</h5>
+			<div class="box">
+				<div class="is-pulled-left">
+					<ul>
+					{{#each tidColumns.[0]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each tidColumns.[1]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each tidColumns.[2]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-clearfix"></div>
 			</div>
-			<div class="is-pulled-left">
-				<ul>
-				{{#each tidColumns.[1]}}
-					<li>
-						{{barcodeHtml this}}
-					</li>
-				{{/each}}
-				</ul>
+		{{/if}}
+		{{#if salesItemCount}}
+			<h5 class="subtitle is-5">Has {{salesItemCount}} Sales Items</h5>
+			<div class="box">
+				<div class="is-pulled-left">
+					<ul>
+					{{#each salesItemColumns.[0]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each salesItemColumns.[1]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each salesItemColumns.[2]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-clearfix"></div>
 			</div>
-			<div class="is-pulled-left">
-				<ul>
-				{{#each tidColumns.[2]}}
-					<li>
-						{{barcodeHtml this}}
-					</li>
-				{{/each}}
-				</ul>
+		{{/if}}
+		{{#if binSkuCountCount}}
+			<h5 class="subtitle is-5">Has {{binSkuCountCount}} Untracked SKUs</h5>
+			<div class="box">
+				<div class="is-pulled-left">
+					<ul>
+					{{#each binSkuCountColumns.[0]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each binSkuCountColumns.[1]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each binSkuCountColumns.[2]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-clearfix"></div>
 			</div>
-			<div class="is-clearfix"></div>
+		{{/if}}
 		</div>
 	{{/if}}
-	{{#if salesItemCount}}
-		<h5 class="subtitle is-5">Has {{salesItemCount}} Sales Items</h5>
-		<div class="box">
-			<div class="is-pulled-left">
-				<ul>
-				{{#each siColumns.[0]}}
-					<li>
-						{{barcodeHtml this}}
-					</li>
-				{{/each}}
-				</ul>
-			</div>
-			<div class="is-pulled-left">
-				<ul>
-				{{#each siColumns.[1]}}
-					<li>
-						{{barcodeHtml this}}
-					</li>
-				{{/each}}
-				</ul>
-			</div>
-			<div class="is-pulled-left">
-				<ul>
-				{{#each siColumns.[2]}}
-					<li>
-						{{barcodeHtml this}}
-					</li>
-				{{/each}}
-				</ul>
-			</div>
-			<div class="is-clearfix"></div>
-		</div>
-	{{/if}}
-	</div>
 </div>

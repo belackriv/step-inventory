@@ -7,10 +7,12 @@ import Radio from 'backbone.radio';
 
 import viewTpl from './inventoryAuditView.hbs!';
 import InventoryTravelerIdAuditListView from './inventoryTravelerIdAuditListView.js';
+import InventorySalesItemAuditListView from './inventorySalesItemAuditListView.js';
 import InventorySkuAuditListView from './inventorySkuAuditListView.js';
 import InventorySkuAuditView from './inventorySkuAuditView.js';
 
 import InventoryTravelerIdAuditModel from '../models/inventoryTravelerIdAuditModel.js';
+import InventorySalesItemAuditModel from '../models/inventorySalesItemAuditModel.js';
 import InventorySkuAuditModel from '../models/inventorySkuAuditModel.js';
 
 export default Marionette.View.extend({
@@ -18,6 +20,10 @@ export default Marionette.View.extend({
   regions: {
     travelerIdAudits: {
       el: 'table[data-ui="travelerIdListTable"] > tbody',
+      replaceElement: true
+    },
+    salesItemAudits: {
+      el: 'table[data-ui="salesItemListTable"] > tbody',
       replaceElement: true
     },
     skuAudits: {
@@ -29,12 +35,17 @@ export default Marionette.View.extend({
     'travelerIdLabelInput': 'input[name="travelerIdLabel"]',
     'addTravelerIdAuditButton': 'button[name="addTravelerId"]',
     'travelerIdLabelForm': 'form[data-ui="travelerIdLabelForm"]',
+    'salesItemLabelInput': 'input[name="salesItemLabel"]',
+    'addSalesItemAuditButton': 'button[name="addSalesItem"]',
+    'salesItemLabelForm': 'form[data-ui="salesItemLabelForm"]',
     'addSkuAuditButton': 'button[name="addSkuAudit"]',
     'endButton': 'button[name="end"]',
   },
   events: {
     'click @ui.addTravelerIdAuditButton': 'addTravelerId',
     'submit @ui.travelerIdLabelForm': 'addTravelerId',
+    'click @ui.addSalesItemAuditButton': 'addSalesItem',
+    'submit @ui.salesItemLabelForm': 'addSalesItem',
     'click @ui.addSkuAuditButton': 'addSkuAudit',
     'click @ui.endButton': 'end',
   },
@@ -49,6 +60,12 @@ export default Marionette.View.extend({
     });
     this.showChildView('travelerIdAudits', travelerIdAuditListView);
   },
+  showSalesItemAuditList(){
+    let salesItemAuditListView = new InventorySalesItemAuditListView({
+      collection: this.model.get('inventorySalesItemAudits')
+    });
+    this.showChildView('salesItemAudits', salesItemAuditListView);
+  },
   showSkuAuditList(){
     let skuAuditListView = new InventorySkuAuditListView({
       collection: this.model.get('inventorySkuAudits')
@@ -62,6 +79,15 @@ export default Marionette.View.extend({
     let travelerId = new InventoryTravelerIdAuditModel({
       inventoryAudit: this.model,
       travelerIdLabel: travelerIdLabel
+    }).save();
+  },
+  addSalesItem(event){
+    event.preventDefault();
+    let salesItemLabel = this.ui.salesItemLabelInput.val();
+    this.ui.salesItemLabelInput.focus().val('');
+    let salesItem = new InventorySalesItemAuditModel({
+      inventoryAudit: this.model,
+      salesItemLabel: salesItemLabel
     }).save();
   },
   addSkuAudit(event){

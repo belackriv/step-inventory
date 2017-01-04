@@ -319,25 +319,28 @@ class DefaultRestController extends FOSRestController
      */
     public function listOfficeAction()
     {
-        $offices = $this->getDoctrine()
-        ->getRepository('AppBundle:Office')
-        ->findBy(['organization' => $this->getUser()->getOrganization()]);
+        $offices = $this->getDoctrine()->getRepository('AppBundle:Office')
+            ->findBy(['organization' => $this->getUser()->getOrganization()]);
 
         $authorizationChecker = $this->get('security.authorization_checker');
         foreach($offices as $office){
-            foreach($office->getDepartments() as $dept){
-                foreach($dept->getMenuItems() as $item){
-                    if($item->getParent() !== null){
-                        $dept->removeMenuItem($item);
-                    }
-                    $granted = $authorizationChecker->isGranted('VIEW', $item->getMenuLink());
-                    if (false === $granted) {
-                        $dept->removeMenuItem($item);
-                    }
-                    foreach($item->getChildren() as $child){
-                        $granted = $authorizationChecker->isGranted('VIEW', $child->getMenuLink());
-                        if (false === $granted) {
-                            $item->removeChild($child);
+            if($this->get('security.authorization_checker')->isGranted('VIEW', $office)){
+                foreach($office->getDepartments() as $dept){
+                    if($this->get('security.authorization_checker')->isGranted('VIEW', $dept)){
+                        foreach($dept->getMenuItems() as $item){
+                            if($item->getParent() !== null){
+                                $dept->removeMenuItem($item);
+                            }
+                            $granted = $authorizationChecker->isGranted('VIEW', $item->getMenuLink());
+                            if (false === $granted) {
+                                $dept->removeMenuItem($item);
+                            }
+                            foreach($item->getChildren() as $child){
+                                $granted = $authorizationChecker->isGranted('VIEW', $child->getMenuLink());
+                                if (false === $granted) {
+                                    $item->removeChild($child);
+                                }
+                            }
                         }
                     }
                 }
