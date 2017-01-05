@@ -1,0 +1,59 @@
+
+$si-primary-color: #55a79a;
+
+$primary: $si-primary-color;
+
+
+
+
+@import "../node_modules/bulma/bulma.sass";
+
+
+.si-main {
+  align-items: stretch;
+}
+
+#main-section {
+ min-height: calc(99vh - 295px);
+}
+
+.footer {
+  height: 50px;
+}
+
+.si-side-menu {
+  width: 15em;
+}
+
+.si-change-outline-alert-alert {
+	border: 2px solid rgba(200,25,25,.75);
+	border-radius: 5px;
+}
+
+.si-tid-card {
+	width: 25em;
+}
+
+.si-uploaded-img-figure-container {
+	max-width: 640px;
+}
+
+img.si-org-logo {
+	max-height: 128px !important;
+}
+
+.si-is-void, .si-is-void text {
+	color: #ff1f4b;
+}
+
+.si-has-transform, .si-has-transform text {
+	text-decoration: line-through;
+}
+
+.si-help {
+	width: 15em;
+}
+
+.si-help-panel {
+	margin-top: 1em;
+}

@@ -18,9 +18,18 @@ export default Marionette.View.extend({
   tagName: 'nav',
   className: 'nav has-shadow si-nav',
   regions: {
-    menuSelection: "#menu-selection-container",
-    menu: "#nav-menu",
-    userInfo: "#user-info-container",
+    menuSelection: {
+      el: "#menu-selection-container",
+      replaceElement: true
+    },
+    menu: {
+      el: "#nav-menu",
+      replaceElement: true
+    },
+    userInfo: {
+      el: "#user-info-container",
+      replaceElement: true
+    }
   },
   modelEvents: {
     'change:organization': 'render'

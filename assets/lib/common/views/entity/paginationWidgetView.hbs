@@ -1,25 +1,21 @@
 Showing <span data-ui-name="shownItemCount">{{shownItemCount}}</span> of <span data-ui-name="matchedItemCount">{{matchedItemCount}}</span> matched items.
 <span data-ui-name="totalItemCount">{{totalItemCount}}</span> total items.
-<nav class="pagination">
-  <button type="button" class="button small" data-ui-name="paginationPrev"{{#unless hasPreviousPage}} disabled{{/unless}}>Prev</button>
-  <ul>
+<nav class="pagination is-centered">
+  <button type="button" class="pagination-previous button small" data-ui-name="paginationPrev"{{#unless hasPreviousPage}} disabled{{/unless}}>Prev</button>
+  <ul class="pagination-list">
     <li>
-        <button type="button" class="button small" data-ui-name="paginationFirst"{{#unless hasPreviousPage}} disabled{{/unless}}>First</button>
+      <button type="button" class="pagination-link button small" data-ui-name="paginationFirst"{{#unless hasPreviousPage}} disabled{{/unless}}>First</button>
     </li>
-    <li>
-      <span>...</span>
-    </li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
    	{{#each pageButtons}}
    		<li>
-			<button type="button" class="button small" data-ui-name="paginationPage" page="{{this.page}}"{{#if this.active}} disabled{{/if}}>{{this.label}}</button>
+			<button type="button" class="pagination-link button small" data-ui-name="paginationPage" page="{{this.page}}"{{#if this.active}} disabled{{/if}}>{{this.label}}</button>
 		</li>
-	{{/each}}
+	 {{/each}}
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
     <li>
-      <span>...</span>
-    </li>
-    <li>
-        <button type="button" class="button small" data-ui-name="paginationLast"{{#unless hasNextPage}} disabled{{/unless}}>Last</button>
+      <button type="button" class="pagination-link button small" data-ui-name="paginationLast"{{#unless hasNextPage}} disabled{{/unless}}>Last</button>
     </li>
   </ul>
-  <button type="button" class="button small" data-ui-name="paginationNext"{{#unless hasNextPage}} disabled{{/unless}}>Next</button>
+  <button type="button" class="pagination-next button small" data-ui-name="paginationNext"{{#unless hasNextPage}} disabled{{/unless}}>Next</button>
 </nav>

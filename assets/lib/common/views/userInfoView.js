@@ -15,8 +15,12 @@ export default Marionette.View.extend({
     this.listenTo(Radio.channel('app'), 'loading:hide', this._hideLoading);
     this.currentTimeUpdateInterval = setInterval(this.model.updateCurrentTime.bind(this.model), 1000);
   },
+  attributes: {
+    class: 'nav-right',
+    id: 'user-info-container'
+  },
   template: viewTpl,
-  className: 'card is-fullwidth',
+  //className: 'card is-fullwidth',
   ui:{
     'currentTime': '[data-ui="currentTime"]',
   },

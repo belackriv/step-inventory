@@ -1,18 +1,18 @@
-<header class="card-header">
-	<p class="card-header-title">
-		Hello {{firstName}}
-	</p>
+<div class="nav-item">
+	Logged in as {{firstName}}
 	<a class="card-header-icon" href="/profile" title="Show Profile">
 		<i class="fa fa-gear"></i>
 	</a>
-</header>
-<div class="card-content">
+</div>
+{{!--
+<div class="nav-item">
 	<div class="content">
 		<p>{{appMessage}}</p>
 		<small>It is <span data-ui="currentTime">{{moment currentTime}}</span>.</small>
 	</div>
 </div>
-<footer class="card-footer">
-	<a href="{{baseUrl}}/logout" data-default-nav-action="true">Logout</a>
+--}}
+<div class="nav-item">
+	<a class="button" href="{{baseUrl}}/logout" data-default-nav-action="true">Logout</a>
 	<span id="loading-icon-container" class="icon"></span>
-</footer>
+</div>

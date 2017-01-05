@@ -1,6 +1,5 @@
 "use strict";
 
-import 'bulma/css/bulma.css!';
 import './globalNamespace';
 import 'backbone.stickit';
 import 'lib/shims/marionette.stickit.shim';

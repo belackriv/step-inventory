@@ -32,10 +32,6 @@
     },
     "peerDeps": {}
   },
-  "npm:bulma@0.2.3": {
-    "deps": {},
-    "peerDeps": {}
-  },
   "npm:backbone@1.3.3": {
     "deps": {
       "underscore": "npm:underscore"

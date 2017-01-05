@@ -17,6 +17,10 @@ export default Marionette.View.extend({
     this.departmentCollection = new DepartmentCollection();
     this.setupDefaultDepartMent();
   },
+  attributes: {
+    class: 'nav-left',
+    id: 'menu-selection-container'
+  },
   behaviors:{
     Stickit: {}
   },

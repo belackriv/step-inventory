@@ -34,7 +34,6 @@ SystemJS.config({
     "backbone.stickit": "github:VitalStorm/backbone.stickit@master",
     "backbone.syphon": "github:marionettejs/backbone.syphon@0.6.3",
     "backbone.wreqr": "github:marionettejs/backbone.wreqr@1.4.0",
-    "bulma": "npm:bulma@0.2.3",
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
     "css": "github:systemjs/plugin-css@0.1.32",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",

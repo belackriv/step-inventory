@@ -1,6 +1,6 @@
 'use strict';
 
-import bulmaSrc from 'bulma/css/bulma.css!text';
+import cssSrc from '../css/step-inventory.css!text';
 import _ from 'underscore';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
@@ -65,7 +65,7 @@ export default Marionette.Application.extend({
     },options);
     let printWindow = window.open('', 'print', 'height='+options.height+',width='+options.width);
     printWindow.document.write('<html><head><title>'+options.title+'</title>');
-    printWindow.document.write('<style type="text/css">'+bulmaSrc+'</style>');
+    printWindow.document.write('<style type="text/css">'+cssSrc+'</style>');
     printWindow.document.write('</head><body >');
     printWindow.document.write(html);
     printWindow.document.write('</body></html>');
