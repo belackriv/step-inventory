@@ -1,10 +1,4 @@
 "bundle";
-System.registerDynamic("github:systemjs/plugin-text@0.0.9.json", [], false, function() {
-  return {
-    "main": "text"
-  };
-});
-
 System.register("css/step-inventory.css!github:systemjs/plugin-text@0.0.9/text.js", [], function (_export, _context) {
   "use strict";
 
@@ -25732,6 +25726,30 @@ var define = System.amdDefine;
 }));
 
 })();
+System.registerDynamic("github:systemjs/plugin-text@0.0.9.json", [], false, function() {
+  return {
+    "main": "text"
+  };
+});
+
+System.registerDynamic('github:systemjs/plugin-text@0.0.9/text.js', [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /*
+    Text plugin
+  */
+  exports.translate = function (load) {
+    if (this.builder && this.transpiler) {
+      load.metadata.format = 'esm';
+      return 'exp' + 'ort var __useDefault = true; exp' + 'ort default ' + JSON.stringify(load.source) + ';';
+    }
+
+    load.metadata.format = 'amd';
+    return 'def' + 'ine(function() {\nreturn ' + JSON.stringify(load.source) + ';\n});';
+  };
+  return module.exports;
+});
 System.registerDynamic("lib/admin/views/adminAccountingIndexTabsView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
     var define,
         global = this || self,
@@ -26846,7 +26864,7 @@ System.registerDynamic("lib/common/views/navLayoutView.hbs!github:davis/plugin-h
     }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
       var stack1;
 
-      return "<div class=\"nav-left\" id=\"menu-selection-container\"></div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = (stack1 = depth0 != null ? depth0.organization : depth0) != null ? stack1.attributes : stack1) != null ? stack1.logo : stack1, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "	</div>\r\n</div>\r\n<div class=\"nav-right\" id=\"user-info-container\"></div>";
+      return "<div class=\"nav-left\" id=\"menu-selection-container\"></div>\r\n<div class=\"nav-center\">\r\n	<div class=\"nav-item\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, (stack1 = (stack1 = depth0 != null ? depth0.organization : depth0) != null ? stack1.attributes : stack1) != null ? stack1.logo : stack1, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data })) != null ? stack1 : "") + "		--}}\r\n		<h1 class=\"title is-1\"><a href=\"/\">" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.organization : depth0) != null ? stack1.attributes : stack1) != null ? stack1.name : stack1, depth0)) + "</a></h1>\r\n	</div>\r\n</div>\r\n<div class=\"nav-right\" id=\"user-info-container\"></div>";
     }, "useData": true });
   return module.exports;
 });
@@ -26936,7 +26954,7 @@ System.registerDynamic("lib/common/views/userInfoView.hbs!github:davis/plugin-hb
   module.exports = Handlebars.template({ "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
       var helper;
 
-      return "<div class=\"nav-item\">\r\n	Hello " + container.escapeExpression((helper = (helper = helpers.firstName || (depth0 != null ? depth0.firstName : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "firstName", "hash": {}, "data": data }) : helper)) + "\r\n	<a class=\"card-header-icon\" href=\"/profile\" title=\"Show Profile\">\r\n		<i class=\"fa fa-gear\"></i>\r\n	</a>\r\n</div>\r\n<div class=\"nav-item\">\r\n	<a class=\"button\" href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/logout\" data-default-nav-action=\"true\">Logout</a>\r\n	<span id=\"loading-icon-container\" class=\"icon\"></span>\r\n</div>\r\n";
+      return "<div class=\"nav-item\">\r\n	Logged in as " + container.escapeExpression((helper = (helper = helpers.firstName || (depth0 != null ? depth0.firstName : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "firstName", "hash": {}, "data": data }) : helper)) + "\r\n	<a class=\"card-header-icon\" href=\"/profile\" title=\"Show Profile\">\r\n		<i class=\"fa fa-gear\"></i>\r\n	</a>\r\n</div>\r\n<div class=\"nav-item\">\r\n	<a class=\"button\" href=\"" + container.escapeExpression((helper = (helper = helpers.baseUrl || (depth0 != null ? depth0.baseUrl : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "baseUrl", "hash": {}, "data": data }) : helper)) + "/logout\" data-default-nav-action=\"true\">Logout</a>\r\n	<span id=\"loading-icon-container\" class=\"icon\"></span>\r\n</div>\r\n";
     }, "useData": true });
   return module.exports;
 });

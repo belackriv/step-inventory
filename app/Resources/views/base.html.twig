@@ -19,8 +19,9 @@
             <script src="{{ asset('assets/jspm_packages/system.js') }}"></script>
             <script src="{{ asset('assets/jspm.browser.js') }}"></script>
             <script src="{{ asset('assets/jspm.config.js') }}"></script>
-            <script src="{{ asset('assets/deps.js') }}"></script>
-            {% if app.environment == 'prod' %}
+            {% if app.environment == 'dev' %}
+                <script src="{{ asset('assets/deps.js') }}"></script>
+            {% else %}
                 <script src="{{ asset('assets/main-bundle.js') }}"></script>
             {% endif %}
             <script>
