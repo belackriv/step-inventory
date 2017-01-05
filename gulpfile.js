@@ -11,7 +11,7 @@ gulp.task('default', function() {
 gulp.task('jspm-bundle', function(){
 	const builder = new jspm.Builder();
 	builder.bundle(
-		'lib/main - [lib/**/*] - [lib/**/*.hbs]',
+		'lib/main.js - [lib/**/*] - [lib/**/*!hbs]',
 		'assets/deps.js',
 		{ mangle: false })
 	.then(function(){
@@ -29,7 +29,8 @@ gulp.task('jspm-build', function(){
   builder.bundle(
     'lib/main.js',
     'assets/main-bundle.js',
-    { minify: true })
+    { minify: true }
+  )
   .then(function(){
     gutil.log(gutil.colors.green('Build finished.'));
   })
