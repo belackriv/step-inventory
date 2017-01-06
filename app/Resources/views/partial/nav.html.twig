@@ -1,35 +1,16 @@
 <nav class="nav has-shadow si-nav">
-  <div class="nav-left">
-    <div class="nav-item" id="menu-selection-container"></div>
+  <div class="nav-item">
+    <a href="/" class="si-brand"><span>Step</span>Inventory<span>.</span></a>
+    <span class="si-slogan">Track It Easy©</span>
   </div>
-  <div class="nav-center">
-    <div class="nav-item">
-      <h1 class="title is-1"><a href="./">Step Inventory</a></h1>
-    </div>
-  </div>
+  <div class="nav-center"></div>
   <div class="nav-right">
-    <div class="nav-item" id="menu-user-container">
-      <div class="card is-fullwidth">
-        <header class="card-header">
-          <p class="card-header-title">
-
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-
-            <small>It is {{"now"|date("g:i A - j M Y")}}.</small>
-          </div>
-        </div>
-        <footer class="card-footer">
-          {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <a href="./logout">Logout</a>
-          {% else %}
-            <a href="./login">Login</a>
-          {% endif %}
-          <span id="loading-icon-container" class="icon"></span>
-        </footer>
-      </div>
+    <div class="nav-item">
+      {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a class="button" href="./logout">Logout</a>
+      {% else %}
+        <a class="button" href="./login">Login</a>
+      {% endif %}
     </div>
   </div>
 </nav>

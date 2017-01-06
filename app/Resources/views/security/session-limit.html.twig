@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-content.html.twig' %}
 
-{% block content %}
-  {{ include('partial/nav.html.twig') }}
-  <div class="columns si-main">
-    <menu class="column menu si-side-menu is-narrow"></menu>
-    <div class="column">
-      <section class="section">
-        <div class="container is-fluid" id="main-section">
-          <div class="notification is-danger">Active Session Limit Reached.</div>
-        </div>
-      </section>
-      <footer class="footer"></footer>
-    </div>
-  </div>
+{% block main_section %}
+  <div class="notification is-danger">Active Session Limit Reached.</div>
 {% endblock %}
 
 {% block jspm %}{% endblock %}

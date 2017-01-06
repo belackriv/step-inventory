@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "bulma": "^0.3.0",
+    "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.0.0",
     "jspm": "0.17.0-beta.32",

@@ -5,11 +5,13 @@ import Backbone from 'backbone'
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
-import menuSelectionTpl from './menuSelectionView.hbs!';
+import viewTpl from './navRightView.hbs!';
 
 import OfficeCollection from 'lib/common/models/officeCollection.js';
 import DepartmentCollection from 'lib/common/models/departmentCollection.js';
 import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
+
+import LoadingView from 'lib/common/views/loadingView.js';
 
 export default Marionette.View.extend({
   initialize(options){
@@ -17,17 +19,18 @@ export default Marionette.View.extend({
     this.departmentCollection = new DepartmentCollection();
     this.setupDefaultDepartMent();
   },
-  attributes: {
-    class: 'nav-left',
-    id: 'menu-selection-container'
-  },
+  className: 'nav-right',
   behaviors:{
     Stickit: {}
   },
-  template: menuSelectionTpl,
+  template: viewTpl,
+  regions: {
+    loading: "#loading-icon-container",
+  },
   ui: {
     officeSelect: "#menu-office-select",
-    departmentSelect: "#menu-department-select"
+    departmentSelect: "#menu-department-select",
+    "click a": "navigate"
   },
   modelEvents: {
     "change:office": "onOfficeChange",
@@ -58,6 +61,10 @@ export default Marionette.View.extend({
         }
       }
     }
+  },
+  onRender(){
+    this.listenTo(Radio.channel('app'), 'loading:show', this._showLoading);
+    this.listenTo(Radio.channel('app'), 'loading:hide', this._hideLoading);
   },
   onOfficeChange(){
     if(this.model.get('office')){
@@ -97,5 +104,18 @@ export default Marionette.View.extend({
       this.model.set('office', myself.get('currentDepartment').get('office'));
       this.model.set('department', myself.get('currentDepartment'));
     }
-  }
+  },
+  navigate: function(e){
+    if(e.currentTarget.dataset.defaultNavAction !== 'true'){
+      e.preventDefault();
+      e.stopPropagation();
+      Radio.channel('app').trigger('navigate', e.currentTarget.getAttribute('href'));
+    }
+  },
+  _showLoading(){
+    this.showChildView('loading', new LoadingView());
+  },
+  _hideLoading(){
+    this.getRegion('loading').empty();
+  },
 });

@@ -1,32 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-content.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/lib/css/step-inventory.css') }}"/>
+{% block main_section %}
+  <p>Your signup is almost complete.  Please check your email for an activation link.</p>
 {% endblock %}
-
-{% block content %}
-  {{ include('partial/nav.html.twig') }}
-  <div class="columns si-main">
-    <menu class="column menu si-side-menu is-narrow"></menu>
-    <div class="column">
-      <section class="section">
-        <div class="container is-fluid" id="main-section">
-          <p>Your signup is almost complete.  Please check your email for an activation link.</p>
-        </div>
-      </section>
-      <footer class="footer"></footer>
-    </div>
-  </div>
-
-
-
-
-{% endblock %}
-
-{% block jspm %}{% endblock %}
-
-
-
-

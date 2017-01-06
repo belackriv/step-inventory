@@ -1,35 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-content.html.twig' %}
 
-{% block content %}
-  {{ include('partial/nav.html.twig') }}
-  <div class="columns si-main">
-    <menu class="column menu si-side-menu is-narrow"></menu>
-    <div class="column">
-      <section class="section">
-        <div class="container is-fluid" id="main-section">
-          {% if error %}
-            <div class="notification is-danger">{{ error.messageKey|trans(error.messageData) }}</div>
-          {% endif %}
-          <form action="{{ path('login_check') }}" method="post">
-            <label for="inputUsername" class="label">Username or Email</label>
-            <div class="control">
-              <input {% if last_username is not defined or last_username is null  %}autofocus {% endif %}type="text" class="input" id="inputUsername" placeholder="Username or Email"  name="_username" value="{{ last_username }}" />
-            </div>
-            <label for="inputPassword" class="label">Password</label>
-            <div class="control">
-              <input {% if last_username %}autofocus {% endif %}type="password" class="input" id="inputPassword" placeholder="Password"  name="_password"  />
-              <span class="help"><a href="{{ path('reset_password') }}">Forgot?</a></span>
-            </div>
-            <div class="control">
-              <button type="submit" class="button is-primary">Log in</button>
-            </div>
-            <div>Don't have an account? <a href="{{ path('signup_route') }}">Sign Up.</a></div>
-          </form>
-        </div>
-      </section>
-      <footer class="footer"></footer>
+{% block main_section %}
+  {% if error %}
+    <div class="notification is-danger">{{ error.messageKey|trans(error.messageData) }}</div>
+  {% endif %}
+  <form action="{{ path('login_check') }}" method="post">
+    <label for="inputUsername" class="label">Username or Email</label>
+    <div class="control">
+      <input {% if last_username is not defined or last_username is null  %}autofocus {% endif %}type="text" class="input" id="inputUsername" placeholder="Username or Email"  name="_username" value="{{ last_username }}" />
     </div>
-  </div>
+    <label for="inputPassword" class="label">Password</label>
+    <div class="control">
+      <input {% if last_username %}autofocus {% endif %}type="password" class="input" id="inputPassword" placeholder="Password"  name="_password"  />
+      <span class="help"><a href="{{ path('reset_password') }}">Forgot?</a></span>
+    </div>
+    <div class="control">
+      <button type="submit" class="button is-primary">Log in</button>
+    </div>
+    <div>Don't have an account? <a href="{{ path('signup_route') }}">Sign Up.</a></div>
+  </form>
 {% endblock %}
-
-{% block jspm %}{% endblock %}

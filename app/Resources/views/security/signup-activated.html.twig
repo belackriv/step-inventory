@@ -1,26 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-content.html.twig' %}
 
-{% block content %}
-  {{ include('partial/nav.html.twig') }}
-  <div class="columns si-main">
-    <menu class="column menu si-side-menu is-narrow"></menu>
-    <div class="column">
-      <section class="section">
-        <div class="container is-fluid" id="main-section">
-          <p>Your signup is complete. Click <a href="{{ path('login_route') }}">Here</a> to login.</p>
-        </div>
-      </section>
-      <footer class="footer"></footer>
-    </div>
-  </div>
-
-
-
-
+{% block main_section %}
+  <p>Your signup is complete. Click <a href="{{ path('login_route') }}">Here</a> to login.</p>
 {% endblock %}
-
-{% block jspm %}{% endblock %}
-
-
-
-

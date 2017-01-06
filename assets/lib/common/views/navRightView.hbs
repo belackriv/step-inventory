@@ -1,0 +1,34 @@
+<div class="nav-item">
+  <div class="control is-horizontal">
+    <div class="control-label">
+      <label class="label is-small">Office:</label>
+    </div>
+    <div class="control">
+      <span class="select is-small">
+        <select id="menu-office-select"></select>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="nav-item">
+  <div class="control is-horizontal">
+    <div class="control-label">
+      <label class="label is-small">Department:</label>
+    </div>
+    <div class="control">
+      <span class="select is-small">
+        <select id="menu-department-select"></select>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="nav-item">
+  <span class="icon" title="Login in as '{{username}}'"><i class="fa fa-user"></i></span>
+  <a class="icon" href="/profile" title="Show Profile">
+    <i class="fa fa-gear"></i>
+  </a>
+</div>
+<div class="nav-item">
+  <a class="button" href="{{baseUrl}}/logout" data-default-nav-action="true">Logout</a>
+  <span id="loading-icon-container" class="icon"></span>
+</div>

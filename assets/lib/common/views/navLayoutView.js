@@ -6,8 +6,8 @@ import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
 import viewTpl from './navLayoutView.hbs!';
-import MenuSelectionView from './menuSelectionView.js';
-import UserInfoView from './userInfoView.js';
+import NavLeftView from './navLeftView.js';
+import NavRightView from './navRightView.js';
 
 
 export default Marionette.View.extend({
@@ -18,16 +18,12 @@ export default Marionette.View.extend({
   tagName: 'nav',
   className: 'nav has-shadow si-nav',
   regions: {
-    menuSelection: {
-      el: "#menu-selection-container",
+    navLeft: {
+      el: ".nav-left",
       replaceElement: true
     },
-    menu: {
-      el: "#nav-menu",
-      replaceElement: true
-    },
-    userInfo: {
-      el: "#user-info-container",
+    navRight: {
+      el: ".nav-right",
       replaceElement: true
     }
   },
@@ -35,13 +31,9 @@ export default Marionette.View.extend({
     'change:organization': 'render'
   },
   onRender(){
-    let menuSelectionView = new MenuSelectionView({
-      model: new Backbone.Model()
-    });
-    this.showChildView('menuSelection', menuSelectionView);
-    let userInfoView = new UserInfoView({
+    this.showChildView('navLeft', new NavLeftView());
+    this.showChildView('navRight', new NavRightView({
       model: this.model
-    });
-    this.showChildView('userInfo', userInfoView);
+    }));
   },
 });

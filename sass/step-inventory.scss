@@ -3,11 +3,12 @@ $si-primary-color: #55a79a;
 
 $primary: $si-primary-color;
 
-
-
-
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
 @import "../node_modules/bulma/bulma.sass";
 
+.si-nav {
+	border-bottom: 1px solid $si-primary-color;
+}
 
 .si-main {
   align-items: stretch;
@@ -56,4 +57,25 @@ img.si-org-logo {
 
 .si-help-panel {
 	margin-top: 1em;
+}
+
+a.si-brand {
+	font-size: 40px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-family: "Rambla";
+    color: $si-primary-color !important;
+
+    span {
+    	color: rgba(27,27,27,0.8);
+    	font-weight: 700;
+    }
+}
+
+.si-slogan {
+	border-left: 1px solid #e6e6e6;
+	margin-left: 1em;
+	padding-left: 1em;
 }

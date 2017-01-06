@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  {{ include('partial/nav.html.twig') }}
+  <div class="columns si-main">
+    <div class="column">
+      <div class="columns">
+        <div class="column"></div>
+        <div class="column is-one-quarter">
+          <section class="section">
+            <div class="container" id="main-section">
+              {% block main_section %}{% endblock %}
+            </div>
+          </section>
+        </div>
+      <div class="column"></div>
+    </div>
+    {{ include('partial/footer.html.twig')}}
+  </div>
+{% endblock %}
+
+{% block jspm %}{% endblock %}
+
+
+
+
