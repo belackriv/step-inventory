@@ -30,6 +30,8 @@ export default Marionette.View.extend({
   ui: {
     officeSelect: "#menu-office-select",
     departmentSelect: "#menu-department-select",
+  },
+  events:{
     "click a": "navigate"
   },
   modelEvents: {

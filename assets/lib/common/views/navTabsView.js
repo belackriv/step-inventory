@@ -9,6 +9,7 @@ export default Marionette.View.extend({
     this.listenTo(Radio.channel('data').request('myself'), 'update:userRoles', this.render);
     this.listenTo(Radio.channel('data').request('myself'), 'change:userRoles', this.render);
   },
+  className: 'tabs is-toggle',
   getTemplate(){
     return this.options.template;
   },

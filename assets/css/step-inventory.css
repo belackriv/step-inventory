@@ -6386,7 +6386,7 @@ a.si-brand {
   padding: 0;
   line-height: 1;
   font-family: "Rambla";
-  color: #55a79a; }
+  color: #55a79a !important; }
   a.si-brand span {
     color: rgba(27, 27, 27, 0.8);
     font-weight: 700; }
