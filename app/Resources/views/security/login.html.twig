@@ -1,4 +1,5 @@
 {% extends 'base-content.html.twig' %}
+{% set hideLoginButton = true %}
 
 {% block main_section %}
   {% if error %}
@@ -19,4 +20,8 @@
     </div>
     <div>Don't have an account? <a href="{{ path('signup_route') }}">Sign Up.</a></div>
   </form>
+{% endblock %}
+
+{% block login_button %}
+  test
 {% endblock %}

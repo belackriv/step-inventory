@@ -6,10 +6,12 @@
   <div class="nav-center"></div>
   <div class="nav-right">
     <div class="nav-item">
-      {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <a class="button" href="./logout">Logout</a>
-      {% else %}
-        <a class="button" href="./login">Login</a>
+      {% if hideLoginButton is not defined %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+          <a class="button" href="./logout">Logout</a>
+        {% else %}
+          <a class="button" href="./login">Login</a>
+        {% endif %}
       {% endif %}
     </div>
   </div>

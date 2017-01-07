@@ -6339,8 +6339,9 @@ label.panel-block {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem; }
 
-.si-nav {
-  border-bottom: 1px solid #55a79a; }
+nav.si-nav {
+  border-bottom: 1px solid #55a79a;
+  background: gainsboro; }
 
 .si-main {
   align-items: stretch; }
