@@ -80,3 +80,40 @@ a.si-brand {
 	margin-left: 1em;
 	padding-left: 1em;
 }
+
+.tabs.has-dropdown {
+	overflow: visible;
+}
+
+.tabs .si-tabs-dropdown {
+	position: relative;
+}
+
+.tabs .si-tabs-dropdown ul {
+	z-index: 1;
+	display: block;
+    visibility: hidden;
+	position: absolute;
+	top: 100%;
+	opacity: 0;
+	transition: opacity 0.35s linear;
+
+	li.not-active a {
+		background-color: $white;
+    	border-color: $grey-lighter;
+    	color: inherit;
+	}
+
+	li.not-active a:hover {
+		background-color: $light;
+		border-color: $grey-light;
+	}
+
+}
+
+.tabs .si-tabs-dropdown:hover ul {
+    visibility: visible;
+  	opacity:1;
+  	transition-delay:0;
+}
+

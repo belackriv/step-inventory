@@ -30,6 +30,7 @@ export default Marionette.View.extend({
   ui: {
     officeSelect: "#menu-office-select",
     departmentSelect: "#menu-department-select",
+    accountInfoLink: '[data-ui="account-info"]'
   },
   events:{
     "click a": "navigate"
@@ -67,6 +68,9 @@ export default Marionette.View.extend({
   onRender(){
     this.listenTo(Radio.channel('app'), 'loading:show', this._showLoading);
     this.listenTo(Radio.channel('app'), 'loading:hide', this._hideLoading);
+    if(!this.model.isAccountOwner()){
+      this.ui.accountInfoLink.hide();
+    }
   },
   onOfficeChange(){
     if(this.model.get('office')){
@@ -108,10 +112,15 @@ export default Marionette.View.extend({
     }
   },
   navigate: function(e){
-    if(e.currentTarget.dataset.defaultNavAction !== 'true'){
-      e.preventDefault();
-      e.stopPropagation();
-      Radio.channel('app').trigger('navigate', e.currentTarget.getAttribute('href'));
+    const href = e.currentTarget.getAttribute('href');
+    if( href !== '/account' ||
+        this.model.isAccountOwner()
+    ){
+      if(e.currentTarget.dataset.defaultNavAction !== 'true'){
+        e.preventDefault();
+        e.stopPropagation();
+        Radio.channel('app').trigger('navigate', href);
+      }
     }
   },
   _showLoading(){

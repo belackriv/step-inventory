@@ -23,6 +23,7 @@ export default Marionette.Object.extend({
   },
   routes:  {
     'profile': 'profile',
+    'account': 'account'
   },
   profile(){
     Radio.channel('app').trigger('request:started');
@@ -30,6 +31,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.profile();
+    });
+  },
+  account(){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/common/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.account();
     });
   },
 });

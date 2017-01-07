@@ -23,6 +23,7 @@ export default Marionette.View.extend({
     this.setInitialProperties();
   },
   template: viewTpl,
+  className: 'box',
   behaviors: {
     'Stickit': {},
   },

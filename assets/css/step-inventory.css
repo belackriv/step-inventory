@@ -6396,3 +6396,30 @@ a.si-brand {
   border-left: 1px solid #e6e6e6;
   margin-left: 1em;
   padding-left: 1em; }
+
+.tabs.has-dropdown {
+  overflow: visible; }
+
+.tabs .si-tabs-dropdown {
+  position: relative; }
+
+.tabs .si-tabs-dropdown ul {
+  z-index: 1;
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  transition: opacity 0.35s linear; }
+  .tabs .si-tabs-dropdown ul li.not-active a {
+    background-color: white;
+    border-color: #dbdbdb;
+    color: inherit; }
+  .tabs .si-tabs-dropdown ul li.not-active a:hover {
+    background-color: whitesmoke;
+    border-color: #b5b5b5; }
+
+.tabs .si-tabs-dropdown:hover ul {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0; }

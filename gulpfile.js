@@ -50,3 +50,9 @@ gulp.task('sass', function(){
     .pipe(gulp.dest('./assets/css'));
 
 });
+
+gulp.task('sass-watch', function(){
+    gulp.watch('./sass/*', ['sass']);
+
+});
+

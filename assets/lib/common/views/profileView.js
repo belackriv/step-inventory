@@ -6,10 +6,6 @@ import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
 import viewTpl from './profileView.hbs!';
-import AccountView from './accountView.js';
-import LoadingView from './loadingView.js';
-import AccountModel from '../models/accountModel.js';
-import AccountCollection from '../models/accountCollection.js';
 
 export default Marionette.View.extend({
   initialize(){
@@ -18,9 +14,6 @@ export default Marionette.View.extend({
   },
   template: viewTpl,
   className: 'box',
-  regions:{
-    'accountInfo': '[data-region="accountInfo"]'
-  },
   behaviors: {
     'Stickit': {},
   },
@@ -54,25 +47,6 @@ export default Marionette.View.extend({
   },
   onRender(){
     this.ui.syncStatusIndicator.hide();
-    if(this.model.isAccountOwner()){
-      this.ui.accountInfoTabs.show();
-      this.renderAccountInfo();
-    }else{
-      this.ui.accountInfoTabs.hide();
-    }
-  },
-  renderAccountInfo(){
-    if(!this.account){
-      this.account = true;
-      this.showChildView('accountInfo', new LoadingView());
-      let accounts = new AccountCollection();
-      accounts.fetch().done(()=>{
-        this.account = accounts.first();
-        this.showChildView('accountInfo', new AccountView({
-          model: this.account
-        }));
-      });
-    }
   },
   revertUserInfoForm(){
     this.disableFormButtons();
