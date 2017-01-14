@@ -102,4 +102,5 @@ Vagrant.configure("2") do |config|
 	# sudo apt install -y mariadb-server
 	# sudo mysql -uroot -pvagrant < create_db_user.sql
 	# sudo mysql -uroot -pvagrant 'step-inventory' < db_dump.sql
+  # set session.serialize_handler = php_serialize in php.ini
 end

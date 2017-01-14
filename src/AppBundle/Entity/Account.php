@@ -50,6 +50,12 @@ Class Account
     public $stripePublicKey;
 
     /**
+     * @JMS\Type("array")
+     * @JMS\ReadOnly
+     */
+    public $currentSessions;
+
+    /**
      * @ORM\OneToOne(targetEntity="Organization", inversedBy="account", cascade={"merge"})
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Organization")

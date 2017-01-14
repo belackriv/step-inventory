@@ -40,8 +40,14 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onCoreException, priority: 1000 }
 
+    app.user_session_closed_listener:
+        class: AppBundle\Listener\UserSessionClosedEventListener
+        arguments: ["@service_container"]
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 130 }
+
     app.user_limit_listener:
-        class: AppBundle\EventListener\UserLimitEventListener
+        class: AppBundle\Listener\UserLimitEventListener
         arguments: ["@service_container"]
         tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }

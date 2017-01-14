@@ -12,6 +12,7 @@ import './accountChangeModel.js';
 import './accountOwnerChangeModel.js';
 import './accountPlanChangeModel.js';
 import './billModel.js';
+import './currentSessionModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
@@ -46,6 +47,15 @@ let Model = BaseUrlBaseModel.extend({
     }
   },{
     type: BackboneRelational.HasMany,
+    key: 'currentSessions',
+    relatedModel: 'CurrentSessionModel',
+    includeInJSON: false,
+    reverseRelation: {
+      key: 'account',
+      includeInJSON: ['id'],
+    }
+  },{
+    type: BackboneRelational.HasMany,
     key: 'accountChanges',
     relatedModel: 'AccountChangeModel',
     includeInJSON: false,
@@ -67,9 +77,10 @@ let Model = BaseUrlBaseModel.extend({
     organization: null,
     owner: null,
     subscription: null,
+    currentSessions: null,
     accountChanges: null,
     bills: null,
-  },
+  }
 });
 
 globalNamespace.Models.AccountModel = Model;

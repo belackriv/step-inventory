@@ -13,6 +13,7 @@ import AccountPlanChangeModel from '../models/accountPlanChangeModel.js';
 
 import NoChildrenRowView from 'lib/common/views/noChildrenRowView.js';
 import PaymentSourceItemView from './paymentSourceItemView.js';
+import CurrentSessionItemView from './currentSessionItemView.js';
 import AccountChangeItemView from './accountChangeItemView.js';
 import BillItemView from './billItemView.js';
 
@@ -30,6 +31,10 @@ export default Marionette.View.extend({
   regions:{
     'paymentSources': {
       el: 'tbody[data-region="paymentSources"]',
+      replaceElement: true
+    },
+    'currentSessions': {
+      el: 'tbody[data-region="currentSessions"]',
       replaceElement: true
     },
     'changeHistory': {
@@ -61,6 +66,9 @@ export default Marionette.View.extend({
   modelEvents:{
     'change:organization': 'setInitialProperties',
     'change:newPlan': 'planChanged'
+  },
+  childEvents: {
+    'session:destroyed': 'render'
   },
   bindings: {
     '@ui.ownerSelect': {
@@ -125,6 +133,18 @@ export default Marionette.View.extend({
       emptyView: NoChildrenRowView,
       emptyViewOptions:{
         colspan: 5
+      }
+    }));
+    this.showChildView('currentSessions', new Marionette.CollectionView({
+      collection: this.model.get('currentSessions'),
+      childView: CurrentSessionItemView,
+      tagName: 'tbody',
+      emptyView: NoChildrenRowView,
+      emptyViewOptions:{
+        colspan: 5
+      },
+      filter(session){
+        return (session.get('forUsername') && session.get('startedAt') && session.get('updatedAt'));
       }
     }));
     this.showChildView('changeHistory', new Marionette.CollectionView({

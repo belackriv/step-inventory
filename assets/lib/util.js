@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'underscore';
 import $ from 'jquery';
 import 'jquery-ui';
 import 'select2';
@@ -15,15 +16,21 @@ if (window.__agent) {
   window.__agent.start(Backbone, Marionette);
 }
 
-var handleAjaxError = function(jqXHR,textStatus,errorThrown){
-  var errorObj = jqXHR.responseJSON?jqXHR.responseJSON:JSON.parse(jqXHR.responseText);
-  var view = new ErrorMessageView({
-    model: new Backbone.Model(errorObj.error)
+var handleAjaxError = function(jqXHR,textStatus,errorThrown,dialogOptions){
+  let model = null;
+  try{
+    let errorObj = jqXHR.responseJSON?jqXHR.responseJSON:JSON.parse(jqXHR.responseText);
+    model = new Backbone.Model(errorObj.error);
+  }catch(e){
+    model = new Backbone.Model();
+  }
+  let view = new ErrorMessageView({
+    model: model
   });
-  var options = {
-        title: 'HTTP Error',
+  let options = _.extend({
+    title: 'HTTP Error',
     width: '80%'
-  };
+  }, dialogOptions);
   Radio.channel('dialog').trigger('open', view, options);
 };
 
@@ -39,16 +46,13 @@ Backbone.ajax = function() {
                 // Redirect the to the login page.
                 window.location = '/login';
             },
-            403(){
+            403(jqXHR,textStatus,errorThrown){
                 // 403 -- Access denied
-                var view = new ErrorMessageView({
-                    model: new Backbone.Model('Access Denied.')
-                });
                 var options = {
                     title: 'Access Denied',
                     width: '80%'
                 };
-                Radio.channel('dialog').trigger('open', view, options);
+                handleAjaxError(jqXHR,textStatus,errorThrown, options);
             },
             404(jqXHR,textStatus,errorThrown){
                 //405  -- Show Error in Dialog

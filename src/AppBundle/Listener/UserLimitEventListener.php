@@ -1,15 +1,15 @@
 <?php
 
-namespace AppBundle\EventListener;
+namespace AppBundle\Listener;
 
 use AppBundle\Entity\User;
+use AppBundle\Library\Service\SncRedisSessionQueryService;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-
 
 class UserLimitEventListener
 {
@@ -53,26 +53,17 @@ class UserLimitEventListener
 				}
 
 				$redisClient = $this->container->get('snc_redis.default');
-				$orgId = $user->getOrganization()->getId();
+				$sessionKey = $this->container->get('session')->getId();
+				$sessionQueryService = new SncRedisSessionQueryService($redisClient);
+
+				$sessionCount = $sessionQueryService->getSessionCount($user->getOrganization());
 				$orgSessionLimit = $user->getOrganization()->getUserLimit();
-				$key = 'org#'.$orgId;
-
-				$sessions = $redisClient->hgetall($key);
-				$sessionCount = 0;
-				$thirtyMinutesAgo = new \DateTime('-30 minute');
-
-				foreach($sessions as $sessionKey => $timeStr){
-				  $time = new \DateTime($timeStr);
-				  if($time < $thirtyMinutesAgo){
-					  $redisClient->hdel($key, $sessionKey);
-				  }else{
-					  $sessionCount++;
-				  }
-				}
 
 				if($sessionCount <= $orgSessionLimit){
-				  $sessionKey = $this->container->get('session')->getId();
-				  $redisClient->hset($key, $sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP') );
+				  	$redisClient->hset(
+				  		$sessionQueryService->getOrgKey($user->getOrganization()),
+				  		$sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP')
+				  	);
 				}else{
 					if( $event->getRequest()->isXmlHttpRequest()){
 					  	throw new \Exception("Active Session Limit Reached");

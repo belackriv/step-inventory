@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Library\Utilities;
 use AppBundle\Library\Service\UploadException;
+use AppBundle\Library\Service\SncRedisSessionQueryService;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,7 +31,30 @@ class DefaultRestController extends FOSRestController
     {
         $account = $this->getUser()->getOrganization()->getAccount();
         $account->stripePublicKey = $this->container->getParameter('stripe_public_key');
+
+        $redisClient = $this->container->get('snc_redis.default');
+        $sessionQueryService = new SncRedisSessionQueryService($redisClient);
+        $account->currentSessions = $sessionQueryService->getSessions(
+            $this->container->get('snc_redis.session.handler'),
+            $this->container->get('session.storage.native'),
+            $this->getUser()->getOrganization()
+        );
         return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
+    }
+
+    /**
+     * @Rest\Delete("/current_session/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteCurrentSessionAction($id, Request $request)
+    {
+        $redisClient = $this->container->get('snc_redis.default');
+        $sessionQueryService = new SncRedisSessionQueryService($redisClient);
+        $sessionQueryService->destroySession(
+            $id,
+            $this->getUser()->getOrganization()
+        );
+        return [];
     }
 
     /**
@@ -175,7 +199,7 @@ class DefaultRestController extends FOSRestController
         return ['total_count'=> count($subscriptions), 'total_items' => count($subscriptions), 'list'=>$subscriptions];
     }
 
-     /**
+    /**
      * @Rest\Get("/plan")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */

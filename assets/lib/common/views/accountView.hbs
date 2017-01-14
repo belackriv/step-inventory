@@ -48,6 +48,24 @@
 <button class="button is-info" type="button" data-ui="addPaymentInfo">Add Payment Info</button>
 <table class="table is-striped">
 	<thead>
+		<tr>
+			<th colspan="5">
+				<h4 class="title is-4 has-text-centered">Current Users / Sessions</h4>
+				Limit:{{subscription.attributes.plan.attributes.maxConcurrentUsers}}
+			</th>
+		</tr>
+		<tr>
+			<th>Id</th>
+			<th>For User</th>
+			<th>Started At</th>
+			<th>Last Updated At</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody data-region="currentSessions"></tbody>
+</table>
+<table class="table is-striped">
+	<thead>
 		<tr><th colspan="6"><h4 class="title is-4 has-text-centered">Change History</h4></th></tr>
 		<tr>
 			<th>#</th>
