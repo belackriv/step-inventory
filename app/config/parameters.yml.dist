@@ -20,3 +20,5 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     stripe_secure_key: sk_blah
     stripe_public_key: pk_blah
+    stripe_user_name: username
+    stripe_password: password
