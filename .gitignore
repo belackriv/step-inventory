@@ -54,6 +54,7 @@ vendor
 var
 *.log
 app/bootstrap.php.cache
+app/config/parameters.yml
 web/assets
 web/jspm_packages
 web/bundles
