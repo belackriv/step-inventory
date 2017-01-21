@@ -30,6 +30,24 @@ Class TravelerId
 	}
 
 	/**
+	 * @ORM\Column(type="datetime", nullable=false)
+	 * @JMS\Type("DateTime")
+	 */
+
+	protected $createdAt = null;
+
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt(\DateTime $createdAt)
+	{
+		$this->createdAt = $createdAt;
+		return $this;
+	}
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="InboundOrder", inversedBy="travelerIds")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\InboundOrder")
@@ -228,6 +246,7 @@ Class TravelerId
     	if($this->getIsVoid() === null){
     		$this->setIsVoid(false);
     	}
+    	$this->setCreatedAt(new \DateTime());
     }
 
     public function isOwnedByOrganization(Organization $organization)

@@ -55,6 +55,12 @@ Class Account
      */
     public $currentSessions;
 
+      /**
+     * @JMS\Type("integer")
+     * @JMS\ReadOnly
+     */
+    public $monthlyTravelerIds;
+
     /**
      * @ORM\OneToOne(targetEntity="Organization", inversedBy="account", cascade={"merge"})
      * @ORM\JoinColumn(nullable=false)

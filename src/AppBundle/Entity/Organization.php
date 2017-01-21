@@ -480,4 +480,16 @@ Class Organization
         }
     }
 
+    public function getTravelerIdLimit()
+    {
+        if( $this->getAccount() and
+            $this->getAccount()->getSubscription() and
+            $this->getAccount()->getSubscription()->getPlan()
+        ){
+            return $this->getAccount()->getSubscription()->getPlan()->getMaxMonthlyTravelerIds();
+        }else{
+            return null;
+        }
+    }
+
 }

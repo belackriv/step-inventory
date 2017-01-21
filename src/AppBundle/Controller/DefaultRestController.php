@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Library\Utilities;
 use AppBundle\Library\Service\UploadException;
 use AppBundle\Library\Service\SncRedisSessionQueryService;
+use AppBundle\Library\Service\MonthlyTravelerIdLimitService;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,6 +40,8 @@ class DefaultRestController extends FOSRestController
             $this->container->get('session.storage.native'),
             $this->getUser()->getOrganization()
         );
+        $monthlyTravelerIdLimitService = new MonthlyTravelerIdLimitService($this->container);
+        $account->monthlyTravelerIds = $monthlyTravelerIdLimitService->getMonthlyTravelerIds($this->getUser());
         return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
     }
 

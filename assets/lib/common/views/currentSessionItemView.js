@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'underscore';
 import Marionette from 'marionette';
 import viewTpl from './currentSessionItemView.hbs!';
 
@@ -11,6 +12,11 @@ export default Marionette.View.extend({
   },
   events:{
   	'click @ui.closeSessionButton': 'closeSession'
+  },
+  serializeData(){
+    let data = _.clone(this.model.attributes);
+    data.rowNum = this.options.parentCollection.indexOf(this.model) + 1;
+    return data;
   },
   closeSession(event){
   	event.preventDefault();

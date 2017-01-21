@@ -50,11 +50,23 @@
 	<thead>
 		<tr>
 			<th colspan="5">
-				<h4 class="title is-4 has-text-centered">Current Users / Sessions</h4>
-				Limit:{{subscription.attributes.plan.attributes.maxConcurrentUsers}}
+				<h4 class="title is-4 has-text-centered">Current Monthly TravelerIds</h4>
+				<p class="has-text-centered">{{monthlyTravelerIds}} / {{subscription.attributes.plan.attributes.maxMonthlyTravelerIds}}</p>
+			</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+<table class="table is-striped">
+	<thead>
+		<tr>
+			<th colspan="6">
+				<h4 class="title is-4 has-text-centered">Current Sessions</h4>
+				<p class="has-text-centered">{{currentSessions.length}} / {{subscription.attributes.plan.attributes.maxConcurrentUsers}}</p>
 			</th>
 		</tr>
 		<tr>
+			<th>#</th>
 			<th>Id</th>
 			<th>For User</th>
 			<th>Started At</th>

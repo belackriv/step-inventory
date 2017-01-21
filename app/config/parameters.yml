@@ -14,3 +14,5 @@ parameters:
     secret: dffdb931f389132b6ccba2a16e78cd12fb1a01ca
     stripe_secure_key: sk_test_VeBj2vpGjbTymerzxJ8wcq4o
     stripe_public_key: pk_test_hX4ablCnRKvXQfIn6olJe8oG
+    stripe_user_name: 'ADMIN@STEPINVENTORY.COM'
+    stripe_password: '$0z6Fs1!'

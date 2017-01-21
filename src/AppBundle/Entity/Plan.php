@@ -176,7 +176,7 @@ Class Plan
 
     public function setMaxConcurrentUsers($maxConcurrentUsers)
     {
-        $this->maxConcurrentUsers = $maxConcurrentUsers;
+        $this->maxConcurrentUsers = (int)$maxConcurrentUsers;
         return $this;
     }
 
@@ -184,16 +184,33 @@ Class Plan
      * @ORM\Column(type="smallint", nullable=false)
      * @JMS\Type("integer")
      */
-    protected $maxSkus = null;
+    protected $maxMonthlyTravelerIds = null;
 
-    public function getMaxSkus()
+    public function getMaxMonthlyTravelerIds()
     {
-        return $this->maxSkus;
+        return $this->maxMonthlyTravelerIds;
     }
 
-    public function setMaxSkus($maxSkus)
+    public function setMaxMonthlyTravelerIds($maxMonthlyTravelerIds)
     {
-        $this->maxSkus = $maxSkus;
+        $this->maxMonthlyTravelerIds = (int)$maxMonthlyTravelerIds;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="decimal", precision=7, scale=2)
+     * @JMS\Type("float")
+     */
+    protected $travelerIdOverageCharge = null;
+
+    public function getTravelerIdOverageCharge()
+    {
+        return $this->travelerIdOverageCharge;
+    }
+
+    public function setTravelerIdOverageCharge($travelerIdOverageCharge)
+    {
+        $this->travelerIdOverageCharge = (float)$travelerIdOverageCharge;
         return $this;
     }
 
@@ -227,8 +244,11 @@ Class Plan
         if(isset($stripePlan->metadata['max_concurrent_users'])){
             $this->maxConcurrentUsers = (int)$stripePlan->metadata['max_concurrent_users'];
         }
-        if(isset($stripePlan->metadata['max_skus'])){
-            $this->maxSkus = (int)$stripePlan->metadata['max_skus'];
+        if(isset($stripePlan->metadata['max_monthly_tids'])){
+            $this->maxMonthlyTravelerIds = (int)$stripePlan->metadata['max_monthly_tids'];
+        }
+        if(isset($stripePlan->metadata['tid_overage_charge'])){
+            $this->travelerIdOverageCharge = (int)$stripePlan->metadata['tid_overage_charge'];
         }
         if(isset($stripePlan->metadata['long_description'])){
             $this->description = $stripePlan->metadata['long_description'];

@@ -138,10 +138,13 @@ export default Marionette.View.extend({
     this.showChildView('currentSessions', new Marionette.CollectionView({
       collection: this.model.get('currentSessions'),
       childView: CurrentSessionItemView,
+      childViewOptions:{
+        parentCollection: this.model.get('currentSessions')
+      },
       tagName: 'tbody',
       emptyView: NoChildrenRowView,
       emptyViewOptions:{
-        colspan: 5
+        colspan: 6
       },
       filter(session){
         return (session.get('forUsername') && session.get('startedAt') && session.get('updatedAt'));
