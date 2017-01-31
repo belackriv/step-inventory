@@ -49,7 +49,7 @@ export default Marionette.View.extend({
     this.showChildView('nav', new NavLayoutView({
       model: myself
     }));
-    this.showChildView('main', new DefaultView());
+    this.showChildView('main', new DefaultView({model: myself}));
     this.showChildView('menu', new MenuStaticView());
     myself.fetch();
     this.ui.dialog.dialog({

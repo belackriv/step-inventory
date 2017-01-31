@@ -3,6 +3,7 @@
 	<li class="{{#ifIsRouteActive '/user'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/user">Users</a></li>
 	<li class="{{#ifIsRouteActive '/office'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/office">Offices</a></li>
 	<li class="{{#ifIsRouteActive '/department'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/department">Departments</a></li>
+	<li class="{{#ifIsRouteActive '/announcement'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/announcement">Announcements</a></li>
 	{{!-- <li class="{{#ifIsRouteActive '/menu_item'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/menu_item">Menu Items</a></li>--}}
 	{{#isGrantedRole 'ROLE_DEV'}}
 		<li class="{{#ifIsRouteActive '/menu_link'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/menu_link">Menu Link</a></li>

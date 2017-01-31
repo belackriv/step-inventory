@@ -32,6 +32,11 @@ import AdminDepartmentsEditView from  './views/adminDepartmentsEditView.js';
 import adminDepartmentsListTableLayoutTpl from  './views/adminDepartmentsListTableLayoutTpl.hbs!';
 import adminDepartmentsRowTpl from  './views/adminDepartmentsRowTpl.hbs!';
 
+import AnnouncementCollection from  'lib/common/models/announcementCollection.js';
+import AdminAnnouncementsEditView from  './views/adminAnnouncementsEditView.js';
+import adminAnnouncementsListTableLayoutTpl from  './views/adminAnnouncementsListTableLayoutTpl.hbs!';
+import adminAnnouncementsRowTpl from  './views/adminAnnouncementsRowTpl.hbs!';
+
 import MenuItemCollection from 'lib/common/models/menuItemCollection.js';
 import AdminMenuItemsEditView from './views/adminMenuItemsEditView.js';
 import adminMenuItemsListTableLayoutTpl from './views/adminMenuItemsListTableLayoutTpl.hbs!';
@@ -214,6 +219,34 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminDepartmentsListTableLayoutTpl,
       entityRowTpl: adminDepartmentsRowTpl,
+      colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
+  },
+  announcements(id){
+    let adminIndexView =  new AdminIndexView();
+    let announcementCollection = Radio.channel('data').request('collection', AnnouncementCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: announcementCollection,
+      searchPath: ['id', 'byUser.username'],
+      EditView: AdminAnnouncementsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminAnnouncementsListTableLayoutTpl,
+      entityRowTpl: adminAnnouncementsRowTpl,
       colspan: 6
     };
 

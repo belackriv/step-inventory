@@ -41,7 +41,13 @@ class DefaultRestController extends FOSRestController
             $this->getUser()->getOrganization()
         );
         $monthlyTravelerIdLimitService = new MonthlyTravelerIdLimitService($this->container);
-        $account->monthlyTravelerIds = $monthlyTravelerIdLimitService->getMonthlyTravelerIds($this->getUser());
+        if($account->getSubscription()){
+            $account->monthlyTravelerIds = $monthlyTravelerIdLimitService->getTravelerIdsInRange(
+                $this->getUser()->getOrganization(),
+                $account->getSubscription()->getCurrentPeriodStart(),
+                new \DateTime()
+            );
+        }
         return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];
     }
 
@@ -560,6 +566,110 @@ class DefaultRestController extends FOSRestController
     }
 
     /**
+     * @Rest\Get("/announcement")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Department"})
+     */
+    public function listAnnouncementAction()
+    {
+        $items = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('a')
+            ->from('AppBundle:Announcement', 'a')
+            ->where('a.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization())
+            ->getQuery()->getResult();;
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                $itemlist[] = $item;
+            }
+        }
+
+        return array('list'=>$itemlist);
+    }
+
+    /**
+     * @Rest\Get("/announcement/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Announcement"})
+     */
+    public function getAnnouncementAction(\AppBundle\Entity\Announcement $announcement)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $announcement) and
+            $announcement->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $announcement;
+        }else{
+            throw $this->createNotFoundException('Announcement #'.$announcement->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/announcement")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Announcement"})
+     * @ParamConverter("announcement", converter="fos_rest.request_body")
+     */
+    public function createAnnouncementAction(\AppBundle\Entity\Announcement $announcement)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $announcement)){
+            $em = $this->getDoctrine()->getManager();
+            $announcement->setPostedAt(new \DateTime());
+            $announcement->setByUser($this->getUser());
+            $announcement->setOrganization($this->getUser()->getOrganization());
+            $announcement->setIsActive(true);
+            $em->persist($announcement);
+            $em->flush();
+            $this->updateAclByRoles($announcement, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $announcement;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/announcement/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Announcement"})
+     * @ParamConverter("announcement", converter="fos_rest.request_body")
+     */
+    public function updateAnnouncementAction(\AppBundle\Entity\Announcement $announcement)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $announcement)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($announcement);
+            $liveAnnouncement = $this->getDoctrine()->getRepository('AppBundle:Announcement')->findOneById($announcement->getId());
+            if( $announcement->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveAnnouncement->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($announcement);
+                $em->flush();
+                return $announcement;
+            }else{
+                throw $this->createNotFoundException('Office #'.$announcement->getOffice()->getId().' Not Found');
+            }
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/announcement/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Announcement"})
+     */
+    public function deleteAnnouncementAction(\AppBundle\Entity\Announcement $announcement)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $announcement) and
+            $announcement->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($announcement);
+            $em->flush();
+            return $announcement;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
      * @Rest\Get("/menu_item")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"MenuItem"})
      */
@@ -778,7 +888,8 @@ class DefaultRestController extends FOSRestController
         }else{
             $myself->currentDepartment = $myself->getDefaultDepartment();
         }
-        $myself->appMessage = 'Test Message';
+        $myself->appAnnouncement = $this->getDoctrine() ->getRepository('AppBundle:Announcement')
+                ->findLatest($this->getUser()->getOrganization());
         $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
         return $myself;
     }

@@ -2328,7 +2328,7 @@
   overflow: visible;
   clip: auto; }
 
-/*! bulma.io v0.3.0 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.3.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -2765,7 +2765,7 @@ a.box:active {
   box-shadow: none;
   display: inline-flex;
   font-size: 1rem;
-  height: 2.5em;
+  height: 2.285em;
   justify-content: flex-start;
   line-height: 1.5;
   padding-left: 0.75em;
@@ -3420,7 +3420,7 @@ a.box:active {
   box-shadow: none;
   display: inline-flex;
   font-size: 1rem;
-  height: 2.5em;
+  height: 2.285em;
   justify-content: flex-start;
   line-height: 1.5;
   padding-left: 0.75em;
@@ -3591,7 +3591,7 @@ a.box:active {
     box-shadow: none;
     display: inline-flex;
     font-size: 1rem;
-    height: 2.5em;
+    height: 2.285em;
     justify-content: flex-start;
     line-height: 1.5;
     padding-left: 0.75em;
@@ -4910,7 +4910,7 @@ a.nav-item {
   box-shadow: none;
   display: inline-flex;
   font-size: 1rem;
-  height: 2.5em;
+  height: 2.285em;
   justify-content: flex-start;
   line-height: 1.5;
   padding-left: 0.75em;

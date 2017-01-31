@@ -9,6 +9,7 @@ import BaseUrlBaseModel from './baseUrlBaseModel.js';
 
 import './departmentModel.js';
 import './userRoleModel.js';
+import './announcementModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   initialize(attrs, options){
@@ -40,6 +41,11 @@ let Model = BaseUrlBaseModel.extend({
     key: 'currentDepartment',
     relatedModel: 'DepartmentModel',
     includeInJSON: ['id']
+  },{
+    type: BackboneRelational.HasOne,
+    key: 'appAnnouncement',
+    relatedModel: 'AnnouncementModel',
+    includeInJSON: false
   }],
   defaults:{
     username: null,
@@ -52,6 +58,7 @@ let Model = BaseUrlBaseModel.extend({
     currentDepartment: null,
     userRoles: null,
     roleHierarchy: null,
+    appAnnouncement: null,
   },
   hasUserRole(userRole){
     return this.get('userRoles').get(userRole)?true:false;

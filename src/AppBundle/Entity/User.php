@@ -102,9 +102,9 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * Populated from session
-     * @JMS\Type("string")
+     * @JMS\Type("AppBundle\Entity\Announcement")
      */
-    public $appMessage;
+    public $appAnnouncement;
 
     /**
      * Populated from session

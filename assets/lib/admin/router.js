@@ -34,6 +34,11 @@ export default Marionette.Object.extend({
     'department': 'departments',
     'department/:id': 'departments',
     'admin/department/:id': 'departments',
+
+    'announcement': 'announcements',
+    'announcement/:id': 'announcements',
+    'admin/announcement/:id': 'announcements',
+
     'menu_item': 'menuItems',
     'menu_item/:id': 'menuItems',
     'admin/menu_item/:id': 'menuItems',
@@ -126,6 +131,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.departments(id);
+    });
+  },
+  announcements(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.announcements(id);
     });
   },
   menuItems(id){
