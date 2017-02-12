@@ -117,3 +117,10 @@ a.si-brand {
   	transition-delay:0;
 }
 
+.tag .si-tag-button {
+	margin-left: 2px;
+
+	.icon {
+		background-color: inherit;
+	}
+}

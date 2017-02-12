@@ -76,4 +76,16 @@ Class Customer
     {
         return $this->outboundOrders;
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Contact", mappedBy="customer")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\Contact>")
+     * @JMS\ReadOnly
+     */
+    protected $contacts;
+
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
 }

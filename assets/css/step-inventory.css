@@ -6423,3 +6423,8 @@ a.si-brand {
   visibility: visible;
   opacity: 1;
   transition-delay: 0; }
+
+.tag .si-tag-button {
+  margin-left: 2px; }
+  .tag .si-tag-button .icon {
+    background-color: inherit; }

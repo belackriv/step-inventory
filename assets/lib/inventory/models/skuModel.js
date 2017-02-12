@@ -32,6 +32,8 @@ let Model = BaseUrlBaseModel.extend({
     name: null,
     number: null,
     label: null,
+    supplierCode: null,
+    supplierSku: null,
     part: null,
     commodity: null,
     unitType: null,

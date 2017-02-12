@@ -85,6 +85,40 @@ Class Sku
 	}
 
 	/**
+	 * @ORM\Column(type="string", length=64)
+     * @JMS\Type("string")
+     */
+	protected $supplierCode = null;
+
+	public function getSupplierCode()
+	{
+		return $this->supplierCode;
+	}
+
+	public function setSupplierCode($supplierCode)
+	{
+		$this->supplierCode = $supplierCode;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="string", length=64)
+     * @JMS\Type("string")
+     */
+	protected $supplierSku = null;
+
+	public function getSupplierSku()
+	{
+		return $this->supplierSku;
+	}
+
+	public function setSupplierSku($supplierSku)
+	{
+		$this->supplierSku = $supplierSku;
+		return $this;
+	}
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="Part")
 	 * @ORM\JoinColumn(nullable=true)
 	 * @JMS\Type("AppBundle\Entity\Part")

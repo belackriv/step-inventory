@@ -63,7 +63,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/client/{id}")
-     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getClientAction(\AppBundle\Entity\Client $client)
     {
@@ -78,7 +78,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Post("/client")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("client", converter="fos_rest.request_body")
      */
     public function createClientAction(\AppBundle\Entity\Client $client)
@@ -178,7 +178,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/customer/{id}")
-     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getCustomerAction(\AppBundle\Entity\Customer $customer)
     {
@@ -193,7 +193,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Post("/customer")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("customer", converter="fos_rest.request_body")
      */
     public function createCustomerAction(\AppBundle\Entity\Customer $customer)
@@ -294,7 +294,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/inbound_order/{id}")
-     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
     {
@@ -309,7 +309,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Post("/inbound_order")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("inboundOrder", converter="fos_rest.request_body")
      */
     public function createInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
@@ -415,7 +415,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/outbound_order/{id}")
-     * @Rest\View(template=":default:get_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)
     {
@@ -430,7 +430,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Post("/outbound_order")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("outboundOrder", converter="fos_rest.request_body")
      */
     public function createOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)

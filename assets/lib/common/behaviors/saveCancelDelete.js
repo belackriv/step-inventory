@@ -28,7 +28,8 @@ export default Marionette.Behavior.extend({
   methods:{
     save: false,
     cancel: false,
-    delete: false
+    delete: false,
+    postDelete: false
   },
   ui: {
     'form': 'form',
@@ -91,6 +92,9 @@ export default Marionette.Behavior.extend({
         this.view.model.destroy().always(()=>{
           this.enableFormButtons();
         }).done(()=>{
+          if(typeof this.methods.postDelete === 'function'){
+            this.methods.postDelete.call(this.view, event);
+          }
           this.view.triggerMethod('show:list', this.view, {
             view: this,
             model:this.model,

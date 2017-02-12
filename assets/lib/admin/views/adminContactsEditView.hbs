@@ -1,0 +1,37 @@
+<h3 class="title is-3">Contact #{{id}}</h3>
+<h5 class="subtitle is-5">For
+	{{#if client}}
+		{{client.attributes.name}}
+	{{/if}}
+	{{#if customer}}
+		{{customer.attributes.name}}
+	{{/if}}
+</h5>
+<form>
+	<label class="label">First Name</label>
+	<p class="control">
+		<input class="input" name="firstName" type="text" placeholder="Enter First Name" />
+	</p>
+	<label class="label">Name</label>
+	<p class="control">
+		<input class="input" name="lastName" type="text" placeholder="Enter Last Name" />
+	</p>
+	<label class="label">Email Address</label>
+	<p class="control">
+		<input class="input" name="emailAddress" type="text" placeholder="Enter Email Address" />
+	</p>
+	<label class="label">Phone Number</label>
+	<p class="control">
+		<input class="input" name="phoneNumber" type="text" placeholder="Enter Phone Number" />
+	</p>
+	<label class="label">Position</label>
+	<p class="control">
+		<input class="input" name="position" type="text" placeholder="Enter Position" />
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>
