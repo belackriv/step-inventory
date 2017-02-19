@@ -494,4 +494,214 @@ class AccountingRestController extends FOSRestController
         }
     }
 
+     /**
+     * @Rest\Get("/contact")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Contact"})
+     */
+    public function listContactAction()
+    {
+        $items = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('c')
+            ->from('AppBundle:Contact', 'c')
+            ->leftJoin('c.client', 'cl')
+            ->leftJoin('c.customer', 'cu')
+            ->where('cl.organization = :org')
+            ->orWhere('cu.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization())
+            ->getQuery()->getResult();;
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                $itemlist[] = $item;
+            }
+        }
+
+        return array('list'=>$itemlist);
+    }
+
+    /**
+     * @Rest\Get("/contact/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Contact"})
+     */
+    public function getContactAction(\AppBundle\Entity\Contact $contact)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $contact) and
+            $contact->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $contact;
+        }else{
+            throw $this->createNotFoundException('Contact #'.$contact->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/contact")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Contact"})
+     * @ParamConverter("contact", converter="fos_rest.request_body")
+     */
+    public function createContactAction(\AppBundle\Entity\Contact $contact)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $contact) and
+            $contact->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            $this->updateAclByRoles($contact, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $contact;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/contact/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Contact"})
+     * @ParamConverter("contact", converter="fos_rest.request_body")
+     */
+    public function updateContactAction(\AppBundle\Entity\Contact $contact)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $contact)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($contact);
+            $liveContact = $this->getDoctrine()->getRepository('AppBundle:Contact')->findOneById($contact->getId());
+            if( $contact->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveContact->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($contact);
+                $em->flush();
+                return $contact;
+            }else{
+                throw $this->createNotFoundException('Contact #'.$contact->getId().' Not Found');
+            }
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/contact/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Contact"})
+     */
+    public function deleteContactAction(\AppBundle\Entity\Contact $contact)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $contact) and
+            $contact->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($contact);
+            $em->flush();
+            return $contact;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Get("/address")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Address"})
+     */
+    public function listAddressAction()
+    {
+        $items = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('a')
+            ->from('AppBundle:Address', 'a')
+            ->leftJoin('a.client', 'cl')
+            ->leftJoin('a.customer', 'cu')
+            ->where('cl.organization = :org')
+            ->orWhere('cu.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization())
+            ->getQuery()->getResult();;
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)) {
+                $itemlist[] = $item;
+            }
+        }
+
+        return array('list'=>$itemlist);
+    }
+
+    /**
+     * @Rest\Get("/address/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Address"})
+     */
+    public function getAddressAction(\AppBundle\Entity\Address $address)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $address) and
+            $address->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $address;
+        }else{
+            throw $this->createNotFoundException('Address #'.$address->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/address")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Address"})
+     * @ParamConverter("address", converter="fos_rest.request_body")
+     */
+    public function createAddressAction(\AppBundle\Entity\Address $address)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $address) and
+            $address->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($address);
+            $em->flush();
+            $this->updateAclByRoles($address, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $address;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/address/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Address"})
+     * @ParamConverter("address", converter="fos_rest.request_body")
+     */
+    public function updateAddressAction(\AppBundle\Entity\Address $address)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $address)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($address);
+            $liveAddress = $this->getDoctrine()->getRepository('AppBundle:Address')->findOneById($address->getId());
+            if( $address->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveAddress->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($address);
+                $em->flush();
+                return $address;
+            }else{
+                throw $this->createNotFoundException('Address #'.$address->getId().' Not Found');
+            }
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/address/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","Address"})
+     */
+    public function deleteAddressAction(\AppBundle\Entity\Address $address)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $address) and
+            $address->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($address);
+            $em->flush();
+            return $address;
+        }else{
+             throw $this->createAccessDeniedException();
+        }
+    }
+
 }

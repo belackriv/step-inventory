@@ -88,4 +88,16 @@ Class Customer
     {
         return $this->contacts;
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="customer")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\Address>")
+     * @JMS\ReadOnly
+     */
+    protected $addresses;
+
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
 }

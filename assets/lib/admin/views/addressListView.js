@@ -1,10 +1,10 @@
 'use strict';
 
 import Marionette from 'marionette';
-import ContactItemView from './contactItemView.js';
+import AddressItemView from './addressItemView.js';
 
 export default Marionette.CollectionView.extend({
-  childView: ContactItemView,
+  childView: AddressItemView,
   tagName: 'ul',
   className: 'si-large-tag-list'
 });

@@ -1,0 +1,56 @@
+<h3 class="title is-3">Address #{{id}}</h3>
+<h5 class="subtitle is-5">For
+	{{#if client}}
+		{{client.attributes.name}}
+	{{/if}}
+	{{#if customer}}
+		{{customer.attributes.name}}
+	{{/if}}
+</h5>
+<form>
+	<label class="label">Street</label>
+	<p class="control">
+		<input class="input" name="street" type="text" placeholder="Enter Street" />
+	</p>
+	<label class="label">Unit</label>
+	<p class="control">
+		<input class="input" name="unit" type="text" placeholder="Enter Unit #" />
+	</p>
+	<label class="label">City</label>
+	<p class="control">
+		<input class="input" name="city" type="text" placeholder="Enter City" />
+	</p>
+	<label class="label">State / Province</label>
+	<p class="control">
+		<input class="input" name="state" type="text" placeholder="Enter State or Province" />
+	</p>
+	<label class="label">Zip / Postal Code</label>
+	<p class="control">
+		<input class="input" name="postalCode" type="text" placeholder="Enter Zip or Postal Code" />
+	</p>
+	<label class="label">Country</label>
+	<p class="control">
+		<input class="input" name="country" type="text" placeholder="Enter Country" />
+	</p>
+	<label class="label">Address Type</label>
+	<p class="control">
+	  	<span class="select">
+	    	<select name="type">
+	      		<option value="billing">Billing</option>
+	      		<option value="mailing">Mailing</option>
+	      		<option value="shipping">Shipping</option>
+	    	</select>
+	  	</span>
+	</p>
+	<label class="label">Note</label>
+	<p class="control">
+	 	<textarea class="textarea" name="note" placeholder="Enter Notes"></textarea>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>
+

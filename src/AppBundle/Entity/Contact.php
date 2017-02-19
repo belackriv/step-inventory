@@ -77,7 +77,7 @@ Class Contact
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", nullable=true, length=255)
      * @JMS\Type("string")
      */
 	protected $phoneNumber = null;
@@ -94,7 +94,7 @@ Class Contact
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", nullable=true, length=255)
      * @JMS\Type("string")
      */
 	protected $position = null;
