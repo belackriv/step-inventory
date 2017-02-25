@@ -1,0 +1,21 @@
+<h3 class="title is-3">HelpTopic #{{id}}</h3>
+<form>
+	<label class="label">Name</label>
+	<p class="control">
+		<input class="input" name="name" type="text" placeholder="Enter Name" />
+	</p>
+	<label class="label">Heading</label>
+	<p class="control">
+		<input class="input" name="heading" type="text" placeholder="Enter Heading" />
+	</p>
+	<label class="label">Content</label>
+	<p class="control">
+		<textarea name="content" class="textarea" placeholder="Enter Content"></textarea>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

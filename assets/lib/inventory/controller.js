@@ -66,7 +66,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
-
+    Radio.channel('help').trigger('show', 'travelerIds');
   },
   showBin(id){
     let inventoryIndexView =  new InventoryActionIndexView();
@@ -108,7 +108,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
-
+    Radio.channel('help').trigger('show', 'salesItems');
   },
   showSalesItem(id){
     let inventoryIndexView =  new InventoryActionIndexView();
@@ -147,6 +147,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventoryTravelerIdEdits');
   },
   inventoryTravelerIdMovements(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -171,6 +172,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventoryTravelerIdMovements');
   },
   inventoryTravelerIdTransforms(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -195,6 +197,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventoryTravelerIdTransforms');
   },
   inventorySalesItemEdits(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -219,6 +222,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventorySalesItemEdits');
   },
   inventorySalesItemMovements(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -243,6 +247,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventorySalesItemMovements');
   },
   binSkuCounts(id){
     let inventoryIndexView =  new InventoryActionIndexView();
@@ -256,7 +261,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
-
+    Radio.channel('help').trigger('show', 'binSkuCounts');
   },
   inventorySkuAdjustments(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -281,6 +286,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventorySkuAdjustments');
   },
   inventorySkuMovements(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -305,6 +311,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventorySkuMovements');
   },
   inventorySkuTransforms(){
     let inventoryIndexView =  new InventoryLogIndexView();
@@ -329,6 +336,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventorySkuTransforms');
   },
   inventoryAudit(id){
     let view = new InventoryAuditListView();
@@ -343,6 +351,7 @@ export default Marionette.Object.extend({
     }else{
       Radio.channel('app').trigger('show:view', view);
     }
+    Radio.channel('help').trigger('show', 'inventoryAudit');
   },
   buildViewStack(stack){
     for(let viewObj of stack){

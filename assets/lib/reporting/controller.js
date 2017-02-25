@@ -22,7 +22,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', reportingIndexView);
-
+    Radio.channel('help').trigger('show', 'singleQueryReport');
   },
   buildViewStack(stack){
     for(let viewObj of stack){

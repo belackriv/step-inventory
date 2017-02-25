@@ -7,5 +7,6 @@
 	{{!-- <li class="{{#ifIsRouteActive '/menu_item'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/menu_item">Menu Items</a></li>--}}
 	{{#isGrantedRole 'ROLE_DEV'}}
 		<li class="{{#ifIsRouteActive '/menu_link'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/menu_link">Menu Link</a></li>
+		<li class="{{#ifIsRouteActive '/help_topic'}}is-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/help_topic">Help Topic</a></li>
 	{{/isGrantedRole}}
 </ul>

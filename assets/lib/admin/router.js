@@ -45,6 +45,10 @@ export default Marionette.Object.extend({
     'menu_link': 'menuLinks',
     'menu_link/:id': 'menuLinks',
     'admin/menu_link/:id': 'menuLinks',
+    'help_topic': 'helpTopics',
+    'help_topic/:id': 'helpTopics',
+    'admin/help_topic/:id': 'helpTopics',
+
     'admin_inventory': 'skus',
     'admin_inventory/sku': 'skus',
     'admin_inventory/sku/:id': 'skus',
@@ -155,6 +159,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.menuLinks(id);
+    });
+  },
+  helpTopics(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.helpTopics(id);
     });
   },
   skus(id){

@@ -47,6 +47,11 @@ import AdminMenuLinksEditView from './views/adminMenuLinksEditView.js';
 import adminMenuLinksListTableLayoutTpl from './views/adminMenuLinksListTableLayoutTpl.hbs!';
 import adminMenuLinksRowTpl from './views/adminMenuLinksRowTpl.hbs!';
 
+import HelpTopicCollection from 'lib/common/models/helpTopicCollection.js';
+import AdminHelpTopicsEditView from './views/adminHelpTopicsEditView.js';
+import adminHelpTopicsListTableLayoutTpl from './views/adminHelpTopicsListTableLayoutTpl.hbs!';
+import adminHelpTopicsRowTpl from './views/adminHelpTopicsRowTpl.hbs!';
+
 import SkuCollection from 'lib/inventory/models/skuCollection.js';
 import AdminSkusEditView from './views/adminSkusEditView.js';
 import adminSkusListTableLayoutTpl from './views/adminSkusListTableLayoutTpl.hbs!';
@@ -148,6 +153,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'organizations');
   },
   users(id){
     let adminIndexView =  new AdminIndexView();
@@ -176,6 +182,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'users');
   },
   offices(id){
     let adminIndexView =  new AdminIndexView();
@@ -204,6 +211,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'offices');
   },
   departments(id){
     let adminIndexView =  new AdminIndexView();
@@ -232,6 +240,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'departments');
   },
   announcements(id){
     let adminIndexView =  new AdminIndexView();
@@ -260,6 +269,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'announcements');
   },
   menuItems(id){
     let adminIndexView =  new AdminIndexView();
@@ -288,6 +298,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'menuItems');
   },
   menuLinks(id){
     let adminIndexView =  new AdminIndexView();
@@ -304,6 +315,34 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: adminMenuLinksListTableLayoutTpl,
       entityRowTpl: adminMenuLinksRowTpl,
       colspan: 6
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminIndexView);
+  },
+  helpTopics(id){
+    let adminIndexView =  new AdminIndexView();
+    let helpTopicCollection = Radio.channel('data').request('collection', HelpTopicCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: helpTopicCollection,
+      searchPath: ['id', 'name'],
+      EditView: AdminHelpTopicsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminHelpTopicsListTableLayoutTpl,
+      entityRowTpl: adminHelpTopicsRowTpl,
+      colspan: 4
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -344,6 +383,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'skus');
   },
   parts(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -401,6 +441,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'partCategories');
   },
   partGroups(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -429,6 +470,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'partGroups');
   },
   commodities(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -457,6 +499,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'commodities');
   },
   unitTypes(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -485,6 +528,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'unitTypes');
   },
   binTypes(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -513,6 +557,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'binTypes');
   },
   bins(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -541,6 +586,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'bins');
   },
   inventoryMovementRules(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();
@@ -569,6 +615,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventoryMovementRules');
   },
   clients(id){
     let adminAccountingIndexView =  new AdminAccountingIndexView();
@@ -597,6 +644,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+    Radio.channel('help').trigger('show', 'clients');
   },
   customers(id){
     let adminAccountingIndexView =  new AdminAccountingIndexView();
@@ -625,6 +673,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+    Radio.channel('help').trigger('show', 'customers');
   },
   inboundOrders(id){
     let adminAccountingIndexView =  new AdminAccountingIndexView();
@@ -653,6 +702,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+    Radio.channel('help').trigger('show', 'inboundOrders');
   },
   outboundOrders(id){
     let adminAccountingIndexView =  new AdminAccountingIndexView();
@@ -681,6 +731,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminAccountingIndexView);
+    Radio.channel('help').trigger('show', 'outboundOrders');
   },
   buildViewStack(stack){
     for(let viewObj of stack){

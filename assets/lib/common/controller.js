@@ -14,7 +14,7 @@ export default Marionette.Object.extend({
   },
   account(){
   	Radio.channel('app').trigger('show:view',  new LoadingView());
-	let accounts = new AccountCollection();
+	  let accounts = new AccountCollection();
     accounts.fetch().done(()=>{
         Radio.channel('app').trigger('show:view', new AccountView({
           model: accounts.first()

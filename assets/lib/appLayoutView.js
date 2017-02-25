@@ -12,6 +12,7 @@ import NavLayoutView from 'lib/common/views/navLayoutView.js'
 import MenuLayoutView from 'lib/common/views/menuLayoutView.js';
 import DefaultView from 'lib/common/views/defaultView.js';
 import MenuStaticView from 'lib/common/views/menuStaticView.js';
+import LoadingView from 'lib/common/views/loadingView.js';
 import HelpView from 'lib/common/views/helpView.js';
 
 import MyselfModel from 'lib/common/models/myselfModel.js';
@@ -88,9 +89,11 @@ export default Marionette.View.extend({
     this.getRegion('dialogContent').reset();
   },
   _showHelp(helpItemName){
-    let helpItem = Radio.channel('help').request('get', helpItemName);
-    this.showChildView('help', new HelpView({
-      model: new Backbone.Model(helpItem)
-    }));
+    this.showChildView('help', new LoadingView());
+    Radio.channel('help').request('get', helpItemName).then((helpItem)=>{
+      this.showChildView('help', new HelpView({
+        model: helpItem
+      }));
+    });
   }
 });

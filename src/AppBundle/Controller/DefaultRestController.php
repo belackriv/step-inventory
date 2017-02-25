@@ -1513,6 +1513,107 @@ class DefaultRestController extends FOSRestController
         }
     }
 
+    /**
+     * @Rest\Get("/help_topic")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listHelpTopicAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(e.id)')
+            ->from('AppBundle:HelpTopic', 'e');
+
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('e')
+            ->orderBy('e.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/help_topic/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getHelpTopicAction(\AppBundle\Entity\HelpTopic $helpTopic)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $helpTopic)){
+            return $helpTopic;
+        }else{
+            throw $this->createNotFoundException('Help Topic #'.$helpTopic->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/help_topic")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("helpTopic", converter="fos_rest.request_body")
+     */
+    public function createHelpTopicAction(\AppBundle\Entity\HelpTopic $helpTopic)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $helpTopic)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($helpTopic);
+            $em->flush();
+            $this->updateAclByRoles($helpTopic, ['ROLE_USER'=>'view', 'ROLE_DEV'=>'operator']);
+            return $helpTopic;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/help_topic/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("helpTopic", converter="fos_rest.request_body")
+     */
+    public function updateHelpTopicAction(\AppBundle\Entity\HelpTopic $helpTopic)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $helpTopic)){
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($helpTopic);
+            $em->flush();
+            return $helpTopic;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/helpTopic/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteHelpTopicAction(\AppBundle\Entity\HelpTopic $helpTopic)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $helpTopic)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($helpTopic);
+            $em->flush();
+            return $helpTopic;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
 }
 //nohup php app/console thruway:process start &
 //curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"DFW"}' http://localhost/~belac/step-inventory/app_dev.php/office
