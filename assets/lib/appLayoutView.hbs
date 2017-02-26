@@ -1,12 +1,21 @@
 <nav class="nav has-shadow si-nav"></nav>
-<div class="columns si-main">
-	<menu class="column menu is-narrow si-side-menu"></menu>
-	<div class="column">
-		<section class="section">
-			<div class="container is-fluid" id="main-section"></div>
-		</section>
+<div class="si-main">
+	<menu class="mobile-menu si-side-menu is-hidden-desktop"></menu>
+	<div class="columns is-mobile">
+		<menu class="column menu is-narrow si-side-menu is-hidden-touch"></menu>
+		<div class="column is-narrow is-hidden-desktop si-side-menu-toggle">
+			<ul class="si-side-icon-list">
+				<li><span class="icon"><span class="fa fa-navicon"></span></span></li>
+				<li><span class="icon"><span data-ui="sideMenuDirectionIcons" class="fa fa-toggle-right"></span></span></li>
+			</ul>
+		</div>
+		<div class="column">
+			<section class="section">
+				<div class="container is-fluid" id="main-section"></div>
+			</section>
+		</div>
+		<div class="column is-narrow si-help is-hidden-touch" id="help-panel"></div>
 	</div>
-	<div class="column is-narrow si-help" id="help-panel"></div>
 </div>
 <footer class="footer has-text-centered">&copy; StepInventory 2017</footer>
 <div id="dialog"><div id="dialog-content"></div></div>

@@ -20,12 +20,24 @@ export default Marionette.View.extend({
   },
   template: viewTpl,
   tagName: 'menu',
-  className: 'column menu si-side-menu is-narrow',
+  className(){
+    if(this.options.isMobile){
+      return 'mobile-menu si-side-menu is-narrow is-hidden-desktop';
+    }else{
+      return 'column menu si-side-menu is-narrow is-hidden-touch';
+    }
+  },
+  ui:{
+    'closeSideMenu': '[data-ui="closeSideMenu"]',
+  },
   regions: {
     menuList: {
-      el: 'ul',
+      el: 'ul.menu-list',
       replaceElement: true
     },
+  },
+  events:{
+    'click @ui.closeSideMenu': 'closeSideMenu'
   },
   onRender(){
     let menuListView = new MenuListView({
@@ -33,6 +45,9 @@ export default Marionette.View.extend({
     });
     this.showChildView('menuList', menuListView);
     this.updateLinks();
+  },
+  closeSideMenu(){
+    Radio.channel('sideMenu').trigger('toggle');
   },
   updateLinks(){
     this.collection.reset(this.buildMenuItemTree(this.menuItemList));

@@ -11,16 +11,43 @@ nav.si-nav {
     background: gainsboro;
 }
 
-.si-main {
-  align-items: stretch;
-}
 
 #main-section {
- min-height: calc(99vh - 295px);
+	min-height: calc(99vh - 270px);
 }
 
-.si-side-menu {
-  width: 15em;
+
+.menu.si-side-menu {
+	min-width: 15em;
+	margin-left: .5em;
+}
+
+.mobile-menu.si-side-menu {
+	position: absolute;
+	z-index: 100;
+	background-color: whitesmoke;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+  	visibility: visible;
+ 	-webkit-transform: translate3d(calc(-100%), 0, 0);
+ 	transform: translate3d(calc(-100%), 0, 0);
+}
+
+.si-side-menu.si-side-menu-open {
+	visibility: visible;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.si-side-menu-toggle{
+	background-color: whitesmoke;
+}
+
+.si-side-icon-list{
+	list-style: none;
+	position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .si-change-outline-alert-alert {
@@ -49,11 +76,12 @@ img.si-org-logo {
 }
 
 .si-help {
-	width: 15em;
+	min-width: 15em;
 }
 
 .si-help-panel {
 	margin-top: 1em;
+	margin-right: .5em;
 }
 
 a.si-brand {
@@ -124,3 +152,4 @@ a.si-brand {
 ul.si-large-tag-list li {
 	margin-bottom: 0.33em;
 }
+

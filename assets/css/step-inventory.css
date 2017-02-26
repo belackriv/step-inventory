@@ -2328,7 +2328,7 @@
   overflow: visible;
   clip: auto; }
 
-/*! bulma.io v0.3.1 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.3.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -2873,6 +2873,8 @@ a.box:active {
         background-color: white;
         border-color: white;
         color: #0a0a0a; }
+      .button.is-white.is-outlined.is-loading:after {
+        border-color: transparent transparent white white !important; }
     .button.is-white.is-inverted.is-outlined {
       background-color: transparent;
       border-color: #0a0a0a;
@@ -2912,6 +2914,8 @@ a.box:active {
         background-color: #0a0a0a;
         border-color: #0a0a0a;
         color: white; }
+      .button.is-black.is-outlined.is-loading:after {
+        border-color: transparent transparent #0a0a0a #0a0a0a !important; }
     .button.is-black.is-inverted.is-outlined {
       background-color: transparent;
       border-color: white;
@@ -2951,6 +2955,8 @@ a.box:active {
         background-color: whitesmoke;
         border-color: whitesmoke;
         color: #363636; }
+      .button.is-light.is-outlined.is-loading:after {
+        border-color: transparent transparent whitesmoke whitesmoke !important; }
     .button.is-light.is-inverted.is-outlined {
       background-color: transparent;
       border-color: #363636;
@@ -2990,6 +2996,8 @@ a.box:active {
         background-color: #363636;
         border-color: #363636;
         color: whitesmoke; }
+      .button.is-dark.is-outlined.is-loading:after {
+        border-color: transparent transparent #363636 #363636 !important; }
     .button.is-dark.is-inverted.is-outlined {
       background-color: transparent;
       border-color: whitesmoke;
@@ -3029,6 +3037,8 @@ a.box:active {
         background-color: #55a79a;
         border-color: #55a79a;
         color: #fff; }
+      .button.is-primary.is-outlined.is-loading:after {
+        border-color: transparent transparent #55a79a #55a79a !important; }
     .button.is-primary.is-inverted.is-outlined {
       background-color: transparent;
       border-color: #fff;
@@ -3068,6 +3078,8 @@ a.box:active {
         background-color: #3273dc;
         border-color: #3273dc;
         color: #fff; }
+      .button.is-info.is-outlined.is-loading:after {
+        border-color: transparent transparent #3273dc #3273dc !important; }
     .button.is-info.is-inverted.is-outlined {
       background-color: transparent;
       border-color: #fff;
@@ -3107,6 +3119,8 @@ a.box:active {
         background-color: #23d160;
         border-color: #23d160;
         color: #fff; }
+      .button.is-success.is-outlined.is-loading:after {
+        border-color: transparent transparent #23d160 #23d160 !important; }
     .button.is-success.is-inverted.is-outlined {
       background-color: transparent;
       border-color: #fff;
@@ -3146,6 +3160,8 @@ a.box:active {
         background-color: #ffdd57;
         border-color: #ffdd57;
         color: rgba(0, 0, 0, 0.7); }
+      .button.is-warning.is-outlined.is-loading:after {
+        border-color: transparent transparent #ffdd57 #ffdd57 !important; }
     .button.is-warning.is-inverted.is-outlined {
       background-color: transparent;
       border-color: rgba(0, 0, 0, 0.7);
@@ -3185,6 +3201,8 @@ a.box:active {
         background-color: #ff3860;
         border-color: #ff3860;
         color: #fff; }
+      .button.is-danger.is-outlined.is-loading:after {
+        border-color: transparent transparent #ff3860 #ff3860 !important; }
     .button.is-danger.is-inverted.is-outlined {
       background-color: transparent;
       border-color: #fff;
@@ -6343,14 +6361,36 @@ nav.si-nav {
   border-bottom: 1px solid #55a79a;
   background: gainsboro; }
 
-.si-main {
-  align-items: stretch; }
-
 #main-section {
-  min-height: calc(99vh - 295px); }
+  min-height: calc(99vh - 270px); }
 
-.si-side-menu {
-  width: 15em; }
+.menu.si-side-menu {
+  min-width: 15em;
+  margin-left: .5em; }
+
+.mobile-menu.si-side-menu {
+  position: absolute;
+  z-index: 100;
+  background-color: whitesmoke;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  visibility: visible;
+  -webkit-transform: translate3d(calc(-100%), 0, 0);
+  transform: translate3d(calc(-100%), 0, 0); }
+
+.si-side-menu.si-side-menu-open {
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.si-side-menu-toggle {
+  background-color: whitesmoke; }
+
+.si-side-icon-list {
+  list-style: none;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
 
 .si-change-outline-alert-alert {
   border: 2px solid rgba(200, 25, 25, 0.75);
@@ -6372,10 +6412,11 @@ img.si-org-logo {
   text-decoration: line-through; }
 
 .si-help {
-  width: 15em; }
+  min-width: 15em; }
 
 .si-help-panel {
-  margin-top: 1em; }
+  margin-top: 1em;
+  margin-right: .5em; }
 
 a.si-brand {
   font-size: 40px;

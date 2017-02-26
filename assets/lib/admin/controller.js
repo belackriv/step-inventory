@@ -327,6 +327,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'menuLinks');
   },
   helpTopics(id){
     let adminIndexView =  new AdminIndexView();
@@ -355,6 +356,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', adminIndexView);
+    Radio.channel('help').trigger('show', 'helpTopics');
   },
   skus(id){
     let adminInventoryIndexView =  new AdminInventoryIndexView();

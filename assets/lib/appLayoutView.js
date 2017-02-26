@@ -26,10 +26,13 @@ export default Marionette.View.extend({
     this.listenTo(Radio.channel('dialog'), 'close', this._closeDialog);
     this.listenTo(Radio.channel('dialog'), 'closed', this._dialogClosed);
     this.listenTo(Radio.channel('help'), 'show', this._showHelp);
+    this.listenTo(Radio.channel('sideMenu'), 'toggle', this._toggleSideMenu);
   },
   template: appLayoutTpl,
   ui: {
-    dialog: '#dialog'
+    'dialog': '#dialog',
+    'sideMenuToggle': '.si-side-menu-toggle',
+    'sideMenuDirectionIcons': '[data-ui="sideMenuDirectionIcons"]'
   },
   regions: {
     nav: {
@@ -40,10 +43,17 @@ export default Marionette.View.extend({
       el: '.menu',
       replaceElement: true
     },
+    mobileMenu: {
+      el: '.mobile-menu',
+      replaceElement: true
+    },
     help: '#help-panel',
     main: "#main-section",
     dialogContent: DialogRegion,
     footer: '.footer'
+  },
+  events:{
+    'click @ui.sideMenuToggle': '_toggleSideMenu'
   },
   onRender(){
     let myself = Radio.channel('data').request('myself');
@@ -51,7 +61,8 @@ export default Marionette.View.extend({
       model: myself
     }));
     this.showChildView('main', new DefaultView({model: myself}));
-    this.showChildView('menu', new MenuStaticView());
+    this.showChildView('menu', new MenuStaticView({isMobile: false}));
+    this.showChildView('mobileMenu', new MenuStaticView({isMobile: true}));
     myself.fetch();
     this.ui.dialog.dialog({
       autoOpen: false,
@@ -63,6 +74,10 @@ export default Marionette.View.extend({
         Radio.channel('dialog').trigger('opened');
       }
     });
+  },
+  _toggleSideMenu(){
+    this.getChildView('mobileMenu').$el.toggleClass('si-side-menu-open');
+    this.ui.sideMenuDirectionIcons.toggleClass('fa-toggle-right fa-toggle-left');
   },
   _showView(view){
     this.showChildView('main', view);
