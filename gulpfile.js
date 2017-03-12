@@ -29,7 +29,7 @@ gulp.task('jspm-build', function(){
   builder.bundle(
     'lib/main.js',
     'assets/main-bundle.js',
-    { minify: true }
+    { minify: true, rootURL: './assets' }
   )
   .then(function(){
     gutil.log(gutil.colors.green('Build finished.'));

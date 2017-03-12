@@ -76,7 +76,16 @@ img.si-org-logo {
 }
 
 .si-help {
-	min-width: 15em;
+	width: 20%;
+
+	.content {
+		width: 100%;
+	}
+
+	.accordion .ui-state-active {
+		background-color: $si-primary-color;
+		border-color: $border;
+	}
 }
 
 .si-help-panel {

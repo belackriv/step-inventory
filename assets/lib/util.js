@@ -105,3 +105,26 @@ if ($.ui && $.ui.dialog && $.ui.dialog.prototype._allowInteraction) {
 String.prototype.capitalizeFirstLetter = function() {
 	return this.charAt(0).toUpperCase() + this.slice(1);
 };
+
+
+
+
+export default {
+  castAsType(variable, type){
+
+    switch(type){
+      case 'int':
+      case 'integer':
+        return Number(variable);
+      case 'bool':
+      case 'boolean':
+        if(variable === 'false'){
+          return false;
+        }
+        return (variable)?true:false;
+      default:
+        return variable;
+    }
+
+  }
+}

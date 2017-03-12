@@ -6412,7 +6412,12 @@ img.si-org-logo {
   text-decoration: line-through; }
 
 .si-help {
-  min-width: 15em; }
+  width: 20%; }
+  .si-help .content {
+    width: 100%; }
+  .si-help .accordion .ui-state-active {
+    background-color: #55a79a;
+    border-color: #dbdbdb; }
 
 .si-help-panel {
   margin-top: 1em;
