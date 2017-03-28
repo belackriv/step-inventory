@@ -70,6 +70,12 @@ class User implements AdvancedUserInterface, \Serializable
     protected $isActive;
 
     /**
+     * @ORM\Column(name="receives_inventory_alert", type="boolean")
+     * @JMS\Type("boolean")
+     */
+    protected $receivesInventoryAlert;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Organization", inversedBy="users", cascade={"merge"})
      * @ORM\JoinColumn(nullable=false)
      * @JMS\Type("AppBundle\Entity\Organization")
@@ -347,7 +353,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setIsActive($isActive)
     {
-        $this->isActive = $isActive;
+        $this->isActive = (bool)$isActive;
 
         return $this;
     }
@@ -360,6 +366,29 @@ class User implements AdvancedUserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set receivesInventoryAlert
+     *
+     * @param boolean $receivesInventoryAlert
+     * @return User
+     */
+    public function setReceivesInventoryAlert($receivesInventoryAlert)
+    {
+        $this->receivesInventoryAlert = (bool)$receivesInventoryAlert;
+
+        return $this;
+    }
+
+    /**
+     * Get receivesInventoryAlert
+     *
+     * @return boolean
+     */
+    public function getReceivesInventoryAlert()
+    {
+        return $this->receivesInventoryAlert;
     }
 
      /**

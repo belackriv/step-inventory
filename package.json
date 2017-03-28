@@ -5,7 +5,7 @@
   "main": "",
   "dependencies": {},
   "devDependencies": {
-    "bulma": "^0.3.2",
+    "bulma": "0.3.2",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.0.0",

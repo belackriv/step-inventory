@@ -27,5 +27,14 @@
 			<li class="{{#ifIsRouteActive '/bin_type'}}is-active{{else}}not-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/bin_type">Bin Types</a></li>
 		</ul>
 	</li>
-	<li class="{{#ifIsRouteActive '/inventory_movement_rule'}}is-active{{else}}not-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/inventory_movement_rule">Inventory Movement Rules</a></li>
+	<li class="si-tabs-dropdown
+		{{~#ifIsRouteActive '/inventory_movement_rule'}} is-active{{/ifIsRouteActive~}}
+		{{~#ifIsRouteActive '/inventory_alert'}} is-active{{/ifIsRouteActive~}}
+	">
+		<a>Rules and Alerts</a>
+		<ul>
+			<li class="{{#ifIsRouteActive '/inventory_movement_rule'}}is-active{{else}}not-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/inventory_movement_rule">Inventory Movement Rules</a></li>
+			<li class="{{#ifIsRouteActive '/inventory_alert'}}is-active{{else}}not-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/inventory_alert">Inventory Alerts</a></li>
+		</ul>
+	</li>
 </ul>

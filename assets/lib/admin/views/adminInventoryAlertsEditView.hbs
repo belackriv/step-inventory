@@ -1,0 +1,45 @@
+<h3 class="title is-3">InventoryAlert #{{id}}</h3>
+<form>
+	<label class="label">Department</label>
+	<p class="control">
+		<span class="select">
+	  		<select name="department"></select>
+  		</span>
+	</p>
+	<label class="label">SKU</label>
+	<p class="control">
+		<span class="select">
+	  		<select name="sku"></select>
+  		</span>
+	</p>
+	<p class="control">
+	  	<label class="checkbox">
+	    	<input name="isActive" type="checkbox">
+	    	Is Active?
+	  	</label>
+	</p>
+	<label class="label">Count</label>
+	<p class="control">
+		<input class="input" name="count" type="number" placeholder="Enter Count" />
+	</p>
+	<label class="label">Type</label>
+	<p class="control">
+		<span class="select">
+			<select name="type">
+		  		{{#each types}}
+		  			<option value="{{@key}}">{{this}}</option>
+		  		{{/each}}
+		  	</select>
+  		</span>
+	</p>
+	<p>
+		<button type="button" class="button is-warning" data-ui="run">Run Alert</button>
+		<span data-ui="alertResults"></span>
+	</p>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
+		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
+	</p>
+</form>

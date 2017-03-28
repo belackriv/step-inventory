@@ -53,6 +53,7 @@ let Model = BaseUrlBaseModel.extend({
     firstName: null,
     lastName: null,
     isActive: null,
+    receivesInventoryAlert: null,
     organization: null,
     defaultDepartment: null,
     currentDepartment: null,

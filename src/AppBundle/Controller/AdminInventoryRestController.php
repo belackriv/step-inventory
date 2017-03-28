@@ -1066,4 +1066,138 @@ class AdminInventoryRestController extends FOSRestController
         }
     }
 
+    /**
+     * @Rest\Get("/inventory_alert")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryAlertAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(ia.id)')
+            ->from('AppBundle:InventoryAlert', 'ia')
+            ->join('ia.department', 'd')
+            ->join('d.office', 'o')
+            ->where('o.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());;
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('ia')
+            ->orderBy('ia.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_alert/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryAlertAction(\AppBundle\Entity\InventoryAlert $inventoryAlert)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryAlert) and
+            $inventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $inventoryAlert;
+        }else{
+            throw $this->createNotFoundException('InventoryAlert #'.$inventoryAlert->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Post("/inventory_alert")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("inventoryAlert", converter="fos_rest.request_body")
+     */
+    public function createInventoryAlertAction(\AppBundle\Entity\InventoryAlert $inventoryAlert)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('CREATE', $inventoryAlert) and
+            $inventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($inventoryAlert);
+            $em->flush();
+            $this->updateAclByRoles($inventoryAlert, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $inventoryAlert;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/inventory_alert/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("inventoryAlert", converter="fos_rest.request_body")
+     */
+    public function updateInventoryAlertAction(\AppBundle\Entity\InventoryAlert $inventoryAlert)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $inventoryAlert)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($inventoryAlert);
+            $liveInventoryAlert = $this->getDoctrine()->getRepository('AppBundle:InventoryAlert')->findOneById($inventoryAlert->getId());
+            if( $inventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveInventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $em->merge($inventoryAlert);
+                $em->flush();
+                return $inventoryAlert;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/inventory_alert/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteInventoryAlertAction(\AppBundle\Entity\InventoryAlert $inventoryAlert)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $inventoryAlert) and
+            $inventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($inventoryAlert);
+            $em->flush();
+            return $inventoryAlert;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Get("/inventory_alert/{id}/run")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function runInventoryAlertAction(\AppBundle\Entity\InventoryAlert $inventoryAlert)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryAlert) and
+            $inventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $results = $this->container->get('app.inventory_alerts')->check($inventoryAlert);
+            return $results;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
 }

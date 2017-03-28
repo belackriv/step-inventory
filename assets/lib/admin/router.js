@@ -86,6 +86,10 @@ export default Marionette.Object.extend({
     'admin_inventory/inventory_movement_rule/:id': 'inventoryMovementRules',
     'inventory_movement_rule': 'inventoryMovementRules',
     'inventory_movement_rule/:id': 'inventoryMovementRules',
+    'admin_inventory/inventory_alert': 'inventoryAlerts',
+    'admin_inventory/inventory_alert/:id': 'inventoryAlerts',
+    'inventory_alert': 'inventoryAlerts',
+    'inventory_alert/:id': 'inventoryAlerts',
     'admin_accounting': 'clients',
     'client': 'clients',
     'client/:id': 'clients',
@@ -239,6 +243,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.inventoryMovementRules(id);
+    });
+  },
+  inventoryAlerts(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/admin/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.inventoryAlerts(id);
     });
   },
   clients(id){

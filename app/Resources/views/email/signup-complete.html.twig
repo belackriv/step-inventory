@@ -1,9 +1,9 @@
 <p>
 	Howdy {{user.firstName}},
 </p>
-<p>
+<div>
 	Thanks for signing up for Step Inventory.  You can complete your sign up by using the link below:
 	<div>
 		<a href="{{ url('signup_activation', {token: token}) }}">{{ url('signup_activation', {token: token}) }}</a>
 	</div>
-</p>
+</div>

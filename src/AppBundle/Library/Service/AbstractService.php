@@ -7,10 +7,17 @@ abstract class AbstractService
 {
     /** @var Symfony\Component\DependencyInjection\ContainerInterface */
     protected $container;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
+
+    protected function getContainer()
+    {
+        return $this->container;
+    }
+
     protected function getEntityManager()
     {
         return $this->container

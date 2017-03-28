@@ -52,6 +52,11 @@ services:
         tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
 
+    app.inventory_alerts:
+        class: AppBundle\Library\Service\InventoryAlertsService
+        calls:
+            - [setContainer, ["@service_container"]]
+
     app.stripe.plan_collector:
         class: AppBundle\Library\Stripe\PlanCollector
         calls:

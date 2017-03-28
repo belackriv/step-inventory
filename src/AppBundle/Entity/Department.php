@@ -123,9 +123,22 @@ Class Department
         return $this->bins;
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="InventoryAlert", mappedBy="department")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventoryAlert>")
+     * @JMS\Exclude
+     */
+    protected $inventoryAlerts;
+
+    public function getInventoryAlerts()
+    {
+        return $this->inventoryAlerts;
+    }
+
     public function __construct() {
         $this->menuItems = new ArrayCollection();
         $this->bins = new ArrayCollection();
+        $this->inventoryAlerts = new ArrayCollection();
     }
 
     public function getOrganization()

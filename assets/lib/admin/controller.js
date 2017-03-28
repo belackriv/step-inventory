@@ -97,6 +97,11 @@ import AdminInventoryMovementRulesEditView from './views/adminInventoryMovementR
 import adminInventoryMovementRulesListTableLayoutTpl from './views/adminInventoryMovementRulesListTableLayoutTpl.hbs!';
 import adminInventoryMovementRulesRowTpl from './views/adminInventoryMovementRulesRowTpl.hbs!';
 
+import InventoryAlertCollection from 'lib/inventory/models/inventoryAlertCollection.js';
+import AdminInventoryAlertsEditView from './views/adminInventoryAlertsEditView.js';
+import adminInventoryAlertsListTableLayoutTpl from './views/adminInventoryAlertsListTableLayoutTpl.hbs!';
+import adminInventoryAlertsRowTpl from './views/adminInventoryAlertsRowTpl.hbs!';
+
 import ClientCollection from  'lib/accounting/models/clientCollection.js';
 import AdminClientsEditView from  './views/adminClientsEditView.js';
 import adminClientsListTableLayoutTpl from  './views/adminClientsListTableLayoutTpl.hbs!';
@@ -618,6 +623,35 @@ export default Marionette.Object.extend({
 
     Radio.channel('app').trigger('show:view', adminInventoryIndexView);
     Radio.channel('help').trigger('show', 'inventoryMovementRules');
+  },
+  inventoryAlerts(id){
+    let adminInventoryIndexView =  new AdminInventoryIndexView();
+    let inventoryAlertCollection = Radio.channel('data').request('collection', InventoryAlertCollection, {doFetch: false});
+    let entityViewOptions = {
+      isCreatable: true,
+      listLength: 20,
+      entityId: id,
+      collection: inventoryAlertCollection,
+      searchPath: ['department.name','sku.name'],
+      EditView: AdminInventoryAlertsEditView,
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: adminInventoryAlertsListTableLayoutTpl,
+      entityRowTpl: adminInventoryAlertsRowTpl,
+      colspan: 7
+    };
+
+    let entityView = new EntityIndexView(entityViewOptions);
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', entityView]]),
+        viewInstance: adminInventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', adminInventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventoryAlerts');
   },
   clients(id){
     let adminAccountingIndexView =  new AdminAccountingIndexView();
