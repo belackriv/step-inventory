@@ -22,8 +22,17 @@ export default Marionette.Object.extend({
     this.appRouter.processAppRoutes(this, this.routes);
   },
   routes:  {
+    '': 'main',
     'profile': 'profile',
     'account': 'account'
+  },
+  main(){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/common/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.main();
+    });
   },
   profile(){
     Radio.channel('app').trigger('request:started');

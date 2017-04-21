@@ -116,6 +116,12 @@ class User implements AdvancedUserInterface, \Serializable
      * Populated from session
      * @JMS\Type("array")
      */
+    public $inventoryAlertLogs;
+
+    /**
+     * Populated from session
+     * @JMS\Type("array")
+     */
     public $roleHierarchy;
 
     /**

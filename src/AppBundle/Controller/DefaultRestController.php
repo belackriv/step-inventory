@@ -890,6 +890,8 @@ class DefaultRestController extends FOSRestController
         }
         $myself->appAnnouncement = $this->getDoctrine() ->getRepository('AppBundle:Announcement')
                 ->findLatest($this->getUser()->getOrganization());
+        $myself->inventoryAlertLogs = $this->getDoctrine() ->getRepository('AppBundle:InventoryAlert')
+                ->findActiveLogs($this->getUser()->getOrganization());
         $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
         return $myself;
     }

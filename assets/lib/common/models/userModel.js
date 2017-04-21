@@ -10,6 +10,7 @@ import BaseUrlBaseModel from './baseUrlBaseModel.js';
 import './departmentModel.js';
 import './userRoleModel.js';
 import './announcementModel.js';
+import 'lib/inventory/models/inventoryAlertLogModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   initialize(attrs, options){
@@ -46,6 +47,11 @@ let Model = BaseUrlBaseModel.extend({
     key: 'appAnnouncement',
     relatedModel: 'AnnouncementModel',
     includeInJSON: false
+  },{
+    type: BackboneRelational.HasMany,
+    key: 'inventoryAlertLogs',
+    relatedModel: 'InventoryAlertLogModel',
+    includeInJSON: false
   }],
   defaults:{
     username: null,
@@ -60,6 +66,7 @@ let Model = BaseUrlBaseModel.extend({
     userRoles: null,
     roleHierarchy: null,
     appAnnouncement: null,
+    inventoryAlertLogs: null,
   },
   hasUserRole(userRole){
     return this.get('userRoles').get(userRole)?true:false;

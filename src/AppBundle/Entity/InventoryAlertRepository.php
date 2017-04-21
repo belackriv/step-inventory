@@ -39,4 +39,20 @@ class InventoryAlertRepository extends EntityRepository
         return $result;
 
     }
+
+    public function findActiveLogs(Organization $organization)
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+            ->select('ial')
+            ->from('AppBundle:InventoryAlertLog', 'ial')
+            ->join('ial.inventoryAlert', 'ia')
+            ->join('ia.sku', 's')
+            ->where('s.organization = :org')
+            ->andWhere('ial.isActive = :true')
+            ->setParameter(':org', $organization)
+            ->setParameter(':true', true)
+            ->orderBy('ial.performedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

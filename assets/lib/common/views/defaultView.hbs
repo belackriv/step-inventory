@@ -17,3 +17,23 @@
 		</div>
 	</div>
 </div>
+<div class="columns">
+	<div class="column is-one-third is-offset-one-third">
+	    <h3 class="title is-3">Inventory Alerts</h3>
+		<ul>
+		{{#each inventoryAlertLogs.models}}
+			<li class="notification is-warning">
+				<button class="delete" data-log-id="{{id}}"></button>
+				{{this.attributes.inventoryAlert.attributes.department.attributes.name}} -
+				{{this.attributes.inventoryAlert.attributes.sku.attributes.name}}:
+				{{this.attributes.count}}
+				{{lookup this.attributes.inventoryAlert.attributes.types this.attributes.inventoryAlert.attributes.type}}
+				{{this.attributes.inventoryAlert.attributes.count}}
+				at {{moment this.attributes.performedAt}}.
+			</li>
+		{{else}}
+			<li class="notification is-success">No Alerts Found</li>
+		{{/each}}
+		</ul>
+	</div>
+</div>

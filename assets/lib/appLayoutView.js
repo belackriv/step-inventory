@@ -60,7 +60,7 @@ export default Marionette.View.extend({
     this.showChildView('nav', new NavLayoutView({
       model: myself
     }));
-    this.showChildView('main', new DefaultView({model: myself}));
+    //this.showChildView('main', new DefaultView({model: myself}));
     this.showChildView('menu', new MenuStaticView({isMobile: false}));
     this.showChildView('mobileMenu', new MenuStaticView({isMobile: true}));
     myself.fetch();

@@ -1200,4 +1200,58 @@ class AdminInventoryRestController extends FOSRestController
         }
     }
 
+    /**
+     * @Rest\Get("/inventory_alerts/run_all")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function runAllInventoryAlertsAction()
+    {
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('ia)')
+            ->from('AppBundle:InventoryAlert', 'ia')
+            ->join('ia.department', 'd')
+            ->join('d.office', 'o')
+            ->where('o.organization = :org')
+            ->andWhere('ia.isActive = :true')
+            ->setParameter('org', $this->getUser()->getOrganization())
+            ->setParameter('true', true);
+
+        $items = $qb->getQuery()->getResult();
+
+        $results = [
+            'alertsRun' => 0,
+            'alertsFound' => 0,
+            'alertsSent' => 0,
+            'alertLogs' => [],
+        ];
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $result = $this->container->get('app.inventory_alerts')->check($inventoryAlert);
+                $results['alertsRun'] += $result['alertsRun'];
+                $results['alertsFound'] += $result['alertsFound'];
+                $results['alertsSent'] += $result['alertsSent'];
+                $results['alertsLogs'] = array_merge($results['alertsLogs'], $result['alertsLogs']);
+            }
+        }
+        return $results;
+    }
+
+    /**
+     * @Rest\Get("/inventory_alert_log/{id}/dismiss")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function dismessInventoryAlertLogAction(\AppBundle\Entity\InventoryAlertLog $inventoryAlertLog)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('EDIT', $inventoryAlertLog) and
+            $inventoryAlertLog->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $inventoryAlertLog->setIsActive(false);
+            $this->getDoctrine()->getManager()->flush();
+            return $inventoryAlertLog;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
 }

@@ -145,6 +145,22 @@ Class InventoryAlert
 		return $emails;
 	}
 
+	/**
+     * @ORM\OneToMany(targetEntity="InventoryAlertLog", mappedBy="inventoryAlert")
+     * @JMS\Type("ArrayCollection<AppBundle\Entity\InventoryAlertLog>")
+     * @JMS\Exclude
+     */
+    protected $logs;
+
+    public function getLogs()
+    {
+        return $this->logs;
+    }
+
+    public function __construct() {
+        $this->logs = new ArrayCollection();
+    }
+
     public function isOwnedByOrganization(Organization $organization)
 	{
 		if(!$this->getDepartment()){
@@ -152,7 +168,8 @@ Class InventoryAlert
 		}
 		if(!$this->getSku()){
 			throw new \Exception("Inventory Alert must Have a SKU");
-		}		return (
+		}
+		return (
 			$this->getDepartment() and $this->getDepartment()->isOwnedByOrganization($organization) and
 			$this->getSku() and $this->getSku()->isOwnedByOrganization($organization)
 		);
