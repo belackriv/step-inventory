@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation As JMS;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity
@@ -70,8 +71,8 @@ Class Unit
 	}
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="TravelerId")
-	 * @ORM\JoinColumn(nullable=false)
+	 * @ORM\OneToOne(targetEntity="TravelerId", inversedBy="unit")
+	 * @ORM\JoinColumn(nullable=true, unique=true)
 	 * @JMS\Type("AppBundle\Entity\TravelerId")
 	 */
 	protected $travelerId = null;
@@ -81,9 +82,27 @@ Class Unit
 		return $this->travelerId;
 	}
 
-	public function setTravelerId(TravelerId $travelerId)
+	public function setTravelerId(TravelerId $travelerId = null)
 	{
 		$this->travelerId = $travelerId;
+		return $this;
+	}
+
+	/**
+	 * @ORM\OneToOne(targetEntity="SalesItem", inversedBy="unit")
+	 * @ORM\JoinColumn(nullable=true, unique=true)
+	 * @JMS\Type("AppBundle\Entity\SalesItem")
+	 */
+	protected $salesItem = null;
+
+	public function getSalesItem()
+	{
+		return $this->salesItem;
+	}
+
+	public function setSalesItem(SalesItem $salesItem = null)
+	{
+		$this->salesItem = $salesItem;
 		return $this;
 	}
 

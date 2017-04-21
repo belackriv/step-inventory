@@ -8,6 +8,7 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 import 'lib/accounting/models/inboundOrderModel.js';
 import './binModel.js';
 import './skuModel.js';
+import './unitModel.js';
 import './inventoryTravelerIdTransformModel.js';
 
 let Model = BaseUrlBaseModel.extend({

@@ -18,10 +18,14 @@
 	</p>
 	<label class="label">SKU</label>
 	<p class="control">
-  		<select name="sku">
-  			<option>Select a SKU...</option>
-  		</select>
+  		{{sku.attributes.name}}
 	</p>
+	{{#if unit}}
+		<label class="label">Unit</label>
+		<p class="control">
+			{{unit.attributes.serial}}
+		</p>
+	{{/if}}
 	<p class="control">
 	  	<label class="checkbox">
 	    	<input name="isVoid" type="checkbox">

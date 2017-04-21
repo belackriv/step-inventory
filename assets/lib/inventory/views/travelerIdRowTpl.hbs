@@ -1,5 +1,8 @@
 <td>
 	<a class="entity-link{{#if isVoid}} si-is-void{{/if}}{{#if transform}}{{#unless transform.attributes.isVoid}} si-has-transform{{/unless}}{{/if}}" href="{{entityUrl}}">{{label}}</a>
+	{{#if unit}}
+		({{unit.attributes.serial}})
+	{{/if}}
 </td>
 <td>
 	<button type="button" name="showCard" class="button small">Show Card</button>

@@ -11,6 +11,7 @@ import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection
 import BinCollection from '../models/binCollection.js';
 import SkuCollection from '../models/skuCollection.js';
 import TravelerIdModel from '../models/travelerIdModel.js';
+import UnitModel from '../models/unitModel.js';
 
 export default Marionette.View.extend({
   behaviors: {
@@ -103,8 +104,13 @@ export default Marionette.View.extend({
             quantity: attr.quantity
           });
           let serial = this.model.get('serialsArray')[i];
-          if(serial){
-            travelerId.set('serial', serial);
+          if(travelerId.get('sku').get('unitType')){
+            //create a new unit
+            let unit = UnitModel.findOrCreate({
+              serial: serial,
+              travelerId: travelerId,
+              unitType: travelerId.get('sku').get('unitType'),
+            });
           }
           this.model.get('travelerIds').add(travelerId);
       }

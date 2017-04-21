@@ -224,19 +224,22 @@ class InboundInventoryRestController extends FOSRestController
         set_time_limit(300);
         ini_set('memory_limit','1024M');
         $em = $this->getDoctrine()->getManager();
+        $createdEntities = [];
         foreach($massTravelerId->getTravelerIds() as $travelerId){
             if( $this->get('security.authorization_checker')->isGranted('CREATE', $travelerId) and
                 $travelerId->isOwnedByOrganization($this->getUser()->getOrganization())
             ){
                 $em->persist($travelerId);
                 $travelerId->generateLabel();
+                $createdEntities[] = $travelerId;
+                $createdEntities = array_merge($createdEntities, $this->container->get('app.tid_init')->initialize($travelerId));
             }else{
                 throw $this->createAccessDeniedException();
             }
         }
         $em->flush();
-        foreach($massTravelerId->getTravelerIds() as $travelerId){
-            $this->updateAclByRoles($travelerId, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+        foreach($createdEntities as $entity){
+            $this->updateAclByRoles($entity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
         }
         return $massTravelerId;
     }

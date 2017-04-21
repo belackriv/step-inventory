@@ -31,10 +31,6 @@ export default Marionette.View.extend({
       bin:{
         url: BinCollection.prototype.url(),
         search: 'name'
-      },
-      sku:{
-        url: SkuCollection.prototype.url(),
-        search: 'name'
       }
     },
   },
@@ -46,7 +42,6 @@ export default Marionette.View.extend({
     'costInput': 'input[name="cost"]',
     'inboundOrderSelect' : 'select[name="inboundOrder"]',
     'binSelect' : 'select[name="bin"]',
-    'skuSelect' : 'select[name="sku"]',
     'saveButton': 'button[data-ui-name=save]',
     'cancelButton': 'button[data-ui-name=cancel]',
     'deleteButton': 'button[data-ui-name=delete]',
@@ -74,7 +69,6 @@ export default Marionette.View.extend({
     let setAttr = {
       inboundOrder: InboundOrderCollection,
       bin: BinCollection,
-      sku: SkuCollection,
     };
     _.each(setAttr, (Collection, attributeName)=>{
       if(parseInt(attr[attributeName])){

@@ -57,6 +57,11 @@ services:
         calls:
             - [setContainer, ["@service_container"]]
 
+    app.tid_init:
+        class: AppBundle\Library\Service\TravelerIdInitializationService
+        calls:
+            - [setContainer, ["@service_container"]]
+
     app.stripe.plan_collector:
         class: AppBundle\Library\Stripe\PlanCollector
         calls:

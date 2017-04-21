@@ -134,6 +134,23 @@ Class TravelerId
 	}
 
 	/**
+	 * @ORM\OneToOne(targetEntity="Unit", mappedBy="travelerId", cascade={"persist"})
+	 * @JMS\Type("AppBundle\Entity\Unit")
+	 */
+	protected $unit = null;
+
+	public function getUnit()
+	{
+		return $this->unit;
+	}
+
+	public function setUnit(Unit $unit = null)
+	{
+		$this->unit = $unit;
+		return $this;
+	}
+
+	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
      */
@@ -263,4 +280,5 @@ Class TravelerId
     {
     	return (string)$this->label;
     }
+
 }
