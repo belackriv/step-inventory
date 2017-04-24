@@ -11,6 +11,7 @@ import viewTpl from  "./travelerIdEditView.hbs!";
 import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
 import SkuCollection from '../models/skuCollection.js';
+import EditUnitView from './editUnitView.js';
 
 
 export default Marionette.View.extend({
@@ -42,15 +43,31 @@ export default Marionette.View.extend({
     'costInput': 'input[name="cost"]',
     'inboundOrderSelect' : 'select[name="inboundOrder"]',
     'binSelect' : 'select[name="bin"]',
+    'editUnitButton': 'button[data-ui-name=editUnit]',
     'saveButton': 'button[data-ui-name=save]',
     'cancelButton': 'button[data-ui-name=cancel]',
     'deleteButton': 'button[data-ui-name=delete]',
+  },
+  events: {
+    'click @ui.editUnitButton': 'editUnit'
   },
   bindings: {
     '@ui.labelInput': 'label',
     '@ui.isVoidInput': 'isVoid',
     '@ui.quantityInput': 'quantity',
     '@ui.costInput': 'cost',
+  },
+  editUnit(event){
+    event.preventDefault();
+    let options = {
+      title: 'Add Property',
+      width: '600px'
+    };
+    let view = new EditUnitView({
+      model: this.model.get('unit'),
+    });
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
   },
   save(event){
     this.disableFormButtons();

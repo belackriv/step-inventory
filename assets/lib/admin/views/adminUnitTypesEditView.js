@@ -7,8 +7,9 @@ import Marionette from 'marionette';
 
 import viewTpl from  "./adminUnitTypesEditView.hbs!";
 import UploadImageView from 'lib/common/views/uploadImageView.js';
-
-
+import UnitTypePropertyModel from 'lib/inventory/models/unitTypePropertyModel.js';
+import UnitTypePropertiesListView from './unitTypePropertiesListView.js';
+import EditUnitTypePropertyView from './editUnitTypePropertyView.js';
 
 export default Marionette.View.extend({
   template: viewTpl,
@@ -27,9 +28,20 @@ export default Marionette.View.extend({
     'partCategorySelect': 'select[name="partCategory"]',
     'partGroupSelect': 'select[name="partGroup"]',
     'uploadButton': 'button[data-ui-name="upload"]',
+    'addPropertyButton': 'button[data-ui-name="addProperty"]',
+    'removePropertyButton': 'button[data-ui-name="removeProperty"]',
+    'propertyLoadingIndicator': 'span[data-ui-name="propertyLoadingIndicator"]'
+  },
+  regions: {
+    properties: {
+      el: '[data-region="properties"]',
+      replaceElement: true
+    },
   },
   events: {
-    'click @ui.uploadButton': 'showLogoUploadDialog'
+    'click @ui.uploadButton': 'showLogoUploadDialog',
+    'click @ui.addPropertyButton': 'addProperty',
+    'click @ui.removePropertyButton': 'removeProperty',
   },
   modelEvents: {
     'change:image': 'render'
@@ -40,6 +52,13 @@ export default Marionette.View.extend({
     '@ui.modelInput': 'model',
     '@ui.descriptionInput': 'description',
     '@ui.isActiveInput': 'isActive',
+  },
+  onRender(){
+    this.ui.propertyLoadingIndicator.hide();
+    let listView = new UnitTypePropertiesListView({
+      collection: this.model.get('properties')
+    });
+    this.showChildView('properties', listView);
   },
   showLogoUploadDialog(event){
     let myself = Radio.channel('data').request('myself');
@@ -56,5 +75,21 @@ export default Marionette.View.extend({
     });
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);
-  }
+  },
+  addProperty(event){
+    event.preventDefault();
+    let property = UnitTypePropertyModel.findOrCreate({
+      unitType: this.model
+    });
+    let options = {
+      title: 'Add Property',
+      width: '600px'
+    };
+    let view = new EditUnitTypePropertyView({
+      model: property,
+    });
+    Radio.channel('dialog').trigger('close');
+    Radio.channel('dialog').trigger('open', view, options);
+  },
+
 });

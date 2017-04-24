@@ -9,6 +9,7 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 import TravelerIdModel from 'lib/inventory/models/travelerIdModel.js';
 import SalesItemModel from 'lib/inventory/models/salesItemModel.js';
 import BinSkuCountModel from 'lib/inventory/models/binSkuCountModel.js';
+import UnitTypePropertyModel from 'lib/inventory/models/unitTypePropertyModel.js';
 
 const castAsType = function(value, type){
   switch (type) {
@@ -258,4 +259,57 @@ Handlebars.registerHelper('ifCond', function(v1, operator, v2, options){
     default:
       return options.inverse(this);
   }
+});
+
+Handlebars.registerHelper('renderUnitTypePropertyTypesOptions', function(options){
+  let html = '';
+  _.each(UnitTypePropertyModel.prototype.types, (label, value)=>{
+    let selected = '';
+    if(this.propertyType === value){
+      selected = 'selected';
+    }
+    html += '<option '+selected+' value="'+value+'">'+label+'</option>';
+  });
+  return new Handlebars.SafeString(html);
+});
+
+Handlebars.registerHelper('renderUnitTypePropertyValidValueInput', function(options){
+  let html = '';
+  if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
+    html = '<input data-value-name="integerValue" type="number" value="'+this.integerValue+'" step="1"/>';
+  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
+    html = '<input data-value-name="floatValue" type="number" value="'+this.floatValue+'" step=".01" />';
+  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
+    html = '<select data-value-name="booleanValue" class="select">';
+    if(this.booleanValue){
+      html += '<option value="0">False</option><option selected value="1">True</option>';
+    }else{
+      html = '<option selected value="0">False</option><option value="1">True</option>';
+    }
+    html += '</select>';
+  }else{
+    html = '<input data-value-name="stringValue" type="text" value="'+this.stringValue+'" />';
+  }
+  return new Handlebars.SafeString(html);
+});
+
+Handlebars.registerHelper('renderUnitPropertyInput', function(options){
+  let html = '';
+  if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
+    html = '<input data-value-name="integerValue" type="number" value="'+this.integerValue+'" step="1"/>';
+  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
+    html = '<input data-value-name="floatValue" type="number" value="'+this.floatValue+'" step=".01" />';
+  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
+    html = '<select data-value-name="booleanValue" class="select">';
+    if(this.booleanValue){
+      html += '<option value="0">False</option><option selected value="1">True</option>';
+    }else{
+      html = '<option selected value="0">False</option><option value="1">True</option>';
+    }
+    html += '</select>';
+  }else{
+    html = '<input data-value-name="stringValue" type="text" value="'+this.stringValue+'" />';
+  }
+  return new Handlebars.SafeString(html);
+
 });

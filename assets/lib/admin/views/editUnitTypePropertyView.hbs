@@ -1,0 +1,29 @@
+<h3 class="title is-3">Unit Type Property #{{id}}</h3>
+<form>
+	<label class="label">Property Name</label>
+	<p class="control">
+		<input class="input" name="propertyName" type="text" value="{{propertyName}}" placeholder="Enter Property Name">
+	</p>
+	<label class="label">Property Type</label>
+	<p class="control">
+		<select class="select" name="propertyType">
+			{{renderUnitTypePropertyTypesOptions}}
+		</select>
+	</p>
+	<p class="control">
+	  	<label class="checkbox">
+	    	<input name="isRequired" type="checkbox" {{#if isRequired}}checked{{/if}}>
+	    	Is Required?
+	  	</label>
+	</p>
+	<label class="label">Valid Values</label>
+	<div class="control">
+		<p>If no valid values are supplied, the property is treated as free form</p>
+		<button type="button" class="button is-small" data-ui-name="addValidValue"><span class="fa fa-plus"></span></button>
+		<ul data-region="valid-values"></ul>
+	</div>
+	<p class="control">
+		<button type="submit" class="button is-primary" data-ui-name="save">Save</button>
+		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
+	</p>
+</form>

@@ -716,6 +716,90 @@ class AdminInventoryRestController extends FOSRestController
         }
     }
 
+    /**
+     * @Rest\Post("/unit_type_property")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("unitTypeProperty", converter="fos_rest.request_body")
+     */
+    public function createUnitTypePropertyAction(\AppBundle\Entity\UnitTypeProperty $unitTypeProperty)
+    {
+        if($this->get('security.authorization_checker')->isGranted('CREATE', $unitTypeProperty)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($unitTypeProperty);
+            foreach($unitTypeProperty->getValidValues() as $validValue) {
+                $validValue->setUnitTypeProperty($unitTypeProperty);
+            }
+            $em->flush();
+            $this->updateAclByRoles($unitTypeProperty, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
+            return $unitTypeProperty;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Put("/unit_type_property/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("unitTypeProperty", converter="fos_rest.request_body")
+     */
+    public function updateUnitTypePropertyAction(\AppBundle\Entity\UnitTypeProperty $unitTypeProperty)
+    {
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $unitTypeProperty)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($unitTypeProperty);
+            $liveUnitTypeProperty = $this->getDoctrine()->getRepository('AppBundle:UnitTypeProperty')->findOneById($unitTypeProperty->getId());
+            if( $unitTypeProperty->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveUnitTypeProperty->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $unitTypeProperty = $em->merge($unitTypeProperty);
+                foreach($unitTypeProperty->getValidValues() as $validValue) {
+                    $validValue->setUnitTypeProperty($unitTypeProperty);
+                }
+                $em->flush();
+                return $unitTypeProperty;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/unit_type_property/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteUnitTypePropertyAction(\AppBundle\Entity\UnitTypeProperty $unitTypeProperty)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $unitTypeProperty) and
+            $unitTypeProperty->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($unitTypeProperty);
+            $em->flush();
+            return $unitTypeProperty;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
+    /**
+     * @Rest\Delete("/unit_type_property_valid_value/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function deleteUnitTypePropertyValidValueAction(\AppBundle\Entity\UnitTypePropertyValidValue $unitTypePropertyValidValue)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('DELETE', $unitTypePropertyValidValue->getUnitTypeProperty()) and
+            $unitTypePropertyValidValue->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($unitTypePropertyValidValue);
+            $em->flush();
+            return $unitTypePropertyValidValue;
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
 
     /**
      * @Rest\Get("/bin_type")

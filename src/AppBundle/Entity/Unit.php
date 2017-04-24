@@ -125,6 +125,35 @@ Class Unit
 	}
 
 	/**
+	 * @ORM\OneToMany(targetEntity="UnitProperty", mappedBy="unit", cascade={"persist", "remove"}, orphanRemoval=true)
+	 * @JMS\Type("ArrayCollection<AppBundle\Entity\UnitProperty>")
+	 */
+	protected $properties = null;
+
+	public function getProperties()
+	{
+		return $this->properties;
+	}
+
+	public function addProperty(UnitProperty $property)
+    {
+        if(!$this->properties->contains($property)){
+            $this->properties->add($property);
+        }
+        if($property->getUnit() !== $this){
+        	$property->setUnit($this);
+        }
+        return $this;
+    }
+
+    public function removeProperty(UnitProperty $property)
+    {
+        $this->properties->removeElement($property);
+        $this->properties = new ArrayCollection(array_values($this->properties->toArray()));
+        return $this;
+    }
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="Organization")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Exclude

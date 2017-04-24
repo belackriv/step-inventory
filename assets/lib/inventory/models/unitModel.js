@@ -4,10 +4,11 @@ import globalNamespace from 'lib/globalNamespace.js';
 import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
+import './unitPropertyModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
-    return this.baseUrl+'/unit_type';
+    return this.baseUrl+'/unit';
   },
   relations: [{
     type: BackboneRelational.HasOne,
@@ -35,6 +36,16 @@ let Model = BaseUrlBaseModel.extend({
     relatedModel: 'UnitTypeModel',
     includeInJSON: ['id'],
   },{
+    type: BackboneRelational.HasMany,
+    key: 'properties',
+    relatedModel: 'UnitPropertyModel',
+    includeInJSON: ['id'],
+    reverseRelation: {
+      type: BackboneRelational.HasOne,
+      key: 'unit',
+      includeInJSON: ['id', 'integerValue', 'floatValue', 'booleanValue', 'stringValue'],
+    }
+  },{
     type: BackboneRelational.HasOne,
     key: 'organization',
     relatedModel: 'OrganizationModel',
@@ -45,6 +56,7 @@ let Model = BaseUrlBaseModel.extend({
     description: null,
     travelerId: null,
     salesItem: null,
+    properties: null,
     unitType: null,
     organization: null,
     isVoid: null,

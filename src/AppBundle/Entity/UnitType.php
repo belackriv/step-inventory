@@ -111,6 +111,35 @@ Class UnitType
 	}
 
 	/**
+	 * @ORM\OneToMany(targetEntity="UnitTypeProperty", mappedBy="unitType", cascade={"persist", "remove"}, orphanRemoval=true)
+	 * @JMS\Type("ArrayCollection<AppBundle\Entity\UnitTypeProperty>")
+	 */
+	protected $properties = null;
+
+	public function getProperties()
+	{
+		return $this->properties;
+	}
+
+	public function addProperty(UnitTypeProperty $property)
+    {
+        if(!$this->properties->contains($property)){
+            $this->properties->add($property);
+        }
+        if($property->getUnitType() !== $this){
+        	$property->setUnitType($this);
+        }
+        return $this;
+    }
+
+    public function removeProperty(UnitTypeProperty $property)
+    {
+        $this->properties->removeElement($property);
+        $this->properties = new ArrayCollection(array_values($this->properties->toArray()));
+        return $this;
+    }
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="Organization", inversedBy="parts")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Exclude
