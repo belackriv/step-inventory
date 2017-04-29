@@ -1,26 +1,25 @@
 "use strict";
 
 import _ from 'underscore';
+import jquery from 'jquery';
 import Backbone from 'backbone';
 import Syphon from 'backbone.syphon';
 import Radio from 'backbone.radio';
 import Marionette from 'marionette';
 
-import viewTpl from  "./travelerIdEditView.hbs!";
+import viewTpl from  "./unitEditView.hbs!";
 
 import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
 import SkuCollection from '../models/skuCollection.js';
-import UnitPropertiesListView from './unitTypePropertyValidValuesListView.js';
-
+import UnitPropertiesListView from './unitPropertiesListView.js';
 
 export default Marionette.View.extend({
   template: viewTpl,
   ui: {
-    'editUnitButton': 'button[data-ui-name=editUnit]',
+    'form': 'form',
     'saveButton': 'button[data-ui-name=save]',
     'cancelButton': 'button[data-ui-name=cancel]',
-    'deleteButton': 'button[data-ui-name=delete]',
   },
   regions: {
     properties: {
@@ -29,7 +28,7 @@ export default Marionette.View.extend({
     },
   },
   events: {
-    'click @ui.editUnitButton': 'editUnit',
+    'click @ui.cancelButton': 'cancel',
     'submit @ui.form': 'save',
   },
   onRender(){
@@ -40,13 +39,23 @@ export default Marionette.View.extend({
   },
   save(event){
     event.preventDefault();
+    event.stopPropagation();
     this.disableFormButtons();
     let attrs = Syphon.serialize(this);
+    let unitModel = this.model;
+    this.$el.find('[data-unit-property-id]').each((idx, propertyInput)=>{
+      let property = unitModel.get('properties').get(jquery(propertyInput).data('unitPropertyId'));
+      property.typeAndSet(jquery(propertyInput).data('valueName'), jquery(propertyInput).val());
+    });
     this.model.save(attrs).always(()=>{
       this.enableFormButtons();
     }).done(()=>{
       Radio.channel('dialog').trigger('close');
     });
+  },
+  cancel(event){
+    event.preventDefault();
+    Radio.channel('dialog').trigger('close');
   },
   disableFormButtons(){
     this.ui.saveButton.addClass('is-disabled').prop('disable', true);

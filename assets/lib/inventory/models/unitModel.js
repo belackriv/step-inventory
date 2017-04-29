@@ -18,7 +18,7 @@ let Model = BaseUrlBaseModel.extend({
     reverseRelation: {
       type: BackboneRelational.HasOne,
       key: 'unit',
-      includeInJSON: ['id', 'serial', 'unitType'],
+      includeInJSON: ['id', 'serial', 'unitType', 'properties'],
     }
   },{
     type: BackboneRelational.HasOne,
@@ -39,11 +39,11 @@ let Model = BaseUrlBaseModel.extend({
     type: BackboneRelational.HasMany,
     key: 'properties',
     relatedModel: 'UnitPropertyModel',
-    includeInJSON: ['id'],
+    includeInJSON:  ['id', 'unitTypeProperty', 'integerValue', 'floatValue', 'booleanValue', 'stringValue'],
     reverseRelation: {
       type: BackboneRelational.HasOne,
       key: 'unit',
-      includeInJSON: ['id', 'integerValue', 'floatValue', 'booleanValue', 'stringValue'],
+      includeInJSON: ['id'],
     }
   },{
     type: BackboneRelational.HasOne,

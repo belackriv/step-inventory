@@ -11,7 +11,7 @@ import viewTpl from  "./travelerIdEditView.hbs!";
 import InboundOrderCollection from 'lib/accounting/models/inboundOrderCollection.js';
 import BinCollection from '../models/binCollection.js';
 import SkuCollection from '../models/skuCollection.js';
-import EditUnitView from './editUnitView.js';
+import UnitEditView from './unitEditView.js';
 
 
 export default Marionette.View.extend({
@@ -51,6 +51,9 @@ export default Marionette.View.extend({
   events: {
     'click @ui.editUnitButton': 'editUnit'
   },
+  modelEvents: {
+    'change:createdAt': 'render'
+  },
   bindings: {
     '@ui.labelInput': 'label',
     '@ui.isVoidInput': 'isVoid',
@@ -60,10 +63,10 @@ export default Marionette.View.extend({
   editUnit(event){
     event.preventDefault();
     let options = {
-      title: 'Add Property',
+      title: 'Edit Unit',
       width: '600px'
     };
-    let view = new EditUnitView({
+    let view = new UnitEditView({
       model: this.model.get('unit'),
     });
     Radio.channel('dialog').trigger('close');

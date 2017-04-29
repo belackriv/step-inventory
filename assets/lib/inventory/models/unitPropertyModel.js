@@ -3,6 +3,7 @@
 import globalNamespace from 'lib/globalNamespace.js';
 import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
+import UnitTypePropertyModel from 'lib/inventory/models/unitTypePropertyModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
@@ -21,6 +22,19 @@ let Model = BaseUrlBaseModel.extend({
     stringValue: null,
     unit: null,
     unitTypeProperty: null,
+  },
+  typeAndSet(valueName, value){
+    let typedValue = null;
+    if(this.get('unitTypeProperty').get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
+      typedValue = parseInt(value);
+    }else if(this.get('unitTypeProperty').get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
+      typedValue = parseFloat(value);
+    }else if(this.get('unitTypeProperty').get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
+      typedValue = value?true:false;
+    }else{
+      typedValue = value+'';
+    }
+    this.set(valueName, typedValue);
   }
 });
 

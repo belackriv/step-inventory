@@ -16,6 +16,9 @@ class TravelerIdInitializationService
         if($tid->getUnit()){
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
             $tid->getUnit()->setTravelerId($tid);
+            foreach($tid->getUnit()->getProperties() as $unitProperty){
+                $unitProperty->setUnit($tid->getUnit());
+            }
             $tid->getUnit()->setOrganization($user->getOrganization());
             $createdEnities[] = $tid->getUnit();
         }

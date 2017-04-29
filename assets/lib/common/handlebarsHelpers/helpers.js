@@ -273,43 +273,38 @@ Handlebars.registerHelper('renderUnitTypePropertyTypesOptions', function(options
   return new Handlebars.SafeString(html);
 });
 
-Handlebars.registerHelper('renderUnitTypePropertyValidValueInput', function(options){
+const getUnitPropertyInputHtml= function(data, options){
   let html = '';
-  if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
-    html = '<input data-value-name="integerValue" type="number" value="'+this.integerValue+'" step="1"/>';
-  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
-    html = '<input data-value-name="floatValue" type="number" value="'+this.floatValue+'" step=".01" />';
-  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
-    html = '<select data-value-name="booleanValue" class="select">';
-    if(this.booleanValue){
+  let value = null;
+  let unitPropertyIdData = '';
+  if(options.hash.useUnitPropertyId){
+    unitPropertyIdData = 'data-unit-property-id="'+data.id+'"';
+  }
+  if(data.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
+    value = (data.integerValue === null)?'':data.integerValue+'';
+    html = '<input '+unitPropertyIdData+' data-value-name="integerValue" type="number" value="'+value+'" step="1"/>';
+  }else if(data.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
+    value = (data.floatValue === null)?'':data.floatValue+'';
+    html = '<input '+unitPropertyIdData+' data-value-name="floatValue" type="number" value="'+value+'" step=".01" />';
+  }else if(data.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
+    html = '<select '+unitPropertyIdData+' data-value-name="booleanValue" class="select">';
+    if(data.booleanValue){
       html += '<option value="0">False</option><option selected value="1">True</option>';
     }else{
       html = '<option selected value="0">False</option><option value="1">True</option>';
     }
     html += '</select>';
   }else{
-    html = '<input data-value-name="stringValue" type="text" value="'+this.stringValue+'" />';
+    value = (data.stringValue === null)?'':data.stringValue+'';
+    html = '<input '+unitPropertyIdData+' data-value-name="stringValue" type="text" value="'+value+'" />';
   }
-  return new Handlebars.SafeString(html);
+  return html;
+}
+
+Handlebars.registerHelper('renderUnitTypePropertyValidValueInput', function(data, options){
+  return new Handlebars.SafeString(getUnitPropertyInputHtml(data, options));
 });
 
-Handlebars.registerHelper('renderUnitPropertyInput', function(options){
-  let html = '';
-  if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
-    html = '<input data-value-name="integerValue" type="number" value="'+this.integerValue+'" step="1"/>';
-  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
-    html = '<input data-value-name="floatValue" type="number" value="'+this.floatValue+'" step=".01" />';
-  }else if(this.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
-    html = '<select data-value-name="booleanValue" class="select">';
-    if(this.booleanValue){
-      html += '<option value="0">False</option><option selected value="1">True</option>';
-    }else{
-      html = '<option selected value="0">False</option><option value="1">True</option>';
-    }
-    html += '</select>';
-  }else{
-    html = '<input data-value-name="stringValue" type="text" value="'+this.stringValue+'" />';
-  }
-  return new Handlebars.SafeString(html);
-
+Handlebars.registerHelper('renderUnitPropertyInput', function(data, options){
+  return new Handlebars.SafeString(getUnitPropertyInputHtml(data, options));
 });

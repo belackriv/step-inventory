@@ -12,6 +12,7 @@ import BinCollection from '../models/binCollection.js';
 import SkuCollection from '../models/skuCollection.js';
 import TravelerIdModel from '../models/travelerIdModel.js';
 import UnitModel from '../models/unitModel.js';
+import UnitPropertyModel from '../models/unitPropertyModel.js';
 
 export default Marionette.View.extend({
   behaviors: {
@@ -110,6 +111,12 @@ export default Marionette.View.extend({
               serial: serial,
               travelerId: travelerId,
               unitType: travelerId.get('sku').get('unitType'),
+            });
+            travelerId.get('sku').get('unitType').get('properties').each((unitTypeProperty)=>{
+              let unitProperty = UnitPropertyModel.findOrCreate({
+                unit: unit,
+                unitTypeProperty: unitTypeProperty
+              });
             });
           }
           this.model.get('travelerIds').add(travelerId);

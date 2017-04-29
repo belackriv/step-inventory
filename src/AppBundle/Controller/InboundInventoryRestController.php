@@ -554,4 +554,34 @@ class InboundInventoryRestController extends FOSRestController
         return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
     }
 
+     /**
+     * @Rest\Put("/unit/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @ParamConverter("unit", converter="fos_rest.request_body")
+     */
+    public function updateUnitAction(\AppBundle\Entity\Unit $unit)
+    {
+
+        if($this->get('security.authorization_checker')->isGranted('EDIT', $unit)){
+            $em = $this->getDoctrine()->getManager();
+            $em->detach($unit);
+
+            $liveUnit = $em->getRepository('AppBundle:Unit')->findOneById($unit->getId());
+            if( $unit->isOwnedByOrganization($this->getUser()->getOrganization()) and
+                $liveUnit->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
+                $unit = $em->merge($unit);
+                foreach($unit->getProperties() as $property){
+                    $property->setUnit($unit);
+                }
+                $em->flush();
+                return $unit;
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }else{
+            throw $this->createAccessDeniedException();
+        }
+    }
+
 }
