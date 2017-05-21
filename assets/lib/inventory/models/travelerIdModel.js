@@ -1,6 +1,7 @@
 'use strict';
 
 import globalNamespace from 'lib/globalNamespace.js';
+import Backbone from 'backbone';
 import BackboneRelational from 'backbone.relational';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
@@ -75,28 +76,16 @@ let Model = BaseUrlBaseModel.extend({
   triggerIsSelectedChangeOnRadio(){
     Radio.channel('inventory').trigger('change:isSelected:travelerId', this);
   },
-  getUpdatadableAttributes(){
-    return {
+  getUpdatadableAttributes(selectedCollection){
+    let defaultAttributes = {
       inboundOrder: {
         title: 'Inbound Order',
         type: 'select'
       },
-      /*
-      label: {
-        title: 'Label',
-        type: 'text'
-      },
-      */
       bin: {
         title: 'Bin',
         type: 'select'
       },
-      /*
-      sku: {
-        title: 'SKU',
-        type: 'select'
-      },
-      */
       isVoid: {
         title: 'Is Void? (Use "Yes" and "No" for multiple)',
         type: 'checkbox'
@@ -110,6 +99,31 @@ let Model = BaseUrlBaseModel.extend({
         type: 'text'
       },
     };
+    if(selectedCollection && selectedCollection instanceof Backbone.Collection){
+      let unitType = null;
+      let properties = null;
+      let isUnitTypeSame = true;
+      selectedCollection.each((tid)=>{
+        if(unitType === null){
+          unitType = tid.get('sku').get('unitType')?tid.get('sku').get('unitType'):false;
+          if(unitType){
+            properties = tid.get('unit').get('properties');
+          }
+        }else{
+          if(tid.get('sku').get('unitType') != unitType){
+            isUnitTypeSame = false;
+          }
+        }
+      });
+      if(isUnitTypeSame){
+        defaultAttributes.unit = {
+          title: 'Unit',
+          type: 'unit',
+          properties: properties
+        };
+      }
+    }
+    return defaultAttributes;
   }
 });
 

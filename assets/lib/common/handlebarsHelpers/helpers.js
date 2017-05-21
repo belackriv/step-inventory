@@ -282,12 +282,12 @@ const getUnitPropertyInputHtml= function(data, options){
   }
   if(data.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_INTEGER){
     value = (data.integerValue === null)?'':data.integerValue+'';
-    html = '<input '+unitPropertyIdData+' data-value-name="integerValue" type="number" value="'+value+'" step="1"/>';
+    html = '<input '+unitPropertyIdData+' data-unit-type-property-id="'+data.unitTypeProperty.id+'" data-value-name="integerValue" type="number" value="'+value+'" step="1"/>';
   }else if(data.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
     value = (data.floatValue === null)?'':data.floatValue+'';
-    html = '<input '+unitPropertyIdData+' data-value-name="floatValue" type="number" value="'+value+'" step=".01" />';
+    html = '<input '+unitPropertyIdData+' data-unit-type-property-id="'+data.unitTypeProperty.id+'" data-value-name="floatValue" type="number" value="'+value+'" step=".01" />';
   }else if(data.unitTypeProperty.get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
-    html = '<select '+unitPropertyIdData+' data-value-name="booleanValue" class="select">';
+    html = '<select '+unitPropertyIdData+' data-unit-type-property-id="'+data.unitTypeProperty.id+'" data-value-name="booleanValue" class="select">';
     if(data.booleanValue){
       html += '<option value="0">False</option><option selected value="1">True</option>';
     }else{
@@ -296,7 +296,7 @@ const getUnitPropertyInputHtml= function(data, options){
     html += '</select>';
   }else{
     value = (data.stringValue === null)?'':data.stringValue+'';
-    html = '<input '+unitPropertyIdData+' data-value-name="stringValue" type="text" value="'+value+'" />';
+    html = '<input '+unitPropertyIdData+' data-unit-type-property-id="'+data.unitTypeProperty.id+'" data-value-name="stringValue" type="text" value="'+value+'" />';
   }
   return html;
 }

@@ -17,11 +17,19 @@ import SkuCollection from '../models/skuCollection.js';
 import TravelerIdModel from '../models/travelerIdModel.js';
 import MassTravelerIdModel from '../models/massTravelerIdModel.js';
 
+import UnitPropertiesListView from './unitPropertiesListView.js';
+
 export default Marionette.View.extend({
   initialize(){
     this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId');
   },
   template: viewTpl,
+  regions: {
+    properties: {
+      el: '[data-region="properties"]',
+      replaceElement: true
+    },
+  },
   ui: {
     'attributeSelect': 'select[name="updateAttribute"]',
     'updateTypeRadio': 'input[name="updateType"]',
@@ -53,7 +61,7 @@ export default Marionette.View.extend({
   },
   serializeData(){
     let data = {};
-    data.updateableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    data.updateableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes(this.selectedCollection);
     data.selectedCount = this.selectedCollection.length;
     return data;
   },
@@ -75,70 +83,98 @@ export default Marionette.View.extend({
     }, 5);
   },
   updateControl(){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes(this.selectedCollection);
     let attribute = this.ui.attributeSelect.val();
     let type = this.ui.updateTypeRadio.filter(':checked').val();
     if(!attribute || !type){
       return;
     }
     this.ui.controlLabel.text(updatableAttributes[attribute].title);
-    if(type === 'single'){
-      if(updatableAttributes[attribute].type === 'select'){
-        let $select = jquery('<select name="'+attribute+'">');
-        this.ui.controlContainer.empty().append($select);
-        RemoteSearchSelect2Behavior.prototype.setupSelect2($select, this.select2Options[attribute]);
+    if(attribute === 'unit'){
+      this.ui.controlContainer.empty();
+      let listView = new UnitPropertiesListView({
+        collection: updatableAttributes.unit.properties
+      });
+      this.showChildView('properties', listView);
+    }else{
+      this.getRegion('properties').empty();
+      if(type === 'single'){
+        if(updatableAttributes[attribute].type === 'select'){
+          let $select = jquery('<select name="'+attribute+'">');
+          this.ui.controlContainer.empty().append($select);
+          RemoteSearchSelect2Behavior.prototype.setupSelect2($select, this.select2Options[attribute]);
+        }else{
+          let $input = jquery('<input name="'+attribute+'" type="'+updatableAttributes[attribute].type+'" />');
+          this.ui.controlContainer.empty().append($input);
+        }
       }else{
-        let $input = jquery('<input name="'+attribute+'" type="'+updatableAttributes[attribute].type+'" />');
+        let $input = jquery('<textarea rows="10" name="'+attribute+'" ></textarea>');
         this.ui.controlContainer.empty().append($input);
       }
-    }else{
-      let $input = jquery('<textarea rows="10" name="'+attribute+'" ></textarea>');
-      this.ui.controlContainer.empty().append($input);
     }
   },
   editTravelerIds(){
     return new Promise((resolve, reject)=>{
-      let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
       let attr = Syphon.serialize(this);
       let type = this.ui.updateTypeRadio.filter(':checked').val();
       let valuePromise = null;
       let attrKey = null;
-      _.each(attr, (value, key)=>{
-        if(key.indexOf('update') < 0){
-          attrKey = key;
-          if(type === 'single'){
-            valuePromise = this.getSingleValue(value, key);
-          }else{
-            valuePromise = this.getValuesArray(value, key);
-          }
-        }
-      });
-      valuePromise.then((updateValue)=>{
-        if(Array.isArray(updateValue)){
-          this.selectedCollection.each((travelerId, index)=>{
-            travelerId.set(attrKey, updateValue[index]);
+      if(attr.updateAttribute === 'unit'){
+        this.selectedCollection.each((travelerId)=>{
+          let unitModel = travelerId.get('unit');
+          this.$el.find('[data-unit-type-property-id]').each((idx, propertyInput)=>{
+            let property = unitModel.findPropertyByUnitTypePropertyId(jquery(propertyInput).data('unitTypePropertyId'));
+            property.typeAndSet(jquery(propertyInput).data('valueName'), jquery(propertyInput).val());
           });
-        }else{
-          this.selectedCollection.each((travelerId)=>{
-            travelerId.set(attrKey, updateValue);
-          });
-        }
-        //set an Id so backbone does a "put" rather than "post"
-        let massTravlerId = MassTravelerIdModel.findOrCreate({
-          id: 1
         });
-        massTravlerId.set('type', 'edit');
-        massTravlerId.get('travelerIds').reset(this.selectedCollection.models);
-        massTravlerId.save().done(()=>{
+        this.sendMassTidUpdate().then(()=>{
           resolve();
         });
-      }).catch((err)=>{
-        reject(err);
+      }else{
+        _.each(attr, (value, key)=>{
+          if(key.indexOf('update') < 0){
+            attrKey = key;
+            if(type === 'single'){
+              valuePromise = this.getSingleValue(value, key);
+            }else{
+              valuePromise = this.getValuesArray(value, key);
+            }
+          }
+        });
+        valuePromise.then((updateValue)=>{
+          if(Array.isArray(updateValue)){
+            this.selectedCollection.each((travelerId, index)=>{
+              travelerId.set(attrKey, updateValue[index]);
+            });
+          }else{
+            this.selectedCollection.each((travelerId)=>{
+              travelerId.set(attrKey, updateValue);
+            });
+          }
+          this.sendMassTidUpdate().then(()=>{
+            resolve();
+          });
+        }).catch((err)=>{
+          reject(err);
+        });
+      }
+    });
+  },
+  sendMassTidUpdate(){
+    return new Promise((resolve, reject)=>{
+      //set an Id so backbone does a "put" rather than "post"
+      let massTravlerId = MassTravelerIdModel.findOrCreate({
+        id: 1
+      });
+      massTravlerId.set('type', 'edit');
+      massTravlerId.get('travelerIds').reset(this.selectedCollection.models);
+      massTravlerId.save().done(()=>{
+        resolve();
       });
     });
   },
   getSingleValue(valueStr, attribute){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes(this.selectedCollection);
     let updateValue = null;
     return new Promise((resolve, reject)=>{
       if(updatableAttributes[attribute].type === 'select'){
@@ -150,7 +186,7 @@ export default Marionette.View.extend({
     });
   },
   getValuesArray(valueStr, attribute){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes(this.selectedCollection);
     let valuesLookup = {};
     let rawValuesArray = [];
     let valuesArray = [];
@@ -181,7 +217,7 @@ export default Marionette.View.extend({
     });
   },
   getAjaxResult(valuesLookup, attribute, callback){
-    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes();
+    let updatableAttributes = TravelerIdModel.prototype.getUpdatadableAttributes(this.selectedCollection);
     if(updatableAttributes[attribute].type === 'select'){
       let search = this.select2Options[attribute].search;
       let terms = _.keys(valuesLookup);

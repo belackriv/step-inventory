@@ -60,6 +60,15 @@ let Model = BaseUrlBaseModel.extend({
     unitType: null,
     organization: null,
     isVoid: null,
+  },
+  findPropertyByUnitTypePropertyId(unitTypePropertyId){
+    let foundProperty = null;
+    this.get('properties').each((property)=>{
+      if(property.get('unitTypeProperty').id == unitTypePropertyId){
+        foundProperty = property;
+      }
+    });
+    return foundProperty;
   }
 });
 
