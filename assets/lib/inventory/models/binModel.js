@@ -14,6 +14,18 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/bin';
   },
+  importData: {
+    type: 'bin',
+    properties: [
+      { name: 'name', required: true, description: null},
+      { name: 'description', required: false, description: null},
+      { name: 'department', required: true, description: 'Integer, Must be an existing Id'},
+      { name: 'partCategory', required: false, description: 'Integer, Must be an existing Id'},
+      { name: 'binType', required: true, description: 'Integer, Must be an existing Id'},
+      { name: 'parent', required: false, description: 'Integer, Must be an existing Id'},
+      { name: 'isActive', required: true, description: 'Boolean'},
+    ]
+  },
   relations: [{
     type: BackboneRelational.HasOne,
     key: 'department',

@@ -85,7 +85,7 @@ Class Sku
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64)
+	 * @ORM\Column(type="string", length=64, nullable=true)
      * @JMS\Type("string")
      */
 	protected $supplierCode = null;
@@ -102,7 +102,7 @@ Class Sku
 	}
 
 	/**
-	 * @ORM\Column(type="string", length=64)
+	 * @ORM\Column(type="string", length=64, nullable=true)
      * @JMS\Type("string")
      */
 	protected $supplierSku = null;

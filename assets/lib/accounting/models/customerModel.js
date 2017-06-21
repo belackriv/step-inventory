@@ -11,6 +11,12 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/customer';
   },
+  importData: {
+    type: 'client',
+    properties: [
+      { name: 'name', required: true, description: null},
+    ]
+  },
   relations: [{
     type: BackboneRelational.HasMany,
     key: 'contacts',

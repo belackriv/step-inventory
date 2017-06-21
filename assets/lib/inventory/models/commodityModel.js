@@ -10,6 +10,16 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/commodity';
   },
+  importData: {
+    type: 'commodity',
+    properties: [
+      { name: 'name', required: true, description: null},
+      { name: 'commodityId', required: false, description: null},
+      { name: 'commodityAltId', required: false, description: null},
+      { name: 'description', required: false, description: null},
+      { name: 'isActive', required: true, description: 'Boolean'},
+    ]
+  },
   relations: [{
     type: BackboneRelational.HasOne,
     key: 'image',

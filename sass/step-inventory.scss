@@ -162,3 +162,18 @@ ul.si-large-tag-list li {
 	margin-bottom: 0.33em;
 }
 
+ul.si-import-property-list {
+	display: flex;
+	margin-bottom: .5em;
+	li {
+		border-bottom: 2px solid black;
+		border-right: 1px solid black;
+		padding: .25em;
+	}
+	li:last-child {
+		border-right: none;
+	}
+	.is-required {
+		color: red
+	}
+}

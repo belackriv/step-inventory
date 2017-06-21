@@ -12,6 +12,18 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/part';
   },
+  importData: {
+    type: 'part',
+    properties: [
+      { name: 'name', required: true, description: null},
+      { name: 'partId', required: false, description: null},
+      { name: 'partAltId', required: false, description: null},
+      { name: 'description', required: false, description: null},
+      { name: 'partCategory', required: false, description: 'Integer, Must be an existing Id'},
+      { name: 'partGroup', required: false, description: 'Integer, Must be an existing Id'},
+      { name: 'isActive', required: true, description: 'Boolean'},
+    ]
+  },
   relations: [{
     type: BackboneRelational.HasOne,
     key: 'partCategory',

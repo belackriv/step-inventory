@@ -62,6 +62,8 @@ export default Marionette.Behavior.extend({
       if(this.options.comparator){
         filteredCollection.comparator = this.options.comparator;
       }
+      filteredCollection.state.totalRecords = searchedCollection.models.length;
+      filteredCollection.getPage(1);
     }
     return filteredCollection;
   },

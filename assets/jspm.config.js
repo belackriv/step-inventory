@@ -12,6 +12,9 @@ SystemJS.config({
       "meta": {
         "*.js": {
           "loader": "plugin-babel"
+        },
+        "*.hbs": {
+          "loader": "hbs"
         }
       }
     }
@@ -47,6 +50,8 @@ SystemJS.config({
     "moment": "npm:moment@2.17.1",
     "moment-duration-format": "npm:moment-duration-format@1.3.0",
     "moment-timezone": "npm:moment-timezone@0.5.10",
+    "papa": "npm:papaparse@4.3.3",
+    "path": "npm:jspm-nodelibs-path@0.2.3",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.13",
     "process": "npm:jspm-nodelibs-process@0.2.0",
     "select2": "github:select2/select2@4.0.3",

@@ -11,6 +11,16 @@ let Model = BaseUrlBaseModel.extend({
   urlRoot(){
     return this.baseUrl+'/unit_type';
   },
+  importData: {
+    type: 'unitType',
+    properties: [
+      { name: 'name', required: true, description: null},
+      { name: 'manufacturer', required: false, description: null},
+      { name: 'model', required: false, description: null},
+      { name: 'description', required: false, description: null},
+      { name: 'isActive', required: true, description: 'Boolean'},
+    ]
+  },
   relations: [{
     type: BackboneRelational.HasOne,
     key: 'image',

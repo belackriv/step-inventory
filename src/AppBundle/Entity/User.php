@@ -473,6 +473,7 @@ class User implements AdvancedUserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
+        $this->receivesInventoryAlert = true;
         $this->userRoles = new ArrayCollection();
     }
 

@@ -15,8 +15,15 @@ export default Marionette.View.extend({
     if(!this.options.childViewOptions){
       this.options.childViewOptions = {};
     }
-    this.options.childViewOptions.searchPath =  this.options.searchPath;
-    this.options.childViewOptions.serializeData = this.options.serializeData;
+    if(!this.options.childViewOptions.searchPath && this.options.searchPath){
+      this.options.childViewOptions.searchPath =  this.options.searchPath;
+    }
+    if(!this.options.childViewOptions.serializeData && this.options.serializeData){
+      this.options.childViewOptions.serializeData = this.options.serializeData;
+    }
+    if(this.options.serializeData){
+      this.serializeData = this.options.serializeData;
+    }
   },
   regions: {
     tbody: {

@@ -8,7 +8,10 @@ import Radio from 'backbone.radio';
 import viewTpl from './indexView.hbs!';
 import SearchableListLayoutView from './searchableListLayoutView';
 
+import MassImportModel from 'lib/common/models/massImportModel.js';
+import MassImportView from 'lib/common/views/massImportView.js';
 
+//"jspm": "0.17.0-beta.32",
 export default Marionette.View.extend({
   initialize(options){
     if(!options.EditView){
@@ -18,10 +21,12 @@ export default Marionette.View.extend({
 
     if(!this.model){
       this.model = new Backbone.Model({
-        isCreatable: true
+        isCreatable: true,
+        isImportable: false,
       });
     }
     this.listenTo(this.model, "change:isCreatable", this.checkCreateButtonVisiblity);
+    this.listenTo(this.model, "change:isImportable", this.checkImportButtonVisiblity);
 
     if(!this.collection){
       throw 'Must pass the Entity Index view a collection';
@@ -31,7 +36,8 @@ export default Marionette.View.extend({
     return {
       entityUrl: this.collection.url(),
       title: this.collection.title,
-      isCreatable: this.model.get('isCreatable')
+      isCreatable: this.model.get('isCreatable'),
+      isImportable: this.model.get('isImportable'),
     };
   },
   template: viewTpl,
@@ -70,22 +76,25 @@ export default Marionette.View.extend({
     }else{
       this.showList();
     }
+    this.checkCreateButtonVisiblity();
+    this.checkImportButtonVisiblity();
   },
   ui: {
     'entityListLink': 'a.entity-list-link',
-    'createButton': '.create-entity-button'
+    'createButton': '.create-entity-button',
+    'importButton': '.import-entity-button'
   },
   events: {
     'click @ui.entityListLink': 'showListLinkClicked',
     'click @ui.createButton': 'createEntityButtonClicked',
+    'click @ui.importButton': 'importEntityButtonClicked',
   },
   childViewEvents: {
     'show:view': 'showView',
     'show:list': 'showList',
     'show:logs': 'showLogs',
     'show:log': 'showLog',
-    'select:model': 'showEdit',
-    'add:entity': 'addEntity',
+    'select:model': 'showEdit'
   },
   checkCreateButtonVisiblity(){
     if(this.isRendered){
@@ -93,6 +102,15 @@ export default Marionette.View.extend({
         this.ui.createButton.show();
       }else{
         this.ui.createButton.hide();
+      }
+    }
+  },
+  checkImportButtonVisiblity(){
+    if(this.isRendered){
+      if(this.model.get('isImportable')){
+        this.ui.importButton.show();
+      }else{
+        this.ui.importButton.hide();
       }
     }
   },
@@ -106,6 +124,16 @@ export default Marionette.View.extend({
     let model = new this.collection.model(newEntityDefaults);
     this.showEdit(null, {model:model}, {preventDestroy: true});
   },
+  importEntityButtonClicked(event){
+    event.preventDefault();
+    let importModel = new MassImportModel({
+      typeModel: this.collection.model
+    });
+    let importView = new MassImportView({
+      model: importModel
+    });
+    this.showView(null, {view: importView});
+  },
   showView(childView, args, options){
     this.getRegion('action').show(args.view, options);
   },
@@ -114,6 +142,11 @@ export default Marionette.View.extend({
       this.model.set('isCreatable', false);
     }else{
       this.model.set('isCreatable', true);
+    }
+    if(this.options.isImportable === true){
+      this.model.set('isImportable', true);
+    }else{
+      this.model.set('isImportable', false);
     }
     let viewOptions = _.extend(this.options, {
       collection: this.collection,
@@ -126,6 +159,7 @@ export default Marionette.View.extend({
   },
   showEdit(childView, args, options){
     this.model.set('isCreatable', false);
+    this.model.set('isImportable', false);
     var editView = new this.EditView({
       model: args.model,
       parentView: this
@@ -139,6 +173,7 @@ export default Marionette.View.extend({
   },
   showLogs(childView, args, options){
     this.model.set('isCreatable', false);
+    this.model.set('isImportable', false);
     var logCollection = new LogCollection(null, {
       baseModelInstance: args.model
     });
@@ -158,6 +193,7 @@ export default Marionette.View.extend({
   },
   showLog(childView, args, options){
     this.model.set('isCreatable', false);
+    this.model.set('isImportable', false);
     if(!args.model.baseModelInstance){
       args.model.baseModelInstance = childView.model;
     }

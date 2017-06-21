@@ -368,6 +368,7 @@ export default Marionette.Object.extend({
     let skuCollection = Radio.channel('data').request('collection', SkuCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: skuCollection,
@@ -397,6 +398,7 @@ export default Marionette.Object.extend({
     let partCollection = Radio.channel('data').request('collection', PartCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: partCollection,
@@ -484,6 +486,7 @@ export default Marionette.Object.extend({
     let commodityCollection = Radio.channel('data').request('collection', CommodityCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: commodityCollection,
@@ -513,6 +516,7 @@ export default Marionette.Object.extend({
     let unitTypeCollection = Radio.channel('data').request('collection', UnitTypeCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: unitTypeCollection,
@@ -571,6 +575,7 @@ export default Marionette.Object.extend({
     let binCollection = Radio.channel('data').request('collection', BinCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: binCollection,
@@ -658,6 +663,7 @@ export default Marionette.Object.extend({
     let clientCollection = Radio.channel('data').request('collection', ClientCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: clientCollection,
@@ -687,6 +693,7 @@ export default Marionette.Object.extend({
     let customerCollection = Radio.channel('data').request('collection', CustomerCollection, {doFetch: false});
     let entityViewOptions = {
       isCreatable: true,
+      isImportable: true,
       listLength: 20,
       entityId: id,
       collection: customerCollection,

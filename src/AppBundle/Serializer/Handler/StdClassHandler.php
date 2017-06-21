@@ -62,7 +62,6 @@ class StdClassHandler implements SubscribingHandlerInterface
     {
         // See above.
         $type['name'] = 'array';
-
         return (object) $visitor->visitArray($data, $type, $context);
     }
 }

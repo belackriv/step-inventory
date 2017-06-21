@@ -50,7 +50,7 @@ Class Bin
 	}
 
 	/**
-	 * @ORM\Column(type="text")
+	 * @ORM\Column(type="text", nullable=true)
      * @JMS\Type("string")
      */
 	protected $description = null;
