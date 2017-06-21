@@ -61,3 +61,5 @@ web/bundles
 
 *.sublime-project
 *.sublime-workspace
+
+!assets/jspm_packages/npm/papaparse@4.3.3/papaparse.js
