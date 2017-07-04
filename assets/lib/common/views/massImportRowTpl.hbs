@@ -1,6 +1,12 @@
-{{#each _columns }}
-	<td>{{this}}</td>
+<td>
+	{{#if error}}
+		<span class="tag is-danger icon"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+	{{/if}}
+	{{rowNum}}
+</td>
+{{#each attributes}}
+	<td class="{{#ifCond @key '==' 'id'}}is-warning{{/ifCond}}">{{this}}</td>
 {{/each}}
 <td>
-	<button class="button is-small is-danger" data-method="removeItem" title="Remove Row"><span class="fa fa-minus"></span></button>
+	<button class="delete" data-method="removeItem" title="Remove Row"></button>
 </td>

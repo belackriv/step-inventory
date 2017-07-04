@@ -2,7 +2,8 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Library\Service\MassImporterService;
+use AppBundle\Library\Service\MassImportAndExportService;
+use AppBundle\Library\Service\CsvDirectDownloadService AS Csv;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,10 +25,10 @@ class AdminImportRestController extends FOSRestController
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("massImport", converter="fos_rest.request_body")
      */
-    public function createSkuAction(\AppBundle\Entity\MassImport $massImport)
+    public function importAction(\AppBundle\Entity\MassImport $massImport)
     {
         if($this->get('security.authorization_checker')->isGranted('CREATE', $massImport)){
-            $importer = new MassImporterService();
+            $importer = new MassImportAndExportService();
             $importer->setContainer($this->container);
             return $importer->import($massImport);
         }else{
@@ -35,6 +36,15 @@ class AdminImportRestController extends FOSRestController
         }
     }
 
-
+    /**
+     * @Rest\Get("/export/{type}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function exportAction(Request $request, $type)
+    {
+        $exporter = new MassImportAndExportService();
+        $exporter->setContainer($this->container);
+        Csv::sendResponse($type.'_export', $exporter->export($type), $request);
+    }
 
 }

@@ -1,6 +1,6 @@
 <h3 class="title is-3 has-text-centered">Mass Import</h3>
 <div>
-	<p>The CSV file must have a header row which can contain the following properties.  Hover each property for a description; properties in red are required.</p>
+	<p>The CSV file must have a header row which can contain the following properties.  Hover each property for a description; properties in red are required. If an id is supplied, and a record with that id exists, it will be updated.</p>
 	<ul class="si-import-property-list">
 		{{#each typeModel.prototype.importData.properties}}
 			<li class="{{#if required}}is-required{{/if}}" title="{{#if required}}(Required){{/if}}{{description}}">{{name}}</li>
@@ -16,6 +16,8 @@
 </form>
 <div>
 	<button type="button" class="button is-primary" data-ui-name="import">Import</button>
+	<button type="button" class="button is-info" data-ui-name="export">Export</button>
 	<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
 </div>
+<div class="notification is-danger" data-ui="validationErrors"><p></p><ul></ul></div>
 <div data-region="csv-table"></div>

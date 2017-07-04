@@ -11,7 +11,7 @@ use AppBundle\Entity\Client;
 use AppBundle\Entity\Customer;
 
 
-class MassImporterService
+class MassImportAndExportService
 {
     use \Symfony\Component\DependencyInjection\ContainerAwareTrait;
     use \AppBundle\Controller\Mixin\UpdateAclMixin;
@@ -88,6 +88,15 @@ class MassImporterService
             $this->updateAclByRoles($entity, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
         }
         return $createdEnities;
+    }
+
+    public function export($type)
+    {
+        $exportMethodName = 'export'.ucfirst($type);
+        if(!method_exists($this, $exportMethodName)){
+            throw new \Exception("Export for '".$type."'' not supported.");
+        }
+        return $this->$exportMethodName();
     }
 
     private function setEntityProperties(\stdClass $entityData, $entity)
@@ -170,6 +179,37 @@ class MassImporterService
         return true;
     }
 
+    private function getEntities(\Doctrine\ORM\QueryBuilder $qb, $class)
+    {
+        $data = [];
+        $row = ['id'];
+        foreach(self::$allowedFields[$class] as $field){
+            $row[] = $field['name'];
+        }
+        $data[] = $row;
+        $entities = $qb->getQuery()->getResult();
+        foreach($entities as $entity){
+            $row = [$entity->getId()];
+            foreach(self::$allowedFields[$class] as $field){
+                $getMethodName = 'get'.ucfirst($field['name']);
+                if(!method_exists($entity, $getMethodName)){
+                    throw new \Exception("No get Method found for property '".$field['name']."'.");
+                }
+                $value = $entity->$getMethodName();
+                if(is_object($value)){
+                    if(method_exists($value, 'getId')){
+                        $value = $value->getId();
+                    }else{
+                        $value = 'N/A';
+                    }
+                }
+                $row[] = (string)$value;
+            }
+            $data[] = $row;
+        }
+        return $data;
+    }
+
     private function getUser()
     {
         return $this->container->get('security.token_storage')->getToken()->getUser();
@@ -180,10 +220,20 @@ class MassImporterService
         return $this->container->get('doctrine')->getManager();
     }
 
+    private function getEntityInstance(\stdClass $classData, $className)
+    {
+        if(property_exists($classData, 'id')){
+            return $this->getEntity($className, $classData->id);
+        }else{
+            return new $className;
+        }
+
+    }
+
     private function importPart(\stdClass $partData)
     {
         $this->propertiesSet = [];
-        $part = new Part();
+        $part = $this->getEntityInstance($partData, Part::class);
         $this->setEntityProperties($partData, $part);
         $this->checkForMissedRequiredProperties($part);
         $part->setOrganization($this->getUser()->getOrganization());
@@ -194,7 +244,7 @@ class MassImporterService
     private function importBin(\stdClass $binData)
     {
         $this->propertiesSet = [];
-        $bin = new Bin();
+        $bin = $this->getEntityInstance($binData, Bin::class);
         $this->setEntityProperties($binData, $bin);
         $this->checkForMissedRequiredProperties($bin);
         $bin->setIsLocked(false);
@@ -205,7 +255,7 @@ class MassImporterService
     private function importSku(\stdClass $skuData)
     {
         $this->propertiesSet = [];
-        $sku = new Sku();
+        $sku = $this->getEntityInstance($skuData, Sku::class);
         $this->setEntityProperties($skuData, $sku);
         $this->checkForMissedRequiredProperties($sku);
         $sku->setOrganization($this->getUser()->getOrganization());
@@ -216,7 +266,7 @@ class MassImporterService
     private function importCommodity(\stdClass $commodityData)
     {
         $this->propertiesSet = [];
-        $commodity = new Commodity();
+        $commodity = $this->getEntityInstance($commodityData, Commodity::class);
         $this->setEntityProperties($commodityData, $commodity);
         $this->checkForMissedRequiredProperties($commodity);
         $commodity->setOrganization($this->getUser()->getOrganization());
@@ -227,7 +277,7 @@ class MassImporterService
     private function importUnitType(\stdClass $unitTypeData)
     {
         $this->propertiesSet = [];
-        $unitType = new UnitType();
+        $unitType = $this->getEntityInstance($unitTypeData, UnitType::class);
         $this->setEntityProperties($unitTypeData, $unitType);
         $this->checkForMissedRequiredProperties($unitType);
         $unitType->setOrganization($this->getUser()->getOrganization());
@@ -238,7 +288,7 @@ class MassImporterService
     private function importClient(\stdClass $clientData)
     {
         $this->propertiesSet = [];
-        $client = new Client();
+        $client = $this->getEntityInstance($clientData, Client::class);
         $this->setEntityProperties($clientData, $client);
         $this->checkForMissedRequiredProperties($client);
         $client->setOrganization($this->getUser()->getOrganization());
@@ -249,11 +299,83 @@ class MassImporterService
     private function importCustomer(\stdClass $customerData)
     {
         $this->propertiesSet = [];
-        $customer = new Customer();
+        $customer = $this->getEntityInstance($customerData, Customer::class);
         $this->setEntityProperties($customerData, $customer);
         $this->checkForMissedRequiredProperties($customer);
         $customer->setOrganization($this->getUser()->getOrganization());
         $this->getEntityManager()->persist($customer);
         return $customer;
     }
+
+    public function exportPart()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(Part::class, 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, Part::class);
+    }
+
+    public function exportBin()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(Bin::class, 'e')
+            ->join('e.binType', 'bt')
+            ->where('bt.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, Bin::class);
+    }
+
+    public function exportSku()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(Sku::class, 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, Sku::class);
+    }
+
+    public function exportCommodity()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(Commodity::class, 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, Commodity::class);
+    }
+
+    public function exportUnitType()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(UnitType::class, 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, UnitType::class);
+    }
+
+    public function exportClient()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(Client::class, 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, Client::class);
+    }
+
+    public function exportCustomer()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(Customer::class, 'e')
+            ->where('e.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+        return $this->getEntities($qb, Customer::class);
+    }
+
 }

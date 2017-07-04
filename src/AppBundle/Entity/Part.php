@@ -122,7 +122,7 @@ Class Part
 		return $this->partCategory;
 	}
 
-	public function setPartCategory(PartCategory $partCategory)
+	public function setPartCategory(PartCategory $partCategory = null)
 	{
 		$this->partCategory = $partCategory;
 		return $this;
@@ -140,7 +140,7 @@ Class Part
 		return $this->partGroup;
 	}
 
-	public function setPartGroup(PartGroup $partGroup)
+	public function setPartGroup(PartGroup $partGroup = null)
 	{
 		$this->partGroup = $partGroup;
 		return $this;

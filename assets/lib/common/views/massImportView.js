@@ -28,16 +28,20 @@ export default Marionette.View.extend({
     'dropTarget': '[data-ui="dropTarget"]',
     'openFileButton': 'button[name="openFile"]',
     'csvFileInput': 'input[name="csvFile"]',
+    'validationErrors': '[data-ui="validationErrors"]',
     'importButton': 'button[data-ui-name="import"]',
+    'exportButton': 'button[data-ui-name="export"]',
     'cancelButton': 'button[data-ui-name="cancel"]',
   },
   events:{
     'click @ui.openFileButton': 'onOpenFileButtonClick',
     'change @ui.csvFileInput': 'addSelectedFile',
     'click @ui.importButton': 'import',
+    'click @ui.exportButton': 'export',
     'click @ui.cancelButton': 'cancel'
   },
   onRender(){
+    this.ui.validationErrors.hide();
     let dropTarget = this.ui.dropTarget.get(0);
     ['dragenter','dragover','dragleave','dragstop','drop'].forEach(
       event => dropTarget.addEventListener(event, this.stopNormalBehavior.bind(this), false));
@@ -68,14 +72,17 @@ export default Marionette.View.extend({
   },
   openFile(files){
     this.disableFormButtons();
-    let viewCollection = new BaseSearchableCollection();
+    this.initializeValidationErrors();
+    let viewCollection = this.viewCollection = new BaseSearchableCollection();
     let columns = [];
     let childSerializeData = function(model){
       model = model || this.model;
-      let data = {_columns: []};
+      let data = {attributes: {}};
       _.each(columns, (val)=>{
-        data._columns.push(model.get(val));
+        data.attributes[val] = model.get(val);
       });
+      data.rowNum = model.get('_rowNum');
+      data.error = model.get('_error');
       return data;
     };
     let serializeData = function(){
@@ -111,14 +118,54 @@ export default Marionette.View.extend({
           });
           viewShown = true
         }
-        viewCollection.add(new BaseSearchableModel(row.data[0]));
+        let model = new BaseSearchableModel(row.data[0]);
+        viewCollection.add(model);
+        model.set('_rowNum', viewCollection.indexOf(model) + 1);
+        this.validateModel(model)
       },
       complete: ()=>{
         this.model.set('items', viewCollection);
+        this.showValidationErrors();
+
         this.showChildView('table', new SearchableListLayoutView(viewOptions));
         this.enableFormButtons();
       }
     });
+  },
+  validateModel(model){
+    _.each(this.model.get('typeModel').prototype.importData.properties, (property)=>{
+      if(property.required){
+        if(model.get(property.name) === undefined || model.get(property.name) === null || model.get(property.name) === ''){
+          model.set('_error', true);
+          this.validationErrors.push('Missing required property "'+property.name+'" at row '+model.get('_rowNum'));
+        }
+      }
+    });
+  },
+  validateCollection(collection){
+    collection.each((model)=>{
+      this.validateModel(model);
+    });
+  },
+  initializeValidationErrors(){
+    this.validationErrors = [];
+    this.ui.validationErrors.hide();
+    this.ui.validationErrors.find('ul').empty();
+  },
+  showValidationErrors(){
+    if(this.validationErrors.length > 0){
+      this.ui.validationErrors.removeClass('is-success').addClass('is-danger').find('p').text('Found '+this.validationErrors.length+' errors.');
+      _.find(this.validationErrors, (error, idx)=>{
+        if(idx >= 10){
+          this.ui.validationErrors.find('ul').append('<li>..And '+(this.validationErrors.length - 10)+' more not shown.</li>');
+          return true;
+        }
+        this.ui.validationErrors.find('ul').append('<li>'+error+'</li>');
+      });
+    }else{
+      this.ui.validationErrors.removeClass('is-danger').addClass('is-success').find('p').text('No Errors Found.');
+    }
+    this.ui.validationErrors.show();
   },
   import(event){
     this.disableFormButtons();
@@ -129,6 +176,9 @@ export default Marionette.View.extend({
     }).catch(()=>{
       this.enableFormButtons();
     });
+  },
+  export(event){
+    window.location = '/export/'+ this.model.get('typeModel').prototype.importData.type;
   },
   cancel(event){
     this.triggerMethod('show:list');
@@ -149,6 +199,10 @@ export default Marionette.View.extend({
     this[methodName](args);
   },
   removeItem(args){
+    args.model.set('id', null);
     args.model.destroy();
+    this.initializeValidationErrors();
+    this.validateCollection(this.viewCollection);
+    this.showValidationErrors();
   }
 });
