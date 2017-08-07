@@ -21,6 +21,7 @@ Class TravelerId
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $id = null;
 
@@ -70,6 +71,7 @@ Class TravelerId
 	/**
 	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $label = null;
 
@@ -101,6 +103,7 @@ Class TravelerId
 	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="travelerIds")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $bin = null;
 
@@ -119,6 +122,7 @@ Class TravelerId
 	 * @ORM\ManyToOne(targetEntity="Sku", )
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Sku")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $sku = null;
 
@@ -136,6 +140,7 @@ Class TravelerId
 	/**
 	 * @ORM\OneToOne(targetEntity="Unit", mappedBy="travelerId", cascade={"persist"})
 	 * @JMS\Type("AppBundle\Entity\Unit")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $unit = null;
 
@@ -153,6 +158,7 @@ Class TravelerId
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $isVoid = null;
 
@@ -170,6 +176,7 @@ Class TravelerId
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=false)
 	 * @JMS\Type("float")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $quantity;
 
@@ -187,6 +194,7 @@ Class TravelerId
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
 	 * @JMS\Type("float")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $cost;
 
@@ -205,6 +213,7 @@ Class TravelerId
 	 * @ORM\ManyToOne(targetEntity="InventoryTravelerIdTransform", inversedBy="fromTravelerIds")
 	 * @ORM\JoinColumn(nullable=true)
 	 * @JMS\Type("AppBundle\Entity\InventoryTravelerIdTransform")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $transform = null;
 

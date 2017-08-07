@@ -3,12 +3,12 @@
 <td>{{salesItem.attributes.label}}</td>
 <td>
 	{{#each oldAttributes}}
-		<strong>{{@key}}:</strong> {{this}}
+		<strong>{{@key}}:</strong> {{castAsType this 'string'}}
 	{{/each}}
 </td>
 <td>
 	{{#each newAttributes}}
-		<strong>{{@key}}:</strong> {{this}}
+		<strong>{{@key}}:</strong> {{castAsType this 'string'}}
 	{{/each}}
 </td>
 <td>{{join tags}}</td>

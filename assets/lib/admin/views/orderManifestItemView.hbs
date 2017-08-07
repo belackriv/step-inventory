@@ -1,0 +1,10 @@
+<td>
+	<a class="entity-link{{#if isVoid}} si-is-void{{/if}}{{#if transform}}{{#unless transform.attributes.isVoid}} si-has-transform{{/unless}}{{/if}}" href="{{entityUrl}}">{{label}}</a>
+	{{#if unit}}
+		({{unit.attributes.serial}})
+	{{/if}}
+</td>
+<td>{{bin.attributes.name}}</td>
+<td>{{sku.attributes.name}}</td>
+<td>{{quantity}}</td>
+<td>{{sku.attributes.quantity}}</td>

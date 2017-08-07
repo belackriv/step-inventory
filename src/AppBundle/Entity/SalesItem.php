@@ -21,7 +21,7 @@ Class SalesItem
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @JMS\Type("integer")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $id = null;
 
@@ -59,6 +59,7 @@ Class SalesItem
 	/**
 	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $label = null;
 
@@ -95,6 +96,7 @@ Class SalesItem
 	 * @ORM\ManyToOne(targetEntity="Bin", inversedBy="salesItems")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Bin")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $bin = null;
 
@@ -113,6 +115,7 @@ Class SalesItem
 	 * @ORM\ManyToOne(targetEntity="Sku", )
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\Sku")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $sku = null;
 
@@ -130,6 +133,7 @@ Class SalesItem
 	/**
 	 * @ORM\OneToOne(targetEntity="Unit", mappedBy="salesItem")
 	 * @JMS\Type("AppBundle\Entity\Unit")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $unit = null;
 
@@ -147,6 +151,7 @@ Class SalesItem
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $isVoid = null;
 
@@ -164,6 +169,7 @@ Class SalesItem
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=false)
 	 * @JMS\Type("float")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $quantity;
 
@@ -181,6 +187,7 @@ Class SalesItem
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
 	 * @JMS\Type("float")
+	 * @JMS\Groups({"Default","OrderManifest"})
 	 */
 	protected $revenue;
 

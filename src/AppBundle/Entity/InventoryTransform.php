@@ -66,6 +66,7 @@ Class InventoryTransform
     /**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $isVoid = null;
 

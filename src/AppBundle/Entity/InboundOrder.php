@@ -141,7 +141,7 @@ Class InboundOrder
 	/**
      * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="inboundOrder")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
-     * @JMS\Groups({"TravelerId"})
+     * @JMS\Groups({"OrderManifest"})
      * @JMS\ReadOnly
      */
     protected $travelerIds;
@@ -150,6 +150,14 @@ Class InboundOrder
     {
     	return $this->travelerIds;
     }
+
+    /**
+     * @JMS\VirtualProperty
+     */
+     public function travelerIdCount()
+     {
+        return count($this->travelerIds);
+     }
 
     public function addTravelerId(TravelerId $travelerId)
     {

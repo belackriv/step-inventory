@@ -142,7 +142,7 @@ Class OutboundOrder
 	/**
      * @ORM\OneToMany(targetEntity="SalesItem", mappedBy="outboundOrder")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
-     * @JMS\Groups({"SalesItem"})
+     * @JMS\Groups({"OrderManifest"})
      * @JMS\ReadOnly
      */
     protected $salesItems;
@@ -151,6 +151,14 @@ Class OutboundOrder
     {
     	return $this->salesItems;
     }
+
+    /**
+     * @JMS\VirtualProperty
+     */
+     public function salesItemCount()
+     {
+        return count($this->salesItems);
+     }
 
     public function addSalesItem(SalesItem $salesItem)
     {
@@ -181,5 +189,30 @@ Class OutboundOrder
 			'label' => $this->label,
 			'isVoid' => $this->isVoid
 		];
+	}
+
+	public function ship(User $byUser, Bin $shippedBin)
+	{
+		$moves = [];
+		foreach($this->getSalesItems() as $salesItem){
+			if(!$salesItem->getIsVoid()){
+				$moves[] = $this->createSalesItemMovementIntoShippedBin($byUser, $salesItem, $shippedBin);
+				$salesItem->setBin($shippedBin);
+			}
+		}
+		$this->setIsShipped(true);
+		return $moves;
+	}
+
+	public function createSalesItemMovementIntoShippedBin(User $byUser, SalesItem $salesItem, Bin $shippedBin)
+	{
+		$move = new InventorySalesItemMovement();
+        $move->setSalesItem($salesItem);
+        $move->setByUser($byUser);
+        $move->setMovedAt(new \DateTime());
+        $move->setFromBin($salesItem->getBin());
+        $move->setToBin($shippedBin);
+        $move->addTag('shipped');
+		return $move;
 	}
 }

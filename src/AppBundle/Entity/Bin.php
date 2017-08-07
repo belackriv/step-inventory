@@ -24,6 +24,7 @@ Class Bin
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $id = null;
 
@@ -35,6 +36,7 @@ Class Bin
 	/**
 	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $name = null;
 
@@ -201,7 +203,7 @@ Class Bin
 
 	public function setIsActive($isActive)
 	{
-		$this->isActive = $isActive;
+		$this->isActive = (boolean)$isActive;
 		return $this;
 	}
 
@@ -218,7 +220,7 @@ Class Bin
 
 	public function setIsLocked($isLocked)
 	{
-		$this->isLocked = $isLocked;
+		$this->isLocked = (boolean)$isLocked;
 		return $this;
 	}
 

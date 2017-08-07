@@ -4,8 +4,8 @@ import globalNamespace from 'lib/globalNamespace.js';
 import BackboneRelational from 'backbone.relational';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 
-import 'lib/inventory/models/travelerIdModel';
-import './clientModel';
+import 'lib/inventory/models/travelerIdModel.js';
+import './clientModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   urlRoot(){
@@ -24,6 +24,8 @@ let Model = BaseUrlBaseModel.extend({
     isVoid: false,
     isReceived: false,
     travelerIds: null,
+    //virtual, since travelerIds starts empty
+    travelerIdCount: null,
   },
 });
 

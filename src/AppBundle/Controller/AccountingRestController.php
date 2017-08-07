@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Library\Utilities;
+use AppBundle\Library\Service\MassImportAndExportService;
+use AppBundle\Library\Service\CsvDirectDownloadService AS Csv;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Doctrine\Common\Collections\ArrayCollection;
+
+use FOS\RestBundle\Context\Context;
+use JMS\Serializer\SerializationContext;
 
 
 class AccountingRestController extends FOSRestController
@@ -294,14 +299,44 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/inbound_order/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
     {
         if( $this->get('security.authorization_checker')->isGranted('VIEW', $inboundOrder) and
             $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
-            return $inboundOrder;
+            $view = $this->view($inboundOrder, 200);
+            $view->setTemplate(":default:index.html.twig");
+            $context = new Context;
+            $context->setGroups([
+                'Default',
+                'OrderManifest',
+                'travelerIds' => [
+                    'OrderManifest',
+                    'transform' => [
+                        'OrderManifest'
+                    ]
+                ]
+            ]);
+            $context->enableMaxDepth();
+            $view->setContext($context);
+            return $this->handleView($view);
+        }else{
+            throw $this->createNotFoundException('InboundOrder #'.$inboundOrder->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Get("/inbound_order/{id}/manifest")
+     */
+    public function getInboundOrderManifestAction(\AppBundle\Entity\InboundOrder $inboundOrder, Request $request)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inboundOrder) and
+            $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $exporter = new MassImportAndExportService();
+            $exporter->setContainer($this->container);
+            Csv::sendResponse($inboundOrder->getLabel().'_manifest', $exporter->export('inboundOrderManifest', ['inboundOrder' => $inboundOrder]), $request);
         }else{
             throw $this->createNotFoundException('InboundOrder #'.$inboundOrder->getId().' Not Found');
         }
@@ -415,14 +450,85 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/outbound_order/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function getOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)
     {
         if( $this->get('security.authorization_checker')->isGranted('VIEW', $outboundOrder) and
             $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
-            return $outboundOrder;
+            $view = $this->view($outboundOrder, 200);
+            $view->setTemplate(":default:index.html.twig");
+            $context = new Context;
+            $context->setGroups([
+                'Default',
+                'OrderManifest',
+                'salesItems' => [
+                    'OrderManifest',
+                ]
+            ]);
+            $context->enableMaxDepth();
+            $view->setContext($context);
+            return $this->handleView($view);
+        }else{
+            throw $this->createNotFoundException('OutboundOrder #'.$outboundOrder->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Get("/outbound_order/{id}/manifest")
+     */
+    public function getOutboundOrderManifestAction(\AppBundle\Entity\OutboundOrder $outboundOrder, Request $request)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $outboundOrder) and
+            $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            $exporter = new MassImportAndExportService();
+            $exporter->setContainer($this->container);
+            Csv::sendResponse($outboundOrder->getLabel().'_manifest', $exporter->export('outboundOrderManifest', ['outboundOrder' => $outboundOrder]), $request);
+        }else{
+            throw $this->createNotFoundException('OutboundOrder #'.$outboundOrder->getId().' Not Found');
+        }
+    }
+
+    /**
+     * @Rest\Get("/outbound_order/{id}/ship")
+     */
+    public function setOutboundOrderShippedAction(\AppBundle\Entity\OutboundOrder $outboundOrder, Request $request)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $outboundOrder) and
+            $outboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            if($outboundOrder->getIsShipped()){
+                throw new HttpException(Response::HTTP_CONFLICT, 'Order Has Already Shipped!' );
+            }
+            $inventoryMovements = [];
+            $shippedBin = $this->getDoctrine()->getRepository('AppBundle:Bin')->findShippedBin($this->getUser()->getOrganization());
+            if(!$shippedBin){
+                throw new HttpException(Response::HTTP_CONFLICT, 'The Required Shipped Bin Was Not Found!' );
+            }
+            $inventoryMovements = $outboundOrder->ship($this->getUser(), $shippedBin);
+            $em = $this->getDoctrine()->getManager();
+            foreach($inventoryMovements as $movement){
+                $em->persist($movement);
+            }
+            $em->flush();
+            foreach($inventoryMovements as $movement){
+                $this->updateAclByRoles($movement, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
+
+            $view = $this->view($outboundOrder, 200);
+            $view->setTemplate(":default:index.html.twig");
+            $context = new Context;
+            $context->setGroups([
+                'Default',
+                'OrderManifest',
+                'salesItems' => [
+                    'OrderManifest',
+                ]
+            ]);
+            $context->enableMaxDepth();
+            $view->setContext($context);
+            return $this->handleView($view);
         }else{
             throw $this->createNotFoundException('OutboundOrder #'.$outboundOrder->getId().' Not Found');
         }

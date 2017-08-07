@@ -6486,3 +6486,6 @@ ul.si-import-property-list {
     border-right: none; }
   ul.si-import-property-list .is-required {
     color: red; }
+
+.table a.entity-link {
+  color: #55a79a; }

@@ -8,6 +8,8 @@ import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
 import 'lib/accounting/models/outboundOrderModel.js';
 import './binModel.js';
 import './skuModel.js';
+import './unitModel.js';
+import './inventoryTravelerIdTransformModel.js';
 
 let Model = BaseUrlBaseModel.extend({
   initialize(){
@@ -22,7 +24,7 @@ let Model = BaseUrlBaseModel.extend({
     relatedModel: 'OutboundOrderModel',
     includeInJSON: ['id'],
     reverseRelation: {
-      key: 'travelerIds',
+      key: 'salesItems',
       includeInJSON: ['id'],
     }
   },{

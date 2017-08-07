@@ -56,8 +56,24 @@ Handlebars.registerHelper('tableCell', function(column, data, options){
   }
 });
 
-Handlebars.registerHelper('boolean', function(data, options){
-  return data?'True':'False';
+Handlebars.registerHelper('castAsType', function(value, type, options){
+  if(value.date){
+    type = 'datetime';
+    value = Moment.parseZone(value.date+' '+value.timezone);
+  }
+  let castedValue = castAsType(value, type);
+  switch (type) {
+    case 'integer':
+      return new Handlebars.SafeString(parseInt(castedValue));
+    case 'boolean':
+      return Handlebars.helpers.boolean(castedValue, options);
+    case 'percent':
+      return Handlebars.helpers.percent(castedValue, options);
+    case 'datetime':
+       return Handlebars.helpers.moment(castedValue, options);
+    default:
+      return new Handlebars.SafeString(castedValue);
+  }
 });
 
 Handlebars.registerHelper('statusCode', function(data, options){
@@ -91,7 +107,6 @@ Handlebars.registerHelper('moment', function(data, options){
   var format = options.hash.format?options.hash.format:'h:mm A, ddd MMM D YYYY';
   return Moment(data).format(format);
 });
-
 
 Handlebars.registerHelper('log', function(data, options){
   console.log(data);

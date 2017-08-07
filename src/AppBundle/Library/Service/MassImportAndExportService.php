@@ -9,6 +9,10 @@ use AppBundle\Entity\Commodity;
 use AppBundle\Entity\UnitType;
 use AppBundle\Entity\Client;
 use AppBundle\Entity\Customer;
+use AppBundle\Entity\InboundOrder;
+use AppBundle\Entity\OutboundOrder;
+use AppBundle\Entity\TravelerId;
+use AppBundle\Entity\SalesItem;
 
 
 class MassImportAndExportService
@@ -66,7 +70,7 @@ class MassImportAndExportService
         ],
         Customer::class => [
             ['name' => 'name', 'required' => true, 'type' => 'string'],
-        ],
+        ]
     ];
 
     private $propertiesSet = [];
@@ -90,13 +94,13 @@ class MassImportAndExportService
         return $createdEnities;
     }
 
-    public function export($type)
+    public function export($type, $options = [])
     {
         $exportMethodName = 'export'.ucfirst($type);
         if(!method_exists($this, $exportMethodName)){
             throw new \Exception("Export for '".$type."'' not supported.");
         }
-        return $this->$exportMethodName();
+        return $this->$exportMethodName($options);
     }
 
     private function setEntityProperties(\stdClass $entityData, $entity)
@@ -376,6 +380,93 @@ class MassImportAndExportService
             ->where('e.organization = :org')
             ->setParameter('org', $this->getUser()->getOrganization());
         return $this->getEntities($qb, Customer::class);
+    }
+
+    public function exportInboundOrderManifest(array $options)
+    {
+        if( !array_key_exists('inboundOrder', $options) or
+            get_class($options['inboundOrder']) !== InboundOrder::class
+        ){
+            throw new \Exception("Must Supply an 'inboundOrder' option.");
+        }
+        $entities = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(TravelerId::class, 'e')
+            ->where('e.inboundOrder = :ion')
+            ->setParameter('ion', $options['inboundOrder'])
+            ->getQuery()->getResult();
+        $data = [[
+            'TravelerId',
+            'IsVoid',
+            'IsTransformed',
+            'TransformedTo',
+            'Bin',
+            'SKU',
+            'QTY',
+            'SKU QTY'
+        ]];
+        foreach($entities as $tid){
+            $isVoid = $tid->getIsVoid()?'true':'false';
+            $isTransformed = 'false';
+            $transformedTo = '';
+            if($tid->getTransform() and $tid->getTransform()->getIsVoid() === false){
+                $isTransformed = 'true';
+                $transformedTo = [];
+                foreach($tid->getTransform()->getToTravelerIds() as $transformTid){
+                    $transformedTo[] = $transformTid->getLabel();
+                }
+                foreach($tid->getTransform()->getToSalesItems() as $transformSI){
+                    $transformedTo[] = $transformSI->getLabel();
+                }
+                $transformedTo = implode(';', $transformedTo);
+            }
+            $data[] = [
+                $tid->getLabel(),
+                $isVoid,
+                $isTransformed,
+                $transformedTo,
+                $tid->getBin()->getName(),
+                $tid->getSku()->getName(),
+                $tid->getQuantity(),
+                $tid->getSku()->getQuantity()
+            ];
+        }
+        return $data;
+    }
+
+    public function exportOutboundOrderManifest(array $options)
+    {
+        if( !array_key_exists('outboundOrder', $options) or
+            get_class($options['outboundOrder']) !== OutboundOrder::class
+        ){
+            throw new \Exception("Must Supply an 'outboundOrder' option.");
+        }
+        $entities = $this->getEntityManager()->createQueryBuilder()
+            ->select('e')
+            ->from(SalesItem::class, 'e')
+            ->where('e.outboundOrder = :oon')
+            ->setParameter('oon', $options['outboundOrder'])
+            ->getQuery()->getResult();
+        $data = [[
+            'SalesItem',
+            'IsVoid',
+            'Bin',
+            'SKU',
+            'QTY',
+            'SKU QTY'
+        ]];
+        foreach($entities as $si){
+            $isVoid = $si->getIsVoid()?'true':'false';
+            $data[] = [
+                $si->getLabel(),
+                $isVoid,
+                $si->getBin()->getName(),
+                $si->getSku()->getName(),
+                $si->getQuantity(),
+                $si->getSku()->getQuantity()
+            ];
+        }
+        return $data;
     }
 
 }

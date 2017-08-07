@@ -19,6 +19,7 @@ Class InventoryTravelerIdTransform extends InventoryTransform
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $id = null;
 

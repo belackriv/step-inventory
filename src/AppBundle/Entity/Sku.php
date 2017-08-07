@@ -25,6 +25,7 @@ Class Sku
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $id = null;
 
@@ -36,6 +37,7 @@ Class Sku
 	/**
 	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $name = null;
 
@@ -70,6 +72,7 @@ Class Sku
 	/**
 	 * @ORM\Column(type="string", length=64)
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","OrderManifest"})
      */
 	protected $label = null;
 

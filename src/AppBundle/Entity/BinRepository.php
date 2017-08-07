@@ -17,6 +17,23 @@ class BinRepository extends EntityRepository
             ->andWhere('d.office = :office')
             ->setParameter('deviation_name', '%Deviation')
             ->setParameter('office', $bin->getDepartment()->getOffice())
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findShippedBin(Organization $organization)
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+            ->select('b')
+            ->from('AppBundle:Bin', 'b')
+            ->join('b.department', 'd')
+            ->join('d.office', 'o')
+            ->where('b.name LIKE :deviation_name')
+            ->andWhere('o.organization = :org')
+            ->setParameter('deviation_name', 'Shipped%')
+            ->setParameter('org', $organization)
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
     }
