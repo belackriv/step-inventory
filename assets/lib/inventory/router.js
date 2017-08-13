@@ -24,6 +24,8 @@ export default Marionette.Object.extend({
   routes:  {
     'tid': 'travelerIds',
     'tid/:id': 'travelerIds',
+    'show/inbound_order/:id': 'showInboundOrder',
+    'show/outbound_order/:id': 'showOutboundOrder',
     'show/bin/:id': 'showBin',
     'show/tid/:id': 'showTid',
     'bin_sku_count': 'binSkuCounts',
@@ -56,6 +58,22 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.travelerIds(id);
+    });
+  },
+  showInboundOrder(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.showInboundOrder(id);
+    });
+  },
+  showOutboundOrder(id){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.showOutboundOrder(id);
     });
   },
   showBin(id){

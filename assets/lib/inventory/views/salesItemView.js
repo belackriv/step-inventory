@@ -9,9 +9,11 @@ import viewTpl from  "./salesItemView.hbs!";
 import SalesItemActionsView from './salesItemActionsView.js';
 import SalesItemEditView from './salesItemEditView.js';
 import BinView from './binView.js';
+import OutboundOrderView from './outboundOrderView.js';
 import SalesItemCardView from './salesItemCardView.js';
 
 import SalesItemModel from '../models/salesItemModel.js';
+import OutboundOrderModel from 'lib/accounting/models/outboundOrderModel.js';
 import BinModel from '../models/binModel.js';
 
 export default Marionette.View.extend({
@@ -27,6 +29,7 @@ export default Marionette.View.extend({
   childViewEvents: {
     'select:model': 'selectModel',
     'show:list': 'showList',
+    'show:outboundOrder': 'showOutboundOrder',
     'show:bin': 'showBin',
     'show:card': 'showCard',
   },
@@ -35,6 +38,12 @@ export default Marionette.View.extend({
       let salesItemModel = SalesItemModel.findOrCreate({id: parseInt(this.options.id)});
       salesItemModel.fetch();
       this.selectModel({model: salesItemModel});
+    }else if(this.options.outboundOrder){
+      let outboundOrderModel = OutboundOrderModel.findOrCreate({id: this.options.outboundOrder});
+       this.showOutboundOrder(outboundOrderModel);
+    }else if(this.options.bin){
+      let binModel = BinModel.findOrCreate({id: this.options.bin});
+       this.showBin(binModel);
     }else if(this.options.show){
       let salesItemModel = SalesItemModel.findOrCreate({id: this.options.show});
       salesItemModel.fetch();
@@ -58,6 +67,13 @@ export default Marionette.View.extend({
       model: salesItem
     }));
     Radio.channel('app').trigger('navigate', '/show'+salesItem.url(), {trigger: false});
+  },
+  showOutboundOrder(outboundOrder){
+    this.showChildView('content', new OutboundOrderView({
+      model: outboundOrder
+    }));
+    outboundOrder.fetch();
+    Radio.channel('app').trigger('navigate', '/show'+outboundOrder.url(), {trigger: false});
   },
   showBin(bin){
     this.showChildView('content', new BinView({

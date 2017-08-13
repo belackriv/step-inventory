@@ -68,6 +68,34 @@ export default Marionette.Object.extend({
     Radio.channel('app').trigger('show:view', inventoryIndexView);
     Radio.channel('help').trigger('show', 'travelerIds');
   },
+  showInboundOrder(id){
+    let inventoryIndexView =  new InventoryActionIndexView();
+    let travelerIdView = new TravelerIdView({inboundOrder:id});
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', travelerIdView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+
+  },
+  showOutboundOrder(id){
+    let inventoryIndexView =  new InventoryActionIndexView();
+    let travelerIdView = new SalesItemView({outboundOrder:id});
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', travelerIdView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+
+  },
   showBin(id){
     let inventoryIndexView =  new InventoryActionIndexView();
     let travelerIdView = new TravelerIdView({bin:id});

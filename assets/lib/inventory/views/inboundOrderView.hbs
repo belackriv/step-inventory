@@ -1,0 +1,60 @@
+<button name="toggleViewType" type="button" class="button">
+	{{#if showCompactView}}
+		Show Barcodes
+	{{else}}
+		Show List
+	{{/if}}
+</button>
+<button name="print" type="button" class="button">Print</button>
+<button name="back" type="button" class="button">Back</button>
+<div data-ui="printContainer">
+	<h3 class="title is-3">InboundOrder #{{id}} : {{label}}</h3>
+	{{#if showCompactView}}
+		<h5 class="subtitle is-5">
+			Has {{travelerIds.models.length}} Traveler Ids.
+		</h5>
+		<ul>
+			{{#each travelerIds.models}}
+				{{#unless this.attributes.transform}}
+					{{#unless this.attributes.isVoid}}
+						<li>{{this.attributes.label}}</li>
+					{{/unless}}
+				{{/unless}}
+			{{/each}}
+		</ul>
+	{{else}}
+		{{#if travelerIdCount}}
+			<h5 class="subtitle is-5">Has {{travelerIdCount}} Traveler Ids</h5>
+			<div class="box">
+				<div class="is-pulled-left">
+					<ul>
+					{{#each tidColumns.[0]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each tidColumns.[1]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each tidColumns.[2]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-clearfix"></div>
+			</div>
+		{{/if}}
+	{{/if}}
+</div>

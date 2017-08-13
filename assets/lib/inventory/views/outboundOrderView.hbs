@@ -1,0 +1,60 @@
+<button name="toggleViewType" type="button" class="button">
+	{{#if showCompactView}}
+		Show Barcodes
+	{{else}}
+		Show List
+	{{/if}}
+</button>
+<button name="print" type="button" class="button">Print</button>
+<button name="back" type="button" class="button">Back</button>
+<div data-ui="printContainer">
+	<h3 class="title is-3">OutboundOrder #{{id}} : {{label}}</h3>
+	{{#if showCompactView}}
+		<h5 class="subtitle is-5">
+			Has {{salesItems.models.length}} Sales Items.
+		</h5>
+		<ul>
+			{{#each salesItems.models}}
+				{{#unless this.attributes.transform}}
+					{{#unless this.attributes.isVoid}}
+						<li>{{this.attributes.label}}</li>
+					{{/unless}}
+				{{/unless}}
+			{{/each}}
+		</ul>
+	{{else}}
+		{{#if salesItemCount}}
+			<h5 class="subtitle is-5">Has {{salesItemCount}} Sales Items</h5>
+			<div class="box">
+				<div class="is-pulled-left">
+					<ul>
+					{{#each siColumns.[0]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each siColumns.[1]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-pulled-left">
+					<ul>
+					{{#each siColumns.[2]}}
+						<li>
+							{{barcodeHtml this}}
+						</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div class="is-clearfix"></div>
+			</div>
+		{{/if}}
+	{{/if}}
+</div>

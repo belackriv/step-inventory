@@ -299,6 +299,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/inbound_order/{id}")
+     * @Rest\Get("/show/inbound_order/{id}")
      */
     public function getInboundOrderAction(\AppBundle\Entity\InboundOrder $inboundOrder)
     {
@@ -450,6 +451,7 @@ class AccountingRestController extends FOSRestController
 
     /**
      * @Rest\Get("/outbound_order/{id}")
+     * @Rest\Get("/show/outbound_order/{id}")
      */
     public function getOutboundOrderAction(\AppBundle\Entity\OutboundOrder $outboundOrder)
     {

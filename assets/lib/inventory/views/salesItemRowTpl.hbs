@@ -4,7 +4,7 @@
 <td>
 	<button type="button" name="showCard" class="button small">Show Card</button>
 </td>
-<td>{{outboundOrder.attributes.label}}</td>
+<td><a data-ui-link="outboundOrder" href="{{return outboundOrder.url outboundOrder}}">{{outboundOrder.attributes.label}}</a></td>
 <td><a data-ui-link="bin" href="{{return bin.url bin}}">{{bin.attributes.name}}</a></td>
 <td>{{sku.attributes.name}}</td>
 <td>{{quantity}}</td>

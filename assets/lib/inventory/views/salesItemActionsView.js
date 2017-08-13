@@ -98,6 +98,9 @@ export default Marionette.View.extend({
     Radio.channel('dialog').trigger('close');
     Radio.channel('dialog').trigger('open', view, options);
   },
+  outboundOrderLinkClicked(model){
+    this.triggerMethod('show:outboundOrder', model.get('outboundOrder'));
+  },
   binLinkClicked(model){
     this.triggerMethod('show:bin', model.get('bin'));
   },

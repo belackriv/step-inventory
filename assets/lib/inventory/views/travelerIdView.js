@@ -9,9 +9,11 @@ import viewTpl from  "./travelerIdView.hbs!";
 import TravelerIdActionsView from './travelerIdActionsView.js';
 import TravelerIdEditView from './travelerIdEditView.js';
 import BinView from './binView.js';
+import InboundOrderView from './inboundOrderView.js';
 import TravelerIdCardView from './travelerIdCardView.js';
 
 import TravelerIdModel from '../models/travelerIdModel.js';
+import InboundOrderModel from 'lib/accounting/models/inboundOrderModel.js';
 import BinModel from '../models/binModel.js';
 
 export default Marionette.View.extend({
@@ -27,6 +29,7 @@ export default Marionette.View.extend({
   childViewEvents: {
     'select:model': 'selectModel',
     'show:list': 'showList',
+    'show:inboundOrder': 'showInboundOrder',
     'show:bin': 'showBin',
     'show:card': 'showCard',
   },
@@ -35,6 +38,9 @@ export default Marionette.View.extend({
       let tidModel = TravelerIdModel.findOrCreate({id: parseInt(this.options.id)});
       tidModel.fetch();
       this.selectModel({model: tidModel});
+    }else if(this.options.inboundOrder){
+      let inboundOrderModel = InboundOrderModel.findOrCreate({id: this.options.inboundOrder});
+       this.showInboundOrder(inboundOrderModel);
     }else if(this.options.bin){
       let binModel = BinModel.findOrCreate({id: this.options.bin});
        this.showBin(binModel);
@@ -55,6 +61,13 @@ export default Marionette.View.extend({
       model: args.model
     }));
     Radio.channel('app').trigger('navigate', args.model.url(), {trigger: false});
+  },
+  showInboundOrder(inboundOrder){
+    this.showChildView('content', new InboundOrderView({
+      model: inboundOrder
+    }));
+    inboundOrder.fetch();
+    Radio.channel('app').trigger('navigate', '/show'+inboundOrder.url(), {trigger: false});
   },
   showBin(bin){
     this.showChildView('content', new BinView({
