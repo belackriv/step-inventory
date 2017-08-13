@@ -34,9 +34,8 @@ class OutboundInventoryRestController extends FOSRestController
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(si.id)')
             ->from('AppBundle:SalesItem', 'si')
-            ->join('si.sku', 's')
-            ->leftJoin('si.outboundOrder', 'oo')
-            ->where('s.organization = :org')
+            ->join('si.sku', 'sku')
+            ->where('sku.organization = :org')
             ->setParameter('org', $this->getUser()->getOrganization());
 
         $totalItems = $qb->getQuery()->getSingleScalarResult();

@@ -37,9 +37,8 @@ class InboundInventoryRestController extends FOSRestController
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
             ->select('COUNT(tid.id)')
             ->from('AppBundle:TravelerId', 'tid')
-            ->join('tid.inboundOrder', 'o')
-            ->join('o.client', 'c')
-            ->where('c.organization = :org')
+            ->join('tid.sku', 'sku')
+            ->where('sku.organization = :org')
             //->andWhere('tid.transform IS NULL')
             ->setParameter('org', $this->getUser()->getOrganization());
 

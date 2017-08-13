@@ -30,13 +30,12 @@ class Utilities
                                 if(!self::doesJoinAExistOnQueryBuilder($qb, $searchableProperty)){
                                     if(!self::doesJoinAliasExistOnQueryBuilder($qb, $pathPart)){
                                         $qb->leftJoin($searchableProperty, $pathPart);
-                                        $lastPathPart = $pathPart;
                                     }else{
                                         $pathPart = self::incrementQueryAlias($pathPart);
                                         $qb->leftJoin($searchableProperty, $pathPart);
-                                        $lastPathPart = $pathPart;
                                     }
                                 }
+                                $lastPathPart = $pathPart;
                             }
                         }
                         $searchableProperty = $lastPathPart.'.'. $searchablePropertyPathArray[count($searchablePropertyPathArray)-1];
@@ -56,12 +55,12 @@ class Utilities
         }
     }
 
-    public static function doesJoinAExistOnQueryBuilder(\Doctrine\ORM\QueryBuilder $qb, $join)
+    public static function doesJoinAExistOnQueryBuilder(\Doctrine\ORM\QueryBuilder $qb, $searchableProperty)
     {
         $joinDqlParts = $qb->getDQLPart('join');
-        foreach ($joinDqlParts as $joins) {
-            foreach ($joins as $join) {
-                if ($join->getJoin() === $join) {
+        foreach($joinDqlParts as $joins){
+            foreach($joins as $join){
+                if($join->getJoin() === $searchableProperty) {
                     return true;
                 }
             }
@@ -72,9 +71,9 @@ class Utilities
     public static function doesJoinAliasExistOnQueryBuilder(\Doctrine\ORM\QueryBuilder $qb, $alias)
     {
         $joinDqlParts = $qb->getDQLPart('join');
-        foreach ($joinDqlParts as $joins) {
-            foreach ($joins as $join) {
-                if ($join->getAlias() === $alias) {
+        foreach($joinDqlParts as $joins){
+            foreach($joins as $join){
+                if($join->getAlias() === $alias) {
                     return true;
                 }
             }
