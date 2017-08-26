@@ -5,18 +5,24 @@
 	</div>
 	<div class="message-body">
 		<p>Started by {{byUser.attributes.firstName}} {{byUser.attributes.lastName}} at {{moment startedAt}}.</p>
-		<button class="button" name="end">End</button>
+		<dl>
+			<dt><label>Total Deviations:</label></dt>
+			<dd>{{totalDeviations}}</dd>
+			<dt><label>Traveler Id Count Deviations:</label></dt>
+			<dd>{{travelerIdCountDeviations}}</dd>
+			<dt><label>Traveler Id Match Deviations:</label></dt>
+			<dd>{{travelerIdMatchDeviations}}</dd>
+			<dt><label>Sales Item Count Deviations:</label></dt>
+			<dd>{{salesItemCountDeviations}}</dd>
+			<dt><label>Sales Item Match Deviations:</label></dt>
+			<dd>{{salesItemMatchDeviations}}</dd>
+			<dt><label>Sku Count Deviations:</label></dt>
+			<dd>{{skuCountDeviations}}</dd>
+		</dl>
 	</div>
 </div>
 <div class="box">
 	<h3 class="title is-3">Traveler Ids</h3>
-	<form data-ui="travelerIdLabelForm" action="">
-		<label class="label">Traveler Id Label:</label>
-		<p class="control">
-			<input type="text" name="travelerIdLabel" />
-		</p>
-		<button type="submit" class="button" name="addTravelerId">Add Traveler Id</button>
-	</form>
 	<table data-ui="travelerIdListTable" class="table is-striped">
 		<thead>
 			<tr>
@@ -29,13 +35,6 @@
 </div>
 <div class="box">
 	<h3 class="title is-3">Sales Items</h3>
-	<form data-ui="salesItemLabelForm" action="">
-		<label class="label">Sales Item Label:</label>
-		<p class="control">
-			<input type="text" name="salesItemLabel" />
-		</p>
-		<button type="submit" class="button" name="addSalesItem">Add Sales Item</button>
-	</form>
 	<table data-ui="salesItemListTable" class="table is-striped">
 		<thead>
 			<tr>
@@ -48,7 +47,6 @@
 </div>
 <div class="box">
 	<h3 class="title is-3">SKU Counts</h3>
-	<button class="button" name="addSkuAudit">Add SKU Count</button>
 	<table data-ui="skuListTable" class="table is-striped">
 		<thead>
 			<tr>

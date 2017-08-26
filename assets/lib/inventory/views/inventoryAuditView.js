@@ -6,6 +6,7 @@ import Marionette from 'marionette';
 import Radio from 'backbone.radio';
 
 import viewTpl from './inventoryAuditView.hbs!';
+import reportViewTpl from './inventoryAuditReportView.hbs!';
 import InventoryTravelerIdAuditListView from './inventoryTravelerIdAuditListView.js';
 import InventorySalesItemAuditListView from './inventorySalesItemAuditListView.js';
 import InventorySkuAuditListView from './inventorySkuAuditListView.js';
@@ -16,7 +17,13 @@ import InventorySalesItemAuditModel from '../models/inventorySalesItemAuditModel
 import InventorySkuAuditModel from '../models/inventorySkuAuditModel.js';
 
 export default Marionette.View.extend({
-  template: viewTpl,
+  getTemplate(){
+    if(this.model.get('isCompleted')){
+      return reportViewTpl;
+    }else{
+      return viewTpl;
+    }
+  },
   regions: {
     travelerIdAudits: {
       el: 'table[data-ui="travelerIdListTable"] > tbody',
@@ -52,6 +59,7 @@ export default Marionette.View.extend({
   onRender(){
     Radio.channel('app').trigger('navigate', this.model.url(), {trigger:false});
     this.showTravelerIdAuditList();
+    this.showSalesItemAuditList();
     this.showSkuAuditList();
   },
   showTravelerIdAuditList(){

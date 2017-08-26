@@ -16,7 +16,6 @@ import InventoryAuditSetupView from './inventoryAuditSetupView.js';
 import InventoryAuditView from './inventoryAuditView.js';
 
 
-
 export default Marionette.View.extend({
   initialize(options){
     this.listenTo(Radio.channel('inventory'), 'resume:audit', this.resume);
@@ -34,6 +33,7 @@ export default Marionette.View.extend({
   },
   childViewEvents: {
     'button:click': 'buttonClicked',
+    'link:click': 'linkClicked'
   },
   onRender(){
     this.showList();
@@ -59,6 +59,12 @@ export default Marionette.View.extend({
   buttonClicked(childView, args){
     let action = args.button.getAttribute('name');
     this[action](args.model);
+  },
+  linkClicked(childView, args){
+    let reportView = new InventoryAuditView({
+      model: args.model
+    });
+    Radio.channel('app').trigger('show:view', reportView);
   },
   audit(event){
     event.preventDefault();

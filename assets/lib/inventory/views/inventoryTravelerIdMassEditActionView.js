@@ -151,7 +151,9 @@ export default Marionette.View.extend({
               travelerId.set(attrKey, updateValue);
             });
           }
+console.log('updated ');
           this.sendMassTidUpdate().then(()=>{
+console.log('resolving editTravelerIds');
             resolve();
           });
         }).catch((err)=>{
@@ -168,7 +170,9 @@ export default Marionette.View.extend({
       });
       massTravlerId.set('type', 'edit');
       massTravlerId.get('travelerIds').reset(this.selectedCollection.models);
+console.log('saving');
       massTravlerId.save().done(()=>{
+console.log('resolving sendMassTidUpdate');
         resolve();
       });
     });

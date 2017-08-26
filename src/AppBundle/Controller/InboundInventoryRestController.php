@@ -260,9 +260,7 @@ class InboundInventoryRestController extends FOSRestController
             if($this->get('security.authorization_checker')->isGranted('EDIT', $travelerId)){
                 $em->detach($travelerId);
                 $liveTravelerId = $em->getRepository('AppBundle:TravelerId')->findOneById($travelerId->getId());
-                if( !$travelerId->isOwnedByOrganization($this->getUser()->getOrganization()) or
-                    !$liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())
-                ){
+                if(!$liveTravelerId->isOwnedByOrganization($this->getUser()->getOrganization())){
                     throw $this->createAccessDeniedException();
                 }
             }else{
@@ -297,6 +295,12 @@ class InboundInventoryRestController extends FOSRestController
                 $massTravelerId->getTravelerIds()->removeElement($travelerId);
                 $mergedTravelerId = $em->merge($travelerId);
                 $massTravelerId->getTravelerIds()->add($mergedTravelerId);
+            }
+        }
+
+        foreach($massTravelerId->getTravelerIds() as $travelerId){
+            if(!$travelerId->isOwnedByOrganization($this->getUser()->getOrganization())){
+                throw $this->createAccessDeniedException();
             }
         }
 

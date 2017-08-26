@@ -179,6 +179,10 @@ Class InventoryAudit
 			$skuCountDeviations += abs($skuAudit->getUserCount() - $skuAudit->getSystemCount());
 		}
 
+		$this->setTravelerIdCountDeviations($travelerIdCountDeviations);
+		$this->setTravelerIdMatchDeviations($travelerIdMatchDeviations);
+		$this->setSalesItemCountDeviations($salesItemCountDeviations);
+		$this->setSalesItemMatchDeviations($salesItemMatchDeviations);
 		$this->setSkuCountDeviations($skuCountDeviations);
 		$this->setTotalDeviations($totalDeviations);
 		$this->setIsCompleted(true);

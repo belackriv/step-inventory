@@ -87,6 +87,16 @@ let Model = BaseUrlBaseModel.extend({
         type: 'text'
       },
     };
+  },
+  getMassUpdateAttrs(){
+    return {
+      id: this.get('id'),
+      outboundOrder: {id: this.get('outboundOrder').get('id')},
+      bin: {id: this.get('bin').get('id') },
+      isVoid: this.get('isVoid'),
+      quantity: this.get('quantity'),
+      revenue: this.get('revenue'),
+    };
   }
 });
 

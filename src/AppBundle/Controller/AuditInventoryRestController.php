@@ -112,7 +112,7 @@ class AuditInventoryRestController extends FOSRestController
                 $liveInventoryAudit->isOwnedByOrganization($this->getUser()->getOrganization())
             ){
                 $liveIsCompleted = $liveInventoryAudit->getIsCompleted();
-                $em->merge($inventoryAudit);
+                $inventoryAudit = $em->merge($inventoryAudit);
                 $inventoryMovements = [];
                 if($inventoryAudit->getEndedAt() and $liveIsCompleted === false){
                     $deviationBin = $this->getDoctrine()->getRepository('AppBundle:Bin')->findDeviationBin($inventoryAudit->getForBin());
@@ -198,7 +198,7 @@ class AuditInventoryRestController extends FOSRestController
                 }
 
                 $em = $this->getDoctrine()->getManager();
-                $em->merge($inventorySkuAudit);
+                $inventorySkuAudit = $em->merge($inventorySkuAudit);
                 $binSkuCount = $binSkuCount = $this->getDoctrine()->getRepository('AppBundle:BinSkuCount')
                     ->findOneBy([
                         'bin' => $inventorySkuAudit->getInventoryAudit()->getForBin(),

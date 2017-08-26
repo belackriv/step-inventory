@@ -19,6 +19,16 @@ let Model = BaseUrlBaseModel.extend({
   defaults: {
     salesItems: null,
   },
+  toJSON(){
+    let attrs = {
+      id: this.get('id'),
+      salesItems: []
+    };
+    this.get('salesItems').each((salesItem)=>{
+      attrs.salesItems.push(salesItem.getMassUpdateAttrs());
+    });
+    return attrs;
+  }
 });
 
 globalNamespace.Models.MassSalesItemModel = Model;

@@ -218,6 +218,11 @@ Class Bin
 		return $this->isLocked;
 	}
 
+	public function isLocked()
+	{
+		return $this->isLocked;
+	}
+
 	public function setIsLocked($isLocked)
 	{
 		$this->isLocked = (boolean)$isLocked;

@@ -23,6 +23,16 @@ let Model = BaseUrlBaseModel.extend({
     serialsArray: null,
     count: null,
   },
+  toJSON(){
+    let attrs = {
+      id: this.get('id'),
+      travelerIds: []
+    };
+    this.get('travelerIds').each((travelerId)=>{
+      attrs.travelerIds.push(travelerId.getMassUpdateAttrs());
+    });
+    return attrs;
+  }
 });
 
 globalNamespace.Models.MassTravelerIdModel = Model;

@@ -1,5 +1,11 @@
 <td>{{byUser.attributes.firstName}} {{byUser.attributes.lastName}}</td>
-<td>{{forBin.attributes.name}}</td>
+<td>
+	{{#if isCompleted}}
+		<a class="entity-link" data-ui-link="show" href="{{entityUrl}}">{{forBin.attributes.name}}</a>
+	{{else}}
+		{{forBin.attributes.name}}
+	{{/if}}
+</td>
 <td>{{moment startedAt}}</td>
 <td>
 	{{#if endedAt}}
@@ -9,7 +15,7 @@
 	{{/if}}
 </td>
 <td>
-	{{#unless endedAt }}
+	{{#unless isCompleted }}
 		{{#isMyself byUser}}
 			<button class="button" name="resume">Resume</button>
 		{{/isMyself}}

@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation As JMS;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  */
 Class InventorySkuAudit
@@ -126,6 +127,16 @@ Class InventorySkuAudit
         }
         return true;
 	}
+
+	/**
+     * @ORM\PrePersist
+     */
+    public function onCreate()
+    {
+    	if($this->getUserCount() === null){
+    		$this->setUserCount(0);
+    	}
+    }
 
 	public function isOwnedByOrganization(Organization $organization)
 	{

@@ -5,4 +5,8 @@
 		<span class="icon"><span class="fa fa-spinner fa-pulse"></span></span>
 	{{/if}}
 </td>
-<td><button class="button is-danger" name="remove">Remove</button></td>
+<td>
+	{{#unless inventoryAudit.attributes.isCompleted }}
+		<button class="button is-danger" name="remove">Remove</button>
+	{{/unless}}
+</td>

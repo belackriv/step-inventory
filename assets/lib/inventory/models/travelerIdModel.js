@@ -124,6 +124,16 @@ let Model = BaseUrlBaseModel.extend({
       }
     }
     return defaultAttributes;
+  },
+  getMassUpdateAttrs(){
+    return {
+      id: this.get('id'),
+      inboundOrder: {id: this.get('inboundOrder').get('id')},
+      bin: {id: this.get('bin').get('id') },
+      isVoid: this.get('isVoid'),
+      quantity: this.get('quantity'),
+      cost: this.get('cost'),
+    };
   }
 });
 
