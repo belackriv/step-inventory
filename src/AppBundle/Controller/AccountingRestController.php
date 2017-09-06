@@ -357,7 +357,15 @@ class AccountingRestController extends FOSRestController
             $em->persist($inboundOrder);
             $inboundOrder->setLabel('');
             $em->flush();
-            $inboundOrder->generateLabel();
+            $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+                ->select('e.id')
+                ->from('AppBundle:InboundOrder', 'e')
+                ->join('e.client', 'c')
+                ->where('c.organization = :org')
+                ->setParameter('org', $this->getUser()->getOrganization())
+                ->orderBy('e.id', 'ASC');
+
+            $inboundOrder->generateLabel($qb->getQuery()->getResult());
             $em->flush();
             $this->updateAclByRoles($inboundOrder, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
             return $inboundOrder;
@@ -550,7 +558,14 @@ class AccountingRestController extends FOSRestController
             $em->persist($outboundOrder);
             $outboundOrder->setLabel('');
             $em->flush();
-            $outboundOrder->generateLabel();
+            $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+                ->select('e.id')
+                ->from('AppBundle:OutboundOrder', 'e')
+                ->join('e.customer', 'c')
+                ->where('c.organization = :org')
+                ->setParameter('org', $this->getUser()->getOrganization())
+                ->orderBy('e.id', 'ASC');
+            $outboundOrder->generateLabel($qb->getQuery()->getResult());
             $em->flush();
             $this->updateAclByRoles($outboundOrder, ['ROLE_USER'=>'view', 'ROLE_ADMIN'=>'operator']);
             return $outboundOrder;

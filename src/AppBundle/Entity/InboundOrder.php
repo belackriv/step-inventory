@@ -50,20 +50,11 @@ Class InboundOrder
 		return $this;
 	}
 
-	public function generateLabel()
+	public function generateLabel(array $inboundOrders)
 	{
-		$inboundOrders = $this->getClient()->getOrganization()->getInboundOrders();
-		if(!$inboundOrders->contains($this)){
-            $inboundOrders->add($this);
-        }
-
-        $iterator = $inboundOrders->getIterator();
-		$iterator->uasort(function ($a, $b) {
-		    return ($a->getId() < $b->getId()) ? -1 : 1;
-		});
-		$inboundOrders = new ArrayCollection(iterator_to_array($iterator));
-
-		$label = Utilities::baseEncode($inboundOrders->indexOf($this)+1);
+dump($inboundOrders);
+dump($this->id);
+		$label = Utilities::baseEncode(array_search($this->id, array_column($inboundOrders, 'id'), true)+1);
 		$this->setLabel($label);
 		return $label;
 	}
