@@ -3,6 +3,7 @@
 import _ from 'underscore';
 import Backbone from 'backbone';
 import Radio from 'backbone.radio';
+import Syphon from 'backbone.syphon';
 import Marionette from 'marionette';
 
 import viewTpl from  "./adminOutboundOrdersEditView.hbs!";
@@ -16,7 +17,15 @@ export default Marionette.View.extend({
     'Stickit': {},
     'ShowNotSynced': {},
     'SetNotSynced': {},
-    'SaveCancelDelete': {},
+    'SaveCancelDelete': {
+      save: 'save'
+    },
+    'RemoteSearchSelect2': {
+      customer:{
+        url: CustomerCollection.prototype.url(),
+        search: 'name'
+      }
+    },
   },
   ui: {
     'descriptionInput': 'textarea[name="description"]',
@@ -24,29 +33,17 @@ export default Marionette.View.extend({
     'customerSelect': 'select[name="customer"]',
     'showManifestButton': 'button[data-ui-name="showManifest"]',
     'shipOrderButton': 'button[data-ui-name="shipOrder"]',
-  },
-  events: {
-    'click @ui.showManifestButton': 'showManifest',
-    'click @ui.shipOrderButton': 'shipOrder',
+    'saveButton': 'button[data-ui-name=save]',
+    'cancelButton': 'button[data-ui-name=cancel]',
+    'deleteButton': 'button[data-ui-name=delete]',
   },
   bindings: {
     '@ui.descriptionInput': 'description',
     '@ui.isVoidInput': 'isVoid',
-    '@ui.customerSelect': {
-      observe: 'customer',
-      useBackboneModels: true,
-      selectOptions:{
-        labelPath: 'attributes.name',
-        collection(){
-          let collection = Radio.channel('data').request('collection', CustomerCollection, {fetchAll: true});
-          return collection;
-        },
-        defaultOption: {
-          label: 'Choose one...',
-          value: null
-        }
-      }
-    },
+  },
+  events: {
+    'click @ui.showManifestButton': 'showManifest',
+    'click @ui.shipOrderButton': 'shipOrder',
   },
   showManifest(event){
     event.preventDefault();
@@ -72,5 +69,41 @@ export default Marionette.View.extend({
     this.model.ship().then(()=>{
       this.ui.shipOrderButton.removeClass('is-loading');
     });
-  }
+  },
+  save(event){
+    this.disableFormButtons();
+    this.update();
+    this.model.save().always(()=>{
+      this.enableFormButtons();
+    }).done(()=>{
+      this.triggerMethod('show:list', this, {
+        view: this,
+        model:this.model,
+      });
+    });
+  },
+  update(){
+    let attr = Syphon.serialize(this);
+    let setAttr = {
+      customer: CustomerCollection,
+    };
+    _.each(setAttr, (Collection, attributeName)=>{
+      if(parseInt(attr[attributeName])){
+        setAttr[attributeName] = Collection.prototype.model.findOrCreate({id: parseInt(attr[attributeName])});
+      }else{
+        delete setAttr[attributeName];
+      }
+    });
+    this.model.set(setAttr);
+  },
+  disableFormButtons(){
+    this.ui.saveButton.addClass('is-disabled').prop('disable', true);
+    this.ui.cancelButton.addClass('is-disabled').prop('disable', true);
+    this.ui.deleteButton.addClass('is-disabled').prop('disable', true);
+  },
+  enableFormButtons(){
+    this.ui.saveButton.removeClass('is-disabled').prop('disable', false);
+    this.ui.cancelButton.removeClass('is-disabled').prop('disable', false);
+    this.ui.deleteButton.removeClass('is-disabled').prop('disable', false);
+  },
 });

@@ -52,8 +52,6 @@ Class InboundOrder
 
 	public function generateLabel(array $inboundOrders)
 	{
-dump($inboundOrders);
-dump($this->id);
 		$label = Utilities::baseEncode(array_search($this->id, array_column($inboundOrders, 'id'), true)+1);
 		$this->setLabel($label);
 		return $label;

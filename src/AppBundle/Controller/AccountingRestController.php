@@ -48,10 +48,10 @@ class AccountingRestController extends FOSRestController
 
         $totalCount = $qb->getQuery()->getSingleScalarResult();
 
-        $qb->select('e')
-            ->orderBy('e.id', 'DESC')
-            ->setMaxResults($perPage)
-            ->setFirstResult($page*$perPage);
+        $qb->select('e')->orderBy('e.id', 'DESC');
+        if(!$request->query->has('disable_pagination')){
+            $qb->setMaxResults($perPage)->setFirstResult($page*$perPage);
+        }
 
         $items = $qb->getQuery()->getResult();
 
@@ -163,10 +163,10 @@ class AccountingRestController extends FOSRestController
 
         $totalCount = $qb->getQuery()->getSingleScalarResult();
 
-        $qb->select('e')
-            ->orderBy('e.id', 'DESC')
-            ->setMaxResults($perPage)
-            ->setFirstResult($page*$perPage);
+        $qb->select('e')->orderBy('e.id', 'DESC');
+        if(!$request->query->has('disable_pagination')){
+            $qb->setMaxResults($perPage)->setFirstResult($page*$perPage);
+        }
 
         $items = $qb->getQuery()->getResult();
 
@@ -279,10 +279,10 @@ class AccountingRestController extends FOSRestController
 
         $totalCount = $qb->getQuery()->getSingleScalarResult();
 
-        $qb->select('e')
-            ->orderBy('e.id', 'DESC')
-            ->setMaxResults($perPage)
-            ->setFirstResult($page*$perPage);
+        $qb->select('e')->orderBy('e.id', 'DESC');
+        if(!$request->query->has('disable_pagination')){
+            $qb->setMaxResults($perPage)->setFirstResult($page*$perPage);
+        }
 
         $items = $qb->getQuery()->getResult();
 
@@ -439,10 +439,10 @@ class AccountingRestController extends FOSRestController
 
         $totalCount = $qb->getQuery()->getSingleScalarResult();
 
-        $qb->select('e')
-            ->orderBy('e.id', 'DESC')
-            ->setMaxResults($perPage)
-            ->setFirstResult($page*$perPage);
+        $qb->select('e')->orderBy('e.id', 'DESC');
+        if(!$request->query->has('disable_pagination')){
+            $qb->setMaxResults($perPage)->setFirstResult($page*$perPage);
+        }
 
         $items = $qb->getQuery()->getResult();
 
