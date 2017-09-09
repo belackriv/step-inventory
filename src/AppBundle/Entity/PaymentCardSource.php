@@ -98,13 +98,13 @@ Class PaymentCardSource extends PaymentSource
     "name": null,
     "tokenization_method": null
 */
-    public function updateFromStripe(\Stripe\Card $stripeCard)
+    public function updateFromStripe(\Stripe\Source $stripeSource)
     {
-        $this->externalId = $stripeCard->id;
-        $this->brand = $stripeCard->brand;
-        $this->last4 = $stripeCard->last4;
-        $this->expirationMonth = $stripeCard->exp_month;
-        $this->expirationYear = $stripeCard->exp_year;
+        $this->externalId = $stripeSource->id;
+        $this->brand = $stripeSource->card->brand;
+        $this->last4 = $stripeSource->card->last4;
+        $this->expirationMonth = $stripeSource->card->exp_month;
+        $this->expirationYear = $stripeSource->card->exp_year;
     }
 
 

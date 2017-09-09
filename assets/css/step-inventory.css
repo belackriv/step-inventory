@@ -6489,3 +6489,9 @@ ul.si-import-property-list {
 
 .table a.entity-link {
   color: #55a79a; }
+
+.si-stripe-element {
+  padding: .5em;
+  margin: .5em;
+  border: 1px solid #ccc;
+  border-radius: 3px; }

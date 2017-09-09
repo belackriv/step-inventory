@@ -181,3 +181,10 @@ ul.si-import-property-list {
 .table a.entity-link {
 	color: $primary
 }
+
+.si-stripe-element {
+	padding: .5em;
+	margin: .5em;
+   	border: 1px solid #ccc;
+   	border-radius: $radius;
+}

@@ -9,9 +9,13 @@ import viewTpl from './paymentInfoView.hbs!';
 import PaymentSourceCardModel from '../models/paymentCardSourceModel.js';
 
 export default Marionette.View.extend({
+  stripe: null,
+  stripElements: null,
   template: viewTpl,
   ui: {
     'form': 'form',
+    'stripeElement': '[data-ui-name="stripeElement"]',
+    'stripeError': '[data-ui-name="stripeError"]',
     'addButton': '[data-ui-name="add"]',
     'cancelButton': '[data-ui-name="cancel"]'
   },
@@ -19,10 +23,28 @@ export default Marionette.View.extend({
     'submit @ui.form': 'addPaymentMethod',
     'click @ui.cancelButton': 'cancel',
   },
-  onAttach(){
-    if(!window.Stripe){
-      this.$el.append('<script src="https://js.stripe.com/v2/"></script>');
+  onRender(){
+    if(!Stripe){
+      alert('waiting on stripe...');
+    }else{
+      this.initializeStripeElement();
     }
+  },
+  initializeStripeElement(){
+    const stripe = Stripe(this.model.get('stripePublicKey'));
+    const elements = stripe.elements();
+    const card = elements.create('card');
+    card.mount(this.ui.stripeElement.get(0));
+    card.addEventListener('change', (event)=>{
+      if(event.error){
+        this.ui.stripeError.text(event.error.message).show();
+      } else {
+        this.ui.stripeError.text('').hide();
+      }
+    });
+    this.ui.stripeError.hide();
+    this.stripeCard = card;
+    this.stripe = stripe;
   },
   cancel(event){
     event.preventDefault();
@@ -31,17 +53,19 @@ export default Marionette.View.extend({
   addPaymentMethod(event){
     event.preventDefault();
     this.disableButtons();
-    Stripe.setPublishableKey(this.model.get('stripePublicKey'));
-    let data = Syphon.serialize(this);
-    Stripe.card.createToken(data, (respCode, stripeData)=>{
-      let paymentSource = PaymentSourceCardModel.findOrCreate({
-        externalId: stripeData.id,
-        account: this.model
-      });
-      paymentSource.save().then(()=>{
-        this.enableButtons();
-        Radio.channel('dialog').trigger('close');
-      });
+    this.stripe.createSource(this.stripeCard).then((result)=>{
+      if(result.error){
+        alert(result.error);
+      }else{
+        let paymentSource = PaymentSourceCardModel.findOrCreate({
+          externalId: result.source.id,
+          account: this.model
+        });
+        paymentSource.save().then(()=>{
+          this.enableButtons();
+          Radio.channel('dialog').trigger('close');
+        });
+      }
     });
   },
   disableButtons(){

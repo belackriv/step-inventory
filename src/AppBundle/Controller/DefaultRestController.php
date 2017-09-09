@@ -1601,7 +1601,7 @@ class DefaultRestController extends FOSRestController
     }
 
     /**
-     * @Rest\Delete("/helpTopic/{id}")
+     * @Rest\Delete("/help_topic/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
     public function deleteHelpTopicAction(\AppBundle\Entity\HelpTopic $helpTopic)

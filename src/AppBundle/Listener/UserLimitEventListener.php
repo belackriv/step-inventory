@@ -37,7 +37,9 @@ class UserLimitEventListener
 	{
 		if($this->tokenStorage->getToken()){
 			$user = $this->tokenStorage->getToken()->getUser();
-			if($user instanceof User){
+			if(	$user instanceof User and
+				!$this->container->get('security.authorization_checker')->isGranted('ROLE_DEV')
+			){
 				if(!$user->getOrganization()->getAccount()->isActive()){
 					if( $event->getRequest()->isXmlHttpRequest()){
 						if(!$this->isAccountRelatedUrl($event->getRequest())){
@@ -46,36 +48,38 @@ class UserLimitEventListener
 					}else{
 						if(preg_match('/profile/', $event->getRequest()->getPathInfo()) !== 1){
 							$event->setController(function(){
-						        return new RedirectResponse('/profile');
-						    });
+								return new RedirectResponse('/profile');
+							});
 						}
 					}
 				}
+				//should I check for owner here?
+				if(true){
+					$redisClient = $this->container->get('snc_redis.default');
+					$sessionKey = $this->container->get('session')->getId();
+					$sessionQueryService = new SncRedisSessionQueryService($redisClient);
 
-				$redisClient = $this->container->get('snc_redis.default');
-				$sessionKey = $this->container->get('session')->getId();
-				$sessionQueryService = new SncRedisSessionQueryService($redisClient);
+					$sessionCount = $sessionQueryService->getSessionCount($user->getOrganization());
+					$orgSessionLimit = $user->getOrganization()->getUserLimit();
 
-				$sessionCount = $sessionQueryService->getSessionCount($user->getOrganization());
-				$orgSessionLimit = $user->getOrganization()->getUserLimit();
-
-				if($sessionCount <= $orgSessionLimit){
-				  	$redisClient->hset(
-				  		$sessionQueryService->getOrgKey($user->getOrganization()),
-				  		$sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP')
-				  	);
-				}else{
-					if( $event->getRequest()->isXmlHttpRequest()){
-					  	throw new \Exception("Active Session Limit Reached");
+					if($sessionCount <= $orgSessionLimit){
+						$redisClient->hset(
+							$sessionQueryService->getOrgKey($user->getOrganization()),
+							$sessionKey, (new \DateTime())->format('Y-m-d\TH:i:s.uP')
+						);
 					}else{
-						$errorContent = $this->container
-		                    ->get('templating')
-		                    ->render(':security:session-limit.html.twig', []);
-						$response = new Response($errorContent, 403);
-			            $response->setProtocolVersion('1.1');
-			            $event->setController(function() use ($response){
-					        return $response;
-					    });
+						if( $event->getRequest()->isXmlHttpRequest()){
+							throw new \Exception("Active Session Limit Reached");
+						}else{
+							$errorContent = $this->container
+								->get('templating')
+								->render(':security:session-limit.html.twig', []);
+							$response = new Response($errorContent, 403);
+							$response->setProtocolVersion('1.1');
+							$event->setController(function() use ($response){
+								return $response;
+							});
+						}
 					}
 				}
 			}

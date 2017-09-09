@@ -130,6 +130,7 @@ let Model = BaseUrlBaseModel.extend({
       id: this.get('id'),
       inboundOrder: {id: this.get('inboundOrder').get('id')},
       bin: {id: this.get('bin').get('id') },
+      sku: {id: this.get('sku').get('id') },
       isVoid: this.get('isVoid'),
       quantity: this.get('quantity'),
       cost: this.get('cost'),
