@@ -69,7 +69,7 @@ abstract Class PaymentSource
 
     public static function getInstance($stripePaymentSource)
     {
-        if(is_a($stripePaymentSource, \Stripe\Card::class)){
+        if(is_a($stripePaymentSource, \Stripe\Source::class)){
             return new PaymentCardSource();
         }
         return null;

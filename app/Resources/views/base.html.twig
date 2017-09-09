@@ -9,6 +9,7 @@
             <link href="//fonts.googleapis.com/css?family=Rambla" rel="stylesheet" type="text/css">
         {% endblock %}
         {% block favicon %}<link rel="icon" type="image/x-icon" href="{{ asset('favicon.png?v=2') }}" />{% endblock %}
+        {% block stripejs %}<script src="https://js.stripe.com/v3/" async></script>{% endblock %}
     </head>
     <body>
     	<div id="content">

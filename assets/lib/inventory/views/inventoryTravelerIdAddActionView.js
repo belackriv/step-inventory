@@ -98,7 +98,7 @@ export default Marionette.View.extend({
         quantity: attr.quantity
       };
       for(var i = 0; i < attr.count; i++){
-          let travelerId = TravelerIdModel.findOrCreate({
+          let travelerId = TravelerIdModel.build({
             inboundOrder: attr.inboundOrder,
             bin: attr.bin,
             sku: attr.sku,
@@ -107,13 +107,13 @@ export default Marionette.View.extend({
           let serial = this.model.get('serialsArray')[i];
           if(travelerId.get('sku').get('unitType')){
             //create a new unit
-            let unit = UnitModel.findOrCreate({
+            let unit = UnitModel.build({
               serial: serial,
               travelerId: travelerId,
               unitType: travelerId.get('sku').get('unitType'),
             });
             travelerId.get('sku').get('unitType').get('properties').each((unitTypeProperty)=>{
-              let unitProperty = UnitPropertyModel.findOrCreate({
+              let unitProperty = UnitPropertyModel.build({
                 unit: unit,
                 unitTypeProperty: unitTypeProperty
               });
