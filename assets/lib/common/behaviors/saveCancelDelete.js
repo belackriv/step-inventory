@@ -13,6 +13,12 @@ export default Marionette.Behavior.extend({
     this.listenTo(this.model, 'change:id', this.setPreviousAttributes);
   },
   setMethods(options){
+    this.methods = {
+      save: false,
+      cancel: false,
+      delete: false,
+      postDelete: false
+    };
     _.each(this.methods, (value, method)=>{
       this.setMethod(options, method);
     });
@@ -24,12 +30,6 @@ export default Marionette.Behavior.extend({
     if(typeof options[method] === 'string' && typeof this.view[method] === 'function'){
       this.methods[method] = this.view[method];
     }
-  },
-  methods:{
-    save: false,
-    cancel: false,
-    delete: false,
-    postDelete: false
   },
   ui: {
     'form': 'form',

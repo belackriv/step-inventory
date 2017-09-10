@@ -106,7 +106,7 @@ let Model = BaseUrlBaseModel.extend({
       selectedCollection.each((tid)=>{
         if(unitType === null){
           unitType = tid.get('sku').get('unitType')?tid.get('sku').get('unitType'):false;
-          if(unitType){
+          if(unitType && tid.get('unit')){
             properties = tid.get('unit').get('properties');
           }
         }else{

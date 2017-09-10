@@ -19,6 +19,8 @@ import SalesItemCollection from '../models/salesItemCollection.js';
 
 export default Marionette.View.extend({
   initialize(options){
+    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:salesItem');
+    this.listenTo(this.selectedCollection, 'update', this.updateSelectedCount);
     this.listenTo(Radio.channel('inventory'), 'refresh:list:salesItem', this.refreshList);
   },
   template: viewTpl,
@@ -28,6 +30,7 @@ export default Marionette.View.extend({
   ui: {
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
+    'selectedCountSpan': 'span[data-ui-name="selectedCount"]',
   },
   events: {
     'click @ui.massEditButton': 'massEdit',
@@ -40,6 +43,7 @@ export default Marionette.View.extend({
   },
   onRender(){
     this.showList();
+    this.updateSelectedCount();
   },
   showList(){
     let salesItemCollection = Radio.channel('data').request('collection', SalesItemCollection, {doFetch: false});
@@ -55,6 +59,13 @@ export default Marionette.View.extend({
     });
     this.showChildView('list', this.listView);
     Radio.channel('app').trigger('navigate', salesItemCollection.url(), {trigger: false});
+  },
+  updateSelectedCount(){
+    if(this.selectedCollection.length > 0){
+      this.ui.selectedCountSpan.text('('+this.selectedCollection.length+' Selected)');
+    }else{
+      this.ui.selectedCountSpan.text('');
+    }
   },
   refreshList(){
     this.listView.search();

@@ -21,6 +21,8 @@ import MassTravelerIdModel from '../models/massTravelerIdModel.js';
 
 export default Marionette.View.extend({
   initialize(options){
+    this.selectedCollection = Radio.channel('inventory').request('get:isSelected:travelerId');
+    this.listenTo(this.selectedCollection, 'update', this.updateSelectedCount);
     this.listenTo(Radio.channel('inventory'), 'refresh:list:travelerId', this.refreshList);
   },
   template: viewTpl,
@@ -31,6 +33,7 @@ export default Marionette.View.extend({
     'addButton': 'button[name="add"]',
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
+    'selectedCountSpan': 'span[data-ui-name="selectedCount"]',
     'massTransformButton': 'button[name="massTransform"]',
   },
   events: {
@@ -46,6 +49,7 @@ export default Marionette.View.extend({
   },
   onRender(){
     this.showList();
+    this.updateSelectedCount();
   },
   showList(){
     let travelerIdCollection = Radio.channel('data').request('collection', TravelerIdCollection, {doFetch: false});
@@ -61,6 +65,13 @@ export default Marionette.View.extend({
     });
     this.showChildView('list', this.listView);
     Radio.channel('app').trigger('navigate', travelerIdCollection.url(), {trigger: false});
+  },
+  updateSelectedCount(){
+    if(this.selectedCollection.length > 0){
+      this.ui.selectedCountSpan.text('('+this.selectedCollection.length+' Selected)');
+    }else{
+      this.ui.selectedCountSpan.text('');
+    }
   },
   refreshList(){
     this.listView.search();

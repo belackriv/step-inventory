@@ -1,21 +1,21 @@
 Showing <span data-ui-name="shownItemCount">{{shownItemCount}}</span> of <span data-ui-name="matchedItemCount">{{matchedItemCount}}</span> matched items.
-<span data-ui-name="totalItemCount">{{totalItemCount}}</span> total items.
+<span data-ui-name="totalItemCount">{{totalItemCount}}</span> total items.{{#if isFetching}}<span class="si-is-fetching"></span>{{/if}}
 <nav class="pagination is-centered">
-  <button type="button" class="pagination-previous button small" data-ui-name="paginationPrev"{{#unless hasPreviousPage}} disabled{{/unless}}>Prev</button>
+  <button type="button" class="pagination-previous button small" data-ui-name="paginationPrev"{{#unless hasPreviousPage}} disabled{{/unless}}{{#if isFetching}} disabled{{/if}}>Prev</button>
   <ul class="pagination-list">
     <li>
-      <button type="button" class="pagination-link button small" data-ui-name="paginationFirst"{{#unless hasPreviousPage}} disabled{{/unless}}>First</button>
+      <button type="button" class="pagination-link button small" data-ui-name="paginationFirst"{{#unless hasPreviousPage}} disabled{{/unless}}{{#if isFetching}} disabled{{/if}}>First</button>
     </li>
     <li><span class="pagination-ellipsis">&hellip;</span></li>
    	{{#each pageButtons}}
    		<li>
-			<button type="button" class="pagination-link button small" data-ui-name="paginationPage" page="{{this.page}}"{{#if this.active}} disabled{{/if}}>{{this.label}}</button>
+			<button type="button" class="pagination-link button small" data-ui-name="paginationPage" page="{{this.page}}"{{#if this.active}} disabled{{/if}}{{#if ../isFetching}} disabled{{/if}}>{{this.label}}</button>
 		</li>
 	 {{/each}}
     <li><span class="pagination-ellipsis">&hellip;</span></li>
     <li>
-      <button type="button" class="pagination-link button small" data-ui-name="paginationLast"{{#unless hasNextPage}} disabled{{/unless}}>Last</button>
+      <button type="button" class="pagination-link button small" data-ui-name="paginationLast"{{#unless hasNextPage}} disabled{{/unless}}{{#if isFetching}} disabled{{/if}}>Last</button>
     </li>
   </ul>
-  <button type="button" class="pagination-next button small" data-ui-name="paginationNext"{{#unless hasNextPage}} disabled{{/unless}}>Next</button>
+  <button type="button" class="pagination-next button small" data-ui-name="paginationNext"{{#unless hasNextPage}} disabled{{/unless}}{{#if isFetching}} disabled{{/if}}>Next</button>
 </nav>

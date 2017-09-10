@@ -6,6 +6,7 @@ import Backbone from 'backbone'
 import Syphon from 'backbone.syphon';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
+import Uuid from 'uuid/v4';
 
 import RemoteSearchSelect2Behavior from 'lib/common/behaviors/remoteSearchSelect2.js';
 
@@ -119,12 +120,12 @@ export default Marionette.View.extend({
         }
       });
       //set an Id so backbone does a "put" rather than "post"
-      let massTravlerId = MassTravelerIdModel.findOrCreate({
-        id: 1,
+      let massTravelerId = MassTravelerIdModel.findOrCreate({
+        id: Uuid(),
       });
-      massTravlerId.set('type', 'transform');
-      massTravlerId.get('travelerIds').reset(this.selectedCollection.models);
-      massTravlerId.save().done(()=>{
+      massTravelerId.set('type', 'transform');
+      massTravelerId.get('travelerIds').reset(this.selectedCollection.models);
+      massTravelerId.save().done(()=>{
         resolve();
       }).fail(()=>{
         let transformsArray = transforms.toArray();
@@ -162,7 +163,7 @@ export default Marionette.View.extend({
     }
   },
   createTransform(attr, sku, travelerId){
-    let transform = new InventoryTravelerIdTransformModel({
+    let transform = InventoryTravelerIdTransformModel.build({
       quantity: attr.quantity
     });
     transform.set('cid', transform.cid);
@@ -170,7 +171,7 @@ export default Marionette.View.extend({
     let toCount = parseInt(attr.toCount);
     for(let i = 0; i < toCount; i++){
       if(attr.target === 'travelerId'){
-        let newTravelerId = new TravelerIdModel({
+        let newTravelerId = TravelerIdModel.build({
           inboundOrder: travelerId.get('inboundOrder'),
           bin: travelerId.get('bin'),
           sku: sku,
@@ -178,7 +179,7 @@ export default Marionette.View.extend({
         });
         transform.get('toTravelerIds').add(newTravelerId);
       }else{
-        let newSalesItem = new SalesItemModel({
+        let newSalesItem = SalesItemModel.build({
           bin: travelerId.get('bin'),
           sku: sku,
           quantity: attr.quantity

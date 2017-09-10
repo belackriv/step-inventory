@@ -5,6 +5,7 @@ import jquery from 'jquery';
 import Syphon from 'backbone.syphon';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
+import Uuid from 'uuid/v4';
 
 import RemoteSearchSelect2Behavior from 'lib/common/behaviors/remoteSearchSelect2.js';
 
@@ -166,7 +167,7 @@ console.log('resolving editTravelerIds');
     return new Promise((resolve, reject)=>{
       //set an Id so backbone does a "put" rather than "post"
       let massTravlerId = MassTravelerIdModel.findOrCreate({
-        id: 1
+        id: Uuid()
       });
       massTravlerId.set('type', 'edit');
       massTravlerId.get('travelerIds').reset(this.selectedCollection.models);

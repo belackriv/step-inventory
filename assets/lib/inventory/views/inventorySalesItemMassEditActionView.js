@@ -5,6 +5,7 @@ import jquery from 'jquery';
 import Syphon from 'backbone.syphon';
 import Marionette from 'marionette';
 import Radio from 'backbone.radio';
+import Uuid from 'uuid/v4';
 
 import RemoteSearchSelect2Behavior from 'lib/common/behaviors/remoteSearchSelect2.js';
 
@@ -125,7 +126,7 @@ export default Marionette.View.extend({
         }
         //set an Id so backbone does a "put" rather than "post"
         let massSalesItem = MassSalesItemModel.findOrCreate({
-          id: 1
+          id: Uuid()
         });
         massSalesItem.set('type', 'edit');
         massSalesItem.get('salesItems').reset(this.selectedCollection.models);

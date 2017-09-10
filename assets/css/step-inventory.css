@@ -6495,3 +6495,6 @@ ul.si-import-property-list {
   margin: .5em;
   border: 1px solid #ccc;
   border-radius: 3px; }
+
+.si-transform-ratio-input {
+  min-width: 12em; }

@@ -22,14 +22,23 @@ let Model = BaseUrlBaseModel.extend({
     serials: null,
     serialsArray: null,
     count: null,
+    type: null,
   },
   toJSON(){
     let attrs = {
       id: this.get('id'),
+      type: this.get('type'),
+      serials: this.get('serials'),
+      serialsArray: this.get('serialsArray'),
+      count: this.get('count'),
       travelerIds: []
     };
     this.get('travelerIds').each((travelerId)=>{
-      attrs.travelerIds.push(travelerId.getMassUpdateAttrs());
+      if(attrs.type === 'transform'){
+        attrs.travelerIds.push(travelerId.toJSON());
+      }else{
+        attrs.travelerIds.push(travelerId.getMassUpdateAttrs());
+      }
     });
     return attrs;
   }

@@ -18,6 +18,7 @@ let Model = BaseUrlBaseModel.extend({
   }],
   defaults: {
     salesItems: null,
+    type: null,
   },
   toJSON(){
     let attrs = {

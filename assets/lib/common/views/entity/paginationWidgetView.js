@@ -9,10 +9,12 @@ export default Marionette.View.extend({
   initialize(options){
     this.listenTo(this.collection, 'pageable:state:change', this.stateChanged);
     this.listenTo(this.collection, 'update', this.stateChanged);
+    this.isFetching = false;
   },
   template: viewTpl,
   serializeData(){
 	 let data = {
+      isFetching: this.isFetching,
       shownItemCount: this.collection.length,
       totalItemCount: this.collection.state.totalItemCount,
       matchedItemCount: this.collection.state.totalRecords,
@@ -58,24 +60,44 @@ export default Marionette.View.extend({
   	return pageButtons;
   },
   getFirstPage: function(event){
-  	this.collection.getFirstPage();
+    this.isFetching = true;
+  	this.collection.getFirstPage().always(()=>{
+      this.isFetching = false;
+      this.render();
+    });
     this.render();
   },
   getPrevPage: function(event){
-  	this.collection.getPreviousPage();
+    this.isFetching = true;
+  	this.collection.getPreviousPage().always(()=>{
+      this.isFetching = false;
+      this.render();
+    });
     this.render();
   },
   getNextPage: function(event){
-   	this.collection.getNextPage();
+    this.isFetching = true;
+   	this.collection.getNextPage().always(()=>{
+      this.isFetching = false;
+      this.render();
+    });
     this.render();
   },
   getLastPage: function(event){
-  	this.collection.getLastPage();
+    this.isFetching = true;
+  	this.collection.getLastPage().always(()=>{
+      this.isFetching = false;
+      this.render();
+    });
     this.render();
   },
   getPage: function(event){
+    this.isFetching = true;
     let page = parseInt($(event.currentTarget).attr('page'));
-    this.collection.getPage(page);
+    this.collection.getPage(page).always(()=>{
+      this.isFetching = false;
+      this.render();
+    });;
     this.render();
   },
 });
