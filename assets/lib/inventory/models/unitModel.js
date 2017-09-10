@@ -69,6 +69,25 @@ let Model = BaseUrlBaseModel.extend({
       }
     });
     return foundProperty;
+  },
+  getMassUpdateAttrs(){
+    let attrs =  {
+      id: this.get('id'),
+      serial: this.get('serial'),
+      unitType: {id: this.get('unitType').id},
+      properties: []
+    };
+    this.get('properties').each((property)=>{
+      attrs.properties.push({
+        id: property.get('id'),
+        unitTypeProperty: property.get('unitTypeProperty'),
+        integerValue: property.get('integerValue'),
+        floatValue: property.get('floatValue'),
+        booleanValue: property.get('booleanValue'),
+        stringValue: property.get('stringValue'),
+      })
+    });
+    return attrs;
   }
 });
 

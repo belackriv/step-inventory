@@ -6406,7 +6406,7 @@ img.si-org-logo {
   max-height: 128px !important; }
 
 .si-is-void, .si-is-void text {
-  color: #ff1f4b; }
+  color: #ff1f4b !important; }
 
 .si-has-transform, .si-has-transform text {
   text-decoration: line-through; }

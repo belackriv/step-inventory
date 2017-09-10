@@ -70,6 +70,7 @@ let Model = BaseUrlBaseModel.extend({
     isVoid: null,
     quantity: null,
     cost: null,
+    unit: null,
     transform: null,
     reverseTransform: null,
   },
@@ -126,7 +127,7 @@ let Model = BaseUrlBaseModel.extend({
     return defaultAttributes;
   },
   getMassUpdateAttrs(){
-    return {
+    let attrs =  {
       id: this.get('id'),
       inboundOrder: {id: this.get('inboundOrder').get('id')},
       bin: {id: this.get('bin').get('id') },
@@ -135,6 +136,10 @@ let Model = BaseUrlBaseModel.extend({
       quantity: this.get('quantity'),
       cost: this.get('cost'),
     };
+    if(this.get('unit')){
+      attrs.unit = this.get('unit').getMassUpdateAttrs();
+    }
+    return attrs;
   }
 });
 
