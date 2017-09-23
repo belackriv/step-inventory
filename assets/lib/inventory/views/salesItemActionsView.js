@@ -30,7 +30,7 @@ export default Marionette.View.extend({
   ui: {
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
-    'selectedCountSpan': 'span[data-ui-name="selectedCount"]',
+    'selectedCountMsg': 'div[data-ui-name="selectedCount"]',
   },
   events: {
     'click @ui.massEditButton': 'massEdit',
@@ -62,9 +62,9 @@ export default Marionette.View.extend({
   },
   updateSelectedCount(){
     if(this.selectedCollection.length > 0){
-      this.ui.selectedCountSpan.text('('+this.selectedCollection.length+' Selected)');
+      this.ui.selectedCountMsg.show().text(this.selectedCollection.length+' Sales Items Selected');
     }else{
-      this.ui.selectedCountSpan.text('');
+      this.ui.selectedCountMsg.hide().text('');
     }
   },
   refreshList(){

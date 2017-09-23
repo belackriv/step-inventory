@@ -26,7 +26,7 @@ let Model = BaseUrlBaseModel.extend({
     content: null,
     byUser: null,
     organization: null,
-    isActive: null,
+    isActive: true,
   },
 
 });

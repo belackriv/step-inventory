@@ -29,9 +29,9 @@ let Model = BaseUrlBaseModel.extend({
   defaults: {
     department: null,
     sku: null,
-    isActive: null,
+    isActive: true,
     count: null,
-    type: null,
+    type: TYPE_LESS_THAN,
     types: {
       [TYPE_LESS_THAN]: 'Less Than',
       [TYPE_GREATER_THAN]: 'Greater Than'

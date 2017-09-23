@@ -216,7 +216,7 @@ class DefaultRestController extends FOSRestController
     {
         $plans = $this->getDoctrine()->getRepository('AppBundle:Plan')->findBy([
             'isActive' => true
-        ]);
+        ],['amount' => 'ASC']);
 
         return ['total_count'=> count($plans), 'total_items' => count($plans), 'list'=>$plans];
     }

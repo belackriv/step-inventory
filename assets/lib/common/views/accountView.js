@@ -119,12 +119,16 @@ export default Marionette.View.extend({
       subscription: this.model.get('subscription'),
     };
   },
+  getPlanInfo(planModel){
+    let price = new Number(planModel.get('amount')/100);
+    return '<strong>'+price.toLocaleString('en-US',{ style: 'currency', currency: 'USD'})+'</strong>: '+planModel.get('description');
+  },
   planChanged(){
-    this.ui.planDesc.text(this.model.get('newPlan').get('description'));
+    this.ui.planDesc.html(this.getPlanInfo(this.model.get('newPlan')));
   },
   onRender(){
     if(this.model.get('subscription') && this.model.get('subscription').get('plan')){
-      this.ui.planDesc.text(this.model.get('subscription').get('plan').get('description'));
+      this.ui.planDesc.html(this.getPlanInfo(this.model.get('subscription').get('plan')));
     }
     this.showChildView('paymentSources', new Marionette.CollectionView({
       collection: this.model.get('paymentSources'),

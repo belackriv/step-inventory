@@ -33,7 +33,7 @@ export default Marionette.View.extend({
     'addButton': 'button[name="add"]',
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
-    'selectedCountSpan': 'span[data-ui-name="selectedCount"]',
+    'selectedCountMsg': 'div[data-ui-name="selectedCount"]',
     'massTransformButton': 'button[name="massTransform"]',
   },
   events: {
@@ -68,9 +68,9 @@ export default Marionette.View.extend({
   },
   updateSelectedCount(){
     if(this.selectedCollection.length > 0){
-      this.ui.selectedCountSpan.text('('+this.selectedCollection.length+' Selected)');
+      this.ui.selectedCountMsg.show().text(this.selectedCollection.length+' TIDs Selected');
     }else{
-      this.ui.selectedCountSpan.text('');
+      this.ui.selectedCountMsg.hide().text('');
     }
   },
   refreshList(){

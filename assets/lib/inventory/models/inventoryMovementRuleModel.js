@@ -32,7 +32,7 @@ let Model = BaseUrlBaseModel.extend({
     name: null,
     description: null,
     isActive: null,
-    role: null,
+    role: true,
     binType: null,
     restrictions: null,
   },
