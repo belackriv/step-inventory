@@ -77,8 +77,7 @@ export default Marionette.View.extend({
       selectOptions:{
         labelPath: 'attributes.username',
         collection(){
-          let collection = Radio.channel('data').request('collection', UserCollection, {fetchAll: true});
-          return collection;
+          return this.model.get('ownerSelections');
         },
         defaultOption: {
           label: 'Choose one...',

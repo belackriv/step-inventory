@@ -1028,12 +1028,11 @@ class DefaultRestController extends FOSRestController
                 }
 
                 $liveUser = $em->merge($liveUser); //for cascading
-                $user = $em->merge($user);
-
                 foreach($user->getUserRoles() as $userRole){
                     $userRole->setUser($liveUser);
                     $em->persist($userRole);
                 }
+                $user = $em->merge($user);
 
                 $user->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
                 $em->flush();

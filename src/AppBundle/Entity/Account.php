@@ -109,6 +109,23 @@ Class Account
         return $this;
     }
 
+     /**
+     * @JMS\VirtualProperty
+     */
+    public function getOwnerSelections()
+    {
+        $validOwners = [];
+        foreach($this->getOrganization()->getUsers() as $user){
+            foreach($user->getUserRoles() as $userRole){
+                $role = $userRole->getRole();
+                if($role->getRole() === 'ROLE_ADMIN'){
+                    $validOwners[] = $user;
+                }
+            }
+        }
+        return $validOwners;
+    }
+
     /**
      * @ORM\OneToOne(targetEntity="Subscription")
      * @ORM\JoinColumn(nullable=true)

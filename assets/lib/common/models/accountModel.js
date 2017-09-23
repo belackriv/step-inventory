@@ -31,6 +31,12 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
     reverseRelation: false
   },{
+    type: BackboneRelational.HasMany,
+    key: 'ownerSelections',
+    relatedModel: 'UserModel',
+    includeInJSON: false,
+    reverseRelation: false
+  },{
     type: BackboneRelational.HasOne,
     key: 'subscription',
     relatedModel: 'SubscriptionModel',

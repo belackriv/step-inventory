@@ -72,6 +72,10 @@ export default Marionette.View.extend({
           let collection = Radio.channel('data').request('collection', OrganizationCollection, {fetchAll:true});
           return collection;
         },
+        defaultOption: {
+          label: 'Choose one...',
+          value: null
+        }
       }
     },
     '@ui.defaultDepartmentSelect': {
@@ -89,6 +93,10 @@ export default Marionette.View.extend({
           });
           return departments;
         },
+        defaultOption: {
+          label: 'Choose one...',
+          value: null
+        }
       }
     },
     '@ui.roleSelect': {
