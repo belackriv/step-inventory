@@ -15,5 +15,5 @@ server('demo', '138.68.29.149', 22)
     ->stage('demo')
     ->env('deploy_path', '/var/www/step-inventory');
 
+before('deploy:cache:clear', 'database:migrate');
 before('deploy:symlink', 'deploy:asset_symlinks');
-//before('deploy:symlink', 'database:migrate');

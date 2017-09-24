@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation As JMS;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  */
-Class TravelerId
+Class TravelerId implements TransformableEntityInterface
 {
 
 	/**

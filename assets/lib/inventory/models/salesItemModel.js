@@ -58,6 +58,7 @@ let Model = BaseUrlBaseModel.extend({
     sku: null,
     isVoid: null,
     quantity: null,
+    cost: null,
     revenue: null,
     reverseTransform: null,
   },

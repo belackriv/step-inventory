@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation As JMS;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  */
-Class SalesItem
+Class SalesItem implements TransformableEntityInterface
 {
 
 	/**
@@ -181,6 +181,24 @@ Class SalesItem
 	public function setQuantity($quantity)
 	{
 		$this->quantity = $quantity;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
+	 * @JMS\Type("float")
+	 * @JMS\Groups({"Default","OrderManifest"})
+	 */
+	protected $cost;
+
+	public function getCost()
+	{
+		return $this->cost;
+	}
+
+	public function setCost($cost)
+	{
+		$this->cost = $cost;
 		return $this;
 	}
 

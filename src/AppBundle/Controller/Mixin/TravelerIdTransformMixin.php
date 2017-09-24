@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Mixin;
 use AppBundle\Entity\TravelerId;
 use AppBundle\Entity\SalesItem;
 use AppBundle\Entity\InventoryTravelerIdTransform;
+use AppBundle\Entity\TransformableEntityInterface;
 
 trait TravelerIdTransformMixin
 {
@@ -21,6 +22,9 @@ trait TravelerIdTransformMixin
         foreach($transform->getToTravelerIds() as $toTravelerId){
             $toTravelerId->generateLabel();
             $toTravelerId->setReverseTransform($transform);
+            if($toTravelerId->getCost() === null){
+                $this->setCost($toTravelerId);
+            }
             $this->getDoctrine()->getManager()->persist($toTravelerId);
             if(!in_array($toTravelerId, $transformEntities)){
                 $transformEntities[] = $toTravelerId;
@@ -28,6 +32,9 @@ trait TravelerIdTransformMixin
         }
         foreach($transform->getToSalesItems() as $toSalesItem){
             $toSalesItem->setReverseTransform($transform);
+            if($toSalesItem->getCost() === null){
+                $this->setCost($toSalesItem);
+            }
             $this->getDoctrine()->getManager()->persist($toSalesItem);
             if(!in_array($toSalesItem, $transformEntities)){
                 $transformEntities[] = $toSalesItem;
@@ -55,6 +62,20 @@ trait TravelerIdTransformMixin
         $transform->addFromTravelerId($mergedTravelerId);
 
         return [$transform, $mergedTravelerId];
+    }
+
+    private function setCost(TransformableEntityInterface $entity)
+    {
+        $transform = $entity->getReverseTransform();
+        $cost = 0;
+        $count = 0;
+        foreach($transform->getFromTravelerIds() as $fromTravelerId){
+            $cost += $fromTravelerId->getCost();
+            $count++;
+        }
+        if($count != 0){
+            $entity->setCost(($cost/$count) * $transform->getRatio());
+        }
     }
 
 }
