@@ -15,6 +15,8 @@ class SyncFromStripeCommand extends ContainerAwareCommand
     {
         $stripePlanCount = $this->getContainer()->get('app.stripe.plan_collector')->collect();
         $output->writeln('<info>Synced '.$stripePlanCount.' plans.</info>');
+        $stripeSubscriptionCount = $this->getContainer()->get('app.stripe.subscription_collector')->collect();
+        $output->writeln('<info>Synced '.$stripeSubscriptionCount.' subscriptions.</info>');
         $stripeInvoiceCount = $this->getContainer()->get('app.stripe.invoice_collector')->collect();
         $output->writeln('<info>Synced '.$stripeInvoiceCount.' bills.</info>');
         return 0;

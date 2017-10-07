@@ -61,12 +61,14 @@ services:
         class: AppBundle\Library\Service\TravelerIdInitializationService
         calls:
             - [setContainer, ["@service_container"]]
-
     app.stripe.plan_collector:
         class: AppBundle\Library\Stripe\PlanCollector
         calls:
             - [setContainer, ["@service_container"]]
-
+    app.stripe.subscription_collector:
+        class: AppBundle\Library\Stripe\SubscriptionCollector
+        calls:
+            - [setContainer, ["@service_container"]]
     app.stripe.invoice_collector:
         class: AppBundle\Library\Stripe\InvoiceCollector
         calls:

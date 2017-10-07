@@ -10,9 +10,10 @@ use JMS\Serializer\Annotation As JMS;
  * @ORM\Entity
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({"AccountPlanChange" = "AccountPlanChange", "AccountOwnerChange" = "AccountOwnerChange"})
+ * @ORM\DiscriminatorMap({"AccountPlanChange" = "AccountPlanChange", "AccountOwnerChange" = "AccountOwnerChange", "AccountAutoPlanChange" = "AccountAutoPlanChange"})
  * @JMS\Discriminator(field = "discriminator", map = {
  *      "AccountPlanChange": "AppBundle\Entity\AccountPlanChange",
+ *      "AccountAutoPlanChange": "AppBundle\Entity\AccountAutoPlanChange",
  *      "AccountOwnerChange": "AppBundle\Entity\AccountOwnerChange"
  *  })
  */

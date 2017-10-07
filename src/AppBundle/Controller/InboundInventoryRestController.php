@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Library\Utilities;
-use AppBundle\Library\Service\MonthlyTravelerIdLimitService;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -96,7 +95,10 @@ class InboundInventoryRestController extends FOSRestController
             $em->persist($travelerId);
             $travelerId->generateLabel();
             $em->flush();
+
+
             $this->updateAclByRoles($travelerId, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            $this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
             return $travelerId;
         }else{
             throw $this->createAccessDeniedException();
@@ -240,6 +242,7 @@ class InboundInventoryRestController extends FOSRestController
         foreach($createdEntities as $entity){
             $this->updateAclByRoles($entity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
         }
+        $this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
         return $massTravelerId;
     }
 
@@ -314,6 +317,7 @@ class InboundInventoryRestController extends FOSRestController
         foreach($transformEntities as $logEntity){
             $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
         }
+        $this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
         return $massTravelerId;
     }
 

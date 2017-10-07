@@ -138,13 +138,9 @@ export default Marionette.View.extend({
     });
   },
   clearSelection(){
-    let travelerIdsArray = [];
-    this.selectedCollection.each((travelerId)=>{
-      travelerIdsArray.push(travelerId);
-    });
-    _.each(travelerIdsArray, (travelerId)=>{
-      travelerId.set('isSelected', false);
-    });
+    let tids = this.selectedCollection.toArray();
+    _.invoke(tids, 'set', 'isSelected', false);
+    this.selectedCollection.reset();
   },
   disableButtons(){
     this.ui.saveButton.addClass('is-loading').prop('disabled', true);

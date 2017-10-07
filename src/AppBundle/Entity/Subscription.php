@@ -18,6 +18,7 @@ Class Subscription
     const STATUS_CANCELED = 4;
     const STATUS_UNPAID = 5;
     const STATUS_LEGACY = 6;
+    const STATUS_INACTIVE = 7;
 
     public static $stripeStatuses = [
         'trialing' => self::STATUS_TRIALING,

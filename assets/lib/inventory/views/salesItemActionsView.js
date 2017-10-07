@@ -31,10 +31,12 @@ export default Marionette.View.extend({
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
     'selectedCountMsg': 'div[data-ui-name="selectedCount"]',
+    'clearSelectionButton': 'button[data-ui-name="clearSelection"]',
   },
   events: {
     'click @ui.massEditButton': 'massEdit',
     'click @ui.massSelectButton': 'massSelect',
+    'click @ui.clearSelectionButton': 'clearSelection',
   },
   childViewEvents: {
     'select:model': 'selectModel',
@@ -62,10 +64,18 @@ export default Marionette.View.extend({
   },
   updateSelectedCount(){
     if(this.selectedCollection.length > 0){
-      this.ui.selectedCountMsg.show().text(this.selectedCollection.length+' Sales Items Selected');
+      this.ui.selectedCountMsg.parent().show();
+      this.ui.selectedCountMsg.text(this.selectedCollection.length+' Sales Items Selected');
     }else{
-      this.ui.selectedCountMsg.hide().text('');
+      this.ui.selectedCountMsg.parent().hide();
+      this.ui.selectedCountMsg.text('');
     }
+  },
+  clearSelection(){
+    let salesItem = this.selectedCollection.toArray();
+    _.invoke(salesItem, 'set', 'isSelected', false);
+    this.selectedCollection.reset();
+    this.updateSelectedCount();
   },
   refreshList(){
     this.listView.search();

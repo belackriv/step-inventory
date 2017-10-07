@@ -35,7 +35,7 @@ let Model = BaseUrlBaseModel.extend({
     };
     this.get('travelerIds').each((travelerId)=>{
       if(attrs.type === 'transform'){
-        attrs.travelerIds.push(travelerId.toJSON());
+        attrs.travelerIds.push(travelerId.getMassTransformAttrs());
       }else{
         attrs.travelerIds.push(travelerId.getMassUpdateAttrs());
       }

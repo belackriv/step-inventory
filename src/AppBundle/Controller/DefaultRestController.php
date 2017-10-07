@@ -40,12 +40,13 @@ class DefaultRestController extends FOSRestController
             $this->container->get('session.storage.native'),
             $this->getUser()->getOrganization()
         );
-        $monthlyTravelerIdLimitService = new MonthlyTravelerIdLimitService($this->container);
+
         if($account->getSubscription()){
-            $account->monthlyTravelerIds = $monthlyTravelerIdLimitService->getTravelerIdsInRange(
-                $this->getUser()->getOrganization(),
-                $account->getSubscription()->getCurrentPeriodStart(),
-                new \DateTime()
+            $organization = $this->getUser()->getOrganization();
+            $account->monthlyTravelerIds = $this->container->get('app.tid_init')->getTravelerIdsInRange(
+                $organization,
+                $organization->getAccount()->getSubscription()->getCurrentPeriodStart(),
+                $organization->getAccount()->getSubscription()->getCurrentPeriodEnd()
             );
         }
         return ['total_count'=> 1, 'total_items' => 1, 'list'=>[$account]];

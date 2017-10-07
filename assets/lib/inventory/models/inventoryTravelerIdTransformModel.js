@@ -20,13 +20,34 @@ let Model = BaseUrlBaseModel.extend({
   defaults: {
     byUser: null,
     transformedAt: null,
-    fromTravelerIds: null,
     quantity: null,
     ratio: null,
+    fromTravelerIds: null,
     toTravelerIds: null,
     toSalesItems: null,
   },
-
+  getMassTransformAttrs(){
+    let attrs =  {
+      id: this.get('id'),
+      cid: this.cid,
+      //skip byUser, it is set on server
+      quantity: this.get('quantity'),
+      ratio: this.get('ratio'),
+      fromTravelerIds: [],
+      toTravelerIds: [],
+      toSalesItems: [],
+    };
+    this.get('fromTravelerIds').each((travelerId)=>{
+      attrs.fromTravelerIds.push({id: travelerId.get('id')});
+    });
+    this.get('toTravelerIds').each((travelerId)=>{
+      attrs.toTravelerIds.push(travelerId.getMassTransformAttrs());
+    });
+    this.get('toSalesItems').each((salesItem)=>{
+      attrs.toSalesItems.push(salesItem.getMassTransformAttrs());
+    });
+    return attrs;
+  }
 });
 
 globalNamespace.Models.InventoryTravelerIdTransformModel = Model;

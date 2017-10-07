@@ -11,6 +11,7 @@ import './paymentSourceModel.js';
 import './accountChangeModel.js';
 import './accountOwnerChangeModel.js';
 import './accountPlanChangeModel.js';
+import './accountAutoPlanChangeModel.js';
 import './billModel.js';
 import './currentSessionModel.js';
 

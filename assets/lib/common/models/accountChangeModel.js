@@ -11,7 +11,8 @@ let Model = BaseUrlBaseModel.extend({
   subModelTypeAttribute: 'discriminator',
   subModelTypes: {
     'AccountOwnerChange': 'AccountOwnerChangeModel',
-    'AccountPlanChange': 'AccountPlanChangeModel'
+    'AccountPlanChange': 'AccountPlanChangeModel',
+    'AccountAutoPlanChange': 'AccountAutoPlanChangeModel',
   },
   relations: [{
     type: BackboneRelational.HasOne,
