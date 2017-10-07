@@ -46,6 +46,10 @@ import InventorySkuTransformCollection from './models/inventorySkuTransformColle
 import inventorySkuTransformListTableLayoutTpl from './views/inventorySkuTransformListTableLayoutTpl.hbs!';
 import inventorySkuTransformRowTpl from './views/inventorySkuTransformRowTpl.hbs!';
 
+import InventoryAlertLogCollection from './models/inventoryAlertLogCollection.js';
+import inventoryAlertLogListTableLayoutTpl from './views/inventoryAlertLogListTableLayoutTpl.hbs!';
+import inventoryAlertLogRowTpl from './views/inventoryAlertLogRowTpl.hbs!';
+
 import InventoryAuditListView from './views/inventoryAuditListView.js';
 import InventoryAuditView from './views/inventoryAuditView.js';
 import InventoryAuditModel from './models/inventoryAuditModel.js';
@@ -354,6 +358,31 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventorySkuTransformListTableLayoutTpl,
       entityRowTpl: inventorySkuTransformRowTpl,
       colspan: 7,
+    });
+
+    this.buildViewStack([
+      {
+        regionViewMap: new Map([['content', listView]]),
+        viewInstance: inventoryIndexView
+      }
+    ]);
+
+    Radio.channel('app').trigger('show:view', inventoryIndexView);
+    Radio.channel('help').trigger('show', 'inventorySkuTransforms');
+  },
+  inventoryAlertLogs(){
+    let inventoryIndexView =  new InventoryLogIndexView();
+
+    let inventoryAlertLogCollection = Radio.channel('data').request('collection', InventoryAlertLogCollection, {doFetch: false});
+    let listView = new SearchableListLayoutView({
+      collection: inventoryAlertLogCollection,
+      listLength: 20,
+      searchPath: ['inventoryAlert.attributes.department.attributes.name', 'inventoryAlert.attributes.sku.attributes.name'],
+      useTableView: true,
+      usePagination: 'server',
+      entityListTableLayoutTpl: inventoryAlertLogListTableLayoutTpl,
+      entityRowTpl: inventoryAlertLogRowTpl,
+      colspan: 6,
     });
 
     this.buildViewStack([

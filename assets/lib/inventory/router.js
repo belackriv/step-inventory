@@ -41,6 +41,7 @@ export default Marionette.Object.extend({
     'inventory_sku_adjustment': 'inventorySkuAdjustments',
     'inventory_sku_movement': 'inventorySkuMovements',
     'inventory_sku_transform': 'inventorySkuTransforms',
+    'inventory_alert_log': 'inventoryAlertLogs',
     'inventory_audit': 'inventoryAudit',
     'inventory_audit/:id': 'inventoryAudit',
     'inventory_action': 'inventoryAction',
@@ -178,6 +179,14 @@ export default Marionette.Object.extend({
       Radio.channel('app').trigger('request:finished');
       let controller = new controllerModule.default();
       controller.inventorySkuTransforms();
+    });
+  },
+  inventoryAlertLogs(){
+    Radio.channel('app').trigger('request:started');
+    System.import('lib/inventory/controller.js').then((controllerModule)=>{
+      Radio.channel('app').trigger('request:finished');
+      let controller = new controllerModule.default();
+      controller.inventoryAlertLogs();
     });
   },
   inventoryAudit(id){

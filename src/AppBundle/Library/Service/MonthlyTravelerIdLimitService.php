@@ -6,7 +6,7 @@ use AppBundle\Entity\Organization;
 
 class MonthlyTravelerIdLimitService extends AbstractService
 {
-    const OVERAGE_LINE_ITEM_TITLE = 'TravelerId Overage Charge';
+    const OVERAGE_LINE_ITEM_TITLE = 'Extra TravelerIds Cost';
 
     public function processMonthlyTravelerIdOverageForStripe(Organization $organization, array $invoiceData)
     {

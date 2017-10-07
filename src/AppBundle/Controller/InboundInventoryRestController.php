@@ -95,10 +95,12 @@ class InboundInventoryRestController extends FOSRestController
             $em->persist($travelerId);
             $travelerId->generateLabel();
             $em->flush();
-
-
-            $this->updateAclByRoles($travelerId, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
-            $this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
+            $createdEntities[] = $travelerId;
+            $createdEntities = array_merge($createdEntities, $this->container->get('app.tid_init')->initialize($travelerId));
+            foreach($createdEntities as $entity){
+                $this->updateAclByRoles($entity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
+            }
+            //$this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
             return $travelerId;
         }else{
             throw $this->createAccessDeniedException();
@@ -242,7 +244,7 @@ class InboundInventoryRestController extends FOSRestController
         foreach($createdEntities as $entity){
             $this->updateAclByRoles($entity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
         }
-        $this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
+        //$this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
         return $massTravelerId;
     }
 
@@ -317,9 +319,69 @@ class InboundInventoryRestController extends FOSRestController
         foreach($transformEntities as $logEntity){
             $this->updateAclByRoles($logEntity, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);
         }
-        $this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
+        //$this->container->get('app.tid_init')->checkforPlanAutoUpgrade($this->getUser());
         return $massTravelerId;
     }
+
+
+    /**
+     * @Rest\Get("/inventory_alert_log")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function listInventoryAlertLogAction(Request $request)
+    {
+        $page = (int)$request->query->get('page') - 1;
+        $perPage =(int)$request->query->get('per_page');
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+            ->select('COUNT(itm.id)')
+            ->from('AppBundle:InventoryAlertLog', 'itm')
+            ->join('itm.inventoryAlert', 'ia')
+            ->join('ia.department', 'd')
+            ->join('d.office', 'o')
+            ->where('o.organization = :org')
+            ->setParameter('org', $this->getUser()->getOrganization());
+
+        $totalItems = $qb->getQuery()->getSingleScalarResult();
+
+        Utilities::setupSearchableEntityQueryBuild($qb, $request);
+
+        $totalCount = $qb->getQuery()->getSingleScalarResult();
+
+        $qb->select('itm')
+            ->orderBy('itm.id', 'DESC')
+            ->setMaxResults($perPage)
+            ->setFirstResult($page*$perPage);
+
+        $items = $qb->getQuery()->getResult();
+
+        $itemlist = array();
+        $authorizationChecker = $this->get('security.authorization_checker');
+        foreach($items as $item){
+            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+                $itemlist[] = $item;
+            }
+        }
+
+        return ['total_count'=> (int)$totalCount, 'total_items' => (int)$totalItems, 'list'=>$itemlist];
+    }
+
+    /**
+     * @Rest\Get("/inventory_alert_log/{id}")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     */
+    public function getInventoryAlertLogAction(\AppBundle\Entity\InventoryAlertLog $inventoryAlertLog)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inventoryAlertLog) and
+            $inventoryAlertLog->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            return $inventoryAlertLog;
+        }else{
+            throw $this->createNotFoundException('InventoryAlertLog #'.$inventoryAlertLog->getId().' Not Found');
+        }
+    }
+
+
+
 
     /**
      * @Rest\Get("/inventory_tid_edit")
@@ -377,7 +439,6 @@ class InboundInventoryRestController extends FOSRestController
             throw $this->createNotFoundException('InventoryTravelerIdEdit #'.$inventoryTravelerIdEdit->getId().' Not Found');
         }
     }
-
 
     /**
      * @Rest\Get("/inventory_tid_movement")

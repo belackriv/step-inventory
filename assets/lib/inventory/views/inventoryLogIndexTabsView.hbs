@@ -33,4 +33,7 @@
 			<li class="{{#ifIsRouteActive '/inventory_sku_transform'}}is-active{{else}}not-active{{/ifIsRouteActive}}"><a href="{{baseUrl}}/inventory_sku_transform">SKU Transform Logs</a></li>
 		</ul>
 	</li>
+	<li class="si-tabs-dropdown	{{~#ifIsRouteActive '/inventory_alert_log'}} is-active{{/ifIsRouteActive~}}">
+		<a  href="{{baseUrl}}/inventory_alert_log">Inventory Alert Logs</a>
+	</li>
 </ul>

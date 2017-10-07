@@ -34,7 +34,7 @@ class WebhookRestController extends FOSRestController
         if(!$org){
             throw new HttpException(500, 'No Organization Found from Invoice customer');
         }
-        //$monthlyTravelerIdLimitService->processMonthlyTravelerIdOverageForStripe($org, $stripeEvent['data']['object']);
+        $monthlyTravelerIdLimitService->processMonthlyTravelerIdOverageForStripe($org, $stripeEvent['data']['object']);
         return ['webhook_processed' => true];
     }
 

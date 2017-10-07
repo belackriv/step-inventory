@@ -12,7 +12,6 @@ let Model = BaseUrlBaseModel.extend({
   subModelTypes: {
     'AccountOwnerChange': 'AccountOwnerChangeModel',
     'AccountPlanChange': 'AccountPlanChangeModel',
-    'AccountAutoPlanChange': 'AccountAutoPlanChangeModel',
   },
   relations: [{
     type: BackboneRelational.HasOne,
