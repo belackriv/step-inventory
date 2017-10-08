@@ -377,7 +377,7 @@ export default Marionette.Object.extend({
     let listView = new SearchableListLayoutView({
       collection: inventoryAlertLogCollection,
       listLength: 20,
-      searchPath: ['inventoryAlert.attributes.department.attributes.name', 'inventoryAlert.attributes.sku.attributes.name'],
+      searchPath: ['inventoryAlert.department.name', 'inventoryAlert.sku.name'],
       useTableView: true,
       usePagination: 'server',
       entityListTableLayoutTpl: inventoryAlertLogListTableLayoutTpl,
@@ -393,7 +393,7 @@ export default Marionette.Object.extend({
     ]);
 
     Radio.channel('app').trigger('show:view', inventoryIndexView);
-    Radio.channel('help').trigger('show', 'inventorySkuTransforms');
+    Radio.channel('help').trigger('show', 'inventoryAlertLogs');
   },
   inventoryAudit(id){
     let view = new InventoryAuditListView();
