@@ -52,10 +52,35 @@ Class AccountPlanChange extends AccountChange
 
     public function updateAccount()
     {
-        $stripeSubscription = \Stripe\Subscription::retrieve($this->account->getSubscription()->getExternalId());
+        try{
+            $stripeSubscription = \Stripe\Subscription::retrieve($this->account->getSubscription()->getExternalId());
+        }catch(\Stripe\Error\InvalidRequest $e){
+            if(strpos($e->getMessage(), 'No such subscription') !== false){
+                $stripeSubscription = \Stripe\Subscription::create([
+                  'customer' => $this->account->getExternalId(),
+                  'plan' => $this->newPlan->getExternalId()
+                ]);
+            }else{
+                throw $e;
+            }
+        }
         $stripeSubscription->plan = $this->newPlan->getExternalId();
         $stripeSubscription->trial_end = $stripeSubscription->trial_end;
-        $stripeSubscription->save();
+
+        try{
+            $stripeSubscription->save();
+        }catch(\Stripe\Error\InvalidRequest $e){
+            if(strpos($e->getMessage(), 'No such subscription') !== false){
+                $stripeSubscription = \Stripe\Subscription::create([
+                  'customer' => $this->account->getExternalId(),
+                  'plan' => $this->newPlan->getExternalId()
+                ]);
+                $stripeSubscription->save();
+            }else{
+                throw $e;
+            }
+        }
+
 
         $this->account->getSubscription()->updateFromStripe($stripeSubscription);
         $this->account->changePlan($this);

@@ -50,7 +50,9 @@ class AuditInventoryRestController extends FOSRestController
         $itemlist = array();
         $authorizationChecker = $this->get('security.authorization_checker');
         foreach($items as $item){
-            if (true === $authorizationChecker->isGranted('VIEW', $item)){
+            if( true === $authorizationChecker->isGranted('VIEW', $item) and
+                $item->isOwnedByOrganization($this->getUser()->getOrganization())
+            ){
                 $itemlist[] = $item;
             }
         }

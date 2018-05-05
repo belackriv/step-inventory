@@ -804,7 +804,6 @@ class DefaultRestController extends FOSRestController
                 }
             }
         }
-
         return ['total_count'=> count($itemlist), 'total_itemlist' => count($itemlist), 'list'=>$itemlist];
     }
 
