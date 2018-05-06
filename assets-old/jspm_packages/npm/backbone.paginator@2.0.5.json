@@ -1,0 +1,12 @@
+{
+  "main": "lib/backbone.paginator.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "examples/js/jquery.js": {
+      "format": "amd"
+    }
+  }
+}

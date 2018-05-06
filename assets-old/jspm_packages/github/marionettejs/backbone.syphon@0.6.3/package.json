@@ -1,0 +1,64 @@
+{
+  "name": "backbone.syphon",
+  "version": "0.6.3",
+  "description": "Serialize a Backbone.View in to a JavaScript object.",
+  "main": "./lib/backbone.syphon.js",
+  "homepage": "https://github.com/marionettejs/backbone.syphon",
+  "keywords": [
+    "backbone",
+    "serialize",
+    "client",
+    "browser"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/marionettejs/backbone.syphon/blob/master/LICENSE.md"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marionettejs/backbone.syphon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marionettejs/backbone.syphon/issues"
+  },
+  "author": {
+    "name": "Derick Bailey",
+    "email": "derickbailey@gmail.com",
+    "url": "http://derickbailey.lostechies.com"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "bower": "bower install",
+    "test": "grunt test --mocha-reporter=dot",
+    "coverage": "grunt coverage --mocha-reporter=dot"
+  },
+  "dependencies": {
+    "backbone": "1.0.0 - 1.2.3",
+    "jquery": "^1.8.0 || ^2.1.0",
+    "underscore": "1.4.4 - 1.8.3"
+  },
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "chai": "^1.9.1",
+    "chai-jquery": "^1.2.3",
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-jscs": "^1.5.0",
+    "grunt-lintspaces": "0.7.0",
+    "grunt-mocha-test": "^0.11.0",
+    "grunt-preprocess": "^4.0.0",
+    "grunt-template": "^0.2.3",
+    "jsdom": "^0.11.0",
+    "load-grunt-tasks": "^0.4.0",
+    "mocha": "^1.20.1",
+    "sinon": "^1.10.2",
+    "sinon-chai": "^2.5.0"
+  }
+}

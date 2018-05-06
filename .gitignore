@@ -43,11 +43,6 @@ Temporary Items
 .apdisk
 
 
-#js stuff
-node_modules
-assets/jspm_packages/npm
-assets/jspm_packages/github
-
 #project stuff
 .vagrant
 vendor
@@ -61,5 +56,26 @@ web/bundles
 
 *.sublime-project
 *.sublime-workspace
+
+.npmrc
+
+#=== vue-template
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 !assets/jspm_packages/npm/papaparse@4.3.3/papaparse.js

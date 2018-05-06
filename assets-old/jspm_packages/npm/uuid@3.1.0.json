@@ -1,0 +1,22 @@
+{
+  "main": "index.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "lib/sha1.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  },
+  "map": {
+    "./lib/rng.js": {
+      "browser": "./lib/rng-browser.js"
+    },
+    "./lib/sha1.js": {
+      "browser": "./lib/sha1-browser.js"
+    }
+  }
+}

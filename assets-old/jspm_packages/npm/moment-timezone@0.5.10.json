@@ -1,0 +1,15 @@
+{
+  "main": "builds/moment-timezone-with-data.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "moment-timezone.js": {
+      "deps": [
+        "moment"
+      ],
+      "format": "global"
+    }
+  }
+}

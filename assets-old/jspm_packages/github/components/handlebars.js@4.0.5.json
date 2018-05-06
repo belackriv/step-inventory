@@ -1,0 +1,9 @@
+{
+  "main": "handlebars",
+  "meta": {
+    "handlebars.js": {
+      "exports": "Handlebars",
+      "format": "global"
+    }
+  }
+}

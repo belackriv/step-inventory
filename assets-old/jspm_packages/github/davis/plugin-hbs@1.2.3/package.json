@@ -1,0 +1,34 @@
+{
+  "name": "plugin-hbs",
+  "description": "Handlebars template loader plugin for system.js",
+  "version": "1.2.3",
+  "main": "hbs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davis/plugin-hbs.git"
+  },
+  "keywords": [
+    "systemjs",
+    "jspm",
+    "handlebars"
+  ],
+  "author": "davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davis/plugin-hbs/issues"
+  },
+  "homepage": "https://github.com/davis/plugin-hbs#readme",
+  "jspm": {
+    "name": "hbs",
+    "main": "hbs.js",
+    "dependencies": {
+      "handlebars": "github:components/handlebars.js@^4.0.5"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.11"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "main": "bin/JsBarcode.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "src/*": {
+      "format": "esm"
+    }
+  },
+  "map": {
+    "./bin/barcodes": "./bin/barcodes/index.js",
+    "./bin/barcodes/CODE128": "./bin/barcodes/CODE128/index.js",
+    "./bin/barcodes/CODE39": "./bin/barcodes/CODE39/index.js",
+    "./bin/barcodes/EAN_UPC": "./bin/barcodes/EAN_UPC/index.js",
+    "./bin/barcodes/GenericBarcode": "./bin/barcodes/GenericBarcode/index.js",
+    "./bin/barcodes/ITF": "./bin/barcodes/ITF/index.js",
+    "./bin/barcodes/ITF14": "./bin/barcodes/ITF14/index.js",
+    "./bin/barcodes/MSI": "./bin/barcodes/MSI/index.js",
+    "./bin/barcodes/codabar": "./bin/barcodes/codabar/index.js",
+    "./bin/barcodes/pharmacode": "./bin/barcodes/pharmacode/index.js",
+    "./bin/renderers": "./bin/renderers/index.js"
+  }
+}
