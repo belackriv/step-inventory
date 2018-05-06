@@ -49,7 +49,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('tests_frontend'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src_frontend'), resolve('tests_frontend'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
