@@ -12,7 +12,7 @@
         {% block stripejs %}<script src="https://js.stripe.com/v3/" async></script>{% endblock %}
     </head>
     <body>
-    	<div id="content">
+    	<div id="app">
             {% block content %}
                 {{ include('partial/loading.html.twig') }}
             {% endblock %}
