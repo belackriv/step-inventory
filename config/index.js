@@ -8,10 +8,17 @@ module.exports = {
   dev: {
 
     // Paths
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'assets',
     assetsPublicPath: '/',
     proxyTable: {
-
+        '/api': {
+            target: 'https://localhost:8443/',
+            secure: false,
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': ''
+            }
+        }
     },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -50,7 +57,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'assets',
     assetsPublicPath: '/',
 
     /**

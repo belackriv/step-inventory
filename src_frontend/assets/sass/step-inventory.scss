@@ -3,19 +3,24 @@ $si-primary-color: #55a79a;
 
 $primary: $si-primary-color;
 
-@import "../node_modules/font-awesome/scss/font-awesome.scss";
-@import "../node_modules/bulma/bulma.sass";
+@import '~bulma/bulma';
 
 nav.si-nav {
 	border-bottom: 1px solid $si-primary-color;
     background: gainsboro;
 }
 
+.si-nav-link {
+	color: $grey-dark
+}
+
+.si-nav-link:hover {
+	color: $grey-light
+}
 
 #main-section {
 	min-height: calc(99vh - 270px);
 }
-
 
 .menu.si-side-menu {
 	min-width: 15em;
