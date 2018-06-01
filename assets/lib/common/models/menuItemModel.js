@@ -61,23 +61,25 @@ let Model = BaseUrlBaseModel.extend({
     return count;
   },
   setUiIsActiveFromRoute(route){
-    route = (route[0]=='/')?route.slice(1):route;
-    let uiIsActive = false;
-    if(this.get('menuLink') && this.get('menuLink').get('url')){
-      let url = this.get('menuLink').get('url');
-      if(this.doesRouteMatchUrl(route, url)){
-        uiIsActive = true;
-        //console.log('Url Match Found:'+route+' = '+url);
-      }
-      _.each(this.get('menuLink').get('routeMatches'), (subUrl)=>{
-        if(this.doesRouteMatchUrl(route, subUrl)){
+    if(route){
+      route = (route[0]=='/')?route.slice(1):route;
+      let uiIsActive = false;
+      if(this.get('menuLink') && this.get('menuLink').get('url')){
+        let url = this.get('menuLink').get('url');
+        if(this.doesRouteMatchUrl(route, url)){
           uiIsActive = true;
-          //console.log('SubUrl Match Found:'+route+' = '+subUrl);
+          //console.log('Url Match Found:'+route+' = '+url);
         }
-      });
+        _.each(this.get('menuLink').get('routeMatches'), (subUrl)=>{
+          if(this.doesRouteMatchUrl(route, subUrl)){
+            uiIsActive = true;
+            //console.log('SubUrl Match Found:'+route+' = '+subUrl);
+          }
+        });
+      }
+      this.set('uiIsActive', uiIsActive);
+      return uiIsActive;
     }
-    this.set('uiIsActive', uiIsActive);
-    return uiIsActive;
   },
   doesRouteMatchUrl(route, url){
     url = (url[0]=='/')?url.slice(1):url;

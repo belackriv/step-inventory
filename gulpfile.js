@@ -29,6 +29,23 @@ gulp.task('jspm-build', function(){
   builder.bundle(
     'lib/main.js',
     'assets/main-bundle.js',
+    { minify: false, rootURL: './assets' }
+  )
+  .then(function(){
+    gutil.log(gutil.colors.green('Build finished.'));
+  })
+  .catch(function(errorMessage) {
+      gutil.log(gutil.colors.red(errorMessage));
+      // Exit the build task on build error so that local server isn't spawned.
+      throw errorMessage;
+    });
+});
+
+gulp.task('jspm-prod-build', function(){
+  const builder = new jspm.Builder();
+  builder.bundle(
+    'lib/main.js',
+    'assets/main-bundle.js',
     { minify: true, rootURL: './assets' }
   )
   .then(function(){

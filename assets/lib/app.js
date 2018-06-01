@@ -34,7 +34,7 @@ export default Marionette.Application.extend({
   getCurrentRoute(){
     return Backbone.history.fragment;
   },
-  region: '#content',
+  region: '#app',
   onStart(){
     this.showView( new AppLayoutView() );
 

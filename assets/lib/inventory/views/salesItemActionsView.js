@@ -30,7 +30,7 @@ export default Marionette.View.extend({
   ui: {
     'massEditButton': 'button[name="massEdit"]',
     'massSelectButton': 'button[name="massSelect"]',
-    'selectedCountMsg': 'div[data-ui-name="selectedCount"]',
+    'selectedCountMsg': 'span[data-ui-name="selectedCount"]',
     'clearSelectionButton': 'button[data-ui-name="clearSelection"]',
   },
   events: {
