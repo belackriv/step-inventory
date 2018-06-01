@@ -107,6 +107,31 @@ fos_rest:
     format_listener:
         rules:
             - { path: ^/, priorities: ['json','html'], fallback_format: ~, prefer_extension: false }
+    access_denied_listener:
+        json: true
+    exception:
+        codes:
+            'Symfony\Component\Security\Core\Exception\AuthenticationException': 401
+            'Symfony\Component\Security\Core\Exception\AccessDeniedException': 403
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
+            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
+
+nelmio_cors:
+    defaults:
+        allow_credentials: true
+        allow_origin: []
+        allow_headers: []
+        allow_methods: []
+        expose_headers: []
+        max_age: 0
+        hosts: []
+        origin_regex: false
+    paths:
+        '^/':
+           allow_origin: ['*']
+           allow_headers: ['*']
+           allow_methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTION']
+           # max_age: 3600
 
 jms_serializer:
     handlers:

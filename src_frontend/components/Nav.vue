@@ -7,20 +7,22 @@
     <div class="navbar-menu">
       <div class="navbar-start si-nav-expanded">
         <div class="navbar-item is-expanded">
-          <h1 class="is-centered title is-1">{{organization.name}}</h1>
+          <h1 class="is-centered title is-1" v-if="myself.organization">{{myself.organization.name}}</h1>
+          <h1 class="is-centered title is-1" v-else>&nbsp;</h1>
         </div>
       </div>
       <div class="navbar-end si-nav-expanded">
         <div class="navbar-item">
-          <a class="icon si-nav-link" href="/profile" :title="profileTitle">
+          <router-link class="icon si-nav-link" to="/profile" :title="profileTitle" v-if="myself.id">
             <font-awesome-icon :icon="userIcon" />
-          </a>
-          <a class="icon si-nav-link" href="/account" title="Edit Account Info">
+          </router-link>
+          <router-link class="icon si-nav-link" to="/account" title="Edit Account Info" v-if="myself.id">
             <font-awesome-icon :icon="accountIcon" />
-          </a>
+          </router-link>
         </div>
         <div class="navbar-item">
-          <a class="button" href="/logout" data-default-nav-action="true">Logout</a>
+          <button type="button" class="button" href="/logout" v-if="myself.id">Logout</button>
+          <button type="button" class="button" href="/login" v-else @click="showModal('ModalLogin')">Login</button>
           <span id="loading-icon-container" class="icon"></span>
         </div>
       </div>
@@ -31,17 +33,10 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faUser, faCog } from '@fortawesome/fontawesome-free-solid';
-import { mapGetters, mapActions } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'Nav',
-  data () {
-    return {
-      organization: {
-        name: 'Test'
-      }
-    };
-  },
   computed: {
     profileTitle () {
       return 'Edit ' + this.myself.username + '\'s Profile';
@@ -52,18 +47,27 @@ export default {
     accountIcon () {
       return faCog;
     },
-    ...mapGetters({
-      myself: 'myself'
-    })
+    myself () {
+      return this.$store.getters['entities/myself/query']().with('organization').first();
+    }
   },
   components: {
     FontAwesomeIcon
   },
-  methods: mapActions([
-
-  ]),
+  methods: {
+    ...mapMutations({showModal: 'modal/show'})
+  },
   created () {
-    this.$store.dispatch('getMyself');
+    this.$store.dispatch('entities/myself/create', {
+      data: { id: null }
+    });
+    this.intervalId = setInterval(() => {
+      this.$store.dispatch('entities/myself/fetch');
+    }, 60000);
+    this.$store.dispatch('entities/myself/fetch');
+  },
+  destroyed () {
+    clearInterval(this.intervalId);
   }
 };
 </script>

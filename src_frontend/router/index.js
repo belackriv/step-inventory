@@ -4,6 +4,8 @@ import AppMain from '@/components/AppMain';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
+import Profile from '@/components/Profile';
+
 Vue.use(Router);
 
 export default new Router({
@@ -15,7 +17,16 @@ export default new Router({
         Nav,
         AppMain,
         Footer
-      }
+      },
+      children: [
+        {
+          path: '/profile',
+          name: 'Profile',
+          components: {
+            MainSection: Profile
+          }
+        }
+      ]
     }
   ]
 });

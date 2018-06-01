@@ -48,15 +48,27 @@ class SecurityController extends Controller
 	        ]
 	    );
     }
-
-    /**
-     * @Route("/login_check", name="login_check")
-     */
+// @Route("/login_check", name="login_check")
+/*
     public function loginCheckAction()
     {
-        //np-op, caught by firewall
+        $session = $request->getSession();
+        $myself = $this->getUser();
+        if($session->get('currentDepartmentId')){
+            $department = $this->getDoctrine() ->getRepository('AppBundle:Department')
+                ->find($session->get('currentDepartmentId'));
+            $myself->currentDepartment = $department;
+        }else{
+            $myself->currentDepartment = $myself->getDefaultDepartment();
+        }
+        $myself->appAnnouncement = $this->getDoctrine() ->getRepository('AppBundle:Announcement')
+                ->findLatest($this->getUser()->getOrganization());
+        $myself->inventoryAlertLogs = $this->getDoctrine() ->getRepository('AppBundle:InventoryAlert')
+                ->findActiveLogs($this->getUser()->getOrganization());
+        $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
+        return $myself;
     }
-
+*/
     /**
      * @Route("/signup", name="signup_route")
      */

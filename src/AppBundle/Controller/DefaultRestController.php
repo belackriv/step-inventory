@@ -873,6 +873,29 @@ class DefaultRestController extends FOSRestController
 
 
     /**
+     * @Rest\Post("/login_check")
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "GetMyself"})
+     */
+    public function loginCheckAction(Request $request)
+    {
+        $session = $request->getSession();
+        $myself = $this->getUser();
+        if($session->get('currentDepartmentId')){
+            $department = $this->getDoctrine() ->getRepository('AppBundle:Department')
+                ->find($session->get('currentDepartmentId'));
+            $myself->currentDepartment = $department;
+        }else{
+            $myself->currentDepartment = $myself->getDefaultDepartment();
+        }
+        $myself->appAnnouncement = $this->getDoctrine() ->getRepository('AppBundle:Announcement')
+                ->findLatest($this->getUser()->getOrganization());
+        $myself->inventoryAlertLogs = $this->getDoctrine() ->getRepository('AppBundle:InventoryAlert')
+                ->findActiveLogs($this->getUser()->getOrganization());
+        $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
+        return $myself;
+    }
+
+    /**
      * @Rest\Get("/myself")
      * @Rest\Get("/myself/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "GetMyself"})
@@ -892,8 +915,10 @@ class DefaultRestController extends FOSRestController
                 ->findLatest($this->getUser()->getOrganization());
         $myself->inventoryAlertLogs = $this->getDoctrine() ->getRepository('AppBundle:InventoryAlert')
                 ->findActiveLogs($this->getUser()->getOrganization());
+
         $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
         $myself->menuItems = $this->get('app.static_menu_builder')->build();
+
         return $myself;
     }
 

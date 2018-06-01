@@ -42,12 +42,12 @@ Vagrant.configure("2") do |config|
   	config.vm.synced_folder ".", "/vagrant", disabled: true
 
     config.vm.synced_folder ".", "/var/www/step-inventory",
-      #type: "smb",
-      #owner: "ubuntu",
-      #group: "www-data",
-      #mount_options: ["mfsymlinks,dir_mode=0774,file_mode=0774"]#"vers=3.02"],
-      type: "nfs",
-      mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+      type: "smb",
+      owner: "ubuntu",
+      group: "www-data",
+      mount_options: ["mfsymlinks,dir_mode=0774,file_mode=0774"]#"vers=3.02"],
+      #type: "nfs",
+      #mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
 
     config.winnfsd.uid = 1000
     config.winnfsd.gid = 33
@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
     	vb.gui = false
   #
   #   # Customize the amount of memory on the VM:
-  		vb.memory = "2048"
+  		vb.memory = "4096"
   		vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/var/www/step-inventory", "1"]
   	end
   #

@@ -1,35 +1,30 @@
-import MyselfApi from '../../api/myself.js';
+import Api from '../../api/myself.js';
 
-const myselfApi = new MyselfApi();
-// initial state
-const state = {
-  myself: {}
-};
-
-// getters
-const getters = {
-  myself: state => state.myself
-};
+const api = new Api();
 
 // actions
 const actions = {
-  getMyself ({ commit }) {
-    myselfApi.getMyself(myself => {
-      commit('setMyself', myself);
+  fetch ({ commit, dispatch }) {
+    api.getMyself().then(myself => {
+      dispatch('create', {
+        data: myself
+      });
+    }).catch(error => {
+      if (error.isAuthenticationError) {
+        commit('modal/show', 'ModalLogin', { root: true });
+      }
+    });
+  },
+  login ({ commit, dispatch }, loginInfo) {
+    api.login(loginInfo).then(myself => {
+      dispatch('create', {
+        data: myself
+      });
+      commit('modal/hide', null, { root: true });
     });
   }
 };
 
-// mutations
-const mutations = {
-  setMyself (state, myself) {
-    state.myself = {...myself};
-  }
-};
-
 export default {
-  state,
-  getters,
-  actions,
-  mutations
+  actions
 };

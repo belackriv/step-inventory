@@ -1,12 +1,17 @@
 import BaseApi from './base.js';
 
 export default class MyselfApi extends BaseApi {
-  getMyself (cb) {
-    this.sendHttpRequest({
+  getMyself () {
+    return this.sendHttpRequest({
       url: '/myself',
       method: 'GET'
-    }).then((myself) => {
-      cb(myself);
+    });
+  }
+  login (loginInfo) {
+    return this.sendHttpRequest({
+      url: '/login_check',
+      method: 'POST',
+      body: JSON.stringify(loginInfo)
     });
   }
 }

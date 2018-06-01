@@ -47,10 +47,8 @@ security:
         site:
             anonymous: true
             pattern: ^/
-            form_login:
-                login_path: /login
+            json_login:
                 check_path: /login_check
-                remember_me: true
             provider: step_inventory_users
             logout:
                 target: /login

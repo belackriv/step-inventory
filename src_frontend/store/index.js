@@ -1,14 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexORM from '@vuex-orm/core';
 import createLogger from 'vuex/dist/logger';
-import modules from './modules/index.js';
+import database from './database.js';
+
+import login from './modules/login.js';
+import modal from './modules/modal.js';
 
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
-  modules: modules,
+  modules: {login, modal},
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger(), VuexORM.install(database)] : [VuexORM.install(database)]
 });
