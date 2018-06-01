@@ -32,7 +32,7 @@ Class MenuItem
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
-     * @JMS\Groups({"Default","MenuItem"})
+     * @JMS\Groups({"Default","MenuItem","GetMyself"})
      */
 
 	protected $isActive = null;
@@ -68,7 +68,7 @@ Class MenuItem
 	/**
      * @ORM\Column(type="integer")
      * @JMS\Type("integer")
-     * @JMS\Groups({"Default","MenuItem"})
+     * @JMS\Groups({"Default","MenuItem","GetMyself"})
      */
 
 	protected $position = null;
@@ -87,7 +87,7 @@ Class MenuItem
 	/**
 	 * @ORM\ManyToOne(targetEntity="MenuLink")
 	 * @JMS\Type("AppBundle\Entity\MenuLink")
-	 * @JMS\Groups({"Default","MenuItem"})
+	 * @JMS\Groups({"Default","MenuItem","GetMyself"})
 	 */
 
 	protected $menuLink = null;
@@ -129,7 +129,7 @@ Class MenuItem
 	/**
      * @ORM\OneToMany(targetEntity="MenuItem", mappedBy="parent")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\MenuItem>")
-     * @JMS\Groups({"Default"})
+     * @JMS\Groups({"Default","GetMyself"})
      */
     protected $children;
 

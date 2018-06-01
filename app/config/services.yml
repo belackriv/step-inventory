@@ -57,6 +57,11 @@ services:
         calls:
             - [setContainer, ["@service_container"]]
 
+    app.static_menu_builder:
+        class: AppBundle\Library\Service\StaticMenuBuilderService
+        calls:
+            - [setContainer, ["@service_container"]]
+
     app.tid_init:
         class: AppBundle\Library\Service\TravelerIdInitializationService
         calls:

@@ -18,7 +18,7 @@ Class MenuLink
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
-     * @JMS\Groups({"Default","MenuItem","MenuLink"})
+     * @JMS\Groups({"Default","MenuItem","MenuLink","GetMyself"})
      */
 
 	protected $id = null;
@@ -31,7 +31,7 @@ Class MenuLink
 	/**
 	 * @ORM\Column(type="string", length=32)
      * @JMS\Type("string")
-     * @JMS\Groups({"Default","MenuItem","MenuLink"})
+     * @JMS\Groups({"Default","MenuItem","MenuLink","GetMyself"})
      */
 
 	protected $name = null;
@@ -50,7 +50,7 @@ Class MenuLink
 	/**
 	 * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Type("string")
-     * @JMS\Groups({"Default","MenuItem","MenuLink"})
+     * @JMS\Groups({"Default","MenuItem","MenuLink","GetMyself"})
      */
 
 	protected $url = null;
@@ -69,7 +69,7 @@ Class MenuLink
 	/**
 	 * @ORM\Column(type="simple_array", nullable=true)
      * @JMS\Type("array")
-     * @JMS\Groups({"Default","MenuItem","MenuLink"})
+     * @JMS\Groups({"Default","MenuItem","MenuLink","GetMyself"})
      */
 
 	protected $routeMatches = null;

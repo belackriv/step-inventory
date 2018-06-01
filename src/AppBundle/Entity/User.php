@@ -112,6 +112,12 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public $appAnnouncement;
 
+     /**
+     * Populated from session
+     * @JMS\Type("array")
+     */
+    public $menuItems;
+
     /**
      * Populated from session
      * @JMS\Type("array")
@@ -180,6 +186,18 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $map = function(UserRole $userRole) {
             return $userRole->getRole()->getRole();
+        };
+        $roles = $this->userRoles->map($map)->toArray();
+        return $roles;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRolesAsRoles()
+    {
+        $map = function(UserRole $userRole) {
+            return $userRole->getRole();
         };
         $roles = $this->userRoles->map($map)->toArray();
         return $roles;
