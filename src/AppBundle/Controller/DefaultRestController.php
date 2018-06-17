@@ -976,7 +976,7 @@ class DefaultRestController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
 
             $encoder = $this->container->get('security.password_encoder');
-            $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $encoded = $encoder->encodePassword($user, $user->newPassword);
             $user->setPassword($encoded);
 
             if(!$this->get('security.authorization_checker')->isGranted('ROLE_DEV')){

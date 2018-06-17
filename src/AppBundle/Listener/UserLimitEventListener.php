@@ -54,7 +54,7 @@ class UserLimitEventListener
 					}
 				}
 				//should I check for owner here?
-				if(true){
+				if(!$user->isAccountOwner()){
 					$redisClient = $this->container->get('snc_redis.default');
 					$sessionKey = $this->container->get('session')->getId();
 					$sessionQueryService = new SncRedisSessionQueryService($redisClient);

@@ -7,7 +7,9 @@
 	<label class="label">Password</label>
 	<p class="control  is-grouped">
 		<input class="input" name="newPassword" type="password" {{#if id}}disabled{{/if}}>
-		<button type="button" class="button is-warning" name="resetPassword">Reset</button>
+		{{#if id}}
+			<button type="button" class="button is-warning" name="resetPassword">Reset</button>
+		{{/if}}
 	</p>
 	<p class="control">
 	  	<label class="checkbox">

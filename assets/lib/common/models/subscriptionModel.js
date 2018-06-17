@@ -43,7 +43,7 @@ let Model = BaseUrlBaseModel.extend({
   cancel(){
     let thisModel = this;
     return new Promise((resolve, reject)=>{
-      jquery.ajax('/cancel_subscription',{
+      jquery.ajax('/subscription_cancel',{
         accepts: {
           json: 'application/json'
         },
