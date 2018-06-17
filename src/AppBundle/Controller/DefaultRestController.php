@@ -891,7 +891,10 @@ class DefaultRestController extends FOSRestController
                 ->findLatest($this->getUser()->getOrganization());
         $myself->inventoryAlertLogs = $this->getDoctrine() ->getRepository('AppBundle:InventoryAlert')
                 ->findActiveLogs($this->getUser()->getOrganization());
+
         $myself->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
+        $myself->menuItems = $this->get('app.static_menu_builder')->build();
+
         return $myself;
     }
 

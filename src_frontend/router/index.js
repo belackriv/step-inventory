@@ -9,6 +9,8 @@ import Profile from '@/components/Profile';
 Vue.use(Router);
 
 export default new Router({
+  linkExactActiveClass: 'is-active',
+  mode: 'history',
   routes: [
     {
       path: '/',

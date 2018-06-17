@@ -2,7 +2,7 @@
   <div class="columns is-mobile">
     <div class="column">
       <ul class="menu-list">
-        <main-menu-item v-bind:link="link" v-for="link in myself.menuLinks" :key="link.id"></main-menu-item>
+        <main-menu-item v-bind:item="item" v-for="item in activeItems" :key="item.id"></main-menu-item>
       </ul>
     </div>
     <div data-ui="closeSideMenu" class="column is-narrow is-hidden-desktop">
@@ -20,8 +20,14 @@ import MainMenuItem from './MainMenuItem.vue';
 export default {
   name: 'MainMenu',
   computed: {
-    myself () {
-      return this.$store.getters['entities/myself/query']().first();
+    activeItems () {
+      const myself = this.$store.getters['entities/myself/query']().first();
+      if (myself && myself.menuItems) {
+        return myself.menuItems.filter(function (item) {
+          return item.isActive;
+        });
+      }
+      return [];
     }
   },
   components: {

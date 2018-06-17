@@ -13,6 +13,9 @@
       </div>
       <div class="navbar-end si-nav-expanded">
         <div class="navbar-item">
+          <span class="icon" :title="syncingTooltip">
+            <font-awesome-icon v-if="isSyncing" :icon="syncingIcon" spin />
+          </span>
           <router-link class="icon si-nav-link" to="/profile" :title="profileTitle" v-if="myself.id">
             <font-awesome-icon :icon="userIcon" />
           </router-link>
@@ -23,7 +26,6 @@
         <div class="navbar-item">
           <button type="button" class="button" href="/logout" v-if="myself.id">Logout</button>
           <button type="button" class="button" href="/login" v-else @click="showModal('ModalLogin')">Login</button>
-          <span id="loading-icon-container" class="icon"></span>
         </div>
       </div>
     </div>
@@ -32,12 +34,15 @@
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faUser, faCog } from '@fortawesome/fontawesome-free-solid';
-import { mapMutations } from 'vuex';
+import { faUser, faCog, faSync } from '@fortawesome/fontawesome-free-solid';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'Nav',
   computed: {
+    ...mapState({
+      isSyncing: state => state.syncing.isSyncing
+    }),
     profileTitle () {
       return 'Edit ' + this.myself.username + '\'s Profile';
     },
@@ -47,8 +52,17 @@ export default {
     accountIcon () {
       return faCog;
     },
+    syncingIcon () {
+      return faSync;
+    },
     myself () {
       return this.$store.getters['entities/myself/query']().with('organization').first();
+    },
+    syncingTooltip () {
+      if (this.isSyncing) {
+        return 'Syncing...';
+      }
+      return null;
     }
   },
   components: {

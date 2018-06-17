@@ -1,37 +1,39 @@
 <template>
-  <div class="card si-rounded si-modal-border">
-    <div class="card-hearder">
-      <p class="card-header-title is-centered">
-        Please Login
-      </p>
-    </div>
-    <div class="card-content">
-      <div class="field">
-        <p class="control has-icons-left has-icons-right">
-          <input class="input" type="username" placeholder="Username" v-model="loginUsername">
-          <span class="icon is-small is-left">
-            <font-awesome-icon :icon="userIcon" />
-          </span>
+  <form @submit.prevent="handleSubmit">
+    <div class="card si-rounded si-modal-border">
+      <div class="card-hearder">
+        <p class="card-header-title is-centered">
+          Please Login
         </p>
       </div>
-      <div class="field">
-        <p class="control has-icons-left">
-          <input class="input" type="password" placeholder="Password" v-model="loginPassword">
-          <span class="icon is-small is-left">
-            <font-awesome-icon :icon="passwordIcon" />
-          </span>
-        </p>
+      <div class="card-content">
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input" type="username" placeholder="Username" v-model="loginUsername">
+            <span class="icon is-small is-left">
+              <font-awesome-icon :icon="userIcon" />
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password" v-model="loginPassword">
+            <span class="icon is-small is-left">
+              <font-awesome-icon :icon="passwordIcon" />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-footer-item">
+          <button class="button is-primary" type="button">Login</button>
+        </span>
+        <span class="card-footer-item">
+          <button class=" button" type="button" @click="hideModal">Cancel</button>
+        </span>
       </div>
     </div>
-    <div class="card-footer">
-      <span class="card-footer-item">
-        <button class="button is-primary" type="button" @click="login">Login</button>
-      </span>
-      <span class="card-footer-item">
-        <button class=" button" type="button" @click="hideModal">Cancel</button>
-      </span>
-    </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -72,7 +74,7 @@ export default {
     ...mapMutations({
       hideModal: 'modal/hide'
     }),
-    login () {
+    handleSubmit () {
       this.$store.dispatch('entities/myself/login', this.$store.state.login);
     }
   }

@@ -33,10 +33,12 @@ class AjaxAuthenticationEventListener
         if ($request->isXmlHttpRequest()) {
             $httpStatusCode = null;
             $httpStatusText = null;
-            if ($exception instanceof AuthenticationException || $exception instanceof AuthenticationCredentialsNotFoundException) {
-
+            if($exception instanceof AuthenticationException || $exception instanceof AuthenticationCredentialsNotFoundException){
                 $httpStatusCode = 401;
                 $httpStatusText = 'User Not Authenticated';
+            }else if($this->container->get('security.token_storage')->getToken()->getUser() === 'anon.'){
+                $httpStatusCode = 401;
+                $httpStatusText = 'User Is Anonymous';
             }else if($exception instanceof AccessDeniedException){
                 $httpStatusCode = 403;
                 $httpStatusText = 'Access Denied';

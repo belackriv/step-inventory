@@ -7,6 +7,13 @@ export default class MyselfApi extends BaseApi {
       method: 'GET'
     });
   }
+  syncProfile (profileData) {
+    return this.sendHttpRequest({
+      url: '/profile',
+      method: 'PUT',
+      body: JSON.stringify(profileData)
+    });
+  }
   login (loginInfo) {
     return this.sendHttpRequest({
       url: '/login_check',

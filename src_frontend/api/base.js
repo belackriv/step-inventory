@@ -43,11 +43,7 @@ export default class BaseApi {
             resolve(responseData);
           });
         }).catch((error) => {
-          if (error.isAuthenticationError) {
-            reject(error);
-          } else {
-            console.log(error);
-          }
+          reject(error);
         });
     });
   }

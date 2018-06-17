@@ -1,6 +1,10 @@
 <template>
   <li>
-    <router-link v-if="link.url" :to="link.url" v-bind:class="{ 'is-active': link.uiIsActive }">{{link.name}}</router-link>
+    <router-link v-if="item.menuLink.url" :to="item.menuLink.url">{{item.menuLink.name}}</router-link>
+    <span v-else>{{item.menuLink.name}}</span>
+    <ul>
+      <main-menu-item v-bind:item="item" v-for="item in item.children" :key="item.id"></main-menu-item>
+    </ul>
   </li>
 </template>
 
@@ -11,7 +15,7 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
 export default {
   name: 'MainMenuItem',
-  props: ['link'],
+  props: ['item'],
   components: {
     FontAwesomeIcon
   },

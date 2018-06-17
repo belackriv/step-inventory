@@ -16,7 +16,7 @@ export default class Myself extends Model {
       receivesInventoryAlert: this.boolean(null),
       organization_id: this.attr(null),
       organization: this.belongsTo(Organization, 'organization_id'),
-      menuLinks: this.attr(null)
+      menuItems: this.attr(null)
       /*
       defaultDepartment: {},
       userRoles: [],
