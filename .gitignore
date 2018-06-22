@@ -53,6 +53,7 @@ app/config/parameters.yml
 web/assets
 web/jspm_packages
 web/bundles
+assets/jspm_packages
 
 *.sublime-project
 *.sublime-workspace
