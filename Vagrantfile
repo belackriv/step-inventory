@@ -42,15 +42,15 @@ Vagrant.configure("2") do |config|
   	config.vm.synced_folder ".", "/vagrant", disabled: true
 
     config.vm.synced_folder ".", "/var/www/step-inventory",
-      #type: "smb",
-      #owner: "ubuntu",
-      #group: "www-data",
-      #mount_options: ["mfsymlinks,dir_mode=0774,file_mode=0774"]#"vers=3.02"],
-      type: "nfs",
-      mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+      type: "smb",
+      owner: "ubuntu",
+      group: "www-data",
+      mount_options: ["mfsymlinks,dir_mode=0774,file_mode=0774"]#"vers=3.02"],
+      #type: "nfs",
+      #mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
 
-    config.winnfsd.uid = 1000
-    config.winnfsd.gid = 33
+    #config.winnfsd.uid = 1000
+    #config.winnfsd.gid = 33
 
 
   # Provider-specific configuration so you can fine-tune various

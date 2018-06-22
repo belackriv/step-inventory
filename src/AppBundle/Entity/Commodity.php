@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation As JMS;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  */
 Class Commodity
@@ -144,6 +145,16 @@ Class Commodity
 		$this->isActive = $isActive;
 		return $this;
 	}
+
+	/**
+     * @ORM\PrePersist
+     */
+    public function onCreate()
+    {
+    	if($this->getIsActive() === null){
+    		$this->setIsActive(false);
+    	}
+    }
 
 	public function isOwnedByOrganization(Organization $organization)
     {
