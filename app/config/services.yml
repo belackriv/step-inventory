@@ -23,6 +23,10 @@ services:
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [AppBundle\Entity\Role, ]
 
+    app.security.access.decision_manager:
+        alias: security.access.decision_manager
+        public: true
+
     security.role_hierarchy:
         class: AppBundle\Security\Role\DynamicRoleHierarchy
         arguments: ["@app.role_repository"]

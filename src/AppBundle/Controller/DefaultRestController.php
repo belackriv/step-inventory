@@ -7,6 +7,7 @@ use AppBundle\Library\Service\UploadException;
 use AppBundle\Library\Service\SncRedisSessionQueryService;
 use AppBundle\Library\Service\MonthlyTravelerIdLimitService;
 
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -941,8 +942,14 @@ class DefaultRestController extends FOSRestController
         $authorizationChecker = $this->get('security.authorization_checker');
         foreach($items as $item){
             if (true === $authorizationChecker->isGranted('VIEW', $item)){
-                $item->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
-                $itemlist[] = $item;
+                $token = new UsernamePasswordToken($item, 'none', 'none', $item->getRoles());
+                $itemIsGrantedDev = $this->get('app.security.access.decision_manager')
+                    ->decide($token, ['ROLE_DEV']);
+                if( false === $authorizationChecker->isGranted('ROLE_DEV') and $itemIsGrantedDev ){
+                    continue;
+                }
+                    $item->roleHierarchy = $this->get('security.role_hierarchy')->fetchRoleHierarchy();
+                    $itemlist[] = $item;
             }
         }
 
