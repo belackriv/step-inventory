@@ -90,10 +90,9 @@ let Model = BaseUrlBaseModel.extend({
     };
   },
   getMassUpdateAttrs(){
-    return {
+    const attrs =  {
       id: this.get('id'),
       cid: this.cid,
-      outboundOrder: {id: this.get('outboundOrder').get('id')},
       label: this.get('label'),
       bin: {id: this.get('bin').get('id') },
       sku: {id: this.get('sku').get('id') },
@@ -101,6 +100,10 @@ let Model = BaseUrlBaseModel.extend({
       quantity: this.get('quantity'),
       revenue: this.get('revenue'),
     };
+    if(this.get('outboundOrder')){
+      attrs.outboundOrder = {id: this.get('outboundOrder').get('id')};
+    }
+    return attrs;
   },
   getMassTransformAttrs(){
     let attrs =  this.getMassUpdateAttrs();

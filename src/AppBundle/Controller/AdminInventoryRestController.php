@@ -124,12 +124,18 @@ class AdminInventoryRestController extends FOSRestController
      * @Rest\Delete("/sku/{id}")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      */
-    public function deleteSkuAction(\AppBundle\Entity\Part $sku)
+    public function deleteSkuAction(\AppBundle\Entity\Sku $sku)
     {
         if( $this->get('security.authorization_checker')->isGranted('DELETE', $sku) and
             $sku->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
             $em = $this->getDoctrine()->getManager();
+            $tidUsingSku = $em->getRepository(\AppBundle\Entity\TravelerId::class)->findOneBy([
+                'sku' => $sku
+            ]);
+            if($tidUsingSku){
+                throw new \Exception('This Sku is associated with a TravelerId and cannot be deleted.  You can disabled the SKU instead.');
+            }
             $em->remove($sku);
             $em->flush();
             return $sku;
@@ -477,7 +483,7 @@ class AdminInventoryRestController extends FOSRestController
         if( $this->get('security.authorization_checker')->isGranted('DELETE', $partGroup) and
             $partGroup->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
-
+            $em = $this->getDoctrine()->getManager();
             $em->remove($partGroup);
             $em->flush();
             return $partGroup;
@@ -1260,6 +1266,8 @@ class AdminInventoryRestController extends FOSRestController
             $inventoryAlert->isOwnedByOrganization($this->getUser()->getOrganization())
         ){
             $em = $this->getDoctrine()->getManager();
+            throw new \Exception("You cannont delete inventory alerts, disable instead.");
+
             $em->remove($inventoryAlert);
             $em->flush();
             return $inventoryAlert;

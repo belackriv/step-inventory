@@ -34,6 +34,9 @@ let Model = BaseUrlBaseModel.extend({
       this.get('behavoirs').splice(index, 1);
       this.trigger('change:behavoirs', this, this.get('behavoirs'), {});
     }
+  },
+  removeBehavoirs(behavoir){
+    this.removeBehavoir(behavoir);
   }
 });
 
