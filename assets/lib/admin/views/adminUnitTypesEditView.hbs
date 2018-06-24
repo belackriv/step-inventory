@@ -35,7 +35,11 @@
 	</p>
 	<label class="label">Properties</label>
 	<div class="control">
-		<button type="button" class="button is-small" data-ui-name="addProperty"><span class="fa fa-plus"></span></button>
+		{{#if isNew}}
+			Save The Unit Type To Add Properties.
+		{{else}}
+			<button type="button" class="button is-small" data-ui-name="addProperty"><span class="fa fa-plus"></span></button>
+		{{/if}}
 		<span class="fa fa-spinner fa-pulse" data-ui-name="propertyLoadingIndicator"></span>
 		<ul data-region="properties"></ul>
 	</div>

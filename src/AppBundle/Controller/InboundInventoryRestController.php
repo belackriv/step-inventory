@@ -630,26 +630,27 @@ class InboundInventoryRestController extends FOSRestController
     public function updateUnitAction(\AppBundle\Entity\Unit $unit)
     {
 
-        if($this->get('security.authorization_checker')->isGranted('EDIT', $unit)){
+        //if($this->get('security.authorization_checker')->isGranted('EDIT', $unit)){
             $em = $this->getDoctrine()->getManager();
-            $em->detach($unit);
+            //$em->detach($unit);
+            //$unit->setOrganization($this->getUser()->getOrganization());
 
-            $liveUnit = $em->getRepository('AppBundle:Unit')->findOneById($unit->getId());
-            if( $unit->isOwnedByOrganization($this->getUser()->getOrganization()) and
-                $liveUnit->isOwnedByOrganization($this->getUser()->getOrganization())
-            ){
-                $unit = $em->merge($unit);
+            //$liveUnit = $em->getRepository('AppBundle:Unit')->findOneById($unit->getId());
+            //if( /*$unit->isOwnedByOrganization($this->getUser()->getOrganization())*/ and
+            //    $liveUnit->isOwnedByOrganization($this->getUser()->getOrganization())
+            //){
+            //    $unit = $em->merge($unit);
                 foreach($unit->getProperties() as $property){
                     $property->setUnit($unit);
                 }
                 $em->flush();
                 return $unit;
-            }else{
-                throw $this->createAccessDeniedException();
-            }
-        }else{
-            throw $this->createAccessDeniedException();
-        }
+            //}else{
+            //    throw $this->createAccessDeniedException();
+            //}
+        //}else{
+        //    throw $this->createAccessDeniedException();
+        //}
     }
 
 }

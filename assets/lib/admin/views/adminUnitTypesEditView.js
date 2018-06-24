@@ -53,6 +53,11 @@ export default Marionette.View.extend({
     '@ui.descriptionInput': 'description',
     '@ui.isActiveInput': 'isActive',
   },
+  serializeData(){
+    let data = _.clone(this.model.attributes);
+    data.isNew = this.model.isNew();
+    return data;
+  },
   onRender(){
     this.ui.propertyLoadingIndicator.hide();
     let listView = new UnitTypePropertiesListView({

@@ -98,6 +98,7 @@ Class UnitTypeProperty
 	/**
 	 * @ORM\ManyToOne(targetEntity="UnitType", inversedBy="properties")
 	 * @ORM\JoinColumn(nullable=false)
+	 * @JMS\Exclude
 	 * @JMS\Type("AppBundle\Entity\UnitType")
 	 */
 	protected $unitType = null;
@@ -114,8 +115,9 @@ Class UnitTypeProperty
 	}
 
 	/**
-	 * @ORM\OneToMany(targetEntity="UnitTypePropertyValidValue", mappedBy="unitTypeProperty", cascade={"persist", "remove"}, orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="UnitTypePropertyValidValue", mappedBy="unitTypeProperty", cascade={"persist","merge","remove"}, orphanRemoval=true)
 	 * @JMS\Type("ArrayCollection<AppBundle\Entity\UnitTypePropertyValidValue>")
+
 	 */
 	protected $validValues = null;
 

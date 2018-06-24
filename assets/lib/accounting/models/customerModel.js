@@ -12,7 +12,7 @@ let Model = BaseUrlBaseModel.extend({
     return this.baseUrl+'/customer';
   },
   importData: {
-    type: 'client',
+    type: 'customer',
     properties: [
       { name: 'name', required: true, description: null},
     ]

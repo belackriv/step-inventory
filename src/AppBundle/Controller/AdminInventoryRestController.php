@@ -757,8 +757,10 @@ class AdminInventoryRestController extends FOSRestController
             if( $unitTypeProperty->isOwnedByOrganization($this->getUser()->getOrganization()) and
                 $liveUnitTypeProperty->isOwnedByOrganization($this->getUser()->getOrganization())
             ){
+                $validValues = $unitTypeProperty->getValidValues();
                 $unitTypeProperty = $em->merge($unitTypeProperty);
-                foreach($unitTypeProperty->getValidValues() as $validValue) {
+                foreach($validValues as $validValue) {
+                    $em->merge($validValue);
                     $validValue->setUnitTypeProperty($unitTypeProperty);
                 }
                 $em->flush();

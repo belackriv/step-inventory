@@ -23577,20 +23577,24 @@ System.register('lib/inventory/models/unitTypeCollection.js', ['lib/common/model
   };
 });
 System.registerDynamic("lib/admin/views/adminUnitTypesEditView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
-      GLOBAL = global;
-  var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
-  module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
-      var stack1;
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    var Handlebars = $__require("github:components/handlebars.js@4.0.5/handlebars.runtime.js");
+    module.exports = Handlebars.template({ "1": function (container, depth0, helpers, partials, data) {
+            var stack1;
 
-      return "					<img width=\"" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.width : stack1, depth0)) + "\" height=\"" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.height : stack1, depth0)) + "\" src=\"/image/" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.id : stack1, depth0)) + "/src\" />\r\n";
-    }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
-      var stack1, helper;
+            return "					<img width=\"" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.width : stack1, depth0)) + "\" height=\"" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.height : stack1, depth0)) + "\" src=\"/image/" + container.escapeExpression(container.lambda((stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.id : stack1, depth0)) + "/src\" />\r\n";
+        }, "3": function (container, depth0, helpers, partials, data) {
+            return "			Save The Unit Type To Add Properties.\r\n";
+        }, "5": function (container, depth0, helpers, partials, data) {
+            return "			<button type=\"button\" class=\"button is-small\" data-ui-name=\"addProperty\"><span class=\"fa fa-plus\"></span></button>\r\n";
+        }, "compiler": [7, ">= 4.0.0"], "main": function (container, depth0, helpers, partials, data) {
+            var stack1, helper;
 
-      return "<h3 class=\"title is-3\">Unit Type #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Manufacturer</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"manufacturer\" type=\"text\" placeholder=\"Enter Manufacturer\">\r\n	</p>\r\n	<label class=\"label\">Model</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"model\" type=\"text\" placeholder=\"Enter Model\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Image</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\" style=\"width:" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.width : stack1, depth0)) + "px;\">\r\n			<figure class=\"image " + container.escapeExpression((helpers.getAspectRatioClass || depth0 && depth0.getAspectRatioClass || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.width : stack1, (stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.height : stack1, { "name": "getAspectRatioClass", "hash": {}, "data": data })) + "\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.image : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</figure>\r\n		</div>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"upload\">Upload Image</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Properties</label>\r\n	<div class=\"control\">\r\n		<button type=\"button\" class=\"button is-small\" data-ui-name=\"addProperty\"><span class=\"fa fa-plus\"></span></button>\r\n		<span class=\"fa fa-spinner fa-pulse\" data-ui-name=\"propertyLoadingIndicator\"></span>\r\n		<ul data-region=\"properties\"></ul>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
-    }, "useData": true });
-  return module.exports;
+            return "<h3 class=\"title is-3\">Unit Type #" + container.escapeExpression((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {}, { "name": "id", "hash": {}, "data": data }) : helper)) + "</h3>\r\n<form>\r\n	<label class=\"label\">Name</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"name\" type=\"text\" placeholder=\"Enter Name\">\r\n	</p>\r\n	<label class=\"label\">Manufacturer</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"manufacturer\" type=\"text\" placeholder=\"Enter Manufacturer\">\r\n	</p>\r\n	<label class=\"label\">Model</label>\r\n	<p class=\"control\">\r\n		<input class=\"input\" name=\"model\" type=\"text\" placeholder=\"Enter Model\">\r\n	</p>\r\n	<label class=\"label\">Description</label>\r\n	<p class=\"control\">\r\n		<textarea class=\"textarea\" name=\"description\" placeholder=\"Enter Description\"></textarea>\r\n	</p>\r\n	<label class=\"label\">Image</label>\r\n	<p class=\"control\">\r\n		<div class=\"si-uploaded-img-figure-container\" style=\"width:" + container.escapeExpression(container.lambda((stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.width : stack1, depth0)) + "px;\">\r\n			<figure class=\"image " + container.escapeExpression((helpers.getAspectRatioClass || depth0 && depth0.getAspectRatioClass || helpers.helperMissing).call(depth0 != null ? depth0 : {}, (stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.width : stack1, (stack1 = (stack1 = depth0 != null ? depth0.image : depth0) != null ? stack1.attributes : stack1) != null ? stack1.height : stack1, { "name": "getAspectRatioClass", "hash": {}, "data": data })) + "\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.image : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data })) != null ? stack1 : "") + "			</figure>\r\n		</div>\r\n		<button type=\"button\" class=\"button is-secondary is-outlined\" data-ui-name=\"upload\">Upload Image</button>\r\n	</p>\r\n	<p class=\"control\">\r\n	  	<label class=\"checkbox\">\r\n	    	<input name=\"isActive\" type=\"checkbox\">\r\n	    	Is Active?\r\n	  	</label>\r\n	</p>\r\n	<label class=\"label\">Properties</label>\r\n	<div class=\"control\">\r\n" + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {}, depth0 != null ? depth0.isNew : depth0, { "name": "if", "hash": {}, "fn": container.program(3, data, 0), "inverse": container.program(5, data, 0), "data": data })) != null ? stack1 : "") + "		<span class=\"fa fa-spinner fa-pulse\" data-ui-name=\"propertyLoadingIndicator\"></span>\r\n		<ul data-region=\"properties\"></ul>\r\n	</div>\r\n	<p class=\"control\">\r\n		<button type=\"submit\" class=\"button is-primary\" data-ui-name=\"save\">Submit</button>\r\n		<button type=\"button\" class=\"button is-info is-outlined\" data-ui-name=\"cancel\">Cancel</button>\r\n		<button type=\"button\" class=\"button is-danger\" data-ui-name=\"delete\">Delete</button>\r\n		<span class=\"not-synced-alert fa fa-exclamation-triangle\" title=\"This entity is not synced with the server.\"></span>\r\n	</p>\r\n</form>";
+        }, "useData": true });
+    return module.exports;
 });
 System.registerDynamic("lib/common/views/uploadImageView.hbs!github:davis/plugin-hbs@1.2.3/hbs.js", ["github:components/handlebars.js@4.0.5/handlebars.runtime.js"], true, function ($__require, exports, module) {
   var define,
@@ -23905,7 +23909,7 @@ System.register('lib/admin/views/unitTypePropertyValidValuesItemView.js', ['lib/
           'click @ui.removeButton': 'remove'
         },
         modelEvents: {
-          'change': 'render'
+          'change:id': 'render'
         },
         bindings: {
           '@ui.integerValueInput': 'integerValue',
@@ -24119,6 +24123,11 @@ System.register('lib/admin/views/adminUnitTypesEditView.js', ['underscore', 'bac
           '@ui.modelInput': 'model',
           '@ui.descriptionInput': 'description',
           '@ui.isActiveInput': 'isActive'
+        },
+        serializeData: function serializeData() {
+          var data = _.clone(this.model.attributes);
+          data.isNew = this.model.isNew();
+          return data;
         },
         onRender: function onRender() {
           this.ui.propertyLoadingIndicator.hide();
@@ -53103,7 +53112,7 @@ System.register('lib/accounting/models/customerModel.js', ['lib/globalNamespace.
         },
 
         importData: {
-          type: 'client',
+          type: 'customer',
           properties: [{ name: 'name', required: true, description: null }]
         },
         relations: [{
@@ -66219,7 +66228,7 @@ System.register('lib/inventory/models/unitTypePropertyModel.js', ['npm:systemjs-
           includeInJSON: ['id'],
           reverseRelation: {
             key: 'properties',
-            includeInJSON: ['id']
+            includeInJSON: false
           }
         }],
         defaults: {

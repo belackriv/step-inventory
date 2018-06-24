@@ -25,7 +25,7 @@ let View = Marionette.View.extend({
     'click @ui.removeButton': 'remove'
   },
   modelEvents: {
-    'change': 'render',
+    'change:id': 'render',
   },
   bindings: {
     '@ui.integerValueInput': 'integerValue',
