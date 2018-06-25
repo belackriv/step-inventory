@@ -64,7 +64,7 @@ export default Marionette.View.extend({
     event.preventDefault();
     let options = {
       title: 'Edit Unit',
-      width: '600px'
+      width: '60vw'
     };
     let view = new UnitEditView({
       model: this.model.get('unit'),

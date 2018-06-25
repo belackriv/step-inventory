@@ -6,6 +6,7 @@ import NoChildrenView from 'lib/common/views/noChildrenView.js';
 
 export default Marionette.CollectionView.extend({
   childView: ChildView,
-  tagName: 'tbody',
+  tagName: 'ul',
+  className: 'si-unit-property-list',
   emptyView: NoChildrenView,
 });

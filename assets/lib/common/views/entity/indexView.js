@@ -33,9 +33,10 @@ export default Marionette.View.extend({
     }
   },
   serializeData(){
+    const title = this.options.title||this.collection.title||'';
     return {
       entityUrl: this.collection.url(),
-      title: this.collection.title,
+      title: title,
       isCreatable: this.model.get('isCreatable'),
       isImportable: this.model.get('isImportable'),
     };

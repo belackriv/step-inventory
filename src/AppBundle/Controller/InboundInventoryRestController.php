@@ -219,7 +219,7 @@ class InboundInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Post("/mass_tid")
-     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:create_travelerid.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","MassUpdate"})
      * @ParamConverter("massTravelerId", converter="fos_rest.request_body")
      */
     public function createMassTravelerIdAction(\AppBundle\Entity\MassTravelerId $massTravelerId)
@@ -235,7 +235,7 @@ class InboundInventoryRestController extends FOSRestController
                 $em->persist($travelerId);
                 $travelerId->generateLabel();
                 $createdEntities[] = $travelerId;
-                $createdEntities = array_merge($createdEntities, $this->container->get('app.tid_init')->initialize($travelerId));
+                $createdEntities = array_merge($createdEntities, $travelerId->checkUnitStatus());
             }else{
                 throw $this->createAccessDeniedException();
             }
@@ -250,7 +250,7 @@ class InboundInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Put("/mass_tid/{id}")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default","MassUpdate"})
      * @ParamConverter("massTravelerId", converter="fos_rest.request_body")
      */
     public function updateMassTravelerIdAction(\AppBundle\Entity\MassTravelerId $massTravelerId)
@@ -275,7 +275,8 @@ class InboundInventoryRestController extends FOSRestController
 
         if($massTravelerId->isTransform()){
             foreach($massTravelerId->getTravelerIds() as $travelerId){
-                list($newTransformEntities, $transform, $mergedTravelerId) = $this->createTransformEntities($travelerId);
+                list($newTransformEntities, $transform, $mergedTravelerId) = $this->createTransformEntities($travelerId,
+                    $this->container->get('app.tid_init'));
                 if(!in_array($transform, $travelerIdLogEntities)){
                     $travelerIdLogEntities[] = $transform;
                 }

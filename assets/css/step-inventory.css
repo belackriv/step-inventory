@@ -6357,6 +6357,9 @@ label.panel-block {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem; }
 
+.has-text-primary {
+  color: #55a79a; }
+
 nav.si-nav {
   border-bottom: 1px solid #55a79a;
   background: gainsboro; }
@@ -6498,3 +6501,12 @@ ul.si-import-property-list {
 
 .si-transform-ratio-input {
   min-width: 12em; }
+
+.si-unit-property-list {
+  display: flex;
+  flex-wrap: wrap; }
+  .si-unit-property-list li {
+    padding: .25em;
+    margin-bottom: .25em; }
+    .si-unit-property-list li label {
+      margin-right: 5px; }

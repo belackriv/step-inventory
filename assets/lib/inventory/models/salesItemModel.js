@@ -103,10 +103,16 @@ let Model = BaseUrlBaseModel.extend({
     if(this.get('outboundOrder')){
       attrs.outboundOrder = {id: this.get('outboundOrder').get('id')};
     }
+    if(this.get('unit')){
+      attrs.unit = this.get('unit').getMassUpdateAttrs();
+    }
     return attrs;
   },
   getMassTransformAttrs(){
     let attrs =  this.getMassUpdateAttrs();
+    if(this.get('unit')){
+      attrs.unit = this.get('unit').getMassUpdateAttrs();
+    }
     return attrs;
   }
 });

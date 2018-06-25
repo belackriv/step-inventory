@@ -155,6 +155,29 @@ Class TravelerId implements TransformableEntityInterface
 		return $this;
 	}
 
+	public function shouldHaveUnit()
+	{
+		return ($this->getSku()->getUnitType() !== null);
+	}
+
+	public function checkUnitStatus(){
+		if($this->shouldHaveUnit()){
+			if($this->getUnit() === null){
+				throw new \Exception("TravelerId with UnitType SKU is Missing Unit");
+			}else{
+dump('Unit Not Null');
+				$this->getUnit()->setTravelerId($this);
+				foreach($this->getUnit()->getProperties() as $unitProperty){
+	                $unitProperty->setUnit($this->getUnit());
+	            }
+	            $this->getUnit()->setOrganization($this->getSku()->getOrganization());
+	            return $this->getUnit();
+			}
+		}else{
+dump('Should Not Have Unit');
+		}
+	}
+
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
@@ -241,6 +264,7 @@ Class TravelerId implements TransformableEntityInterface
 	 * @ORM\ManyToOne(targetEntity="InventoryTravelerIdTransform", inversedBy="toTravelerIds")
 	 * @ORM\JoinColumn(nullable=true)
 	 * @JMS\Type("AppBundle\Entity\InventoryTravelerIdTransform")
+	 * @JMS\Groups({"Default"})
 	 */
 	protected $reverseTransform = null;
 

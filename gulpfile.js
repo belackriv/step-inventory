@@ -24,7 +24,7 @@ gulp.task('jspm-bundle', function(){
     });
 });
 
-gulp.task('jspm-build', function(){
+gulp.task('jspm-build', ['sass'], function(){
   const builder = new jspm.Builder();
   builder.bundle(
     'lib/main.js',
@@ -41,7 +41,7 @@ gulp.task('jspm-build', function(){
     });
 });
 
-gulp.task('jspm-prod-build', function(){
+gulp.task('jspm-prod-build',['sass'], function(){
   const builder = new jspm.Builder();
   builder.bundle(
     'lib/main.js',

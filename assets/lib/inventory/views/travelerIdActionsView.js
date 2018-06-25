@@ -123,7 +123,7 @@ export default Marionette.View.extend({
     event.preventDefault();
     var options = {
       title: 'Mass Edit TravelerIds',
-      width: '400px'
+      width: '60vw'
     };
     let view = new InventoryTravelerIdMassEditActionView();
     Radio.channel('dialog').trigger('close');

@@ -6,6 +6,10 @@ $primary: $si-primary-color;
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
 @import "../node_modules/bulma/bulma.sass";
 
+.has-text-primary {
+	color: $si-primary-color;
+}
+
 nav.si-nav {
 	border-bottom: 1px solid $si-primary-color;
     background: gainsboro;
@@ -191,4 +195,17 @@ ul.si-import-property-list {
 
 .si-transform-ratio-input {
 	min-width: 12em;
+}
+
+.si-unit-property-list {
+	display: flex;
+	flex-wrap: wrap;
+
+	li {
+		padding: .25em;
+		margin-bottom: .25em;
+		label {
+			margin-right: 5px;
+		}
+	}
 }

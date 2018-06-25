@@ -145,7 +145,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminOrganizationsListTableLayoutTpl,
       entityRowTpl: adminOrganizationsRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Organizations'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -174,7 +175,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminUsersListTableLayoutTpl,
       entityRowTpl: adminUsersRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Users'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -203,7 +205,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminOfficesListTableLayoutTpl,
       entityRowTpl: adminOfficesRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Offices'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -232,7 +235,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminDepartmentsListTableLayoutTpl,
       entityRowTpl: adminDepartmentsRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Departments'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -261,7 +265,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminAnnouncementsListTableLayoutTpl,
       entityRowTpl: adminAnnouncementsRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Announcements'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -290,7 +295,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminMenuItemsListTableLayoutTpl,
       entityRowTpl: adminMenuItemsRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Menu Items'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -319,7 +325,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminMenuLinksListTableLayoutTpl,
       entityRowTpl: adminMenuLinksRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Menu Links'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -348,7 +355,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminHelpTopicsListTableLayoutTpl,
       entityRowTpl: adminHelpTopicsRowTpl,
-      colspan: 4
+      colspan: 4,
+      title:'Help Topics'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -378,7 +386,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminSkusListTableLayoutTpl,
       entityRowTpl: adminSkusRowTpl,
-      colspan: 8
+      colspan: 8,
+      title:'SKUs'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -408,7 +417,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminPartsListTableLayoutTpl,
       entityRowTpl: adminPartsRowTpl,
-      colspan: 8
+      colspan: 8,
+      title:'Parts'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -437,7 +447,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminPartCategoriesListTableLayoutTpl,
       entityRowTpl: adminPartCategoriesRowTpl,
-      colspan: 3
+      colspan: 3,
+      title:'Part Categories'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -466,7 +477,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminPartGroupsListTableLayoutTpl,
       entityRowTpl: adminPartGroupsRowTpl,
-      colspan: 3
+      colspan: 3,
+      title:'Part Groups'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -496,7 +508,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminCommoditiesListTableLayoutTpl,
       entityRowTpl: adminCommoditiesRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Commodities'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -526,7 +539,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminUnitTypesListTableLayoutTpl,
       entityRowTpl: adminUnitTypesRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Unit Types'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -555,7 +569,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminBinTypesListTableLayoutTpl,
       entityRowTpl: adminBinTypesRowTpl,
-      colspan: 4
+      colspan: 4,
+      title:'Bin Types'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -585,7 +600,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminBinsListTableLayoutTpl,
       entityRowTpl: adminBinsRowTpl,
-      colspan: 8
+      colspan: 8,
+      title:'Bins'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -614,7 +630,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminInventoryMovementRulesListTableLayoutTpl,
       entityRowTpl: adminInventoryMovementRulesRowTpl,
-      colspan: 7
+      colspan: 7,
+      title:'Inventory Movement Rules'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -643,7 +660,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminInventoryAlertsListTableLayoutTpl,
       entityRowTpl: adminInventoryAlertsRowTpl,
-      colspan: 7
+      colspan: 7,
+      title:'Inventory Alerts'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -673,7 +691,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminClientsListTableLayoutTpl,
       entityRowTpl: adminClientsRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Clients'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -703,7 +722,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminCustomersListTableLayoutTpl,
       entityRowTpl: adminCustomersRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Customers'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -732,7 +752,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminInboundOrdersListTableLayoutTpl,
       entityRowTpl: adminInboundOrdersRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Inbound Orders'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);
@@ -761,7 +782,8 @@ export default Marionette.Object.extend({
       usePagination: 'server',
       entityListTableLayoutTpl: adminOutboundOrdersListTableLayoutTpl,
       entityRowTpl: adminOutboundOrdersRowTpl,
-      colspan: 6
+      colspan: 6,
+      title:'Outbound Orders'
     };
 
     let entityView = new EntityIndexView(entityViewOptions);

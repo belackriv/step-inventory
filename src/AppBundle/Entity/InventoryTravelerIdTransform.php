@@ -19,7 +19,7 @@ Class InventoryTravelerIdTransform extends InventoryTransform
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
-     * @JMS\Groups({"Default","OrderManifest"})
+     * @JMS\Groups({"Default","OrderManifest","MassUpdate"})
      */
 	protected $id = null;
 
@@ -31,6 +31,7 @@ Class InventoryTravelerIdTransform extends InventoryTransform
 	/**
 	 * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="transform", cascade={"merge","detach"})
 	 * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
+     * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $fromTravelerIds = null;
@@ -57,6 +58,7 @@ Class InventoryTravelerIdTransform extends InventoryTransform
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=5, nullable=false)
 	 * @JMS\Type("float")
+     * @JMS\Groups({"MassUpdate"})
 	 */
 	protected $ratio;
 
@@ -74,6 +76,7 @@ Class InventoryTravelerIdTransform extends InventoryTransform
 	/**
 	 * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="reverseTransform", cascade={"merge","detach"})
 	 * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
+     * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $toTravelerIds = null;
@@ -100,6 +103,7 @@ Class InventoryTravelerIdTransform extends InventoryTransform
 	/**
 	 * @ORM\OneToMany(targetEntity="SalesItem", mappedBy="reverseTransform", cascade={"merge","detach"})
 	 * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
+     * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $toSalesItems = null;

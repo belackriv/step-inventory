@@ -147,6 +147,9 @@ let Model = BaseUrlBaseModel.extend({
     if(this.get('transform')){
       attrs.transform = this.get('transform').getMassTransformAttrs();
     }
+    if(this.get('unit')){
+      attrs.unit = this.get('unit').getMassUpdateAttrs();
+    }
     return attrs;
   }
 });

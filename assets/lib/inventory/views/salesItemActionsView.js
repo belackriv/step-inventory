@@ -103,7 +103,7 @@ export default Marionette.View.extend({
     event.preventDefault();
     var options = {
       title: 'Mass Edit SalesItem',
-      width: '400px'
+      width: '60vw'
     };
     let view = new InventorySalesItemMassEditActionView();
     Radio.channel('dialog').trigger('close');

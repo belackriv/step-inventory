@@ -724,7 +724,7 @@ class AdminInventoryRestController extends FOSRestController
 
     /**
      * @Rest\Post("/unit_type_property")
-     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
+     * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default", "CreateUnitTypeProperty"})
      * @ParamConverter("unitTypeProperty", converter="fos_rest.request_body")
      */
     public function createUnitTypePropertyAction(\AppBundle\Entity\UnitTypeProperty $unitTypeProperty)

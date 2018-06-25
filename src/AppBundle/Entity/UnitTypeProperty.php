@@ -98,7 +98,7 @@ Class UnitTypeProperty
 	/**
 	 * @ORM\ManyToOne(targetEntity="UnitType", inversedBy="properties")
 	 * @ORM\JoinColumn(nullable=false)
-	 * @JMS\Exclude
+	 * @JMS\Groups("CreateUnitTypeProperty")
 	 * @JMS\Type("AppBundle\Entity\UnitType")
 	 */
 	protected $unitType = null;

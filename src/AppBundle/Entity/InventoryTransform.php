@@ -13,6 +13,7 @@ Class InventoryTransform
 	 * @ORM\ManyToOne(targetEntity="User")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\User")
+	 * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $byUser = null;
@@ -31,6 +32,7 @@ Class InventoryTransform
 	/**
 	 * @ORM\Column(type="datetime", nullable=false)
 	 * @JMS\Type("DateTime")
+	 * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $transformedAt = null;
@@ -49,6 +51,7 @@ Class InventoryTransform
 	/**
 	 * @ORM\Column(type="decimal", precision=7, scale=2, nullable=false)
 	 * @JMS\Type("float")
+	 * @JMS\Groups({"MassUpdate"})
 	 */
 	protected $quantity;
 
@@ -66,7 +69,7 @@ Class InventoryTransform
     /**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")
-     * @JMS\Groups({"Default","OrderManifest"})
+     * @JMS\Groups({"Default","OrderManifest","MassUpdate"})
      */
 	protected $isVoid = null;
 
@@ -79,6 +82,7 @@ Class InventoryTransform
 	/**
 	 * For tracking client created transforms
      * @JMS\Type("string")
+     * @JMS\Groups({"Default","MassUpdate"})
      */
 	public $cid = null;
 }

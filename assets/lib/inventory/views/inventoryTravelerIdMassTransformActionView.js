@@ -17,6 +17,8 @@ import InventoryTravelerIdTransformModel from '../models/inventoryTravelerIdTran
 import MassTravelerIdModel from '../models/massTravelerIdModel.js';
 import TravelerIdModel from '../models/travelerIdModel.js';
 import SalesItemModel from '../models/salesItemModel.js';
+import UnitModel from '../models/unitModel.js';
+import UnitPropertyModel from '../models/unitPropertyModel.js';
 
 export default Marionette.View.extend({
   initialize(){
@@ -24,6 +26,7 @@ export default Marionette.View.extend({
     this.model = new Backbone.Model();
   },
    behaviors: {
+    'Stickit': {},
     'RemoteSearchSelect2': {
       sku:{
         url: SkuCollection.prototype.selectOptionsUrl,
@@ -38,14 +41,23 @@ export default Marionette.View.extend({
     'typeInput': 'input[name="type"]',
     'fromCountInput': 'input[name="fromCount"]',
     'toCountInput': 'input[name="toCount"]',
+    'serialsInput': 'textarea[name="serials"]',
+    'serialCount': '[data-ui="serialCount"]',
     'submitButton': 'button[data-ui-name="save"]',
     'cancelButton': 'button[data-ui-name="cancel"]',
     'errorContainer': '[data-ui="errorContainer"]'
   },
   events: {
     'change @ui.typeInput': 'typeChanged',
+    'change @ui.typeInput': 'typeChanged',
     'submit @ui.form ': 'save',
     'click @ui.cancelButton': 'cancel',
+  },
+  modelEvents: {
+    'change:serials': 'serialsChanged'
+  },
+  bindings: {
+    '@ui.serialsInput': 'serials',
   },
   serializeData(){
     let data = {};
@@ -82,6 +94,17 @@ export default Marionette.View.extend({
       this.ui.fromCountInput.val('').removeClass('is-disabled').prop('disabled', false);
       this.ui.toCountInput.val('1').addClass('is-disabled').prop('disabled', true);
     }
+  },
+  serialsChanged(){
+    let serialsArray = [];
+    _.each(this.ui.serialsInput.val().split('\n'), (serial)=>{
+      let trimmedSerial = serial.trim();
+      if(trimmedSerial){
+        serialsArray.push(trimmedSerial);
+      }
+    });
+    this.model.set('serialsArray', serialsArray);
+    this.ui.serialCount.text(serialsArray.length);
   },
   transformTravelerIds(){
     return new Promise((resolve, reject)=>{
@@ -177,17 +200,40 @@ export default Marionette.View.extend({
           sku: sku,
           quantity: attr.quantity
         });
+        this.createOrAssignUnit(newTravelerId, i);
         transform.get('toTravelerIds').add(newTravelerId);
       }else{
         let newSalesItem = SalesItemModel.build({
           bin: travelerId.get('bin'),
           sku: sku,
           quantity: attr.quantity
-        })
+        });
+        this.createOrAssignUnit(newSalesItem, i);
         transform.get('toSalesItems').add(newSalesItem);
       }
     }
     return transform;
+  },
+  createOrAssignUnit(entity, serialIdx){
+    let serial = this.model.get('serialsArray')[serialIdx]||null;
+    if(entity.get('sku').get('unitType')){
+      if(entity.get('unit')){
+        newTravelerId.set('unit', entity.get('unit'));
+      }else{
+        //create a new unit
+        let unit = UnitModel.build({
+          serial: serial,
+          unitType: entity.get('sku').get('unitType'),
+        });
+        entity.set('unit', unit);
+        entity.get('sku').get('unitType').get('properties').each((unitTypeProperty)=>{
+          let unitProperty = UnitPropertyModel.build({
+            unit: unit,
+            unitTypeProperty: unitTypeProperty
+          });
+        });
+      }
+    }
   },
   disableButtons(){
     this.ui.submitButton.prop('disabled', true).addClass('is-loading');

@@ -30,7 +30,7 @@ let Model = BaseUrlBaseModel.extend({
     }else if(this.get('unitTypeProperty').get('propertyType') === UnitTypePropertyModel.prototype.TYPE_FLOAT){
       typedValue = parseFloat(value);
     }else if(this.get('unitTypeProperty').get('propertyType') === UnitTypePropertyModel.prototype.TYPE_BOOLEAN){
-      typedValue = value?true:false;
+      typedValue = value=='1'?true:false;
     }else{
       typedValue = value+'';
     }

@@ -148,6 +148,28 @@ Class SalesItem implements TransformableEntityInterface
 		return $this;
 	}
 
+	public function shouldHaveUnit()
+	{
+		return ($this->getSku()->getUnitType() !== null);
+	}
+
+	public function checkUnitStatus(){
+		if($this->shouldHaveUnit()){
+			if($this->getUnit() === null){
+				throw new \Exception("Sales Item with UnitType SKU is Missing Unit");
+			}else{
+dump('Unit Not Null');
+				$this->getUnit()->setSalesItem($this);
+				foreach($this->getUnit()->getProperties() as $unitProperty){
+	                $unitProperty->setUnit($this->getUnit());
+	            }
+	            $this->getUnit()->setOrganization($this->getSku()->getOrganization());
+	            return $this->getUnit();
+			}
+		}
+dump('Should Not Have Unit');
+	}
+
 	/**
 	 * @ORM\Column(type="boolean")
      * @JMS\Type("boolean")

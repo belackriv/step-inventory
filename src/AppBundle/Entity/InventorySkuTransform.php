@@ -18,6 +18,7 @@ Class InventorySkuTransform extends InventoryTransform
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Type("integer")
+     * @JMS\Groups({"Default","MassUpdate"})
      */
 	protected $id = null;
 
@@ -30,6 +31,7 @@ Class InventorySkuTransform extends InventoryTransform
 	 * @ORM\ManyToOne(targetEntity="BinSkuCount")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\BinSkuCount")
+	 * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $fromBinSkuCount = null;
@@ -49,6 +51,7 @@ Class InventorySkuTransform extends InventoryTransform
 	 * @ORM\OneToOne(targetEntity="SalesItem")
 	 * @ORM\JoinColumn(nullable=false)
 	 * @JMS\Type("AppBundle\Entity\SalesItem")
+	 * @JMS\Groups({"MassUpdate"})
 	 */
 
 	protected $toSalesItem = null;

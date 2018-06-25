@@ -169,6 +169,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventoryTravelerIdEditListTableLayoutTpl,
       entityRowTpl: inventoryTravelerIdEditRowTpl,
       colspan: 6,
+      title:'Traveler Id Edits'
     });
 
     this.buildViewStack([
@@ -194,6 +195,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventoryTravelerIdMovementListTableLayoutTpl,
       entityRowTpl: inventoryTravelerIdMovementRowTpl,
       colspan: 6,
+      title:'Traveler Id Movements'
     });
 
     this.buildViewStack([
@@ -219,6 +221,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventoryTravelerIdTransformListTableLayoutTpl,
       entityRowTpl: inventoryTravelerIdTransformRowTpl,
       colspan: 6,
+      title:'Traveler Id Transforms'
     });
 
     this.buildViewStack([
@@ -244,6 +247,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventorySalesItemEditListTableLayoutTpl,
       entityRowTpl: inventorySalesItemEditRowTpl,
       colspan: 6,
+      title:'Sales Item Edits'
     });
 
     this.buildViewStack([
@@ -269,6 +273,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventorySalesItemMovementListTableLayoutTpl,
       entityRowTpl: inventorySalesItemMovementRowTpl,
       colspan: 6,
+      title:'Sales Item Movements'
     });
 
     this.buildViewStack([
@@ -308,6 +313,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventorySkuAdjustmentListTableLayoutTpl,
       entityRowTpl: inventorySkuAdjustmentRowTpl,
       colspan: 6,
+      title:'Inventory SKU Adjustments'
     });
 
     this.buildViewStack([
@@ -333,6 +339,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventorySkuMovementListTableLayoutTpl,
       entityRowTpl: inventorySkuMovementRowTpl,
       colspan: 7,
+      title:'Inventory SKU Movements'
     });
 
     this.buildViewStack([
@@ -358,6 +365,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventorySkuTransformListTableLayoutTpl,
       entityRowTpl: inventorySkuTransformRowTpl,
       colspan: 7,
+      title:'Inventory SKU Transforms'
     });
 
     this.buildViewStack([
@@ -383,6 +391,7 @@ export default Marionette.Object.extend({
       entityListTableLayoutTpl: inventoryAlertLogListTableLayoutTpl,
       entityRowTpl: inventoryAlertLogRowTpl,
       colspan: 6,
+      title:'Inventory Alert Logs'
     });
 
     this.buildViewStack([

@@ -20,6 +20,10 @@ trait TravelerIdTransformMixin
 
         $transformEntities = [];
         foreach($transform->getToTravelerIds() as $toTravelerId){
+            $unit = $toTravelerId->checkUnitStatus();
+            if($unit and !in_array($unit, $transformEntities)){
+                $transformEntities[] = $unit;
+            }
             $toTravelerId->generateLabel();
             $toTravelerId->setReverseTransform($transform);
             if($toTravelerId->getCost() === null){
@@ -31,6 +35,10 @@ trait TravelerIdTransformMixin
             }
         }
         foreach($transform->getToSalesItems() as $toSalesItem){
+            $unit = $toSalesItem->checkUnitStatus();
+            if($unit and !in_array($unit, $transformEntities)){
+                $transformEntities[] = $unit;
+            }
             $toSalesItem->setReverseTransform($transform);
             if($toSalesItem->getCost() === null){
                 $this->setCost($toSalesItem);

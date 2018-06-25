@@ -70,6 +70,9 @@ let Model = BaseUrlBaseModel.extend({
     });
     return foundProperty;
   },
+  toJSON(){
+    return this.getMassUpdateAttrs();
+  },
   getMassUpdateAttrs(){
     let attrs =  {
       id: this.get('id'),
