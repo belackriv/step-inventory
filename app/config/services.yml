@@ -18,6 +18,13 @@ services:
             - { name: jms_serializer.subscribing_handler}
         arguments: ["@service_container"]
 
+    jms_serializer.cost_and_revenue_handler:
+        class:  AppBundle\Serializer\Handler\CostAndRevenueHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler}
+        calls:
+            - [setContainer, ["@service_container"]]
+
     app.role_repository:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
