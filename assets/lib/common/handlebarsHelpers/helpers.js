@@ -2,6 +2,7 @@
 
 import _ from 'underscore';
 import Handlebars from 'handlebars/handlebars.runtime.js';
+import { compile } from 'handlebars';
 import Moment from 'moment';
 import Radio from 'backbone.radio';
 import BaseUrlBaseModel from 'lib/common/models/baseUrlBaseModel.js';
@@ -50,7 +51,10 @@ Handlebars.registerHelper('tableCell', function(column, data, options){
     case 'percent':
       return Handlebars.helpers.percent(value, options);
     case 'datetime':
-       return Handlebars.helpers.moment(value, options);
+      if(value === null || typeof value === 'undefined'){
+        return null;
+      }
+      return Handlebars.helpers.moment(value, options);
     default:
       return new Handlebars.SafeString(value);
   }
@@ -70,7 +74,10 @@ Handlebars.registerHelper('castAsType', function(value, type, options){
     case 'percent':
       return Handlebars.helpers.percent(castedValue, options);
     case 'datetime':
-       return Handlebars.helpers.moment(castedValue, options);
+      if(value === null || typeof value === 'undefined'){
+        return null;
+      }
+      return Handlebars.helpers.moment(castedValue, options);
     default:
       return new Handlebars.SafeString(castedValue);
   }
@@ -104,8 +111,17 @@ Handlebars.registerHelper('boolean', function(boolean, options){
 });
 
 Handlebars.registerHelper('moment', function(data, options){
+  if(data === null || typeof data === 'undefined'){
+    return null;
+  }
   var format = options.hash.format?options.hash.format:'h:mm A, ddd MMM D YYYY';
   return Moment(data).format(format);
+});
+
+Handlebars.registerHelper('sqrTemplate', function(value, options){
+  const data = {value: value};
+  const template = compile(options.template);
+  return new Handlebars.SafeString(template(data));
 });
 
 Handlebars.registerHelper('log', function(data, options){

@@ -22,11 +22,16 @@ InboundOrder
 	  		<select name="client"></select>
   		</span>
 	</p>
+	<label class="label">Expected At</label>
+	<p class="control">
+		<input name="expectedAt" type="date" />
+	</p>
 	<p class="control">
 		<button type="submit" class="button is-primary" data-ui-name="save">Submit</button>
 		<button type="button" class="button is-info is-outlined" data-ui-name="cancel">Cancel</button>
 		<button type="button" class="button is-danger" data-ui-name="delete">Delete</button>
 		<button type="button" class="button" data-ui-name="showManifest">Show Manifest</button>
+		<button type="button" class="button{{#if isReceived}} is-disabled{{/if}}" {{#if isReceived}}disabled{{/if}} data-ui-name="receiveOrder">Receive Order</button>
 		<span class="not-synced-alert fa fa-exclamation-triangle" title="This entity is not synced with the server."></span>
 	</p>
 </form>

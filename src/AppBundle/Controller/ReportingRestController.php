@@ -60,7 +60,7 @@ class ReportingRestController extends FOSRestController
             }
         }
 
-        return ['total_count'=> (int)$itemlist, 'total_items' => (int)$itemlist, 'list'=>$itemlist];
+        return ['total_count'=> count($itemlist), 'total_items' => count($itemlist), 'list'=>$itemlist];
     }
 
     /**

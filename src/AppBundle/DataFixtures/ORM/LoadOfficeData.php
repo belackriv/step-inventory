@@ -18,20 +18,38 @@ class LoadOfficeData extends AbstractFixture implements DependentFixtureInterfac
      */
     public function load(ObjectManager $manager)
     {
-        $stepOffice = new Office();
-        $stepOffice->setName('Home');
-        $stepOffice->setOrganization($this->getReference('stepOrg'));
-        $manager->persist($stepOffice);
+        $stepOffice = $manager->getRepository('AppBundle:Office')->findOneBy([
+            'name'=>'Home',
+            'organization' => $this->getReference('stepOrg')
+        ]);
+        if(!$stepOffice){
+            $stepOffice = new Office();
+            $stepOffice->setName('Home');
+            $stepOffice->setOrganization($this->getReference('stepOrg'));
+            $manager->persist($stepOffice);
+        }
 
-        $officeOne = new Office();
-        $officeOne->setName('Office One');
-        $officeOne->setOrganization($this->getReference('demoOrg'));
-        $manager->persist($officeOne);
+        $officeOne = $manager->getRepository('AppBundle:Office')->findOneBy([
+            'name'=>'Office One',
+            'organization' => $this->getReference('demoOrg')
+        ]);
+        if(!$officeOne){
+            $officeOne = new Office();
+            $officeOne->setName('Office One');
+            $officeOne->setOrganization($this->getReference('demoOrg'));
+            $manager->persist($officeOne);
+        }
 
-        $officeTwo = new Office();
-        $officeTwo->setName('Office Two');
-        $officeTwo->setOrganization($this->getReference('demoOrg'));
-        $manager->persist($officeTwo);
+        $officeTwo = $manager->getRepository('AppBundle:Office')->findOneBy([
+            'name'=>'Office Two',
+            'organization' => $this->getReference('demoOrg')
+        ]);
+        if(!$officeTwo){
+            $officeTwo = new Office();
+            $officeTwo->setName('Office Two');
+            $officeTwo->setOrganization($this->getReference('demoOrg'));
+            $manager->persist($officeTwo);
+        }
 
         $manager->flush();
 
@@ -46,22 +64,34 @@ class LoadOfficeData extends AbstractFixture implements DependentFixtureInterfac
         $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
 
         $objectIdentity = ObjectIdentity::fromDomainObject($stepOffice);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
         $objectIdentity = ObjectIdentity::fromDomainObject($officeOne);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
         $objectIdentity = ObjectIdentity::fromDomainObject($officeTwo);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
     }
 
     /**

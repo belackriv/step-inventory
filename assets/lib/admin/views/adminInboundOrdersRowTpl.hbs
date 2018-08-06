@@ -3,4 +3,10 @@
 <td><a class="entity-link" href="{{entityUrl}}">{{label}}</a></td>
 <td>{{truncate description}}</td>
 <td>{{boolean isVoid}}</td>
+<td>
+	{{boolean isReceived}}
+	{{#if isReceived}}
+		@{{moment receivedAt}}
+	{{/if}}
+</td>
 <td>{{travelerIdCount}}</td>

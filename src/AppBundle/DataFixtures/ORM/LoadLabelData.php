@@ -34,7 +34,7 @@ class LoadLabelData extends AbstractFixture implements ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $createdEntities = [];
-        $tidLabel = $manager->getRepository('AppBundle:SingleQueryReport')->findOneBy(['name'=>'TravelerId Label']);
+        $tidLabel = $manager->getRepository('AppBundle:Label')->findOneBy(['name'=>'TravelerId Label']);
         if(!$tidLabel){
             $tidLabel = new Label();
             $tidLabel->setName('TravelerId Label');

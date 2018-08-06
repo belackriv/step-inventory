@@ -7,55 +7,50 @@ import Radio from 'backbone.radio';
 import viewTpl from './singleQueryReportBasicView.hbs!';
 
 import LoadingView from 'lib/common/views/loadingView.js';
+import ReportListView from './singleQueryReportListView.js';
 import ReportFormLayoutView from './singleQueryReportFormLayoutView.js';
 import ReportTableLayoutView from './singleQueryReportTableLayoutView.js';
 
-import SingleQueryReportCollection from '../models/singleQueryReportCollection.js';
 import BaseUrlBaseCollection from 'lib/common/models/baseUrlBaseCollection.js';
 
 export default Marionette.View.extend({
   initialize(options){
     this.model = new Backbone.Model({report: null, isLoading: false});
     this.listenTo(this.model, 'change:report', this.reportChanged);
-    this.reportCollection =  Radio.channel('data').request('collection', SingleQueryReportCollection, {fetchAll: true});
-  },
-  behaviors: {
-    'Stickit': {},
   },
   template: viewTpl,
   regions: {
+    'list': '#single-query-report-list',
     'form': '#single-query-report-form',
     'table': '#single-query-report-table',
   },
   ui:{
-    'reportSelect': 'select[name="report"]',
+    'formContainer': '#single-query-report-form-container',
     'runReportButton': 'button[name="runReport"]',
     'exportReportButton': 'button[name="exportReport"]',
     'exportReportCsvButton': 'button[name="exportReportCsv"]',
-  },
-  bindings: {
-    '@ui.reportSelect': {
-      observe: 'report',
-      useBackboneModels: true,
-      selectOptions:{
-        labelPath: 'attributes.name',
-        collection: 'this.reportCollection',
-        defaultOption: {
-          label: 'Choose one...',
-          value: null
-        }
-      }
-    },
   },
   events: {
     'click @ui.runReportButton': 'runReport',
     'click @ui.exportReportButton': 'exportReport',
     'click @ui.exportReportCsvButton': 'exportReportCsv'
   },
-  reportChanged(){
-    this.showChildView('form', new ReportFormLayoutView({
-      model: this.model.get('report'),
+  onRender(){
+    this.showChildView('list', new ReportListView({
+      model: this.model,
     }));
+    this.reportChanged();
+  },
+  reportChanged(){
+    this.getRegion('table').empty();
+    this.getRegion('form').empty();
+    this.ui.formContainer.hide();
+    if(this.model.get('report')){
+      this.ui.formContainer.show();
+      this.showChildView('form', new ReportFormLayoutView({
+        model: this.model.get('report'),
+      }));
+    }
   },
   runReport(event){
     if(!this.model.get('isLoading')){

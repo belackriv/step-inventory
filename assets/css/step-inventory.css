@@ -6510,3 +6510,7 @@ ul.si-import-property-list {
     margin-bottom: .25em; }
     .si-unit-property-list li label {
       margin-right: 5px; }
+
+.si-single-query-report-form div {
+  margin: .25em;
+  min-width: 10em; }

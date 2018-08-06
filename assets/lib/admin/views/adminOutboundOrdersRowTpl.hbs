@@ -3,5 +3,10 @@
 <td><a class="entity-link" href="{{entityUrl}}">{{label}}</a></td>
 <td>{{truncate description}}</td>
 <td>{{boolean isVoid}}</td>
-<td>{{boolean isShipped}}</td>
+<td>
+	{{boolean isShipped}}
+	{{#if isShipped}}
+		@{{moment shippedAt}}
+	{{/if}}
+</td>
 <td>{{salesItemCount}}</td>

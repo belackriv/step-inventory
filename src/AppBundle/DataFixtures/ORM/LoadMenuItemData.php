@@ -24,8 +24,6 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
         $deptRefNames = [];
         $linkRefNames = [];
 
-
-
         foreach($refs as $ref){
             $refNames = $this->referenceRepository->getReferenceNames($ref);
             if(is_a($ref, 'AppBundle\Entity\Department')){
@@ -40,19 +38,34 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
             $i=1;
             $department = $this->getReference($deptRefName);
             foreach($linkRefNames as $linkRefName){
-                $item = new MenuItem();
-                $item->isActive(true);
-                $item->setPosition($i);
-                $item->setMenuLink($this->getReference($linkRefName));
-                $item->setOrganization($department->getOffice()->getOrganization());
+                $search = [
+                    'position' => $i,
+                    'menuLink'=>$this->getReference($linkRefName),
+                    'organization' => $department->getOffice()->getOrganization(),
+                ];
                 if(in_array($linkRefName, ['inventoryAuditLink','inventoryActionLink', 'inventoryLogLink'])){
-                    $item->setParent($items[$deptRefName]['mainLink']);
+                    $search['parent'] = $items[$deptRefName]['mainLink'];
                 }else if(in_array($linkRefName, ['adminInventoryLink','adminAccountingLink'])){
-                    $item->setParent($items[$deptRefName]['adminLink']);
+                    $search['parent'] = $items[$deptRefName]['adminLink'];
                 }else{
-                    $item->setDepartment($department);
+                    $search['department'] = $department;
                 }
-                $manager->persist($item);
+                $item = $manager->getRepository('AppBundle:MenuItem')->findOneBy($search);
+                if(!$item){
+                    $item = new MenuItem();
+                    $item->isActive(true);
+                    $item->setPosition($i);
+                    $item->setMenuLink($this->getReference($linkRefName));
+                    $item->setOrganization($department->getOffice()->getOrganization());
+                    if(in_array($linkRefName, ['inventoryAuditLink','inventoryActionLink', 'inventoryLogLink'])){
+                        $item->setParent($items[$deptRefName]['mainLink']);
+                    }else if(in_array($linkRefName, ['adminInventoryLink','adminAccountingLink'])){
+                        $item->setParent($items[$deptRefName]['adminLink']);
+                    }else{
+                        $item->setDepartment($department);
+                    }
+                    $manager->persist($item);
+                }
                 $items[$deptRefName][$linkRefName] = $item;
                 $i++;
             }
@@ -70,10 +83,14 @@ class LoadMenuItemData extends AbstractFixture implements DependentFixtureInterf
         foreach($items as $deptItems){
             foreach($deptItems as $item){
                 $objectIdentity = ObjectIdentity::fromDomainObject($item);
-                $acl = $aclProvider->createAcl($objectIdentity);
-                $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-                $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-                $aclProvider->updateAcl($acl);
+                try {
+                    $acl = $aclProvider->findAcl($objectIdentity);
+                } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+                    $acl = $aclProvider->createAcl($objectIdentity);
+                    $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+                    $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+                    $aclProvider->updateAcl($acl);
+                }
             }
         }
 

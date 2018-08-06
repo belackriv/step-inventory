@@ -30,8 +30,10 @@ export default Marionette.View.extend({
   ui: {
     'descriptionInput': 'textarea[name="description"]',
     'isVoidInput': 'input[name="isVoid"]',
+    'expectedAtInput': 'input[name="expectedAt"]',
     'clientSelect': 'select[name="client"]',
     'showManifestButton': 'button[data-ui-name="showManifest"]',
+    'receiveOrderButton': 'button[data-ui-name="receiveOrder"]',
     'saveButton': 'button[data-ui-name=save]',
     'cancelButton': 'button[data-ui-name=cancel]',
     'deleteButton': 'button[data-ui-name=delete]',
@@ -39,9 +41,22 @@ export default Marionette.View.extend({
   bindings: {
     '@ui.descriptionInput': 'description',
     '@ui.isVoidInput': 'isVoid',
+    '@ui.expectedAtInput': 'expectedAt',
   },
   events: {
     'click @ui.showManifestButton': 'showManifest',
+    'click @ui.receiveOrderButton': 'receiveOrder',
+  },
+  onAttach(){
+    this.$el.find('input[type="date"]').datetimepicker({
+      //format:  'YYYY-MM-DD[T]HH:mm:ss.SSSSSZ',
+      format: 'Y-m-d\\TH:i:s.00000P',
+      timepicker: false,
+      formatDate: 'Y-m-d',
+      formatTime: 'H:i',
+      showOtherMonths: true,
+      selectOtherMonths: true
+    }).attr('type','text');
   },
   showManifest(event){
     event.preventDefault();
@@ -57,6 +72,15 @@ export default Marionette.View.extend({
     Radio.channel('dialog').trigger('open', new LoadingView(), options);
     this.model.fetch().then(()=>{
       Radio.channel('dialog').trigger('open', view, options);
+    });
+  },
+  receiveOrder(event){
+    event.preventDefault();
+    this.ui.receiveOrderButton.prop('disabled', true);
+    this.ui.receiveOrderButton.addClass('is-disabled');
+    this.ui.receiveOrderButton.addClass('is-loading');
+    this.model.receive().then(()=>{
+      this.ui.receiveOrderButton.removeClass('is-loading');
     });
   },
   save(event){

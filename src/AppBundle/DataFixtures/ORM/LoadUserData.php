@@ -34,89 +34,106 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
      */
     public function load(ObjectManager $manager)
     {
-        $belacUser = new User();
-        $belacUser->setUsername('belac');
-        $belacUser->setEmail('belackriv@gmail.com');
-        $belacUser->setFirstName('Belac');
-        $belacUser->setLastName('Kriv');
-        $belacUser->setIsActive(true);
-        $belacUser->setDefaultDepartment($this->getReference('stepDept'));
-        $belacUser->setOrganization($this->getReference('stepOrg'));
-        $belacUserRole = new UserRole();
-        $belacUserRole->setUser($belacUser);
-        $belacUserRole->setRole($this->getReference('ROLE_DEV'));
-        $belacUser->addUserRole($belacUserRole);
+        $belacUser = $manager->getRepository('AppBundle:User')->findOneBy(['username'=>'belac']);
+        $belacUserRole = null;
+        if(!$belacUser){
+            $belacUser = new User();
+            $belacUser->setUsername('belac');
+            $belacUser->setEmail('belackriv@gmail.com');
+            $belacUser->setFirstName('Belac');
+            $belacUser->setLastName('Kriv');
+            $belacUser->setIsActive(true);
+            $belacUser->setDefaultDepartment($this->getReference('stepDept'));
+            $belacUser->setOrganization($this->getReference('stepOrg'));
+            $belacUserRole = new UserRole();
+            $belacUserRole->setUser($belacUser);
+            $belacUserRole->setRole($this->getReference('ROLE_DEV'));
+            $belacUser->addUserRole($belacUserRole);
 
-        $belacPassword = 'password';
-        $encoder = $this->container->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($belacUser, $belacPassword);
 
-        $belacUser->setPassword($encoded);
+            $belacPassword = 'password';
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($belacUser, $belacPassword);
 
-        $manager->persist($belacUser);
+            $belacUser->setPassword($encoded);
 
-        $plainUser = new User();
-        $plainUser->setUsername('usertest');
-        $plainUser->setEmail('user@none');
-        $plainUser->setFirstName('User');
-        $plainUser->setLastName('Test');
-        $plainUser->setIsActive(true);
-        $plainUser->setDefaultDepartment($this->getReference('oneOne'));
-        $plainUser->setOrganization($this->getReference('demoOrg'));
-        $plainUserRole = new UserRole();
-        $plainUserRole->setUser($plainUser);
-        $plainUserRole->setRole($this->getReference('ROLE_USER'));
-        $plainUser->addUserRole($plainUserRole);
+            $manager->persist($belacUser);
+        }
 
-        $plainPassword = 'password';
-        $encoder = $this->container->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($plainUser, $plainPassword);
+        $plainUser = $manager->getRepository('AppBundle:User')->findOneBy(['username'=>'usertest']);
+        $plainUserRole = null;
+        if(!$plainUser){
+            $plainUser = new User();
+            $plainUser->setUsername('usertest');
+            $plainUser->setEmail('user@none');
+            $plainUser->setFirstName('User');
+            $plainUser->setLastName('Test');
+            $plainUser->setIsActive(true);
+            $plainUser->setDefaultDepartment($this->getReference('oneOne'));
+            $plainUser->setOrganization($this->getReference('demoOrg'));
+            $plainUserRole = new UserRole();
+            $plainUserRole->setUser($plainUser);
+            $plainUserRole->setRole($this->getReference('ROLE_USER'));
+            $plainUser->addUserRole($plainUserRole);
 
-        $plainUser->setPassword($encoded);
+            $plainPassword = 'password';
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($plainUser, $plainPassword);
 
-        $manager->persist($plainUser);
+            $plainUser->setPassword($encoded);
 
-        $leadUser = new User();
-        $leadUser->setUsername('leadtest');
-        $leadUser->setEmail('lead@none');
-        $leadUser->setFirstName('Lead');
-        $leadUser->setLastName('Test');
-        $leadUser->setIsActive(true);
-        $leadUser->setDefaultDepartment($this->getReference('oneOne'));
-        $leadUser->setOrganization($this->getReference('demoOrg'));
-        $leadUserRole = new UserRole();
-        $leadUserRole->setUser($leadUser);
-        $leadUserRole->setRole($this->getReference('ROLE_LEAD'));
-        $leadUser->addUserRole($leadUserRole);
+            $manager->persist($plainUser);
+        }
 
-        $leadPassword = 'password';
-        $encoder = $this->container->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($leadUser, $leadPassword);
+        $leadUser = $manager->getRepository('AppBundle:User')->findOneBy(['username'=>'leadtest']);
+        $leadUserRole = null;
+        if(!$leadUser){
+            $leadUser = new User();
+            $leadUser->setUsername('leadtest');
+            $leadUser->setEmail('lead@none');
+            $leadUser->setFirstName('Lead');
+            $leadUser->setLastName('Test');
+            $leadUser->setIsActive(true);
+            $leadUser->setDefaultDepartment($this->getReference('oneOne'));
+            $leadUser->setOrganization($this->getReference('demoOrg'));
+            $leadUserRole = new UserRole();
+            $leadUserRole->setUser($leadUser);
+            $leadUserRole->setRole($this->getReference('ROLE_LEAD'));
+            $leadUser->addUserRole($leadUserRole);
 
-        $leadUser->setPassword($encoded);
+            $leadPassword = 'password';
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($leadUser, $leadPassword);
 
-        $manager->persist($leadUser);
+            $leadUser->setPassword($encoded);
 
-        $adminUser = new User();
-        $adminUser->setUsername('admintest');
-        $adminUser->setEmail('admin@none');
-        $adminUser->setFirstName('Admin');
-        $adminUser->setLastName('Test');
-        $adminUser->setIsActive(true);
-        $adminUser->setDefaultDepartment($this->getReference('oneOne'));
-        $adminUser->setOrganization($this->getReference('demoOrg'));
-        $adminUserRole = new UserRole();
-        $adminUserRole->setUser($adminUser);
-        $adminUserRole->setRole($this->getReference('ROLE_ADMIN'));
-        $adminUser->addUserRole($adminUserRole);
+            $manager->persist($leadUser);
+        }
 
-        $adminPassword = 'password';
-        $encoder = $this->container->get('security.password_encoder');
-        $encoded = $encoder->encodePassword($adminUser, $adminPassword);
+        $adminUser = $manager->getRepository('AppBundle:User')->findOneBy(['username'=>'admintest']);
+        $adminUserRole = null;
+        if(!$adminUser){
+            $adminUser = new User();
+            $adminUser->setUsername('admintest');
+            $adminUser->setEmail('admin@none');
+            $adminUser->setFirstName('Admin');
+            $adminUser->setLastName('Test');
+            $adminUser->setIsActive(true);
+            $adminUser->setDefaultDepartment($this->getReference('oneOne'));
+            $adminUser->setOrganization($this->getReference('demoOrg'));
+            $adminUserRole = new UserRole();
+            $adminUserRole->setUser($adminUser);
+            $adminUserRole->setRole($this->getReference('ROLE_ADMIN'));
+            $adminUser->addUserRole($adminUserRole);
 
-        $adminUser->setPassword($encoded);
+            $adminPassword = 'password';
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($adminUser, $adminPassword);
 
-        $manager->persist($adminUser);
+            $adminUser->setPassword($encoded);
+
+            $manager->persist($adminUser);
+        }
 
         $manager->flush();
 
@@ -127,53 +144,92 @@ class LoadUserData extends AbstractFixture implements DependentFixtureInterface,
         $userRoleSecurityIdentity = new RoleSecurityIdentity('ROLE_USER');
 
         $objectIdentity = ObjectIdentity::fromDomainObject($belacUser);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($belacUserRole);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        if($belacUserRole){
+            $objectIdentity = ObjectIdentity::fromDomainObject($belacUserRole);
+            try {
+                $acl = $aclProvider->findAcl($objectIdentity);
+            } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+                $acl = $aclProvider->createAcl($objectIdentity);
+                $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+                $acl->insertObjectAce($devRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+                $aclProvider->updateAcl($acl);
+            }
+        }
 
         $objectIdentity = ObjectIdentity::fromDomainObject($plainUser);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($plainUserRole);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        if($plainUserRole){
+            $objectIdentity = ObjectIdentity::fromDomainObject($plainUserRole);
+            try {
+                $acl = $aclProvider->findAcl($objectIdentity);
+            } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+                $acl = $aclProvider->createAcl($objectIdentity);
+                $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+                $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+                $aclProvider->updateAcl($acl);
+            }
+        }
 
         $objectIdentity = ObjectIdentity::fromDomainObject($leadUser);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($leadUserRole);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        if($leadUserRole){
+            $objectIdentity = ObjectIdentity::fromDomainObject($leadUserRole);
+            try {
+                $acl = $aclProvider->findAcl($objectIdentity);
+            } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+                $acl = $aclProvider->createAcl($objectIdentity);
+                $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+                $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+                $aclProvider->updateAcl($acl);
+            }
+        }
 
         $objectIdentity = ObjectIdentity::fromDomainObject($adminUser);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
+        try {
+            $acl = $aclProvider->findAcl($objectIdentity);
+        } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+            $acl = $aclProvider->createAcl($objectIdentity);
+            $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+            $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+            $aclProvider->updateAcl($acl);
+        }
 
-        $objectIdentity = ObjectIdentity::fromDomainObject($adminUserRole);
-        $acl = $aclProvider->createAcl($objectIdentity);
-        $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
-        $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
-        $aclProvider->updateAcl($acl);
-
+        if($adminUserRole){
+            $objectIdentity = ObjectIdentity::fromDomainObject($adminUserRole);
+            try {
+                $acl = $aclProvider->findAcl($objectIdentity);
+            } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+                $acl = $aclProvider->createAcl($objectIdentity);
+                $acl->insertObjectAce($userRoleSecurityIdentity, MaskBuilder::MASK_VIEW);
+                $acl->insertObjectAce($adminRoleSecurityIdentity, MaskBuilder::MASK_OPERATOR);
+                $aclProvider->updateAcl($acl);
+            }
+        }
 
     }
 

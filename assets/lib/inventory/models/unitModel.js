@@ -77,9 +77,11 @@ let Model = BaseUrlBaseModel.extend({
     let attrs =  {
       id: this.get('id'),
       serial: this.get('serial'),
-      unitType: {id: this.get('unitType').id},
       properties: []
     };
+    if(this.get('unitType')){
+      attrs.unitType =  {id: this.get('unitType').id};
+    }
     this.get('properties').each((property)=>{
       attrs.properties.push({
         id: property.get('id'),

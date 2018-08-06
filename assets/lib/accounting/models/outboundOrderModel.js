@@ -24,6 +24,7 @@ let Model = BaseUrlBaseModel.extend({
     description: null,
     isVoid: false,
     isShipped: false,
+    shippedAt: null,
     salesItems: null,
     //virtual, since salesItems starts empty
     salesItemCount: null,

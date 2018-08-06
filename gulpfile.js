@@ -41,6 +41,11 @@ gulp.task('jspm-build', ['sass'], function(){
     });
 });
 
+gulp.task('jspm-watch', function(){
+    gulp.watch('./assets/lib/**', ['jspm-build']);
+});
+
+
 gulp.task('jspm-prod-build',['sass'], function(){
   const builder = new jspm.Builder();
   builder.bundle(

@@ -27,7 +27,8 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
     reverseRelation: {
       key: 'travelerIds',
-      includeInJSON: ['id'],
+      //includeInJSON: ['id'],
+      includeInJSON: false,
     }
   },{
     type: BackboneRelational.HasOne,
@@ -36,7 +37,8 @@ let Model = BaseUrlBaseModel.extend({
     includeInJSON: ['id'],
     reverseRelation: {
       key: 'travelerIds',
-      includeInJSON: ['id'],
+      //includeInJSON: ['id'],
+      includeInJSON: false,
     }
   },{
     type: BackboneRelational.HasOne,

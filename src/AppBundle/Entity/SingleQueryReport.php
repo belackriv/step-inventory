@@ -48,6 +48,23 @@ Class SingleQueryReport
 		return $this;
 	}
 
+    /**
+     * @ORM\Column(type="text")
+     * @JMS\Type("string")
+     */
+    protected $description = null;
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
 	/**
 	 * @ORM\Column(type="text")
      * @JMS\Type("string")
@@ -98,7 +115,6 @@ Class SingleQueryReport
 		$this->fileName = $fileName;
 		return $this;
 	}
-
 
 	/**
 	 * @ORM\Column(type="json_array")
@@ -240,6 +256,7 @@ Class SingleQueryReport
     }
 
     public function __construct() {
+        $this->singleQueryReportRoles = new ArrayCollection();
         $this->singleQueryReportParameters = new ArrayCollection();
         $this->parts = new ArrayCollection();
         $this->countParts = new ArrayCollection();
@@ -261,8 +278,8 @@ Class SingleQueryReport
 		$mainQuery->setMaxResults($perPage)->setFirstResult($page*$perPage);
         return [
     		'columns' => $this->columns,
-    		'total_count' => count($mainQuery->getResult()),
-            'total_items' =>(int)$countQuery->getSingleScalarResult(),
+    		'total_count' => (int)$countQuery->getSingleScalarResult(),
+            'total_items' => (int)$countQuery->getSingleScalarResult(),
     		'list' => $mainQuery->getResult()
     	];
     }

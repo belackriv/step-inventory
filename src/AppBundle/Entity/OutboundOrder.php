@@ -129,6 +129,23 @@ Class OutboundOrder
 	}
 
 	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
+     */
+	protected $shippedAt;
+
+	public function getShippedAt()
+	{
+		return $this->shippedAt;
+	}
+
+	public function setShippedAt(\DateTime $shippedAt)
+	{
+		$this->shippedAt = $shippedAt;
+		return $this;
+	}
+
+	/**
      * @ORM\OneToMany(targetEntity="SalesItem", mappedBy="outboundOrder")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\SalesItem>")
      * @JMS\Groups({"OrderManifest"})

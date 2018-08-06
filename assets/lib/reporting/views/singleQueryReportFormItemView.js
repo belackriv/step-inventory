@@ -21,7 +21,10 @@ export default Marionette.View.extend({
     }
   },
   onAttach(){
-    this.$el.find('[use_select_2="true"]').select2();
+    this.$el.find('[use_select_2="true"]').select2({
+      width: 'resolve',
+      dropdownAutoWidth: true
+    });
     this.$el.find('input[type="date"]').datepicker().attr('type','text');
   },
   //className:'vsm-single-query-report-form-item'

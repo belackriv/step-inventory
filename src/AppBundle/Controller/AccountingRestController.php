@@ -344,6 +344,42 @@ class AccountingRestController extends FOSRestController
     }
 
     /**
+     * @Rest\Get("/inbound_order/{id}/receive")
+     */
+    public function setInboundOrderReceivedAction(\AppBundle\Entity\InboundOrder $inboundOrder, Request $request)
+    {
+        if( $this->get('security.authorization_checker')->isGranted('VIEW', $inboundOrder) and
+            $inboundOrder->isOwnedByOrganization($this->getUser()->getOrganization())
+        ){
+            if($inboundOrder->getIsReceived()){
+                throw new HttpException(Response::HTTP_CONFLICT, 'Order Has Already Been Received!' );
+            }
+            $inboundOrder->setIsReceived(true);
+            $inboundOrder->setReceivedAt(new \DateTime);
+            $this->getDoctrine()->getManager()->flush();
+
+            $view = $this->view($inboundOrder, 200);
+            $view->setTemplate(":default:index.html.twig");
+            $context = new Context;
+            $context->setGroups([
+                'Default',
+                'OrderManifest',
+                'travelerIds' => [
+                    'OrderManifest',
+                    'transform' => [
+                        'OrderManifest'
+                    ]
+                ]
+            ]);
+            $context->enableMaxDepth();
+            $view->setContext($context);
+            return $this->handleView($view);
+        }else{
+            throw $this->createNotFoundException('InboundOrder #'.$inboundOrder->getId().' Not Found');
+        }
+    }
+
+    /**
      * @Rest\Post("/inbound_order")
      * @Rest\View(template=":default:index.html.twig",serializerEnableMaxDepthChecks=true, serializerGroups={"Default"})
      * @ParamConverter("inboundOrder", converter="fos_rest.request_body")
@@ -521,6 +557,9 @@ class AccountingRestController extends FOSRestController
             foreach($inventoryMovements as $movement){
                 $em->persist($movement);
             }
+
+            $outboundOrder->setIsShipped(true);
+            $outboundOrder->setShippedAt(new \DateTime);
             $em->flush();
             foreach($inventoryMovements as $movement){
                 $this->updateAclByRoles($movement, ['ROLE_USER'=>['view', 'edit'], 'ROLE_ADMIN'=>'operator']);

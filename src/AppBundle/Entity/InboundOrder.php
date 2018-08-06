@@ -128,6 +128,40 @@ Class InboundOrder
 	}
 
 	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
+     */
+	protected $expectedAt;
+
+	public function getExpectedAt()
+	{
+		return $this->expectedAt;
+	}
+
+	public function setExpectedAt(\DateTime $expectedAt)
+	{
+		$this->expectedAt = $expectedAt;
+		return $this;
+	}
+
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+     * @JMS\Type("DateTime")
+     */
+	protected $receivedAt;
+
+	public function getReceivedAt()
+	{
+		return $this->receivedAt;
+	}
+
+	public function setReceivedAt(\DateTime $receivedAt)
+	{
+		$this->receivedAt = $receivedAt;
+		return $this;
+	}
+
+	/**
      * @ORM\OneToMany(targetEntity="TravelerId", mappedBy="inboundOrder")
      * @JMS\Type("ArrayCollection<AppBundle\Entity\TravelerId>")
      * @JMS\Groups({"OrderManifest"})

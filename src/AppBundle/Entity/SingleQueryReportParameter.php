@@ -221,7 +221,7 @@ Class SingleQueryReportParameter {
     }
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, nullable=true)
      * @JMS\Exclude
      */
     protected $choicesPropertyName = null;
@@ -329,7 +329,7 @@ Class SingleQueryReportParameter {
     public function getClientsChoiceList()
     {
         //must be set ahead of time
-        if(property_exists($this, 'clientsChoicesList') and is_array($this->clientsChoicesList)){
+        if(property_exists($this, 'customersChoicesList') and is_array($this->clientsChoicesList)){
             return $this->clientsChoicesList;
         }else{
             return null;
@@ -350,6 +350,29 @@ Class SingleQueryReportParameter {
         $this->clientsChoicesList = $qb->getQuery()->getResult();
     }
 
+    //choices functions
+    public function getCustomersChoiceList()
+    {
+        //must be set ahead of time
+        if(property_exists($this, 'customersChoicesList') and is_array($this->customersChoicesList)){
+            return $this->customersChoicesList;
+        }else{
+            return null;
+        }
+    }
 
+    //choices functions
+    public function setCustomersChoiceList(ContainerInterface $container)
+    {
+        $qb = $container->get('doctrine')->getManager()->createQueryBuilder()
+            ->select('c.id value, c.name label')
+            ->from('AppBundle:Customer', 'c')
+            ->join('c.organization', 'org')
+            ->where('org.id = :org_id')
+            ->orderBy('c.name', 'ASC')
+            ->setParameter('org_id', $container->get('security.token_storage')->getToken()->getUser()->getOrganization()->getId());
+
+        $this->customersChoicesList = $qb->getQuery()->getResult();
+    }
 
 }

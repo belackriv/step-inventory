@@ -64,10 +64,24 @@
       "vm": "npm:jspm-nodelibs-vm@^0.2.0"
     },
     "overrides": {
+      "github:components/jquery@3.1.0": {
+        "main": "jquery"
+      },
       "github:components/jqueryui@1.12.1": {
         "registry": "jspm",
         "dependencies": {
           "jquery": "*"
+        }
+      },
+      "github:xdan/datetimepicker@2.4.5": {
+        "main": "jquery.datetimepicker",
+        "meta": {
+          "jquery.datetimepicker.js": {
+            "deps": [
+              "jquery"
+            ],
+            "format": "global"
+          }
         }
       },
       "github:select2/select2@4.0.3": {

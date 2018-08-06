@@ -18,7 +18,7 @@ class LoadOrganizationData extends AbstractFixture implements ContainerAwareInte
     public function load(ObjectManager $manager)
     {
         $createdEntities = [];
-        $stepOrg = $manager->getRepository('AppBundle:SingleQueryReport')->findOneBy(['name'=>'Step Inventory']);
+        $stepOrg = $manager->getRepository('AppBundle:Organization')->findOneBy(['name'=>'Step Inventory']);
         if(!$stepOrg){
             $stepOrg = new Organization();
             $stepOrg->setName('Step Inventory');
@@ -26,7 +26,7 @@ class LoadOrganizationData extends AbstractFixture implements ContainerAwareInte
             $createdEntities['stepOrg'] = true;
         }
 
-        $demoOrg = $manager->getRepository('AppBundle:SingleQueryReport')->findOneBy(['name'=>'Acme Inc.']);
+        $demoOrg = $manager->getRepository('AppBundle:Organization')->findOneBy(['name'=>'Acme Inc.']);
         if(!$demoOrg){
             $demoOrg = new Organization();
             $demoOrg->setName('Acme Inc.');
