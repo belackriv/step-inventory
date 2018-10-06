@@ -40607,7 +40607,10 @@ System.register('lib/reporting/views/singleQueryReportListView.js', ['jquery', '
 
         template: viewTpl,
         regions: {
-          'tbody': 'tbody'
+          'tbody': {
+            el: 'tbody',
+            replaceElement: true
+          }
         },
         ui: {
           'collapsedBar': '[data-ui="collapsedBar"]',
@@ -40639,6 +40642,7 @@ System.register('lib/reporting/views/singleQueryReportListView.js', ['jquery', '
         selectModel: function selectModel(childView, args) {
           this.ui.collapsedBar.show();
           this.ui.table.hide();
+          args.model.fetch();
           this.model.set('report', args.model);
         },
         buttonClick: function buttonClick() {},
@@ -40938,7 +40942,11 @@ System.register('lib/reporting/views/singleQueryReportFormItemView.js', ['unders
             return viewTpl;
           }
         },
-        onRender: function onRender() {
+
+        modelEvents: {
+          'change:choices': 'addChoices'
+        },
+        addChoices: function addChoices() {
           var _this = this;
 
           if (this.model.get('choices')) {
@@ -40946,12 +40954,17 @@ System.register('lib/reporting/views/singleQueryReportFormItemView.js', ['unders
               _this.$el.find('[name="' + _this.model.get('name') + '"]').append('<option value="' + choice.value + '">' + choice.label + '</option>');
             });
           }
+          this.$el.find('[name="' + this.model.get('name') + '"]').trigger('change');
         },
         onAttach: function onAttach() {
-          this.$el.find('[use_select_2="true"]').select2({
+          var $select2 = this.$el.find('[use_select_2="true"]');
+          $select2.select2({
             width: 'resolve',
             dropdownAutoWidth: true
           });
+          if ($select2.length > 0) {
+            this.addChoices();
+          }
           this.$el.find('input[type="date"]').datepicker().attr('type', 'text');
         }
       }));

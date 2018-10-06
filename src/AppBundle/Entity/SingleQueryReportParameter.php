@@ -329,7 +329,7 @@ Class SingleQueryReportParameter {
     public function getClientsChoiceList()
     {
         //must be set ahead of time
-        if(property_exists($this, 'customersChoicesList') and is_array($this->clientsChoicesList)){
+        if(property_exists($this, 'clientsChoicesList') and is_array($this->clientsChoicesList)){
             return $this->clientsChoicesList;
         }else{
             return null;
@@ -373,6 +373,33 @@ Class SingleQueryReportParameter {
             ->setParameter('org_id', $container->get('security.token_storage')->getToken()->getUser()->getOrganization()->getId());
 
         $this->customersChoicesList = $qb->getQuery()->getResult();
+    }
+
+    //choices functions
+    public function getBinsChoiceList()
+    {
+        //must be set ahead of time
+        if(property_exists($this, 'binsChoiceList') and is_array($this->binsChoiceList)){
+            return $this->binsChoiceList;
+        }else{
+            return null;
+        }
+    }
+
+    //choices functions
+    public function setBinsChoiceList(ContainerInterface $container)
+    {
+        $qb = $container->get('doctrine')->getManager()->createQueryBuilder()
+            ->select('b.id value, b.name label')
+            ->from('AppBundle:Bin', 'b')
+            ->join('b.department', 'd')
+            ->join('d.office', 'o')
+            ->join('o.organization', 'org')
+            ->where('org.id = :org_id')
+            ->orderBy('b.name', 'ASC')
+            ->setParameter('org_id', $container->get('security.token_storage')->getToken()->getUser()->getOrganization()->getId());
+
+        $this->binsChoiceList = $qb->getQuery()->getResult();
     }
 
 }

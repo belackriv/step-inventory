@@ -13,18 +13,26 @@ export default Marionette.View.extend({
       return viewTpl;
     }
   },
-  onRender(){
+  modelEvents: {
+    'change:choices':'addChoices'
+  },
+  addChoices(){
     if(this.model.get('choices')){
       _.each(this.model.get('choices'), (choice)=>{
         this.$el.find('[name="'+this.model.get('name')+'"]').append('<option value="'+choice.value+'">'+choice.label+'</option>');
       });
     }
+    this.$el.find('[name="'+this.model.get('name')+'"]').trigger('change');
   },
   onAttach(){
-    this.$el.find('[use_select_2="true"]').select2({
+    const $select2 = this.$el.find('[use_select_2="true"]');
+    $select2.select2({
       width: 'resolve',
       dropdownAutoWidth: true
     });
+    if($select2.length > 0){
+      this.addChoices();
+    }
     this.$el.find('input[type="date"]').datepicker().attr('type','text');
   },
   //className:'vsm-single-query-report-form-item'

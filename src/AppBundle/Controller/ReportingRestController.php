@@ -56,7 +56,6 @@ class ReportingRestController extends FOSRestController
         foreach($items as $item){
             if (true === $authorizationChecker->isGranted('VIEW', $item)){
                 $itemlist[] = $item;
-                $item->setChoices($this->container);
             }
         }
 
@@ -69,13 +68,8 @@ class ReportingRestController extends FOSRestController
      */
     public function getSingleQueryReportAction(\AppBundle\Entity\SingleQueryReport $singleQueryReport)
     {
-        $accounts = $this->getAccessibleAccounts();
-        /*
-        if($this->getAccessibleAccountIds() !== null and $singleQueryReport->getAvailableToAccounts() !== true){
-            throw new HttpException(403,'This Query is not available to Account Users');
-        }
-        */
         $singleQueryReport->setChoices($this->container);
+        sleep(1);
         return $singleQueryReport;
     }
 

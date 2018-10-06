@@ -17,7 +17,10 @@ export default Marionette.View.extend({
   },
   template: viewTpl,
   regions: {
-    'tbody': 'tbody',
+    'tbody': {
+      el: 'tbody',
+      replaceElement: true
+    }
   },
   ui:{
     'collapsedBar': '[data-ui="collapsedBar"]',
@@ -49,6 +52,7 @@ export default Marionette.View.extend({
   selectModel(childView, args){
     this.ui.collapsedBar.show();
     this.ui.table.hide();
+    args.model.fetch();
     this.model.set('report', args.model);
   },
   buttonClick(){

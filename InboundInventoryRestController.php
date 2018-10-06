@@ -194,7 +194,7 @@ class InboundInventoryRestController extends FOSRestController
                 throw $this->createAccessDeniedException();
             }
         //}else{
-        //    throw $this->createAccessDeniedException();
+         //   throw $this->createAccessDeniedException();
         //}
     }
 
