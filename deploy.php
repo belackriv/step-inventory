@@ -15,5 +15,11 @@ server('demo', '138.68.29.149', 22)
     ->stage('demo')
     ->env('deploy_path', '/var/www/step-inventory');
 
+server('app', '159.65.226.243', 22)
+    ->user('deployer')
+    ->identityFile()
+    ->stage('demo')
+    ->env('deploy_path', '/var/www/step-inventory');
+
 before('deploy:cache:warmup', 'database:migrate');
 before('deploy:symlink', 'deploy:asset_symlinks');
